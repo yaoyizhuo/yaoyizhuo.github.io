@@ -12,7 +12,7 @@
   </entry>
   <entry>
     <title>Go-GC垃圾回收</title>
-    <url>/2021/02/02/technology/golang/gc_recycle/</url>
+    <url>/2021/02/03/technology/golang/gc_recycle/</url>
     <content><![CDATA[<h2 id="Go垃圾回收"><a href="#Go垃圾回收" class="headerlink" title="Go垃圾回收"></a>Go垃圾回收</h2><ul>
 <li><p>G0 V1.3之前的标记-清除(mark and sweep)算法</p>
 </li>
@@ -29,7 +29,7 @@
 <li><p>Go V1.8混合写屏障机制的全场景分析</p>
 </li>
 </ul>
-<h3 id="Go-V1-3-之前的标记-清除-mark-and-sweep-算法"><a href="#Go-V1-3-之前的标记-清除-mark-and-sweep-算法" class="headerlink" title="Go V1.3 之前的标记-清除(mark and sweep)算法"></a>Go V1.3 之前的标记-清除(mark and sweep)算法</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
+<h2 id="Go-V1-3-之前的标记-清除-mark-and-sweep-算法"><a href="#Go-V1-3-之前的标记-清除-mark-and-sweep-算法" class="headerlink" title="Go V1.3 之前的标记-清除(mark and sweep)算法"></a>Go V1.3 之前的标记-清除(mark and sweep)算法</h2><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
 <li><p>标记(Mark phase)</p>
 </li>
 <li><p>清除(Sweep phase)</p>
@@ -37,14 +37,11 @@
 </ul>
 <p><strong>第一步</strong>，暂停程序业务逻辑, 找出不可达的对象，然后做上标记。</p>
 <p>操作非常简单，但是有一点需要额外注意：mark and sweep算法在执行的时候，需要程序暂停！即 <code>STW(stop the world)</code>。也就是说，这段时间程序会卡在哪儿。</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_1.png" class="" title="image.png">
-
+<p><img data-src="https://tc-cdn.flowus.cn/oss/9ebb3771-c2e4-49a1-af52-4804dcc42f0e/image.png?time=1740540600&token=cf2d6d46b830f137a56213aa04936c8751f3a669bdb784ed3cf49a566694f50f&role=free" alt="image.png"></p>
 <p><strong>第二步</strong>, 开始标记，程序找出它所有可达的对象，并做上标记。如下图所示：</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_2.png" class="" title="image.png">
-
-<p><strong>第三步,</strong> 标记完了之后，然后开始清除未标记的对象. 结果如下.</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_3.png" class="" title="image.png">
-
+<p><img data-src="https://tc-cdn.flowus.cn/oss/2a02e69c-e76d-4024-a19f-16d4cc4801ff/image.png?time=1740540600&token=a2cf096b72895d1a57e0a2cc49ebaa7a2d0b72a67799c8921fb4863c3fc1a633&role=free" alt="image.png"></p>
+<p><strong>第三步</strong>, 标记完了之后，然后开始清除未标记的对象. 结果如下.</p>
+<p><img data-src="https://tc-cdn.flowus.cn/oss/5524d6a7-54f5-418a-a8f1-db68b1ae3397/image.png?time=1740540600&token=d28316686289af0d9a84dd8ebc0eefda3180f50ec7df5f9f0298fa2c47b0ac8f&role=free" alt="image.png"></p>
 <p><strong>第四步</strong>, 停止暂停，让程序继续跑。然后循环重复这个过程，直到process程序生命周期结束。</p>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
 <li>STW，stop the world；让程序暂停，程序出现卡顿 (重要问题)。</li>
@@ -52,36 +49,29 @@
 <li>清除数据会产生heap碎片</li>
 </ul>
 <p>所以Go V1.3版本之前就是以上来实施的, 流程是</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_4.png" class="" title="image.png">
-
+<p><img data-src="https://tc-cdn.flowus.cn/oss/bd21e5fc-44db-4886-899a-0257d24ed5d6/image.png?time=1740540600&token=ca64982e448032d415484d9fb38ec110ba35a5e09b4e48d60b291e46dab3fa94&role=free" alt="image.png"></p>
 <p>Go V1.3 做了简单的优化,将STW提前, 减少STW暂停的时间范围.如下所示</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_5.png" class="" title="image.png">
-
-<pre><code>**这里面最重要的问题就是：mark-and-sweep 算法会暂停整个程序。**
-</code></pre>
+<p><img data-src="https://tc-cdn.flowus.cn/oss/757f72c4-fda8-41b4-b8dc-bceb25ea7ada/image.png?time=1740540600&token=a3e2c1da7da25e572696f25604e87f15f8827f4d119c313e1c73bcbf1c2f2a0f&role=free" alt="image.png"></p>
+<p><strong>这里面最重要的问题就是：mark-and-sweep 算法会暂停整个程序。</strong></p>
 <p>Go是如何面对并这个问题的呢？接下来G V1.5版本 就用三色并发标记法来优化这个问题.</p>
-<h3 id="Go-V1-5的三色并发标记法"><a href="#Go-V1-5的三色并发标记法" class="headerlink" title="Go V1.5的三色并发标记法"></a>Go V1.5的三色并发标记法</h3><p>三色标记法 实际上就是通过三个阶段的标记来确定清楚的对象都有哪些. 我们来看一下具体的过程.</p>
+<h2 id="Go-V1-5的三色并发标记法"><a href="#Go-V1-5的三色并发标记法" class="headerlink" title="Go V1.5的三色并发标记法"></a>Go V1.5的三色并发标记法</h2><p>三色标记法 实际上就是通过三个阶段的标记来确定清楚的对象都有哪些. 我们来看一下具体的过程.</p>
 <p><strong>第一步</strong>, 就是只要是新创建的对象,默认的颜色都是标记为“白色”.</p>
-<img data-src="/2021/02/02/technology/golang/gc_recycle/image_6.png" class="" title="image.png">
-
+<p><img data-src="https://tc-cdn.flowus.cn/oss/c06f42a7-20cd-4ad0-88c9-50b8825a08d7/image.png?time=1740540600&token=6bbe2552bca1f04fb0b89064d6aea9d753fb0a714e140602b4892982d5a657ff&role=free" alt="image.png"></p>
 <p>这里面需要注意的是, 所谓“程序”, 则是一些对象的跟节点集合.</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/baa5e1df-bbd4-4fdf-9f2c-1d017c35254b/image.png?time=1740540600&token=ae2b03ecfa946373c66e0e06fc18f5a32bec68d4cad184b219924dfe7faf0fe4&role=free" alt="image.png"></p>
 <p>所以上图,可以转换如下的方式来表示.</p>
-<p>第二步, 每次GC回收开始, 然后从根节点开始遍历所有对象，把遍历到的对象从白色集合放入“灰色”集合。</p>
+<p><strong>第二步</strong>, 每次GC回收开始, 然后从根节点开始遍历所有对象，把遍历到的对象从白色集合放入“灰色”集合。</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/2deaa445-5c90-4baf-b826-365395a2456f/image.png?time=1740540600&token=970940446480b161d9a2a6478a8b132f58778a199655a0b45b015567eebc1ee8&role=free" alt="image.png"></p>
-<p>第三步, 遍历灰色集合，将灰色对象引用的对象从白色集合放入灰色集合，之后将此灰色对象放入黑色集合</p>
+<p><strong>第三步</strong>, 遍历灰色集合，将灰色对象引用的对象从白色集合放入灰色集合，之后将此灰色对象放入黑色集合</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/ef6cf7e9-5385-42e4-958f-da9c57294f60/image.png?time=1740540600&token=0cd549762281ff62683165d9af5edbee5ded1eb18415d41544332b4f9af49c2c&role=free" alt="image.png"></p>
-<p>第四步, 重复第三步, 直到灰色中无任何对象.</p>
+<p><strong>第四步</strong>, 重复第三步, 直到灰色中无任何对象.</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/d08f61db-a82f-4aee-b635-4ecb71f99322/image.png?time=1740540600&token=f596e9f3d15e52e19147e471b3590487eab876e031539d80f3aca4b67fe149e7&role=free" alt="image.png"></p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/0ad0d19e-5018-469d-af6a-6e9c4f4bb2fc/image.png?time=1740540600&token=4e667082687739168e53cc1d9b3d878cd6fd2026da53f9bd4da8da773b14e04b&role=free" alt="image.png"></p>
-<p>第五步，回收所有的白色标记表的对象. 也就是回收垃圾.</p>
+<p><strong>第五步</strong>，回收所有的白色标记表的对象. 也就是回收垃圾.</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/14e66ab4-696c-4581-aa04-cefbdb4cbdc8/image.png?time=1740540600&token=f64cf7c5d2c6f6661f03d9d6417e9e005181fe31736ba7dc6223def8bea72006&role=free" alt="image.png"></p>
-<p>  </p>
 <p>以上便是<code>三色并发标记法</code>, 不难看出,我们上面已经清楚的体现<code>三色</code>的特性, 那么又是如何实现并行的呢?</p>
 <p>_Go是如何解决标记-清除(mark and sweep)算法中的卡顿(stw，stop the world)问题的呢_？</p>
-<p>四、没有STW的三色标记法</p>
-<pre><code>    我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系, 这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.
-</code></pre>
+<h2 id="没有STW的三色标记法"><a href="#没有STW的三色标记法" class="headerlink" title="没有STW的三色标记法"></a>没有STW的三色标记法</h2><p>我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系, 这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.</p>
 <p>如果三色标记法, 标记过程不使用STW将会发生什么事情?</p>
 <p><img data-src="https://tc-cdn.flowus.cn/oss/5020944e-ff31-4bd4-8d31-89a4907c214a/image.png?time=1740540600&token=ce4434ee5cd821a52f8ca9bb4aa989321585b1eb20da8ab8efc875b4d7f94297&role=free" alt="image.png"></p>
 <hr>
@@ -388,6 +378,96 @@
       </tags>
   </entry>
   <entry>
+    <title>Go高频面试题</title>
+    <url>/2021/02/02/technology/golang/interview_issue/</url>
+    <content><![CDATA[<h2 id="1-关于select"><a href="#1-关于select" class="headerlink" title="1.关于select"></a>1.关于select</h2><ul>
+<li><p>select是Go语言中的一个控制语句，类似于switch，但是select主要用于通道操作（每一个case必须是一个通信操作，要么接收，要么发送）。 </p>
+</li>
+<li><p>select会随机选择一个可以运行的case；如果没有case可运行，那么将会阻塞，直到有一个case可以运行。</p>
+</li>
+</ul>
+<h2 id="2-变量会怎么分配："><a href="#2-变量会怎么分配：" class="headerlink" title="2.变量会怎么分配："></a>2.变量会怎么分配：</h2><p>变量分配在栈还是堆是由go编译器自己控制的；编译时，会做逃逸分析，当变量作用域没有跑出函数的范围，就放在栈上；反之则必须放在堆上。<a href="/2021/02/03/technology/golang/memory_escape/">Go内存逃逸分析</a></p>
+<h2 id="3-GC垃圾回收"><a href="#3-GC垃圾回收" class="headerlink" title="3.GC垃圾回收"></a>3.GC垃圾回收</h2><ul>
+<li><p>v1.3：标记清除：整体过程需要启动STW，效率极低。</p>
+</li>
+<li><p>v1.5：三色标记法：堆空间启动写屏障，栈空间不启动，全部扫描之后，需要重新扫描一次栈(需要STW)，效率普通</p>
+</li>
+<li><p>v1.8：混合写屏障机制： 栈空间不启动，堆空间启动。整个过程几乎不需要STW，效率较高 <a href="/2021/02/03/technology/golang/gc_recycle/">Go垃圾回收</a></p>
+</li>
+</ul>
+<h2 id="4-协程调度GPM"><a href="#4-协程调度GPM" class="headerlink" title="4.协程调度GPM"></a>4.协程调度GPM</h2><p>G：就是个goroutine（调度系统最基本的单位），里面除了存放本goroutine信息（执行stack信息；状态信息；所在的任务函数信息等）与所在P的绑定等信息。</p>
+<p>P：就是process，管理着一组goroutine队列，存储当前goroutine运行的上下文环境。</p>
+<p>M：machine，代表着真正的执行计算资源。</p>
+<p>P管理着一组G在M上执行。<a href="https://flowus.cn/00f325cf-3352-461e-a91f-419ae8c3a4ef">GPM轻量理解</a></p>
+<ul>
+<li><p>每一个运行的M都必须绑定一个P，线程M创建后会检查并执行G对象</p>
+</li>
+<li><p>每一个P都保存着一个G队列</p>
+</li>
+<li><p>除了P保存的G队列外，还有一个全局G队列</p>
+</li>
+<li><p>M从队列中取出G并执行</p>
+</li>
+<li><p>P的个数就是 GOMAXPROCS(256)，一般不做修改</p>
+</li>
+<li><p>M的个数和P的个数不一定一样多</p>
+</li>
+<li><p>P是一个全局数组（255）来保存，并且维护者一个全局的P空闲链表</p>
+</li>
+</ul>
+<h2 id="5-runtime机制"><a href="#5-runtime机制" class="headerlink" title="5.runtime机制"></a>5.runtime机制</h2><p><a href="https://blog.csdn.net/futurewu/article/details/104692651?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162220408116780262566000%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162220408116780262566000&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-104692651.first_rank_v2_pc_rank_v29&utm_term=golang+%E7%9A%84+runtime+%E6%9C%BA%E5%88%B6&spm=1018.2226.3001.4187">runtime机制</a></p>
+<p>runtime负责：管理调度，垃圾回收以及运行环境等。。Go语言的goroutine，channel这些高级功能都需要runtime的支持。</p>
+<p>如何运行：用户编译代码后，runtime和编译后的代码会被静态链接起来，形成一个可执行文件。runtime通过接口函数调用来管理goroutine，channel这些高级功能；而且从用户代码调用操作系统的API调用会被runtime拦截处理。</p>
+<p>组成：一个重要组成部分是goroutine scheduler ，它负责追踪调度goroutine运行，实际上是从应用程序的process所属的thread pool（线程池）中分配一个thread来执行这个goroutine。因此，每个goroutine只有分配到一个OS thread才能运行。</p>
+<h2 id="6-make和new的区别"><a href="#6-make和new的区别" class="headerlink" title="6.make和new的区别"></a>6.make和new的区别</h2><p><a href="https://www.cnblogs.com/ghj1976/archive/2013/02/12/2910384.html">区别</a></p>
+<p>make：返回初始化后的值。make是引用类型初始化的方法；常用于slice,map,channle。make(T…)</p>
+<p>new：返回指针，即new(T)返回的是*T</p>
+<h2 id="7-channel有缓冲和无缓冲"><a href="#7-channel有缓冲和无缓冲" class="headerlink" title="7.channel有缓冲和无缓冲"></a>7.channel有缓冲和无缓冲</h2><p><a href="https://blog.csdn.net/sgsgy5/article/details/82054902?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162227719016780262526931%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162227719016780262526931&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-82054902.first_rank_v2_pc_rank_v29&utm_term=%E6%9C%89%E7%BC%93%E5%86%B2channel&spm=1018.2226.3001.4187">有无缓冲</a></p>
+<p>无缓冲：channel接收阻数据塞直到读取数据；channel发送阻塞直到数据被接收</p>
+<p>有缓冲：当缓冲满时，channel接收数据阻塞；当缓冲空时，channel发送数据阻塞</p>
+<p>无缓冲的  就是一个送信人去你家门口送信 ，你不在家 他不走，你一定要接下信，他才会走。</p>
+<p>无缓冲保证信能到你手上（同步）</p>
+<p>有缓冲的 就是一个送信人去你家仍到你家的信箱 转身就走 ，除非你的信箱满了 他必须等信箱空下来。</p>
+<p>有缓冲的 保证 信能进你家的邮箱（非同步）</p>
+<h2 id="8-并发方式和退出"><a href="#8-并发方式和退出" class="headerlink" title="8.并发方式和退出"></a>8.并发方式和退出</h2><p>并发：通常使用无缓冲chan来实现goroutine来是实现</p>
+<p>退出：使用for-range来退出；使用，ok来退出；使用退出通道来退出</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for-range是使用频率很高的结构，常用它来遍历数据，**range能够感知channel的关闭，当channel被发送数据的协程关闭时，range就会结束**，接着退出for循环。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    inCh := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(in &lt;-<span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Using for-range to exit goroutine</span></span><br><span class="line">        <span class="comment">// range has the ability to detect the close/end of a channel</span></span><br><span class="line">        <span class="keyword">for</span> x := <span class="keyword">range</span> in &#123;</span><br><span class="line">            fmt.Printf(<span class="string">&quot;Process %d\n&quot;</span>, x)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(inCh)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用一个专门的通道，发送退出的信号</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(stopCh &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> fmt.Println(<span class="string">&quot;worker exit&quot;</span>)</span><br><span class="line">        <span class="comment">// Using stop channel explicit exit</span></span><br><span class="line">        <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> &lt;-stopCh:</span><br><span class="line">                fmt.Println(<span class="string">&quot;Recv stop signal&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">case</span> &lt;-t.C:</span><br><span class="line">                fmt.Println(<span class="string">&quot;Working .&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="9-interface-技巧"><a href="#9-interface-技巧" class="headerlink" title="9.interface()技巧"></a>9.interface()技巧</h2><ul>
+<li>空接口    可以存放任意类型的数据</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    data := <span class="built_in">make</span>([]<span class="keyword">interface</span>&#123;&#125;, <span class="number">3</span>)</span><br><span class="line">    intData := <span class="number">1</span></span><br><span class="line">    stringData := <span class="string">&quot;abc&quot;</span></span><br><span class="line">    boolData := <span class="literal">true</span></span><br><span class="line">    data[<span class="number">0</span>] = intData</span><br><span class="line">    data[<span class="number">1</span>] = stringData</span><br><span class="line">    data[<span class="number">2</span>] = boolData</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> data &#123;</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>接口嵌套</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ReadWrite <span class="keyword">interface</span> &#123;</span><br><span class="line">    Read(b Buffer) <span class="type">bool</span></span><br><span class="line">    Write(b Buffer) <span class="type">bool</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Lock <span class="keyword">interface</span> &#123;</span><br><span class="line">    Lock()</span><br><span class="line">    Unlock()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> File <span class="keyword">interface</span> &#123;   <span class="comment">// 除了上面两个还有一个额外的close()接口</span></span><br><span class="line">    ReadWrite</span><br><span class="line">    Lock</span><br><span class="line">    Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>类型选择和断言</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> v, ok := varI.(T); ok &#123;  <span class="comment">// 判断是否是自己想要的类型</span></span><br><span class="line">    assertion</span><br><span class="line">    Process(v)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep"><a href="#10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep" class="headerlink" title="10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)"></a>10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    wait := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">&quot;做点东西&quot;</span>)</span><br><span class="line">        time.Sleep(<span class="number">3</span>* time.Second)</span><br><span class="line">        wait &lt;- <span class="number">2</span></span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;这里是主程序&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> nums := &lt;-wait:    <span class="comment">// 当超过(阻塞)2s后，不会再执行这个条件，直接执行下面的</span></span><br><span class="line">        fmt.Println(nums)</span><br><span class="line">    <span class="keyword">case</span> &lt;-time.After(<span class="number">2</span> * time.Second): </span><br><span class="line">        fmt.Println(<span class="string">&quot;2秒后&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(time.Since(start))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>底层原理</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go内存逃逸分析</title>
     <url>/2021/02/03/technology/golang/memory_escape/</url>
     <content><![CDATA[<h2 id="1-关于-堆和栈"><a href="#1-关于-堆和栈" class="headerlink" title="1. 关于 堆和栈"></a>1. 关于 堆和栈</h2><p>栈可以简单得理解成一次函数调用内部申请到的内存，它们会随着函数的返回把内存还给系统。</p>
@@ -502,96 +582,6 @@
 <p>准确地说，你并不需要知道。Golang 中的变量只要被引用就一直会存活，存储在堆上还是栈上由内部实现决定而和具体的语法没有关系。</p>
 <p>知道变量的存储位置确实和效率编程有关系。如果可能，Golang 编译器会将函数的局部变量分配到函数栈帧（stack frame）上。 然而，如果编译器不能确保变量在函数 return之后不再被引用，编译器就会将变量分配到堆上。而且，如果一个局部变量非常大，那么它也应该被分配到堆上而不是栈上。</p>
 <p>当前情况下，如果一个变量被取地址，那么它就有可能被分配到堆上。然而，还要对这些变量做逃逸分析，如果函数return之后，变量不再被引用，则将其分配到栈上。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>底层原理</tag>
-        <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go高频面试题</title>
-    <url>/2021/02/02/technology/golang/interview_issue/</url>
-    <content><![CDATA[<h2 id="1-关于select"><a href="#1-关于select" class="headerlink" title="1.关于select"></a>1.关于select</h2><ul>
-<li><p>select是Go语言中的一个控制语句，类似于switch，但是select主要用于通道操作（每一个case必须是一个通信操作，要么接收，要么发送）。 </p>
-</li>
-<li><p>select会随机选择一个可以运行的case；如果没有case可运行，那么将会阻塞，直到有一个case可以运行。</p>
-</li>
-</ul>
-<h2 id="2-变量会怎么分配："><a href="#2-变量会怎么分配：" class="headerlink" title="2.变量会怎么分配："></a>2.变量会怎么分配：</h2><p>变量分配在栈还是堆是由go编译器自己控制的；编译时，会做逃逸分析，当变量作用域没有跑出函数的范围，就放在栈上；反之则必须放在堆上。<a href="/2021/02/03/technology/golang/memory_escape/">Go内存逃逸分析</a></p>
-<h2 id="3-GC垃圾回收"><a href="#3-GC垃圾回收" class="headerlink" title="3.GC垃圾回收"></a>3.GC垃圾回收</h2><ul>
-<li><p>v1.3：标记清除：整体过程需要启动STW，效率极低。</p>
-</li>
-<li><p>v1.5：三色标记法：堆空间启动写屏障，栈空间不启动，全部扫描之后，需要重新扫描一次栈(需要STW)，效率普通</p>
-</li>
-<li><p>v1.8：混合写屏障机制： 栈空间不启动，堆空间启动。整个过程几乎不需要STW，效率较高 <a href="/2021/02/02/technology/golang/gc_recycle/">Go垃圾回收</a></p>
-</li>
-</ul>
-<h2 id="4-协程调度GPM"><a href="#4-协程调度GPM" class="headerlink" title="4.协程调度GPM"></a>4.协程调度GPM</h2><p>G：就是个goroutine（调度系统最基本的单位），里面除了存放本goroutine信息（执行stack信息；状态信息；所在的任务函数信息等）与所在P的绑定等信息。</p>
-<p>P：就是process，管理着一组goroutine队列，存储当前goroutine运行的上下文环境。</p>
-<p>M：machine，代表着真正的执行计算资源。</p>
-<p>P管理着一组G在M上执行。<a href="https://flowus.cn/00f325cf-3352-461e-a91f-419ae8c3a4ef">GPM轻量理解</a></p>
-<ul>
-<li><p>每一个运行的M都必须绑定一个P，线程M创建后会检查并执行G对象</p>
-</li>
-<li><p>每一个P都保存着一个G队列</p>
-</li>
-<li><p>除了P保存的G队列外，还有一个全局G队列</p>
-</li>
-<li><p>M从队列中取出G并执行</p>
-</li>
-<li><p>P的个数就是 GOMAXPROCS(256)，一般不做修改</p>
-</li>
-<li><p>M的个数和P的个数不一定一样多</p>
-</li>
-<li><p>P是一个全局数组（255）来保存，并且维护者一个全局的P空闲链表</p>
-</li>
-</ul>
-<h2 id="5-runtime机制"><a href="#5-runtime机制" class="headerlink" title="5.runtime机制"></a>5.runtime机制</h2><p><a href="https://blog.csdn.net/futurewu/article/details/104692651?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162220408116780262566000%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162220408116780262566000&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-2-104692651.first_rank_v2_pc_rank_v29&utm_term=golang+%E7%9A%84+runtime+%E6%9C%BA%E5%88%B6&spm=1018.2226.3001.4187">runtime机制</a></p>
-<p>runtime负责：管理调度，垃圾回收以及运行环境等。。Go语言的goroutine，channel这些高级功能都需要runtime的支持。</p>
-<p>如何运行：用户编译代码后，runtime和编译后的代码会被静态链接起来，形成一个可执行文件。runtime通过接口函数调用来管理goroutine，channel这些高级功能；而且从用户代码调用操作系统的API调用会被runtime拦截处理。</p>
-<p>组成：一个重要组成部分是goroutine scheduler ，它负责追踪调度goroutine运行，实际上是从应用程序的process所属的thread pool（线程池）中分配一个thread来执行这个goroutine。因此，每个goroutine只有分配到一个OS thread才能运行。</p>
-<h2 id="6-make和new的区别"><a href="#6-make和new的区别" class="headerlink" title="6.make和new的区别"></a>6.make和new的区别</h2><p><a href="https://www.cnblogs.com/ghj1976/archive/2013/02/12/2910384.html">区别</a></p>
-<p>make：返回初始化后的值。make是引用类型初始化的方法；常用于slice,map,channle。make(T…)</p>
-<p>new：返回指针，即new(T)返回的是*T</p>
-<h2 id="7-channel有缓冲和无缓冲"><a href="#7-channel有缓冲和无缓冲" class="headerlink" title="7.channel有缓冲和无缓冲"></a>7.channel有缓冲和无缓冲</h2><p><a href="https://blog.csdn.net/sgsgy5/article/details/82054902?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162227719016780262526931%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162227719016780262526931&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-82054902.first_rank_v2_pc_rank_v29&utm_term=%E6%9C%89%E7%BC%93%E5%86%B2channel&spm=1018.2226.3001.4187">有无缓冲</a></p>
-<p>无缓冲：channel接收阻数据塞直到读取数据；channel发送阻塞直到数据被接收</p>
-<p>有缓冲：当缓冲满时，channel接收数据阻塞；当缓冲空时，channel发送数据阻塞</p>
-<p>无缓冲的  就是一个送信人去你家门口送信 ，你不在家 他不走，你一定要接下信，他才会走。</p>
-<p>无缓冲保证信能到你手上（同步）</p>
-<p>有缓冲的 就是一个送信人去你家仍到你家的信箱 转身就走 ，除非你的信箱满了 他必须等信箱空下来。</p>
-<p>有缓冲的 保证 信能进你家的邮箱（非同步）</p>
-<h2 id="8-并发方式和退出"><a href="#8-并发方式和退出" class="headerlink" title="8.并发方式和退出"></a>8.并发方式和退出</h2><p>并发：通常使用无缓冲chan来实现goroutine来是实现</p>
-<p>退出：使用for-range来退出；使用，ok来退出；使用退出通道来退出</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for-range是使用频率很高的结构，常用它来遍历数据，**range能够感知channel的关闭，当channel被发送数据的协程关闭时，range就会结束**，接着退出for循环。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    inCh := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(in &lt;-<span class="keyword">chan</span> <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Using for-range to exit goroutine</span></span><br><span class="line">        <span class="comment">// range has the ability to detect the close/end of a channel</span></span><br><span class="line">        <span class="keyword">for</span> x := <span class="keyword">range</span> in &#123;</span><br><span class="line">            fmt.Printf(<span class="string">&quot;Process %d\n&quot;</span>, x)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(inCh)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用一个专门的通道，发送退出的信号</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(stopCh &lt;-<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> fmt.Println(<span class="string">&quot;worker exit&quot;</span>)</span><br><span class="line">        <span class="comment">// Using stop channel explicit exit</span></span><br><span class="line">        <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> &lt;-stopCh:</span><br><span class="line">                fmt.Println(<span class="string">&quot;Recv stop signal&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">case</span> &lt;-t.C:</span><br><span class="line">                fmt.Println(<span class="string">&quot;Working .&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="9-interface-技巧"><a href="#9-interface-技巧" class="headerlink" title="9.interface()技巧"></a>9.interface()技巧</h2><ul>
-<li>空接口    可以存放任意类型的数据</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    data := <span class="built_in">make</span>([]<span class="keyword">interface</span>&#123;&#125;, <span class="number">3</span>)</span><br><span class="line">    intData := <span class="number">1</span></span><br><span class="line">    stringData := <span class="string">&quot;abc&quot;</span></span><br><span class="line">    boolData := <span class="literal">true</span></span><br><span class="line">    data[<span class="number">0</span>] = intData</span><br><span class="line">    data[<span class="number">1</span>] = stringData</span><br><span class="line">    data[<span class="number">2</span>] = boolData</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> data &#123;</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>接口嵌套</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ReadWrite <span class="keyword">interface</span> &#123;</span><br><span class="line">    Read(b Buffer) <span class="type">bool</span></span><br><span class="line">    Write(b Buffer) <span class="type">bool</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Lock <span class="keyword">interface</span> &#123;</span><br><span class="line">    Lock()</span><br><span class="line">    Unlock()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> File <span class="keyword">interface</span> &#123;   <span class="comment">// 除了上面两个还有一个额外的close()接口</span></span><br><span class="line">    ReadWrite</span><br><span class="line">    Lock</span><br><span class="line">    Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>类型选择和断言</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> v, ok := varI.(T); ok &#123;  <span class="comment">// 判断是否是自己想要的类型</span></span><br><span class="line">    assertion</span><br><span class="line">    Process(v)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep"><a href="#10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep" class="headerlink" title="10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)"></a>10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    wait := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">&quot;做点东西&quot;</span>)</span><br><span class="line">        time.Sleep(<span class="number">3</span>* time.Second)</span><br><span class="line">        wait &lt;- <span class="number">2</span></span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;这里是主程序&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> nums := &lt;-wait:    <span class="comment">// 当超过(阻塞)2s后，不会再执行这个条件，直接执行下面的</span></span><br><span class="line">        fmt.Println(nums)</span><br><span class="line">    <span class="keyword">case</span> &lt;-time.After(<span class="number">2</span> * time.Second): </span><br><span class="line">        fmt.Println(<span class="string">&quot;2秒后&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(time.Since(start))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
 ]]></content>
       <categories>
         <category>Golang</category>
