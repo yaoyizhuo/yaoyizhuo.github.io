@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Welcome to My Blog</title>
+    <url>/2018/02/26/home/home/</url>
+    <content><![CDATA[<p>zhyyao测试内容,首页的内容还没想好</p>
+<img data-src="/2018/02/26/home/home/1.jpg" class="" title="图片1">
+
+<img data-src="/2018/02/26/home/home/2.jpg" class="" title="图片2">
+
+<img data-src="/2018/02/26/home/home/3.jpg" class="" title="图片3">]]></content>
+  </entry>
+  <entry>
     <title>Go语言底层基础知识</title>
-    <url>/2025/02/25/technology/golang/go-basic/</url>
+    <url>/2021/02/01/technology/golang/go-basic/</url>
     <content><![CDATA[<h2 id="new和make的区别"><a href="#new和make的区别" class="headerlink" title="new和make的区别"></a>new和make的区别</h2><ol>
 <li>new和make都是全部用来分配内存的关键字，new(T)创建一个没有任何数据的类型为T的实例，并返回该实例的指针；make(T, args)只能创建 slice、map和channel，并且返回一个有初始值args（非零）的T类型的实例，非指针。</li>
 <li>对于返回值，new用于类型的内存分配，并且内存置零，返回的是一个指向类型的指针；make是对他们的初始化，（非0值）返回的是一个类型引用对象 ，对于引用类型的变量，我们不光要声明它，还要为它分配内容空间 。</li>
@@ -51,10 +61,10 @@
 <li><p>开放定址法：当我们存储一个key，value时，发现下标已经被占了，那么我们再这个数组中重新找一个没被占用的存储这个冲突的key，那么没有被占用的有很多，找哪个呢？常见的有线性探测法，线性补偿探测法、随机探测法。</p>
 </li>
 <li><p>线性探测：按照顺序来，从冲突的下标开始往后探测，到达数组末尾时，从数组开始探测，直到找到一个空位置存储这个key，当数组找不到的情况下会扩容（当数组快满的时候就会扩容了）；<br>如下图：首先存储key&#x3D;xiaoming在下标0处，当存储key&#x3D;xiaowang时，hash冲突了，按照线性探测，存储在下标1处，（红色的线是冲突或者下标已经被占用了） 再者key&#x3D;xiaozhao存储在下标4处，当存储key&#x3D;xiaoliu是，hash冲突了，按照线性探测，从头开始，存储在下标2处 （黄色的是冲突或者下标已经被占用了）</p>
-<img data-src="/2025/02/25/technology/golang/go-basic/image_1.png" class="" title="图1">
+<img data-src="/2021/02/01/technology/golang/go-basic/image_1.png" class="" title="图1">
 </li>
 <li><p>拉链法：拉链简单理解为链表，当key的hash冲突的时候，我们在冲突位置的元素上形成一个链表，通过指针相互连接，当查找时，发现key冲突，顺着链表一直往下找，直到链表的尾结点，找不到则返回空；<br>如下图描述：</p>
-<img data-src="/2025/02/25/technology/golang/go-basic/image_2.png" class="" title="图2">
+<img data-src="/2021/02/01/technology/golang/go-basic/image_2.png" class="" title="图2">
 <p>开放定址和拉链的优缺点：</p>
 <ul>
 <li>拉链比线性探测处理简单</li>
@@ -83,7 +93,7 @@
 <li>M代表操作系统线程，负责执行 Goroutine</li>
 <li>P代表逻辑处理器，负责调度 Goroutine</li>
 <li>包含了运行goroutine的资源processor处理</li>
-<li>可以运行的G队列<br>在Go中线程是运行goroutine的实体，调度器（runtime）的功能是把可运行的    goroutine分配到工作线程上。<br>Goroutine调度器和OS调度器是通过M结合起来的，每个M都代表了1个内核线程，OS调度器负责把内核线程分配到CPU执行。<img data-src="/2025/02/25/technology/golang/go-basic/image_3.png" class="" title="图3"></li>
+<li>可以运行的G队列<br>在Go中线程是运行goroutine的实体，调度器（runtime）的功能是把可运行的    goroutine分配到工作线程上。<br>Goroutine调度器和OS调度器是通过M结合起来的，每个M都代表了1个内核线程，OS调度器负责把内核线程分配到CPU执行。<img data-src="/2021/02/01/technology/golang/go-basic/image_3.png" class="" title="图3"></li>
 </ul>
 <h3 id="1-GMP-模型的优势"><a href="#1-GMP-模型的优势" class="headerlink" title="1. GMP 模型的优势"></a>1. GMP 模型的优势</h3><ul>
 <li><strong>高效利用 CPU</strong>：通过多 P 和多 M 的绑定，充分利用多核 CPU 的计算能力。</li>
@@ -160,7 +170,7 @@
   </entry>
   <entry>
     <title>Go高频面试题</title>
-    <url>/2025/02/25/technology/golang/interview_issue/</url>
+    <url>/2021/02/02/technology/golang/interview_issue/</url>
     <content><![CDATA[<h2 id="1-关于select"><a href="#1-关于select" class="headerlink" title="1.关于select"></a>1.关于select</h2><ul>
 <li><p>select是Go语言中的一个控制语句，类似于switch，但是select主要用于通道操作（每一个case必须是一个通信操作，要么接收，要么发送）。 </p>
 </li>
@@ -239,6 +249,130 @@
 <h2 id="10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep"><a href="#10-用信道实现主程等待协程2s-如果超过2s-主程直接结束-不用sleep" class="headerlink" title="10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)"></a>10.用信道实现主程等待协程2s,如果超过2s,主程直接结束(不用sleep)</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    wait := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">&quot;做点东西&quot;</span>)</span><br><span class="line">        time.Sleep(<span class="number">3</span>* time.Second)</span><br><span class="line">        wait &lt;- <span class="number">2</span></span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;这里是主程序&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">select</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> nums := &lt;-wait:    <span class="comment">// 当超过(阻塞)2s后，不会再执行这个条件，直接执行下面的</span></span><br><span class="line">        fmt.Println(nums)</span><br><span class="line">    <span class="keyword">case</span> &lt;-time.After(<span class="number">2</span> * time.Second): </span><br><span class="line">        fmt.Println(<span class="string">&quot;2秒后&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(time.Since(start))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>底层原理</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go内存逃逸分析</title>
+    <url>/2021/02/03/technology/golang/memory_escape/</url>
+    <content><![CDATA[<h2 id="1-关于-堆和栈"><a href="#1-关于-堆和栈" class="headerlink" title="1. 关于 堆和栈"></a>1. 关于 堆和栈</h2><p>栈可以简单得理解成一次函数调用内部申请到的内存，它们会随着函数的返回把内存还给系统。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> &#123;</span><br><span class="line">    temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似于上面代码里面的temp变量，只是内函数内部申请的临时变量，并不会作为返回值返回，它就是被编译器申请到栈里面。 </p>
+<p>申请到<strong>栈内存</strong>好处：函数返回直接释放，不会引起垃圾回收，对性能没有影响。</p>
+<p>再来看看堆得情况之一如下代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> []<span class="type">int</span>&#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而上面这段代码，申请的代码一模一样，但是申请后作为返回值返回了，编译器会认为变量之后还会被使用，当函数返回之后并不会将其内存归还，那么它就会被申请到 堆 上面了。</p>
+<p><strong>申请到堆上面的内存才会引起垃圾回收，如果这个过程（特指垃圾回收不断被触发）过于高频就会导致 gc 压力过大，程序性能出问题。</strong></p>
+<p>我们再看看如下几个例子：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)     <span class="comment">// 栈 空间小</span></span><br><span class="line">    b := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20000</span>) <span class="comment">// 堆 空间过大</span></span><br><span class="line"></span><br><span class="line">    l := <span class="number">20</span></span><br><span class="line">    c := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, l) <span class="comment">// 堆 动态分配不定空间</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>像是 b 这种 即使是临时变量，申请过大也会在堆上面申请。对于 c 编译器对于这种不定长度的申请方式，也会在堆上面申请，即使申请的长度很短。</p>
+<h2 id="2-逃逸分析（Escape-analysis）"><a href="#2-逃逸分析（Escape-analysis）" class="headerlink" title="2. 逃逸分析（Escape analysis）"></a>2. 逃逸分析（Escape analysis）</h2><p>逃逸分析指的是由编译器决定内存分配的位置,不需要由程序员指定.</p>
+<p>在函数中申请一个新的对象</p>
+<ul>
+<li><p><strong>如果申请到栈中,则函数执行结束可以自动将内存回收.</strong></p>
+</li>
+<li><p><strong>如果分配到堆,则函数执行结束就可以交给GC处理.</strong></p>
+</li>
+</ul>
+<h2 id="3-逃逸场景（什么情况才分配到堆中）"><a href="#3-逃逸场景（什么情况才分配到堆中）" class="headerlink" title="3. 逃逸场景（什么情况才分配到堆中）"></a>3. 逃逸场景（什么情况才分配到堆中）</h2><h3 id="3-1-指针逃逸"><a href="#3-1-指针逃逸" class="headerlink" title="3.1 指针逃逸"></a>3.1 指针逃逸</h3><p>Go可以返回局部变量指针，这其实是一个典型的变量逃逸案例，示例代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">StudentRegister</span><span class="params">(name <span class="type">string</span>, age <span class="type">int</span>)</span></span> *Student &#123;</span><br><span class="line">    s := <span class="built_in">new</span>(Student) <span class="comment">//局部变量s逃逸到堆</span></span><br><span class="line"></span><br><span class="line">    s.Name = name</span><br><span class="line">    s.Age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    StudentRegister(<span class="string">&quot;Jim&quot;</span>, <span class="number">18</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>虽然 在函数 StudentRegister() 内部 s 为局部变量，其值通过函数返回值返回，s 本身为一指针，其指向的内存地址不会是栈而是堆，这就是典型的逃逸案例。</p>
+<p>终端运行命令查看逃逸分析日志：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">go build -gcflags=-m</span><br></pre></td></tr></table></figure>
+
+
+<img data-src="/2021/02/03/technology/golang/memory_escape/img_1.png" class="" title="image.png">
+
+<p>可见在StudentRegister()函数中，也即代码第9行显示”escapes to heap”，代表该行内存分配发生了逃逸现象。</p>
+<h3 id="3-2-栈空间不足逃逸（空间开辟过大）"><a href="#3-2-栈空间不足逃逸（空间开辟过大）" class="headerlink" title="3.2 栈空间不足逃逸（空间开辟过大）"></a>3.2 栈空间不足逃逸（空间开辟过大）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Slice</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1000</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> index, _ := <span class="keyword">range</span> s &#123;</span><br><span class="line">        s[index] = index</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Slice()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>上面代码Slice()函数中分配了一个1000个长度的切片，是否逃逸取决于栈空间是否足够大。 直接查看编译提示，如下：</p>
+<img data-src="/2021/02/03/technology/golang/memory_escape/img_2.png" class="" title="image.png">
+
+<p>所以只是1000的长度还不足以发生逃逸现象。然后就x10倍吧</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Slice</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">10000</span>, <span class="number">10000</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> index, _ := <span class="keyword">range</span> s &#123;</span><br><span class="line">        s[index] = index</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Slice()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析如下：当切片长度扩大到10000时就会逃逸。实际上当栈空间不足以存放当前对象时或无法判断当前切片长度时会将对象分配到堆中。</p>
+<h3 id="3-3-动态类型逃逸（不确定长度大小）"><a href="#3-3-动态类型逃逸（不确定长度大小）" class="headerlink" title="3.3 动态类型逃逸（不确定长度大小）"></a>3.3 动态类型逃逸（不确定长度大小）</h3><p>很多函数参数为interface类型，比如fmt.Println(a …interface{})，编译期间很难确定其参数的具体类型，也能产生逃逸。</p>
+<p>如下代码所示：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;Escape&quot;</span></span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>逃逸分下如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\SourceCode\GoExpert\src&gt;go build -gcflags=-m</span><br><span class="line"># _/D_/SourceCode/GoExpert/src</span><br><span class="line">.\main.go:7: s escapes to heap</span><br><span class="line">.\main.go:7: main ... argument does not escape</span><br></pre></td></tr></table></figure>
+
+
+<p>又或者像前面提到的例子：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)     <span class="comment">// 栈 空间小</span></span><br><span class="line">    b := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20000</span>) <span class="comment">// 堆 空间过大 逃逸</span></span><br><span class="line"></span><br><span class="line">    l := <span class="number">20</span></span><br><span class="line">    c := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, l) <span class="comment">// 堆 动态分配不定空间 逃逸</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-4-闭包引用对象逃逸"><a href="#3-4-闭包引用对象逃逸" class="headerlink" title="3.4 闭包引用对象逃逸"></a>3.4 闭包引用对象逃逸</h3><p>Fibonacci数列的函数：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fibonacci</span><span class="params">()</span></span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    a, b := <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    f := Fibonacci()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Fibonacci: %d\n&quot;</span>, f())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>输出如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line"> ~/go/src/gitHub/test/pool  go run main.go</span><br><span class="line">Fibonacci: 1</span><br><span class="line">Fibonacci: 1</span><br><span class="line">Fibonacci: 2</span><br><span class="line">Fibonacci: 3</span><br><span class="line">Fibonacci: 5</span><br><span class="line">Fibonacci: 8</span><br><span class="line">Fibonacci: 13</span><br><span class="line">Fibonacci: 21</span><br><span class="line">Fibonacci: 34</span><br><span class="line">Fibonacci: 55</span><br></pre></td></tr></table></figure>
+
+
+<p>逃逸如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line"> ~/go/src/gitHub/test/pool  go build -gcflags=-m</span><br><span class="line"># gitHub/test/pool</span><br><span class="line">./main.go:7:9: can inline Fibonacci.func1</span><br><span class="line">./main.go:7:9: func literal escapes to heap</span><br><span class="line">./main.go:7:9: func literal escapes to heap</span><br><span class="line">./main.go:8:10: &amp;b escapes to heap</span><br><span class="line">./main.go:6:5: moved to heap: b</span><br><span class="line">./main.go:8:13: &amp;a escapes to heap</span><br><span class="line">./main.go:6:2: moved to heap: a</span><br><span class="line">./main.go:17:34: f() escapes to heap</span><br><span class="line">./main.go:17:13: main ... argument does not escape</span><br></pre></td></tr></table></figure>
+
+
+<p>Fibonacci()函数中原本属于局部变量的a和b由于闭包的引用，不得不将二者放到堆上，以致产生逃逸。</p>
+<h3 id="逃逸分析的作用是什么呢？"><a href="#逃逸分析的作用是什么呢？" class="headerlink" title="逃逸分析的作用是什么呢？"></a>逃逸分析的作用是什么呢？</h3><ol>
+<li><p>逃逸分析的好处是为了减少gc的压力，不逃逸的对象分配在栈上，当函数返回时就回收了资源，不需要gc标记清除。</p>
+</li>
+<li><p>逃逸分析完后可以确定哪些变量可以分配在栈上，栈的分配比堆快，性能好(逃逸的局部变量会在堆上分配 ,而没有发生逃逸的则有编译器在栈上分配)。</p>
+</li>
+<li><p>同步消除，如果你定义的对象的方法上有同步锁，但在运行时，却只有一个线程在访问，此时逃逸分析后的机器码，会去掉同步锁运行。</p>
+</li>
+</ol>
+<h3 id="逃逸总结："><a href="#逃逸总结：" class="headerlink" title="逃逸总结："></a>逃逸总结：</h3><ul>
+<li><p>栈上分配内存比在堆中分配内存有更高的效率</p>
+</li>
+<li><p>栈上分配的内存不需要GC处理</p>
+</li>
+<li><p>堆上分配的内存使用完毕会交给GC处理</p>
+</li>
+<li><p>逃逸分析目的是决定内分配地址是栈还是堆</p>
+</li>
+<li><p>逃逸分析在编译阶段完成</p>
+</li>
+</ul>
+<p>提问：函数传递指针真的比传值效率高吗？</p>
+<blockquote>
+<p>我们知道传递指针可以减少底层值的拷贝，可以提高效率，但是如果拷贝的数据量小，由于指针传递会产生逃逸，可能会使用堆，也可能会增加GC的负担，所以传递指针不一定是高效的。</p>
+</blockquote>
+<p>在官网 (golang.org) FAQ 上有一个关于变量分配的问题如下：</p>
+<blockquote>
+<p>From a correctness standpoint, you don’t need to know. Each variable in Go exists as long as there are references to it. The storage location chosen by the implementation is irrelevant to the semantics of the language.</p>
+</blockquote>
+<blockquote>
+<p>The storage location does have an effect on writing efficient programs. When possible, the Go compilers will allocate variables that are local to a function in that function’s stack frame.</p>
+</blockquote>
+<blockquote>
+<p>However, if the compiler cannot prove that the variable is not referenced after the function returns, then the compiler must allocate the variable on the garbage-collected heap to avoid dangling pointer errors. Also, if a local variable is very large, it might make more sense to store it on the heap rather than the stack.</p>
+</blockquote>
+<blockquote>
+<p>In the current compilers, if a variable has its address taken, that variable is a candidate for allocation on the heap. However, a basic escape analysis recognizes some cases when such variables will not live past the return from the function and can reside on the stack.</p>
+</blockquote>
+<p>翻译如下：</p>
+<p>如何得知变量是分配在栈（stack）上还是堆（heap）上？</p>
+<p>准确地说，你并不需要知道。Golang 中的变量只要被引用就一直会存活，存储在堆上还是栈上由内部实现决定而和具体的语法没有关系。</p>
+<p>知道变量的存储位置确实和效率编程有关系。如果可能，Golang 编译器会将函数的局部变量分配到函数栈帧（stack frame）上。 然而，如果编译器不能确保变量在函数 return之后不再被引用，编译器就会将变量分配到堆上。而且，如果一个局部变量非常大，那么它也应该被分配到堆上而不是栈上。</p>
+<p>当前情况下，如果一个变量被取地址，那么它就有可能被分配到堆上。然而，还要对这些变量做逃逸分析，如果函数return之后，变量不再被引用，则将其分配到栈上。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
