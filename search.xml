@@ -3,12 +3,22 @@
   <entry>
     <title>Welcome to My Blog</title>
     <url>/2018/02/26/home/home/</url>
-    <content><![CDATA[<p>zhyyao测试内容,首页的内容还没想好</p>
-<img data-src="/2018/02/26/home/home/1.jpg" class="" title="图片1">
+    <content><![CDATA[<h2 id="🥸-欢迎来到我的博客！"><a href="#🥸-欢迎来到我的博客！" class="headerlink" title="🥸 欢迎来到我的博客！"></a>🥸 欢迎来到我的博客！</h2><h2 id="📿佛祖保平安"><a href="#📿佛祖保平安" class="headerlink" title="📿佛祖保平安"></a>📿佛祖保平安</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                   _ooOoo_</span><br><span class="line">                  o8888888o</span><br><span class="line">                  88&quot; . &quot;88</span><br><span class="line">                  (| -_- |)</span><br><span class="line">                   O\ = /O</span><br><span class="line">                ____/`---&#x27;\____</span><br><span class="line">             .   &#x27; \\| |// `.</span><br><span class="line">              / \\||| : |||// \</span><br><span class="line">             / _||||| -:- |||||- \</span><br><span class="line">              | | \\\ - /// | |</span><br><span class="line">            | \_| &#x27;&#x27;\---/&#x27;&#x27; | |</span><br><span class="line">             \ .-\__ `-` ___/-. /</span><br><span class="line">         ___`. .&#x27; /--.--\ `. . __</span><br><span class="line">       .&quot;&quot; &#x27;&lt; `.___\_&lt;|&gt;_/___.&#x27; &gt;&#x27;&quot;&quot;.</span><br><span class="line">      | | : `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line">         \ \ `-. \_ __\ /__ _/ .-` / /</span><br><span class="line">======`-.____`-.___\_____/___.-`____.-&#x27;======</span><br><span class="line">                   `=---=&#x27;</span><br><span class="line"></span><br><span class="line">.............................................</span><br><span class="line">          佛祖保佑             永无BUG</span><br><span class="line"> 佛曰:</span><br><span class="line">          写字楼里写字间，写字间里程序员；</span><br><span class="line">          程序人员写程序，又拿程序换酒钱。</span><br><span class="line">          酒醒只在网上坐，酒醉还来网下眠；</span><br><span class="line">          酒醉酒醒日复日，网上网下年复年。</span><br><span class="line">          但愿老死电脑间，不愿鞠躬老板前；</span><br><span class="line">          奔驰宝马贵者趣，公交自行程序员。</span><br><span class="line">          别人笑我忒疯癫，我笑自己命太贱；</span><br><span class="line">          不见满街漂亮妹，哪个归得程序员？</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<img data-src="/2018/02/26/home/home/2.jpg" class="" title="图片2">
 
-<img data-src="/2018/02/26/home/home/3.jpg" class="" title="图片3">]]></content>
+<h2 id="✨-关于我"><a href="#✨-关于我" class="headerlink" title="✨ 关于我"></a>✨ 关于我</h2><blockquote>
+<p>我是 <strong>zhyyao</strong>，一个喜欢内耗与自我PUA，且不太正经的coder。</p>
+</blockquote>
+<blockquote>
+<p>这是我 <strong>分享学习心得、整理碎片笔记</strong> 的地方。希望你能在这里找到有用的内容。</p>
+</blockquote>
+<h2 id="🫥-代办"><a href="#🫥-代办" class="headerlink" title="🫥 代办"></a>🫥 代办</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 开通自己的博客</li>
+<li><input disabled="" type="checkbox"> 还没想好</li>
+<li><input disabled="" type="checkbox"> 写点什么。</li>
+<li><input disabled="" type="checkbox"> 写点什么？</li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Go-GC垃圾回收</title>
