@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -230,7 +230,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-26 12:14:06" itemprop="dateModified" datetime="2025-02-26T12:14:06+08:00">2025-02-26</time>
+      <time title="修改时间：2025-02-26 12:57:18" itemprop="dateModified" datetime="2025-02-26T12:57:18+08:00">2025-02-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 <h2 id="4-协程调度GPM"><a href="#4-协程调度GPM" class="headerlink" title="4.协程调度GPM"></a>4.协程调度GPM</h2><p>G：就是个goroutine（调度系统最基本的单位），里面除了存放本goroutine信息（执行stack信息；状态信息；所在的任务函数信息等）与所在P的绑定等信息。</p>
 <p>P：就是process，管理着一组goroutine队列，存储当前goroutine运行的上下文环境。</p>
 <p>M：machine，代表着真正的执行计算资源。</p>
-<p>P管理着一组G在M上执行。<a target="_blank" rel="noopener" href="https://flowus.cn/00f325cf-3352-461e-a91f-419ae8c3a4ef">GPM轻量理解</a></p>
+<p>P管理着一组G在M上执行。<a href="/2021/02/03/technology/golang/gpm_explain/">GPM轻量理解</a></p>
 <ul>
 <li><p>每一个运行的M都必须绑定一个P，线程M创建后会检查并执行G对象</p>
 </li>
@@ -349,7 +349,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
