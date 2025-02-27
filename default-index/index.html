@@ -166,6 +166,17 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yaoyizhuo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yaoyizhuo" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yyzclick@126.com" title="E-Mail → mailto:yyzclick@126.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_45804375?spm=1000.2115.3001.5343" title="CSND → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_45804375?spm&#x3D;1000.2115.3001.5343" rel="noopener me" target="_blank"><i class="fa-solid fa-pen-fancy fa-fw"></i>CSND</a>
+      </span>
+  </div>
 
         </div>
       </div>
@@ -775,6 +786,132 @@
 
 
 <p>6.当已知一个切片的容量时，我可以在初始化的时候一次性把切片的容量申请到位，避免动态申请slice。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/technology/golang/go_reflect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.jpeg">
+      <meta itemprop="name" content="zhyyao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhyyao">
+      <meta itemprop="description" content="record and sharing learning experiences">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zhyyao">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/03/technology/golang/go_reflect/" class="post-title-link" itemprop="url">Go语言反射reflect</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-03 15:51:53" itemprop="dateCreated datePublished" datetime="2021-02-03T15:51:53+08:00">2021-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-26 14:18:54" itemprop="dateModified" datetime="2025-02-26T14:18:54+08:00">2025-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>反射指的是在程序运行期间对程序本身进行访问和修改的能力.</strong></p>
+<p>不支持反射的语言:</p>
+<blockquote>
+<p>程序在编译时,变量转换为内存地址,变量名不会被编译器写入到可执行部分.在运行程序时,程序无法获取自身的信息.</p>
+</blockquote>
+<p>支持反射的语言:</p>
+<blockquote>
+<p>可以在程序编译期间将变量的反射信息,比如字段名称 , 类型信息 , 结构体信息等整合到可执行文件中,并给程序提供接口访问反射信息,这样就可以在程序运行期间获取类型的反射信息,并且有能力修改它们.</p>
+</blockquote>
+<p><strong>Go程序在运行期间使用reflect包访问程序的反射信息</strong></p>
+<p>reflct包实现了运行时反射,允许程序操作任意类型的对象.典型的用法是静态类型interface{}保存一个值,通过TypeOf获取其动态类型信息,该函数返回一个Type类型值,调用ValueOf函数返回一个Value类型值,该值代表运行时的数据.Zero接受一个一个Type类型参数,并返回一个代表该类型零值的Value类型值.</p>
+<p>Go程序的反射系统无法获取到一个可执行文件空间中或者是一个包中的所有类型信息,需要配合使用标准库中对应的词法,语法解析器和抽象语法树(AST)对源码进行扫描后获得这些信息.</p>
+<h2 id="通过反射获取类型信息"><a href="#通过反射获取类型信息" class="headerlink" title="通过反射获取类型信息"></a>通过反射获取类型信息</h2><p>通过反射获取类型信息:(reflect.TypeOf()和reflect.Type)</p>
+<p>使用reflect.TypeOf()函数可以获得任意值的类型对象eflect.Type,程序通过类型对象可以访问任意值的类型信息.</p>
+<p><strong>例子:</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>代码输出:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student <span class="keyword">struct</span></span><br></pre></td></tr></table></figure>
+
+
+<p>理解反射的类型( Type )和种类( Kind )</p>
+<p>在使用反射的时候,需要首先理解类型（Type）和种类（Kind）的区别。编程中，使用最多的是类型，但在反射中，当需要区分一个大品种的类型时，就会用到种类（Kind）。例如，需要统一判断类型中的指针时，使用种类（Kind）信息就较为方便。</p>
+<h2 id="反射种类-kind-的定义"><a href="#反射种类-kind-的定义" class="headerlink" title="反射种类(kind)的定义"></a>反射种类(kind)的定义</h2><p>Go 程序中的类型（Type）指的是系统原生数据类型，如 int、string、bool、float32 等类型，以及使用 type 关键字定义的类型，这些类型的名称就是其类型本身的名称。例如使用 type A struct{} 定义结构体时，A 就是 struct{} 的类型。</p>
+<p>种类（Kind）指的是对象归属的品种，在 reflect 包中有如下定义：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Kind <span class="type">uint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Invalid Kind = <span class="literal">iota</span>  <span class="comment">// 非法类型</span></span><br><span class="line">    Bool                                 <span class="comment">// 布尔型</span></span><br><span class="line">    Int                                <span class="comment">// 有符号整型</span></span><br><span class="line">    Int8                                 <span class="comment">// 有符号8位整型</span></span><br><span class="line">    Int16                                <span class="comment">// 有符号16位整型</span></span><br><span class="line">    Int32                                <span class="comment">// 有符号32位整型</span></span><br><span class="line">    Int64                                <span class="comment">// 有符号64位整型</span></span><br><span class="line">    Uint                                 <span class="comment">// 无符号整型</span></span><br><span class="line">    Uint8                                <span class="comment">// 无符号8位整型</span></span><br><span class="line">    Uint16                           <span class="comment">// 无符号16位整型</span></span><br><span class="line">    Uint32                           <span class="comment">// 无符号32位整型</span></span><br><span class="line">    Uint64                           <span class="comment">// 无符号64位整型</span></span><br><span class="line">    Uintptr                          <span class="comment">// 指针</span></span><br><span class="line">    Float32                          <span class="comment">// 单精度浮点数</span></span><br><span class="line">    Float64                          <span class="comment">// 双精度浮点数</span></span><br><span class="line">    Complex64                        <span class="comment">// 32位复数类型</span></span><br><span class="line">    Complex128                   <span class="comment">// 64位复数类型</span></span><br><span class="line">    Array                                <span class="comment">// 数组</span></span><br><span class="line">    Chan                                 <span class="comment">// 通道</span></span><br><span class="line">    Func                                 <span class="comment">// 函数</span></span><br><span class="line">    Interface                        <span class="comment">// 接口</span></span><br><span class="line">    Map                                <span class="comment">// 映射</span></span><br><span class="line">    Ptr                                <span class="comment">// 指针</span></span><br><span class="line">    Slice                                <span class="comment">// 切片</span></span><br><span class="line">    String                           <span class="comment">// 字符串</span></span><br><span class="line">    Struct                           <span class="comment">// 结构体</span></span><br><span class="line">    UnsafePointer                <span class="comment">// 底层指针</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+<p>Map、Slice、Chan 属于引用类型，使用起来类似于指针，但是在种类常量定义中仍然属于独立的种类，不属于 Ptr。</p>
+<p>type A struct{} 定义的结构体属于 Struct 种类，*A 属于 Ptr。</p>
+<h2 id="从类型对象中获取类型名称和种类的例子"><a href="#从类型对象中获取类型名称和种类的例子" class="headerlink" title="从类型对象中获取类型名称和种类的例子:"></a>从类型对象中获取类型名称和种类的例子:</h2><p>Go 语言中的类型名称对应的反射获取方法是 reflect.Type 中的 Name() 方法，返回表示类型名称的字符串。</p>
+<p>类型归属的种类（Kind）使用的是 reflect.Type 中的 Kind() 方法，返回 reflect.Kind 类型的常量。</p>
+<p>例子:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//定义一个Enum类型</span></span><br><span class="line"><span class="keyword">type</span> Enum <span class="type">int</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Zero Enum = <span class="number">0</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的变量</span></span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//获取Zero常量的反射类型对象</span></span><br><span class="line">    typeOfZero := reflect.TypeOf(Zero)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfZero.Name(), typeOfZero.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"></span><br><span class="line">Student <span class="keyword">struct</span></span><br><span class="line">Enum <span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="reflect-Elem-通过反射获取指针指向的元素类型"><a href="#reflect-Elem-通过反射获取指针指向的元素类型" class="headerlink" title="reflect.Elem() - 通过反射获取指针指向的元素类型"></a>reflect.Elem() - 通过反射获取指针指向的元素类型</h3><p>通过反射获取指针指向的元素类型：reflect.Elem()</p>
+<p>Go 程序中对指针获取反射对象时，可以通过 reflect.Elem() 方法获取这个指针指向的元素类型。这个获取过程被称为取元素，等效于对指针类型变量做了一个<code>*</code>操作，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的指针变量</span></span><br><span class="line">    <span class="keyword">var</span> stu = &amp;Student&#123;Name:<span class="string">&quot;kitty&quot;</span>, Age: <span class="number">20</span>&#125;</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;name: &#x27;%v&#x27;, kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//取类型的元素</span></span><br><span class="line">    typeOfStu = typeOfStu.Elem()</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;element name: &#x27;%v&#x27;, element kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"><span class="comment">//name: &#x27;&#x27;, kind: &#x27;ptr&#x27;</span></span><br><span class="line"><span class="comment">//element name: &#x27;Student&#x27;, element kind: &#x27;struct&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
 
       
     </div>
@@ -1469,132 +1606,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/technology/golang/go_reflect/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.jpeg">
-      <meta itemprop="name" content="zhyyao">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhyyao">
-      <meta itemprop="description" content="record and sharing learning experiences">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | zhyyao">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/03/technology/golang/go_reflect/" class="post-title-link" itemprop="url">Go语言反射reflect</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-03 15:51:53" itemprop="dateCreated datePublished" datetime="2021-02-03T15:51:53+08:00">2021-02-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-26 14:18:54" itemprop="dateModified" datetime="2025-02-26T14:18:54+08:00">2025-02-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><strong>反射指的是在程序运行期间对程序本身进行访问和修改的能力.</strong></p>
-<p>不支持反射的语言:</p>
-<blockquote>
-<p>程序在编译时,变量转换为内存地址,变量名不会被编译器写入到可执行部分.在运行程序时,程序无法获取自身的信息.</p>
-</blockquote>
-<p>支持反射的语言:</p>
-<blockquote>
-<p>可以在程序编译期间将变量的反射信息,比如字段名称 , 类型信息 , 结构体信息等整合到可执行文件中,并给程序提供接口访问反射信息,这样就可以在程序运行期间获取类型的反射信息,并且有能力修改它们.</p>
-</blockquote>
-<p><strong>Go程序在运行期间使用reflect包访问程序的反射信息</strong></p>
-<p>reflct包实现了运行时反射,允许程序操作任意类型的对象.典型的用法是静态类型interface{}保存一个值,通过TypeOf获取其动态类型信息,该函数返回一个Type类型值,调用ValueOf函数返回一个Value类型值,该值代表运行时的数据.Zero接受一个一个Type类型参数,并返回一个代表该类型零值的Value类型值.</p>
-<p>Go程序的反射系统无法获取到一个可执行文件空间中或者是一个包中的所有类型信息,需要配合使用标准库中对应的词法,语法解析器和抽象语法树(AST)对源码进行扫描后获得这些信息.</p>
-<h2 id="通过反射获取类型信息"><a href="#通过反射获取类型信息" class="headerlink" title="通过反射获取类型信息"></a>通过反射获取类型信息</h2><p>通过反射获取类型信息:(reflect.TypeOf()和reflect.Type)</p>
-<p>使用reflect.TypeOf()函数可以获得任意值的类型对象eflect.Type,程序通过类型对象可以访问任意值的类型信息.</p>
-<p><strong>例子:</strong></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>代码输出:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student <span class="keyword">struct</span></span><br></pre></td></tr></table></figure>
-
-
-<p>理解反射的类型( Type )和种类( Kind )</p>
-<p>在使用反射的时候,需要首先理解类型（Type）和种类（Kind）的区别。编程中，使用最多的是类型，但在反射中，当需要区分一个大品种的类型时，就会用到种类（Kind）。例如，需要统一判断类型中的指针时，使用种类（Kind）信息就较为方便。</p>
-<h2 id="反射种类-kind-的定义"><a href="#反射种类-kind-的定义" class="headerlink" title="反射种类(kind)的定义"></a>反射种类(kind)的定义</h2><p>Go 程序中的类型（Type）指的是系统原生数据类型，如 int、string、bool、float32 等类型，以及使用 type 关键字定义的类型，这些类型的名称就是其类型本身的名称。例如使用 type A struct{} 定义结构体时，A 就是 struct{} 的类型。</p>
-<p>种类（Kind）指的是对象归属的品种，在 reflect 包中有如下定义：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Kind <span class="type">uint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Invalid Kind = <span class="literal">iota</span>  <span class="comment">// 非法类型</span></span><br><span class="line">    Bool                                 <span class="comment">// 布尔型</span></span><br><span class="line">    Int                                <span class="comment">// 有符号整型</span></span><br><span class="line">    Int8                                 <span class="comment">// 有符号8位整型</span></span><br><span class="line">    Int16                                <span class="comment">// 有符号16位整型</span></span><br><span class="line">    Int32                                <span class="comment">// 有符号32位整型</span></span><br><span class="line">    Int64                                <span class="comment">// 有符号64位整型</span></span><br><span class="line">    Uint                                 <span class="comment">// 无符号整型</span></span><br><span class="line">    Uint8                                <span class="comment">// 无符号8位整型</span></span><br><span class="line">    Uint16                           <span class="comment">// 无符号16位整型</span></span><br><span class="line">    Uint32                           <span class="comment">// 无符号32位整型</span></span><br><span class="line">    Uint64                           <span class="comment">// 无符号64位整型</span></span><br><span class="line">    Uintptr                          <span class="comment">// 指针</span></span><br><span class="line">    Float32                          <span class="comment">// 单精度浮点数</span></span><br><span class="line">    Float64                          <span class="comment">// 双精度浮点数</span></span><br><span class="line">    Complex64                        <span class="comment">// 32位复数类型</span></span><br><span class="line">    Complex128                   <span class="comment">// 64位复数类型</span></span><br><span class="line">    Array                                <span class="comment">// 数组</span></span><br><span class="line">    Chan                                 <span class="comment">// 通道</span></span><br><span class="line">    Func                                 <span class="comment">// 函数</span></span><br><span class="line">    Interface                        <span class="comment">// 接口</span></span><br><span class="line">    Map                                <span class="comment">// 映射</span></span><br><span class="line">    Ptr                                <span class="comment">// 指针</span></span><br><span class="line">    Slice                                <span class="comment">// 切片</span></span><br><span class="line">    String                           <span class="comment">// 字符串</span></span><br><span class="line">    Struct                           <span class="comment">// 结构体</span></span><br><span class="line">    UnsafePointer                <span class="comment">// 底层指针</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-<p>Map、Slice、Chan 属于引用类型，使用起来类似于指针，但是在种类常量定义中仍然属于独立的种类，不属于 Ptr。</p>
-<p>type A struct{} 定义的结构体属于 Struct 种类，*A 属于 Ptr。</p>
-<h2 id="从类型对象中获取类型名称和种类的例子"><a href="#从类型对象中获取类型名称和种类的例子" class="headerlink" title="从类型对象中获取类型名称和种类的例子:"></a>从类型对象中获取类型名称和种类的例子:</h2><p>Go 语言中的类型名称对应的反射获取方法是 reflect.Type 中的 Name() 方法，返回表示类型名称的字符串。</p>
-<p>类型归属的种类（Kind）使用的是 reflect.Type 中的 Kind() 方法，返回 reflect.Kind 类型的常量。</p>
-<p>例子:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//定义一个Enum类型</span></span><br><span class="line"><span class="keyword">type</span> Enum <span class="type">int</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Zero Enum = <span class="number">0</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的变量</span></span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//获取Zero常量的反射类型对象</span></span><br><span class="line">    typeOfZero := reflect.TypeOf(Zero)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfZero.Name(), typeOfZero.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"></span><br><span class="line">Student <span class="keyword">struct</span></span><br><span class="line">Enum <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="reflect-Elem-通过反射获取指针指向的元素类型"><a href="#reflect-Elem-通过反射获取指针指向的元素类型" class="headerlink" title="reflect.Elem() - 通过反射获取指针指向的元素类型"></a>reflect.Elem() - 通过反射获取指针指向的元素类型</h3><p>通过反射获取指针指向的元素类型：reflect.Elem()</p>
-<p>Go 程序中对指针获取反射对象时，可以通过 reflect.Elem() 方法获取这个指针指向的元素类型。这个获取过程被称为取元素，等效于对指针类型变量做了一个<code>*</code>操作，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的指针变量</span></span><br><span class="line">    <span class="keyword">var</span> stu = &amp;Student&#123;Name:<span class="string">&quot;kitty&quot;</span>, Age: <span class="number">20</span>&#125;</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;name: &#x27;%v&#x27;, kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//取类型的元素</span></span><br><span class="line">    typeOfStu = typeOfStu.Elem()</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;element name: &#x27;%v&#x27;, element kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"><span class="comment">//name: &#x27;&#x27;, kind: &#x27;ptr&#x27;</span></span><br><span class="line"><span class="comment">//element name: &#x27;Student&#x27;, element kind: &#x27;struct&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/02/technology/golang/interview_issue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1759,6 +1770,10 @@
   <footer class="footer">
     <div class="footer-inner">
 
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
   <div class="copyright">
     &copy; 
     <span itemprop="copyrightYear">2025</span>
@@ -1767,8 +1782,17 @@
     </span>
     <span class="author" itemprop="copyrightHolder">zhyyao</span>
   </div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+<!--
   <div class="powered-by">由 Zhyyao 强力驱动
   </div>
+-->
 
     </div>
   </footer>
