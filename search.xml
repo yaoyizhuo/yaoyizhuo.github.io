@@ -1,60 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Gin源码解析</title>
-    <url>/2021/02/03/technology/golang/gin_code_analyse/</url>
-    <content><![CDATA[<p>gin框架使用的定制版本的http router。<br>http router的原理是大量使用公共前缀的树结构，</p>
-<p>它基本是一个紧凑的trie terr或者只是一个RadixTree（基数树）</p>
-<p>学到的优秀设计：</p>
-<h2 id="gin中的Context-poll"><a href="#gin中的Context-poll" class="headerlink" title="gin中的Context poll"></a>gin中的Context poll</h2><p><strong>Poll用于存储哪些被分配了但是没有被使用,而未来有可能会被使用的值,以减少垃圾回收的压力.</strong></p>
-<p>在Web应用中,后台处理用户的每条请求都会为当前请求创建一个上下文环境Context,用于存储请求信息及相关信息等.Context满足一个长生命周期的特点,且用户请求也属于并发环境,所以对于线程安全的Poll非常适合用来维护Context的临时对象池.</p>
-<p>Gin在结构体Engine中定义了一个poll</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span> &#123;</span><br><span class="line"><span class="comment">// ... 省略了其他字段</span></span><br><span class="line">pool    sync.Pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>初始化engine时定义了poll的New函数:</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">engine.pool.New = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    <span class="keyword">return</span> engine.allocateContext()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// allocateContext</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span></span> allocateContext() *Context &#123;</span><br><span class="line">    <span class="comment">// 构造新的上下文对象</span></span><br><span class="line">    <span class="keyword">return</span> &amp;Context&#123;engine: engine&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="ServerHttp"><a href="#ServerHttp" class="headerlink" title="ServerHttp"></a>ServerHttp</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 pool 中获取，并转化为 *Context</span></span><br><span class="line">c := engine.pool.Get().(*Context)</span><br><span class="line">c.writermem.reset(w)</span><br><span class="line">c.Request = req</span><br><span class="line">c.reset() <span class="comment">// reset</span></span><br><span class="line"></span><br><span class="line">engine.handleHTTPRequest(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再扔回 pool 中</span></span><br><span class="line">engine.pool.Put(c)</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li>基于sync.poll使用对象池poll，从池中获取后对它转化Context，减少每次创建方法的CG和内存申请的频率,使用完之后,再扔回对象池中.</li>
-</ol>
-<p>避免对象的引用的干扰，在不影响项目的实际功能的情况下取出对象。</p>
-<ol start="2">
-<li>在设计for循环时的优秀设计：</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i:=<span class="number">0</span>,lens=<span class="built_in">len</span>(arr);i&lt;lens;i++&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ol start="3">
-<li>提倡最小执行代码原则：</li>
-</ol>
-<p>把应该立即返回的条件写在前面</p>
-<p>4.在写完一个结构体后，在结构体下方新建一个接口类型的匿名变量</p>
-<blockquote>
-<p>目的：为了确保结构体实现了这个接口，把错误保留在编译阶段</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">var</span> _ Irouter [匿名变量的类型] = &amp;Engine&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>5.为什么不用map而要用树遍历的方法？ map比较slice更占内存</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(trees methodTrees)</span></span> get(method <span class="type">string</span>) *node &#123;</span><br><span class="line">    <span class="keyword">for</span> _, tree := <span class="keyword">range</span> trees &#123;</span><br><span class="line">        <span class="keyword">if</span> tree.method == method &#123;</span><br><span class="line">            <span class="keyword">return</span> tree.root</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>6.当已知一个切片的容量时，我可以在初始化的时候一次性把切片的容量申请到位，避免动态申请slice。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
-        <tag>Gin框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Go-GC垃圾回收</title>
     <url>/2021/02/03/technology/golang/gc_recycle/</url>
     <content><![CDATA[<h2 id="Go垃圾回收"><a href="#Go垃圾回收" class="headerlink" title="Go垃圾回收"></a>Go垃圾回收</h2><ul>
@@ -258,9 +204,63 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
-        <tag>底层原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gin源码解析</title>
+    <url>/2021/02/03/technology/golang/gin_code_analyse/</url>
+    <content><![CDATA[<p>gin框架使用的定制版本的http router。<br>http router的原理是大量使用公共前缀的树结构，</p>
+<p>它基本是一个紧凑的trie terr或者只是一个RadixTree（基数树）</p>
+<p>学到的优秀设计：</p>
+<h2 id="gin中的Context-poll"><a href="#gin中的Context-poll" class="headerlink" title="gin中的Context poll"></a>gin中的Context poll</h2><p><strong>Poll用于存储哪些被分配了但是没有被使用,而未来有可能会被使用的值,以减少垃圾回收的压力.</strong></p>
+<p>在Web应用中,后台处理用户的每条请求都会为当前请求创建一个上下文环境Context,用于存储请求信息及相关信息等.Context满足一个长生命周期的特点,且用户请求也属于并发环境,所以对于线程安全的Poll非常适合用来维护Context的临时对象池.</p>
+<p>Gin在结构体Engine中定义了一个poll</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span> &#123;</span><br><span class="line"><span class="comment">// ... 省略了其他字段</span></span><br><span class="line">pool    sync.Pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>初始化engine时定义了poll的New函数:</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">engine.pool.New = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    <span class="keyword">return</span> engine.allocateContext()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// allocateContext</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span></span> allocateContext() *Context &#123;</span><br><span class="line">    <span class="comment">// 构造新的上下文对象</span></span><br><span class="line">    <span class="keyword">return</span> &amp;Context&#123;engine: engine&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ServerHttp"><a href="#ServerHttp" class="headerlink" title="ServerHttp"></a>ServerHttp</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 pool 中获取，并转化为 *Context</span></span><br><span class="line">c := engine.pool.Get().(*Context)</span><br><span class="line">c.writermem.reset(w)</span><br><span class="line">c.Request = req</span><br><span class="line">c.reset() <span class="comment">// reset</span></span><br><span class="line"></span><br><span class="line">engine.handleHTTPRequest(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再扔回 pool 中</span></span><br><span class="line">engine.pool.Put(c)</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>基于sync.poll使用对象池poll，从池中获取后对它转化Context，减少每次创建方法的CG和内存申请的频率,使用完之后,再扔回对象池中.</li>
+</ol>
+<p>避免对象的引用的干扰，在不影响项目的实际功能的情况下取出对象。</p>
+<ol start="2">
+<li>在设计for循环时的优秀设计：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i:=<span class="number">0</span>,lens=<span class="built_in">len</span>(arr);i&lt;lens;i++&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>提倡最小执行代码原则：</li>
+</ol>
+<p>把应该立即返回的条件写在前面</p>
+<p>4.在写完一个结构体后，在结构体下方新建一个接口类型的匿名变量</p>
+<blockquote>
+<p>目的：为了确保结构体实现了这个接口，把错误保留在编译阶段</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">var</span> _ Irouter [匿名变量的类型] = &amp;Engine&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>5.为什么不用map而要用树遍历的方法？ map比较slice更占内存</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(trees methodTrees)</span></span> get(method <span class="type">string</span>) *node &#123;</span><br><span class="line">    <span class="keyword">for</span> _, tree := <span class="keyword">range</span> trees &#123;</span><br><span class="line">        <span class="keyword">if</span> tree.method == method &#123;</span><br><span class="line">            <span class="keyword">return</span> tree.root</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>6.当已知一个切片的容量时，我可以在初始化的时候一次性把切片的容量申请到位，避免动态申请slice。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
+        <tag>Gin框架</tag>
       </tags>
   </entry>
   <entry>
@@ -418,9 +418,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
-        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -568,9 +568,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
-        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -659,9 +659,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
-        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -784,9 +784,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
-        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
