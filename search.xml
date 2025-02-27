@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Welcome to My Blog</title>
-    <url>/2018/02/26/home/home/</url>
-    <content><![CDATA[<h2 id="🥸-欢迎来到我的博客！"><a href="#🥸-欢迎来到我的博客！" class="headerlink" title="🥸 欢迎来到我的博客！"></a>🥸 欢迎来到我的博客！</h2><h2 id="📿-佛祖保平安"><a href="#📿-佛祖保平安" class="headerlink" title="📿 佛祖保平安"></a>📿 佛祖保平安</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                   _ooOoo_</span><br><span class="line">                  o8888888o</span><br><span class="line">                  88&quot; . &quot;88</span><br><span class="line">                  (| -_- |)</span><br><span class="line">                   O\ = /O</span><br><span class="line">                ____/`---&#x27;\____</span><br><span class="line">             .   &#x27; \\| |// `.</span><br><span class="line">              / \\||| : |||// \</span><br><span class="line">             / _||||| -:- |||||- \</span><br><span class="line">              | | \\\ - /// | |</span><br><span class="line">            | \_| &#x27;&#x27;\---/&#x27;&#x27; | |</span><br><span class="line">             \ .-\__ `-` ___/-. /</span><br><span class="line">         ___`. .&#x27; /--.--\ `. . __</span><br><span class="line">       .&quot;&quot; &#x27;&lt; `.___\_&lt;|&gt;_/___.&#x27; &gt;&#x27;&quot;&quot;.</span><br><span class="line">      | | : `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line">         \ \ `-. \_ __\ /__ _/ .-` / /</span><br><span class="line">======`-.____`-.___\_____/___.-`____.-&#x27;======</span><br><span class="line">                   `=---=&#x27;</span><br><span class="line"></span><br><span class="line">.............................................</span><br><span class="line">          佛祖保佑             永无BUG</span><br><span class="line"> 佛曰:</span><br><span class="line">          写字楼里写字间，写字间里程序员；</span><br><span class="line">          程序人员写程序，又拿程序换酒钱。</span><br><span class="line">          酒醒只在网上坐，酒醉还来网下眠；</span><br><span class="line">          酒醉酒醒日复日，网上网下年复年。</span><br><span class="line">          但愿老死电脑间，不愿鞠躬老板前；</span><br><span class="line">          奔驰宝马贵者趣，公交自行程序员。</span><br><span class="line">          别人笑我忒疯癫，我笑自己命太贱；</span><br><span class="line">          不见满街漂亮妹，哪个归得程序员？</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>Gin源码解析</title>
+    <url>/2021/02/03/technology/golang/gin_code_analyse/</url>
+    <content><![CDATA[<p>gin框架使用的定制版本的http router。<br>http router的原理是大量使用公共前缀的树结构，</p>
+<p>它基本是一个紧凑的trie terr或者只是一个RadixTree（基数树）</p>
+<p>学到的优秀设计：</p>
+<h2 id="gin中的Context-poll"><a href="#gin中的Context-poll" class="headerlink" title="gin中的Context poll"></a>gin中的Context poll</h2><p><strong>Poll用于存储哪些被分配了但是没有被使用,而未来有可能会被使用的值,以减少垃圾回收的压力.</strong></p>
+<p>在Web应用中,后台处理用户的每条请求都会为当前请求创建一个上下文环境Context,用于存储请求信息及相关信息等.Context满足一个长生命周期的特点,且用户请求也属于并发环境,所以对于线程安全的Poll非常适合用来维护Context的临时对象池.</p>
+<p>Gin在结构体Engine中定义了一个poll</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span> &#123;</span><br><span class="line"><span class="comment">// ... 省略了其他字段</span></span><br><span class="line">pool    sync.Pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="✨-关于我"><a href="#✨-关于我" class="headerlink" title="✨ 关于我"></a>✨ 关于我</h2><blockquote>
-<p>我是 <strong>zhyyao</strong>，一个喜欢内耗与自我PUA，且不太正经的coder。</p>
-</blockquote>
+<p>初始化engine时定义了poll的New函数:</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">engine.pool.New = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    <span class="keyword">return</span> engine.allocateContext()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// allocateContext</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span></span> allocateContext() *Context &#123;</span><br><span class="line">    <span class="comment">// 构造新的上下文对象</span></span><br><span class="line">    <span class="keyword">return</span> &amp;Context&#123;engine: engine&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ServerHttp"><a href="#ServerHttp" class="headerlink" title="ServerHttp"></a>ServerHttp</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 pool 中获取，并转化为 *Context</span></span><br><span class="line">c := engine.pool.Get().(*Context)</span><br><span class="line">c.writermem.reset(w)</span><br><span class="line">c.Request = req</span><br><span class="line">c.reset() <span class="comment">// reset</span></span><br><span class="line"></span><br><span class="line">engine.handleHTTPRequest(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再扔回 pool 中</span></span><br><span class="line">engine.pool.Put(c)</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>基于sync.poll使用对象池poll，从池中获取后对它转化Context，减少每次创建方法的CG和内存申请的频率,使用完之后,再扔回对象池中.</li>
+</ol>
+<p>避免对象的引用的干扰，在不影响项目的实际功能的情况下取出对象。</p>
+<ol start="2">
+<li>在设计for循环时的优秀设计：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i:=<span class="number">0</span>,lens=<span class="built_in">len</span>(arr);i&lt;lens;i++&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>提倡最小执行代码原则：</li>
+</ol>
+<p>把应该立即返回的条件写在前面</p>
+<p>4.在写完一个结构体后，在结构体下方新建一个接口类型的匿名变量</p>
 <blockquote>
-<p>这是我 <strong>分享学习心得、整理碎片笔记</strong> 的地方。希望你能在这里找到有用的内容。</p>
+<p>目的：为了确保结构体实现了这个接口，把错误保留在编译阶段</p>
 </blockquote>
-<h2 id="🫥-代办"><a href="#🫥-代办" class="headerlink" title="🫥 代办"></a>🫥 代办</h2><ul>
-<li><input checked="" disabled="" type="checkbox"> 开通自己的博客</li>
-<li><input disabled="" type="checkbox"> 还没想好</li>
-<li><input disabled="" type="checkbox"> 写点什么。</li>
-<li><input disabled="" type="checkbox"> 写点什么？</li>
-</ul>
-<h2 id="🙈-赏心悦目"><a href="#🙈-赏心悦目" class="headerlink" title="🙈 赏心悦目"></a>🙈 赏心悦目</h2><blockquote>
-<p>test cdn and lazy load config.</p>
-</blockquote>
-<img data-src="/2018/02/26/home/home/1.jpg" class="" title="图1">
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">var</span> _ Irouter [匿名变量的类型] = &amp;Engine&#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<img data-src="/2018/02/26/home/home/2.jpg" class="" title="图2">
 
-<hr>
-<img data-src="/2018/02/26/home/home/3.jpg" class="" title="图3">
+<p>5.为什么不用map而要用树遍历的方法？ map比较slice更占内存</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(trees methodTrees)</span></span> get(method <span class="type">string</span>) *node &#123;</span><br><span class="line">    <span class="keyword">for</span> _, tree := <span class="keyword">range</span> trees &#123;</span><br><span class="line">        <span class="keyword">if</span> tree.method == method &#123;</span><br><span class="line">            <span class="keyword">return</span> tree.root</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+<p>6.当已知一个切片的容量时，我可以在初始化的时候一次性把切片的容量申请到位，避免动态申请slice。</p>
 ]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
+        <tag>Gin框架</tag>
+      </tags>
   </entry>
   <entry>
     <title>Go-GC垃圾回收</title>
@@ -235,63 +258,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
         <tag>底层原理</tag>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Gin源码解析</title>
-    <url>/2021/02/03/technology/golang/gin_code_analyse/</url>
-    <content><![CDATA[<p>gin框架使用的定制版本的http router。<br>http router的原理是大量使用公共前缀的树结构，</p>
-<p>它基本是一个紧凑的trie terr或者只是一个RadixTree（基数树）</p>
-<p>学到的优秀设计：</p>
-<h2 id="gin中的Context-poll"><a href="#gin中的Context-poll" class="headerlink" title="gin中的Context poll"></a>gin中的Context poll</h2><p><strong>Poll用于存储哪些被分配了但是没有被使用,而未来有可能会被使用的值,以减少垃圾回收的压力.</strong></p>
-<p>在Web应用中,后台处理用户的每条请求都会为当前请求创建一个上下文环境Context,用于存储请求信息及相关信息等.Context满足一个长生命周期的特点,且用户请求也属于并发环境,所以对于线程安全的Poll非常适合用来维护Context的临时对象池.</p>
-<p>Gin在结构体Engine中定义了一个poll</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span> &#123;</span><br><span class="line"><span class="comment">// ... 省略了其他字段</span></span><br><span class="line">pool    sync.Pool</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>初始化engine时定义了poll的New函数:</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">engine.pool.New = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    <span class="keyword">return</span> engine.allocateContext()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// allocateContext</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span></span> allocateContext() *Context &#123;</span><br><span class="line">    <span class="comment">// 构造新的上下文对象</span></span><br><span class="line">    <span class="keyword">return</span> &amp;Context&#123;engine: engine&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="ServerHttp"><a href="#ServerHttp" class="headerlink" title="ServerHttp"></a>ServerHttp</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 pool 中获取，并转化为 *Context</span></span><br><span class="line">c := engine.pool.Get().(*Context)</span><br><span class="line">c.writermem.reset(w)</span><br><span class="line">c.Request = req</span><br><span class="line">c.reset() <span class="comment">// reset</span></span><br><span class="line"></span><br><span class="line">engine.handleHTTPRequest(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再扔回 pool 中</span></span><br><span class="line">engine.pool.Put(c)</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li>基于sync.poll使用对象池poll，从池中获取后对它转化Context，减少每次创建方法的CG和内存申请的频率,使用完之后,再扔回对象池中.</li>
-</ol>
-<p>避免对象的引用的干扰，在不影响项目的实际功能的情况下取出对象。</p>
-<ol start="2">
-<li>在设计for循环时的优秀设计：</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i:=<span class="number">0</span>,lens=<span class="built_in">len</span>(arr);i&lt;lens;i++&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ol start="3">
-<li>提倡最小执行代码原则：</li>
-</ol>
-<p>把应该立即返回的条件写在前面</p>
-<p>4.在写完一个结构体后，在结构体下方新建一个接口类型的匿名变量</p>
-<blockquote>
-<p>目的：为了确保结构体实现了这个接口，把错误保留在编译阶段</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Engine <span class="keyword">struct</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">var</span> _ Irouter [匿名变量的类型] = &amp;Engine&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>5.为什么不用map而要用树遍历的方法？ map比较slice更占内存</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(trees methodTrees)</span></span> get(method <span class="type">string</span>) *node &#123;</span><br><span class="line">    <span class="keyword">for</span> _, tree := <span class="keyword">range</span> trees &#123;</span><br><span class="line">        <span class="keyword">if</span> tree.method == method &#123;</span><br><span class="line">            <span class="keyword">return</span> tree.root</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>6.当已知一个切片的容量时，我可以在初始化的时候一次性把切片的容量申请到位，避免动态申请slice。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
-        <tag>Gin框架</tag>
       </tags>
   </entry>
   <entry>
@@ -449,9 +418,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -599,9 +568,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -690,64 +659,9 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
         <tag>底层原理</tag>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go内存泄漏</title>
-    <url>/2021/02/03/technology/golang/memory_leak/</url>
-    <content><![CDATA[<h2 id="1-字符串截取"><a href="#1-字符串截取" class="headerlink" title="1.字符串截取"></a>1.字符串截取</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str0 = <span class="string">&quot;12345678901234567890&quot;</span></span><br><span class="line">    str1 := str0[:<span class="number">10</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>以上代码，会有10字节的内存泄漏，我们知道，str0和str1底层共享内存，只要str1一直活跃，str0 就不会被回收，10字节的内存被使用，剩下的10字节内存就造成了临时性的内存泄漏，直到str1不再活跃</p>
-<p>如果str0足够大，str1截取足够小，或者在高并发场景中频繁使用，那么可想而知，会造成临时性内存泄漏，对性能产生极大影响。</p>
-<p>解决方法：</p>
-<p>将需要截取的部分先转换成[]byte，再转换成string，但是这种方式会产生两个10字节的临时变量，string转换[]byte时产生一个10字节临时变量，[]byte转换string时产生一个10字节的临时变量</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str0 = <span class="string">&quot;12345678901234567890&quot;</span></span><br><span class="line">    str1 := <span class="type">string</span>([]<span class="type">byte</span>(str0[:<span class="number">10</span>]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="2-切片截取（和第一个类似）"><a href="#2-切片截取（和第一个类似）" class="headerlink" title="2.切片截取（和第一个类似）"></a>2.切片截取（和第一个类似）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line">    s1 := s0[:<span class="number">5</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>解决方法：append</p>
-<p>append函数是向 <code>slice里面追加一个或多个元素，然后返回一个和slice一样类型的slice（复制一份）</code></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line">    s1 := <span class="built_in">append</span>(s0[<span class="number">0</span>:<span class="number">0</span>], s0[:<span class="number">5</span>]...)</span><br><span class="line">    fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-没有重置丢失的子切片元素中的指针"><a href="#3-没有重置丢失的子切片元素中的指针" class="headerlink" title="3.没有重置丢失的子切片元素中的指针"></a>3.没有重置丢失的子切片元素中的指针</h2><p>原切片元素为指针类型，原切片被截取后，丢失的子切片元素中的指针元素未被置空，导致内存泄漏</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []*<span class="type">int</span>&#123;<span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>)&#125;</span><br><span class="line">    s1 := s0[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>解决方案：元素置空</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []*<span class="type">int</span>&#123;<span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>)&#125;</span><br><span class="line">    s0[<span class="number">0</span>], s0[<span class="number">3</span>], s0[<span class="number">4</span>] = <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span></span><br><span class="line">    s1 := s0[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="4-数组传参"><a href="#4-数组传参" class="headerlink" title="4.数组传参"></a>4.数组传参</h2><p>Go数组是值类型，赋值和函数传参都会复制整个数组</p>
-<p>如果我们在函数传参的时候用到了数组传参，且这个数组够大（我们假设数组大小为100万，64位机上消耗的内存约为800w字节，即8MB内存），或者该函数短时间内被调用N次，那么可想而知，会消耗大量内存，对性能产生极大的影响，如果短时间内分配大量内存，而又来不及GC，那么就会产生临时性的内存泄漏，对于高并发场景相当可怕。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arrayA = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> arrayB = [<span class="number">3</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    arrayB = arrayA</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayA address: %p, arrayA value: %+v\n&quot;</span>, &amp;arrayA, arrayA)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayB address: %p, arrayB value: %+v\n&quot;</span>, &amp;arrayB, arrayB)</span><br><span class="line">    array(arrayA)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">array</span><span class="params">(array [3]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;array address: %p, array value: %+v\n&quot;</span>, &amp;array, array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>解决方案：指针传参或者利用切片</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arrayA = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> arrayB = &amp;arrayA</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayA address: %p, arrayA value: %+v\n&quot;</span>, &amp;arrayA, arrayA)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayB address: %p, arrayB value: %+v\n&quot;</span>, arrayB, *arrayB)</span><br><span class="line">    arrayP(&amp;arrayA)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">arrayP</span><span class="params">(array *[3]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;array address: %p, array value: %+v\n&quot;</span>, array, *array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="5-goroutine"><a href="#5-goroutine" class="headerlink" title="5.goroutine"></a>5.goroutine</h2><p>“Go里面10次内存泄漏有9次都是goroutine泄漏引起的”</p>
-<p>有些编码不当的情况下，goroutine被长期挂住，导致该协程中的内存也无法被释放，就会造成永久性的内存泄漏。例如协程结束时协程中的channel没有关闭，导致一直阻塞；例如协程中有死循环；等等</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ticker := time.NewTicker(time.Second * <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        &lt;-ticker.C</span><br><span class="line">        ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">                ch &lt;- i</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">50</span> &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>解决方案：（涉及到goroutine之间的通信）</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ticker := time.NewTicker(time.Second * <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        &lt;-ticker.C</span><br><span class="line">        cxt, cancel := context.WithCancel(context.Background())</span><br><span class="line">        ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(cxt context.Context)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">                <span class="keyword">select</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> &lt;-cxt.Done():</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">case</span> ch &lt;- i:</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(cxt)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">50</span> &#123;</span><br><span class="line">                cancel()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -870,7 +784,62 @@
         <category>Golang</category>
       </categories>
       <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
         <tag>底层原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go内存泄漏</title>
+    <url>/2021/02/03/technology/golang/memory_leak/</url>
+    <content><![CDATA[<h2 id="1-字符串截取"><a href="#1-字符串截取" class="headerlink" title="1.字符串截取"></a>1.字符串截取</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str0 = <span class="string">&quot;12345678901234567890&quot;</span></span><br><span class="line">    str1 := str0[:<span class="number">10</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>以上代码，会有10字节的内存泄漏，我们知道，str0和str1底层共享内存，只要str1一直活跃，str0 就不会被回收，10字节的内存被使用，剩下的10字节内存就造成了临时性的内存泄漏，直到str1不再活跃</p>
+<p>如果str0足够大，str1截取足够小，或者在高并发场景中频繁使用，那么可想而知，会造成临时性内存泄漏，对性能产生极大影响。</p>
+<p>解决方法：</p>
+<p>将需要截取的部分先转换成[]byte，再转换成string，但是这种方式会产生两个10字节的临时变量，string转换[]byte时产生一个10字节临时变量，[]byte转换string时产生一个10字节的临时变量</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str0 = <span class="string">&quot;12345678901234567890&quot;</span></span><br><span class="line">    str1 := <span class="type">string</span>([]<span class="type">byte</span>(str0[:<span class="number">10</span>]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-切片截取（和第一个类似）"><a href="#2-切片截取（和第一个类似）" class="headerlink" title="2.切片截取（和第一个类似）"></a>2.切片截取（和第一个类似）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line">    s1 := s0[:<span class="number">5</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>解决方法：append</p>
+<p>append函数是向 <code>slice里面追加一个或多个元素，然后返回一个和slice一样类型的slice（复制一份）</code></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line">    s1 := <span class="built_in">append</span>(s0[<span class="number">0</span>:<span class="number">0</span>], s0[:<span class="number">5</span>]...)</span><br><span class="line">    fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-没有重置丢失的子切片元素中的指针"><a href="#3-没有重置丢失的子切片元素中的指针" class="headerlink" title="3.没有重置丢失的子切片元素中的指针"></a>3.没有重置丢失的子切片元素中的指针</h2><p>原切片元素为指针类型，原切片被截取后，丢失的子切片元素中的指针元素未被置空，导致内存泄漏</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []*<span class="type">int</span>&#123;<span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>)&#125;</span><br><span class="line">    s1 := s0[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>解决方案：元素置空</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s0 = []*<span class="type">int</span>&#123;<span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>), <span class="built_in">new</span>(<span class="type">int</span>)&#125;</span><br><span class="line">    s0[<span class="number">0</span>], s0[<span class="number">3</span>], s0[<span class="number">4</span>] = <span class="literal">nil</span>, <span class="literal">nil</span>, <span class="literal">nil</span></span><br><span class="line">    s1 := s0[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-数组传参"><a href="#4-数组传参" class="headerlink" title="4.数组传参"></a>4.数组传参</h2><p>Go数组是值类型，赋值和函数传参都会复制整个数组</p>
+<p>如果我们在函数传参的时候用到了数组传参，且这个数组够大（我们假设数组大小为100万，64位机上消耗的内存约为800w字节，即8MB内存），或者该函数短时间内被调用N次，那么可想而知，会消耗大量内存，对性能产生极大的影响，如果短时间内分配大量内存，而又来不及GC，那么就会产生临时性的内存泄漏，对于高并发场景相当可怕。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arrayA = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> arrayB = [<span class="number">3</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    arrayB = arrayA</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayA address: %p, arrayA value: %+v\n&quot;</span>, &amp;arrayA, arrayA)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayB address: %p, arrayB value: %+v\n&quot;</span>, &amp;arrayB, arrayB)</span><br><span class="line">    array(arrayA)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">array</span><span class="params">(array [3]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;array address: %p, array value: %+v\n&quot;</span>, &amp;array, array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>解决方案：指针传参或者利用切片</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> arrayA = [<span class="number">3</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> arrayB = &amp;arrayA</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayA address: %p, arrayA value: %+v\n&quot;</span>, &amp;arrayA, arrayA)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;arrayB address: %p, arrayB value: %+v\n&quot;</span>, arrayB, *arrayB)</span><br><span class="line">    arrayP(&amp;arrayA)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">arrayP</span><span class="params">(array *[3]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;array address: %p, array value: %+v\n&quot;</span>, array, *array)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="5-goroutine"><a href="#5-goroutine" class="headerlink" title="5.goroutine"></a>5.goroutine</h2><p>“Go里面10次内存泄漏有9次都是goroutine泄漏引起的”</p>
+<p>有些编码不当的情况下，goroutine被长期挂住，导致该协程中的内存也无法被释放，就会造成永久性的内存泄漏。例如协程结束时协程中的channel没有关闭，导致一直阻塞；例如协程中有死循环；等等</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ticker := time.NewTicker(time.Second * <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        &lt;-ticker.C</span><br><span class="line">        ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">                ch &lt;- i</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">50</span> &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>解决方案：（涉及到goroutine之间的通信）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ticker := time.NewTicker(time.Second * <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        &lt;-ticker.C</span><br><span class="line">        cxt, cancel := context.WithCancel(context.Background())</span><br><span class="line">        ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(cxt context.Context)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">                <span class="keyword">select</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> &lt;-cxt.Done():</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">case</span> ch &lt;- i:</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(cxt)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">50</span> &#123;</span><br><span class="line">                cancel()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
         <tag>面试题</tag>
         <tag>Golang</tag>
       </tags>
