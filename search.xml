@@ -1,215 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Go-GC垃圾回收</title>
-    <url>/2021/02/03/technology/golang/gc_recycle/</url>
-    <content><![CDATA[<h2 id="Go垃圾回收"><a href="#Go垃圾回收" class="headerlink" title="Go垃圾回收"></a>Go垃圾回收</h2><ul>
-<li><p>G0 V1.3之前的标记-清除(mark and sweep)算法</p>
-</li>
-<li><p>Go V1.3之前的标记-清扫(mark and sweep)的缺点</p>
-</li>
-<li><p>Go V1.5的三色并发标记法</p>
-</li>
-<li><p>Go V1.5的三色标记为什么需要STW</p>
-</li>
-<li><p>Go V1.5的三色标记为什么需要屏障机制(“强-弱” 三色不变式、插入屏障、删除屏障 )</p>
-</li>
-<li><p>Go V1.8混合写屏障机制</p>
-</li>
-<li><p>Go V1.8混合写屏障机制的全场景分析</p>
-</li>
-</ul>
-<h2 id="Go-V1-3-之前的标记-清除-mark-and-sweep-算法"><a href="#Go-V1-3-之前的标记-清除-mark-and-sweep-算法" class="headerlink" title="Go V1.3 之前的标记-清除(mark and sweep)算法"></a>Go V1.3 之前的标记-清除(mark and sweep)算法</h2><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
-<li><p>标记(Mark phase)</p>
-</li>
-<li><p>清除(Sweep phase)</p>
-</li>
-</ul>
-<p><strong>第一步</strong>，暂停程序业务逻辑, 找出不可达的对象，然后做上标记。</p>
-<p>操作非常简单，但是有一点需要额外注意：mark and sweep算法在执行的时候，需要程序暂停！即 <code>STW(stop the world)</code>。也就是说，这段时间程序会卡在哪儿。</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/9ebb3771-c2e4-49a1-af52-4804dcc42f0e/image.png?time=1740540600&token=cf2d6d46b830f137a56213aa04936c8751f3a669bdb784ed3cf49a566694f50f&role=free" alt="image.png"></p>
-<p><strong>第二步</strong>, 开始标记，程序找出它所有可达的对象，并做上标记。如下图所示：</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/2a02e69c-e76d-4024-a19f-16d4cc4801ff/image.png?time=1740540600&token=a2cf096b72895d1a57e0a2cc49ebaa7a2d0b72a67799c8921fb4863c3fc1a633&role=free" alt="image.png"></p>
-<p><strong>第三步</strong>, 标记完了之后，然后开始清除未标记的对象. 结果如下.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/5524d6a7-54f5-418a-a8f1-db68b1ae3397/image.png?time=1740540600&token=d28316686289af0d9a84dd8ebc0eefda3180f50ec7df5f9f0298fa2c47b0ac8f&role=free" alt="image.png"></p>
-<p><strong>第四步</strong>, 停止暂停，让程序继续跑。然后循环重复这个过程，直到process程序生命周期结束。</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>STW，stop the world；让程序暂停，程序出现卡顿 (重要问题)。</li>
-<li>标记需要扫描整个heap</li>
-<li>清除数据会产生heap碎片</li>
-</ul>
-<p>所以Go V1.3版本之前就是以上来实施的, 流程是</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/bd21e5fc-44db-4886-899a-0257d24ed5d6/image.png?time=1740540600&token=ca64982e448032d415484d9fb38ec110ba35a5e09b4e48d60b291e46dab3fa94&role=free" alt="image.png"></p>
-<p>Go V1.3 做了简单的优化,将STW提前, 减少STW暂停的时间范围.如下所示</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/757f72c4-fda8-41b4-b8dc-bceb25ea7ada/image.png?time=1740540600&token=a3e2c1da7da25e572696f25604e87f15f8827f4d119c313e1c73bcbf1c2f2a0f&role=free" alt="image.png"></p>
-<p><strong>这里面最重要的问题就是：mark-and-sweep 算法会暂停整个程序。</strong></p>
-<p>Go是如何面对并这个问题的呢？接下来G V1.5版本 就用三色并发标记法来优化这个问题.</p>
-<h2 id="Go-V1-5的三色并发标记法"><a href="#Go-V1-5的三色并发标记法" class="headerlink" title="Go V1.5的三色并发标记法"></a>Go V1.5的三色并发标记法</h2><p>三色标记法 实际上就是通过三个阶段的标记来确定清楚的对象都有哪些. 我们来看一下具体的过程.</p>
-<p><strong>第一步</strong>, 就是只要是新创建的对象,默认的颜色都是标记为“白色”.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/c06f42a7-20cd-4ad0-88c9-50b8825a08d7/image.png?time=1740540600&token=6bbe2552bca1f04fb0b89064d6aea9d753fb0a714e140602b4892982d5a657ff&role=free" alt="image.png"></p>
-<p>这里面需要注意的是, 所谓“程序”, 则是一些对象的跟节点集合.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/baa5e1df-bbd4-4fdf-9f2c-1d017c35254b/image.png?time=1740540600&token=ae2b03ecfa946373c66e0e06fc18f5a32bec68d4cad184b219924dfe7faf0fe4&role=free" alt="image.png"></p>
-<p>所以上图,可以转换如下的方式来表示.</p>
-<p><strong>第二步</strong>, 每次GC回收开始, 然后从根节点开始遍历所有对象，把遍历到的对象从白色集合放入“灰色”集合。</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/2deaa445-5c90-4baf-b826-365395a2456f/image.png?time=1740540600&token=970940446480b161d9a2a6478a8b132f58778a199655a0b45b015567eebc1ee8&role=free" alt="image.png"></p>
-<p><strong>第三步</strong>, 遍历灰色集合，将灰色对象引用的对象从白色集合放入灰色集合，之后将此灰色对象放入黑色集合</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/ef6cf7e9-5385-42e4-958f-da9c57294f60/image.png?time=1740540600&token=0cd549762281ff62683165d9af5edbee5ded1eb18415d41544332b4f9af49c2c&role=free" alt="image.png"></p>
-<p><strong>第四步</strong>, 重复第三步, 直到灰色中无任何对象.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/d08f61db-a82f-4aee-b635-4ecb71f99322/image.png?time=1740540600&token=f596e9f3d15e52e19147e471b3590487eab876e031539d80f3aca4b67fe149e7&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/0ad0d19e-5018-469d-af6a-6e9c4f4bb2fc/image.png?time=1740540600&token=4e667082687739168e53cc1d9b3d878cd6fd2026da53f9bd4da8da773b14e04b&role=free" alt="image.png"></p>
-<p><strong>第五步</strong>，回收所有的白色标记表的对象. 也就是回收垃圾.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/14e66ab4-696c-4581-aa04-cefbdb4cbdc8/image.png?time=1740540600&token=f64cf7c5d2c6f6661f03d9d6417e9e005181fe31736ba7dc6223def8bea72006&role=free" alt="image.png"></p>
-<p>以上便是<code>三色并发标记法</code>, 不难看出,我们上面已经清楚的体现<code>三色</code>的特性, 那么又是如何实现并行的呢?</p>
-<p>_Go是如何解决标记-清除(mark and sweep)算法中的卡顿(stw，stop the world)问题的呢_？</p>
-<h2 id="没有STW的三色标记法"><a href="#没有STW的三色标记法" class="headerlink" title="没有STW的三色标记法"></a>没有STW的三色标记法</h2><p>我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系, 这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.</p>
-<p>如果三色标记法, 标记过程不使用STW将会发生什么事情?</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/5020944e-ff31-4bd4-8d31-89a4907c214a/image.png?time=1740540600&token=ce4434ee5cd821a52f8ca9bb4aa989321585b1eb20da8ab8efc875b4d7f94297&role=free" alt="image.png"></p>
-<hr>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/672b5c62-0747-438e-acea-7f45c9760723/image.png?time=1740540600&token=0de4ffbf2a1ec099ba85b01acbfaad7d58ea70577b9cf90b4e2ffb5029fe5694&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/03cf14b9-a12e-4a98-ba0a-35c1e550e431/image.png?time=1740540600&token=9518a8c875aedaf1e9b693f6af086e6b9ec6c083d2be7a8651ec7ac80bec2153&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/f2a15102-f02f-4cb4-a378-c26b4a953ba3/image.png?time=1740540600&token=18f772923bd5a06dd811ff208f02a580ace3968ec93dee40f0c1ab74cb349b3b&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/72d06c4e-b9b9-4fae-9c4e-46146f077cd9/image.png?time=1740540600&token=5418c5508b235bf7626fa0a9874a43da874dce70433b707a6e54b93f258fe8e4&role=free" alt="image.png"></p>
-<p>可以看出，有两个问题, 在三色标记法中,是不希望被发生的</p>
-<ul>
-<li><p><strong>条件1:</strong> 一个白色对象被黑色对象引用(白色被挂在黑色下)</p>
-</li>
-<li><p><strong>条件2:</strong> 灰色对象与它之间的可达关系的白色对象遭到破坏(灰色同时丢了该白色)</p>
-</li>
-</ul>
-<p>当以上两个条件同时满足时, 就会出现对象丢失现象!</p>
-<p>当然, 如果上述中的白色对象3, 如果他还有很多下游对象的话, 也会一并都清理掉.</p>
-<p>为了防止这种现象的发生，最简单的方式就是STW，直接禁止掉其他用户程序对对象引用关系的干扰，但是STW的过程有明显的资源浪费，对所有的用户程序都有很大影响，如何能在保证对象不丢失的情况下合理的尽可能的提高GC效率，减少STW时间呢？</p>
-<p>答案就是, 那么我们只要使用一个机制,来破坏上面的两个条件就可以了.</p>
-<p>五、屏障机制</p>
-<p>我们让GC回收器,满足下面两种情况之一时,可保对象不丢失. 所以引出两种方式.</p>
-<h4 id="“强-弱”-三色不变式"><a href="#“强-弱”-三色不变式" class="headerlink" title="“强-弱” 三色不变式"></a>“强-弱” 三色不变式</h4><p>01</p>
-<ul>
-<li><strong>强三色不变式</strong></li>
-</ul>
-<p>不存在黑色对象引用到白色对象的指针。</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/b3c09a81-13c3-4dea-8fa9-72ff9516a23e/image.png?time=1740540600&token=59aee5fcf493fa2bdddfb0d447aaa1183b9e63ca4eb6b8b0718d9dd107dd0c45&role=free" alt="image.png"></p>
-<ul>
-<li><strong>弱三色不变式</strong></li>
-</ul>
-<p>所有被黑色对象引用的白色对象都处于灰色保护状态.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/0e764162-f946-4105-a6ed-2f760e805d65/image.png?time=1740540600&token=2bc4b8c5f440f40bf8467e27af5a3dcafa48889d47f84573f87a56bde8ba0abc&role=free" alt="image.png"></p>
-<p>为了遵循上述的两个方式,Golang团队初步得到了如下具体的两种屏障方式“插入屏障”, “删除屏障”.</p>
-<h4 id="插入屏障"><a href="#插入屏障" class="headerlink" title="插入屏障"></a>插入屏障</h4><p>02</p>
-<p><code>具体操作</code>: 在A对象引用B对象的时候，B对象被标记为灰色。(将B挂在A下游，B必须被标记为灰色)</p>
-<p><code>满足</code>: 强三色不变式. (不存在黑色对象引用白色对象的情况了， 因为白色会强制变成灰色)</p>
-<p>伪码如下:</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;     //1     标记灰色(``新下游对象**ptr**``)          //2    `` 当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
-<p>场景：</p>
-<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">A.添加下游对象(nil, B)   //A 之前没有下游， 新添加一个下游对象B， B被标记为灰色</span><br><span class="line">A.添加下游对象(C, B)     //A 将下游对象C 更换为B，  B被标记为灰色</span><br></pre></td></tr></table></figure>
-
-
-<p>这段伪码逻辑就是写屏障,. 我们知道,黑色对象的内存槽有两种位置, <code>栈</code>和<code>堆</code>. 栈空间的特点是容量小,但是要求相应速度快,因为函数调用弹出频繁使用, 所以“插入屏障”机制,在栈空间的对象操作中不使用. 而仅仅使用在堆空间对象的操作中.</p>
-<p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/e6f4d697-8809-4d15-b0d1-de4b1237b93f/image.png?time=1740540600&token=22ca2185a69aca061a1d6d3ea497cf0b39a96cd125f549769d675d3c6b4493bc&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/515d6479-386e-4e81-a500-c35bfd588dfd/image.png?time=1740540600&token=3ea6ed9607acd637aa60b7becf59b3f02046250874bdc9d4cbfd8e1379fd99a8&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/6a437e45-8e14-480d-b7f4-bb67af1e50fb/image.png?time=1740540600&token=bf1e02f1dc89acae06efecb9cb424585d7c4cbbea284d40bb5f898010ebcefad&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/39f8b94f-8be1-4f73-954c-2d7155963a45/image.png?time=1740540600&token=c6671e39c2e773f2a916cef083a9855c2f0a286fc52fa934c1bc6f749dcd2e0f&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/91964183-070c-4346-a50c-8e3a1cdc4358/image.png?time=1740540600&token=7fc185883afede4226b79f66df504ce131157f3a60a84a291183a12acb2296b1&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/55477941-6d67-4f03-8293-3e2e9ef6c2c1/image.png?time=1740540600&token=0d10321bf4c993c49ada813f5d7534a5f4acd4af3a5027cf68c9a7614c491846&role=free" alt="image.png"></p>
-<p>但是如果栈不添加,当全部三色标记扫描之后,栈上有可能依然存在白色对象被引用的情况(如上图的对象9). 所以要对栈重新进行三色标记扫描, 但这次为了对象不丢失, 要对本次标记扫描启动STW暂停. 直到栈空间的三色标记结束.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/60586705-27c8-4778-b21b-0ae4216ab02b/image.png?time=1740540600&token=6c3bcb954557a7a70e0f74b3321a93b18b632ae58e3279de3660cc1d79813107&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/677d4e9f-32c0-43ef-affb-dee59c96d9fa/image.png?time=1740540600&token=81881095546a2f260ba4a94ac39aeaf3990066919f1269c3cd69c5b6fa0f9505&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/f9b7966f-2997-4b19-903a-fa29f7c8e3d8/image.png?time=1740540600&token=ce7323709600bf490185b7bc46b7f9ce5f48d5db25e1cc1b58425e27396b0b5a&role=free" alt="image.png"></p>
-<p>最后将栈和堆空间 扫描剩余的全部 白色节点清除. 这次STW大约的时间在10~100ms间.</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/e80cc589-874d-409f-b800-cd0a6d6dd6db/image.png?time=1740540600&token=23cd011a99d617f27498fe877a5c5dd0f12a7b6135f36a8a80eb20903ed6f213&role=free" alt="image.png"></p>
-<hr>
-<h4 id="删除屏障"><a href="#删除屏障" class="headerlink" title="删除屏障"></a>删除屏障</h4><p>03</p>
-<p><code>具体操作</code>: 被删除的对象，如果自身为灰色或者白色，那么被标记为灰色。</p>
-<p><code>满足</code>: 弱三色不变式. (保护灰色对象到白色对象的路径不会断)</p>
-<p>伪代码：</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``，</code> <code>新下游对象**ptr**``) &#123;     //1     if (``当前下游对象**slot**``是灰色 ||</code> <code>当前下游对象**slot**``是白色) &#123;             标记灰色(``当前下游对象**slo**``**t**``) //slot为被删除对象， 标记为灰色     &#125;          //2</code>  <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
-<p>场景：</p>
-<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">A.添加下游对象(B, nil)   //A对象，删除B对象的引用。B被A删除，被标记为灰(如果B之前为白)</span><br><span class="line">A.添加下游对象(B, C)     //A对象，更换下游B变成C。B被A删除，被标记为灰(如果B之前为白)</span><br></pre></td></tr></table></figure>
-
-
-<p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/046d0ff8-2af9-4cdd-a4fc-a3fe12d7fa7d/image.png?time=1740540600&token=365a6c390d144974c57b61a614c7b9654262e7a90d1b3fa9fc78768f8006596b&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/bb509edd-1db1-4f37-bad9-e5cbcaf624ba/image.png?time=1740540600&token=1e2d1d73b389c4739e93a1e6a5b086109e47c143c3a5cd9c9102fd911ecca4b0&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/d71af4a0-e3db-4903-981f-1d1ee776d079/image.png?time=1740540600&token=262dddc5aa6dcbce70bb61dd36eef1f34aaef5ed005660e604295855402a8a86&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/395afdaa-3ce6-4b1b-bdda-b49f99eaadd7/image.png?time=1740540600&token=54327c93e4a93a1d972ecce11b6687ca811f18345f9b9f38b52353090809e123&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/bde52ac3-b81e-40d0-bc58-b9c29d255aec/image.png?time=1740540600&token=0a47c23122dee556b58c57e08376df640e2da18015efe16d55669e2c070ee1b9&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/65da2a0e-37a5-43c5-9e4c-490de9327d4d/image.png?time=1740540600&token=5143c152f61f4141b917e7aca329d6bc944d5f541cd568aef9aaacb9c3d4d656&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/8298dac8-528a-48a4-9579-cca4de7907bb/image.png?time=1740540600&token=f70ab2fc19afa31702069e3b3d22909b0ff54f63392e43ee24649aa97c9397f4&role=free" alt="image.png"></p>
-<p>这种方式的回收精度低，一个对象即使被删除了最后一个指向它的指针也依旧可以活过这一轮，在下一轮GC中被清理掉。</p>
-<p>六、Go V1.8的混合写屏障(hybrid write barrier)机制</p>
-<p>插入写屏障和删除写屏障的短板：</p>
-<ul>
-<li><strong>插入写屏障</strong>：结束时需要STW来重新扫描栈，标记栈上引用的白色对象的</li>
-</ul>
-<p>存活；</p>
-<ul>
-<li><strong>删除写屏障</strong>：回收精度低，GC开始时STW扫描堆栈来记录初始快照，这个</li>
-</ul>
-<p>过程会保护开始时刻的所有存活对象。</p>
-<p>Go V1.8版本引入了混合写屏障机制（hybrid write barrier）,避免了对栈</p>
-<p>re-scan的过程，极大的减少了STW的时间。结合了两者的优点。</p>
-<hr>
-<h4 id="混合写屏障规则"><a href="#混合写屏障规则" class="headerlink" title="混合写屏障规则"></a>混合写屏障规则</h4><p>01</p>
-<p><code>具体操作</code>:</p>
-<p>1、GC开始将栈上的对象全部扫描并标记为黑色(之后不再进行第二次重复扫描，无需STW)，</p>
-<p>2、GC期间，任何在栈上创建的新对象，均为黑色。</p>
-<p>3、被删除的对象标记为灰色。</p>
-<p>4、被添加的对象标记为灰色。</p>
-<p><code>满足</code>: 变形的弱三色不变式.</p>
-<p>伪代码：</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;         //1         标记灰色(``当前下游对象**slot**``) //只要当前下游对象被移走，就标记灰色                  //2         标记灰色(``新下游对象**ptr**``)                      //3</code>      <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
-<p>这里我们注意， 屏障技术是不在栈上应用的，因为要保证栈的运行效率。</p>
-<h4 id="混合写屏障的具体场景分析"><a href="#混合写屏障的具体场景分析" class="headerlink" title="混合写屏障的具体场景分析"></a>混合写屏障的具体场景分析</h4><p>02</p>
-<pre><code>    接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。
-</code></pre>
-<p>注意混合写屏障是Gc的一种屏障机制，所以只是当程序执行GC的时候，才会触发这种机制。</p>
-<h4 id="GC开始：扫描栈区，将可达对象全部标记为黑"><a href="#GC开始：扫描栈区，将可达对象全部标记为黑" class="headerlink" title="GC开始：扫描栈区，将可达对象全部标记为黑"></a>GC开始：扫描栈区，将可达对象全部标记为黑</h4><p><img data-src="https://tc-cdn.flowus.cn/oss/91fabae1-af41-457a-a3ad-f33c4eaf87ef/image.png?time=1740540600&token=b8aa100289aea76b37c0db3a4f508fe07452c8a902566f75b2b8ac2656953ae3&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/402575e1-72a1-40e4-b456-f6920c22f8d6/image.png?time=1740540600&token=c082f352f4b1401e517931f76b34a4ab4214a792e092b3521a680476ba8c6f73&role=free" alt="image.png"></p>
-<h4 id="场景一：对象被一个堆对象删除引用，成为栈对象的下游"><a href="#场景一：对象被一个堆对象删除引用，成为栈对象的下游" class="headerlink" title="场景一：对象被一个堆对象删除引用，成为栈对象的下游"></a>场景一：对象被一个堆对象删除引用，成为栈对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">//前提：堆对象4-&gt;对象7 = 对象7；//对象7 被 对象4引用</span><br><span class="line">栈对象1-&gt;对象7 = 堆对象7；//将堆对象7 挂在 栈对象1 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
-
-
-<p><img data-src="https://tc-cdn.flowus.cn/oss/d619cd75-55cb-48ac-a11e-0a8492675a0f/image.png?time=1740540600&token=facf73a3577444eec2aa27aee52356b393046806cf3dd54308570f2bc4355d9d&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/8d2955ad-2f58-4052-8758-8677f3c63cd9/image.png?time=1740540600&token=3c33afef57dee5889b335ddf2b228e28d342d9cf0be630dcf95732e70fa9d447&role=free" alt="image.png"></p>
-<h4 id="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"><a href="#场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游" class="headerlink" title="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"></a>场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游</h4><p>new 栈对象9；</p>
-<p>对象9-&gt;对象3 &#x3D; 对象3；      &#x2F;&#x2F;将栈对象3 挂在 栈对象9 下游</p>
-<p>对象2-&gt;对象3 &#x3D; null；      &#x2F;&#x2F;对象2 删除引用 对象3</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/1da952ba-65bb-4602-a1f5-877120192d8e/image.png?time=1740540600&token=491ef63302f9a3852063be9deea6e0812aa5cbb23076aae9981e3cc7140dbef7&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/0eab000f-df37-40c0-bb4c-8f5cc4e09ec8/image.png?time=1740540600&token=4bddfa00e100176f27ccee2316d7dc649a0d594bec7ca345e97efd914625e43b&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/46225ed4-617b-4394-b2b8-ca66ddd844a0/image.png?time=1740540600&token=56d65338da39f9bfe102f32be9fe812f9a8c73d35c83436ef05f39c4517688d7&role=free" alt="image.png"></p>
-<h4 id="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"><a href="#场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"></a>场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">堆对象10-&gt;对象7 = 堆对象7；//将堆对象7 挂在 堆对象10 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
-
-
-<p><img data-src="https://tc-cdn.flowus.cn/oss/d580dee2-ecb8-4923-acc7-d8970fd0db12/image.png?time=1740540600&token=a96f2b2525c249b576ceaa1bdb2083ccac4a16ca7d4882079d1c226636fc4d88&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/6999b22a-d7af-483b-b5f1-36993f20d9b5/image.png?time=1740540600&token=1c277f4d0db255e39f975c5d24e61d738c2db9074baec92a699e3482d4f0b5bf&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/329cfe15-a808-47fc-9b5e-0a35c89c7834/image.png?time=1740540600&token=3de4dc3a57b0f1e7f3e3229160f6c3ba65f37f7e06c28eaffcf76bcf0ffb4674&role=free" alt="image.png"></p>
-<h4 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h4><p>栈对象1-&gt;对象2 &#x3D; null；      &#x2F;&#x2F;对象1 删除引用 对象2</p>
-<p>堆对象4-&gt;对象2 &#x3D; 栈对象2；    &#x2F;&#x2F;对象4 添加 下游 栈对象2</p>
-<p>堆对象4-&gt;对象7 &#x3D; null;       &#x2F;&#x2F;对象4 删除引用 对象7null；&#x2F;&#x2F;对象4 删除引用 对象7</p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/a73350f8-0daa-4ca5-9c47-f8470dc23e4f/image.png?time=1740540600&token=ffa73b2c6322209e0952f92e04f902eceee6f5dda60a899fcaec9d58f57764b3&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/3272830b-004c-42f9-93c5-41c8fc91780e/image.png?time=1740540600&token=a56328d90be3136bbc6314f62a70173dfff90487abdb4f75b36abb41738c0149&role=free" alt="image.png"></p>
-<p><img data-src="https://tc-cdn.flowus.cn/oss/e978f905-c284-4b7d-bff2-12c6fdd198e1/image.png?time=1740540600&token=f07f4fa37d9f277c86ba98b4c79b4dd5fed13e5c9f52bed15989ab7efbddc164&role=free" alt="image.png"></p>
-<pre><code>    Golang中的混合写屏障满足`弱三色不变式`，结合了删除写屏障和插入写屏障的优点，只需要在开始时并发扫描各个goroutine的栈，使其变黑并一直保持，这个过程不需要STW，而标记结束后，因为栈在扫描后始终是黑色的，也无需再进行re-scan操作了，减少了STW的时间。
-</code></pre>
-<hr>
-<p>七、总结</p>
-<pre><code>    以上便是Golang的GC全部的标记-清除逻辑及场景演示全过程。
-</code></pre>
-<p>GoV1.3- 普通标记清除法，整体过程需要启动STW，效率极低。</p>
-<p>GoV1.5- 三色标记法， 堆空间启动写屏障，栈空间不启动，全部扫描之后，需要重新扫描一次栈(需要STW)，效率普通</p>
-<p>GoV1.8-三色标记法，混合写屏障机制， 栈空间不启动，堆空间启动。整个过程几乎不需要STW，效率较高。</p>
-<p>参考文献:</p>
-<p><a href="https://www.cnblogs.com/wangyiyang/p/12191591.html">https://www.cnblogs.com/wangyiyang/p/12191591.html</a><br><a href="https://www.jianshu.com/p/eb6b3aff9ca5">https://www.jianshu.com/p/eb6b3aff9ca5</a><br><a href="https://zhuanlan.zhihu.com/p/74853110">https://zhuanlan.zhihu.com/p/74853110</a></p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>底层原理</tag>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Gin源码解析</title>
     <url>/2021/02/03/technology/golang/gin_code_analyse/</url>
     <content><![CDATA[<p>gin框架使用的定制版本的http router。<br>http router的原理是大量使用公共前缀的树结构，</p>
@@ -261,6 +52,259 @@
         <tag>面试题</tag>
         <tag>Golang</tag>
         <tag>Gin框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go-GC垃圾回收</title>
+    <url>/2021/02/03/technology/golang/gc_recycle/</url>
+    <content><![CDATA[<h2 id="Go垃圾回收"><a href="#Go垃圾回收" class="headerlink" title="Go垃圾回收"></a>Go垃圾回收</h2><ul>
+<li><p>G0 V1.3之前的标记-清除(mark and sweep)算法</p>
+</li>
+<li><p>Go V1.3之前的标记-清扫(mark and sweep)的缺点</p>
+</li>
+<li><p>Go V1.5的三色并发标记法</p>
+</li>
+<li><p>Go V1.5的三色标记为什么需要STW</p>
+</li>
+<li><p>Go V1.5的三色标记为什么需要屏障机制(“强-弱” 三色不变式、插入屏障、删除屏障 )</p>
+</li>
+<li><p>Go V1.8混合写屏障机制</p>
+</li>
+<li><p>Go V1.8混合写屏障机制的全场景分析</p>
+</li>
+</ul>
+<h2 id="Go-V1-3-之前的标记-清除-mark-and-sweep-算法"><a href="#Go-V1-3-之前的标记-清除-mark-and-sweep-算法" class="headerlink" title="Go V1.3 之前的标记-清除(mark and sweep)算法"></a>Go V1.3 之前的标记-清除(mark and sweep)算法</h2><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
+<li><p>标记(Mark phase)</p>
+</li>
+<li><p>清除(Sweep phase)</p>
+</li>
+</ul>
+<p><strong>第一步</strong>，暂停程序业务逻辑, 找出不可达的对象，然后做上标记。</p>
+<p>操作非常简单，但是有一点需要额外注意：mark and sweep算法在执行的时候，需要程序暂停！即 <code>STW(stop the world)</code>。也就是说，这段时间程序会卡在哪儿。</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image.png" class="" title="image.png">
+
+
+<p><strong>第二步</strong>, 开始标记，程序找出它所有可达的对象，并做上标记。如下图所示：</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_1.png" class="" title="image.png">
+
+<p><strong>第三步</strong>, 标记完了之后，然后开始清除未标记的对象. 结果如下.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_2.png" class="" title="image.png">
+
+<p><strong>第四步</strong>, 停止暂停，让程序继续跑。然后循环重复这个过程，直到process程序生命周期结束。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>STW，stop the world；让程序暂停，程序出现卡顿 (重要问题)。</li>
+<li>标记需要扫描整个heap</li>
+<li>清除数据会产生heap碎片</li>
+</ul>
+<p>所以Go V1.3版本之前就是以上来实施的, 流程是</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_3.png" class="" title="image.png">
+<p>Go V1.3 做了简单的优化,将STW提前, 减少STW暂停的时间范围.如下所示</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_4.png" class="" title="image.png">
+<p><strong>这里面最重要的问题就是：mark-and-sweep 算法会暂停整个程序。</strong><br>Go是如何面对并这个问题的呢？接下来G V1.5版本 就用三色并发标记法来优化这个问题.</p>
+<h2 id="Go-V1-5的三色并发标记法"><a href="#Go-V1-5的三色并发标记法" class="headerlink" title="Go V1.5的三色并发标记法"></a>Go V1.5的三色并发标记法</h2><p>三色标记法 实际上就是通过三个阶段的标记来确定清楚的对象都有哪些. 我们来看一下具体的过程.</p>
+<p><strong>第一步</strong>, 就是只要是新创建的对象,默认的颜色都是标记为“白色”.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_5.png" class="" title="image.png">
+<p>这里面需要注意的是, 所谓“程序”, 则是一些对象的跟节点集合.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_6.png" class="" title="image.png">
+<p>所以上图,可以转换如下的方式来表示.</p>
+<p><strong>第二步</strong>, 每次GC回收开始, 然后从根节点开始遍历所有对象，把遍历到的对象从白色集合放入“灰色”集合。</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_7.png" class="" title="image.png">
+<p><strong>第三步</strong>, 遍历灰色集合，将灰色对象引用的对象从白色集合放入灰色集合，之后将此灰色对象放入黑色集合</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_8.png" class="" title="image.png">
+<p><strong>第四步</strong>, 重复第三步, 直到灰色中无任何对象.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_9.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_10.png" class="" title="image.png">
+<p><strong>第五步</strong>，回收所有的白色标记表的对象. 也就是回收垃圾.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_11.png" class="" title="image.png">
+
+<p>以上便是<code>三色并发标记法</code>, 不难看出,我们上面已经清楚的体现<code>三色</code>的特性</p>
+<h2 id="没有STW的三色标记法"><a href="#没有STW的三色标记法" class="headerlink" title="没有STW的三色标记法"></a>没有STW的三色标记法</h2><p>我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系, 这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.</p>
+<p>如果三色标记法, 标记过程不使用STW将会发生什么事情?</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_12.png" class="" title="image.png">
+<hr>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_13.png" class="" title="image.png">
+
+
+
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_14.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_15.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_16.png" class="" title="image.png">
+<p>可以看出，有两个问题, 在三色标记法中,是不希望被发生的</p>
+<ul>
+<li><p><strong>条件1:</strong> 一个白色对象被黑色对象引用(白色被挂在黑色下)</p>
+</li>
+<li><p><strong>条件2:</strong> 灰色对象与它之间的可达关系的白色对象遭到破坏(灰色同时丢了该白色)</p>
+</li>
+</ul>
+<p>当以上两个条件同时满足时, 就会出现对象丢失现象!</p>
+<p>当然, 如果上述中的白色对象3, 如果他还有很多下游对象的话, 也会一并都清理掉.</p>
+<p>为了防止这种现象的发生，最简单的方式就是STW，直接禁止掉其他用户程序对对象引用关系的干扰，但是STW的过程有明显的资源浪费，对所有的用户程序都有很大影响，如何能在保证对象不丢失的情况下合理的尽可能的提高GC效率，减少STW时间呢？</p>
+<p>答案就是, 那么我们只要使用一个机制,来破坏上面的两个条件就可以了.</p>
+<p>五、屏障机制</p>
+<p>我们让GC回收器,满足下面两种情况之一时,可保对象不丢失. 所以引出两种方式.</p>
+<h4 id="“强-弱”-三色不变式"><a href="#“强-弱”-三色不变式" class="headerlink" title="“强-弱” 三色不变式"></a>“强-弱” 三色不变式</h4><p>01</p>
+<ul>
+<li><strong>强三色不变式</strong></li>
+</ul>
+<p>不存在黑色对象引用到白色对象的指针。</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_17.png" class="" title="image.png">
+<ul>
+<li><strong>弱三色不变式</strong></li>
+</ul>
+<p>所有被黑色对象引用的白色对象都处于灰色保护状态.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_18.png" class="" title="image.png">
+
+<p>为了遵循上述的两个方式,Golang团队初步得到了如下具体的两种屏障方式“插入屏障”, “删除屏障”.</p>
+<h4 id="插入屏障"><a href="#插入屏障" class="headerlink" title="插入屏障"></a>插入屏障</h4><p>02</p>
+<p><code>具体操作</code>: 在A对象引用B对象的时候，B对象被标记为灰色。(将B挂在A下游，B必须被标记为灰色)</p>
+<p><code>满足</code>: 强三色不变式. (不存在黑色对象引用白色对象的情况了， 因为白色会强制变成灰色)</p>
+<p>伪码如下:</p>
+<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;     //1     标记灰色(``新下游对象**ptr**``)          //2    `` 当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p>场景：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">A.添加下游对象(nil, B)   //A 之前没有下游， 新添加一个下游对象B， B被标记为灰色</span><br><span class="line">A.添加下游对象(C, B)     //A 将下游对象C 更换为B，  B被标记为灰色</span><br></pre></td></tr></table></figure>
+
+
+<p>这段伪码逻辑就是写屏障,. 我们知道,黑色对象的内存槽有两种位置, <code>栈</code>和<code>堆</code>. 栈空间的特点是容量小,但是要求相应速度快,因为函数调用弹出频繁使用, 所以“插入屏障”机制,在栈空间的对象操作中不使用. 而仅仅使用在堆空间对象的操作中.</p>
+<p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_19.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_20.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_21.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_22.png" class="" title="image.png">
+
+
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_23.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_24.png" class="" title="image.png">
+
+<p>但是如果栈不添加,当全部三色标记扫描之后,栈上有可能依然存在白色对象被引用的情况(如上图的对象9). 所以要对栈重新进行三色标记扫描, 但这次为了对象不丢失, 要对本次标记扫描启动STW暂停. 直到栈空间的三色标记结束.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_25.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_26.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_27.png" class="" title="image.png">
+
+<p>最后将栈和堆空间 扫描剩余的全部 白色节点清除. 这次STW大约的时间在10~100ms间.</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_28.png" class="" title="image.png">
+
+<hr>
+<h4 id="删除屏障"><a href="#删除屏障" class="headerlink" title="删除屏障"></a>删除屏障</h4><p>03</p>
+<p><code>具体操作</code>: 被删除的对象，如果自身为灰色或者白色，那么被标记为灰色。</p>
+<p><code>满足</code>: 弱三色不变式. (保护灰色对象到白色对象的路径不会断)</p>
+<p>伪代码：</p>
+<p><code>添加下游对象``(``当前下游对象**slot**``，</code> <code>新下游对象**ptr**``) &#123;     //1     if (``当前下游对象**slot**``是灰色 ||</code> <code>当前下游对象**slot**``是白色) &#123;             标记灰色(``当前下游对象**slo**``**t**``) //slot为被删除对象， 标记为灰色     &#125;          //2</code>  <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p>场景：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">A.添加下游对象(B, nil)   //A对象，删除B对象的引用。B被A删除，被标记为灰(如果B之前为白)</span><br><span class="line">A.添加下游对象(B, C)     //A对象，更换下游B变成C。B被A删除，被标记为灰(如果B之前为白)</span><br></pre></td></tr></table></figure>
+
+
+<p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_29.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_30.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_31.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_32.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_33.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_34.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_35.png" class="" title="image.png">
+
+
+
+
+
+<p>这种方式的回收精度低，一个对象即使被删除了最后一个指向它的指针也依旧可以活过这一轮，在下一轮GC中被清理掉。</p>
+<p>六、Go V1.8的混合写屏障(hybrid write barrier)机制</p>
+<p>插入写屏障和删除写屏障的短板：</p>
+<ul>
+<li><strong>插入写屏障</strong>：结束时需要STW来重新扫描栈，标记栈上引用的白色对象的</li>
+</ul>
+<p>存活；</p>
+<ul>
+<li><strong>删除写屏障</strong>：回收精度低，GC开始时STW扫描堆栈来记录初始快照，这个</li>
+</ul>
+<p>过程会保护开始时刻的所有存活对象。</p>
+<p>Go V1.8版本引入了混合写屏障机制（hybrid write barrier）,避免了对栈</p>
+<p>re-scan的过程，极大的减少了STW的时间。结合了两者的优点。</p>
+<hr>
+<h4 id="混合写屏障规则"><a href="#混合写屏障规则" class="headerlink" title="混合写屏障规则"></a>混合写屏障规则</h4><p>01</p>
+<p><code>具体操作</code>:</p>
+<p>1、GC开始将栈上的对象全部扫描并标记为黑色(之后不再进行第二次重复扫描，无需STW)，</p>
+<p>2、GC期间，任何在栈上创建的新对象，均为黑色。</p>
+<p>3、被删除的对象标记为灰色。</p>
+<p>4、被添加的对象标记为灰色。</p>
+<p><code>满足</code>: 变形的弱三色不变式.</p>
+<p>伪代码：</p>
+<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;         //1         标记灰色(``当前下游对象**slot**``) //只要当前下游对象被移走，就标记灰色                  //2         标记灰色(``新下游对象**ptr**``)                      //3</code>      <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p>这里我们注意， 屏障技术是不在栈上应用的，因为要保证栈的运行效率。</p>
+<h4 id="混合写屏障的具体场景分析"><a href="#混合写屏障的具体场景分析" class="headerlink" title="混合写屏障的具体场景分析"></a>混合写屏障的具体场景分析</h4><p>02</p>
+<pre><code>    接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。
+</code></pre>
+<p>注意混合写屏障是Gc的一种屏障机制，所以只是当程序执行GC的时候，才会触发这种机制。</p>
+<h4 id="GC开始：扫描栈区，将可达对象全部标记为黑"><a href="#GC开始：扫描栈区，将可达对象全部标记为黑" class="headerlink" title="GC开始：扫描栈区，将可达对象全部标记为黑"></a>GC开始：扫描栈区，将可达对象全部标记为黑</h4><img data-src="/2021/02/03/technology/golang/gc_recycle/image_36.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_37.png" class="" title="image.png">
+
+
+
+<h4 id="场景一：对象被一个堆对象删除引用，成为栈对象的下游"><a href="#场景一：对象被一个堆对象删除引用，成为栈对象的下游" class="headerlink" title="场景一：对象被一个堆对象删除引用，成为栈对象的下游"></a>场景一：对象被一个堆对象删除引用，成为栈对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">//前提：堆对象4-&gt;对象7 = 对象7；//对象7 被 对象4引用</span><br><span class="line">栈对象1-&gt;对象7 = 堆对象7；//将堆对象7 挂在 栈对象1 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
+
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_38.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_39.png" class="" title="image.png">
+
+
+
+
+
+<h4 id="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"><a href="#场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游" class="headerlink" title="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"></a>场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游</h4><p>new 栈对象9；</p>
+<p>对象9-&gt;对象3 &#x3D; 对象3；      &#x2F;&#x2F;将栈对象3 挂在 栈对象9 下游</p>
+<p>对象2-&gt;对象3 &#x3D; null；      &#x2F;&#x2F;对象2 删除引用 对象3</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_40.png" class="" title="image.png">
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_41.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_42.png" class="" title="image.png">
+
+
+<h4 id="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"><a href="#场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"></a>场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">堆对象10-&gt;对象7 = 堆对象7；//将堆对象7 挂在 堆对象10 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
+
+
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_43.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_44.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_45.png" class="" title="image.png">
+
+
+<h4 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h4><p>栈对象1-&gt;对象2 &#x3D; null；      &#x2F;&#x2F;对象1 删除引用 对象2</p>
+<p>堆对象4-&gt;对象2 &#x3D; 栈对象2；    &#x2F;&#x2F;对象4 添加 下游 栈对象2</p>
+<p>堆对象4-&gt;对象7 &#x3D; null;       &#x2F;&#x2F;对象4 删除引用 对象7null；&#x2F;&#x2F;对象4 删除引用 对象7</p>
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_46.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_47.png" class="" title="image.png">
+<img data-src="/2021/02/03/technology/golang/gc_recycle/image_48.png" class="" title="image.png">
+
+
+<pre><code>    Golang中的混合写屏障满足`弱三色不变式`，结合了删除写屏障和插入写屏障的优点，只需要在开始时并发扫描各个goroutine的栈，使其变黑并一直保持，这个过程不需要STW，而标记结束后，因为栈在扫描后始终是黑色的，也无需再进行re-scan操作了，减少了STW的时间。
+</code></pre>
+<hr>
+<p>七、总结</p>
+<pre><code>    以上便是Golang的GC全部的标记-清除逻辑及场景演示全过程。
+</code></pre>
+<p>GoV1.3- 普通标记清除法，整体过程需要启动STW，效率极低。</p>
+<p>GoV1.5- 三色标记法， 堆空间启动写屏障，栈空间不启动，全部扫描之后，需要重新扫描一次栈(需要STW)，效率普通</p>
+<p>GoV1.8-三色标记法，混合写屏障机制， 栈空间不启动，堆空间启动。整个过程几乎不需要STW，效率较高。</p>
+<p>参考文献:</p>
+<p><a href="https://www.cnblogs.com/wangyiyang/p/12191591.html">https://www.cnblogs.com/wangyiyang/p/12191591.html</a><br><a href="https://www.jianshu.com/p/eb6b3aff9ca5">https://www.jianshu.com/p/eb6b3aff9ca5</a><br><a href="https://zhuanlan.zhihu.com/p/74853110">https://zhuanlan.zhihu.com/p/74853110</a></p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -418,9 +462,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -568,9 +612,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -659,9 +703,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
@@ -784,9 +828,9 @@
         <category>Golang</category>
       </categories>
       <tags>
-        <tag>底层原理</tag>
         <tag>面试题</tag>
         <tag>Golang</tag>
+        <tag>底层原理</tag>
       </tags>
   </entry>
   <entry>
