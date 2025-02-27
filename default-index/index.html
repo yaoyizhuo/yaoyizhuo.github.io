@@ -1373,6 +1373,112 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/technology/golang/memory_to_its/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.jpeg">
+      <meta itemprop="name" content="zhyyao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhyyao">
+      <meta itemprop="description" content="record and sharing learning experiences">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zhyyao">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/03/technology/golang/memory_to_its/" class="post-title-link" itemprop="url">Go内存对齐</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-03 15:51:53" itemprop="dateCreated datePublished" datetime="2021-02-03T15:51:53+08:00">2021-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-26 14:20:44" itemprop="dateModified" datetime="2025-02-26T14:20:44+08:00">2025-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="为什么要内存对齐？"><a href="#为什么要内存对齐？" class="headerlink" title="为什么要内存对齐？"></a>为什么要内存对齐？</h2><ul>
+<li><p>平台（移植性）原因：不是所有的硬件平台都能够访问任意地址上的任意数据。例如：特定的硬件平台只允许在特定地址获取特定类型的数据，否则会导致异常情况</p>
+</li>
+<li><p>性能原因：若访问未对齐的内存，将会导致 CPU 进行两次内存访问，并且要花费额外的时钟周期来处理对齐及运算。而本身就对齐的内存仅需要一次访问就可以完成读取动作</p>
+</li>
+</ul>
+<h2 id="成员对齐"><a href="#成员对齐" class="headerlink" title="成员对齐"></a>成员对齐</h2><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    fmt.Printf(&quot;bool align: %d\n&quot;, unsafe.Alignof(bool(true)))</span><br><span class="line">    fmt.Printf(&quot;int32 align: %d\n&quot;, unsafe.Alignof(int32(0)))</span><br><span class="line">    fmt.Printf(&quot;int8 align: %d\n&quot;, unsafe.Alignof(int8(0)))</span><br><span class="line">    fmt.Printf(&quot;int64 align: %d\n&quot;, unsafe.Alignof(int64(0)))</span><br><span class="line">    fmt.Printf(&quot;byte align: %d\n&quot;, unsafe.Alignof(byte(0)))</span><br><span class="line">    fmt.Printf(&quot;string align: %d\n&quot;, unsafe.Alignof(&quot;EDDYCJY&quot;))</span><br><span class="line">    fmt.Printf(&quot;map align: %d\n&quot;, unsafe.Alignof(map[string]string&#123;&#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bool align: 1</span><br><span class="line">int32 align: 4</span><br><span class="line">int8 align: 1</span><br><span class="line">int64 align: 8</span><br><span class="line">byte align: 1</span><br><span class="line">string align: 8</span><br><span class="line">map align: 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>在 Go 中可以调用 <code>unsafe.Alignof</code> 来返回相应类型的对齐系数。通过观察输出结果，可得知基本都是 <code>2^n</code>，最大也不会超过 8。这是因为我手提（64 位）编译器默认对齐系数是 8，因此最大值不会超过这个数</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="整体对齐"><a href="#整体对齐" class="headerlink" title="整体对齐"></a>整体对齐</h2><p>在上小节中，提到了结构体中的成员变量要做字节对齐。那么想当然身为最终结果的结构体，也是需要做字节对齐的</p>
+<h2 id="对齐规则"><a href="#对齐规则" class="headerlink" title="对齐规则"></a>对齐规则</h2><ul>
+<li><p>结构体的成员变量，第一个成员变量的偏移量为 0。往后的每个成员变量的对齐值必须为<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）或<strong>当前成员变量类型的长度</strong>（<code>unsafe.Sizeof</code>），取<strong>最小值作为当前类型的对齐值</strong>。其偏移量必须为对齐值的整数倍</p>
+</li>
+<li><p>结构体本身，对齐值必须为<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）或<strong>结构体的所有成员变量类型中的最大长度</strong>，取<strong>最大数的最小整数倍</strong>作为对齐值</p>
+</li>
+</ul>
+<p>结合以上两点，可得知若<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）超过结构体内成员变量的类型最大长度时，默认对齐长度是没有任何意义的</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/technology/golang/memory_leak/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1474,112 +1580,6 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ticker := time.NewTicker(time.Second * <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        &lt;-ticker.C</span><br><span class="line">        cxt, cancel := context.WithCancel(context.Background())</span><br><span class="line">        ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(cxt context.Context)</span></span> &#123;</span><br><span class="line">            <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">                <span class="keyword">select</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> &lt;-cxt.Done():</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">case</span> ch &lt;- i:</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;(cxt)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> v := <span class="keyword">range</span> ch &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">50</span> &#123;</span><br><span class="line">                cancel()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/technology/golang/memory_to_its/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.jpeg">
-      <meta itemprop="name" content="zhyyao">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhyyao">
-      <meta itemprop="description" content="record and sharing learning experiences">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | zhyyao">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/03/technology/golang/memory_to_its/" class="post-title-link" itemprop="url">Go内存对齐</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-02-03 15:51:53" itemprop="dateCreated datePublished" datetime="2021-02-03T15:51:53+08:00">2021-02-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-26 14:20:44" itemprop="dateModified" datetime="2025-02-26T14:20:44+08:00">2025-02-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="为什么要内存对齐？"><a href="#为什么要内存对齐？" class="headerlink" title="为什么要内存对齐？"></a>为什么要内存对齐？</h2><ul>
-<li><p>平台（移植性）原因：不是所有的硬件平台都能够访问任意地址上的任意数据。例如：特定的硬件平台只允许在特定地址获取特定类型的数据，否则会导致异常情况</p>
-</li>
-<li><p>性能原因：若访问未对齐的内存，将会导致 CPU 进行两次内存访问，并且要花费额外的时钟周期来处理对齐及运算。而本身就对齐的内存仅需要一次访问就可以完成读取动作</p>
-</li>
-</ul>
-<h2 id="成员对齐"><a href="#成员对齐" class="headerlink" title="成员对齐"></a>成员对齐</h2><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    fmt.Printf(&quot;bool align: %d\n&quot;, unsafe.Alignof(bool(true)))</span><br><span class="line">    fmt.Printf(&quot;int32 align: %d\n&quot;, unsafe.Alignof(int32(0)))</span><br><span class="line">    fmt.Printf(&quot;int8 align: %d\n&quot;, unsafe.Alignof(int8(0)))</span><br><span class="line">    fmt.Printf(&quot;int64 align: %d\n&quot;, unsafe.Alignof(int64(0)))</span><br><span class="line">    fmt.Printf(&quot;byte align: %d\n&quot;, unsafe.Alignof(byte(0)))</span><br><span class="line">    fmt.Printf(&quot;string align: %d\n&quot;, unsafe.Alignof(&quot;EDDYCJY&quot;))</span><br><span class="line">    fmt.Printf(&quot;map align: %d\n&quot;, unsafe.Alignof(map[string]string&#123;&#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>输出结果：</p>
-<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bool align: 1</span><br><span class="line">int32 align: 4</span><br><span class="line">int8 align: 1</span><br><span class="line">int64 align: 8</span><br><span class="line">byte align: 1</span><br><span class="line">string align: 8</span><br><span class="line">map align: 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>在 Go 中可以调用 <code>unsafe.Alignof</code> 来返回相应类型的对齐系数。通过观察输出结果，可得知基本都是 <code>2^n</code>，最大也不会超过 8。这是因为我手提（64 位）编译器默认对齐系数是 8，因此最大值不会超过这个数</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="整体对齐"><a href="#整体对齐" class="headerlink" title="整体对齐"></a>整体对齐</h2><p>在上小节中，提到了结构体中的成员变量要做字节对齐。那么想当然身为最终结果的结构体，也是需要做字节对齐的</p>
-<h2 id="对齐规则"><a href="#对齐规则" class="headerlink" title="对齐规则"></a>对齐规则</h2><ul>
-<li><p>结构体的成员变量，第一个成员变量的偏移量为 0。往后的每个成员变量的对齐值必须为<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）或<strong>当前成员变量类型的长度</strong>（<code>unsafe.Sizeof</code>），取<strong>最小值作为当前类型的对齐值</strong>。其偏移量必须为对齐值的整数倍</p>
-</li>
-<li><p>结构体本身，对齐值必须为<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）或<strong>结构体的所有成员变量类型中的最大长度</strong>，取<strong>最大数的最小整数倍</strong>作为对齐值</p>
-</li>
-</ul>
-<p>结合以上两点，可得知若<strong>编译器默认对齐长度</strong>（<code>#pragma pack(n)</code>）超过结构体内成员变量的类型最大长度时，默认对齐长度是没有任何意义的</p>
 
       
     </div>
