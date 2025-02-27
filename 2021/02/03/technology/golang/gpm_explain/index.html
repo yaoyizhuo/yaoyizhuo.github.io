@@ -317,13 +317,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/03/technology/golang/goroutine_method/" rel="prev" title="goroutine通信方式">
-                  <i class="fa fa-angle-left"></i> goroutine通信方式
+                <a href="/2021/02/03/technology/golang/memory_escape/" rel="prev" title="Go内存逃逸分析">
+                  <i class="fa fa-angle-left"></i> Go内存逃逸分析
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/03/technology/golang/go_reflect/" rel="next" title="Go语言反射reflect">
-                  Go语言反射reflect <i class="fa fa-angle-right"></i>
+                <a href="/2021/02/03/technology/golang/goroutine_method/" rel="next" title="goroutine通信方式">
+                  goroutine通信方式 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -367,6 +367,7 @@
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -374,6 +375,24 @@
 
 
   
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+var options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
