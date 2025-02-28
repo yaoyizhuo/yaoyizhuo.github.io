@@ -73,7 +73,7 @@
 <li><p>Go V1.8混合写屏障机制的全场景分析</p>
 </li>
 </ul>
-<h2 id="Go-V1-3-之前的标记-清除-mark-and-sweep-算法"><a href="#Go-V1-3-之前的标记-清除-mark-and-sweep-算法" class="headerlink" title="Go V1.3 之前的标记-清除(mark and sweep)算法"></a>Go V1.3 之前的标记-清除(mark and sweep)算法</h2><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ul>
+<h2 id="Go-V1-3-标记-清除算法"><a href="#Go-V1-3-标记-清除算法" class="headerlink" title="Go V1.3 标记-清除算法"></a>Go V1.3 标记-清除算法</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
 <li><p>标记(Mark phase)</p>
 </li>
 <li><p>清除(Sweep phase)</p>
@@ -91,7 +91,7 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_2.png" class="" title="image.png">
 
 <p><strong>第四步</strong>, 停止暂停，让程序继续跑。然后循环重复这个过程，直到process程序生命周期结束。</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
 <li>STW，stop the world；让程序暂停，程序出现卡顿 (重要问题)。</li>
 <li>标记需要扫描整个heap</li>
 <li>清除数据会产生heap碎片</li>
@@ -143,7 +143,7 @@
 <p>答案就是, 那么我们只要使用一个机制,来破坏上面的两个条件就可以了.</p>
 <p>五、屏障机制</p>
 <p>我们让GC回收器,满足下面两种情况之一时,可保对象不丢失. 所以引出两种方式.</p>
-<h4 id="“强-弱”-三色不变式"><a href="#“强-弱”-三色不变式" class="headerlink" title="“强-弱” 三色不变式"></a>“强-弱” 三色不变式</h4><p>01</p>
+<h3 id="“强-弱”-三色不变式"><a href="#“强-弱”-三色不变式" class="headerlink" title="“强-弱” 三色不变式"></a>“强-弱” 三色不变式</h3><p>01</p>
 <ul>
 <li><strong>强三色不变式</strong></li>
 </ul>
@@ -156,7 +156,7 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_18.png" class="" title="image.png">
 
 <p>为了遵循上述的两个方式,Golang团队初步得到了如下具体的两种屏障方式“插入屏障”, “删除屏障”.</p>
-<h4 id="插入屏障"><a href="#插入屏障" class="headerlink" title="插入屏障"></a>插入屏障</h4><p>02</p>
+<h3 id="插入屏障"><a href="#插入屏障" class="headerlink" title="插入屏障"></a>插入屏障</h3><p>02</p>
 <p><code>具体操作</code>: 在A对象引用B对象的时候，B对象被标记为灰色。(将B挂在A下游，B必须被标记为灰色)</p>
 <p><code>满足</code>: 强三色不变式. (不存在黑色对象引用白色对象的情况了， 因为白色会强制变成灰色)</p>
 <p>伪码如下:</p>
@@ -190,7 +190,7 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_28.png" class="" title="image.png">
 
 <hr>
-<h4 id="删除屏障"><a href="#删除屏障" class="headerlink" title="删除屏障"></a>删除屏障</h4><p>03</p>
+<h3 id="删除屏障"><a href="#删除屏障" class="headerlink" title="删除屏障"></a>删除屏障</h3><p>03</p>
 <p><code>具体操作</code>: 被删除的对象，如果自身为灰色或者白色，那么被标记为灰色。</p>
 <p><code>满足</code>: 弱三色不变式. (保护灰色对象到白色对象的路径不会断)</p>
 <p>伪代码：</p>
@@ -230,7 +230,7 @@
 <p>Go V1.8版本引入了混合写屏障机制（hybrid write barrier）,避免了对栈</p>
 <p>re-scan的过程，极大的减少了STW的时间。结合了两者的优点。</p>
 <hr>
-<h4 id="混合写屏障规则"><a href="#混合写屏障规则" class="headerlink" title="混合写屏障规则"></a>混合写屏障规则</h4><p>01</p>
+<h3 id="混合写屏障规则"><a href="#混合写屏障规则" class="headerlink" title="混合写屏障规则"></a>混合写屏障规则</h3><p>01</p>
 <p><code>具体操作</code>:</p>
 <p>1、GC开始将栈上的对象全部扫描并标记为黑色(之后不再进行第二次重复扫描，无需STW)，</p>
 <p>2、GC期间，任何在栈上创建的新对象，均为黑色。</p>
@@ -240,17 +240,17 @@
 <p>伪代码：</p>
 <p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;         //1         标记灰色(``当前下游对象**slot**``) //只要当前下游对象被移走，就标记灰色                  //2         标记灰色(``新下游对象**ptr**``)                      //3</code>      <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
 <p>这里我们注意， 屏障技术是不在栈上应用的，因为要保证栈的运行效率。</p>
-<h4 id="混合写屏障的具体场景分析"><a href="#混合写屏障的具体场景分析" class="headerlink" title="混合写屏障的具体场景分析"></a>混合写屏障的具体场景分析</h4><p>02</p>
+<h3 id="混合写屏障的具体场景分析"><a href="#混合写屏障的具体场景分析" class="headerlink" title="混合写屏障的具体场景分析"></a>混合写屏障的具体场景分析</h3><p>02</p>
 <pre><code>    接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。
 </code></pre>
 <p>注意混合写屏障是Gc的一种屏障机制，所以只是当程序执行GC的时候，才会触发这种机制。</p>
-<h4 id="GC开始：扫描栈区，将可达对象全部标记为黑"><a href="#GC开始：扫描栈区，将可达对象全部标记为黑" class="headerlink" title="GC开始：扫描栈区，将可达对象全部标记为黑"></a>GC开始：扫描栈区，将可达对象全部标记为黑</h4><img data-src="/2021/02/03/technology/golang/gc_recycle/image_36.png" class="" title="image.png">
+<h3 id="GC开始：扫描栈区，将可达对象全部标记为黑"><a href="#GC开始：扫描栈区，将可达对象全部标记为黑" class="headerlink" title="GC开始：扫描栈区，将可达对象全部标记为黑"></a>GC开始：扫描栈区，将可达对象全部标记为黑</h3><img data-src="/2021/02/03/technology/golang/gc_recycle/image_36.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_37.png" class="" title="image.png">
 
 
 
-<h4 id="场景一：对象被一个堆对象删除引用，成为栈对象的下游"><a href="#场景一：对象被一个堆对象删除引用，成为栈对象的下游" class="headerlink" title="场景一：对象被一个堆对象删除引用，成为栈对象的下游"></a>场景一：对象被一个堆对象删除引用，成为栈对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">//前提：堆对象4-&gt;对象7 = 对象7；//对象7 被 对象4引用</span><br><span class="line">栈对象1-&gt;对象7 = 堆对象7；//将堆对象7 挂在 栈对象1 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
+<h3 id="场景一：对象被一个堆对象删除引用，成为栈对象的下游"><a href="#场景一：对象被一个堆对象删除引用，成为栈对象的下游" class="headerlink" title="场景一：对象被一个堆对象删除引用，成为栈对象的下游"></a>场景一：对象被一个堆对象删除引用，成为栈对象的下游</h3><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">//前提：堆对象4-&gt;对象7 = 对象7；//对象7 被 对象4引用</span><br><span class="line">栈对象1-&gt;对象7 = 堆对象7；//将堆对象7 挂在 栈对象1 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
 
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_38.png" class="" title="image.png">
@@ -261,7 +261,7 @@
 
 
 
-<h4 id="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"><a href="#场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游" class="headerlink" title="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"></a>场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游</h4><p>new 栈对象9；</p>
+<h3 id="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"><a href="#场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游" class="headerlink" title="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"></a>场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游</h3><p>new 栈对象9；</p>
 <p>对象9-&gt;对象3 &#x3D; 对象3；      &#x2F;&#x2F;将栈对象3 挂在 栈对象9 下游</p>
 <p>对象2-&gt;对象3 &#x3D; null；      &#x2F;&#x2F;对象2 删除引用 对象3</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_40.png" class="" title="image.png">
@@ -270,7 +270,7 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_42.png" class="" title="image.png">
 
 
-<h4 id="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"><a href="#场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"></a>场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游</h4><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">堆对象10-&gt;对象7 = 堆对象7；//将堆对象7 挂在 堆对象10 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
+<h3 id="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"><a href="#场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"></a>场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游</h3><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="code"><pre><span class="line">堆对象10-&gt;对象7 = 堆对象7；//将堆对象7 挂在 堆对象10 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
 
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_43.png" class="" title="image.png">
@@ -278,7 +278,7 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_45.png" class="" title="image.png">
 
 
-<h4 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h4><p>栈对象1-&gt;对象2 &#x3D; null；      &#x2F;&#x2F;对象1 删除引用 对象2</p>
+<h3 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h3><p>栈对象1-&gt;对象2 &#x3D; null；      &#x2F;&#x2F;对象1 删除引用 对象2</p>
 <p>堆对象4-&gt;对象2 &#x3D; 栈对象2；    &#x2F;&#x2F;对象4 添加 下游 栈对象2</p>
 <p>堆对象4-&gt;对象7 &#x3D; null;       &#x2F;&#x2F;对象4 删除引用 对象7null；&#x2F;&#x2F;对象4 删除引用 对象7</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_46.png" class="" title="image.png">
@@ -305,6 +305,60 @@
         <tag>面试题</tag>
         <tag>Golang</tag>
         <tag>底层原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言反射reflect</title>
+    <url>/2021/02/03/technology/golang/go_reflect/</url>
+    <content><![CDATA[<p><strong>反射指的是在程序运行期间对程序本身进行访问和修改的能力.</strong></p>
+<p>不支持反射的语言:</p>
+<blockquote>
+<p>程序在编译时,变量转换为内存地址,变量名不会被编译器写入到可执行部分.在运行程序时,程序无法获取自身的信息.</p>
+</blockquote>
+<p>支持反射的语言:</p>
+<blockquote>
+<p>可以在程序编译期间将变量的反射信息,比如字段名称 , 类型信息 , 结构体信息等整合到可执行文件中,并给程序提供接口访问反射信息,这样就可以在程序运行期间获取类型的反射信息,并且有能力修改它们.</p>
+</blockquote>
+<p><strong>Go程序在运行期间使用reflect包访问程序的反射信息</strong></p>
+<p>reflct包实现了运行时反射,允许程序操作任意类型的对象.典型的用法是静态类型interface{}保存一个值,通过TypeOf获取其动态类型信息,该函数返回一个Type类型值,调用ValueOf函数返回一个Value类型值,该值代表运行时的数据.Zero接受一个一个Type类型参数,并返回一个代表该类型零值的Value类型值.</p>
+<p>Go程序的反射系统无法获取到一个可执行文件空间中或者是一个包中的所有类型信息,需要配合使用标准库中对应的词法,语法解析器和抽象语法树(AST)对源码进行扫描后获得这些信息.</p>
+<h2 id="通过反射获取类型信息"><a href="#通过反射获取类型信息" class="headerlink" title="通过反射获取类型信息"></a>通过反射获取类型信息</h2><p>通过反射获取类型信息:(reflect.TypeOf()和reflect.Type)</p>
+<p>使用reflect.TypeOf()函数可以获得任意值的类型对象eflect.Type,程序通过类型对象可以访问任意值的类型信息.</p>
+<p><strong>例子:</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>代码输出:</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Student <span class="keyword">struct</span></span><br></pre></td></tr></table></figure>
+
+
+<p>理解反射的类型( Type )和种类( Kind )</p>
+<p>在使用反射的时候,需要首先理解类型（Type）和种类（Kind）的区别。编程中，使用最多的是类型，但在反射中，当需要区分一个大品种的类型时，就会用到种类（Kind）。例如，需要统一判断类型中的指针时，使用种类（Kind）信息就较为方便。</p>
+<h2 id="反射种类-kind-的定义"><a href="#反射种类-kind-的定义" class="headerlink" title="反射种类(kind)的定义"></a>反射种类(kind)的定义</h2><p>Go 程序中的类型（Type）指的是系统原生数据类型，如 int、string、bool、float32 等类型，以及使用 type 关键字定义的类型，这些类型的名称就是其类型本身的名称。例如使用 type A struct{} 定义结构体时，A 就是 struct{} 的类型。</p>
+<p>种类（Kind）指的是对象归属的品种，在 reflect 包中有如下定义：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Kind <span class="type">uint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Invalid Kind = <span class="literal">iota</span>  <span class="comment">// 非法类型</span></span><br><span class="line">    Bool                                 <span class="comment">// 布尔型</span></span><br><span class="line">    Int                                <span class="comment">// 有符号整型</span></span><br><span class="line">    Int8                                 <span class="comment">// 有符号8位整型</span></span><br><span class="line">    Int16                                <span class="comment">// 有符号16位整型</span></span><br><span class="line">    Int32                                <span class="comment">// 有符号32位整型</span></span><br><span class="line">    Int64                                <span class="comment">// 有符号64位整型</span></span><br><span class="line">    Uint                                 <span class="comment">// 无符号整型</span></span><br><span class="line">    Uint8                                <span class="comment">// 无符号8位整型</span></span><br><span class="line">    Uint16                           <span class="comment">// 无符号16位整型</span></span><br><span class="line">    Uint32                           <span class="comment">// 无符号32位整型</span></span><br><span class="line">    Uint64                           <span class="comment">// 无符号64位整型</span></span><br><span class="line">    Uintptr                          <span class="comment">// 指针</span></span><br><span class="line">    Float32                          <span class="comment">// 单精度浮点数</span></span><br><span class="line">    Float64                          <span class="comment">// 双精度浮点数</span></span><br><span class="line">    Complex64                        <span class="comment">// 32位复数类型</span></span><br><span class="line">    Complex128                   <span class="comment">// 64位复数类型</span></span><br><span class="line">    Array                                <span class="comment">// 数组</span></span><br><span class="line">    Chan                                 <span class="comment">// 通道</span></span><br><span class="line">    Func                                 <span class="comment">// 函数</span></span><br><span class="line">    Interface                        <span class="comment">// 接口</span></span><br><span class="line">    Map                                <span class="comment">// 映射</span></span><br><span class="line">    Ptr                                <span class="comment">// 指针</span></span><br><span class="line">    Slice                                <span class="comment">// 切片</span></span><br><span class="line">    String                           <span class="comment">// 字符串</span></span><br><span class="line">    Struct                           <span class="comment">// 结构体</span></span><br><span class="line">    UnsafePointer                <span class="comment">// 底层指针</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+<p>Map、Slice、Chan 属于引用类型，使用起来类似于指针，但是在种类常量定义中仍然属于独立的种类，不属于 Ptr。</p>
+<p>type A struct{} 定义的结构体属于 Struct 种类，*A 属于 Ptr。</p>
+<h2 id="从类型对象中获取类型名称和种类的例子"><a href="#从类型对象中获取类型名称和种类的例子" class="headerlink" title="从类型对象中获取类型名称和种类的例子:"></a>从类型对象中获取类型名称和种类的例子:</h2><p>Go 语言中的类型名称对应的反射获取方法是 reflect.Type 中的 Name() 方法，返回表示类型名称的字符串。</p>
+<p>类型归属的种类（Kind）使用的是 reflect.Type 中的 Kind() 方法，返回 reflect.Kind 类型的常量。</p>
+<p>例子:</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//定义一个Enum类型</span></span><br><span class="line"><span class="keyword">type</span> Enum <span class="type">int</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Zero Enum = <span class="number">0</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的变量</span></span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//获取Zero常量的反射类型对象</span></span><br><span class="line">    typeOfZero := reflect.TypeOf(Zero)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfZero.Name(), typeOfZero.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"></span><br><span class="line">Student <span class="keyword">struct</span></span><br><span class="line">Enum <span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="reflect-Elem-通过反射获取指针指向的元素类型"><a href="#reflect-Elem-通过反射获取指针指向的元素类型" class="headerlink" title="reflect.Elem() - 通过反射获取指针指向的元素类型"></a>reflect.Elem() - 通过反射获取指针指向的元素类型</h3><p>通过反射获取指针指向的元素类型：reflect.Elem()</p>
+<p>Go 程序中对指针获取反射对象时，可以通过 reflect.Elem() 方法获取这个指针指向的元素类型。这个获取过程被称为取元素，等效于对指针类型变量做了一个<code>*</code>操作，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的指针变量</span></span><br><span class="line">    <span class="keyword">var</span> stu = &amp;Student&#123;Name:<span class="string">&quot;kitty&quot;</span>, Age: <span class="number">20</span>&#125;</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;name: &#x27;%v&#x27;, kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//取类型的元素</span></span><br><span class="line">    typeOfStu = typeOfStu.Elem()</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;element name: &#x27;%v&#x27;, element kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"><span class="comment">//name: &#x27;&#x27;, kind: &#x27;ptr&#x27;</span></span><br><span class="line"><span class="comment">//element name: &#x27;Student&#x27;, element kind: &#x27;struct&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
@@ -465,60 +519,6 @@
         <tag>面试题</tag>
         <tag>Golang</tag>
         <tag>底层原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Go语言反射reflect</title>
-    <url>/2021/02/03/technology/golang/go_reflect/</url>
-    <content><![CDATA[<p><strong>反射指的是在程序运行期间对程序本身进行访问和修改的能力.</strong></p>
-<p>不支持反射的语言:</p>
-<blockquote>
-<p>程序在编译时,变量转换为内存地址,变量名不会被编译器写入到可执行部分.在运行程序时,程序无法获取自身的信息.</p>
-</blockquote>
-<p>支持反射的语言:</p>
-<blockquote>
-<p>可以在程序编译期间将变量的反射信息,比如字段名称 , 类型信息 , 结构体信息等整合到可执行文件中,并给程序提供接口访问反射信息,这样就可以在程序运行期间获取类型的反射信息,并且有能力修改它们.</p>
-</blockquote>
-<p><strong>Go程序在运行期间使用reflect包访问程序的反射信息</strong></p>
-<p>reflct包实现了运行时反射,允许程序操作任意类型的对象.典型的用法是静态类型interface{}保存一个值,通过TypeOf获取其动态类型信息,该函数返回一个Type类型值,调用ValueOf函数返回一个Value类型值,该值代表运行时的数据.Zero接受一个一个Type类型参数,并返回一个代表该类型零值的Value类型值.</p>
-<p>Go程序的反射系统无法获取到一个可执行文件空间中或者是一个包中的所有类型信息,需要配合使用标准库中对应的词法,语法解析器和抽象语法树(AST)对源码进行扫描后获得这些信息.</p>
-<h2 id="通过反射获取类型信息"><a href="#通过反射获取类型信息" class="headerlink" title="通过反射获取类型信息"></a>通过反射获取类型信息</h2><p>通过反射获取类型信息:(reflect.TypeOf()和reflect.Type)</p>
-<p>使用reflect.TypeOf()函数可以获得任意值的类型对象eflect.Type,程序通过类型对象可以访问任意值的类型信息.</p>
-<p><strong>例子:</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>代码输出:</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Student <span class="keyword">struct</span></span><br></pre></td></tr></table></figure>
-
-
-<p>理解反射的类型( Type )和种类( Kind )</p>
-<p>在使用反射的时候,需要首先理解类型（Type）和种类（Kind）的区别。编程中，使用最多的是类型，但在反射中，当需要区分一个大品种的类型时，就会用到种类（Kind）。例如，需要统一判断类型中的指针时，使用种类（Kind）信息就较为方便。</p>
-<h2 id="反射种类-kind-的定义"><a href="#反射种类-kind-的定义" class="headerlink" title="反射种类(kind)的定义"></a>反射种类(kind)的定义</h2><p>Go 程序中的类型（Type）指的是系统原生数据类型，如 int、string、bool、float32 等类型，以及使用 type 关键字定义的类型，这些类型的名称就是其类型本身的名称。例如使用 type A struct{} 定义结构体时，A 就是 struct{} 的类型。</p>
-<p>种类（Kind）指的是对象归属的品种，在 reflect 包中有如下定义：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Kind <span class="type">uint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Invalid Kind = <span class="literal">iota</span>  <span class="comment">// 非法类型</span></span><br><span class="line">    Bool                                 <span class="comment">// 布尔型</span></span><br><span class="line">    Int                                <span class="comment">// 有符号整型</span></span><br><span class="line">    Int8                                 <span class="comment">// 有符号8位整型</span></span><br><span class="line">    Int16                                <span class="comment">// 有符号16位整型</span></span><br><span class="line">    Int32                                <span class="comment">// 有符号32位整型</span></span><br><span class="line">    Int64                                <span class="comment">// 有符号64位整型</span></span><br><span class="line">    Uint                                 <span class="comment">// 无符号整型</span></span><br><span class="line">    Uint8                                <span class="comment">// 无符号8位整型</span></span><br><span class="line">    Uint16                           <span class="comment">// 无符号16位整型</span></span><br><span class="line">    Uint32                           <span class="comment">// 无符号32位整型</span></span><br><span class="line">    Uint64                           <span class="comment">// 无符号64位整型</span></span><br><span class="line">    Uintptr                          <span class="comment">// 指针</span></span><br><span class="line">    Float32                          <span class="comment">// 单精度浮点数</span></span><br><span class="line">    Float64                          <span class="comment">// 双精度浮点数</span></span><br><span class="line">    Complex64                        <span class="comment">// 32位复数类型</span></span><br><span class="line">    Complex128                   <span class="comment">// 64位复数类型</span></span><br><span class="line">    Array                                <span class="comment">// 数组</span></span><br><span class="line">    Chan                                 <span class="comment">// 通道</span></span><br><span class="line">    Func                                 <span class="comment">// 函数</span></span><br><span class="line">    Interface                        <span class="comment">// 接口</span></span><br><span class="line">    Map                                <span class="comment">// 映射</span></span><br><span class="line">    Ptr                                <span class="comment">// 指针</span></span><br><span class="line">    Slice                                <span class="comment">// 切片</span></span><br><span class="line">    String                           <span class="comment">// 字符串</span></span><br><span class="line">    Struct                           <span class="comment">// 结构体</span></span><br><span class="line">    UnsafePointer                <span class="comment">// 底层指针</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-
-<p>Map、Slice、Chan 属于引用类型，使用起来类似于指针，但是在种类常量定义中仍然属于独立的种类，不属于 Ptr。</p>
-<p>type A struct{} 定义的结构体属于 Struct 种类，*A 属于 Ptr。</p>
-<h2 id="从类型对象中获取类型名称和种类的例子"><a href="#从类型对象中获取类型名称和种类的例子" class="headerlink" title="从类型对象中获取类型名称和种类的例子:"></a>从类型对象中获取类型名称和种类的例子:</h2><p>Go 语言中的类型名称对应的反射获取方法是 reflect.Type 中的 Name() 方法，返回表示类型名称的字符串。</p>
-<p>类型归属的种类（Kind）使用的是 reflect.Type 中的 Kind() 方法，返回 reflect.Kind 类型的常量。</p>
-<p>例子:</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//定义一个Enum类型</span></span><br><span class="line"><span class="keyword">type</span> Enum <span class="type">int</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    Zero Enum = <span class="number">0</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的变量</span></span><br><span class="line">    <span class="keyword">var</span> stu Student</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//获取Zero常量的反射类型对象</span></span><br><span class="line">    typeOfZero := reflect.TypeOf(Zero)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Println(typeOfZero.Name(), typeOfZero.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"></span><br><span class="line">Student <span class="keyword">struct</span></span><br><span class="line">Enum <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="reflect-Elem-通过反射获取指针指向的元素类型"><a href="#reflect-Elem-通过反射获取指针指向的元素类型" class="headerlink" title="reflect.Elem() - 通过反射获取指针指向的元素类型"></a>reflect.Elem() - 通过反射获取指针指向的元素类型</h3><p>通过反射获取指针指向的元素类型：reflect.Elem()</p>
-<p>Go 程序中对指针获取反射对象时，可以通过 reflect.Elem() 方法获取这个指针指向的元素类型。这个获取过程被称为取元素，等效于对指针类型变量做了一个<code>*</code>操作，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//定义一个Student类型的指针变量</span></span><br><span class="line">    <span class="keyword">var</span> stu = &amp;Student&#123;Name:<span class="string">&quot;kitty&quot;</span>, Age: <span class="number">20</span>&#125;</span><br><span class="line">    <span class="comment">//获取结构体实例的反射类型对象</span></span><br><span class="line">    typeOfStu := reflect.TypeOf(stu)</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;name: &#x27;%v&#x27;, kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">    <span class="comment">//取类型的元素</span></span><br><span class="line">    typeOfStu = typeOfStu.Elem()</span><br><span class="line">    <span class="comment">//显示反射类型对象的名称和种类</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;element name: &#x27;%v&#x27;, element kind: &#x27;%v&#x27;\n&quot;</span>, typeOfStu.Name(), typeOfStu.Kind())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码输出如下:</span></span><br><span class="line"><span class="comment">//name: &#x27;&#x27;, kind: &#x27;ptr&#x27;</span></span><br><span class="line"><span class="comment">//element name: &#x27;Student&#x27;, element kind: &#x27;struct&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>Golang</tag>
       </tags>
   </entry>
   <entry>
