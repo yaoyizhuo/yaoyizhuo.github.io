@@ -27,7 +27,7 @@
 <meta property="og:description" content="实际项目中，Java项目遇到的问题，包含MQ、SpringBoot、Redis、MySQL、Kafka 等…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-01T10:51:53.000Z">
-<meta property="article:modified_time" content="2025-02-28T11:09:40.940Z">
+<meta property="article:modified_time" content="2025-02-28T11:14:33.367Z">
 <meta property="article:author" content="zhyyao">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="Java">
@@ -240,7 +240,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-28 19:09:40" itemprop="dateModified" datetime="2025-02-28T19:09:40+08:00">2025-02-28</time>
+      <time title="修改时间：2025-02-28 19:14:33" itemprop="dateModified" datetime="2025-02-28T19:14:33+08:00">2025-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -263,7 +263,6 @@
     
     <div class="post-body" itemprop="articleBody"><p>实际项目中，Java项目遇到的问题，包含MQ、SpringBoot、Redis、MySQL、Kafka 等…</p>
 <span id="more"></span>
-
 
 <h2 id="MQ-相关"><a href="#MQ-相关" class="headerlink" title="MQ 相关"></a>MQ 相关</h2><h3 id="MQ-大量未订阅消息处理"><a href="#MQ-大量未订阅消息处理" class="headerlink" title="MQ 大量未订阅消息处理"></a>MQ 大量未订阅消息处理</h3><ul>
 <li><strong>产生原因</strong>：消费端宕机、消费端消费能力不足、生产端流量过大。</li>
@@ -299,7 +298,7 @@
 </ul>
 <h3 id="消息丢失如何处理"><a href="#消息丢失如何处理" class="headerlink" title="消息丢失如何处理"></a>消息丢失如何处理</h3><ul>
 <li><strong>消息丢失分三种情况</strong>：生产者消息丢失、队列消息丢失、消费者消息丢失。<ul>
-<li><strong>生产者消息丢失</strong>：用 Confirm 模式，将生产者发送消息时，生成一个唯一 ID，在消费队列接收后返回一个 ACK（包含唯一 ID），如果接收失败，就返回 NACK 重新发送即可。</li>
+<li><strong>生产者消息丢失</strong>：用 Confirm 模式，将生产者发送消息时，生成一个唯一 ID，在消费队列接收后返回一个 ACK（包含唯一<br>ID），如果接收失败，就返回 NACK 重新发送即可。</li>
 <li><strong>队列消息丢失</strong>：同样的方式，将消息做持久化，持久化完成后再返回 ACK。</li>
 <li><strong>消费者消息丢失</strong>：一般是采用了自动确认功能，改为手动确认，在消费者消费完成后再返回成功。而不是接收后自动返回成功。</li>
 </ul>
@@ -308,7 +307,7 @@
 <h2 id="Redis-相关"><a href="#Redis-相关" class="headerlink" title="Redis 相关"></a>Redis 相关</h2><h3 id="缓存穿透、缓存击穿和缓存雪崩"><a href="#缓存穿透、缓存击穿和缓存雪崩" class="headerlink" title="缓存穿透、缓存击穿和缓存雪崩"></a>缓存穿透、缓存击穿和缓存雪崩</h3><ul>
 <li><strong>缓存穿透</strong>：大量不存在的查询读缓存读不到，直接去读取数据库。造成服务崩溃的情况。<ul>
 <li><strong>解决方案</strong>：<ol>
-<li>在缓存中增加 value 为空的缓存，但这样会加大内存消耗，可以设置一个较短的过期时间。如果在缓存时间内在数据库中增加了这个 key 对象，会造成缓存和实际不一致，可以加库后发 MQ 更新缓存。</li>
+<li>在缓存中增加 value 为空的缓存，但这样会加大内存消耗，可以设置一个较短的过期时间。如果在缓存时间内在数据库中增加了这个<br>key 对象，会造成缓存和实际不一致，可以加库后发 MQ 更新缓存。</li>
 <li>如果实时性要求不高，可以采用布隆过滤器，它可以减少使用缓存空间。</li>
 </ol>
 </li>
@@ -340,7 +339,7 @@
 <li><strong>SDS</strong>：简单动态字符串，对应数据类型中的 String。<ul>
 <li>Redis 是用 C 语言实现的，但在 C 语言里面的 char 类型字符串存在缺陷，所以 Redis 封装了一个新的简单动态字符串。</li>
 <li>C 语言中 char 的缺陷：<ol>
-<li>字符数组结束位置会插入 <code>\0</code>，所以出现 <code>\0</code> 时 C 语言就会认为字符串已经结束了。导致字符串不能全量读取。这种限制导致 C 语言的字符串只能读取文本，不能读取音频、视频等二进制数据。</li>
+<li>字符数组结束位置会插入 <code>\0</code>，所以出现 <code>\0</code> 时 C 语言就会认为字符串已经结束了。导致字符串不能全量读取。这种限制导致<br>C 语言的字符串只能读取文本，不能读取音频、视频等二进制数据。</li>
 <li>CHAR 类型字符串不会计算自身缓冲区大小，有缓冲区溢出的风险。</li>
 </ol>
 </li>
@@ -348,18 +347,18 @@
 <li>优势：<ol>
 <li>C 语言中获取字符串长度需要遍历，时间复杂度为 O(N)，而简单动态字符串可以直接获取，时间复杂度为 O(1)。</li>
 <li>二进制安全，不需要 <code>\0</code> 来控制结尾，同时还支持了文本、视频、音频等的存储。</li>
-<li>不会发生缓冲区溢出，有 alloc-len 来获取剩余空间大小，若缓冲区大小不够用，Redis 会自动扩张 SDS 空间（小于 1M 的翻倍扩容，大于 1M 的按 1M 扩容）。</li>
+<li>不会发生缓冲区溢出，有 alloc-len 来获取剩余空间大小，若缓冲区大小不够用，Redis 会自动扩张 SDS 空间（小于 1M<br>的翻倍扩容，大于 1M 的按 1M 扩容）。</li>
 <li>节省内存空间，Redis 共设计了五种类型（sdshdr5、sdshdr8、sdshdr16、sdshdr32、sdshdr64）。</li>
 </ol>
 </li>
 </ul>
 </li>
 <li><strong>双向链表</strong>：List 常用数据结构，但因链表不连续，无法很好利用 CPU 缓存且内存开销大，因此数据量较小时使用压缩列表，数据量大才会使用双向链表。</li>
-<li><strong>压缩列表</strong>：List、Hash 和 Zset 数据量较少时使用，连续紧凑，但不能保存过多元素，否则查询效率低，查询第一个和最后一个字段的时间复杂度是 O(1)，但查询中间的数字需要遍历，时间复杂度为 O(N)。<ul>
+<li><strong>压缩列表</strong>：List、Hash 和 Zset 数据量较少时使用，连续紧凑，但不能保存过多元素，否则查询效率低，查询第一个和最后一个字段的时间复杂度是<br>O(1)，但查询中间的数字需要遍历，时间复杂度为 O(N)。<ul>
 <li>压缩列表在更新时会有连锁更新的现象（原因：列表节点的 prevlen 属性会根据前一个节点的长度进行不同的空间大小分配）。直接影响压缩列表的访问性能。</li>
 </ul>
 </li>
-<li><strong>哈希表</strong>：保存键值对（key-value）的数据结构。有可能存在 hash 冲突，Redis 采用链式 hash 来解决冲突（哈希冲突：当有两个或两个以上的 key 分配到同一个哈希桶，称之为 hash 冲突）。<ul>
+<li><strong>哈希表</strong>：保存键值对（key-value）的数据结构。有可能存在 hash 冲突，Redis 采用链式 hash 来解决冲突（哈希冲突：当有两个或两个以上的<br>key 分配到同一个哈希桶，称之为 hash 冲突）。<ul>
 <li>链式哈希通过 next 指针，在发生 hash 冲突时，将其指向一个新的哈希桶。但这样会导致哈希长度增加，所以又采用了 rehash 来解决。</li>
 <li>rehash 的触发条件：负载因子 &#x3D; 哈希表已保存节点数量 &#x2F; 哈希表大小。</li>
 <li>若负载因子大于等于 1，且 Redis 没有执行 RDB 快照和 AOF 重写的情况下，会进行 rehash 操作。</li>
@@ -375,12 +374,12 @@
 <li>Redis 有两种持久化方式：RDB、AOF。<ul>
 <li>RDB 为默认持久化方式，保存路径在 redis.conf 配置文件下，会生成 dump.rdb。会在指定时间对数据进行持久化存储。</li>
 <li>如果手动开启持久化功能，会生成 AOF 持久化文件，用来记录对服务器的读写操作，当服务重启时会重新执行这些命令来恢复原始数据。</li>
-<li>因为 RDB 出现意外 down 掉的话，会丢失最后一次快照的所有内容，而 AOF 不会丢失超过 2 秒的数据，因此官方建议 RDB 和 AOF 同时开启，两者同时开启，优先 AOF 作为持久化机制。</li>
+<li>因为 RDB 出现意外 down 掉的话，会丢失最后一次快照的所有内容，而 AOF 不会丢失超过 2 秒的数据，因此官方建议 RDB 和 AOF<br>同时开启，两者同时开启，优先 AOF 作为持久化机制。</li>
 </ul>
 </li>
 </ul>
 <h3 id="关于-Redlock"><a href="#关于-Redlock" class="headerlink" title="关于 Redlock"></a>关于 Redlock</h3><ul>
-<li>Redlock 是 Redis 官方提出的一种分布式锁算法，用于实现分布式系统里面的可靠锁机制。核心思想是通过多个独立的 Redis 实例来确保锁的可靠性和一致性。</li>
+<li>Redlock 是 Redis 官方提出的一种分布式锁算法，用于实现分布式系统里面的可靠锁机制。核心思想是通过多个独立的 Redis<br>实例来确保锁的可靠性和一致性。</li>
 <li><strong>背景</strong>：在分布式系统中，单点的 Redis 实现的锁可能存在以下问题：<ol>
 <li>单点故障：如果 Redis 实例宕机，锁就会失效。</li>
 <li>时钟漂移：如果 Redis 实例的时钟不同步，可能导致锁的过期时间计算错误。</li>
@@ -395,7 +394,7 @@
 </ol>
 </li>
 <li><strong>优点</strong>：避免单点故障，部分实例宕机依然可用，且基于 Redis 实现，易于集成。</li>
-<li><strong>缺点</strong>：需要在多个 Redis 实例上获取锁，增加了网络通信和计算开销。如果 Redis 实例的时钟不同步，可能会导致锁的过期时间计算错误。而且可靠性存在争议，不能完全解决分布式锁的问题。</li>
+<li><strong>缺点</strong>：需要在多个 Redis 实例上获取锁，增加了网络通信和计算开销。如果 Redis<br>实例的时钟不同步，可能会导致锁的过期时间计算错误。而且可靠性存在争议，不能完全解决分布式锁的问题。</li>
 <li><strong>使用场景</strong>：分布式任务调度：确保同一时间只有一个节点执行任务；资源竞争控制：防止多节点同时操作共享资源。</li>
 <li><strong>替代方案</strong>：Zookeeper，Etcd 分布式锁，数据库分布式锁。</li>
 </ul>
@@ -442,23 +441,23 @@
 <li><strong>Test（spring-boot-starter-test）</strong>：提供测试支持，核心注解：@Junit，@Test。</li>
 </ul>
 <h3 id="Spring-Boot-启动过程中-URL-冲突，原理是什么，为什么会报错"><a href="#Spring-Boot-启动过程中-URL-冲突，原理是什么，为什么会报错" class="headerlink" title="Spring Boot 启动过程中 URL 冲突，原理是什么，为什么会报错"></a>Spring Boot 启动过程中 URL 冲突，原理是什么，为什么会报错</h3><ul>
-<li>Spring Boot 启动时会初始化上下文，加载所有的 Bean，在加载控制器时，Spring MVC 会加载所有映射，如果 URL 冲突，则直接报错。异常信息为：<code>IllegalStateException（Ambiguous mapping. Cannot map &#39;xxxController&#39; method ... to &#123;xxx&#125;: There is already &#39;yyyController&#39; bean method ... mapped.）</code>。</li>
+<li>Spring Boot 启动时会初始化上下文，加载所有的 Bean，在加载控制器时，Spring MVC 会加载所有映射，如果 URL 冲突，则直接报错。异常信息为：<br><code>IllegalStateException（Ambiguous mapping. Cannot map &#39;xxxController&#39; method ... to &#123;xxx&#125;: There is already &#39;yyyController&#39; bean method ... mapped.）</code>。</li>
 </ul>
 <h3 id="Spring、Spring-MVC、Spring-Boot-的区别"><a href="#Spring、Spring-MVC、Spring-Boot-的区别" class="headerlink" title="Spring、Spring MVC、Spring Boot 的区别"></a>Spring、Spring MVC、Spring Boot 的区别</h3><ul>
-<li><strong>Spring</strong>：是一个家族，里面包含了各种各样衍生产品，但他们都实现了 IOC（依赖注入）和 AOP（面向切面）。然后在这个基础上进行延伸，提供其他高级功能。Spring 是一个引擎。</li>
-<li><strong>Spring MVC</strong>：是一个 Web 框架，提供轻耦合的方式开发 Web 应用，是 Spring 的一个模块，通过解决问题领域是网站应用程序或服务开发。是基于 Spring 的 MVC 框架。</li>
-<li><strong>Spring Boot</strong>：实现了 Auto-configuration 自动配置（另外三大神器：Starter（依赖）、CLI（命令行接口）、Auctutor（监控）），大幅度减少配置，几乎相当于开箱即用。是一套快速开发整合包。</li>
+<li><strong>Spring</strong>：是一个家族，里面包含了各种各样衍生产品，但他们都实现了 IOC（依赖注入）和 AOP（面向切面）。然后在这个基础上进行延伸，提供其他高级功能。Spring<br>是一个引擎。</li>
+<li><strong>Spring MVC</strong>：是一个 Web 框架，提供轻耦合的方式开发 Web 应用，是 Spring 的一个模块，通过解决问题领域是网站应用程序或服务开发。是基于<br>Spring 的 MVC 框架。</li>
+<li><strong>Spring Boot</strong>：实现了 Auto-configuration<br>自动配置（另外三大神器：Starter（依赖）、CLI（命令行接口）、Auctutor（监控）），大幅度减少配置，几乎相当于开箱即用。是一套快速开发整合包。</li>
 </ul>
 <h3 id="Spring-的启动原理"><a href="#Spring-的启动原理" class="headerlink" title="Spring 的启动原理"></a>Spring 的启动原理</h3><ol>
 <li>开始启动。</li>
-<li>构造一个 Spring 应用，进行模块的初始化，包括配置 source、配置是否为 Web 环境、创建初始化构造器（获取工厂对象，生成工厂实例）、创建应用监听器（获取工厂对象，生成工厂实例）、配置应用的主方法所在类。</li>
-<li>启动该应用：启动监听器模块、启动配置环境模块、启动应用上下文（创建上下文对象、基本属性配置、更新应用上下文：准备环境所需 Bean 工厂和通过工厂产生环境所需的 Bean）。</li>
+<li>构造一个 Spring 应用，进行模块的初始化，包括配置 source、配置是否为 Web<br>环境、创建初始化构造器（获取工厂对象，生成工厂实例）、创建应用监听器（获取工厂对象，生成工厂实例）、配置应用的主方法所在类。</li>
+<li>启动该应用：启动监听器模块、启动配置环境模块、启动应用上下文（创建上下文对象、基本属性配置、更新应用上下文：准备环境所需<br>Bean 工厂和通过工厂产生环境所需的 Bean）。</li>
 </ol>
 <h3 id="Spring-Boot-的启动类，使用-SpringBootApplication-注解。"><a href="#Spring-Boot-的启动类，使用-SpringBootApplication-注解。" class="headerlink" title="Spring Boot 的启动类，使用 @SpringBootApplication 注解。"></a>Spring Boot 的启动类，使用 <code>@SpringBootApplication</code> 注解。</h3><h3 id="Spring-Boot-比较重要的注解"><a href="#Spring-Boot-比较重要的注解" class="headerlink" title="Spring Boot 比较重要的注解"></a>Spring Boot 比较重要的注解</h3><ul>
 <li><strong>@SpringBootConfiguration</strong>：继承 <code>@Configuration</code>，标识当前是注解类。<ul>
 <li>按照原来 XML 配置文件的形式，Spring Boot 大多采用配置类来解决配置问题：<ol>
 <li>XML 中进行配置，指向类路径。</li>
-<li>通过 <code>@Bean</code> 可注入。任何一个标注了 <code>@Bean</code> 的方法，其返回值将作为 Bean 定义注册到 Spring 的 IOC 容器。方法名将默认成该 Bean 定义的 ID。</li>
+<li>通过 <code>@Bean</code> 可注入。任何一个标注了 <code>@Bean</code> 的方法，其返回值将作为 Bean 定义注册到 Spring 的 IOC 容器。方法名将默认成该<br>Bean 定义的 ID。</li>
 </ol>
 </li>
 </ul>
@@ -474,41 +473,41 @@
 <h3 id="BeanFactory-和-ApplicationContext-的区别"><a href="#BeanFactory-和-ApplicationContext-的区别" class="headerlink" title="BeanFactory 和 ApplicationContext 的区别"></a>BeanFactory 和 ApplicationContext 的区别</h3><ul>
 <li><strong>两者都是接口</strong>，ApplicationContext 间接继承了 BeanFactory。</li>
 <li><strong>BeanFactory</strong> 是最底层接口，只提供了实例化对象和获取对象的功能。</li>
-<li><strong>ApplicationContext</strong> 是 Spring 的一个更高级容器，提供更多有用功能，包括：Bean 的详细信息，国际化，统一加载资源、事件机制和 Web 应用的支持等等。</li>
-<li><strong>BeanFactory</strong> 采用延迟加载的形式来注入 Bean，ApplicationContext 相反，是在 IOC 启动时一次性创建所有 Bean，这么好处是可以及时发现配置文件的错误，缺点是造成浪费。</li>
+<li><strong>ApplicationContext</strong> 是 Spring 的一个更高级容器，提供更多有用功能，包括：Bean 的详细信息，国际化，统一加载资源、事件机制和<br>Web 应用的支持等等。</li>
+<li><strong>BeanFactory</strong> 采用延迟加载的形式来注入 Bean，ApplicationContext 相反，是在 IOC 启动时一次性创建所有<br>Bean，这么好处是可以及时发现配置文件的错误，缺点是造成浪费。</li>
 </ul>
 <h3 id="BeanFactory-和-FactoryBean-的区别和联系"><a href="#BeanFactory-和-FactoryBean-的区别和联系" class="headerlink" title="BeanFactory 和 FactoryBean 的区别和联系"></a>BeanFactory 和 FactoryBean 的区别和联系</h3><ul>
 <li><strong>两者都是接口</strong>。</li>
 <li><strong>BeanFactory</strong> 是用来创建 Bean 和获取 Bean 的。</li>
 <li><strong>FactoryBean</strong> 跟普通 Bean 不同，其返回的对象不是指定类的一个实例，而是 FactoryBean 的 <code>getObject</code> 方法所返回的实例。</li>
-<li><strong>通过 BeanFactory 和 beanName 获取 Bean 时</strong>，如果 beanName 不加 <code>&amp;</code> 则获取到对应 Bean 的实例；如果 beanName 加上 <code>&amp;</code>，则获取到 FactoryBean 本身的实例。</li>
-<li><strong>FactoryBean</strong> 通常是用来创建比较复杂的 Bean（如创建 MyBatis 的 SqlSessionFactory 很复杂），一般的 Bean 直接用 XML 配置即可，但如果创建一个 Bean 的创建过程中涉及到很多其他的 Bean 和复杂的逻辑，用 XML 配置比较困难，这时可以考虑用 FactoryBean。</li>
+<li><strong>通过 BeanFactory 和 beanName 获取 Bean 时</strong>，如果 beanName 不加 <code>&amp;</code> 则获取到对应 Bean 的实例；如果 beanName 加上 <code>&amp;</code><br>，则获取到 FactoryBean 本身的实例。</li>
+<li><strong>FactoryBean</strong> 通常是用来创建比较复杂的 Bean（如创建 MyBatis 的 SqlSessionFactory 很复杂），一般的 Bean 直接用 XML<br>配置即可，但如果创建一个 Bean 的创建过程中涉及到很多其他的 Bean 和复杂的逻辑，用 XML 配置比较困难，这时可以考虑用<br>FactoryBean。</li>
 </ul>
 <h3 id="Spring-框架是如何解决-Bean-之间的循环依赖的"><a href="#Spring-框架是如何解决-Bean-之间的循环依赖的" class="headerlink" title="Spring 框架是如何解决 Bean 之间的循环依赖的"></a>Spring 框架是如何解决 Bean 之间的循环依赖的</h3><ul>
-<li>Spring 先用构造函数进行实例化，然后填充属性，再对其进行附加操作和其他初始化，正是这样的生命周期，才有了 Spring 解决循环依赖。这样的解决机制是根据 Spring 框架内定义的三级缓存来实现的。</li>
+<li>Spring 先用构造函数进行实例化，然后填充属性，再对其进行附加操作和其他初始化，正是这样的生命周期，才有了 Spring<br>解决循环依赖。这样的解决机制是根据 Spring 框架内定义的三级缓存来实现的。</li>
 <li><strong>三级缓存</strong>：<ol>
 <li><strong>singletonObjects</strong>：第一级缓存，里面放置的是实例化好的单例对象。</li>
 <li><strong>earlySingletonObjects</strong>：第二级缓存，里面存放的是提前曝光的单例对象。</li>
 <li><strong>singletonFactories</strong>：第三级缓存，里面存放的是要被实例化的对象的对象工厂。</li>
 </ol>
 </li>
-<li>所以当一个 Bean 调用构造函数进行实例化后，即使属性还未填充，就可以通过三级缓存向外暴露依赖的引用值（所以循环依赖问题的解决也是基于 Java 的引用传递），这也说明了另外一点，基于构造函数的注入，如果有循环依赖，Spring 是不能够解决的。还要说明一点，Spring 默认的 Bean Scope 是单例的，而三级缓存中都包含 singleton，可见是对于单例 Bean 之间的循环依赖的解决，Spring 是通过三级缓存来实现的。</li>
+<li>所以当一个 Bean 调用构造函数进行实例化后，即使属性还未填充，就可以通过三级缓存向外暴露依赖的引用值（所以循环依赖问题的解决也是基于<br>Java 的引用传递），这也说明了另外一点，基于构造函数的注入，如果有循环依赖，Spring 是不能够解决的。还要说明一点，Spring 默认的<br>Bean Scope 是单例的，而三级缓存中都包含 singleton，可见是对于单例 Bean 之间的循环依赖的解决，Spring 是通过三级缓存来实现的。</li>
 </ul>
 <h3 id="Spring-的-Import-注解的作用"><a href="#Spring-的-Import-注解的作用" class="headerlink" title="Spring 的 @Import 注解的作用"></a>Spring 的 <code>@Import</code> 注解的作用</h3><ol>
 <li>将没有使用 <code>@Component</code> 注解的普通 class 加入到 Spring 容器，由 Spring 管理。</li>
-<li>导入一个 Configuration 类（比如你想组合多个 Java Config 类到一个 Java Config 类，或者你引入的第三方 jar 包中的 Java Config 类没在你 Spring Boot 程序的子包下，即没有被扫描进 Spring 容器）。</li>
-<li>通过实现了 <code>ImportSelector</code> 接口的类，导入多个 class 到 Spring 容器（Spring Boot 的自动装配 <code>@EnableAutoConfiguration</code>）。</li>
-<li>通过实现 <code>ImportBeanDefinitionRegistrar</code> 接口的方式（MyBatis 整合 Spring：<code>MapperScannerRegistrar.java</code> 和 <code>@MapperScan</code> 注解。</li>
+<li>导入一个 Configuration 类（比如你想组合多个 Java Config 类到一个 Java Config 类，或者你引入的第三方 jar 包中的 Java<br>Config 类没在你 Spring Boot 程序的子包下，即没有被扫描进 Spring 容器）。</li>
+<li>通过实现了 <code>ImportSelector</code> 接口的类，导入多个 class 到 Spring 容器（Spring Boot 的自动装配<br><code>@EnableAutoConfiguration</code>）。</li>
+<li>通过实现 <code>ImportBeanDefinitionRegistrar</code> 接口的方式（MyBatis 整合 Spring：<code>MapperScannerRegistrar.java</code> 和<br><code>@MapperScan</code> 注解。</li>
 <li>使用@Import搭配@Configuration导入到Spring容器。</li>
 </ol>
 <h3 id="同一个类中调用-Transaction注解的方法会有事务效果吗？"><a href="#同一个类中调用-Transaction注解的方法会有事务效果吗？" class="headerlink" title="同一个类中调用 @Transaction注解的方法会有事务效果吗？"></a>同一个类中调用 @Transaction注解的方法会有事务效果吗？</h3><p>没有，可以Autowired注入自己，然后再调用注入的类中的方法，即自己依赖自己，循环依赖</p>
 <h3 id="springboot启动过程中如何加载META-INF-spring-factories"><a href="#springboot启动过程中如何加载META-INF-spring-factories" class="headerlink" title="springboot启动过程中如何加载META-INF&#x2F;spring.factories"></a>springboot启动过程中如何加载META-INF&#x2F;spring.factories</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; s = SpringFactoriesLoader.loadFactoryNames(type, classLoader);</span><br></pre></td></tr></table></figure>
 
-
 <h3 id="IOC和AOP的原理和应用"><a href="#IOC和AOP的原理和应用" class="headerlink" title="IOC和AOP的原理和应用"></a>IOC和AOP的原理和应用</h3><ol>
-<li>IOC本质就是依赖注入，在开发过程中，A如果需要引用的B，那就需要new B();但这样耦合度较高，如果B做了调整，那A也需要相应调整。在spring引入ioc之后，可以直接通过工厂模式加反射机制，将其托管给spring容器（常见的dto的构造器原理）。这样就降低了代码的耦合程度。</li>
-<li>AOP本质是面向切面编程，除了spring中的应用之外，更多算是一种思想，将代码以切面的形式区分为核心切面和横切面。开发人员在开发过程中只需要考虑自己的核心业务逻辑，横切逻辑无需考虑在内。在spring中的应用就是将公用的逻辑提取出来，在代码执行时加载，如权限控制，日志管理，事务COMMIT等。这个思想在开发过程中也可以继续沿用。</li>
+<li>IOC本质就是依赖注入，在开发过程中，A如果需要引用的B，那就需要new B()<br>;但这样耦合度较高，如果B做了调整，那A也需要相应调整。在spring引入ioc之后，可以直接通过工厂模式加反射机制，将其托管给spring容器（常见的dto的构造器原理）。这样就降低了代码的耦合程度。</li>
+<li></li>
 </ol>
+<p>AOP本质是面向切面编程，除了spring中的应用之外，更多算是一种思想，将代码以切面的形式区分为核心切面和横切面。开发人员在开发过程中只需要考虑自己的核心业务逻辑，横切逻辑无需考虑在内。在spring中的应用就是将公用的逻辑提取出来，在代码执行时加载，如权限控制，日志管理，事务COMMIT等。这个思想在开发过程中也可以继续沿用。</p>
 <h3 id="SpringMVC的大致实现过程"><a href="#SpringMVC的大致实现过程" class="headerlink" title="SpringMVC的大致实现过程"></a>SpringMVC的大致实现过程</h3><ol>
 <li>用户发起request请求，如果有多个servlet，则通过servletmapping来指定具体的servlet。</li>
 <li>通过servlet指定的url去需要指定的controller。</li>
@@ -587,7 +586,9 @@
 <li>全文索引：Innodb再5.6之后支持全文索引，但myisam一直都支持</li>
 <li>压缩：Innodb支持表压缩，压缩后节省存储空间，但myisam压缩后为只读模式</li>
 <li>适用场景：Innodb适合需要事务、高并发、数据完整性要求较高的系统，如电商系统；myisam适合读多写少、不需要事务的系统，如日志系统、数据仓库等</li>
-<li>ACID兼容：Innodb支持ACID；myisam不支持<blockquote>
+<li>ACID兼容：Innodb支持ACID；myisam不支持</li>
+</ol>
+<blockquote>
 <ul>
 <li>mysql有innodb和myisam两种类型，其中innodb使用聚簇索引，myisam使用非聚簇索引：</li>
 <li>聚簇索引是对磁盘数据进行重新组织排列的算法，特点是存储数据的顺序和索引顺序一致，一般主键会默认创建聚簇索引，一个表只有一个聚簇索引。</li>
@@ -597,8 +598,6 @@
 <li>myisam的主索引和二级索引一样，存放都是行+列的组合，存放的是数据地址。</li>
 </ul>
 </blockquote>
-</li>
-</ol>
 <h4 id="聚簇索引："><a href="#聚簇索引：" class="headerlink" title="聚簇索引："></a>聚簇索引：</h4><ol>
 <li>索引项直接对数据库，可以直达</li>
 <li>主键缺省可以用它</li>
@@ -607,14 +606,14 @@
 </ol>
 <h4 id="非聚簇索引："><a href="#非聚簇索引：" class="headerlink" title="非聚簇索引："></a>非聚簇索引：</h4><ol>
 <li>不能直达，可能要多次链式访问多页表之后，才能到达</li>
-<li>一个表可以有多个非聚簇索引<blockquote>
+<li>一个表可以有多个非聚簇索引</li>
+</ol>
+<blockquote>
 <ul>
 <li>聚簇索引优点：数据条目少的时候，无需回行（主键直接挂数据块）</li>
 <li>缺点：不规则的插入数据可能会导致频繁的分裂</li>
 </ul>
 </blockquote>
-</li>
-</ol>
 <h3 id="数据库死锁"><a href="#数据库死锁" class="headerlink" title="数据库死锁"></a>数据库死锁</h3><ol>
 <li>概念：多个线程资源并发请求因互相争夺资源引起的互相等待的现象</li>
 <li>本质原因：<ul>
@@ -677,10 +676,10 @@
 </ol>
 <h3 id="为什么不能使用insert-a-（select-b）"><a href="#为什么不能使用insert-a-（select-b）" class="headerlink" title="为什么不能使用insert a （select b）"></a>为什么不能使用insert a （select b）</h3><ol>
 <li>列未必完全匹配，容易出错</li>
-<li>可能会出现主键冲突 </li>
+<li>可能会出现主键冲突</li>
 <li>如果有并发，会出现数据一致性的问题</li>
-<li>非空约束也可能导致插入失败 </li>
-<li>在跨数据库时，会出现兼容性问题 </li>
+<li>非空约束也可能导致插入失败</li>
+<li>在跨数据库时，会出现兼容性问题</li>
 <li>如果查询的是一张大表，可能会导致锁表</li>
 </ol>
 <h3 id="mysql主从库设计方案"><a href="#mysql主从库设计方案" class="headerlink" title="mysql主从库设计方案"></a>mysql主从库设计方案</h3><ul>
@@ -706,7 +705,7 @@
 <p><strong>一致性问题：</strong> 至少确保一个从库接收到主库的更新，再返回给客户端</p>
 <p><strong>监控和维护：</strong></p>
 <ol>
-<li>监控从库的复制延迟，确保数据同步的及时性，使用grafana监控数据性能 </li>
+<li>监控从库的复制延迟，确保数据同步的及时性，使用grafana监控数据性能</li>
 <li>定期备份数据库数据，及清理binlog文件</li>
 </ol>
 <h2 id="java基础相关"><a href="#java基础相关" class="headerlink" title="java基础相关"></a>java基础相关</h2><h3 id="JAVA本身有值传递吗"><a href="#JAVA本身有值传递吗" class="headerlink" title="JAVA本身有值传递吗"></a>JAVA本身有值传递吗</h3><p>JAVA所有传递都是值传递，本身不存在引用传递</p>
@@ -750,24 +749,24 @@
 <h3 id="ArrayList和LinkedList的区别"><a href="#ArrayList和LinkedList的区别" class="headerlink" title="ArrayList和LinkedList的区别"></a>ArrayList和LinkedList的区别</h3><p>（1）ArrayList是数组结构而LinkedList是链表结构。<br>（2）在进行get、set时，ArrayList可以直接从index的位置去读取，而LinkedList需要去for循环查找，所以性能较差<br>（3）在进行增删时，ArrayList主要耗时为system.arrayCopy操作，而LinkedList是循环，所以性能快慢不好说。<br>（4）LinkedList线程不安全，单线程里面建议使用ArrayList，多线程建议使用copyOnWriteArrayList<br>（5）copyOnWriteArrayList在读时不加锁，但写时候加锁，写的操作是复制底层数组，修改新数组，替换旧数组，使用的volatile关键字加锁</p>
 <h3 id="string类为什么是final的"><a href="#string类为什么是final的" class="headerlink" title="string类为什么是final的"></a>string类为什么是final的</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/31345592">String类为什么是final的</a><br>为了安全，如果做成可变的，在开发过程中，如果字符串可以随意变化，后面的赋值影响到了前面的逻辑，最终使逻辑变得更加复杂难懂。如果确实需要可变，可以用stringbuilder。不可变可保证线程安全。</p>
 <h3 id="过滤器、监听器、拦截器、触发器"><a href="#过滤器、监听器、拦截器、触发器" class="headerlink" title="过滤器、监听器、拦截器、触发器"></a>过滤器、监听器、拦截器、触发器</h3><h4 id="过滤器："><a href="#过滤器：" class="headerlink" title="过滤器："></a>过滤器：</h4><ol>
-<li>在请求进入容器之后、获取servelt之前生效，返回时也是在servelt请求之后生效。生命周期由servelt容器管理。 </li>
-<li>实现基于回调函数 </li>
-<li>常用的场景式过滤敏感信息、设置字符编码、进行url级别的权限控制。 </li>
+<li>在请求进入容器之后、获取servelt之前生效，返回时也是在servelt请求之后生效。生命周期由servelt容器管理。</li>
+<li>实现基于回调函数</li>
+<li>常用的场景式过滤敏感信息、设置字符编码、进行url级别的权限控制。</li>
 <li>可通过webFilter注解实现</li>
 </ol>
 <h4 id="拦截器："><a href="#拦截器：" class="headerlink" title="拦截器："></a>拦截器：</h4><ol>
-<li>请求在进入controller前后、可以获取ioc容器的各个bean，生命周期由ioc容器管理 </li>
-<li>依赖的是反射机制 </li>
-<li>用于面向切面编程，常用有登录权限控制、事务管理、日志管理等。 </li>
+<li>请求在进入controller前后、可以获取ioc容器的各个bean，生命周期由ioc容器管理</li>
+<li>依赖的是反射机制</li>
+<li>用于面向切面编程，常用有登录权限控制、事务管理、日志管理等。</li>
 <li>通过实现HandlerInterceptor来自定义拦截器</li>
 </ol>
 <h4 id="触发器："><a href="#触发器：" class="headerlink" title="触发器："></a>触发器：</h4><p>触发器常用于定时任务，比如一些需要定点执行的操作可用触发器完成</p>
 <h4 id="监听器："><a href="#监听器：" class="headerlink" title="监听器："></a>监听器：</h4><p>用于对web容器中对象增删查改后相关的业务操作。</p>
 <h3 id="hashMap相关"><a href="#hashMap相关" class="headerlink" title="hashMap相关"></a>hashMap相关</h3><ol>
-<li>hashMap的原理：HashMap以数组+链表形式实现，数组是HashMap的主体，每个数组元素上都有一个链表结构。 </li>
-<li>负载因子： 负载因子初始为0.75，可以手动调整，负载因子的大小决定hashMap容器的容量在多大时进行扩容，比如目前大小是16，那就是16*0.75 &#x3D; 12时进行扩容。负载因子增大可以提升空间利用率，但会导致红黑树会变得更加复杂,进而导致查询效率降低。而负载因子调小可以让hashmap更快速扩容，提升查询效率，但会导致资源浪费。0.75是总结出来的比较合适的一个数，如果有个性化需要，也可以进行调整。</li>
-<li>LinkedHashMap:是hashMap的一个子类，记录了插入顺序，如果需要输入顺序和输出顺序相同，则可以用它。 </li>
-<li>treeMap：录入时会对键值进行排序，默认按升序 </li>
+<li>hashMap的原理：HashMap以数组+链表形式实现，数组是HashMap的主体，每个数组元素上都有一个链表结构。</li>
+<li>负载因子：<br>负载因子初始为0.75，可以手动调整，负载因子的大小决定hashMap容器的容量在多大时进行扩容，比如目前大小是16，那就是16*0.75 &#x3D;<br>12时进行扩容。负载因子增大可以提升空间利用率，但会导致红黑树会变得更加复杂,进而导致查询效率降低。而负载因子调小可以让hashmap更快速扩容，提升查询效率，但会导致资源浪费。0.75是总结出来的比较合适的一个数，如果有个性化需要，也可以进行调整。</li>
+<li>LinkedHashMap:是hashMap的一个子类，记录了插入顺序，如果需要输入顺序和输出顺序相同，则可以用它。</li>
+<li>treeMap：录入时会对键值进行排序，默认按升序</li>
 <li>HashSet：简化版的hashMap，存的是不重复的键的集合，不是key-value结构。线程非安全。</li>
 </ol>
 <h3 id="java中的多态有什么特性"><a href="#java中的多态有什么特性" class="headerlink" title="java中的多态有什么特性"></a>java中的多态有什么特性</h3><p>概念：允许统一操作作用于不同对象产生的不同行为。<br>类型：</p>
@@ -784,7 +783,7 @@
 <li>向上转型：父类引用指向子类对象</li>
 <li>动态绑定：JVM在运行时根据对象实际决定调用哪个方法</li>
 </ul>
-<p>例：<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> class Animal &#123;</span><br><span class="line">void sound() &#123;</span><br><span class="line">System.out.println(&quot;Animal makes sound&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Dog extends Animal &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void sound() &#123;</span><br><span class="line">        System.out.println(&quot;Dog barks&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Cat extends Animal &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void sound() &#123;</span><br><span class="line">        System.out.println(&quot;Cat meows&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Animal animal1 = new Dog(); // 向上转型</span><br><span class="line">        Animal animal2 = new Cat(); // 向上转型</span><br><span class="line"></span><br><span class="line">        animal1.sound(); // 输出 &quot;Dog barks&quot;（动态绑定）</span><br><span class="line">        animal2.sound(); // 输出 &quot;Cat meows&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>例：<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> class Animal &#123;</span><br><span class="line">void sound() &#123;</span><br><span class="line">System.out.println(&quot;Animal makes sound&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">class Dog extends Animal &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void sound() &#123;</span><br><span class="line">        System.out.println(&quot;Dog barks&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">class Cat extends Animal &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void sound() &#123;</span><br><span class="line">        System.out.println(&quot;Cat meows&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Animal animal1 = new Dog(); // 向上转型</span><br><span class="line">        Animal animal2 = new Cat(); // 向上转型</span><br><span class="line">  </span><br><span class="line">        animal1.sound(); // 输出 &quot;Dog barks&quot;（动态绑定）</span><br><span class="line">        animal2.sound(); // 输出 &quot;Cat meows&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </li>
 </ul>
 </li>
@@ -805,8 +804,8 @@
 </blockquote>
 <h3 id="StringBuffer和StringBuilder的区别"><a href="#StringBuffer和StringBuilder的区别" class="headerlink" title="StringBuffer和StringBuilder的区别"></a>StringBuffer和StringBuilder的区别</h3><p>StringBuffer线程安全，其append使用了synchronized关键字来修饰，StringBuilder线程不安全</p>
 <h3 id="重写和重载的区别"><a href="#重写和重载的区别" class="headerlink" title="重写和重载的区别"></a>重写和重载的区别</h3><ol>
-<li>重载必须是在同一个类中，方法名相同，但后面具体的参数不同；重写是子类重写父类的方法 </li>
-<li>静态方法可以重载，但不能重写 </li>
+<li>重载必须是在同一个类中，方法名相同，但后面具体的参数不同；重写是子类重写父类的方法</li>
+<li>静态方法可以重载，但不能重写</li>
 <li>重载是在编译时多态；重写是在运行时多态</li>
 </ol>
 <h2 id="多线程相关"><a href="#多线程相关" class="headerlink" title="多线程相关"></a>多线程相关</h2><h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p><strong>常见线程池：</strong></p>
@@ -818,7 +817,7 @@
 <li>Executors.newFixedThreadPool(int n)：<ul>
 <li>创建一个可重用固定个数的线程池，以共享的无界队列方式来运行这些线程。</li>
 <li>定长线程池的大小最好根据系统资源进行设置。</li>
-<li>CPU 核数  &#x3D; Runtime.getRuntime().availableProcessors()</li>
+<li>CPU 核数 &#x3D; Runtime.getRuntime().availableProcessors()</li>
 <li>如果是计算密集型：线程数设置为CPU核数+1</li>
 <li>如果是IO密集型，线程数设置为2倍的CPU核数</li>
 </ul>
@@ -837,7 +836,7 @@
 <li>缓冲队列BlockingQueue简介：<ul>
 <li>BlockingQueue是双缓冲队列。BlockingQueue内部使用两条队列，允许两个线程同时向队列一个存储，一个取出操作。在保证并发安全的同时，提高了队列的存取效率。</li>
 <li>常用的几种BlockingQueue：<ul>
-<li>ArrayBlockingQueue（int i）:规定大小的BlockingQueue，其构造必须指定大小。其所含的对象是FIFO顺序排序的。	2）LinkedBlockingQueue（）或者（inti）:大小不固定的BlockingQueue，若其构造时指定大小，生成的BlockingQueue有大小限制，不指定大小，其大小有Integer.MAX_VALUE来决定。其所含的对象是FIFO顺序排序的。</li>
+<li>ArrayBlockingQueue（int i）:规定大小的BlockingQueue，其构造必须指定大小。其所含的对象是FIFO顺序排序的。<br>2）LinkedBlockingQueue（）或者（inti）:<br>大小不固定的BlockingQueue，若其构造时指定大小，生成的BlockingQueue有大小限制，不指定大小，其大小有Integer.MAX_VALUE来决定。其所含的对象是FIFO顺序排序的。</li>
 <li>PriorityBlockingQueue（）或者（int i）:类似于LinkedBlockingQueue，但是其所含对象的排序不是FIFO，而是依据对象的自然顺序或者构造函数的Comparator决定。</li>
 <li>SynchronizedQueue（）:特殊的BlockingQueue，对其的操作必须是放和取交替完成。</li>
 </ul>
@@ -846,23 +845,23 @@
 </li>
 </ol>
 <h3 id="线程池的七大核心参数"><a href="#线程池的七大核心参数" class="headerlink" title="线程池的七大核心参数"></a>线程池的七大核心参数</h3><ol>
-<li>核心线程数（corePoolSize）：线程池的核心线程数也是最小线程数，这些线程不会被回收，即使没有线程执行，也只会处于空闲状态，如果线程池中的线程数小于核心线程数，则会在执行任务时创建。 </li>
-<li>最大线程数（maximumPoolSize）：线程池所允许的最大线程数量，当核心线程数满了，且队列满了之后，会继续创建线程。 </li>
-<li>keepAliveTime：超过核心线程数的临时线程的存活时间 </li>
-<li>unit：存活时间的单位，s、ms等等 </li>
-<li>工作队列（workQueue）：当核心线程数满了之后，会创建工作队列，缓冲队列是一个先进先出的模式底层实现设计java的AQS机制。 </li>
-<li>创建线程的工厂类：通常我们会自定义一个线程工厂的名称，以方便快速定位线程 </li>
+<li>核心线程数（corePoolSize）：线程池的核心线程数也是最小线程数，这些线程不会被回收，即使没有线程执行，也只会处于空闲状态，如果线程池中的线程数小于核心线程数，则会在执行任务时创建。</li>
+<li>最大线程数（maximumPoolSize）：线程池所允许的最大线程数量，当核心线程数满了，且队列满了之后，会继续创建线程。</li>
+<li>keepAliveTime：超过核心线程数的临时线程的存活时间</li>
+<li>unit：存活时间的单位，s、ms等等</li>
+<li>工作队列（workQueue）：当核心线程数满了之后，会创建工作队列，缓冲队列是一个先进先出的模式底层实现设计java的AQS机制。</li>
+<li>创建线程的工厂类：通常我们会自定义一个线程工厂的名称，以方便快速定位线程</li>
 <li>线程拒绝策略，当线程池和队列满了之后，会执行线程的拒绝策略</li>
 </ol>
 <h3 id="线程池的四大拒绝策略"><a href="#线程池的四大拒绝策略" class="headerlink" title="线程池的四大拒绝策略"></a>线程池的四大拒绝策略</h3><ol>
-<li>线程池默认拒绝策略：抛异常处理 </li>
-<li>直接丢弃不处理 </li>
-<li>丢弃最老的线程队列 </li>
+<li>线程池默认拒绝策略：抛异常处理</li>
+<li>直接丢弃不处理</li>
+<li>丢弃最老的线程队列</li>
 <li>等待调用execute进行处理，页面进行loding状态</li>
 </ol>
 <h3 id="线程池使用原则"><a href="#线程池使用原则" class="headerlink" title="线程池使用原则"></a>线程池使用原则</h3><ol>
-<li>线程工厂类参数一定要传，且一定要有意义，方便后期问题定位 </li>
-<li>尽量避免为局部变量创建线程池，引入线程池的目的是为了提高资源的复用率，为局部变量创建线程池很难达到这个效果，而且如果忘记调用shutdown，多次运行后会出现内存泄露的情况（OutOfMemoryError） </li>
+<li>线程工厂类参数一定要传，且一定要有意义，方便后期问题定位</li>
+<li>尽量避免为局部变量创建线程池，引入线程池的目的是为了提高资源的复用率，为局部变量创建线程池很难达到这个效果，而且如果忘记调用shutdown，多次运行后会出现内存泄露的情况（OutOfMemoryError）</li>
 <li>设计可监控的线程池<ol>
 <li>对拒绝策略监控，一旦进入拒绝策略，说明最大线程数都处理不过来了，这种情况必须进行处理</li>
 <li>监控队列大小：如果队列有积压，说明服务可能会有问题，需要关注。</li>
@@ -876,7 +875,7 @@
 <li>进程是系统正在运行的基本程序，每个进程是独立的。举个例子：手机里可以同时运行，微信，QQ，淘宝，京东，而这几个每个软件都可以有多线程执行。</li>
 </ol>
 <h3 id="Threadlocal"><a href="#Threadlocal" class="headerlink" title="Threadlocal"></a>Threadlocal</h3><p>本地线程变量，多线程访问同一个共享变量时候会有并发问题，如果创建一个ThreadLocal变量来修饰的话，每个线程都会有这个变量的一个副本，实际操作时操作的是本地内存中的变量，从而规避线程安全问题。</p>
-<h3 id="AQS机制（抽象队列同步器）"><a href="#AQS机制（抽象队列同步器）" class="headerlink" title="AQS机制（抽象队列同步器）"></a>AQS机制（抽象队列同步器）</h3><p> AQS是java并发包的核心框架，通过FIFO等待队列和状态管理机制，实现锁的等待和唤醒。</p>
+<h3 id="AQS机制（抽象队列同步器）"><a href="#AQS机制（抽象队列同步器）" class="headerlink" title="AQS机制（抽象队列同步器）"></a>AQS机制（抽象队列同步器）</h3><p>AQS是java并发包的核心框架，通过FIFO等待队列和状态管理机制，实现锁的等待和唤醒。</p>
 <ul>
 <li>核心思想：<ol>
 <li>资源共享模式：<ul>
@@ -914,7 +913,7 @@
 <blockquote>
 <p>总结：AQS是java并发包的核心框架，通过状态管理、等待队列和模板方法设计模式，提供灵活、高性能的同步机制。</p>
 </blockquote>
-<h3 id="在线程池中，execute-和submit-有什么区别？"><a href="#在线程池中，execute-和submit-有什么区别？" class="headerlink" title="在线程池中，execute()和submit()有什么区别？"></a>在线程池中，execute()和submit()有什么区别？</h3><p> 这是线程池中提交任务的两种方法</p>
+<h3 id="在线程池中，execute-和submit-有什么区别？"><a href="#在线程池中，execute-和submit-有什么区别？" class="headerlink" title="在线程池中，execute()和submit()有什么区别？"></a>在线程池中，execute()和submit()有什么区别？</h3><p>这是线程池中提交任务的两种方法</p>
 <ul>
 <li>区别：<ol>
 <li>execute()没有返回值，直接返回void类型，但submit()会返回Future类型，可以通过Future.get()来获取异常信息</li>
@@ -953,15 +952,15 @@
 <li>）自动故障转移：当主服务器出现问题，哨兵会自动选举新的主服务器，当客户端请求过来时，返回新的请求地址。</li>
 </ol>
 <h3 id="如果服务器崩溃了，在不影响客户使用的前提下，应该怎么处理"><a href="#如果服务器崩溃了，在不影响客户使用的前提下，应该怎么处理" class="headerlink" title="如果服务器崩溃了，在不影响客户使用的前提下，应该怎么处理"></a>如果服务器崩溃了，在不影响客户使用的前提下，应该怎么处理</h3><ol>
-<li>高可用架构，尽可能减少对客户的影响 </li>
-<li>负载均衡：将流量发送到不同的服务器 </li>
-<li>集群部署：确保多台服务器同时运行 </li>
-<li>自动故障转移：使用主从复制或分布式一致性协议，实现自动故障转移 </li>
-<li>监控告警：监控CPU、内存、磁盘、网络等，设置阈值，达到就告警 </li>
-<li>定期对服务器进行健康检查 </li>
-<li>崩溃后快速恢复：自动重启、故障隔离、数据恢复 </li>
-<li>容灾恢复：备份策略、容灾演练、多区域部署 </li>
-<li>客户端容错处理：重试机制、缓存数据、优雅降级（友好的错误提示） </li>
+<li>高可用架构，尽可能减少对客户的影响</li>
+<li>负载均衡：将流量发送到不同的服务器</li>
+<li>集群部署：确保多台服务器同时运行</li>
+<li>自动故障转移：使用主从复制或分布式一致性协议，实现自动故障转移</li>
+<li>监控告警：监控CPU、内存、磁盘、网络等，设置阈值，达到就告警</li>
+<li>定期对服务器进行健康检查</li>
+<li>崩溃后快速恢复：自动重启、故障隔离、数据恢复</li>
+<li>容灾恢复：备份策略、容灾演练、多区域部署</li>
+<li>客户端容错处理：重试机制、缓存数据、优雅降级（友好的错误提示）</li>
 <li>日志与故障分析：日志收集、故障分析、改进措施</li>
 </ol>
 <h2 id="算法相关"><a href="#算法相关" class="headerlink" title="算法相关"></a>算法相关</h2><h3 id="雪花算法："><a href="#雪花算法：" class="headerlink" title="雪花算法："></a>雪花算法：</h3><blockquote>
@@ -975,8 +974,9 @@
 <li>高QPS：假如并发一口气10万个创建分布式ID请求同时杀过来，服务器要顶得住并且成功创建10万个分布式ID</li>
 </ul>
 </li>
-<li>经测试snowflake每秒能生成26万个自增可排序的ID。snowflake生成的ID结果是一个64bit大小的整数，为一个Long型（转换成字符串后长度最多19）。分布式系统内不会产生ID碰撞（datacenter和workerId作区分）并且效率高。不依赖数据库等第三方系统，以服务的方式部署，稳定性更高，生成ID的性能也非常高，可以根据自身业务分配bit位，非常灵活。</li>
+<li></li>
 </ol>
+<p>经测试snowflake每秒能生成26万个自增可排序的ID。snowflake生成的ID结果是一个64bit大小的整数，为一个Long型（转换成字符串后长度最多19）。分布式系统内不会产生ID碰撞（datacenter和workerId作区分）并且效率高。不依赖数据库等第三方系统，以服务的方式部署，稳定性更高，生成ID的性能也非常高，可以根据自身业务分配bit位，非常灵活。</p>
 
     </div>
 

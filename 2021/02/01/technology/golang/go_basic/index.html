@@ -30,10 +30,10 @@
 <meta property="og:image" content="http://example.com/2021/02/01/technology/golang/go_basic/image_2.png">
 <meta property="og:image" content="http://example.com/2021/02/01/technology/golang/go_basic/image_3.png">
 <meta property="article:published_time" content="2021-02-01T07:51:53.000Z">
-<meta property="article:modified_time" content="2025-02-28T05:58:27.659Z">
+<meta property="article:modified_time" content="2025-02-28T11:14:33.371Z">
 <meta property="article:author" content="zhyyao">
-<meta property="article:tag" content="底层原理">
 <meta property="article:tag" content="面试题">
+<meta property="article:tag" content="底层原理">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/02/01/technology/golang/go_basic/image_1.png">
@@ -245,7 +245,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-28 13:58:27" itemprop="dateModified" datetime="2025-02-28T13:58:27+08:00">2025-02-28</time>
+      <time title="修改时间：2025-02-28 19:14:33" itemprop="dateModified" datetime="2025-02-28T19:14:33+08:00">2025-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,9 +268,9 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="new和make的区别"><a href="#new和make的区别" class="headerlink" title="new和make的区别"></a>new和make的区别</h2><ol>
-<li>new和make都是全部用来分配内存的关键字，new(T)创建一个没有任何数据的类型为T的实例，并返回该实例的指针；make(T, args)只能创建 slice、map和channel，并且返回一个有初始值args（非零）的T类型的实例，非指针。</li>
-<li>对于返回值，new用于类型的内存分配，并且内存置零，返回的是一个指向类型的指针；make是对他们的初始化，（非0值）返回的是一个类型引用对象 ，对于引用类型的变量，我们不光要声明它，还要为它分配内容空间 。</li>
-<li>对于入参，new只有一个Type参数，Type可以是任何类型的数据；make传入Type参数（map、slice、chan）中的一种，还有一个size  。（map：根据slice大小分配资源，以足够存储size个元素，如果省略size，会默认分配一个小的起始size ；slice ：第一个是长度，第二个是cap（容量）；对于chan，size表示缓冲区容量；如果省略则表示channel为无缓冲的channel）<br>总结：</li>
+<li>new和make都是全部用来分配内存的关键字，new(T)创建一个没有任何数据的类型为T的实例，并返回该实例的指针；make(T, args)只能创建<br>slice、map和channel，并且返回一个有初始值args（非零）的T类型的实例，非指针。</li>
+<li>对于返回值，new用于类型的内存分配，并且内存置零，返回的是一个指向类型的指针；make是对他们的初始化，（非0值）返回的是一个类型引用对象<br>，对于引用类型的变量，我们不光要声明它，还要为它分配内容空间 。</li>
+<li>对于入参，new只有一个Type参数，Type可以是任何类型的数据；make传入Type参数（map、slice、chan）中的一种，还有一个size<br>。（map：根据slice大小分配资源，以足够存储size个元素，如果省略size，会默认分配一个小的起始size ；slice<br>：第一个是长度，第二个是cap（容量）；对于chan，size表示缓冲区容量；如果省略则表示channel为无缓冲的channel）<br>总结：</li>
 </ol>
 <ul>
 <li><p>new() 是分配内存给一个零值的指针，返回的是这个类型的指针，还可以返回自己定义的结构体，置零之后的。</p>
@@ -301,20 +301,21 @@
 </ul>
 <p>注意：</p>
 <ul>
-<li> channel关闭之后任然可以读，如果channel中仍然有未读取的数据，则仍然可以读取到，没有数据会返回0。</li>
+<li>channel关闭之后任然可以读，如果channel中仍然有未读取的数据，则仍然可以读取到，没有数据会返回0。</li>
 <li>关闭一个未初始化的channel会产生panic。</li>
 <li>重复关闭同一个channel会产生painc。</li>
-<li>从已经关闭的channel中读取消息不会产生painc，且能读出channel中还未被读取的消息，如果消息已经读出，则返回0值；(有缓冲无缓冲都是)。</li>
+<li>从已经关闭的channel中读取消息不会产生painc，且能读出channel中还未被读取的消息，如果消息已经读出，则返回0值；(<br>有缓冲无缓冲都是)。</li>
 <li>关闭的channel中读取消息永远不会阻塞，并且会返回一个为false的ok-idiom。</li>
 </ul>
 <h2 id="map的底层实现"><a href="#map的底层实现" class="headerlink" title="map的底层实现"></a>map的底层实现</h2><p>golang的map是hasmap，使用数组+链表的形式 实现的，使用拉链法消除hash冲突。<br>map类型的变量默认初始值为nil，需要使用make()函数来分配内存。语法为：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">map</span>[keyType]ValueType</span><br><span class="line"><span class="built_in">make</span>(<span class="keyword">map</span>[KeyType]ValueType, [<span class="built_in">cap</span>])</span><br></pre></td></tr></table></figure>
+
 <p>golang的map有两种重要的结构：hmap，bmap，主要就是hmap中包含bmap的一个指针。<br>存储时key不能重复，如果重复则覆盖value，通过key进行hash运算（可以简单的理解为把key转化为一个整数）然后对数组的长度取余,得到key存储在数组的哪个下标位置，咱以后将key和value组装成一个结构体，放入下标的位置。</p>
-<h3 id="1-关于hash冲突"><a href="#1-关于hash冲突" class="headerlink" title="1. 关于hash冲突"></a>1. 关于hash冲突</h3><p>数组一个下标只能存储一个元素，也就是说一个数组下标只能存储一对key，value，hashkey（小明）&#x3D;4占用了下标0的位置，假设我们遇到了另一个key，它的hashkey(xiaowang)也是4，这就是hash冲突（不同的key经过hash之后得到的值一样）那么key&#x3D;xiaowang怎么存储？</p>
+<h3 id="1-关于hash冲突"><a href="#1-关于hash冲突" class="headerlink" title="1. 关于hash冲突"></a>1. 关于hash冲突</h3><p>数组一个下标只能存储一个元素，也就是说一个数组下标只能存储一对key，value，hashkey（小明）&#x3D;4占用了下标0的位置，假设我们遇到了另一个key，它的hashkey(<br>xiaowang)也是4，这就是hash冲突（不同的key经过hash之后得到的值一样）那么key&#x3D;xiaowang怎么存储？</p>
 <ul>
 <li><p>开放定址法：当我们存储一个key，value时，发现下标已经被占了，那么我们再这个数组中重新找一个没被占用的存储这个冲突的key，那么没有被占用的有很多，找哪个呢？常见的有线性探测法，线性补偿探测法、随机探测法。</p>
 </li>
-<li><p>线性探测：按照顺序来，从冲突的下标开始往后探测，到达数组末尾时，从数组开始探测，直到找到一个空位置存储这个key，当数组找不到的情况下会扩容（当数组快满的时候就会扩容了）；<br>如下图：首先存储key&#x3D;xiaoming在下标0处，当存储key&#x3D;xiaowang时，hash冲突了，按照线性探测，存储在下标1处，（红色的线是冲突或者下标已经被占用了） 再者key&#x3D;xiaozhao存储在下标4处，当存储key&#x3D;xiaoliu是，hash冲突了，按照线性探测，从头开始，存储在下标2处 （黄色的是冲突或者下标已经被占用了）</p>
+<li><p>线性探测：按照顺序来，从冲突的下标开始往后探测，到达数组末尾时，从数组开始探测，直到找到一个空位置存储这个key，当数组找不到的情况下会扩容（当数组快满的时候就会扩容了）；<br>如下图：首先存储key&#x3D;xiaoming在下标0处，当存储key&#x3D;xiaowang时，hash冲突了，按照线性探测，存储在下标1处，（红色的线是冲突或者下标已经被占用了）<br>再者key&#x3D;xiaozhao存储在下标4处，当存储key&#x3D;xiaoliu是，hash冲突了，按照线性探测，从头开始，存储在下标2处 （黄色的是冲突或者下标已经被占用了）</p>
 <img data-src="/2021/02/01/technology/golang/go_basic/image_1.png" class="" title="图1">
 </li>
 <li><p>拉链法：拉链简单理解为链表，当key的hash冲突的时候，我们在冲突位置的元素上形成一个链表，通过指针相互连接，当查找时，发现key冲突，顺着链表一直往下找，直到链表的尾结点，找不到则返回空；<br>如下图描述：</p>
@@ -329,7 +330,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-HashMap怎么扩容"><a href="#2-HashMap怎么扩容" class="headerlink" title="2. HashMap怎么扩容"></a>2. HashMap怎么扩容</h3><p>首先需要知道哈希表的存储过程，当有新的数据进行存储的时候，需要根据key计算出它的哈希值h，假设哈希表的 容量是n，那么键值对就会放在h%n个位置中，如果该位置已经有了键值对，会分局开放寻址法或者拉链法解决冲突；<br>哈希表的扩容会创建原来的两倍容量，因此即使key的哈希值不变，求余结果也会改变，因此所有的键值对存放的位置都会发生改变，此时需要重新哈希。扩容的时候需要分配一个新的数组，新数组是老数组的2倍长，然后遍历旧的哈希，重新分配到新的结果中。</p>
+<h3 id="2-HashMap怎么扩容"><a href="#2-HashMap怎么扩容" class="headerlink" title="2. HashMap怎么扩容"></a>2. HashMap怎么扩容</h3><p>首先需要知道哈希表的存储过程，当有新的数据进行存储的时候，需要根据key计算出它的哈希值h，假设哈希表的<br>容量是n，那么键值对就会放在h%n个位置中，如果该位置已经有了键值对，会分局开放寻址法或者拉链法解决冲突；<br>哈希表的扩容会创建原来的两倍容量，因此即使key的哈希值不变，求余结果也会改变，因此所有的键值对存放的位置都会发生改变，此时需要重新哈希。扩容的时候需要分配一个新的数组，新数组是老数组的2倍长，然后遍历旧的哈希，重新分配到新的结果中。</p>
 <h2 id="Go中的interface关键字"><a href="#Go中的interface关键字" class="headerlink" title="Go中的interface关键字"></a>Go中的interface关键字</h2><ul>
 <li>interface是方法声明的集合</li>
 <li>任何类型的对象实现在interface接口中声明的全部方法，则表明这个类型实现了接口</li>
@@ -347,13 +348,15 @@
 <li>M代表操作系统线程，负责执行 Goroutine</li>
 <li>P代表逻辑处理器，负责调度 Goroutine</li>
 <li>包含了运行goroutine的资源processor处理</li>
-<li>可以运行的G队列<br>在Go中线程是运行goroutine的实体，调度器（runtime）的功能是把可运行的    goroutine分配到工作线程上。<br>Goroutine调度器和OS调度器是通过M结合起来的，每个M都代表了1个内核线程，OS调度器负责把内核线程分配到CPU执行。<img data-src="/2021/02/01/technology/golang/go_basic/image_3.png" class="" title="图3"></li>
+<li>可以运行的G队列<br>在Go中线程是运行goroutine的实体，调度器（runtime）的功能是把可运行的 goroutine分配到工作线程上。<br>Goroutine调度器和OS调度器是通过M结合起来的，每个M都代表了1个内核线程，OS调度器负责把内核线程分配到CPU执行。<img data-src="/2021/02/01/technology/golang/go_basic/image_3.png" class="" title="图3"></li>
 </ul>
 <h3 id="1-GMP-模型的优势"><a href="#1-GMP-模型的优势" class="headerlink" title="1. GMP 模型的优势"></a>1. GMP 模型的优势</h3><ul>
 <li><strong>高效利用 CPU</strong>：通过多 P 和多 M 的绑定，充分利用多核 CPU 的计算能力。</li>
 <li><strong>低延迟</strong>：Goroutine 的调度由 Go 运行时负责，避免了操作系统线程切换的开销。</li>
-<li><strong>高并发</strong>：Goroutine 的轻量级特性使得 Go 程序可以轻松创建成千上万的并发任务。<br>以下是一个简单的 Go 程序，展示了 Goroutine 的创建和调度：<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(id <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;Worker %d: %d\n&quot;</span>, id, i)</span><br><span class="line">		time.Sleep(time.Second)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> worker(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second) <span class="comment">// 等待所有 Goroutine 执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>高并发</strong>：Goroutine 的轻量级特性使得 Go 程序可以轻松创建成千上万的并发任务。<br>以下是一个简单的 Go 程序，展示了 Goroutine 的创建和调度：</li>
 </ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(id <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;Worker %d: %d\n&quot;</span>, id, i)</span><br><span class="line">		time.Sleep(time.Second)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> worker(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(<span class="number">5</span> * time.Second) <span class="comment">// 等待所有 Goroutine 执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="GO的GC垃圾回收机制"><a href="#GO的GC垃圾回收机制" class="headerlink" title="GO的GC垃圾回收机制"></a>GO的GC垃圾回收机制</h2><p>三色标记清楚法：</p>
 <ul>
 <li>初始化所有的对象为白色；</li>
@@ -362,7 +365,7 @@
 <li>分析灰色对象是否引用了其他的对象，如果没有引用其他的对象，则将该灰色标记为黑色，如果有引用，则将它变为黑色的同时将引用对象标记为灰色；</li>
 <li>重复步骤三，直到灰色对象队列为空，此时白色的对象是垃圾，进行回收。</li>
 </ul>
-<h2 id="Context关键字"><a href="#Context关键字" class="headerlink" title="Context关键字"></a>Context关键字</h2><p>Go1.7加入了一个新的标准库context，它定义了Context类型，专门用来简化 对于处理单个请求的多个 goroutine 之间与请求域的数据、取消信号、截止时间等相关操作，这些操作可能涉及多个 API 调用。<br>对服务器传入的请求应该创建上下文，而对服务器的传出调用应该接受上下文。它们之间的函数调用链必须传递上下文，或者可以使用WithCancel(获得数据通知关闭)、(获得数据定时关闭)WithDeadline、(超时关闭)WithTimeout或(传递KV)WithValue创建的派生上下文。当一个上下文被取消时，它派生的所有上下文也被取消。<br>context.Background()返回的是全局的上下文根（我在文章中多次提到），context.TODO()返回的是空的上下文（表明应用的不确定性）</p>
+<h2 id="Context关键字"><a href="#Context关键字" class="headerlink" title="Context关键字"></a>Context关键字</h2><p>Go1.7加入了一个新的标准库context，它定义了Context类型，专门用来简化 对于处理单个请求的多个 goroutine<br>之间与请求域的数据、取消信号、截止时间等相关操作，这些操作可能涉及多个 API 调用。<br>对服务器传入的请求应该创建上下文，而对服务器的传出调用应该接受上下文。它们之间的函数调用链必须传递上下文，或者可以使用WithCancel(<br>获得数据通知关闭)、(获得数据定时关闭)WithDeadline、(超时关闭)WithTimeout或(传递KV)<br>WithValue创建的派生上下文。当一个上下文被取消时，它派生的所有上下文也被取消。<br>context.Background()返回的是全局的上下文根（我在文章中多次提到），context.TODO()返回的是空的上下文（表明应用的不确定性）</p>
 <h2 id="GO内存分配与逃逸分析"><a href="#GO内存分配与逃逸分析" class="headerlink" title="GO内存分配与逃逸分析"></a>GO内存分配与逃逸分析</h2><ul>
 <li>逃逸分析的好处是为了减少gc的压力,不逃逸的对象分配到栈上,当函数返回释放即可,不需要gc标记删除</li>
 <li>逃逸分析完成之后可以确定哪些变量可以分配在栈上,栈的分配比堆快,性能好(逃逸变量分配到堆,不逃逸变量分配到栈)</li>
@@ -375,8 +378,10 @@
 </ul>
 <h3 id="1-函数传递指针真的比传值效率高吗"><a href="#1-函数传递指针真的比传值效率高吗" class="headerlink" title="1. 函数传递指针真的比传值效率高吗?"></a>1. 函数传递指针真的比传值效率高吗?</h3><ul>
 <li>传递指针可以减少底层值拷贝,可以提高效率,但是如果拷贝数据量小,由于指针传递会产生逃逸;</li>
-<li>可能会使用堆,也可能会增加GC的负担,所以传递指针不一定是高效的;<br><strong>栈</strong> :函数内存申请临时变量,并不会作为返回值返回,它就会被编译器申请到栈中<br>在函数中申请一个新对象,如果在栈中,函数执行结束会自动将内存回收;<br><strong>申请到栈内存好处</strong>:  函数返回直接释放,不会引起垃圾回收,对性能没有影响.<br><strong>堆</strong>:    函数申请内存之后,作为返回值返回了,编译器会默认变量之后还会被使用,<br>当函数返回之后并不会将内存归还,那么他就会被申请到堆中.<br>如果分配到堆中,则函数执行结束之后交给GC处理;<br><strong>申请到堆的内存</strong>  :  会引起垃圾回收,如果这个过程(特指垃圾回收不断被触发)过高频次就会导致gc压力过大,性能变低。<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> []<span class="type">int</span>&#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)     <span class="comment">// 栈 空间小</span></span><br><span class="line">    b := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20000</span>) <span class="comment">// 堆 空间过大</span></span><br><span class="line"></span><br><span class="line">    l := <span class="number">20</span></span><br><span class="line">    c := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, l) <span class="comment">// 堆 动态分配不定空间,也会在堆</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>可能会使用堆,也可能会增加GC的负担,所以传递指针不一定是高效的;<br><strong>栈</strong> :函数内存申请临时变量,并不会作为返回值返回,它就会被编译器申请到栈中<br>在函数中申请一个新对象,如果在栈中,函数执行结束会自动将内存回收;<br><strong>申请到栈内存好处</strong>:函数返回直接释放,不会引起垃圾回收,对性能没有影响.<br><strong>堆</strong>:函数申请内存之后,作为返回值返回了,编译器会默认变量之后还会被使用,<br>当函数返回之后并不会将内存归还,那么他就会被申请到堆中.<br>如果分配到堆中,则函数执行结束之后交给GC处理;<br><strong>申请到堆的内存</strong>:会引起垃圾回收,如果这个过程(特指垃圾回收不断被触发)过高频次就会导致gc压力过大,性能变低。</li>
 </ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> []<span class="type">int</span>&#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">F</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20</span>)     <span class="comment">// 栈 空间小</span></span><br><span class="line">    b := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, <span class="number">20000</span>) <span class="comment">// 堆 空间过大</span></span><br><span class="line"></span><br><span class="line">    l := <span class="number">20</span></span><br><span class="line">    c := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>, l) <span class="comment">// 堆 动态分配不定空间,也会在堆</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="2-什么是逃逸分析，有哪些场景"><a href="#2-什么是逃逸分析，有哪些场景" class="headerlink" title="2. 什么是逃逸分析，有哪些场景"></a>2. 什么是逃逸分析，有哪些场景</h3><p>逃逸分析指的是由编译器决定内存分配的位置,不需要开发者指定。</p>
 <h3 id="1-逃逸场景-什么时候才会被分配到堆中"><a href="#1-逃逸场景-什么时候才会被分配到堆中" class="headerlink" title="1.逃逸场景(什么时候才会被分配到堆中)"></a>1.逃逸场景(什么时候才会被分配到堆中)</h3><ul>
 <li>指针逃逸 : go可以返回局部变量指针,典型的变量逃逸案例</li>
@@ -403,7 +408,7 @@
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fibonacci</span><span class="params">()</span></span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    a, b := <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    f := Fibonacci()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Fibonacci: %d\n&quot;</span>, f())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator\<span class="keyword">go</span>\src\内存逃逸分析&gt;<span class="keyword">go</span> build -gcflags=-m</span><br><span class="line"># 内存逃逸分析</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">7</span>:<span class="number">9</span>: can inline Fibonacci.func1</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">17</span>:<span class="number">13</span>: inlining call to fmt.Printf</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">6</span>:<span class="number">2</span>: moved to heap: a</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">6</span>:<span class="number">5</span>: moved to heap: b</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">7</span>:<span class="number">9</span>: <span class="function"><span class="keyword">func</span> <span class="title">literal</span> <span class="title">escapes</span> <span class="title">to</span> <span class="title">heap</span></span></span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">17</span>:<span class="number">34</span>: f() escapes to heap</span><br><span class="line">.\<span class="number">1.</span>指针逃逸.<span class="keyword">go</span>:<span class="number">17</span>:<span class="number">13</span>: []<span class="keyword">interface</span> &#123;&#125; literal does not escape</span><br><span class="line">&lt;autogenerated&gt;:<span class="number">1</span>: .this does not escape</span><br><span class="line">&lt;autogenerated&gt;:<span class="number">1</span>: .this does not escape</span><br></pre></td></tr></table></figure>
 
-<h2 id="runtime机制是什么"><a href="#runtime机制是什么" class="headerlink" title="runtime机制是什么"></a>runtime机制是什么</h2><p>go 语言的可执行文件已经包含了 golang 的 runtime，它为用户的 go 程序提供协程调度、内存分配、垃圾回收等功能.此外还会与系统内核进行交互，从而真正的利用好 CPU 等资源。</p>
+<h2 id="runtime机制是什么"><a href="#runtime机制是什么" class="headerlink" title="runtime机制是什么"></a>runtime机制是什么</h2><p>go 语言的可执行文件已经包含了 golang 的 runtime，它为用户的 go 程序提供协程调度、内存分配、垃圾回收等功能.此外还会与系统内核进行交互，从而真正的利用好<br>CPU 等资源。</p>
 <ul>
 <li><strong>Gosched</strong>：让当前线程让出 <code>cpu</code> 以让其它线程运行,它不会挂起当前线程，因此当前线程未来会继续执行</li>
 <li><strong>NumCPU</strong>：返回当前系统的 <code>CPU</code> 核数量</li>
@@ -442,8 +447,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" rel="tag"># 底层原理</a>
               <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># 面试题</a>
+              <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" rel="tag"># 底层原理</a>
               <a href="/tags/Golang/" rel="tag"># Golang</a>
           </div>
 

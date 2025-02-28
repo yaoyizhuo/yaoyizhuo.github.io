@@ -76,10 +76,10 @@
 <meta property="og:image" content="http://example.com/2021/02/03/technology/golang/gc_recycle/image_47.png">
 <meta property="og:image" content="http://example.com/2021/02/03/technology/golang/gc_recycle/image_48.png">
 <meta property="article:published_time" content="2021-02-03T07:51:53.000Z">
-<meta property="article:modified_time" content="2025-02-28T04:03:27.163Z">
+<meta property="article:modified_time" content="2025-02-28T11:14:33.359Z">
 <meta property="article:author" content="zhyyao">
-<meta property="article:tag" content="底层原理">
 <meta property="article:tag" content="面试题">
+<meta property="article:tag" content="底层原理">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/02/03/technology/golang/gc_recycle/image.png">
@@ -291,7 +291,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-28 12:03:27" itemprop="dateModified" datetime="2025-02-28T12:03:27+08:00">2025-02-28</time>
+      <time title="修改时间：2025-02-28 19:14:33" itemprop="dateModified" datetime="2025-02-28T19:14:33+08:00">2025-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -335,9 +335,8 @@
 </li>
 </ul>
 <p><strong>第一步</strong>，暂停程序业务逻辑, 找出不可达的对象，然后做上标记。</p>
-<p>操作非常简单，但是有一点需要额外注意：mark and sweep算法在执行的时候，需要程序暂停！即 <code>STW(stop the world)</code>。也就是说，这段时间程序会卡在哪儿。</p>
+<p>操作非常简单，但是有一点需要额外注意：mark and sweep算法在执行的时候，需要程序暂停！即 <code>STW(stop the world)</code><br>。也就是说，这段时间程序会卡在哪儿。</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image.png" class="" title="image.png">
-
 
 <p><strong>第二步</strong>, 开始标记，程序找出它所有可达的对象，并做上标记。如下图所示：</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_1.png" class="" title="image.png">
@@ -373,14 +372,11 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_11.png" class="" title="image.png">
 
 <p>以上便是<code>三色并发标记法</code>, 不难看出,我们上面已经清楚的体现<code>三色</code>的特性</p>
-<h2 id="没有STW的三色标记法"><a href="#没有STW的三色标记法" class="headerlink" title="没有STW的三色标记法"></a>没有STW的三色标记法</h2><p>我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系, 这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.</p>
+<h2 id="没有STW的三色标记法"><a href="#没有STW的三色标记法" class="headerlink" title="没有STW的三色标记法"></a>没有STW的三色标记法</h2><p>我们还是基于上述的三色并发标记法来说, 他是一定要依赖STW的. 因为如果不暂停程序, 程序的逻辑改变对象引用关系,<br>这种动作如果在标记阶段做了修改，会影响标记结果的正确性。我们举一个场景.</p>
 <p>如果三色标记法, 标记过程不使用STW将会发生什么事情?</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_12.png" class="" title="image.png">
 <hr>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_13.png" class="" title="image.png">
-
-
-
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_14.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_15.png" class="" title="image.png">
@@ -404,6 +400,7 @@
 </ul>
 <p>不存在黑色对象引用到白色对象的指针。</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_17.png" class="" title="image.png">
+
 <ul>
 <li><strong>弱三色不变式</strong></li>
 </ul>
@@ -415,12 +412,11 @@
 <p><code>具体操作</code>: 在A对象引用B对象的时候，B对象被标记为灰色。(将B挂在A下游，B必须被标记为灰色)</p>
 <p><code>满足</code>: 强三色不变式. (不存在黑色对象引用白色对象的情况了， 因为白色会强制变成灰色)</p>
 <p>伪码如下:</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;     //1     标记灰色(``新下游对象**ptr**``)          //2    `` 当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p><code>添加下游对象``(``当前下游对象**slot**``,</code><br><code>新下游对象**ptr**``) &#123;     //1     标记灰色(``新下游对象**ptr**``)          //2    `` 当前下游对象**slot**</code> <code>=</code><br><code>新下游对象**ptr**``   &#125;</code></p>
 <p>场景：</p>
 <figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A.添加下游对象(nil, B)   //A 之前没有下游， 新添加一个下游对象B， B被标记为灰色</span><br><span class="line">A.添加下游对象(C, B)     //A 将下游对象C 更换为B，  B被标记为灰色</span><br></pre></td></tr></table></figure>
 
-
-<p>这段伪码逻辑就是写屏障,. 我们知道,黑色对象的内存槽有两种位置, <code>栈</code>和<code>堆</code>. 栈空间的特点是容量小,但是要求相应速度快,因为函数调用弹出频繁使用, 所以“插入屏障”机制,在栈空间的对象操作中不使用. 而仅仅使用在堆空间对象的操作中.</p>
+<p>这段伪码逻辑就是写屏障,. 我们知道,黑色对象的内存槽有两种位置, <code>栈</code>和<code>堆</code>. 栈空间的特点是容量小,但是要求相应速度快,因为函数调用弹出频繁使用,<br>所以“插入屏障”机制,在栈空间的对象操作中不使用. 而仅仅使用在堆空间对象的操作中.</p>
 <p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_19.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_20.png" class="" title="image.png">
@@ -428,13 +424,11 @@
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_22.png" class="" title="image.png">
 
-
-
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_23.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_24.png" class="" title="image.png">
 
-<p>但是如果栈不添加,当全部三色标记扫描之后,栈上有可能依然存在白色对象被引用的情况(如上图的对象9). 所以要对栈重新进行三色标记扫描, 但这次为了对象不丢失, 要对本次标记扫描启动STW暂停. 直到栈空间的三色标记结束.</p>
+<p>但是如果栈不添加,当全部三色标记扫描之后,栈上有可能依然存在白色对象被引用的情况(如上图的对象9). 所以要对栈重新进行三色标记扫描,<br>但这次为了对象不丢失, 要对本次标记扫描启动STW暂停. 直到栈空间的三色标记结束.</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_25.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_26.png" class="" title="image.png">
@@ -449,10 +443,9 @@
 <p><code>具体操作</code>: 被删除的对象，如果自身为灰色或者白色，那么被标记为灰色。</p>
 <p><code>满足</code>: 弱三色不变式. (保护灰色对象到白色对象的路径不会断)</p>
 <p>伪代码：</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``，</code> <code>新下游对象**ptr**``) &#123;     //1     if (``当前下游对象**slot**``是灰色 ||</code> <code>当前下游对象**slot**``是白色) &#123;             标记灰色(``当前下游对象**slo**``**t**``) //slot为被删除对象， 标记为灰色     &#125;          //2</code>  <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p><code>添加下游对象``(``当前下游对象**slot**``，</code> <code>新下游对象**ptr**``) &#123;     //1     if (``当前下游对象**slot**``是灰色 ||</code><br><code>当前下游对象**slot**``是白色) &#123;             标记灰色(``当前下游对象**slo**``**t**``) //slot为被删除对象， 标记为灰色     &#125;          //2</code><br><code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
 <p>场景：</p>
 <figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A.添加下游对象(B, nil)   //A对象，删除B对象的引用。B被A删除，被标记为灰(如果B之前为白)</span><br><span class="line">A.添加下游对象(B, C)     //A对象，更换下游B变成C。B被A删除，被标记为灰(如果B之前为白)</span><br></pre></td></tr></table></figure>
-
 
 <p>接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_29.png" class="" title="image.png">
@@ -466,10 +459,6 @@
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_34.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_35.png" class="" title="image.png">
-
-
-
-
 
 <p>这种方式的回收精度低，一个对象即使被删除了最后一个指向它的指针也依旧可以活过这一轮，在下一轮GC中被清理掉。</p>
 <p>六、Go V1.8的混合写屏障(hybrid write barrier)机制</p>
@@ -493,7 +482,7 @@
 <p>4、被添加的对象标记为灰色。</p>
 <p><code>满足</code>: 变形的弱三色不变式.</p>
 <p>伪代码：</p>
-<p><code>添加下游对象``(``当前下游对象**slot**``,</code> <code>新下游对象**ptr**``) &#123;         //1         标记灰色(``当前下游对象**slot**``) //只要当前下游对象被移走，就标记灰色                  //2         标记灰色(``新下游对象**ptr**``)                      //3</code>      <code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
+<p><code>添加下游对象``(``当前下游对象**slot**``,</code><br><code>新下游对象**ptr**``) &#123;         //1         标记灰色(``当前下游对象**slot**``) //只要当前下游对象被移走，就标记灰色                  //2         标记灰色(``新下游对象**ptr**``)                      //3</code><br><code>当前下游对象**slot**</code> <code>=</code> <code>新下游对象**ptr**``   &#125;</code></p>
 <p>这里我们注意， 屏障技术是不在栈上应用的，因为要保证栈的运行效率。</p>
 <h3 id="混合写屏障的具体场景分析"><a href="#混合写屏障的具体场景分析" class="headerlink" title="混合写屏障的具体场景分析"></a>混合写屏障的具体场景分析</h3><p>02</p>
 <pre><code>    接下来，我们用几张图，来模拟整个一个详细的过程， 希望您能够更可观的看清晰整体流程。
@@ -503,43 +492,32 @@
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_37.png" class="" title="image.png">
 
-
-
 <h3 id="场景一：对象被一个堆对象删除引用，成为栈对象的下游"><a href="#场景一：对象被一个堆对象删除引用，成为栈对象的下游" class="headerlink" title="场景一：对象被一个堆对象删除引用，成为栈对象的下游"></a>场景一：对象被一个堆对象删除引用，成为栈对象的下游</h3><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//前提：堆对象4-&gt;对象7 = 对象7；//对象7 被 对象4引用</span><br><span class="line">栈对象1-&gt;对象7 = 堆对象7；//将堆对象7 挂在 栈对象1 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
-
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_38.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_39.png" class="" title="image.png">
 
-
-
-
-
 <h3 id="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"><a href="#场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游" class="headerlink" title="场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游"></a>场景二：对象被一个栈对象删除引用，成为另一个栈对象的下游</h3><p>new 栈对象9；</p>
-<p>对象9-&gt;对象3 &#x3D; 对象3；      &#x2F;&#x2F;将栈对象3 挂在 栈对象9 下游</p>
-<p>对象2-&gt;对象3 &#x3D; null；      &#x2F;&#x2F;对象2 删除引用 对象3</p>
+<p>对象9-&gt;对象3 &#x3D; 对象3； &#x2F;&#x2F;将栈对象3 挂在 栈对象9 下游</p>
+<p>对象2-&gt;对象3 &#x3D; null； &#x2F;&#x2F;对象2 删除引用 对象3</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_40.png" class="" title="image.png">
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_41.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_42.png" class="" title="image.png">
 
-
 <h3 id="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"><a href="#场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游"></a>场景三：对象被一个堆对象删除引用，成为另一个堆对象的下游</h3><figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">堆对象10-&gt;对象7 = 堆对象7；//将堆对象7 挂在 堆对象10 下游</span><br><span class="line">堆对象4-&gt;对象7 = null；//对象4 删除引用 对象7</span><br></pre></td></tr></table></figure>
-
 
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_43.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_44.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_45.png" class="" title="image.png">
 
-
-<h3 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h3><p>栈对象1-&gt;对象2 &#x3D; null；      &#x2F;&#x2F;对象1 删除引用 对象2</p>
-<p>堆对象4-&gt;对象2 &#x3D; 栈对象2；    &#x2F;&#x2F;对象4 添加 下游 栈对象2</p>
-<p>堆对象4-&gt;对象7 &#x3D; null;       &#x2F;&#x2F;对象4 删除引用 对象7null；&#x2F;&#x2F;对象4 删除引用 对象7</p>
+<h3 id="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"><a href="#场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游" class="headerlink" title="场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游"></a>场景四：对象从一个栈对象删除引用，成为另一个堆对象的下游</h3><p>栈对象1-&gt;对象2 &#x3D; null； &#x2F;&#x2F;对象1 删除引用 对象2</p>
+<p>堆对象4-&gt;对象2 &#x3D; 栈对象2； &#x2F;&#x2F;对象4 添加 下游 栈对象2</p>
+<p>堆对象4-&gt;对象7 &#x3D; null; &#x2F;&#x2F;对象4 删除引用 对象7null；&#x2F;&#x2F;对象4 删除引用 对象7</p>
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_46.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_47.png" class="" title="image.png">
 <img data-src="/2021/02/03/technology/golang/gc_recycle/image_48.png" class="" title="image.png">
-
 
 <pre><code>    Golang中的混合写屏障满足`弱三色不变式`，结合了删除写屏障和插入写屏障的优点，只需要在开始时并发扫描各个goroutine的栈，使其变黑并一直保持，这个过程不需要STW，而标记结束后，因为栈在扫描后始终是黑色的，也无需再进行re-scan操作了，减少了STW的时间。
 </code></pre>
@@ -580,8 +558,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" rel="tag"># 底层原理</a>
               <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># 面试题</a>
+              <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" rel="tag"># 底层原理</a>
               <a href="/tags/Golang/" rel="tag"># Golang</a>
           </div>
 
@@ -589,13 +567,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/03/technology/golang/gin_code_analyse/" rel="prev" title="Gin源码解析">
-                  <i class="fa fa-angle-left"></i> Gin源码解析
+                <a href="/2021/02/03/technology/golang/go_reflect/" rel="prev" title="Go语言反射reflect">
+                  <i class="fa fa-angle-left"></i> Go语言反射reflect
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/06/03/technology/network/flow_limit/" rel="next" title="常用限流策略">
-                  常用限流策略 <i class="fa fa-angle-right"></i>
+                <a href="/2021/02/03/technology/golang/gin_code_analyse/" rel="next" title="Gin源码解析">
+                  Gin源码解析 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/2022/10/02/technology/java/java_gc_recycle/image_7.png">
 <meta property="og:image" content="http://example.com/2022/10/02/technology/java/java_gc_recycle/image_8.png">
 <meta property="article:published_time" content="2022-10-02T07:51:53.000Z">
-<meta property="article:modified_time" content="2025-02-28T07:07:21.245Z">
+<meta property="article:modified_time" content="2025-02-28T11:14:33.352Z">
 <meta property="article:author" content="zhyyao">
 <meta property="article:tag" content="面试题">
 <meta property="article:tag" content="Java">
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-02-28 15:07:21" itemprop="dateModified" datetime="2025-02-28T15:07:21+08:00">2025-02-28</time>
+      <time title="修改时间：2025-02-28 19:14:33" itemprop="dateModified" datetime="2025-02-28T19:14:33+08:00">2025-02-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -280,23 +280,26 @@
 </blockquote>
 <p>GC的历史(了解):</p>
 <blockquote>
-<p>Java 语言出来之前，大家都在拼命的写 C 或者 C++ 的程序，而此时存在一个很大的矛盾，C++ 等语言创建对象要不断的去开辟空间，不用的时候又需要不断的去释放空间，既要写构造函数，又要写析构函数（删除对象释放空间），很多时候都在重复不停的析构。于是，有人就提出，能不能写一段程序实现这块功能，每次创建，释放空间的时候复用这段代码，而无需重复的书写呢？所以从C到Java最大的提升就是自动垃圾回收。</p>
+<p>Java 语言出来之前，大家都在拼命的写 C 或者 C++ 的程序，而此时存在一个很大的矛盾，C++</p>
 </blockquote>
+<p>等语言创建对象要不断的去开辟空间，不用的时候又需要不断的去释放空间，既要写构造函数，又要写析构函数（删除对象释放空间），很多时候都在重复不停的析构。于是，有人就提出，能不能写一段程序实现这块功能，每次创建，释放空间的时候复用这段代码，而无需重复的书写呢？所以从C到Java最大的提升就是自动垃圾回收。</p>
 <blockquote>
-<p>另外，1960年，基于 MIT 的 Lisp语言首先提出了垃圾回收的概念，而这时 Java 还没有出世呢，所以实际上 GC 并不是Java的专利，GC 的历史远远大于 Java 的历史。</p>
+<p>另外，1960年，基于 MIT 的 Lisp语言首先提出了垃圾回收的概念，而这时 Java 还没有出世呢，所以实际上 GC 并不是Java的专利，GC<br>的历史远远大于 Java 的历史。</p>
 </blockquote>
-<p>总结思考:(C语言的特点是面向过程,需要自己手动定义内存空间,释放内存空间,不然就会一直占用着这个内存空间,导致内存泄漏,Java的特点是面向对象,有了自动垃圾回收,就不需要考虑释放这个内存空间,后台GC会帮我们处理内存的释放)</p>
+<p>总结思考:(<br>C语言的特点是面向过程,需要自己手动定义内存空间,释放内存空间,不然就会一直占用着这个内存空间,导致内存泄漏,Java的特点是面向对象,有了自动垃圾回收,就不需要考虑释放这个内存空间,后台GC会帮我们处理内存的释放)</p>
 <h2 id="怎么自定义垃圾"><a href="#怎么自定义垃圾" class="headerlink" title="怎么自定义垃圾?"></a>怎么自定义垃圾?</h2><p>既然我们要做垃圾回收，首先我们得搞清楚垃圾的定义是什么，哪些内存是需要回收的?<br>定义垃圾要先了解:</p>
 <ul>
 <li>引用计数算法（Python）</li>
 <li>可达性分析算法（根搜索算法，追踪性垃圾收集）</li>
 </ul>
-<h3 id="引用计数算法（Python）"><a href="#引用计数算法（Python）" class="headerlink" title="引用计数算法（Python）"></a>引用计数算法（Python）</h3><p>引用计数算法（Reachability Counting）是通过在对象头中分配一个空间来保存该 对象被引用的次数（Reference Count）。如果该对象被引用，则它的引用计数加 1，如果删除对该对象的引用，那么它的引用计数就减1，当该对象的引用计数为0 时，那么该对象就会被回收。</p>
+<h3 id="引用计数算法（Python）"><a href="#引用计数算法（Python）" class="headerlink" title="引用计数算法（Python）"></a>引用计数算法（Python）</h3><p>引用计数算法（Reachability Counting）是通过在对象头中分配一个空间来保存该 对象被引用的次数（Reference<br>Count）。如果该对象被引用，则它的引用计数加 1，如果删除对该对象的引用，那么它的引用计数就减1，当该对象的引用计数为0<br>时，那么该对象就会被回收。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String m = new String(&quot;jack&quot;);</span><br></pre></td></tr></table></figure>
+
 <img data-src="/2022/10/02/technology/java/java_gc_recycle/image.png" class="" title="image.png">
 
 <p>先创建一个字符串，这时候”jack”有一个引用，就是 m。<br>然后将 m 设置为 null，这时候”jack”的引用次数就等于0了，在引用计数算法中，意 味着这块内容就需要被回收了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = null;</span><br></pre></td></tr></table></figure>
+
 <img data-src="/2022/10/02/technology/java/java_gc_recycle/image_1.png" class="" title="image.png">
 
 <p>(这个方法的弊端):看似很美好，最终 还是需要放弃 引用计数算法 ，看下面的例子。</p>
@@ -305,104 +308,119 @@
 <ol>
 <li>定义2个对象</li>
 <li>相互引用</li>
-<li>置空各自的声明引用<img data-src="/2022/10/02/technology/java/java_gc_recycle/image_2.png" class="" title="image.png">
+<li>置空各自的声明引用<img data-src="/2022/10/02/technology/java/java_gc_recycle/image_2.png" class="" title="image.png"></li>
+</ol>
 <blockquote>
 <p><strong>总结</strong>:我们看图可以看到，最后这2个对象已经不可能再被访问了，但由于他们相互引用着对方，导致它们的引用计数永远都不会为0，通过引用计数算法，也就永远无法通知GC收集器回收它们。（循环引用的问题）</p>
 </blockquote>
-</li>
-</ol>
-<h3 id="可达性分析算法（根搜索算法，追踪性垃圾收集）"><a href="#可达性分析算法（根搜索算法，追踪性垃圾收集）" class="headerlink" title="可达性分析算法（根搜索算法，追踪性垃圾收集）"></a>可达性分析算法（根搜索算法，追踪性垃圾收集）</h3><p>可达性分析算法 的基本思路是，通过一些被称为<strong>引用链</strong>（<strong>GC Roots</strong>）的对象作为起 点，从这些节点开始向上搜索，当一个对象到 GC Roots 没有任何引用链相连时（即 从 GC Roots 节点到该节点不可达），则证明该对象是不可用的。<br>在 Java 语言中，可作为 引用链（GC Roots） 的对象包括以下4种：</p>
+<h3 id="可达性分析算法（根搜索算法，追踪性垃圾收集）"><a href="#可达性分析算法（根搜索算法，追踪性垃圾收集）" class="headerlink" title="可达性分析算法（根搜索算法，追踪性垃圾收集）"></a>可达性分析算法（根搜索算法，追踪性垃圾收集）</h3><p>可达性分析算法 的基本思路是，通过一些被称为<strong>引用链</strong>（<strong>GC Roots</strong>）的对象作为起 点，从这些节点开始向上搜索，当一个对象到 GC<br>Roots 没有任何引用链相连时（即 从 GC Roots 节点到该节点不可达），则证明该对象是不可用的。<br>在 Java 语言中，可作为 引用链（GC Roots） 的对象包括以下4种：</p>
 <ol>
 <li>虚拟机栈(栈帧中的本地变 量表)中引用的对象</li>
 <li>方法区中静态属性引用的对象</li>
 <li>方法区中常量引用的对象</li>
-<li>本地方法栈中(Native修饰的方法)引用的对象<img data-src="/2022/10/02/technology/java/java_gc_recycle/image_3.png" class="" title="image.png">
-<blockquote>
-<p>总结:由图可以看到,通过可达性算法，成功解决了引用计数所无法解决的问题-“循环依赖”，只要你无 法与 GC Root 建立直接或间接的连接，系统就会判定你为可回收对象。</p>
-</blockquote>
-</li>
+<li>本地方法栈中(Native修饰的方法)引用的对象<img data-src="/2022/10/02/technology/java/java_gc_recycle/image_3.png" class="" title="image.png"></li>
 </ol>
-<h2 id="怎么回收垃圾"><a href="#怎么回收垃圾" class="headerlink" title="怎么回收垃圾?"></a>怎么回收垃圾?</h2><p>在确定了哪些垃圾可以被回收后，垃圾收集器要做的事情就是开始进行垃圾回收，但是这里面涉及到一个问题是：如何高效地进行垃圾回收。由于Java虚拟机规范并没有 对如何实现垃圾收集器做出明确的规定，因此各个厂商的虚拟机可以采用不同的方式 来实现垃圾收集器， 以下几种 常见的垃圾收集算法：</p>
+<blockquote>
+<p>总结:由图可以看到,通过可达性算法，成功解决了引用计数所无法解决的问题-“循环依赖”，只要你无 法与 GC Root<br>建立直接或间接的连接，系统就会判定你为可回收对象。</p>
+</blockquote>
+<h2 id="怎么回收垃圾"><a href="#怎么回收垃圾" class="headerlink" title="怎么回收垃圾?"></a>怎么回收垃圾?</h2><p>在确定了哪些垃圾可以被回收后，垃圾收集器要做的事情就是开始进行垃圾回收，但是这里面涉及到一个问题是：如何高效地进行垃圾回收。由于Java虚拟机规范并没有<br>对如何实现垃圾收集器做出明确的规定，因此各个厂商的虚拟机可以采用不同的方式 来实现垃圾收集器， 以下几种 常见的垃圾收集算法：</p>
 <h3 id="标记清除算法"><a href="#标记清除算法" class="headerlink" title="标记清除算法:"></a>标记清除算法:</h3><img data-src="/2022/10/02/technology/java/java_gc_recycle/image_4.png" class="" title="image.png">
-<p>标记清除算法（Mark-Sweep）是最基础的一种垃圾回收算法，它分为2部分,先把内存区域中的这些对象进行标记，哪些属于可回收标记出来（标记的是存活 对象，因为对象只有两个状态所以也可以理解为标记处垃圾对象），然后把这些 垃圾拎出来清理掉。就像上图一样，清理掉的垃圾就变成未使用的内存区域，等待被再次使用。<br>这逻辑再清晰不过了，并且也很好操作，但它 存在一个很大的问题，那就是内存碎片：<br>上图中的方块的假设是 2M，小一些的是 1M，大一些的是 4M。等我们回收 完,内存就会切成了很多段。我们知道开辟内存空间时，需要的是连续的内存区 域,这时候我们需要一个 2M的内存区域其中有2个 1M 是没法用的。这样就 导致 本身还有这么多的内存的，但却用不了。</p>
+<p>标记清除算法（Mark-Sweep）是最基础的一种垃圾回收算法，它分为2部分,先把内存区域中的这些对象进行标记，哪些属于可回收标记出来（标记的是存活<br>对象，因为对象只有两个状态所以也可以理解为标记处垃圾对象），然后把这些<br>垃圾拎出来清理掉。就像上图一样，清理掉的垃圾就变成未使用的内存区域，等待被再次使用。<br>这逻辑再清晰不过了，并且也很好操作，但它 存在一个很大的问题，那就是内存碎片：<br>上图中的方块的假设是 2M，小一些的是 1M，大一些的是 4M。等我们回收 完,内存就会切成了很多段。我们知道开辟内存空间时，需要的是连续的内存区<br>域,这时候我们需要一个 2M的内存区域其中有2个 1M 是没法用的。这样就 导致 本身还有这么多的内存的，但却用不了。</p>
 <h3 id="复制回收算法"><a href="#复制回收算法" class="headerlink" title="复制回收算法:"></a>复制回收算法:</h3><img data-src="/2022/10/02/technology/java/java_gc_recycle/image_5.png" class="" title="image.png">
-<p>复制算法（Copying）是在标记清除算法上演化而来，解决标记清除算法的内存碎片 问题。它将用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一 块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内 存空间一次清理掉。保证了内存的连续可用，内存分配时也就不用考虑内存碎片等复 杂情况，逻辑清晰，运行高效。<br>由图可以很清楚，也很明显的看到暴露了另一个问题，举个例子来说就是140平的大房，只能当70平米 的小房来使？代价实在太高,有点大材小用了。</p>
+<p>复制算法（Copying）是在标记清除算法上演化而来，解决标记清除算法的内存碎片 问题。它将用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一<br>块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内 存空间一次清理掉。保证了内存的连续可用，内存分配时也就不用考虑内存碎片等复<br>杂情况，逻辑清晰，运行高效。<br>由图可以很清楚，也很明显的看到暴露了另一个问题，举个例子来说就是140平的大房，只能当70平米 的小房来使？代价实在太高,有点大材小用了。</p>
 <h3 id="标记整理算法"><a href="#标记整理算法" class="headerlink" title="标记整理算法 :"></a>标记整理算法 :</h3><img data-src="/2022/10/02/technology/java/java_gc_recycle/image_6.png" class="" title="image.png">
-<p>标记整理算法（Mark-Compact）标记过程仍然与标记清除算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，再清理掉该端边界以外的内存区域。<br>标记整理算法一方面在标记-清除算法上做了升级，解决了内存碎片的问题，也规避了复制算法只能利用一半内存区域的弊端。看起来很美好，但从上图可以看到，它对内存变动更频繁，需要整理几乎所有存活对象的引用地址，在效率上比复制算法要差很多。 </p>
-<h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法:"></a>分代收集算法:</h3><p>严格来说并不是一种具体算法，而是融合上述3种基础的算法思想，而产生的针对不同情况所采用不同算法的一套组合拳。 对象存活周期的不同将内存划分为几块。<br>一般是把 Java 堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，因为只需要付出少量存活对象的复制成本就可以完成收集。而老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用标记清理或者标记整理算法来进行回收。 </p>
+<p>标记整理算法（Mark-Compact）标记过程仍然与标记清除算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，再清理掉该端边界以外的内存区域。<br>标记整理算法一方面在标记-清除算法上做了升级，解决了内存碎片的问题，也规避了复制算法只能利用一半内存区域的弊端。看起来很美好，但从上图可以看到，它对内存变动更频繁，需要整理几乎所有存活对象的引用地址，在效率上比复制算法要差很多。</p>
+<h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法:"></a>分代收集算法:</h3><p>严格来说并不是一种具体算法，而是融合上述3种基础的算法思想，而产生的针对不同情况所采用不同算法的一套组合拳。<br>对象存活周期的不同将内存划分为几块。<br>一般是把 Java<br>堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，因为只需要付出少量存活对象的复制成本就可以完成收集。而老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用标记清理或者标记整理算法来进行回收。</p>
 <p><strong>堆内存模型 与 回收策略（分代收集）</strong>:</p>
 <img data-src="/2022/10/02/technology/java/java_gc_recycle/image_7.png" class="" title="image.png">
-<p>Java 堆（Java Heap）是JVM所管理的内存中最大的一块，堆又是垃圾收集器管理的 主要区域，这里我们主要分析一下 Java 堆的结构： Java 堆主要分为2个区域-新生代与老年代(java1.8之后)，其中新生代又分 Eden 区和 Survivor 区，其中 Survivor 区又分 From 和 To 2个区。<br><strong>Minor GC 、 Major GC 、 Full GC ？</strong><br>新生代内存不够用时候发生Minor GC 也叫 Yong GC ，老年代内存不够的时候发生 Major GC， Minor GC 相比 Major GC 更频繁，回收速度也更快。 还有一种GC 负责整个新生代 + 老年代的回收称为 Full GC.</p>
+<p>Java 堆（Java Heap）是JVM所管理的内存中最大的一块，堆又是垃圾收集器管理的 主要区域，这里我们主要分析一下 Java 堆的结构： Java<br>堆主要分为2个区域-新生代与老年代(java1.8之后)，其中新生代又分 Eden 区和 Survivor 区，其中 Survivor 区又分 From 和 To<br>2个区。<br><strong>Minor GC 、 Major GC 、 Full GC ？</strong><br>新生代内存不够用时候发生Minor GC 也叫 Yong GC ，老年代内存不够的时候发生 Major GC， Minor GC 相比 Major GC 更频繁，回收速度也更快。<br>还有一种GC 负责整个新生代 + 老年代的回收称为 Full GC.</p>
 <ol>
 <li>Eden 区:</li>
 </ol>
 <ul>
-<li>业务处理中，绝大多数对象是朝生夕死，这种对象会在新生代 Eden 区中进行内存分 配，当 Eden 区没有足够空间进行分配时，虚拟机会发起一次 Minor GC。</li>
-<li>通过 Minor GC 之后，Eden 会被清空，Eden 区中绝大部分对象会被回收，而那些 无需回收的存活对象，将会进到 Survivor 的 From 区（若 From 区不够，则直接进入 Old 区）。</li>
+<li>业务处理中，绝大多数对象是朝生夕死，这种对象会在新生代 Eden 区中进行内存分 配，当 Eden 区没有足够空间进行分配时，虚拟机会发起一次<br>Minor GC。</li>
+<li>通过 Minor GC 之后，Eden 会被清空，Eden 区中绝大部分对象会被回收，而那些 无需回收的存活对象，将会进到 Survivor 的 From 区（若<br>From 区不够，则直接进入 Old 区）。</li>
 </ul>
 <ol start="2">
 <li>Survivor 区:</li>
 </ol>
 <ul>
-<li>Survivor 区相当于是 Eden 区和 Old 区的一个缓冲，类似于我们交通灯中的黄灯。 Survivor 又分为2个区，一个是 From 区，一个是 To 区。每次执行 Minor GC，会 将 Eden 区和 From 存活的对象放到 Survivor 的 To 区（如果 To 区不够，则直接进 入 Old 区）。</li>
+<li>Survivor 区相当于是 Eden 区和 Old 区的一个缓冲，类似于我们交通灯中的黄灯。 Survivor 又分为2个区，一个是 From 区，一个是 To<br>区。每次执行 Minor GC，会 将 Eden 区和 From 存活的对象放到 Survivor 的 To 区（如果 To 区不够，则直接进 入 Old 区）。</li>
 </ul>
 <ol start="3">
 <li>Old 区:</li>
 </ol>
 <ul>
-<li>老年代占据着2&#x2F;3的堆内存空间，只有在Major GC（full gc） 的时候才会进行清理， 每次 GC 都会触发“ Stop-The-World ”。内存越大，STW 的时间也越长，所以内存 也不仅仅是越大就越好由于复制算法在对象存活率较高的老年代会进行很多次的复 制操作，效率很低，所以老年代这里采用的是 标记-整理 算法。 </li>
-<li><strong>Stop the World</strong>机制，简称STW，即在执行垃圾收集算法时,Java应用程序的 其他所有除了垃圾收集收集器线程之外的线程都被挂起。此时，系统只能允许 GC线程进行运行，其他线程则会全部暂停，等待GC线程执行完毕后才能再次运 行。</li>
+<li>老年代占据着2&#x2F;3的堆内存空间，只有在Major GC（full gc） 的时候才会进行清理， 每次 GC 都会触发“ Stop-The-World ”。内存越大，STW<br>的时间也越长，所以内存 也不仅仅是越大就越好由于复制算法在对象存活率较高的老年代会进行很多次的复 制操作，效率很低，所以老年代这里采用的是<br>标记-整理 算法。</li>
+<li><strong>Stop the World</strong>机制，简称STW，即在执行垃圾收集算法时,Java应用程序的 其他所有除了垃圾收集收集器线程之外的线程都被挂起。此时，系统只能允许<br>GC线程进行运行，其他线程则会全部暂停，等待GC线程执行完毕后才能再次运 行。</li>
 </ul>
 <ol start="4">
 <li>为什么需要两个Survivor区？</li>
 </ol>
 <ul>
 <li>设置两个 Survivor 区最大的好处就是解决<strong>内存碎片化</strong>，可以累计对象的年龄<strong>迟一点进入老年代</strong>。</li>
-<li>我们先假设一下，Survivor 如果只有一个区域会怎样。Minor GC 执行后，Eden 区 被清空了，存活的对象放到了 Survivor 区，而之前 Survivor 区中的对象，可能也有 一些是需要被清除的。问题来了，这时候我们怎么清除它们？在这种场景下，我们只 能标记清除，而我们知道标记清除最大的问题就是内存碎片，在新生代这种经常会消 亡的区域，采用标记清除必然会让内存产生严重的碎片化。因为 Survivor 有2个区 域，所以每次 Minor GC，会将之前 Eden 区和 From 区中的存活对象复制到 To 区 域。第二次 Minor GC 时，From 与 To 职责兑换，这时候会将 Eden 区和 To 区中 的存活对象再复制到 From 区域，以此反复。</li>
+<li>我们先假设一下，Survivor 如果只有一个区域会怎样。Minor GC 执行后，Eden 区 被清空了，存活的对象放到了 Survivor 区，而之前<br>Survivor 区中的对象，可能也有 一些是需要被清除的。问题来了，这时候我们怎么清除它们？在这种场景下，我们只<br>能标记清除，而我们知道标记清除最大的问题就是内存碎片，在新生代这种经常会消 亡的区域，采用标记清除必然会让内存产生严重的碎片化。因为<br>Survivor 有2个区 域，所以每次 Minor GC，会将之前 Eden 区和 From 区中的存活对象复制到 To 区 域。第二次 Minor GC 时，From 与<br>To 职责兑换，这时候会将 Eden 区和 To 区中 的存活对象再复制到 From 区域，以此反复。</li>
 <li>在from和to之间经历15次 Minor GC 之后，就会被送到老年代。</li>
-<li>这种机制最大的好处就是，整个过程中，永远有一个 Survivor space 是空的，另一 个非空的 Survivor space 是无碎片的。那么，Survivor 为什么不分更多块呢？比方 说分成三个、四个、五个?显然，如果 Survivor 区再细分下去，每一块的空间就会比 较小，容易导致 Survivor 区满，两块 Survivor 区是经过权衡之后的最佳方案。</li>
+<li>这种机制最大的好处就是，整个过程中，永远有一个 Survivor space 是空的，另一 个非空的 Survivor space 是无碎片的。那么，Survivor<br>为什么不分更多块呢？比方 说分成三个、四个、五个?显然，如果 Survivor 区再细分下去，每一块的空间就会比 较小，容易导致 Survivor<br>区满，两块 Survivor 区是经过权衡之后的最佳方案。</li>
 </ul>
-<p>针对以下几种情况也会进入老年代：    </p>
+<p>针对以下几种情况也会进入老年代：</p>
 <ol>
 <li>大对象:</li>
 </ol>
 <ul>
-<li>大对象指需要大量连续内存空间的对象，这部分对象不管是不是“朝生夕死”，都会直接进 到老年代。这样做主要是为了避免在 Eden 区及2个 Survivor 区之间发生大量的内存复制。</li>
+<li>大对象指需要大量连续内存空间的对象，这部分对象不管是不是“朝生夕死”，都会直接进 到老年代。这样做主要是为了避免在 Eden 区及2个<br>Survivor 区之间发生大量的内存复制。</li>
 <li>当你的系统有非常多“朝生夕死”的大对象时，得注意了。</li>
 </ul>
 <ol start="2">
 <li>长期存活对象:</li>
 </ol>
 <ul>
-<li>虚拟机给每个对象定义了一个对象年龄（Age）计数器。正常情况下对象会不断的在 Survivor 的 From 区与 To 区之间移动，对象在 Survivor 区中每经历一次 Minor GC，年 龄就增加1岁。当年龄增加到15岁时，这时候就会被转移到老年代。当然，这里的15，JVM 也支持进行特殊设置。</li>
+<li>虚拟机给每个对象定义了一个对象年龄（Age）计数器。正常情况下对象会不断的在 Survivor 的 From 区与 To 区之间移动，对象在<br>Survivor 区中每经历一次 Minor GC，年 龄就增加1岁。当年龄增加到15岁时，这时候就会被转移到老年代。当然，这里的15，JVM<br>也支持进行特殊设置。</li>
 </ul>
 <ol start="3">
 <li>内存碎片：</li>
 </ol>
 <ul>
-<li>一旦实例从堆内存中被删除，其位置就会变空并且可用于未来实例的分配。这些 空出的空间将会使整个内存区域碎片化。为了实例的快速分配，需要进行碎片整理。基于垃 圾回收器的不同选择，回收的内存区域要么被不停地被整理，要么在一个单独的GC进程中 完成。</li>
+<li>一旦实例从堆内存中被删除，其位置就会变空并且可用于未来实例的分配。这些 空出的空间将会使整个内存区域碎片化。为了实例的快速分配，需要进行碎片整理。基于垃<br>圾回收器的不同选择，回收的内存区域要么被不停地被整理，要么在一个单独的GC进程中 完成。</li>
 </ul>
 <ol start="4">
 <li>回收器选择:</li>
 </ol>
 <ul>
-<li>JVM 给了三种选择： 串行收集器、并行收集器、并发收集器 ，但是串行收集器只适用于小 数据量的情况，所以这里的选择主要针对并行收集器和并发收集器。默认情况下， JDK1.5 以前都是使用串行收集器，如果想使用其他收集器需要在启动时加入相应参数。 JDK1.5 以 后， JVM 会根据当前系统配置进行判断。</li>
+<li>JVM 给了三种选择： 串行收集器、并行收集器、并发收集器 ，但是串行收集器只适用于小 数据量的情况，所以这里的选择主要针对并行收集器和并发收集器。默认情况下，<br>JDK1.5 以前都是使用串行收集器，如果想使用其他收集器需要在启动时加入相应参数。 JDK1.5 以 后， JVM 会根据当前系统配置进行判断。</li>
 <li>吞吐量优先的并行收集器 ： 并行收集器主要以到达一定的吞吐量为目标。</li>
 <li>响应时间优先的并发收集器： 并发收集器主要是保证系统的响应时间，减少垃圾收集时的停 顿时间。</li>
 </ul>
 <p><strong>7种收集器:</strong></p>
 <img data-src="/2022/10/02/technology/java/java_gc_recycle/image_8.png" class="" title="image.png">
 
-
 <ol>
 <li>Serial收集器（单线程）</li>
 </ol>
-<p>是新生代,一个单线程的收集器，采用的是复制算法；<br>现在依然是虚拟机运行在Client模式下的默认新生代收集器，主要就是因为它简单而高效<br>2. ParNew收集器（多线程）</p>
-<p>其实就是Serial收集器的多线程版本，采用的也是复制算法,他也是新生代；<br>ParNew收集器在单CPU环境中绝对不会有比Serial收集器更好的效果；<br>是许多运行在Server模式下虚拟机首选的新生代收集器，重要原因就是除了Serial收集器 外，只有它能与CMS收集器配合工作；<br>3. Parallel Scavenge（多线程）8</p>
-<p>收集器是一个新生代的多线程收集器（并行收集器），它在回收期间不需要暂停其他用户线<br>程，其采用的是复制算法，该收集器与前两个收集器有所不同，它主要是为了达到一个可控 的吞吐量。<br>4. Serial Old（单线程）</p>
-<p>收集器是针对老年代的收集器，采用的是标记整理算法。它的优点是实现简单高效，但是缺<br>点是会给用户带来停顿。<br>5. Parallel Old（多线程）8</p>
-<p>Parallel Scavenge收集器的老年代版本（并行收集器），使用多线程和标记整理算法。<br>6. CMS收集器（多线程）</p>
-<p>是一个老年代收集器,基于标记清除算法,设计目标是尽量减少停顿时间,存在着内存碎片化问<br>题,所以难以避免长时间运行情况下发生full GC,导致恶劣的停顿另外，既然强调了并发， CMS 会占用更多 CPU 资源，并和用户线程争抢。<br>7. G1收集器</p>
+<p>是新生代,一个单线程的收集器，采用的是复制算法；<br>现在依然是虚拟机运行在Client模式下的默认新生代收集器，主要就是因为它简单而高效</p>
+<ol start="2">
+<li>ParNew收集器（多线程）</li>
+</ol>
+<p>其实就是Serial收集器的多线程版本，采用的也是复制算法,他也是新生代；<br>ParNew收集器在单CPU环境中绝对不会有比Serial收集器更好的效果；<br>是许多运行在Server模式下虚拟机首选的新生代收集器，重要原因就是除了Serial收集器 外，只有它能与CMS收集器配合工作；</p>
+<ol start="3">
+<li>Parallel Scavenge（多线程）8</li>
+</ol>
+<p>收集器是一个新生代的多线程收集器（并行收集器），它在回收期间不需要暂停其他用户线<br>程，其采用的是复制算法，该收集器与前两个收集器有所不同，它主要是为了达到一个可控 的吞吐量。</p>
+<ol start="4">
+<li>Serial Old（单线程）</li>
+</ol>
+<p>收集器是针对老年代的收集器，采用的是标记整理算法。它的优点是实现简单高效，但是缺<br>点是会给用户带来停顿。</p>
+<ol start="5">
+<li>Parallel Old（多线程）8</li>
+</ol>
+<p>Parallel Scavenge收集器的老年代版本（并行收集器），使用多线程和标记整理算法。</p>
+<ol start="6">
+<li>CMS收集器（多线程）</li>
+</ol>
+<p>是一个老年代收集器,基于标记清除算法,设计目标是尽量减少停顿时间,存在着内存碎片化问<br>题,所以难以避免长时间运行情况下发生full GC,导致恶劣的停顿另外，既然强调了并发， CMS 会占用更多 CPU 资源，并和用户线程争抢。</p>
+<ol start="7">
+<li>G1收集器</li>
+</ol>
 <p>G1(Garbage-First)是一款面向服务器的垃圾收集器,主要针对配备多台处理器及大量内存的<br>机器以及高概率满足gc定顿时间同时,还具备吞吐量高性能特征:<br>查看jdk默认垃圾收集器 java -XX:+PrintCommandLineFlags -version<br>查看堆内存中各个区的使用率 java -XX:+PrintGCDetails -version</p>
 <hr>
 <hr>
