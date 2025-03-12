@@ -1,0 +1,1074 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Mysql基础知识汇总，包含索引，事务，面试常见问题，底层原理等…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql基础知识">
+<meta property="og:url" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="Mysql基础知识汇总，包含索引，事务，面试常见问题，底层原理等…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image_2.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image_3.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image_4.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image_5.png">
+<meta property="article:published_time" content="2022-12-01T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-03-05T02:40:39.899Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="Mysql">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Mysql基础知识 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♥︎","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mysql基础知识"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-01 15:51" pubdate>
+          2022年12月1日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          185 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Mysql基础知识</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Mysql基础知识汇总，包含索引，事务，面试常见问题，底层原理等…</p>
+<span id="more"></span>
+
+<h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><h3 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h3><p>数据库是一种有效地管理大量的、安全的、并发的、关联的、一致的数据工具；而文件保存数据会存在安全问题，不利于查询和对数据的管理，也不利于存放海量数据；因此，引入了数据库的概念，数据库更便于我们去操纵和管理数据，做一些我们想要的改变。</p>
+<h3 id="什么是sql什么是mysql"><a href="#什么是sql什么是mysql" class="headerlink" title="什么是sql什么是mysql"></a>什么是sql什么是mysql</h3><p>SQL是一种用于操作数据库的查询语言，而MySQL是一种数据库软件。MySQL是一个DBMS（DataBaseManagementSystem）数据库管理系统，是一个用来管理数据库文件的软件；而SQL就是用于管理DBMS数据的，即访问，更新和操作数据库中的数据。</p>
+<h3 id="超键、候选键、主键、外键的概念"><a href="#超键、候选键、主键、外键的概念" class="headerlink" title="超键、候选键、主键、外键的概念"></a>超键、候选键、主键、外键的概念</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45737068/article/details/108357080?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162380266816780366518153%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162380266816780366518153&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-108357080.first_rank_v2_pc_rank_v29&utm_term=%E8%B6%85%E9%94%AE%E3%80%81%E5%80%99%E9%80%89%E9%94%AE%E3%80%81%E4%B8%BB%E9%94%AE%E3%80%81%E5%A4%96%E9%94%AE%E7%9A%84%E6%A6%82%E5%BF%B5&spm=1018.2226.3001.4187">超键，候选键，主键，外键区别知识概述</a></p>
+<ul>
+<li><p><strong>超键</strong>：只要在关系中含有能唯一标识的元组属性的集合就叫做超键</p>
+</li>
+<li><p><strong>候选键</strong>：不含有多余属性，只含有能唯一标识元组的属性就叫做候选键</p>
+</li>
+<li><p><strong>主键</strong>：用户从众多候选键中选出来的一个键就是主键</p>
+</li>
+<li><p><strong>外键</strong>：相对于两个表或多张表而言。如果表R中属性K是其他表的主键，那么K在表R中称为外键。</p>
+</li>
+</ul>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ol>
+<li>保证实体的完整性</li>
+<li>加快数据库的操作速度</li>
+<li>在表中添加新记录时，表会自动检查新纪录的主键值，不允许该值与其他记录主键值重复</li>
+<li>表自动按主键值的顺序显示表中的记录，如果没有定义主键，则按输入记录的顺序显示表中的记录</li>
+</ol>
+<h3 id="数据库的三大范式是什么"><a href="#数据库的三大范式是什么" class="headerlink" title="数据库的三大范式是什么"></a>数据库的三大范式是什么</h3><ol>
+<li><strong>第一范式（1NF）</strong>：数据库表中的字段具有原子性,不可再分，同一列中不能有多个值。所有关系型数据库系统都满足第一范式。</li>
+<li><strong>第二范式（2NF）</strong>：在第一范式的基础上，要求实体的属性完全依赖于主关键字（表中要有一列属性将实体完全区分）。比如在员工表中，通过员工编号将员工区分。</li>
+<li><strong>第三范式</strong><br>：在第二范式的基础上，要求非主键列必须直接依赖于主键，不能存在传递依赖（一张数据库表中不包含已在其他表中已包含的非主关键字信息）。比如一个表中有&lt;<br>学号，姓名，课程号，成绩&gt;，其中成绩是由学号+课程号决定的，因此将表分为两个表&lt;学号，姓名，课程号&gt;，&lt;学号，课程号，成绩&gt;。</li>
+</ol>
+<h3 id="mysql常见的数据类型"><a href="#mysql常见的数据类型" class="headerlink" title="mysql常见的数据类型"></a>mysql常见的数据类型</h3><ul>
+<li>整数：smallint（2字节，0 ~ 2^16 -1）、int（4字节，0 ~ 2^32-1）;</li>
+<li>浮点数：float（4字节）、double（8字节）；</li>
+<li>定点数：decimal(m，d)（M+2字节）；</li>
+<li>日期类型：date（YYYY-MM-DD）、time（HH:MM:SS）、year（YYYY）、datetime（YYYY-MM-DD HH:MM:SS）、timestamp（YYYYMMDD HHMMSS）</li>
+<li>字符型：char（0 ~ 255）、varchar（0 ~ 255）、text（0 ~ 65535(2^16-1)）、longtext（0 ~ 2^32-1）</li>
+<li>BLOB类: 存储二进制数据</li>
+</ul>
+<blockquote>
+<p>MySQL中，BLOB是个类型系列，包括：TinyBlob、Blob、MediumBlob、LongBlob，这几个类型之间的唯一区别是在存储文件的最大大小上不同。</p>
+</blockquote>
+<blockquote>
+<p>MySQL的四种BLOB类型 : TinyBlob 最大 255 , Blob 最大 65K MediumBlob 最大 16M ,LongBlob 最大 4G</p>
+</blockquote>
+<h2 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h2><h3 id="MyISAM-和-InnoDB的区别"><a href="#MyISAM-和-InnoDB的区别" class="headerlink" title="MyISAM 和 InnoDB的区别"></a>MyISAM 和 InnoDB的区别</h3><ol>
+<li>InnoDB（mysql5.5版本之后）支持事务处理、外键与行级锁，而MyISAM不支持；</li>
+<li>InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全存储引擎，该引擎是为了处理大数据容量的数据库系统；</li>
+<li>MyISAM的读性能比InnoDB好，但修改性能比InnoDB差；</li>
+<li>MyISAM可被压缩，存储空间较小，InnoDB的表需要更多的内存和存储，它会在主内存中建立其专用的缓冲池用于高速缓冲数据和索引；</li>
+</ol>
+<h3 id="InnoDB为什么推荐使用自增ID作为主键？"><a href="#InnoDB为什么推荐使用自增ID作为主键？" class="headerlink" title="InnoDB为什么推荐使用自增ID作为主键？"></a>InnoDB为什么推荐使用自增ID作为主键？</h3><p>自增ID可以保证每次插入时B+索引是从右边扩展的，可以避免B+树和频繁合并和分裂（对比使用UUID）。如果使用字符串主键和随机主键(<br>比如学号，姓名)，会使得数据随机插入，效率比较差。</p>
+<h3 id="InnoDB的四大特性"><a href="#InnoDB的四大特性" class="headerlink" title="InnoDB的四大特性"></a>InnoDB的四大特性</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45320660/article/details/115326483?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162380463016780269840976%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=162380463016780269840976&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-6-115326483.first_rank_v2_pc_rank_v29&utm_term=InnoDB%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7:&spm=1018.2226.3001.4187">特性详细说明</a></p>
+<ol>
+<li><p>插入缓冲（insert buffer)</p>
+<blockquote>
+<p>mysql对于非聚集索引的插入,先去判断要插入的索引页是否已经在内存中了，如果不在，暂时不着急先把索引页加载到内存中，而是把它放到了一个Insert<br>Buffer对象中，临时先放在这，然后等待情况，等待很多和现在情况一样的非聚集索引，再和要插入的非聚集索引页合并，比如说现在Insert<br>Buffer中有1，99，2，100，合并之前可能要4次插入，合并之后1，2可能是一个页的，99，100可能是一个页的，这样就减少到了2次插入。这样就提升了效率和插入性能，减少了随机IO带来性能损耗</p>
+</blockquote>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs YAML"><span class="hljs-string">insert</span> <span class="hljs-string">Buffer</span> <span class="hljs-string">只对于非聚集索引（非唯一）的插入和更新有效，对于每一次的插入不是写到索引页中，而是先判断插入的非聚集索引页是否在缓冲池中，如果在则直接插入；若不在，则先放到Insert</span> <span class="hljs-string">Buffer</span> <span class="hljs-string">中，再按照一定的频率进行合并操作，再写回disk。这样通常能将多个插入合并到一个操作中，目的还是减少了随机IO带来性能损耗</span><br><br><span class="hljs-string">插入缓冲的条件：非聚集索引，非唯一索引</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>双写机制(double write)</p>
+<blockquote>
+<p>首先会将（memcpy函数）Page刷到InnoDB tablespace的一个区域中。<br>再将数据分别刷到一个共享空间和真正应该存在的位置。</p>
+</blockquote>
+</li>
+<li><p>自适应哈希索引(ahi)</p>
+<blockquote>
+<p>InnoDB存储引擎会监控对表上辅助索引页的查询。如果观察到建立hash索引可以提升性能，就会在缓冲池建立hash索引，</p>
+</blockquote>
+</li>
+<li><p>预读(read ahead)</p>
+<blockquote>
+<p>预料这些页会马上被读取到。预读请求的所有页集中在一个范围内</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="B-Tree索引和Hash索引区别"><a href="#B-Tree索引和Hash索引区别" class="headerlink" title="B+ Tree索引和Hash索引区别"></a>B+ Tree索引和Hash索引区别</h3><ol>
+<li>哈希索引适合等值查询，但是不无法进行范围查询 哈希索引没办法利用索引完成排序,哈希索引不支持多列联合索引的最左匹配规则<br>。如果有大量重复键值得情况下，哈希索引的效率会很低，因为存在哈希碰撞问题.</li>
+<li>组合索引的最左前缀匹配原则：使用组合索引查询时，mysql会一直向右匹配直至遇到范围查询(&gt;、&lt;、between、like)就停止匹配。</li>
+</ol>
+<h3 id="存储引擎的选择"><a href="#存储引擎的选择" class="headerlink" title="存储引擎的选择"></a>存储引擎的选择</h3><blockquote>
+<ol>
+<li>若数据库平台读多写少，可以选择MyISAM引擎，如博客系统、学习网站等；</li>
+<li>若数据库平台更新操作（增删改）较多，则选择InnoDB；</li>
+</ol>
+</blockquote>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35190492/article/details/109257302?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162389147216780366599573%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162389147216780366599573&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-109257302.first_rank_v2_pc_rank_v29&utm_term=mysql%E7%B4%A2%E5%BC%95&spm=1018.2226.3001.4187">一篇文章搞懂索引</a></p>
+<h3 id="索引的使用场景"><a href="#索引的使用场景" class="headerlink" title="索引的使用场景:"></a>索引的使用场景:</h3><ol>
+<li>当表记录较少、经常增删改的表或数据重复且分布平均的表字段不需要使用索引，用了反而占存储空间；</li>
+<li>对于索引的添加或删除操作，MySql数据库会先创建一张临时表，然后把数据导入临时表中，删除原表，再把临时表名改为原来的表名。所以，增加和删除索引有成本。</li>
+</ol>
+<h3 id="需要建立索引的情况"><a href="#需要建立索引的情况" class="headerlink" title="需要建立索引的情况"></a>需要建立索引的情况</h3><ol>
+<li>主键自动建立唯一索引；</li>
+<li>频繁作为查询的条件的字段应该创建索引；</li>
+<li>查询中与其他表关联的字段，使用外键关系建立索引；</li>
+<li>查询中排序的字段，通过索引可以大大提高排序的速度；</li>
+<li>查询中统计或者分组字段；</li>
+</ol>
+<h3 id="聚簇索引、非聚簇索引、覆盖索引"><a href="#聚簇索引、非聚簇索引、覆盖索引" class="headerlink" title="聚簇索引、非聚簇索引、覆盖索引"></a>聚簇索引、非聚簇索引、覆盖索引</h3><ul>
+<li>聚簇索引: 索引B+ Tree的叶子节点存储了整行数据的是主键索引，也被称之为聚簇索引。</li>
+<li>非聚簇索引:而索引B+ Tree的叶子节点存储了主键的值的是非主键索引，也被称之为非聚簇索引。</li>
+<li>覆盖索引 : 一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖.</li>
+</ul>
+<h3 id="索引有哪些类型"><a href="#索引有哪些类型" class="headerlink" title="索引有哪些类型:"></a>索引有哪些类型:</h3><ol>
+<li>组合索引：实质上是将多个字段建到一个索引里，列值的组合必须唯一</li>
+<li>聚集索引：定义：数据行的物理顺序与列值（一般是主键的那一列）的逻辑顺序相同，一个表中只能拥有一个聚集索引。</li>
+<li>非聚集索引：唯一索引、普通索引、主键索引、全文索引</li>
+<li>UNIQUE(唯一索引)：不可以出现相同的值，可以有NULL值</li>
+<li>INDEX(普通索引)：允许出现相同的索引内容</li>
+<li>PROMARY KEY(主键索引)：不允许出现相同的值</li>
+<li>fulltext index(全文索引)：可以针对值中的某个单词，但效率不是很好</li>
+</ol>
+<h3 id="索引怎么优化查询-索引为什么要使用B-树"><a href="#索引怎么优化查询-索引为什么要使用B-树" class="headerlink" title="索引怎么优化查询?索引为什么要使用B+树:"></a>索引怎么优化查询?索引为什么要使用B+树:</h3><ol>
+<li>B+树更有利于对<strong>数据库的扫描</strong> 。B 树在提高了磁盘 IO 性能的同时并没有解决元素遍历的效率低下的问题，而 B+<br>树只需要遍历叶子节点就可以解决对全部关键字信息的扫描，所以对于数据库中频繁使用的 range query，B+树有着更高的性能。</li>
+<li>B+树的<strong>磁盘读写代价更低</strong> 。B+树的内部结点并没有指向关键字具体信息的指针。因此其内部结点相对 B<br>树更小。如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字 数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说<br>I&#x2F;O 读写次数也就降低了。</li>
+<li>B+树的<strong>查询效率更加稳定</strong> 。由于内部结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。<br>所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</li>
+</ol>
+<h3 id="索引下推："><a href="#索引下推：" class="headerlink" title="索引下推："></a>索引下推：</h3><p>索引下推主要是用来优化SQL查询语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL">　<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span>  name <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;陈%&#x27;</span> <span class="hljs-keyword">and</span> age<span class="hljs-operator">=</span><span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>没有索引下推的时候，先匹配name，然后拿着取出来的多个结果再多次回表找age&#x3D;20的；</li>
+<li>有索引下推的时候，匹配到name后，在索引内部就判断了age是否等于20，不等于直接t跳过。找到结果后拿着主键回表找到全部数据。</li>
+</ul>
+<h3 id="二叉查找树-平衡二叉树-B树-B-树"><a href="#二叉查找树-平衡二叉树-B树-B-树" class="headerlink" title="二叉查找树,平衡二叉树,B树,B+树"></a>二叉查找树,平衡二叉树,B树,B+树</h3><h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p>二叉查找树的特点就是<strong>任何节点的左子节点的键值都小于当前节点的键值，右子节点的键值都大于当前节点的键值。</strong><br>顶端的节点我们称为根节点，没有子节点的节点我们称之为叶节点。</p>
+<p>如果我们需要查找id&#x3D;12的用户信息，利用我们创建的二叉查找树索引，查找流程如下： 1.<br>将根节点作为当前节点，把12与当前节点的键值10比较，12大于10，接下来我们把当前节点&gt;的右子节点作为当前节点。 2.<br>继续把12和当前节点的键值13比较，发现12小于13，把当前节点的左子节点作为当前节点。 3.<br>把12和当前节点的键值12对比，12等于12，满足条件，我们从当前节点中取出data，即id&#x3D;1&gt;2,name&#x3D;xm。</p>
+<p>利用二叉查找树我们只需要3次即可找到匹配的数据。如果在表中一条条的查找的话，我们需要6次才能找到。</p>
+<p><strong>劣势：不稳定，可能出现之在一边或者两边树的高度查太大</strong></p>
+<h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><p>如果上面的二叉查找树是这样的构造：</p>
+<img src="/2022/12/01/technology/mysql/mysql_basic/image.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+<p>这个时候可以看到我们的二叉查找树变成了一个链表。如果我们需要查找id&#x3D;17的用户信息，我们需要查找7次，也就相当于全表扫描了。<br>导致这个现象的原因其实是<strong>二叉查找树变得不平衡了，也就是高度太高了，从而导致查找效率的不稳定。</strong> 为了解决这个问题，我们需要*<br>*保证二叉查找树一直保持平衡**，就需要用到平衡二叉树了</p>
+<p>平衡二叉树又称AVL树，在满足二叉查找树特性的基础上，要求<strong>每个节点的左右子树相差的高度不能超过1</strong></p>
+<img src="/2022/12/01/technology/mysql/mysql_basic/image_1.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>由平衡二叉树的构造我们可以发现第一张图中的二叉树其实就是一棵平衡二叉树。平衡二叉树保证了树的构造是平衡的，当我们插入或删除数据导致不满足平衡二叉树不平衡时，平衡二叉树会进行调整树上的节点来保持平衡。</p>
+<p>**劣势：时间复杂度与树的高度有关，树的高度直接决定了IO次数，性能会很差；不支持范围快速查找，找到一个还要从根节点再找下一个，查询效率低。<br>**</p>
+<h4 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h4><p>因为内存的易失性。一般情况下，我们都会选择将user表中的数据和索引存储在磁盘这种外围设备中。但是和内存相比，从磁盘中读取数据的速度会慢上百倍千倍甚至万倍，所以，我们应当尽量<br><strong>减少从磁盘中读取数据的次数。</strong> <strong>另外，从磁盘中读取数据时，都是按照磁盘块来读取的，并不是一条一条的读。</strong><br>如果我们能把尽量多的数据放进磁盘块中，那一次磁盘读取操作就会读取更多数据，那我们查找数据的时间也会大幅度降低。<br>如果我们用树这种数据结构作为索引的数据结构，那我们每查找一次数据就需要从磁盘中读取一个节点，也就是我们说的一个磁盘块，我们都知道平衡二叉树可是每个节点只存储一个键值和数据的。那说明什么？说明每个磁盘块仅仅存储一个键值和数据！那如果我们要存储海量的数据呢？可以想象到二叉树的节点将会非常多，高度也会及其高，我们查找数据时也会进行很多次磁盘IO，我们查找数据的效率将会极低！</p>
+<img src="/2022/12/01/technology/mysql/mysql_basic/image_2.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>为了解决平衡二叉树的这个弊端，我们应该寻找一种单个节点可以存储多个键值和数据的平衡树。也就是我们接下来要说的B树。<br>B树（Balance Tree）即为平衡树的意思，下图即是一颗B树。</p>
+<img src="/2022/12/01/technology/mysql/mysql_basic/image_3.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<blockquote>
+<p>注意： 图中的p节点为指向子节点的指针，二叉查找树和平衡二叉树其实也有，因为图的美观性，被省略了。 –<br>图中的每个节点称为页，页就是我们上面说的磁盘块，在mysql中数据读取的基本单位都是页，所以我们这里叫做页更符合mysql中索引的底层数据结构。</p>
+</blockquote>
+<p>从上图可以看出，<strong>B树相对于平衡二叉树，每个节点存储了更多的键值(key)和数据(data)<br>，并且每个节点拥有更多的子节点，子节点的个数一般称为阶，上述图中的B树为3阶B树，高度也会很低。</strong><br>基于这个特性，B树查找数据读取磁盘的次数将会很少，数据的查找效率也会比平衡二叉树高很多。<br>假如我们要查找id&#x3D;28的用户信息，那么我们在上图B树中查找的流程如下： 1. 先找到根节点也就是页1，判断28在键值17和35之间，我们那么我们根据页1中的指针p2找到页3。<br>2. 将28和页3中的键值相比较，28在26和30之间，我们根据页3中的指针p2找到页8。 3.<br>将28和页8中的键值相比较，发现有匹配的键值28，键值28对应的用户信息为(28,bv)。</p>
+<blockquote>
+<p>注意： B树的构造是有一些规定的，但这不是本文的关注点，有兴趣的同学可以令行了解。 – B树也是平衡的，当增加或删除数据而导致B树不平衡时，也是需要进行节点调整的。</p>
+</blockquote>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><img src="/2022/12/01/technology/mysql/mysql_basic/image_4.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>根据上图我们来看下B+树和B树有什么不同。</p>
+<ol>
+<li><p>B+树非叶子节点上是不存储数据的，仅存储键值，而B树节点中不仅存储键值，也会存储数据。之所以这么做是因为在数据库中页的大小是固定的，innodb中页的默认大小是16KB。如果不存储数据，那么就会存储更多的键值，相应的树的阶数（节点的子节点树）就会更大，树就会更矮更胖，如此一来我们查找数据进行磁盘的IO次数有会再次减少，数据查询的效率也会更快。另外，B+树的阶数是等于键值的数量的，如果我们的B+树一个节点可以存储1000个键值，那么3层B+树可以存储1000×1000×1000&#x3D;10亿个数据。一般根节点是常驻内存的，所以一般我们查找10亿数据，只需要2次磁盘IO。</p>
+</li>
+<li><p>因为B+树索引的所有数据均存储在叶子节点，而且数据是按照顺序排列的。那么B+树使得范围查找，排序查找，分组查找以及去重查找变得异常简单。而B树因为数据分散在各个节点，要实现这一点是很不容易的。<br>有心的读者可能还发现上图B+树中各个页之间是通过双向链表连接的，叶子节点中的数据是通过单向链表连接的。其实上面的B树我们也可以对各个节点加上链表。其实这些不是它们之前的区别，是因为在mysql的innodb存储引擎中，索引就是这样存储的。也就是<br><strong>说上图中的B+树索引就是innodb中B+树索引真正的实现方式，准确的说应该是聚集索引（聚集索引和非聚集索引下面会讲到）。</strong></p>
+</li>
+</ol>
+<p>通过上图可以看到，在innodb中，我们通过数据页之间通过双向链表连接以及叶子节点中数据之间通过单向链表连接的方式可以找到表中所有的数据。</p>
+<blockquote>
+<p>MyISAM中的B+树索引实现与innodb中的略有不同。在MyISAM中，B+树索引的叶子节点并不存储数据，而是存储数据的文件地址。</p>
+</blockquote>
+<h4 id="B-树的特点"><a href="#B-树的特点" class="headerlink" title="B+树的特点:"></a>B+树的特点:</h4><ol>
+<li>所有叶子节点中的关键字按大小顺序排序；</li>
+<li>相邻的叶子节点按顺序链接（相当于构成一个顺序链表）；</li>
+<li>B+树的内部节点只存放键，不存放值，叶子节点同时存放键和值；</li>
+</ol>
+<h4 id="B树的特点"><a href="#B树的特点" class="headerlink" title="B树的特点:"></a>B树的特点:</h4><ol>
+<li>B树的内部节点和叶子节点都存放键和值；</li>
+<li>B树的叶子节点各自独立</li>
+</ol>
+<h4 id="B树和B-树的区别"><a href="#B树和B-树的区别" class="headerlink" title="B树和B+树的区别:"></a>B树和B+树的区别:</h4><ol>
+<li>内部节点中，关键字的个数与其子树的个数相同，不像 B 树种，子树的个数总比关键字个数多 1 个 ；</li>
+<li>所有指向文件的关键字及其指针都在叶子节点中，不像 B 树，有的指向文件的关 键字是在内部节点中。换句话说，B+树中，内部节点仅仅起到索引的作用；</li>
+<li>B+在搜索过程中，如果查询和内部节点的关键字一致，那么搜索过程不停止，而是继续向下搜索这个分支，B+为了找到这个关键字的指针；</li>
+</ol>
+<h4 id="什么是最左匹配原则"><a href="#什么是最左匹配原则" class="headerlink" title="什么是最左匹配原则:"></a>什么是最左匹配原则:</h4><ul>
+<li>利用最左前缀：mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a &#x3D; 1 and b &#x3D; 2 and c &gt; 3 and d &#x3D; 4<br>如果建立(a,b,c,d)顺序的索引，那么后面的d是用不到索引的，如果建立(a,b,d,c)的索引就可以用到。</li>
+<li>所以当我们创建一个联合索引的时候，如(key1,key2,key3)，相当于创建了（key1）、(key1,key2)和(key1,key2,key3)三个索引，这就是最左匹配原则。</li>
+</ul>
+<h4 id="最左匹配原则原理"><a href="#最左匹配原则原理" class="headerlink" title="最左匹配原则原理"></a>最左匹配原则原理</h4><p>最左匹配原则就是指在联合索引中，如果你的 SQL 语句中用到了联合索引中的最左边的索引，那么这条 SQL<br>语句就可以利用这个联合索引去进行匹配。例如某表现有索引(a,b,c)，现在你有如下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> b <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> c <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样可以利用到定义的索引（a,b,c）<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> b <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样可以利用到定义的索引（a,b,c）<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样也可以利用到定义的索引（a,b,c）<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> b <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> c <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样不可以利用到定义的索引（a,b,c）[优化器]<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> c <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样不可以利用到定义的索引（a,b,c）[优化器]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也就是说通过最左匹配原则你可以定义一个联合索引，但是使得多中查询条件都可以用到该索引。<br><strong>值得注意的是，当遇到范围查询(&gt;、&lt;、between、like)就会停止匹配</strong></p>
+</blockquote>
+<p>也就是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span><br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> a <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> b <span class="hljs-operator">&gt;</span> <span class="hljs-number">1</span><br>  <span class="hljs-keyword">and</span> c <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; #这样a,b可以用到（a,b,c），c不可以<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这条语句只有 a,b 会用到索引，c 都不能用到索引。这个原因可以从联合索引的结构来解释。</p>
+</blockquote>
+<p>最左匹配原则都是针对联合索引来说的，所以我们可以从联合索引的原理来了解最左匹配原则。</p>
+<p>我们都知道索引的底层是一颗 B+ 树，那么联合索引当然还是一颗 B+ 树，只不过联合索引的健值数量不是一个，而是多个。<strong>构建一颗 B+<br>树只能根据一个值来构建</strong>，因此数据库依据联合索引最左的字段来构建 B+ 树。<br>例子：假如创建一个（a,b,c)的联合索引，那么它的索引树是这样的：</p>
+<blockquote>
+<p>a ab abc</p>
+</blockquote>
+<p>该图就是一个形如(a,b,c)联合索引的 b+ 树，其中的非叶子节点存储的是第一个关键字的索引 a，而叶子节点存储的是三个关键字的数据。这里可以看出<br>a 是有序的，而 b，c 都是无序的。但是当在 a 相同的时候，b 是有序的，b 相同的时候，c 又是有序的。</p>
+<p>通过对联合索<code>a,b可以用到（a,b,</code>引的结构的了解，那么就可以很好的了解为什么最左匹配原则中如果遇到范围查询就会停止了。以<br><code>select * from t where a=5 and b&gt;0 and c =1; #这样``c），c不可以</code> 为例子，当查询到 b 的值以后（这是一个范围值），c<br>是无序的。所以就不能根据联合索引来确定到低该取哪一行。</p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><p><strong>在 InnoDB 中联合索引只有先确定了前一个（左侧的值）后，才能确定下一个值。范围查询的话，那么联合索引中使用范围查询的字段后的索引在该条<br>SQL 中都不会起作用。****如果有</strong></p>
+</li>
+<li><p>值得注意的是，<code>in</code> 和 <code>=</code> 都可以乱序，比如有索引（a,b,c），语句 <code>select * from t where c =1 and a=1 and b=1</code><br>，这样的语句也可以用到最左匹配，因为 MySQL 中有一个优化器，他会分析 SQL 语句，将其优化成索引可以匹配的形式，即<br><code>select * from t where a =1 and a=1 and c=1</code></p>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ul>
+<li>事务是一个不可分割的数据库操作序列，也是数据库并发控制的基本单位，其执行的结果必须使数据库从一种一致性状态变到另一种一致性状态。事务是逻辑上的一组操作，<br><strong>要么都执行，要么都不执行</strong>。</li>
+</ul>
+<blockquote>
+</blockquote>
+<p>有一个经典的栗子就是转账，比如小明要给小方转100块钱，如果成功了，那么小明的账户余额信息和小方的账户余额信息都需要更新；但是如果转账过程中突然银行系统崩溃，导致小明的余额少了，小方的余额多了，这就不对了。事务就是保证这两个关键操作要么都成功，要么都要失败。</p>
+<h3 id="事务的四大特性-ACID"><a href="#事务的四大特性-ACID" class="headerlink" title="事务的四大特性(ACID)"></a>事务的四大特性(ACID)</h3><ol>
+<li>**原子性(Atomic)**： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
+<li>**一致性(Consistent)**： 执行事务前后，数据保持一致，多个事务对同一个数据读取的结果是相同的；</li>
+<li>**隔离性(Isolated)**： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
+<li>**持久性(Durable)**： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
+</ol>
+<h3 id="什么是脏读-幻读-不可重复读"><a href="#什么是脏读-幻读-不可重复读" class="headerlink" title="什么是脏读?幻读?不可重复读?"></a>什么是脏读?幻读?不可重复读?</h3><ul>
+<li>脏读：事务2读取时，读到了事务1未提交修改的数据，这个数据可能是废弃的数据，所以事务2就读到了脏数据。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Go">脏读就是指当一个事务正在访问数据，并且对数据进行了修改，而这种修改还没有提交到数据库中，这时，另外一个事务也访问这个数据，然后使用了这个数据。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不可重复读：事务2在事务1第二次读取数据前修改了数据，导致事务1前后两次读取数据不一致。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Go">在这个事务还没有结束时，另外一个事务也访问该同一数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改，那么第一个事务两次读到的的数据可能是不一样的。这样就发生了在一个事务内两次读到的数据是不一样的，因此称为是不 可重复读<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>幻读：事务2在事务1第二次读取数据前提交了数据，导致读到的数据条数不一致。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Go">第一个事务查询一个User表id=<span class="hljs-number">100</span>发现不存在该数据行，这时第二个事务又进来了，新增了一条id=<span class="hljs-number">100</span>的数据行并且提交了事务。这时第一个事务新增一条id=<span class="hljs-number">100</span>的数据行会报主键冲突，第一个事务再<span class="hljs-keyword">select</span>一下，发现id=<span class="hljs-number">100</span>数据行已经存在，这就是幻读。<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不可重复读指的是读到值的不同，幻读指的是数据条数的不同。</li>
+</ul>
+<h3 id="什么是事务的隔离级别-Mysql的默认隔离级别是什么"><a href="#什么是事务的隔离级别-Mysql的默认隔离级别是什么" class="headerlink" title="什么是事务的隔离级别?Mysql的默认隔离级别是什么?"></a>什么是事务的隔离级别?Mysql的默认隔离级别是什么?</h3><ul>
+<li>READ Uncommitted未提交读：事务中的修改，即使未提交，对其他事务也都是可见的；</li>
+<li>Read Committed提交读：一个事务从开始直到提交之前，所做的任何修改对其他事务都是不可见的；大多数数据库默认采用此级别； 解决脏读</li>
+<li>Repeatable Read可重复读：解决了脏读问题；该级别保证了在同一事务中多次读取同样记录的结果是一致的；MySQL默认为此级别；解决脏读和不可重复读</li>
+<li>Serializable可串行化：最高的隔离级别。该级别会在读取的每一行数据上都加锁，导致大量的超时和锁争用的问题。但用的比较少，只有在非常需要确保数据的一致性而且可以接受没有并发的情况下，才考虑此级别。全部解决</li>
+</ul>
+<img src="/2022/12/01/technology/mysql/mysql_basic/image_5.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><h3 id="按照锁的粒度分数据库锁有哪些"><a href="#按照锁的粒度分数据库锁有哪些" class="headerlink" title="按照锁的粒度分数据库锁有哪些"></a>按照锁的粒度分数据库锁有哪些</h3><p>Lock锁根据粒度主要分为表锁、行锁、页锁，不同的存储引擎拥有的锁粒度都不同。</p>
+<ol>
+<li><strong>表锁</strong><br>：表级锁就是一次表进行会将整个锁定，是个存储引擎中最大颗粒度的锁机制；它的特点是实现逻辑简单，资源消耗较少，获取锁和释放锁的速度很快，很好的解决了死锁问题。使用表锁的主要是MyISAM、MEMORY，CSV等一些非事务性存储引擎。</li>
+<li><strong>行锁</strong>：MySQL中锁定粒度最小的锁机制，特点是发生锁定资源争用的概率小，能给予应用程序尽可能大的并发处理能力而提高一些需要高并发应用系统的整体性能，但资源消耗较大。使用行锁的主要是InnoDB引擎。</li>
+<li><strong>页锁</strong>：它的锁定颗粒度介于表锁和行锁之间，它的并发能力与资源开销也是介于两者之间，另外，它与行锁一样，会发生死锁。使用页锁的主要是BerkeleyDB存储引擎。</li>
+</ol>
+<h3 id="从锁的类别上分Mysql有哪些锁"><a href="#从锁的类别上分Mysql有哪些锁" class="headerlink" title="从锁的类别上分Mysql有哪些锁"></a>从锁的类别上分Mysql有哪些锁</h3><p>从类别上锁分为：共享锁（S Lock）和排它锁（X Lock）。</p>
+<ul>
+<li>共享锁: 又叫做读锁。 当用户要进行数据的读取时，对数据加上共享锁。共享锁可以同时加上多个。</li>
+<li>排他锁: 又叫做写锁。 当用户要进行数据的写入时，对数据加上排他锁。排他锁只可以加一个，他和其他的排他锁，共享锁都相斥。</li>
+</ul>
+<p>当数据对象被加上排它锁时，其他的事务不能对它读取和修改。加了共享锁的数据对象可以被其他事务读取，但不能修改。数据库利用这两种基本的锁类型来对数据库的事务进行并发控制。</p>
+<p>锁的粒度具体取决于存储引擎，InnoDB实现了行锁，页锁，表锁；他们的资源开销从大到小，并发性能也从大到小。</p>
+<h3 id="Mysql中InnoDB引擎的行锁怎么实现的"><a href="#Mysql中InnoDB引擎的行锁怎么实现的" class="headerlink" title="Mysql中InnoDB引擎的行锁怎么实现的?"></a>Mysql中InnoDB引擎的行锁怎么实现的?</h3><p>InnoDB是通过索引来实现行锁的。</p>
+<p>例如：select * from tab_with_index where id &#x3D; 1 for update;<br>for update 可以根据条件来完成行锁锁定，并且 id 是有索引键的列，如果 id 不是索引键那么InnoDB将完成表锁，并发将无从谈起。</p>
+<h3 id="innoDB存储引擎的锁算法有哪些"><a href="#innoDB存储引擎的锁算法有哪些" class="headerlink" title="innoDB存储引擎的锁算法有哪些?"></a>innoDB存储引擎的锁算法有哪些?</h3><ol>
+<li><strong>Record lock</strong>：单个行上记录的范围。它会锁住索引记录，如果InnoDB存储引擎建立的时候没有设置任何一个索引，这时InnoDB存储引擎会使用隐式的主键来进行锁定；</li>
+<li><strong>Gap lock</strong>：间隙锁，锁定一个范围，但不包含记录本身；</li>
+<li><strong>Next-Key lock</strong>：Record+Gap，锁定范围+记录本身；InnoDB对于行的查询都是采用这种锁定算法。</li>
+</ol>
+<h3 id="死锁如何解决"><a href="#死锁如何解决" class="headerlink" title="死锁如何解决?"></a>死锁如何解决?</h3><ol>
+<li>对于事物之间由于资源访问顺序导致的死锁，则可以约定以相同的顺序访问表；</li>
+<li>对于并发修改同一记录导致的死锁，可以使用乐观锁或悲观锁进行控制；</li>
+<li>对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</li>
+<li>避免多个事务同时执行表级锁，对于有全表扫描的SQL语句，建立相应的索引进行优化。</li>
+</ol>
+<h3 id="悲观锁和乐观锁"><a href="#悲观锁和乐观锁" class="headerlink" title="悲观锁和乐观锁?"></a>悲观锁和乐观锁?</h3><ul>
+<li><p><strong>乐观锁（Optimistic Lock）</strong><br>：从名字上看，就是很乐观，每次去拿数据的时候认为别人不会改，所以不会上锁，但是在提交更新的时候会判断一下在此期间别人有没有去更新数据，乐观也严谨。乐观锁适用于读多写少的场景，这样可以提高吞吐量。乐观锁总是假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。</p>
+<p>乐观锁通过使用数据版本（Version）记录机制（最常用）和时间戳（timestamp）来实现。</p>
+<p>前者是通过为数据库表增加一个数字类型“version”字段来实现。当读取数据时，将version字段的值一同读出，数据每更新一次，version值加1.当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。</p>
+<p>时间戳的方式与前者实现方式差不多，同样是在需要乐观锁控制的table中增加一个字段，名称无所谓，字段类型使用时间戳（timestamp）,<br>和上面的version类似，也是在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突。</p>
+</li>
+<li><p><strong>悲观锁（Pessimistic Lock）</strong><br>：就是比较悲观，每次去拿数据的时候都认为别人会修改，所以每次拿数据的时候都会对数据上锁，这样别人想拿这个数据的时候就会先上锁，之后再对数据进行操作。总的来说就是悲观锁总是假定会发生并发冲突，然后屏蔽一切可能违反数据完整性的操作。</p>
+<p>悲观锁大多数情况下依靠数据库的锁机制实现，例如使用Select … for<br>update语句，以保证操作最大程度的独占性。但如果采用悲观锁，则整个操作过程中，数据库始终处于加锁状态（从操作员读出数据、开始修改直至提交修改结果的全过程，甚至还包括操作员中途去煮咖啡的时间），而面对成百上千万的并发，就会导致灾难性的后果，因此采用悲观锁进行控制时要考虑清楚。</p>
+</li>
+</ul>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><blockquote>
+</blockquote>
+<p>视图（View）是从一个或多个基本表（或视图）导出的表，它与基本表不同，是一个虚表，数据库中只存放视图的定义，而不存放视图对应的数据；当基本表中的数据发生变化，从视图中查询出的数据也就随之改变；单表视图一般用于查询和修改，会改变基本表的数据；多表视图一般用于查询，不会改变基本表的数据。</p>
+<h3 id="视图的作用"><a href="#视图的作用" class="headerlink" title="视图的作用:"></a>视图的作用:</h3><ol>
+<li>视图能够<strong>简化</strong>用户的操作；</li>
+<li>视图使用户能以多种角度看待同一数据；</li>
+<li>视图对重构数据库提供了一定程度的<strong>逻辑独立性</strong>；</li>
+<li>视图能够对机密数据提供<strong>安全</strong>保护；</li>
+</ol>
+<p>当需要多次重复输入相同的语句、需要不同的表字段聚合，进行信息重组、安全需要或需要兼容老的表等情况，就可以利用视图来简化sql查询，提高开发效率。</p>
+<p>不过事物皆有两面性，视图也存在它的缺点。视图的性能差，数据库必须把视图查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，即使是视图的一个简单查询，数据库也要把它变成一个复杂的结合体，需要花费一定的时间；视图也存在着修改限制，当用户试图修改视图的某些信息时，数据库必须把它转化为对基本表的某些信息的修改，对于简单的视图来说，这是很方便的，但是，对于比较复杂的试图，可能是不可修改的。</p>
+<h3 id="存储过程和函数的区别"><a href="#存储过程和函数的区别" class="headerlink" title="存储过程和函数的区别:"></a>存储过程和函数的区别:</h3><p>存储过程是用户定义的一系列SQL语句的集合，涉及特定表或其他对象（表、视图、索引、序列、目录、同义词、数据库用户、存储过程、函数、触发器等）的任务，用户可以调用存储过程；而函数通常是数据库已定义的方法，它接收参数并返回某种类型的值并且不涉及特定用户表。</p>
+<ol>
+<li><p>存储过程功能复杂强大，可以执行包括修改表等一系列数据库操作；而函数实现的功能针对性比较强；</p>
+</li>
+<li><p>对于存储过程来说可以返回参数，如记录集，而函数只能返回值或者表对象。函数只能返回一个变量；而存储过程可以返回多个。存储过程的参数可以有IN,OUT,INOUT三种类型，而函数只能有IN类；</p>
+</li>
+<li><p>存储过程可以使用非确定函数，而不允许用户在定义函数非确定函数；</p>
+</li>
+<li><p>存储过程一般作为一个独立的部分来执行（EXECUTE语句执行），而函数可以作为查询语句的一部分来调用（SELECT调用）；</p>
+</li>
+</ol>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><blockquote>
+<p>例如在数据库中有两个表，一个用户信息表，一个账号表，账号表用来账号的注册，密码的修改等操作，信息表用来保存用户</p>
+</blockquote>
+<p>的信息（姓名、年龄等）；当账号在账号表中注册成功后，如何在用户表中同时添加用户的相关信息以保证数据的准确性和实时性呢。通常我们在注册成功时可以insert用户的信息到用户信息表中，但如果用户数量过多，SQL语句则过于繁琐，怎么办。这时我们就可以使用触发器。</p>
+<p>触发器（trigger）是一种特殊的存储过程，它可以在对一个表上进行INSERT、UPDATE和DELETE操作中的任一种或几种操作时被自动调用执行。它SQL<br>server 提供给程序员和数据分析员来保证数据完整性的一种方法。</p>
+<p>当需要实现多个表的级联更改或实时监控表中字段的更改作出处理时就可以使用触发器来完成。</p>
+<h3 id="mysql中的触发器"><a href="#mysql中的触发器" class="headerlink" title="mysql中的触发器:"></a>mysql中的触发器:</h3><blockquote>
+<p>Before Insert、After Insert、Before Update、After Update、Before Delete、After Delete</p>
+</blockquote>
+<h2 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h2><p><a target="_blank" rel="noopener" href="http://interview.wzcu.com/%E6%95%B0%E6%8D%AE%E5%BA%93/MVCC%E5%92%8CNext-Key%20Locks.html">MVCC讲解</a></p>
+<h3 id="什么是MVCC"><a href="#什么是MVCC" class="headerlink" title="什么是MVCC"></a>什么是MVCC</h3><p>MVCC (Multi-Version Concurrency Control) (注：与MVCC相对的，是基于锁的并发控制，Lock-Based Concurrency Control)<br>是一种基于多版本的并发控制协议，只有在InnoDB引擎下存在，用于实现提交读和可重复读这两种隔离级别。MVCC是为了实现事务的隔离性，通过版本号，避免同一数据在不同事务间的竞争，你可以把它当成基于多版本号的一种乐观锁。当然，这种乐观锁只在事务级别未提交锁和已提交锁时才会生效。MVCC最大的好处，相信也是耳熟能详：读不加锁，读写不冲突。在读多写少的OLTP应用中，读写不冲突是非常重要的，极大的增加了系统的并发性能。</p>
+<h3 id="MVCC的实现机制"><a href="#MVCC的实现机制" class="headerlink" title="MVCC的实现机制"></a>MVCC的实现机制</h3><p>InnoDB在每行数据都增加两个隐藏字段，一个记录创建的版本号，一个记录删除的版本号。</p>
+<p>在多版本并发控制中，为了保证数据操作在多线程过程中，保证事务隔离的机制，降低锁竞争的压力，保证较高的并发量。在每开启一个事务时，会生成一个事务的版本号，被操作的数据会生成一条新的数据行（临时），但是在提交前对其他事务是不可见的，对于数据的更新（包括增删改）操作成功，会将这个版本号更新到数据的行中，事务提交成功，将新的版本号更新到此数据行中，这样保证了每个事务操作的数据，都是互不影响的，也不存在锁的问题。</p>
+<h3 id="MVCC下的CRUD"><a href="#MVCC下的CRUD" class="headerlink" title="MVCC下的CRUD"></a>MVCC下的CRUD</h3><ul>
+<li><p><strong>SELECT：</strong><br>当隔离级别是REPEATABLE READ时select操作，InnoDB必须每行数据来保证它符合两个条件：</p>
+<ol>
+<li>InnoDB必须找到一个行的版本，它至少要和事务的版本一样老(也即它的版本号不大于事务的版本号)<br>。这保证了不管是事务开始之前，或者事务创建时，或者修改了这行数据的时候，这行数据是存在的。</li>
+<li>这行数据的删除版本必须是未定义的或者比事务版本要大。这可以保证在事务开始之前这行数据没有被删除。<br>符合这两个条件的行可能会被当作查询结果而返回。</li>
+</ol>
+</li>
+<li><p><strong>INSERT：</strong></p>
+</li>
+</ul>
+<p>InnoDB为这个新行记录当前的系统版本号。</p>
+<ul>
+<li><strong>DELETE：</strong></li>
+</ul>
+<p>InnoDB将当前的系统版本号设置为这一行的删除ID。</p>
+<ul>
+<li><strong>UPDATE：</strong></li>
+</ul>
+<p>InnoDB会写一个这行数据的新拷贝，这个拷贝的版本为当前的系统版本号。它同时也会将这个版本号写到旧行的删除版本里。</p>
+<p><strong>优点:</strong></p>
+<p>这种额外的记录所带来的结果就是对于大多数查询来说根本就不需要获得一个锁。他们只是简单地以最快的速度来读取数据，确保只选择符合条件的行。保证事务隔离的机制，降低锁竞争的压力，保证较高的并发量</p>
+<p><strong>缺点：</strong></p>
+<p>在于存储引擎必须为每一行存储更多的数据，做更多的检查工作，处理更多的善后操作。</p>
+<p>MVCC只工作在REPEATABLE READ和READ COMMITED隔离级别下。READ<br>UNCOMMITED不是MVCC兼容的，因为查询不能找到适合他们事务版本的行版本；它们每次都只能读到最新的版本。SERIABLABLE也不与MVCC兼容，因为读操作会锁定他们返回的每一行数据。</p>
+<h2 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h2><h3 id="mysql性能优化"><a href="#mysql性能优化" class="headerlink" title="mysql性能优化:"></a>mysql性能优化:</h3><ol>
+<li>当只有一行数据时使用limit 1。查询时如果已知只会得到一条数据，则加上limit<br>1会增加性能。因为mysql数据库引擎会在找到一条结果后停止搜索，而不是继续查询下一条或直至所有记录查询完毕。</li>
+<li>选择正确的数据库引擎。MySQL中都MyISAM和InnoDB都各有利弊，因此选择正确的引擎很重要。MyISAM适用于读多写少的应用，而且它对于select<br>count(*)类似操作速度非常快；InnoDB是一个复杂的存储引擎，它在写多的应用中占优势，并且它支持很多高级应用（事务等）。</li>
+<li>用not exists代替not in。Not exists用到了连接能够发挥已经建立好的索引的作用，not in不能使用索引。Not<br>in是最慢的方式要同每条记录比较，在数据量比较大的操作中不建议使用这种方式。</li>
+<li>对操作符的优化，尽量不采用不利于索引的操作符。如：in、not in、is null、is not null、&lt;&gt; 等；；这种运算符会检索标中的全部数据</li>
+</ol>
+<h3 id="数据库结构优化"><a href="#数据库结构优化" class="headerlink" title="数据库结构优化"></a>数据库结构优化</h3><ol>
+<li><strong>将字段很多的表分解成多个表</strong>。因为字段很多的表中存在一些使用频率低的字段，这些字段的存在就会大大影响访问速度；</li>
+<li><strong>增加一些中间表</strong>。对于需要经常联合多个表进行查询时，可以建立一个中间表，将需要通过联合查询的数据插入到中间表，来提高效率；</li>
+<li><strong>读写分离</strong>。在数据库并发大的情况下，最好的做法就是进行横向扩展，增加机器，以提升抗并发能力，而且还兼有数据备份功能。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Mysql/" class="category-chain-item">Mysql</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
+      
+        <a href="/tags/Mysql/" class="print-no-link">#Mysql</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Mysql基础知识</div>
+      <div>https://zhyyao.me/2022/12/01/technology/mysql/mysql_basic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/05/technology/mysql/mysql_optimization/" title="Mysql优化相关">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mysql优化相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/02/technology/java/java_gc_recycle/" title="Java GC垃圾回收">
+                        <span class="hidden-mobile">Java GC垃圾回收</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

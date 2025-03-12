@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2023/08/31/blockchain/chain_basic/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="区块链开发基础介绍，理解什么是区块链开发，以及包含的技术点…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链开发基础介绍">
+<meta property="og:url" content="https://zhyyao.me/2023/08/31/blockchain/chain_basic/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="区块链开发基础介绍，理解什么是区块链开发，以及包含的技术点…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2023/08/31/blockchain/chain_basic/image.png">
+<meta property="og:image" content="https://zhyyao.me/2023/08/31/blockchain/chain_basic/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2023/08/31/blockchain/chain_basic/image_2.png">
+<meta property="article:published_time" content="2023-08-31T02:59:01.000Z">
+<meta property="article:modified_time" content="2025-03-11T10:16:03.632Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="区块链开发">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2023/08/31/blockchain/chain_basic/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>区块链开发基础介绍 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♥︎","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="区块链开发基础介绍"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-31 10:59" pubdate>
+          2023年8月31日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">区块链开发基础介绍</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>区块链开发基础介绍，理解什么是区块链开发，以及包含的技术点…</p>
+<span id="more"></span>
+
+<h3 id="区块链基础"><a href="#区块链基础" class="headerlink" title="区块链基础"></a>区块链基础</h3><p>区块链是一种去中心化的分布式账本技术，它使用加密算法来保证数据的安全性和不可篡改性。</p>
+<h4 id="更通俗的理解方式："><a href="#更通俗的理解方式：" class="headerlink" title="更通俗的理解方式："></a>更通俗的理解方式：</h4><p><strong>用户</strong>通过网页调用部署在<strong>服务器(ubuntu,centos…)<strong>上的</strong>后端服务</strong>(java,python,go..)来修改获取<strong>数据库</strong>中的数据</p>
+<img src="/2023/08/31/blockchain/chain_basic/image.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>用户 → 外部账户（ Externally Owned Account, EOA ）用户实际控制的账户 (address)</p>
+<p>服务器 → 区块链(以太坊)</p>
+<p>后端服务 → 合约(solidity)</p>
+<p><strong>用户address</strong>通过调用部署在<strong>区块链</strong>中的<strong>合约</strong>来修改获取<strong>合约中的数据</strong></p>
+<img src="/2023/08/31/blockchain/chain_basic/image_1.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<h4 id="外部账户信息"><a href="#外部账户信息" class="headerlink" title="外部账户信息"></a>外部账户信息</h4><p>账户的产生：<br>私钥–公钥–地址</p>
+<ul>
+<li>Private key 就是一份随机生成的256 位二进制数字。用户甚至可以用纸笔来随机地生成一个私钥，即随机写下一串256 位的仅包含“0”或“<br>1”的字符串。该256 位二进制数字就是私钥最初始的状态。私钥是用于签署交易和发送以太币的关键</li>
+<li>Public Key 通过私钥进行椭圆曲线运算而生成的，是一个512位的二进制数，通常表示为64个十六进制字符。</li>
+<li>Address 对公钥进行Keccak-256哈希运算而得到的，每个账户都有一个唯一的地址，由20个字节组成，通常表示为40个十六进制字符。</li>
+</ul>
+<p>账户属性:</p>
+<ul>
+<li>balance:余额–余额的作用</li>
+<li>nonce:累积次数</li>
+</ul>
+<p>KeyStore:<br>它包含了加密的私钥，以及一个密码（也称为解锁密码）来解密私钥。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JSON"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;address&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;0981960bc0612561ea8104e5d3f9f2f8ea594e8f&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;d0eae1f0-1110-406a-be24-5691b0c5fbf3&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">3</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">crypto&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;cipher&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;aes-128-ctr&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;ciphertext&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;847a61e99196fe3beb4c148ae7634c00fd5c4303173245aa44e555141fa628cf&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">cipherparams&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;iv&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;5aa4b65214b7632ca5729d2293923908&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;kdf&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;scrypt&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;kdfparams&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;dklen&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">32</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;n&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">4096</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;p&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">6</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;r&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-number">8</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">salt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;d349a51b5f62f26ce1fb71613d8d1907825c55dce1d24d1abda4c11c65a0221f&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;mac&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">0e01455e188fdcadbb3a176072fe542479a705b47091112915e889773859a6a5&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="区块链信息"><a href="#区块链信息" class="headerlink" title="区块链信息"></a>区块链信息</h4><img src="/2023/08/31/blockchain/chain_basic/image_2.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>区块–区块（Block）是构成区块链的基本单元。所谓的区块，其实可以定义为记录一段时间内发生的交易和状态结果的数据结构，<strong>是对当前账本状态的一次共识</strong>。每个区块包含了一定数量的交易数据以及一些元数据，例如时间戳、前一区块的哈希值、难度目标等。</p>
+<blockquote>
+<p>共识机制：新的区块通过（*）方式被添加到区块链。满足所有节点都同意接受相同的区块链数据和状态。</p>
+</blockquote>
+<p>链–链表</p>
+<p>节点–去中心化，相互验证和存储交易数据。多个节点验证和确认，从而防止了恶意行为和双重支付等攻击。任何人都可以加入网络，并参与到区块链的维护和管理中。</p>
+<p><a href="/2023/10/11/blockchain/eth_data_structure/">以太坊数据结构</a></p>
+<h4 id="合约信息"><a href="#合约信息" class="headerlink" title="合约信息"></a>合约信息</h4><p>合约账户(合约地址)产生：合约账户是通过将智能合约的字节码上传到以太坊区块链上来创建的。合约账户不是由私钥文件直接控制，而是由合约代码控制。地址是通过部署合约时使用的地址和合约创建时的<br>nonce 计算得到的哈希值。</p>
+<p>合约账户属性：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">balance（账户余额）<br>nonce（计数器）//一个合约可以调用另外一个合约，所以要通过nonce值记录一下调用的次数。<br>code（代码）<br>storage（相关状态-存储，包括每个变量的取值，合约的状态变量存储在区块链上，并且在合约执行过程中可以被读取和修改。）<br>creator(创建者，通过发交易来创建)<br></code></pre></td></tr></table></figure>
+
+<p>外部账户和合约账户的区别：</p>
+<ol>
+<li>是否拥有私钥</li>
+<li>是否可以发送交易（<strong>合约账户不能主动发起一个交易</strong>，以太坊中的一个规定，<strong>所有的交易只能由外部账户发起</strong>，外部账户发起一个交易如果调用了一个合约账户，这个合约账户可以发送一个message调用另外一个合约，但是他不能自己品平白发起一个交易。）</li>
+</ol>
+<h4 id="外部账户代码交互"><a href="#外部账户代码交互" class="headerlink" title="外部账户代码交互"></a>外部账户代码交互</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 生成keystore文件</span><br><span class="hljs-comment"> * @param privateKey 私钥</span><br><span class="hljs-comment"> * @param password 私钥密码</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">generateKeyPair</span><span class="hljs-params">(String privateKey, String password)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">ECKeyPair</span> <span class="hljs-variable">ecKeyPair</span> <span class="hljs-operator">=</span> ECKeyPair.create(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BigInteger</span>(privateKey, <span class="hljs-number">16</span>));<br>   <span class="hljs-type">WalletFile</span> <span class="hljs-variable">walletFile</span> <span class="hljs-operator">=</span> Wallet.createLight(password, ecKeyPair);<br>   <span class="hljs-keyword">return</span> JacksonUtil.obj2json(walletFile);<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 解密keystore文件</span><br><span class="hljs-comment"> * @param keystore keystore字符串</span><br><span class="hljs-comment"> * @param password 私钥密码</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ECKeyPair <span class="hljs-title function_">verifyKeyPair</span><span class="hljs-params">(String keystore, String password)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">WalletFile</span> <span class="hljs-variable">walletFile</span> <span class="hljs-operator">=</span> JacksonUtil.json2pojo(keystore, WalletFile.class);<br>   <span class="hljs-keyword">return</span> Wallet.decrypt(password, walletFile);<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 通过私钥密码生成钱包账户信息</span><br><span class="hljs-comment"> * @param password 私钥密码</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> WalletFileUser <span class="hljs-title function_">createWallet</span><span class="hljs-params">(String password)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">WalletFileUser</span> <span class="hljs-variable">walletFileUser</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WalletFileUser</span>();<br><br>   <span class="hljs-type">ECKeyPair</span> <span class="hljs-variable">ecKeyPair</span> <span class="hljs-operator">=</span> Keys.createEcKeyPair();<br>   <span class="hljs-type">WalletFile</span> <span class="hljs-variable">walletFile</span> <span class="hljs-operator">=</span> Wallet.createLight(password, ecKeyPair);<br><br>   walletFileUser.setAddress(CommonUtil.removeHexPrefixIfExists(walletFile.getAddress()));<br>   walletFileUser.setPublicKey(Numeric.toHexStringNoPrefix(ecKeyPair.getPublicKey()));<br>   walletFileUser.setPrivateKey(JacksonUtil.obj2json(walletFile));<br><br>   <span class="hljs-keyword">return</span> walletFileUser;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="交易-Transaction"><a href="#交易-Transaction" class="headerlink" title="交易-Transaction"></a>交易-Transaction</h3><h4 id="交易的概念"><a href="#交易的概念" class="headerlink" title="交易的概念"></a>交易的概念</h4><p>交易（Transaction）是指发送者向接收者发送以太币或者调用智能合约需要被记录的操作(行为)。这个记录被称为交易哈希（Transaction Hash），它是对交易数据进行哈希计算后的结果。</p>
+<h4 id="交易的状态"><a href="#交易的状态" class="headerlink" title="交易的状态"></a>交易的状态</h4><ol>
+<li><p>成功（Success）：</p>
+<ul>
+<li><p>交易被成功执行，并且在区块链上产生了相应的状态变化。</p>
+</li>
+<li><p>如果是发送以太币，发送者的余额会减少，接收者的余额会增加。</p>
+</li>
+<li><p>如果是调用智能合约，智能合约中定义的方法会被成功执行，并可能产生状态变化或触发事件。</p>
+</li>
+</ul>
+</li>
+<li><p>失败（Failed）：</p>
+<ul>
+<li><p>交易执行失败，没有在区块链上产生相应的状态变化。</p>
+</li>
+<li><p>失败的原因可能是 gas 不足、合约代码错误等。</p>
+</li>
+</ul>
+</li>
+<li><p>挂起（Pending）：</p>
+<ul>
+<li><p>交易已经被广播到网络中，但还没有被包含在区块中。</p>
+</li>
+<li><p>在交易被打包到区块之前，交易的状态为挂起。</p>
+</li>
+</ul>
+</li>
+<li><p>确认中（Pending Confirmations）：</p>
+<ul>
+<li><p>交易已经被包含在区块中，并且区块已经被添加到区块链上。</p>
+</li>
+<li><p>但是交易还没有获得足够的确认数，尚未被确认。</p>
+</li>
+</ul>
+</li>
+<li><p>已确认（Confirmed）：</p>
+<ul>
+<li><p>交易已经被包含在区块中，并且已经获得了足够的确认数。</p>
+</li>
+<li><p>一般情况下，交易需要在多个区块中获得确认才被视为有效。</p>
+</li>
+</ul>
+</li>
+<li><p>已取消（Cancelled）：</p>
+<ul>
+<li><p>交易被发送者取消，或者因为 gas 价格过低被矿工拒绝包含在区块中。</p>
+</li>
+<li><p>这种状态下，交易不会被执行，并且不会在区块链上产生相应的状态变化。</p>
+</li>
+</ul>
+</li>
+<li><p>超时（Timeout）：</p>
+<ul>
+<li><p>交易在一定的时间内没有被打包进区块中，被认为是超时状态。</p>
+</li>
+<li><p>这种情况下，交易会被重新发送或者取消。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="交易的执行过程"><a href="#交易的执行过程" class="headerlink" title="交易的执行过程"></a>交易的执行过程</h4><ol>
+<li><p>创建交易-用户从Dapp或者钱包初始化一笔交易，转账交易或者调用智能合约。。</p>
+</li>
+<li><p>签名交易-用户使用它们的钱包（私钥）签名这个交易。</p>
+</li>
+<li><p>发送者将签名后的交易广播到以太坊网络中的节点。<br>网关节点验证该交易有效并将它放入自己的内存池（交易池&#x2F;交易队列）中。此时，该交易为Pending状态，所有人都可以读取（前提是提供该项服务）。进入pending状态的交易代表着将要被交易，具体交易区块由打包矿工决定。</p>
+</li>
+<li><p>网关节点将该交易向其它节点（邻近节点）扩散（广播）。这是个Pending交易传播过程。</p>
+</li>
+<li><p>它节点接收到该交易后也验证有效性，然后放入自己的内存池中。然后再向其它节点扩散。这是其它节点将pending放入自己的内存池中。</p>
+</li>
+<li><p>重复上述步骤，直到该交易扩散到整个网络。</p>
+</li>
+<li><p>矿工是一种特殊节点，它们除了接收交易和验证它以外，还试图把它加入一个区块。矿工特权，具有打包交易的权利。</p>
+</li>
+<li><p>最终，会有一个矿工将该交易打包到区块中（这里假定交易成功并且会被打包）并添加到区块链上（产生一个新区块）。这就是通常所说的挖矿（出块）。</p>
+</li>
+<li><p>新产生的区块向全网广播。（以太坊大概13秒左右出一个块，基本上能够全网广播）。</p>
+</li>
+<li><p>所有节点接收到该区块，查看其中包含的交易并将其从自己的内存池中移除。</p>
+</li>
+</ol>
+<h3 id="区块链交互"><a href="#区块链交互" class="headerlink" title="区块链交互"></a>区块链交互</h3><p><a target="_blank" rel="noopener" href="http://cw.hubwiz.com/card/c/ethereum-json-rpc-api/1/3/8/">以太坊JSON RPC手册 &#x2F; eth_getBalance - 汇智网</a></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">获取当前区块高度 cast block -r http://localhost:8545<br>获取指定区块信息 cast block -r http: //localhost:8545 1425668<br>获取账户余额 cast balance -r http: //localhost:8545 0xf4267391072b27d76ed8f2a9655bcf5246013f2d <br>获取账户nonce cast nonce -r http: //localhost:8545 0xf4267391072b27d76ed8f2a9655bcf5246013f2d<br>获取交易信息 cast tx -r http: //localhost:8545 0x6813c06bc1fe1f7962cb6776a08c17c84f1fd6a74dc2631fd3f2dd602e0f82d6<br>获取交易收据 cast receipt -r http://localhost:8545 0x6813c06bc1fe1f7962cb6776a08c17c84f1fd6a74dc2631fd3f2dd602e0f82d6<br></code></pre></td></tr></table></figure>
+
+<h3 id="区块链合约交互"><a href="#区块链合约交互" class="headerlink" title="区块链合约交互"></a>区块链合约交互</h3><h4 id="交互API"><a href="#交互API" class="headerlink" title="交互API"></a>交互API</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">call信息 cast call<br>send  cast send<br><br>创建filter<br>curl --data &#x27;&#123;&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newFilter&quot;,&quot;params&quot;:[&#123;&quot;fromBlock&quot;: &quot;0x15C192&quot;,&quot;toBlock&quot;: &quot;0x15C19C&quot;,&quot;address&quot;: &quot;0x27EddE8d0dF786996E5e389AcbdfE804ba9eaDb6&quot;,&quot;topics&quot;: [&quot;0x9283ff3607e3da47fe0733402e95abd90472527fbbac5a26edffcbd508134773&quot;]&#125;],&quot;id&quot;:1&#125;&#x27; -H &quot;Content-Type: application/json&quot; -X POST localhost:8545<br><br>获取filter log<br>curl --data &#x27;&#123;&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getFilterLogs&quot;,&quot;params&quot;:[&quot;0x414e11d56b274f9ca5fd760c1c725e6e&quot;],&quot;id&quot;:1&#125;&#x27; -H &quot;Content-Type: application/json&quot; -X POST localhost: 8545<br><br>获取filter log change<br>curl --data &#x27;&#123;&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getFilterChanges&quot;,&quot;params&quot;:[&quot;0x414e11d56b274f9ca5fd760c1c725e6e&quot;],&quot;id&quot;:1&#125;&#x27; -H &quot;Content-Type: application/json&quot; -X POST localhost: 8545<br></code></pre></td></tr></table></figure>
+
+<h4 id="日志解析"><a href="#日志解析" class="headerlink" title="日志解析"></a>日志解析</h4><p>合约数据类型：</p>
+<ul>
+<li>静态类型在编译时可以确定其大小和存储位置:bool,int,uint,address，bytes1-32，enum</li>
+<li>动态类型：bytes，array[]，mapping，string</li>
+</ul>
+<h3 id="三方库交互"><a href="#三方库交互" class="headerlink" title="三方库交互"></a>三方库交互</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">getBlockNumber</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethBlockNumber().send().getBlockNumber();<br>&#125;<br><br><span class="hljs-keyword">public</span> Block <span class="hljs-title function_">getBlockByNumber</span><span class="hljs-params">(BigInteger blockNumber)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetBlockByNumber(DefaultBlockParameter.valueOf(blockNumber), <span class="hljs-literal">true</span>).send().getBlock();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">getBlockTimestamp</span><span class="hljs-params">(BigInteger blockNumber)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getBlockByNumber(blockNumber).getTimestamp();<br>&#125;<br><br><span class="hljs-keyword">public</span> Block <span class="hljs-title function_">getBlockByHash</span><span class="hljs-params">(String blockHash)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetBlockByHash(blockHash, <span class="hljs-literal">true</span>).send().getBlock();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">getBalance</span><span class="hljs-params">(String address)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetBalance(address, DefaultBlockParameterName.LATEST).send().getBalance();<br>&#125;<br><br><span class="hljs-keyword">public</span> List&lt;Transaction&gt; <span class="hljs-title function_">getTransactionsByBlockNumber</span><span class="hljs-params">(BigInteger blockNumber)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   List&lt;Transaction&gt; txs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>   <span class="hljs-type">Block</span> <span class="hljs-variable">block</span> <span class="hljs-operator">=</span> getBlockByNumber(blockNumber);<br>   <span class="hljs-keyword">if</span> (block == <span class="hljs-literal">null</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>   &#125;<br>   <span class="hljs-keyword">for</span> (TransactionResult&lt;Transaction&gt; tx : block.getTransactions()) &#123;<br>      <span class="hljs-type">Transaction</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> tx.get();<br>      txs.add(t);<br>   &#125;<br>   <span class="hljs-keyword">return</span> txs;<br>&#125;<br><br><span class="hljs-keyword">public</span> Transaction <span class="hljs-title function_">getTransactionByHash</span><span class="hljs-params">(String transactionHash)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetTransactionByHash(transactionHash).send().getTransaction().get();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">getAddressNextNonce</span><span class="hljs-params">(String address)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetTransactionCount(address, DefaultBlockParameterName.PENDING).send().getTransactionCount();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">getGasPrice</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGasPrice().send().getGasPrice();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">estimateCallContractGas</span><span class="hljs-params">(String fromAddress, String contractAddress, String functionName,</span><br><span class="hljs-params">                                          Type... functionArguments)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">String</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> EthTransactionUtil.encodeFunction(functionName, functionArguments);<br>   org.web3j.protocol.core.methods.request.<span class="hljs-type">Transaction</span> <span class="hljs-variable">requestTransaction</span> <span class="hljs-operator">=</span><br>           <span class="hljs-keyword">new</span> <span class="hljs-title class_">org</span>.web3j.protocol.core.methods.request.Transaction(fromAddress, BigInteger.ZERO, BigInteger.ZERO, <span class="hljs-literal">null</span>,<br>                   contractAddress, BigInteger.ZERO, data);<br>   <span class="hljs-type">EthEstimateGas</span> <span class="hljs-variable">estimateGas</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethEstimateGas(requestTransaction).send();<br>   <span class="hljs-keyword">return</span> estimateGas.getAmountUsed();<br>&#125;<br><br><span class="hljs-keyword">public</span> Optional&lt;TransactionReceipt&gt; <span class="hljs-title function_">getTransactionReceipt</span><span class="hljs-params">(String transactionHash)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethGetTransactionReceipt(transactionHash).send().getTransactionReceipt();<br>&#125;<br><br><span class="hljs-keyword">public</span> BigInteger <span class="hljs-title function_">createFilter</span><span class="hljs-params">(BigInteger blockStart, BigInteger blockEnd, String contractAddress, String... topics)</span><br>        <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">EthFilter</span> <span class="hljs-variable">requestEthFilter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EthFilter</span>(DefaultBlockParameter.valueOf(blockStart),<br>           DefaultBlockParameter.valueOf(blockEnd), contractAddress);<br>   requestEthFilter = requestEthFilter.addOptionalTopics(topics);<br>   <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.w3.ethNewFilter(requestEthFilter).send().getFilterId();<br>&#125;<br><br><span class="hljs-keyword">public</span> List&lt;Log&gt; <span class="hljs-title function_">getFilterLogs</span><span class="hljs-params">(BigInteger filterId)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   List&lt;Log&gt; logs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>   <span class="hljs-type">EthLog</span> <span class="hljs-variable">ethLog</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethGetFilterLogs(filterId).send();<br>   <span class="hljs-keyword">for</span> (LogResult&lt;Log&gt; log : ethLog.getLogs()) &#123;<br>      <span class="hljs-type">Log</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> log.get();<br>      logs.add(l);<br>   &#125;<br>   <span class="hljs-keyword">return</span> logs;<br>&#125;<br><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">readContract</span><span class="hljs-params">(String contractAddress, String data)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   org.web3j.protocol.core.methods.request.<span class="hljs-type">Transaction</span> <span class="hljs-variable">requestTransaction</span> <span class="hljs-operator">=</span><br>           <span class="hljs-keyword">new</span> <span class="hljs-title class_">org</span>.web3j.protocol.core.methods.request.Transaction(EthConstant.BLACK_HOLE_ADDRESS, BigInteger.ZERO,<br>                   BigInteger.ZERO, EthConstant.DEFAULT_GAS_LIMIT, contractAddress, BigInteger.ZERO, data);<br>   <span class="hljs-type">EthCall</span> <span class="hljs-variable">ethCall</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethCall(requestTransaction, DefaultBlockParameterName.LATEST).send();<br>   <span class="hljs-keyword">if</span> (ethCall.isReverted()) &#123;<br>      <span class="hljs-keyword">return</span> ethCall.getRevertReason();<br>   &#125;<br>   <span class="hljs-keyword">return</span> ethCall.getValue();<br>&#125;<br><br><span class="hljs-keyword">private</span> String <span class="hljs-title function_">sendRawTransaction</span><span class="hljs-params">(String privateKey, RawTransaction rawTransaction)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">chainId</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethChainId().send().getChainId().longValue();<br>    <span class="hljs-type">String</span> <span class="hljs-variable">signedTx</span> <span class="hljs-operator">=</span> EthTransactionUtil.signRawTransaction(rawTransaction, chainId, privateKey);<br>    <span class="hljs-keyword">if</span> (signedTx != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-type">EthSendTransaction</span> <span class="hljs-variable">transaction</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethSendRawTransaction(signedTx).send();<br>        <span class="hljs-keyword">return</span> transaction.getTransactionHash();<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br><br><span class="hljs-keyword">public</span> Result&lt;String&gt; <span class="hljs-title function_">dryRunCallContractRawTransaction</span><span class="hljs-params">(String privateKey, String contractAddress, String functionName, Type... functionArguments)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>   <span class="hljs-type">EthTransactionParam</span> <span class="hljs-variable">ethTransactionParam</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.constructEthTransactionParam(privateKey);<br>   <span class="hljs-type">String</span> <span class="hljs-variable">functionEncoder</span> <span class="hljs-operator">=</span> EthTransactionUtil.encodeFunction(functionName, functionArguments);<br>   org.web3j.protocol.core.methods.request.<span class="hljs-type">Transaction</span> <span class="hljs-variable">requestTransaction</span> <span class="hljs-operator">=</span><br>           <span class="hljs-keyword">new</span> <span class="hljs-title class_">org</span>.web3j.protocol.core.methods.request.Transaction(ethTransactionParam.getAddress(), ethTransactionParam.getNonce(), ethTransactionParam.getGasPrice(), ethTransactionParam.getGasLimit(), contractAddress, BigInteger.ZERO, functionEncoder);<br>   <span class="hljs-type">EthCall</span> <span class="hljs-variable">ethCall</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.w3.ethCall(requestTransaction, DefaultBlockParameterName.LATEST).send();<br>   Result&lt;String&gt; result = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Result</span>&lt;&gt;();<br>   <span class="hljs-keyword">if</span> (ethCall.isReverted()) &#123;<br>      <span class="hljs-keyword">return</span> result;<br>   &#125;<br>   result.setData(ethCall.getValue());<br>   <span class="hljs-keyword">return</span> result;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="category-chain-item">区块链</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%BC%80%E5%8F%91/" class="print-no-link">#区块链开发</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>区块链开发基础介绍</div>
+      <div>https://zhyyao.me/2023/08/31/blockchain/chain_basic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/11/blockchain/eth_data_structure/" title="以太坊数据结构">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">以太坊数据结构</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/11/system/process_control/" title="fork函数、孤儿进程和僵尸进程">
+                        <span class="hidden-mobile">fork函数、孤儿进程和僵尸进程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

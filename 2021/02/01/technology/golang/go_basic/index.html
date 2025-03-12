@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2021/02/01/technology/golang/go_basic/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Go语言底层基础知识，基础语法学习…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言底层基础知识">
+<meta property="og:url" content="https://zhyyao.me/2021/02/01/technology/golang/go_basic/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="Go语言底层基础知识，基础语法学习…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2021/02/01/technology/golang/go_basic/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2021/02/01/technology/golang/go_basic/image_2.png">
+<meta property="og:image" content="https://zhyyao.me/2021/02/01/technology/golang/go_basic/image_3.png">
+<meta property="article:published_time" content="2021-02-01T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-03-06T02:21:21.218Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="底层原理">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2021/02/01/technology/golang/go_basic/image_1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Go语言底层基础知识 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♥︎","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Go语言底层基础知识"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-02-01 15:51" pubdate>
+          2021年2月1日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          76 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Go语言底层基础知识</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Go语言底层基础知识，基础语法学习…</p>
+<span id="more"></span>
+
+<h2 id="new和make的区别"><a href="#new和make的区别" class="headerlink" title="new和make的区别"></a>new和make的区别</h2><ol>
+<li>new和make都是全部用来分配内存的关键字，new(T)创建一个没有任何数据的类型为T的实例，并返回该实例的指针；make(T, args)只能创建<br>slice、map和channel，并且返回一个有初始值args（非零）的T类型的实例，非指针。</li>
+<li>对于返回值，new用于类型的内存分配，并且内存置零，返回的是一个指向类型的指针；make是对他们的初始化，（非0值）返回的是一个类型引用对象<br>，对于引用类型的变量，我们不光要声明它，还要为它分配内容空间 。</li>
+<li>对于入参，new只有一个Type参数，Type可以是任何类型的数据；make传入Type参数（map、slice、chan）中的一种，还有一个size<br>。（map：根据slice大小分配资源，以足够存储size个元素，如果省略size，会默认分配一个小的起始size ；slice<br>：第一个是长度，第二个是cap（容量）；对于chan，size表示缓冲区容量；如果省略则表示channel为无缓冲的channel）<br>总结：</li>
+</ol>
+<ul>
+<li><p>new() 是分配内存给一个零值的指针，返回的是这个类型的指针，还可以返回自己定义的结构体，置零之后的。</p>
+</li>
+<li><p>make（）是开辟一块内存，并且初始化，返回这个经过初始化的对象，只能初始化slice、map、chan，返回的是这个类型的引用，它可以设置初始化的长度，如果是slice，则可以添加一个参数，容量，容量的大小要小于slice的大小。</p>
+</li>
+</ul>
+<h2 id="array和slice的区别"><a href="#array和slice的区别" class="headerlink" title="array和slice的区别"></a>array和slice的区别</h2><ol>
+<li>array在定义的时候必须传入数组的长度，并且是一个常量，并且不可改变，数组的赋值都是值传递，所以一般情况会就比较耗费内存。</li>
+<li>slice是通过指针引用底层数组，是对数组一个连续片段的引用，这个片段可以是全部的数组，也可以是其中的一个片段，slice自身是一个结构体，切片的长度可以改变。切片在进行append时，未超过切片的容量，进行浅拷贝（传递引用），超过容量，进行扩容的时候才会执行深拷贝（生成一个新的内存空间，不共享。）</li>
+</ol>
+<h2 id="通道是什么"><a href="#通道是什么" class="headerlink" title="通道是什么"></a>通道是什么</h2><p>通道是go中的一个通信方式，提供goroutine进行通信，可以为并发的两个实体之间提供通信通道，而不是共享内存的方式。<br>通道分为无缓冲通道和有缓冲通道:</p>
+<ul>
+<li>对于无缓冲通道，接收方从通道接收东西的时候，如果通道中没有消息，则接收方进入阻塞，直到通道中有消息。对于发送方，直到接收方收到消息之后，才能继续给通道发送消息。</li>
+<li>对于有缓冲通道，指的是在通道中可以缓冲指定数量的数据，直到数据填满，发送方阻塞，直到接收方接收，采用了环形数组的方式进行存储。</li>
+</ul>
+<p>通道在Go中的代码定义:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> hchan <span class="hljs-keyword">struct</span> &#123;<br>  qcount   <span class="hljs-type">uint</span>           <span class="hljs-comment">// 当前队列中剩余元素个数</span><br>  dataqsiz <span class="hljs-type">uint</span>           <span class="hljs-comment">// 环形队列长度，即可以存放的元素个数</span><br>  buf      unsafe.Pointer <span class="hljs-comment">// 环形队列指针</span><br>  elemsize <span class="hljs-type">uint16</span>         <span class="hljs-comment">// 每个元素的大小</span><br>  closed   <span class="hljs-type">uint32</span>            <span class="hljs-comment">// 标识关闭状态</span><br>  elemtype *_type         <span class="hljs-comment">// 元素类型</span><br>  sendx    <span class="hljs-type">uint</span>           <span class="hljs-comment">// 队列下标，指示元素写入时存放到队列中的位置</span><br>  recvx    <span class="hljs-type">uint</span>           <span class="hljs-comment">// 队列下标，指示元素从队列的该位置读出</span><br>  recvq    waitq          <span class="hljs-comment">// 等待读消息的goroutine队列</span><br>  sendq    waitq          <span class="hljs-comment">// 等待写消息的goroutine队列</span><br>  lock mutex              <span class="hljs-comment">// 互斥锁，chan不允许并发读写</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通道内部维护一个环形队列，队列的长度是在用户创建的时候指定的。</p>
+<ul>
+<li>sendx代表写入时的位置</li>
+<li>recvx代表读数据时的位置</li>
+<li>chan内部还维护了两个等待队列</li>
+<li>一个等待读消息的groutine队列</li>
+<li>一个等待写消息的groutine队列</li>
+<li>一般情况下，recvq和sendq至少有一个为空；一个例外(同一个groutine使用select向channel一边写数据，一边读数据)</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>channel关闭之后任然可以读，如果channel中仍然有未读取的数据，则仍然可以读取到，没有数据会返回0。</li>
+<li>关闭一个未初始化的channel会产生panic。</li>
+<li>重复关闭同一个channel会产生painc。</li>
+<li>从已经关闭的channel中读取消息不会产生painc，且能读出channel中还未被读取的消息，如果消息已经读出，则返回0值；(<br>有缓冲无缓冲都是)。</li>
+<li>关闭的channel中读取消息永远不会阻塞，并且会返回一个为false的ok-idiom。</li>
+</ul>
+<h2 id="map的底层实现"><a href="#map的底层实现" class="headerlink" title="map的底层实现"></a>map的底层实现</h2><p>golang的map是hasmap，使用数组+链表的形式 实现的，使用拉链法消除hash冲突。<br>map类型的变量默认初始值为nil，需要使用make()函数来分配内存。语法为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">map</span>[keyType]ValueType<br><span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[KeyType]ValueType, [<span class="hljs-built_in">cap</span>])<br></code></pre></td></tr></table></figure>
+
+<p>golang的map有两种重要的结构：hmap，bmap，主要就是hmap中包含bmap的一个指针。<br>存储时key不能重复，如果重复则覆盖value，通过key进行hash运算（可以简单的理解为把key转化为一个整数）然后对数组的长度取余,得到key存储在数组的哪个下标位置，咱以后将key和value组装成一个结构体，放入下标的位置。</p>
+<h3 id="1-关于hash冲突"><a href="#1-关于hash冲突" class="headerlink" title="1. 关于hash冲突"></a>1. 关于hash冲突</h3><p>数组一个下标只能存储一个元素，也就是说一个数组下标只能存储一对key，value，hashkey（小明）&#x3D;4占用了下标0的位置，假设我们遇到了另一个key，它的hashkey(<br>xiaowang)也是4，这就是hash冲突（不同的key经过hash之后得到的值一样）那么key&#x3D;xiaowang怎么存储？</p>
+<ul>
+<li><p>开放定址法：当我们存储一个key，value时，发现下标已经被占了，那么我们再这个数组中重新找一个没被占用的存储这个冲突的key，那么没有被占用的有很多，找哪个呢？常见的有线性探测法，线性补偿探测法、随机探测法。</p>
+</li>
+<li><p>线性探测：按照顺序来，从冲突的下标开始往后探测，到达数组末尾时，从数组开始探测，直到找到一个空位置存储这个key，当数组找不到的情况下会扩容（当数组快满的时候就会扩容了）；<br>如下图：首先存储key&#x3D;xiaoming在下标0处，当存储key&#x3D;xiaowang时，hash冲突了，按照线性探测，存储在下标1处，（红色的线是冲突或者下标已经被占用了）<br>再者key&#x3D;xiaozhao存储在下标4处，当存储key&#x3D;xiaoliu是，hash冲突了，按照线性探测，从头开始，存储在下标2处 （黄色的是冲突或者下标已经被占用了）</p>
+<img src="/2021/02/01/technology/golang/go_basic/image_1.png" srcset="/img/loading.gif" lazyload class="" title="图1">
+</li>
+<li><p>拉链法：拉链简单理解为链表，当key的hash冲突的时候，我们在冲突位置的元素上形成一个链表，通过指针相互连接，当查找时，发现key冲突，顺着链表一直往下找，直到链表的尾结点，找不到则返回空；<br>如下图描述：</p>
+<img src="/2021/02/01/technology/golang/go_basic/image_2.png" srcset="/img/loading.gif" lazyload class="" title="图2">
+<p>开放定址和拉链的优缺点：</p>
+<ul>
+<li>拉链比线性探测处理简单</li>
+<li>线性探测查找会比拉链更消耗时间</li>
+<li>线性探测会比拉链更容易导致扩容，而拉链不会</li>
+<li>拉链存储了指针，所以空间上会比线性探测占用多一点</li>
+<li>拉链是动态申请存储空间的，所以更适合链长不确定的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-HashMap怎么扩容"><a href="#2-HashMap怎么扩容" class="headerlink" title="2. HashMap怎么扩容"></a>2. HashMap怎么扩容</h3><p>首先需要知道哈希表的存储过程，当有新的数据进行存储的时候，需要根据key计算出它的哈希值h，假设哈希表的<br>容量是n，那么键值对就会放在h%n个位置中，如果该位置已经有了键值对，会分局开放寻址法或者拉链法解决冲突；<br>哈希表的扩容会创建原来的两倍容量，因此即使key的哈希值不变，求余结果也会改变，因此所有的键值对存放的位置都会发生改变，此时需要重新哈希。扩容的时候需要分配一个新的数组，新数组是老数组的2倍长，然后遍历旧的哈希，重新分配到新的结果中。</p>
+<h2 id="Go中的interface关键字"><a href="#Go中的interface关键字" class="headerlink" title="Go中的interface关键字"></a>Go中的interface关键字</h2><ul>
+<li>interface是方法声明的集合</li>
+<li>任何类型的对象实现在interface接口中声明的全部方法，则表明这个类型实现了接口</li>
+<li>interface可以作为一种数据类型，实现了该接口的任何对象，都可以给对应的接口类型变量赋值</li>
+<li>interface可以被任意对象实现，一个类型&#x2F;对象也可以实现多个(interface)接口</li>
+<li>继承和多态的特点，在golang的语法中对多态的特点体现从语法上不是很明显</li>
+<li>父类是子类的私有内部类(组合)</li>
+<li>发生多态的几个要素：（满足这三个条件，就可以产生多态的效果，父类可以调用子类的具体方法）</li>
+<li>有interface接口，并且有接口定义的方法（可以看做一个类型，父类）</li>
+<li>有子类去重写interface的接口</li>
+<li>有父类指针指向子类的具体对象</li>
+</ul>
+<h2 id="GMP并发模型："><a href="#GMP并发模型：" class="headerlink" title="GMP并发模型："></a>GMP并发模型：</h2><ul>
+<li>G代表goroutine,占用内存更小（几kb），能在有限的内存空间支持更多的并发,调度灵活度更高（runtime调度）</li>
+<li>M代表操作系统线程，负责执行 Goroutine</li>
+<li>P代表逻辑处理器，负责调度 Goroutine</li>
+<li>包含了运行goroutine的资源processor处理</li>
+<li>可以运行的G队列<br>在Go中线程是运行goroutine的实体，调度器（runtime）的功能是把可运行的 goroutine分配到工作线程上。<br>Goroutine调度器和OS调度器是通过M结合起来的，每个M都代表了1个内核线程，OS调度器负责把内核线程分配到CPU执行。<img src="/2021/02/01/technology/golang/go_basic/image_3.png" srcset="/img/loading.gif" lazyload class="" title="图3"></li>
+</ul>
+<h3 id="1-GMP-模型的优势"><a href="#1-GMP-模型的优势" class="headerlink" title="1. GMP 模型的优势"></a>1. GMP 模型的优势</h3><ul>
+<li><strong>高效利用 CPU</strong>：通过多 P 和多 M 的绑定，充分利用多核 CPU 的计算能力。</li>
+<li><strong>低延迟</strong>：Goroutine 的调度由 Go 运行时负责，避免了操作系统线程切换的开销。</li>
+<li><strong>高并发</strong>：Goroutine 的轻量级特性使得 Go 程序可以轻松创建成千上万的并发任务。<br>以下是一个简单的 Go 程序，展示了 Goroutine 的创建和调度：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>	<span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">worker</span><span class="hljs-params">(id <span class="hljs-type">int</span>)</span></span> &#123;<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++ &#123;<br>		fmt.Printf(<span class="hljs-string">&quot;Worker %d: %d\n&quot;</span>, id, i)<br>		time.Sleep(time.Second)<br>	&#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++ &#123;<br>		<span class="hljs-keyword">go</span> worker(i)<br>	&#125;<br>	time.Sleep(<span class="hljs-number">5</span> * time.Second) <span class="hljs-comment">// 等待所有 Goroutine 执行</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="GO的GC垃圾回收机制"><a href="#GO的GC垃圾回收机制" class="headerlink" title="GO的GC垃圾回收机制"></a>GO的GC垃圾回收机制</h2><p>三色标记清楚法：</p>
+<ul>
+<li>初始化所有的对象为白色；</li>
+<li>从root根出发扫描所有的根对象，将他们引用的对象标记为灰色；</li>
+<li>这里的根对象是程序运行到当前时刻的栈和全局数据区域；</li>
+<li>分析灰色对象是否引用了其他的对象，如果没有引用其他的对象，则将该灰色标记为黑色，如果有引用，则将它变为黑色的同时将引用对象标记为灰色；</li>
+<li>重复步骤三，直到灰色对象队列为空，此时白色的对象是垃圾，进行回收。</li>
+</ul>
+<h2 id="Context关键字"><a href="#Context关键字" class="headerlink" title="Context关键字"></a>Context关键字</h2><p>Go1.7加入了一个新的标准库context，它定义了Context类型，专门用来简化 对于处理单个请求的多个 goroutine<br>之间与请求域的数据、取消信号、截止时间等相关操作，这些操作可能涉及多个 API 调用。<br>对服务器传入的请求应该创建上下文，而对服务器的传出调用应该接受上下文。它们之间的函数调用链必须传递上下文，或者可以使用WithCancel(<br>获得数据通知关闭)、(获得数据定时关闭)WithDeadline、(超时关闭)WithTimeout或(传递KV)<br>WithValue创建的派生上下文。当一个上下文被取消时，它派生的所有上下文也被取消。<br>context.Background()返回的是全局的上下文根（我在文章中多次提到），context.TODO()返回的是空的上下文（表明应用的不确定性）</p>
+<h2 id="GO内存分配与逃逸分析"><a href="#GO内存分配与逃逸分析" class="headerlink" title="GO内存分配与逃逸分析"></a>GO内存分配与逃逸分析</h2><ul>
+<li>逃逸分析的好处是为了减少gc的压力,不逃逸的对象分配到栈上,当函数返回释放即可,不需要gc标记删除</li>
+<li>逃逸分析完成之后可以确定哪些变量可以分配在栈上,栈的分配比堆快,性能好(逃逸变量分配到堆,不逃逸变量分配到栈)</li>
+<li>同步消除,如果你定义的对象的方法上有同步锁,在运行时,却只有一个线程在访问,此时逃逸分析后的机器码会去掉同步锁运行<br>总结:</li>
+<li>栈上分配内存比在堆中分配内存有更高的效率</li>
+<li>栈上分配的内存不需要GC处理</li>
+<li>堆上分配的内存使用完毕会交给GC处理</li>
+<li>逃逸分析的目的是决定分配地址是栈还是堆</li>
+<li>逃逸分析在编译阶段完成</li>
+</ul>
+<h3 id="1-函数传递指针真的比传值效率高吗"><a href="#1-函数传递指针真的比传值效率高吗" class="headerlink" title="1. 函数传递指针真的比传值效率高吗?"></a>1. 函数传递指针真的比传值效率高吗?</h3><ul>
+<li>传递指针可以减少底层值拷贝,可以提高效率,但是如果拷贝数据量小,由于指针传递会产生逃逸;</li>
+<li>可能会使用堆,也可能会增加GC的负担,所以传递指针不一定是高效的;<br><strong>栈</strong> :函数内存申请临时变量,并不会作为返回值返回,它就会被编译器申请到栈中<br>在函数中申请一个新对象,如果在栈中,函数执行结束会自动将内存回收;<br><strong>申请到栈内存好处</strong>:函数返回直接释放,不会引起垃圾回收,对性能没有影响.<br><strong>堆</strong>:函数申请内存之后,作为返回值返回了,编译器会默认变量之后还会被使用,<br>当函数返回之后并不会将内存归还,那么他就会被申请到堆中.<br>如果分配到堆中,则函数执行结束之后交给GC处理;<br><strong>申请到堆的内存</strong>:会引起垃圾回收,如果这个过程(特指垃圾回收不断被触发)过高频次就会导致gc压力过大,性能变低。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">F</span><span class="hljs-params">()</span></span> []<span class="hljs-type">int</span>&#123;<br>    a := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, <span class="hljs-number">20</span>)<br>    <span class="hljs-keyword">return</span> a<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">F</span><span class="hljs-params">()</span></span> &#123;<br>    a := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, <span class="hljs-number">20</span>)     <span class="hljs-comment">// 栈 空间小</span><br>    b := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, <span class="hljs-number">20000</span>) <span class="hljs-comment">// 堆 空间过大</span><br><br>    l := <span class="hljs-number">20</span><br>    c := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>, l) <span class="hljs-comment">// 堆 动态分配不定空间,也会在堆</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-什么是逃逸分析，有哪些场景"><a href="#2-什么是逃逸分析，有哪些场景" class="headerlink" title="2. 什么是逃逸分析，有哪些场景"></a>2. 什么是逃逸分析，有哪些场景</h3><p>逃逸分析指的是由编译器决定内存分配的位置,不需要开发者指定。</p>
+<h3 id="1-逃逸场景-什么时候才会被分配到堆中"><a href="#1-逃逸场景-什么时候才会被分配到堆中" class="headerlink" title="1.逃逸场景(什么时候才会被分配到堆中)"></a>1.逃逸场景(什么时候才会被分配到堆中)</h3><ul>
+<li>指针逃逸 : go可以返回局部变量指针,典型的变量逃逸案例</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-keyword">package</span> main<br><span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> &#123;<br>    Name <span class="hljs-type">string</span><br>    Age <span class="hljs-type">int</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">StudentRegister</span><span class="hljs-params">(name <span class="hljs-type">string</span>,age <span class="hljs-type">int</span>)</span></span>*Student  &#123;<br>    s :=<span class="hljs-built_in">new</span>(Student) <span class="hljs-comment">//局部变量s逃逸到堆</span><br>    s.Name = name<br>    s.Age = age<br>    <span class="hljs-keyword">return</span> s<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    StudentRegister(<span class="hljs-string">&quot;Jin&quot;</span>,<span class="hljs-number">19</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>虽然在函数StudentRegister<strong>中内存s 为局部变量</strong>,它的值通过函数返回值返回,s本身为一个指针</p>
+<p>它指向发内存地址不会是对,而是栈,这是典型的逃逸案例</p>
+<p>终端执行: go build -gcflags &#x3D; - m</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Go">C:\Users\Administrator\<span class="hljs-keyword">go</span>\src\内存逃逸分析&gt;<span class="hljs-keyword">go</span> build -gcflags=-m<br># 内存逃逸分析<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">8</span>:<span class="hljs-number">6</span>: can inline StudentRegister<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">15</span>:<span class="hljs-number">6</span>: can inline main<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">16</span>:<span class="hljs-number">17</span>: inlining call to StudentRegister<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">8</span>:<span class="hljs-number">22</span>: leaking param: name<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">9</span>:<span class="hljs-number">9</span>: <span class="hljs-built_in">new</span>(Student) escapes to heap  <span class="hljs-comment">//显示指针逃逸</span><br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">16</span>:<span class="hljs-number">17</span>: <span class="hljs-built_in">new</span>(Student) does not escape<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>栈空间不足逃逸(空间开辟过大)</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Slice</span><span class="hljs-params">()</span></span> &#123;<br>    s := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">10000</span>, <span class="hljs-number">10000</span>)<br><br>    <span class="hljs-keyword">for</span> index, _ := <span class="hljs-keyword">range</span> s &#123;<br>        s[index] = index<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    Slice()<br>&#125;<br><span class="hljs-comment">//当切片长度扩大到100000时会逃逸</span><br><span class="hljs-comment">//实际上当栈空间不足以存放当前对象或者无法判断当前切片长度时会将对象分配到堆中</span><br><br>C:\Users\Administrator\<span class="hljs-keyword">go</span>\src\内存逃逸分析&gt;<span class="hljs-keyword">go</span> build -gcflags=-m<br># 内存逃逸分析<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">11</span>:<span class="hljs-number">6</span>: can inline main<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">4</span>:<span class="hljs-number">11</span>: <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">10000</span>, <span class="hljs-number">10000</span>) escapes to heap<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>动态类型逃逸(不确定长度大小)</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-keyword">package</span> main<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    s := <span class="hljs-string">&quot;Escape&quot;</span><br>    fmt.Println(s)<br>&#125;<br><br>C:\Users\Administrator\<span class="hljs-keyword">go</span>\src\内存逃逸分析&gt;<span class="hljs-keyword">go</span> build -gcflags=-m<br># 内存逃逸分析<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">7</span>:<span class="hljs-number">13</span>: inlining call to fmt.Println<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">7</span>:<span class="hljs-number">13</span>: s escapes to heap<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">7</span>:<span class="hljs-number">13</span>: []<span class="hljs-keyword">interface</span> &#123;&#125; literal does not escape<br>&lt;autogenerated&gt;:<span class="hljs-number">1</span>: .this does not escape<br>&lt;autogenerated&gt;:<span class="hljs-number">1</span>: .this does not escape<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>闭包引用对象逃逸</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Fibonacci</span><span class="hljs-params">()</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-type">int</span> &#123;<br>    a, b := <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> <span class="hljs-type">int</span> &#123;<br>        a, b = b, a+b<br>        <span class="hljs-keyword">return</span> a<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    f := Fibonacci()<br><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ &#123;<br>        fmt.Printf(<span class="hljs-string">&quot;Fibonacci: %d\n&quot;</span>, f())<br>    &#125;<br>&#125;<br><br>C:\Users\Administrator\<span class="hljs-keyword">go</span>\src\内存逃逸分析&gt;<span class="hljs-keyword">go</span> build -gcflags=-m<br># 内存逃逸分析<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">7</span>:<span class="hljs-number">9</span>: can inline Fibonacci.func1<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">17</span>:<span class="hljs-number">13</span>: inlining call to fmt.Printf<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">6</span>:<span class="hljs-number">2</span>: moved to heap: a<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">6</span>:<span class="hljs-number">5</span>: moved to heap: b<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">7</span>:<span class="hljs-number">9</span>: <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">literal</span> <span class="hljs-title">escapes</span> <span class="hljs-title">to</span> <span class="hljs-title">heap</span></span><br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">17</span>:<span class="hljs-number">34</span>: f() escapes to heap<br>.\<span class="hljs-number">1.</span>指针逃逸.<span class="hljs-keyword">go</span>:<span class="hljs-number">17</span>:<span class="hljs-number">13</span>: []<span class="hljs-keyword">interface</span> &#123;&#125; literal does not escape<br>&lt;autogenerated&gt;:<span class="hljs-number">1</span>: .this does not escape<br>&lt;autogenerated&gt;:<span class="hljs-number">1</span>: .this does not escape<br></code></pre></td></tr></table></figure>
+
+<h2 id="runtime机制是什么"><a href="#runtime机制是什么" class="headerlink" title="runtime机制是什么"></a>runtime机制是什么</h2><p>go 语言的可执行文件已经包含了 golang 的 runtime，它为用户的 go 程序提供协程调度、内存分配、垃圾回收等功能.此外还会与系统内核进行交互，从而真正的利用好<br>CPU 等资源。</p>
+<ul>
+<li><strong>Gosched</strong>：让当前线程让出 <code>cpu</code> 以让其它线程运行,它不会挂起当前线程，因此当前线程未来会继续执行</li>
+<li><strong>NumCPU</strong>：返回当前系统的 <code>CPU</code> 核数量</li>
+<li><strong>GOMAXPROCS</strong>：设置最大的可同时使用的 <code>CPU</code> 核数</li>
+<li><strong>Goexit</strong>：退出当前 <code>goroutine</code>(但是<code>defer</code>语句会照常执行)</li>
+<li><strong>NumGoroutine</strong>：返回正在执行和排队的任务总数</li>
+<li><strong>GOOS</strong>：目标操作系统</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go">fmt.Println(<span class="hljs-string">&quot;cpus:&quot;</span>, runtime.NumCPU())<br>fmt.Println(<span class="hljs-string">&quot;goroot:&quot;</span>, runtime.GOROOT())<br>fmt.Println(<span class="hljs-string">&quot;archive:&quot;</span>, runtime.GOOS)<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Golang/" class="category-chain-item">Golang</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
+      
+        <a href="/tags/%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" class="print-no-link">#底层原理</a>
+      
+        <a href="/tags/Golang/" class="print-no-link">#Golang</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Go语言底层基础知识</div>
+      <div>https://zhyyao.me/2021/02/01/technology/golang/go_basic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年2月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/03/technology/golang/gpm_explain/" title="Go-GPM解析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Go-GPM解析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

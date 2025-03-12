@@ -1,0 +1,925 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="以太坊数据结构介绍，底层原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊数据结构">
+<meta property="og:url" content="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="以太坊数据结构介绍，底层原理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/image.png">
+<meta property="og:image" content="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/image_2.png">
+<meta property="article:published_time" content="2023-10-11T02:59:01.000Z">
+<meta property="article:modified_time" content="2025-03-11T10:16:03.641Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="区块链开发">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>以太坊数据结构 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♥︎","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="以太坊数据结构"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-11 10:59" pubdate>
+          2023年10月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          108 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">以太坊数据结构</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>以太坊数据结构介绍，底层原理</p>
+<span id="more"></span>
+
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><img src="/2023/10/11/blockchain/eth_data_structure/image.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<h2 id="区块Block"><a href="#区块Block" class="headerlink" title="区块Block"></a>区块Block</h2><p>所谓的区块，其实可以定义为记录一段时间内发生的交易和状态结果的数据结构，是对当前账本状态的一次共识。</p>
+<p>区块主要由区块头、交易列表和叔区块头三部分组成：</p>
+<h3 id="区块头"><a href="#区块头" class="headerlink" title="区块头"></a>区块头</h3><p>区块头包含：父块的散列值（ Prev Hash ）、叔区块的散列值（ Uncles Hash ）、状态树根散列值（ stateRoot ） 、交易树根散列值（<br>Transaction Root ） 、收据树根散列值（ Receipt Root ）、时间戳（ Times tamp ）、随机数（ Nonce ）等</p>
+<p>以太坊区块链上区块数据结构相对比特币的一个重大改变就是保存了三棵Merkle树根，分别是状态树、交易树和收据树。</p>
+<ul>
+<li><p>状态树(RootHash)：整个系统状态的hash，也就是所有账户状态树的根hash。</p>
+</li>
+<li><p>交易树(TxHash):本区块中所有的交易默克尔树的根hash。</p>
+</li>
+<li><p>收据树(ReceiptHash):收据默克尔树的根hash。每个区块都有自己的收据树，收据树不需要更新，收据树代表每笔交易相应的收据。</p>
+</li>
+</ul>
+<h3 id="交易列表"><a href="#交易列表" class="headerlink" title="交易列表"></a>交易列表</h3><p>交易列表是由矿工从交易池中选择收入区块中的一系列交易。</p>
+<h3 id="叔区块"><a href="#叔区块" class="headerlink" title="叔区块"></a>叔区块</h3><p>不在主链上的且被主链上的区块通过Uncles 字段收留进区块链的孤块叫做“叔区块” 。</p>
+<img src="/2023/10/11/blockchain/eth_data_structure/image_1.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+<h2 id="账户体系"><a href="#账户体系" class="headerlink" title="账户体系"></a>账户体系</h2><p>账户以地址为索引，地址由公钥衍生而来，取公钥的最后20 字节</p>
+<p>在以太坊系统中存在两种类型的账户，分别是外部账户和合约账户。外部账户存储以太币余额状态，而合约账户除了余额还有智能合约及其变量的状态。</p>
+<h3 id="外部账户"><a href="#外部账户" class="headerlink" title="外部账户"></a>外部账户</h3><p>外部账户（ Externally Owned Account, EOA ）是用户实际控制的账户。由公私钥来控制，其中私钥掌握账户的控制权。</p>
+<p>状态：</p>
+<p>balance（账户余额）</p>
+<p>nonce（计数器）</p>
+<h3 id="合约账户"><a href="#合约账户" class="headerlink" title="合约账户"></a>合约账户</h3><p>在以太坊中，每个账户都有一个唯一的地址，由20个字节组成，通常表示为40个十六进制字符。这个地址是由账户的公钥通过Keccak-256哈希算法计算出来的。</p>
+<p>账户的公钥是由该账户的私钥通过椭圆曲线加密算法（ECDSA）推导而来的。公钥是一个512位的二进制数，通常表示为64个十六进制字符。在以太坊中，公钥不是直接使用的，而是通过Keccak-256哈希算法计算出一个唯一的地址。</p>
+<p>账户的私钥是一个256位的二进制数，通常表示为64个十六进制字符。私钥是用于签署交易和发送以太币的关键，因此必须妥善保管。使用私钥可以生成与该私钥对应的公钥和地址。</p>
+<p><strong>因此，以太坊账户地址、公钥和私钥之间的关系可以总结为：</strong></p>
+<ul>
+<li><p>以太坊账户地址是由账户的公钥通过Keccak-256哈希算法计算得出的。</p>
+</li>
+<li><p>以太坊账户的公钥是由账户的私钥通过ECDSA算法计算得出的。</p>
+</li>
+<li><p>以太坊账户的私钥是用于签署交易和发送以太币的关键，可以生成与该私钥对应的公钥和地址。</p>
+</li>
+</ul>
+<p>以太坊中每个外部账户都由一对密匙定义，即一个私钥和一个公钥。</p>
+<p>合约账户是一个包含合约代码的账户。合约账户不是由私钥文件直接控制，而是由合约代码控制。合约账户的地址是由合约创建时合约创建者的地址，以及该地址发出的交易共同计算得出的。</p>
+<p>balance（账户余额）</p>
+<p>nonce（计数器）&#x2F;&#x2F;一个合约可以调用另外一个合约，所以要通过nonce值记录一下调用的次数。</p>
+<p>code（代码）</p>
+<p>storage（相关状态-存储，包括每个变量的取值）</p>
+<p>与外部账户相比，合约账户除了余额还有智能合约及其变量的状态。<strong>合约账户不能主动发起一个交易</strong>，以太坊中的一个规定，*<br>*所有的交易只能由外部账户发起**，外部账户发起一个交易如果调用了一个合约账户，这个合约账户可以发送一个message调用另外一个合约，但是他不能自己品平白发起一个交易。</p>
+<h3 id="合约账户的调用"><a href="#合约账户的调用" class="headerlink" title="合约账户的调用"></a>合约账户的调用</h3><p>创建一个合约会返回一个地址，<strong>知道这个合约的地址，就可以调用这个合约</strong>，调用的过程当中<strong>状态会发生变化</strong>，代码（code）不会变，*<br>*存储（storage）会变**。</p>
+<h3 id="私钥和公钥"><a href="#私钥和公钥" class="headerlink" title="私钥和公钥"></a>私钥和公钥</h3><p>目前常见的私钥有三种形态：</p>
+<h4 id="Private-key"><a href="#Private-key" class="headerlink" title="Private key"></a>Private key</h4><p>Private key 就是一份随机生成的256 位二进制数字。用户甚至可以用纸笔来随机地生成一个私钥，即随机写下一串256 位的仅包含“0”或“<br>1”的字符串。该256 位二进制数字就是私钥最初始的状态。</p>
+<h4 id="Keystore-Password"><a href="#Keystore-Password" class="headerlink" title="Keystore &amp; Password"></a>Keystore &amp; Password</h4><p>而在以太坊官方钱包中，私钥和公钥将会以加密的方式保存一份JSON 文件，存储在key store 子目录下。这份JSON 文件就是Keys tore<br>，所以用户需要同时备份Keys tore和对应的Password （创建钱包时设置的密码） 。</p>
+<h4 id="Memonic-code"><a href="#Memonic-code" class="headerlink" title="Memonic code"></a>Memonic code</h4><p>Memonic code 是由BIP 39 方案提出的，目的是随机生成12 ～ 24 个比较容易记住的单词，该单词序列通过PBKDF2 与HMAC-SHA512<br>函数创建出随机种子，该种子通过BIP-0032 提案的方式生成确定性钱包</p>
+<h2 id="数据结构与存储"><a href="#数据结构与存储" class="headerlink" title="数据结构与存储"></a>数据结构与存储</h2><p>区块、交易等数据最终都是存储在Level DB数据库中。Level DB数据库是一个键值对（ key-value ）数据库，<br>key一般与散列相关，value则是存储内容的RLP编码。</p>
+<h3 id="数据组织形式"><a href="#数据组织形式" class="headerlink" title="数据组织形式"></a>数据组织形式</h3><p>以太坊使用了MPT树（Merkle Patricia<br>Trie），作为数据组织形式，用来组织管理用户的账户状态、交易信息等重要数据。MPT是一种加密认证的数据结构，它融合了Merkle树和Trie树（前缀树）两种数据类型的优点。</p>
+<h4 id="Merkle树"><a href="#Merkle树" class="headerlink" title="Merkle树"></a>Merkle树</h4><p>Merkle树是一种树形数据结构，可以是二叉树，也可以是多叉树。它由一组叶节点、一组中间节点和一个根节点构成。最下面的叶节点包含基础数据，每个中间节点是它的子节点的散列，根节点是它的子节点的散列，代表了Merkle树的根部。</p>
+<p>创建Merkle树的目的是允许区块的数据可以零散地传送；节点可以从一个节点下载区块头，从另外的源下载与其相关的树的其他部分，而依然能够确认所有的数据都是正确的。</p>
+<p>Merkle树可以用来存储所有键值对</p>
+<h4 id="Merkle树特性"><a href="#Merkle树特性" class="headerlink" title="Merkle树特性"></a>Merkle树特性</h4><p>1.每个数据集对应一个唯一合法的根散列值。</p>
+<p>2.很容易更新、添加或者删除树节点，以及生成新的根散列值。</p>
+<p>3.不改变根散列值的话就没有办法修改树的任何部分，所以如果根散列值被包括在签名的文档或有效区块中，就可以保证这棵树的正确性。</p>
+<p>4.任何人可以只提供一个到特定节点的分支，并通过密码学方法证明拥有对应内容的节点确实在树里。</p>
+<img src="/2023/10/11/blockchain/eth_data_structure/image_2.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+<h4 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h4><p>key代表的是从树根到对应value的一条路径。即从根节点开始， key 中的每个字符（从前到后）都代表着从根节点出发寻找相应value<br>所要经过的子节点。value 存储在叶节点中，是每条路径的最终节点。</p>
+<h4 id="MPT树"><a href="#MPT树" class="headerlink" title="MPT树"></a>MPT树</h4><p>结合merkle和Trie,并做了以下改进：</p>
+<p>1.为了保证树的加密安全，每个节点通过它的散列值被引用</p>
+<p>2.对于存储在Leve IDB 数据库中的非叶节点，key代表着节点的RLP编码的SHA3散列值， value是节点的RLP编码。</p>
+<p>3.引入了很多节点类型来提高效率：</p>
+<p>3.1空节点：简单的表示空，在代码中就是一个空串</p>
+<p>3.2叶节点：键值对的一个列表，其中key是一种特殊的十六进制编码， value是RLP编码。</p>
+<p>3.3扩展节点：键值对的列表，但是这里的value 是其他节点的散列值，通过这个散列值可以链接到其他节点。</p>
+<p>3.4分支节点：一个长度为17 的列表。MPT 中的key 被编码成一种特殊的十六进制的表示，再加上最后的value ，前16 个元素对应key 中的16<br>个可能的十六进制字符，如果有一个键值对在这个分支节点终止，则最后一个元素代表一个值，即分支节点既可以是搜索路径的终止，也可以是路径的中间节点。</p>
+<p>4.用于对key 进行编码的特殊十六进制前缀编码（ HP ）</p>
+<h3 id="区块头中的三颗树"><a href="#区块头中的三颗树" class="headerlink" title="区块头中的三颗树"></a>区块头中的三颗树</h3><h4 id="状态树-RootHash"><a href="#状态树-RootHash" class="headerlink" title="状态树(RootHash)"></a>状态树(RootHash)</h4><p>整个系统状态的hash，也就是所有账户状态树的根hash。状态树包含一个键值映射，其中键是账户地址，值是账户内容，主要是｛ nonce,<br>balance,codeHash, storageRoot ｝ 。nonce 是账户交易的序数， balance 是账户余额， codeHash 是代码的散列值， storageRoot<br>是另一棵树的根节点。状态树代表访问区块后的整个状态。</p>
+<p>状态树不存在于链上，而存在于节点的levelDB中。只有他的根hash存在于区块中，每一个区块头里的Root都是区块被挖出确认时的快照。</p>
+<h4 id="交易树-TxHash"><a href="#交易树-TxHash" class="headerlink" title="交易树(TxHash)"></a>交易树(TxHash)</h4><p>本区块中所有的交易默克尔树的根hash。</p>
+<p>每个区块都有一棵独立的交易树。区块中交易的顺序主要由“矿工”决定，在这个块被挖出前这些数据都是未知的。不过“矿工”<br>一般会根据交易的GasPrice 和nonce 对交易进行排序。首先会将交易列表中的交易划分到各个发送账户，每个账户的交易根据这些交易的nonce<br>来排序。每个账户的交易排序完成后，再通过比较每个账户的第一条交易，选出最高价格的交易，这些是通过一个堆（heap）来实现的。</p>
+<p>在交易树包含的键值对中，其中每个键是交易的编号，值是交易内容</p>
+<h4 id="收据树-ReceiptHash"><a href="#收据树-ReceiptHash" class="headerlink" title="收据树(ReceiptHash)"></a>收据树(ReceiptHash)</h4><p>收据默克尔树的根hash。</p>
+<p>每个区块都有自己的收据树，收据树不需要更新，收据树代表每笔交易相应的收据。</p>
+<p>交易的收据是一个RLP 编码的数据结构：［medstate, Gas_ used, logbloom,logs ］ 。其中， medstate 是交易处理后树根的状态；<br>Gas_used 是交易处理后Gas 的使用量；logs 是表格［ address, [topicl, topic2 ,…], data ］元素的列表，表格由交易执行期间调用的操作码LOGO<br>…LOG4 生成（包含主调用和子调用）， address 是生成日志的合约地址， topicn是最多4 个32 字节的值， data 是任意字节大小的数组；*<br><em>logbloom 是交易中所有logs 的address 和topic 组成的布隆过滤器。</em>*</p>
+<h3 id="数据库支持一一Level-DB"><a href="#数据库支持一一Level-DB" class="headerlink" title="数据库支持一一Level DB"></a>数据库支持一一Level DB</h3><p>LeveI DB 是Goog le 实现的一个非常高效的键值对数据库，其中键值都是二进制的，目前能够支持十亿级别的数据量，在这个数据量下还有着非常高的性能。</p>
+<p>以太坊中共有三个Leve IDB 数据库，分别是BlockDB 、StateDB 和ExtrasDB。</p>
+<p>BlockDB保存了块的主体内容，包括块头和交易；StateDB保存了账户的状态数据；ExtrasDB保存了收据信息和其他辅助信息。</p>
+<h2 id="共识机制"><a href="#共识机制" class="headerlink" title="共识机制"></a>共识机制</h2><p>共识机制是区块链事务达成分布式共识的算法。由于点对点网络下存在着或高或低的网络延迟，所以各个节点接收到的事务的先后顺序可能不一样，因此区块链系统需要设计一种机制让节点对在差不多时间内发生的事务的先后顺序实现共识，这就是共识机制。</p>
+<h3 id="Pow"><a href="#Pow" class="headerlink" title="Pow"></a>Pow</h3><p>PoW 即通过工作结果来证明你完成了相应的工作</p>
+<p>哈希函数的特征：</p>
+<p>1.免碰撞，即不存在输入值不同，经过散列变换，而散列值相同的情况。</p>
+<p>2.隐匿性，即给定一个散列值，想要反向逆推出输入值，在计算上是不可行的。</p>
+<p>3.不存在比穷举更好的方法，以使得散列值落在特定的范围。</p>
+<p>POW算法原理：节点通过不断地更换随机数来探寻合适的哈希值，当节点最先计算出合适的哈希值，它所打包的块如果通过其他共识节点的验证，则会被加入到区块链中。</p>
+<h3 id="Ethash-（以太坊专门的POW算法-）"><a href="#Ethash-（以太坊专门的POW算法-）" class="headerlink" title="Ethash （以太坊专门的POW算法 ）"></a>Ethash （以太坊专门的POW算法 ）</h3><p>为了解决挖矿中心化问题,专门设计了一个能抵制ASIC、轻客户端可快速验证的PoW 算法</p>
+<p>算法流程：</p>
+<p>1.对于每一个区块，都能通过扫描区块头的方式计算出一个种子（ seed ），该种子只与当前区块有关。</p>
+<p>2.使用种子能产生一个16MB 的伪随机缓存，轻客户端会存储缓存。</p>
+<p>3.基于缓存再生成一个1GB 的数据集，称其为DAG 。数据集中的每一个元素都只依赖于缓存中的某几个元素，也就是说，只要有缓存，就可以快速地计算出DAG<br>中指定位置的元素。挖矿者存储数据集，数据集随时间线性增长。</p>
+<p>4.挖矿可以概括为“矿工”从DAG 中随机选择元素并对其进行散列的过程， DAG 也可以理解为一个完整的搜索空间，挖矿的过程就是从DAG<br>中随机选择元素（类似比特币挖矿中试探合适nonce 的过程）进行散列运算。</p>
+<p>5.验证者只需要花费少量的内存存储缓存就可以了，因为验证者能够基于缓存计算得到DAG<br>中自己需要的指定位置的元素，然后验证这些指定元素的散列是不是小于某个散列值，也就是验证“矿工”的工作是否符合要求。</p>
+<p>Ethash 算法的特点是挖矿的效率基本与CPU 无关，而与内存大小、带宽正相关，目的是去除专用硬件的优势，抵抗ASIC 。</p>
+<h3 id="POS"><a href="#POS" class="headerlink" title="POS"></a>POS</h3><p>PoS 即基于网络参与者目前所持有的数字货币的数量和时间进行利益分配，是一种对货币所有权的证明</p>
+<p>共识算法类型：</p>
+<p>基于链的PoS 和BFT (Byzantine Fault Tolerant ，拜占庭容错）风格的PoS 。</p>
+<p>在基于链的PoS 中，该算法在每个时隙内伪随机地从验证者集合中选择一个验证者（比如，设置每l0s<br>一个周期，每个周期都是一个时隙），给予验证者创建新区块的权利，但是验证者要确保该块指向最多的块（指向的上一个块通常是最长链的最后一个块）<br>。因此，随着时间的推移，大多数的块都收敛到一条链上。</p>
+<p>在BFT 风格的PoS<br>中，分配给验证者相对的权利，让他们有权提出块并且给被提出的块投票，从而决定哪个块是新块，并在每一轮选出一个新块加入区块链。在每一轮中，每一个验证者都为某一特定的块进行“投票”，最后所有在线和诚实的验证者都将“商量”被给定的块是否可以添加到区块链中，并且意见不能改变。</p>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>以太坊的交易主要是指一条外部账户发送到区块链上另一账户的消息的签名数据包，其主要包含发送者的签名、接收者的地址以及发送者转移给接收者的以太币数量等内容。</p>
+<p>交易是以太坊整体架构中的重要部分，它将以太坊的账户连接起来，起到价值的传递作用。</p>
+<h3 id="交易内容"><a href="#交易内容" class="headerlink" title="交易内容"></a>交易内容</h3><p>from ：交易发送者的地址，必填；</p>
+<p>to ：交易接收者的地址，如果为空则意味这是一个创建智能合约的交易；</p>
+<p>value ：发送者要转移给接收者的以太币数量；</p>
+<p>data （也写作input）：存在的数据字段，如果存在，则是表明该交易是一个创建或者调用智能合约交易；</p>
+<p>Gas Limit （也写作Gas, StartGas ）：表示这个交易允许消耗的最大Gas 数量；</p>
+<p>GasPrice ：表示发送者愿意支付给矿工的Gas 价格；</p>
+<p>nonce ：用来区别同一用户发出的不同交易的标记；</p>
+<p>hash ：由以上信息生成的散列值（哈希值），作为交易的ID;</p>
+<p>r 、s 、v ：交易签名的三个部分，由发送者的私钥对交易hash 进行签名生成。</p>
+<h3 id="交易费用"><a href="#交易费用" class="headerlink" title="交易费用"></a>交易费用</h3><p>为了防止用户在区块链公有链中发送太多的无意义交易，浪费矿工的计算资源，要求交易的发送方为每笔交易付出一定的代价，便是交易费用。</p>
+<p>由于比特币中只存在转账交易，每笔交易所需的计算开销大体一致，因此每笔交易的发送者会以比特币的形式，付出相对固定的手续费。而以太坊中引入了智能合约，涉及智能合约创建和调用的交易所消耗的计算差别巨大，因此引入了相对复杂的Gas<br>、Gas Price 对交易所需的手续费进行定价。</p>
+<h3 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h3><p>Gas （汽油）是用来衡量一笔交易所消耗的计算资源的基本单位。当以太坊节点执行一笔交易所需的计算步骤越多、越复杂，那么就会说这笔交易消耗的Gas<br>越多。</p>
+<h3 id="Gas-Price"><a href="#Gas-Price" class="headerlink" title="Gas Price"></a>Gas Price</h3><p>Gas Price ( Gas 价格）是一单位Gas 所需的手续费（以太币，即Ether ）。矿工会对接受到的交易按照Gas Price 或者按照Gas * Gas Price<br>从大到小进行排序，以便决定哪个交易会先纳入到区块中。当以太坊公有链上某个时段交易量激增的情况下，为了尽早让矿工接受一笔交易，交易发送者可以提高这笔交易的Gas<br>Price ，以激励矿工</p>
+<h3 id="Gas-Limit"><a href="#Gas-Limit" class="headerlink" title="Gas Limit"></a>Gas Limit</h3><p>有两种：</p>
+<p>对于单个交易， Gas Limit （有时也会称作StartGas ）表示交易发送者愿意为这笔交易执行所支付的最大Gas<br>数量，需要发送者在发送交易时设置。可以保护用户免受错误代码影响以致消耗过多的交易费。GasPrice * Gas Limit<br>表示用户愿意为一笔交易支付的最高金额。</p>
+<p>而对于区块来说， Gas Limit 是单个区块所允许包含的最大Gas 总量，由矿工决定它的大小。防止矿工的资源消耗过大，造成挖出的区块无法形成最长的交易链。不过矿工也不能任意地更改区块的Gas<br>Limit ，根据以太坊协议，当前区块的Gas Limit 只能基于上一个区块的Gas Limit 上下波动1&#x2F;1024。</p>
+<h3 id="交易类型"><a href="#交易类型" class="headerlink" title="交易类型"></a>交易类型</h3><ul>
+<li>转账交易</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">web3.eth.sendTransaction(&#123;<br>from :<span class="hljs-string">&quot;Oxb60e8dd6lc5d32be8058bb8eb970870f07233155&quot;</span>,<br>to:<span class="hljs-string">&quot;Oxd46e8dd67c5d32be8058bb8eb970870f07244567&quot;</span>,<br>value: 10000000000000000<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>创建智能合约</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">web3.eth.sendTransaction(&#123;<br>from:<span class="hljs-string">&quot;Oxb60e8dd6lc5d32be8058bb8eb970870f07233155&quot;</span>,<br>data :<span class="hljs-string">&quot;contract binary code&quot;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>执行智能合约</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">web3.eth.sendTransaction(&#123;<br>from:<span class="hljs-string">&quot;Oxb60e8dd6lc5d32be8058bb8eb970870f07233155&quot;</span>,<br>to:<span class="hljs-string">&quot;Oxb4259e5d9bc67a0f2ce3ed372ffc5lbe46c33c4d&quot;</span>,<br>data :<span class="hljs-string">&quot;hash of the invoked method signature and encoded parameters&quot;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="交易执行流程"><a href="#交易执行流程" class="headerlink" title="交易执行流程"></a>交易执行流程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bobozai86/article/details/127005050">以太坊交易分为：发起、广播、打包与执行、验证与执行</a></p>
+<ol>
+<li>用户从Dapp或者钱包初始化一笔交易，比如发送资金或者调用合约。这个类似弹出了MetaMask交易界面。</li>
+<li>用户使用它们的钱包（私钥）签名这个交易。这个例如我们在第一步弹出的交易界面点击确定按钮（签名交易）。</li>
+<li>钱包将签名后的交易发送到连接到以太坊网络的一个节点，通常叫着网关节点。比如我们常用的Infura节点。</li>
+<li>网关节点验证该交易有效并将它放入自己的内存池（交易池&#x2F;交易队列）中。此时，该交易为Pending状态，所有人都可以读取（前提是提供该项服务）。具体的对象名称在Geth和Parity客户并不相同。进入pending状态的交易代表着将要被交易，具体交易区块由打包矿工决定。很多套利机器人和攻击者就是读取pending中的交易，然后获取交易详情（包括交易发送对象，接收者，交易参数等），然后决定下一步的行动。</li>
+<li>网关节点将该交易向其它节点（邻近节点）扩散（广播）。这是个Pending交易传播过程。</li>
+<li>它节点接收到该交易后也验证有效性，然后放入自己的内存池中。然后再向其它节点扩散。这是其它节点将pending放入自己的内存池中。</li>
+<li>重复上述步骤，直到该交易扩散到整个网络。</li>
+<li>矿工是一种特殊节点，它们除了接收交易和验证它以外，还试图把它加入一个区块。矿工特权，具有打包交易的权利。</li>
+<li>最终，会有一个矿工将该交易打包到区块中（这里假定交易成功并且会被打包）并添加到区块链上（产生一个新区块）。这就是通常所说的挖矿（出块）。</li>
+<li>新产生的区块向全网广播。（以太坊大概13秒左右出一个块，基本上能够全网广播）。</li>
+<li>所有节点接收到该区块，查看其中包含的交易并将其从自己的内存池中移除。</li>
+</ol>
+<h2 id="数据编码与压缩-RLP"><a href="#数据编码与压缩-RLP" class="headerlink" title="数据编码与压缩(RLP)"></a>数据编码与压缩(RLP)</h2><p>RLP ( Recursive Length Prefix ）<strong>递归长度前缀</strong>是一种编码算法，用于编码任意的具有嵌套结构的二进制数据，是以太坊数据序列化的主要方法。。</p>
+<p>补充：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011763339">RLP编码解析</a> <a target="_blank" rel="noopener" href="https://blog.csdn.net/u012503639/article/details/104084052">大端与小端</a></p>
+<h3 id="RLP编码"><a href="#RLP编码" class="headerlink" title="RLP编码"></a>RLP编码</h3><h4 id="Byte单子节"><a href="#Byte单子节" class="headerlink" title="Byte单子节"></a>Byte单子节</h4><p><strong>规则1</strong>：对于值在[0, 127]之间的单个字节，其编码是其本身。</p>
+<p>a的编码是97</p>
+<h4 id="Byte数组编码"><a href="#Byte数组编码" class="headerlink" title="Byte数组编码"></a>Byte数组编码</h4><p><strong>规则2</strong>：如果byte数组长度<strong>小于55</strong>，编码的结果是数组本身，再加上128+l作为前缀。</p>
+<p>空字符串编码是128，即128 &#x3D; 128 + 0</p>
+<p>abc编码结果是131 97 98 99，其中131&#x3D;128+len(“abc”)，97 98 99依次是a b c。</p>
+<p><strong>规则3</strong>：如果数组长度<strong>大于55</strong>， 编码结果第一个是183加<strong>数组长度的编码的长度</strong>，然后是<strong>数组长度的本身的编码</strong>，最后是*<br>*byte数组的编码**。</p>
+<p>The length of this sentence is more than 55 bytes, I know it because I pre-designed it</p>
+<p>这段字符串共86个字节，而86的编码只需要一个字节，那就是它自己，因此，编码的结果如下：</p>
+<p>184 86 84 104 101 32 108 101 110 103 116 104 32 111 102 32 116 104 105 115 32 115 101 110 116 101 110 99 101 32 105 115<br>32 109 111 114 101 32 116 104 97 110 32 53 53 32 98 121 116 101 115 44 32 73 32 107 110 111 119 32 105 116 32 98 101 99<br>97 117 115 101 32 73 32 112 114 101 45 100 101 115 105 103 110 101 100 32 105 116</p>
+<p>其中前三个字节的计算方式如下：</p>
+<p>184 &#x3D; 183 + 1，因为数组长度86编码后仅占用一个字节</p>
+<p>86即数组长度86</p>
+<p>84是T的编码</p>
+<p>编码一个重复1024次”a”的字符串. aaaaa….aaaaa</p>
+<p>结果为 185 4 0 97 97 97 97 97 97 …</p>
+<p>1024按 big endian编码为0 0 4 0，省略掉前面的零，长度为2，因此185 &#x3D; 183 + 2</p>
+<p>补充:1024的大端表示 0x 00 00 04 00，去掉前面的0后，长度是2(04,00). ..0x400&#x3D;1024</p>
+<h4 id="Bytes列表"><a href="#Bytes列表" class="headerlink" title="Bytes列表"></a>Bytes列表</h4><p>定义：<strong>列表长度</strong>为 子列表编码后的长度之和</p>
+<p><strong>规则4</strong>：如果<strong>列表长度</strong>小于55，编码结果第一位是192加<strong>列表长度的编码</strong>，然后依次连接各子列表的编码。</p>
+<p>[“abc”, “def”]的编码结果是200 131 97 98 99 131 100 101 102。</p>
+<p>“abc” 的编码结果为：131 97 98 99,</p>
+<p>“def” 的编码结果为：131 100 101 102，</p>
+<p>列表长度为4+4 &#x3D; 8 . 8&lt;55.</p>
+<p>因此编码结果第一位计算得出：192 + 8 &#x3D; 200</p>
+<p><strong>规则5</strong>：如果列表长度超过55，编码结果第一位是247加<strong>列表长度的编码长度</strong>，然后是<strong>列表长度本身的编码</strong>，最后依次连接各子列表的编码。</p>
+<p>[“The length of this sentence is more than 55 bytes, “, “I know it because I pre-designed it”]</p>
+<blockquote>
+<p>编码结果为:248 88 179 84 104 101 32 108 101 110 103 116 104 32 111 102 32 116 104 105 115 32 115 101 110 116 101 110 99<br>101 32 105 115 32 109 111 114 101 32 116 104 97 110 32 53 53 32 98 121 116 101 115 44 32 163 73 32 107 110 111 119 32<br>105 116 32 98 101 99 97 117 115 101 32 73 32 112 114 101 45 100 101 115 105 103 110 101 100 32 105 116</p>
+</blockquote>
+<p>248 &#x3D; 247 +1.</p>
+<p>88 &#x3D; 86 + 2，在规则3的示例中，长度为86，而在此例中，由于有两个子字符串，每个子字符串本身的长度的编码各占1字节，因此总共占2字节。</p>
+<p>第3个字节179依据规则2得出179 &#x3D; 128 + 51.</p>
+<p>[“abc”,[“The length of this sentence is more than 55 bytes, “, “I know it because I pre-designed it”]]</p>
+<blockquote>
+<p>248 94 131 97 98 99 248 88 179 84 104 101 32 108 101 110 103 116 104 32 111 102 32 116 104 105 115 32 115 101 110 116<br>101 110 99 101 32 105 115 32 109 111 114 101 32 116 104 97 110 32 53 53 32 98 121 116 101 115 44 32 163 73 32 107 110<br>111 119 32 105 116 32 98 101 99 97 117 115 101 32 73 32 112 114 101 45 100 101 115 105 103 110 101 100 32 105 116</p>
+</blockquote>
+<p>列表第一项字符串abc根据规则2，编码结果为131 97 98 99,长度为4。</p>
+<p>列表第二项也是一个列表项：上一个demo，长度为90，</p>
+<p>因此，整个列表的编码结果第二位是90 + 4 &#x3D; 94, 占用1个字节，第一位247 + 1 &#x3D; 248</p>
+<h3 id="RLP解码"><a href="#RLP解码" class="headerlink" title="RLP解码"></a>RLP解码</h3><p>解码时，首先根据编码结果第一个字节f的大小，执行以下的规则判断：</p>
+<ol>
+<li><p>如果f∈ [0,128), 那么它是一个字节本身。</p>
+</li>
+<li><p>如果f∈[128,184)，那么它是一个长度不超过55的byte数组，数组的长度为l&#x3D;f-128</p>
+</li>
+<li><p>如果f∈[184,192)，那么它是一个长度超过55的数组，长度本身的编码长度ll&#x3D;f-183,然后从第二个字节开始读取长度为ll的bytes，按照BigEndian编码成整数l，l即为数组的长度。</p>
+</li>
+<li><p>如果f∈(192,247]，那么它是一个编码后总长度不超过55的列表，列表长度为l&#x3D;f-192。递归使用规则1~4进行解码。</p>
+</li>
+<li><p>如果f∈(247,256]，那么它是编码后长度大于55的列表，其长度本身的编码长度ll&#x3D;f-247,然后从第二个字节读取长度为ll的bytes,按BigEndian编码成整数l，l即为子列表长度。然后递归根据解码规则进行解码。</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="category-chain-item">区块链</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%BC%80%E5%8F%91/" class="print-no-link">#区块链开发</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>以太坊数据结构</div>
+      <div>https://zhyyao.me/2023/10/11/blockchain/eth_data_structure/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/01/system/ssh_util/" title="ssh工具配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ssh工具配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/31/blockchain/chain_basic/" title="区块链开发基础介绍">
+                        <span class="hidden-mobile">区块链开发基础介绍</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

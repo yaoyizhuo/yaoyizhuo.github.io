@@ -1,0 +1,1079 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Redis基础知识汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis基础知识">
+<meta property="og:url" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="Redis基础知识汇总">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image_2.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image_3.png">
+<meta property="og:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image_4.png">
+<meta property="article:published_time" content="2022-12-20T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-03-05T02:40:39.900Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2022/12/20/technology/redis/redis_basic/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Redis基础知识 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"♥︎","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Redis基础知识"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-20 15:51" pubdate>
+          2022年12月20日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          130 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Redis基础知识</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Redis基础知识汇总</p>
+<span id="more"></span>
+
+<h2 id="使用Redis有哪些好处？"><a href="#使用Redis有哪些好处？" class="headerlink" title="使用Redis有哪些好处？"></a>使用Redis有哪些好处？</h2><ol>
+<li>速度快，因为数据存在内存中，类似于HashMap，HashMap的优势就是查找和操作的时间复杂度都是O(1)</li>
+<li>支持丰富数据类型，支持string，list，set，sorted set，hash</li>
+<li>支持事务，操作都是原子性，所谓的原子性就是对数据的更改要么全部执行，要么全部不执行</li>
+<li>丰富的特性：可用于缓存，消息，按key设置过期时间，过期后将会自动删除</li>
+</ol>
+<h2 id="MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据"><a href="#MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据" class="headerlink" title="MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据"></a>MySQL里有2000w数据，redis中只存20w的数据，如何保证redis中的数据都是热点数据</h2><p>相关知识：redis 内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略。redis 提供 6种数据淘汰策略：</p>
+<ul>
+<li><p>voltile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰</p>
+</li>
+<li><p>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</p>
+</li>
+<li><p>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</p>
+</li>
+<li><p>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</p>
+</li>
+<li><p>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</p>
+</li>
+<li><p>no-enviction（驱逐）：禁止驱逐数据</p>
+</li>
+</ul>
+<h2 id="redis和memcache的区别"><a href="#redis和memcache的区别" class="headerlink" title="redis和memcache的区别"></a>redis和memcache的区别</h2><ul>
+<li>数据类型：mem只支持字符串，redis支持5种不同的数据类型</li>
+<li>数据持久化：redis支持两种持久化策略：RDB快照和AOF日志，而mem不支持持持久化。</li>
+<li>分布式：mem不支持分布式，只能通过客户端使用一致性解哈希实现分布式存储，这种方式在存储和查询时都需要现在客户端计算一次数据所在的节点。</li>
+<li>redis Cluster 实现了分布式的支持。</li>
+<li>内存管理机制：在redis中，并不是所有的数据都一直存储在内存中，可以将一些很久没用的value交换到磁盘，而mem的数据则一直都会在内存中。</li>
+<li>mem将内存分割成特定长度的块来存储数据，以完全解决内存碎片的问题，但是这种方式会使得内存的利用率不高，例如块的大小为128bytes，只存储100bytes的数据，那么剩下的29bytes就浪费掉了。</li>
+<li>memcache处理请求时使用多线程异步IO的方式,可以合理利用CPU的多核优势，性能非常优秀。</li>
+<li>me功能简单，使用内存存储数据</li>
+</ul>
+<h2 id="redis的特点"><a href="#redis的特点" class="headerlink" title="redis的特点"></a>redis的特点</h2><p><strong>redis采用单线程模式处理请求：</strong></p>
+<ol>
+<li>采用了非阻塞的异步事件处理机制</li>
+<li>缓存数据都是内存操作IO时间不会太长，单线程可以避免线程上下文切换产生的代价。</li>
+</ol>
+<p><strong>redis支持持久化，所以redis不止可以用作缓存，也可以用作Nosql数据库</strong></p>
+<p><strong>redis除去kv之外支持多种格式：string、list，set、sorted set、hash</strong></p>
+<p><strong>redis提供主从同步机制，以及Cluster集群部署能力，能够提供高可用服务</strong></p>
+<h2 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h2><ol>
+<li><strong>string：最常用的数据类型</strong></li>
+</ol>
+<p><strong>方法： set get</strong></p>
+<ul>
+<li><p>缓存功能，利用string作为缓存配合其他数据库大大增加系统的读写速度以及降低后端数据库的压力。</p>
+</li>
+<li><p>计数器，使用redis作为计数器，快速实现计数和查询的功能（点赞），而且可以永久保存。</p>
+</li>
+<li><p>共享用户Session ，用户刷新页面可能需要访问一次数据库进行登录状态的识别，或者访问页面的缓存Cookie，但是<br>可以利用Redis将用户的Session集中管理，只要保证redis高可用，每次用户Session的更新和获取都可以快速完成，提 高效率。</p>
+<p>分布式锁的实现： 分布式场景下，无法使用单机环境下的锁来对多个节点上的进程进行同步。</p>
+</li>
+</ul>
+<p>数据结构</p>
+<blockquote>
+<p>字符串的数据结构采用了SDS结构，简单动态字符串</p>
+</blockquote>
+<img src="/2022/12/20/technology/redis/redis_basic/image.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<ul>
+<li>该结构中定义了属性len，可以在0（1）的时间获得字符串的长度</li>
+<li>内存的预分配：字节数组用于存储真正的字符串，该字节数组中会有空闲的位置，空闲的数量由字段free来记录，因此增长字符串的时候不会经常需要进行重新的内存分配，而C语言中的字符串增长或者减少都会进行内存的分配。</li>
+<li>二进制安全，在C中必须符合某种编码，在SDS中会以二进制的方式处理字节数组中的值，可以存储照片，音频等二进制数据。</li>
+</ul>
+<ol start="2">
+<li><p><strong>List：列表</strong></p>
+<pre><code class="hljs">     **场景：**通过list存储一些列表类型的数据结构，类似于粉丝列表、文章评论列表
+
+    **高性能分页：** 比如可以通过Irange命令，读取某个闭区间内的元素，可以基于List实现分页查询。列表不但有序，还支 持范围内获取元素，类似于微博下拉不断分页。
+
+     **消息队列：list是一个双向链表，可以通过lpush和rpop写入和读取消息（不过最好使用Rabbitmq和kafka）**
+</code></pre>
+</li>
+</ol>
+<ul>
+<li><p>双端：链表有prev和next指针，所以是一个双端链表</p>
+</li>
+<li><p>无环：表头节点的prev指针和表尾的next都指向了null</p>
+</li>
+<li><p>多态：链表节点使用void *指针来保存节点值。、</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-number">27.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lpush list_test a<span class="hljs-comment">//list 写入，并且是一个栈</span><br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lpush list_test b<span class="hljs-comment">//list写入</span><br>(integer) <span class="hljs-number">2</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lpush_test list c<br>(integer) <span class="hljs-number">3</span><br><br><span class="hljs-comment">//遍历lrange 从栈顶到栈底，可以读取区间</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lrange list_test <span class="hljs-number">0</span> <span class="hljs-number">-1</span><br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;c&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;b&quot;</span><br><span class="hljs-number">3</span>) <span class="hljs-string">&quot;a&quot;</span><br><span class="hljs-comment">//删除栈顶的第一个</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lpop list_test<br><span class="hljs-string">&quot;c&quot;</span><br><span class="hljs-comment">//获取指定位置的数值</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; lindex list_test <span class="hljs-number">1</span><br><span class="hljs-string">&quot;a&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>Set：集合，可以实现去重功能</strong></li>
+</ol>
+<p>**基于Set将需要去重的数据扔进去，系统部署在多台机器，实现全局自动去重。使用Set进行交集，差集，并集。</p>
+<p>交集：共同好友、差集：推荐好友、并集：</p>
+<p>利用唯一性做统计：统计访问网站的所有独立IP；点赞、收藏、抽奖等。</p>
+<p>整数集合可以实现自动升级，即在原来c语言中的存储数字会产生一处，而在结合中存储不会存在内存溢出的情况。**</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sadd set_key item<span class="hljs-comment">//添加一个set元素，成功返回1，不成功返回0</span><br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sadd set_key item1<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sadd set_ket item2<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sadd set_key item2<span class="hljs-comment">//添加一个重复元素，失败返回0</span><br>(integer) <span class="hljs-number">0</span><br><span class="hljs-comment">//返回集合的所有成员</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; smembers set_key<br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;item2&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;item&quot;</span><br><span class="hljs-number">3</span>) <span class="hljs-string">&quot;item1&quot;</span><br><span class="hljs-comment">//查看某个元素是否在指定集合，存在返回1，不存在返回0</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sismember set_key item2<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; sismember set_key item3<br>(integer) <span class="hljs-number">0</span><br><span class="hljs-comment">//删除指定元素，成功返回1，失败返回0</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; srem set_key item2<br>(integer) <span class="hljs-number">1</span><br><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; smembers set_key<span class="hljs-comment">//查询发现元素已经消失</span><br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;item&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;item1&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p><strong>ZSet：有序集合，去重并且排序，写入时有一个分值，根据分值自动排序</strong></p>
+<p>条件：当你选择有序并且不重复的集合列表时，就可以选择sorted Set数据结构</p>
+<p><strong>场景1：</strong>排行榜、热搜榜， 维护榜单可能是多方面的：按照时间、按照播放量、按照获得的点赞数。</p>
+<p><strong>场景2：</strong>做带权重的队列，普通消息为1，重要消息为2，工作线程就可以选择按照score的倒序来获取工作任务。</p>
+</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zadd zset-key <span class="hljs-number">728</span> member1 <span class="hljs-comment">//zadd  集合名称 排名 值</span><br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zadd zset-key <span class="hljs-number">982</span> member0<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zadd zset-key <span class="hljs-number">982</span> member0<br>(integer) <span class="hljs-number">0</span><br><br><span class="hljs-comment">//按照排名查询zset-key 从0 到 -1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zrange zset-key <span class="hljs-number">0</span> <span class="hljs-number">-1</span> withscores<br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;member1&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;728&quot;</span><br><span class="hljs-number">3</span>) <span class="hljs-string">&quot;member0&quot;</span><br><span class="hljs-number">4</span>) <span class="hljs-string">&quot;982&quot;</span><br><br><span class="hljs-comment">//按照排名查询 指定集合 从0-800之间的数据</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zrangebyscore zset-key <span class="hljs-number">0</span> <span class="hljs-number">800</span> withscores<br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;member1&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;728&quot;</span><br><span class="hljs-comment">//获取当前有序集合的元素数量</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zcard zset-key<br>(integer) <span class="hljs-number">2</span><br><span class="hljs-comment">//删除有序集合中的指定元素</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; zrem zset-key member0<br>(integer) <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>Hash</strong>：类似于map的一种结构</li>
+</ol>
+<p>场景：将结构化的数据比如（一个对象）前提是这个对象里没有嵌套其他对象，缓存到redis里，然后每次读写缓存的时候，可以就操作Hash里的某个字段。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hset hash_key sub-key1 value1<span class="hljs-comment">// hset  key  字段 值 ，成功返回1，失败返回0</span><br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hset hash_key sub-key2 value2<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hset hash_key sub-key2 value3<span class="hljs-comment">//hset key 字段重复就会返回0</span><br>(integer) <span class="hljs-number">0</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hset hash_key sub-key3 value3<br>(integer) <span class="hljs-number">1</span><br><span class="hljs-comment">//h get all 获取所有的键值对，奇数是字段，偶数是值</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hgetall hash_key<br><span class="hljs-number">1</span>) <span class="hljs-string">&quot;sub-key1&quot;</span><br><span class="hljs-number">2</span>) <span class="hljs-string">&quot;value1&quot;</span><br><span class="hljs-number">3</span>) <span class="hljs-string">&quot;sub-key2&quot;</span><br><span class="hljs-number">4</span>) <span class="hljs-string">&quot;value3&quot;</span><br><span class="hljs-number">5</span>) <span class="hljs-string">&quot;sub-key3&quot;</span><br><span class="hljs-number">6</span>) <span class="hljs-string">&quot;value3&quot;</span><br><span class="hljs-comment">//删除某个键的 字段，成功返回1，失败返回0</span><br><span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">6379</span>&gt; hdel hash_key sub-key3<br>(integer) <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>redis字典redis中字典根据hash实现的dictht，table是一个数组，数组中的每个元素都是字典结构的指针，这个字典结构保存着一个键值对，多个键值对是通过链表来实现。字典这个节骨存在next指针</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Go">typedef <span class="hljs-keyword">struct</span> dictht &#123;<br><br>    <span class="hljs-comment">// 哈希表数组</span><br>    dictEntry **table;<br><br>    <span class="hljs-comment">// 哈希表大小</span><br>    unsigned long size;<br><br>    <span class="hljs-comment">// 哈希表大小掩码，用于计算索引值</span><br>    <span class="hljs-comment">// 总是等于 size - 1</span><br>    unsigned long sizemask;<br><br>    <span class="hljs-comment">// 该哈希表已有节点的数量</span><br>    unsigned long used;<br><br>&#125; dictht;<br><br></code></pre></td></tr></table></figure>
+
+<p>dictEntry结构，next 属性是指向另一个哈希表节点的指针， 这个指针可以将多个哈希值相同的键值对连接在一次，<br>以此来解决键冲突（collision）的问题。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Go">typedef <span class="hljs-keyword">struct</span> dictEntry &#123;<br>    <span class="hljs-comment">// 键</span><br>    void *key;<br>    <span class="hljs-comment">// 值</span><br>    union &#123;<br>        void *val;<br>        uint64_t u64;<br>        int64_t s64;<br>    &#125; v;<br>    <span class="hljs-comment">// 指向下个哈希表节点，形成链表</span><br>    <span class="hljs-keyword">struct</span> dictEntry *next;<br><br>&#125; dictEntry;<br></code></pre></td></tr></table></figure>
+
+<p>dict，type 属性和 privdata 属性是针对不同类型的键值对， 为创建多态字典而设置的：</p>
+<p>type 属性是一个指向 dictType 结构的指针， 每个 dictType 结构保存了一簇用于操作特定类型键值对的函数， Redis<br>会为用途不同的字典设置不同的类型特定函数。</p>
+<p>而 privdata 属性则保存了需要传给那些类型特定函数的可选参数。</p>
+<p>ht 属性是一个包含两个项的数组， 数组中的每个项都是一个 dictht 哈希表， 一般情况下， 字典只使用 ht[0] 哈希表， ht[1] 哈希表只会在对<br>ht[0] 哈希表进行 rehash 时使用。</p>
+<p>除了 ht[1] 之外， 另一个和 rehash 有关的属性就是 rehashidx ： 它记录了 rehash 目前的进度， 如果目前没有在进行 rehash ，<br>那么它的值为 -1 。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Go">typedef <span class="hljs-keyword">struct</span> dict &#123;<br>    <span class="hljs-comment">// 类型特定函数</span><br>    dictType *<span class="hljs-keyword">type</span>;<br>    <span class="hljs-comment">// 私有数据</span><br>    void *privdata;<br>    <span class="hljs-comment">// 哈希表</span><br>    dictht ht[<span class="hljs-number">2</span>];<br>    <span class="hljs-comment">// rehash 索引</span><br>    <span class="hljs-comment">// 当 rehash 不在进行时，值为 -1</span><br>    <span class="hljs-type">int</span> rehashidx; <span class="hljs-comment">/* rehashing not in progress if rehashidx == -1 */</span><br>&#125; dict;<br></code></pre></td></tr></table></figure>
+
+<p>dictType</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Go">typedef <span class="hljs-keyword">struct</span> dictType &#123;<br>    <span class="hljs-comment">// 计算哈希值的函数</span><br>    unsigned <span class="hljs-type">int</span> (*hashFunction)(<span class="hljs-keyword">const</span> void *key);<br>    <span class="hljs-comment">// 复制键的函数</span><br>    void *(*keyDup)(void *privdata, <span class="hljs-keyword">const</span> void *key);<br>    <span class="hljs-comment">// 复制值的函数</span><br>    void *(*valDup)(void *privdata, <span class="hljs-keyword">const</span> void *obj);<br>    <span class="hljs-comment">// 对比键的函数</span><br>    <span class="hljs-type">int</span> (*keyCompare)(void *privdata, <span class="hljs-keyword">const</span> void *key1, <span class="hljs-keyword">const</span> void *key2);<br>    <span class="hljs-comment">// 销毁键的函数</span><br>    void (*keyDestructor)(void *privdata, void *key);<br>    <span class="hljs-comment">// 销毁值的函数</span><br>    void (*valDestructor)(void *privdata, void *obj);<br>&#125; dictType;<br></code></pre></td></tr></table></figure>
+
+<p>有序集合是在集合的基础上提供了一个成员分数作为排序；</p>
+<pre><code class="hljs">发表时间作为分数，就可以得到按照时间先后顺序的记录；
+
+将分数当做权重，重要的消息权重大，优先处理；
+
+分数存储好友的亲密度
+</code></pre>
+<p>有序集合使用跳跃表作为底层实现：</p>
+<ul>
+<li><p>跳表由很多层组成</p>
+</li>
+<li><p>跳表的每一层都是一个有序链表</p>
+</li>
+<li><p>跳表除了第一层，每个节点都包含了两个指针，一个指向相同层的下一个节点，一个指向上一层的相同节点。</p>
+</li>
+<li><p>最底层的元素包含了所有的元素；</p>
+</li>
+<li></li>
+</ul>
+<p>redis底层跳表解析：<a target="_blank" rel="noopener" href="http://redisbook.com/preview/skiplist/datastruct.html">http://redisbook.com/preview/skiplist/datastruct.html</a></p>
+<p>跳跃表的基础依然是链表，它是在链表的基础上，定义了很多层，可以看做多个有序链表；最底层包含了所有的数据，每增加一层存储的数据为每个节点进行连接，数据为相邻下一层的一半。随着层数的增加，每一层的数据量也在逐步减少，redis中有序集合采用跳表的结构可以快速的进行二分查找。</p>
+<p>跳跃表</p>
+<p>跳跃表是基于多指针有序链表实现的，可以看成多个有序链表。</p>
+<img src="/2022/12/20/technology/redis/redis_basic/image_1.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>在查找时，从上层指针开始查找，找到对应区间之后，再到下一层寻找，下图演示了查找到22的过程。</p>
+<img src="/2022/12/20/technology/redis/redis_basic/image_2.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>与红黑树等平衡树相比，跳表具有以下优点：插入删除增加都是O(logn)</p>
+<ul>
+<li><p>插入速度非常快速，因为不需要旋转等操作来维持平衡性</p>
+</li>
+<li><p>更容易实现</p>
+</li>
+<li><p>支持无锁操作</p>
+</li>
+</ul>
+<h2 id="键的过期时间："><a href="#键的过期时间：" class="headerlink" title="键的过期时间："></a>键的过期时间：</h2><p>redis可以为每个键设置过期时间，当键过期时，会自动删除该键。</p>
+<p>对于散列表这种容器，只能为整个键设置过期时间（整个散列表），而不能为键里面的单个元素设置过期的时间。</p>
+<h2 id="数据淘汰策略："><a href="#数据淘汰策略：" class="headerlink" title="数据淘汰策略："></a>数据淘汰策略：</h2><p>可以设置内存最大使用量，当内存使用量超出时，施行数据淘汰策略。</p>
+<p>redis有6种淘汰策略</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>volatile-lru</td>
+<td>从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</td>
+</tr>
+<tr>
+<td>volatile-ttl</td>
+<td>从已设置过期时间的数据集中挑选将要过期的数据淘汰</td>
+</tr>
+<tr>
+<td>volatile-random</td>
+<td>从已设置过期时间的数据集中任意选择数据淘汰</td>
+</tr>
+<tr>
+<td>allkeys-lru</td>
+<td>从所有数据集中挑选最近最少使用的数据淘汰</td>
+</tr>
+<tr>
+<td>allkeys-random</td>
+<td>从所有数据集中任意选择数据进行淘汰</td>
+</tr>
+<tr>
+<td>noeviction</td>
+<td>禁止驱逐数据</td>
+</tr>
+</tbody></table>
+<p>redis的淘汰算法实际实现上并非针对所有的key，而是抽样一小部分并从中选出被淘汰的key</p>
+<p>使用redis缓存数据的时候，为了提高命中率，需要保证缓存数据都是热点数据，可以将内存最大使用量设置为热点数据占用的内存量，然后启动allkeys-lru淘汰策略，将最近最少使用过的数据淘汰。</p>
+<p>redis4.0引入了volatile-lfu和allkeys-lfu淘汰策略，LFU策略通过统计访问频率，将访问频率最少的键值对淘汰。</p>
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><p>redis是内存型数据库，为了保证数据在断电后不会丢失，需要将内存中的数据持久保存到硬盘上。</p>
+<p>RDB持久化：将某个时间点的所有数据都存放到硬盘上</p>
+<p>可以将快照复制到其他服务器从而创建具有相同数据的服务器副本</p>
+<p>如果系统发生故障，将会丢失最后一次创建快照之后的数据。</p>
+<p>如果数据量很大，快照保存的时间会很长</p>
+<p>AOF持久化：将写命令添加到AOF文件（Append only File）的末尾</p>
+<p>使用AOF持久化需要设置同步选项，从而确保写命令同步到磁盘文件上的时机。这是因为对文件写入并不会马上同步到磁盘，而是先存储在缓存区，然后由操作系统决定什么时候同步到磁盘。</p>
+<p>随着服务器写请求的增多，AOF文件会越来越大，redis提供了一种将AOF重写的特性,能够去除AOF文件中的冗余写命令。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>同步频率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>always</td>
+<td>每个写命令都同步（会严重降低性能）</td>
+</tr>
+<tr>
+<td>everysec</td>
+<td>每秒同步一次（崩溃只会丢失1秒的数据）</td>
+</tr>
+<tr>
+<td>no</td>
+<td>让操作系统来决定何时同步（不会提升性能，增加了丢失的数据的数量）</td>
+</tr>
+</tbody></table>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>一个事务包含了多个命令，服务器在执行事务期间，不会改去执行其他客户端命令的请求。</p>
+<p>事务中的多个命令被一次性发送个服务器，而不是一条一条发送，这种方式被称之为流水线，它可以减少客户端与服务器之间的网络通信次数从而提高性能。</p>
+<p>redis最简单的事务实现方式是使用MULTI和EXEC命令将事务操作包围起来。</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>redis服务器是一个事件驱动程序。</p>
+<p>文件事件：服务器通过套接字与客户端或者其他服务器进行通信，文件事件就是对套接字操作的抽象。</p>
+<h2 id="高可用分布式集群"><a href="#高可用分布式集群" class="headerlink" title="高可用分布式集群"></a>高可用分布式集群</h2><h3 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h3><p>高可用（High Availability），是当一台服务器停止服务后，对于业务及用户毫无影响。<br>停止服务的原因可能由于网卡、路由器、机房、CPU负载过高、内存溢出、自然灾害等不可预期的原因导致，在很多时候也称单点问题。</p>
+<p><strong>解决单点问题的方案: 主备方式 和主从复制</strong></p>
+<p><strong>主从复制:</strong></p>
+<p>一主多从,主从之间进行数据同步,当Master宕机之后通选举算法(Raft),从slave中选举出新的Master继续对外提供服务</p>
+<p>读写分离:主机进行写,从机进行读,分担压力.</p>
+<p><strong>主节点挂了之后,不会在slave中选取新节点</strong></p>
+<p>缺点:<br>主机宕机之后,slave虽然被选中为master,但是对外提供服务的IP地址发生了变化,需要通知客户端,客户端收到新的地址之后,使用新地址发送请求.(<br>这应该是哨兵模式的缺点了)</p>
+<p><strong>主备方式:</strong></p>
+<p>一台主机,多台备机,在正常情况下,主机对外服务,并把数据同步到备机,当主机宕机之后,备机立即开始服务,RedisHa使用比较多的就是keeplived,它使得主备机对外提供同一个虚拟IP,客户端通过虚拟IP进行数据操作,正常期间主机一直对外提供服务,宕机后IP自动跳到备机.</p>
+<p><strong>数据同步</strong></p>
+<p>异步方式:主机收到写操作之后,直接返回成功,然后再后台用异步的方式把数据同步到从机上,这种同步性能比较好,但无法保证数据的完整性,比如在异步同步过程中主机宕机</p>
+<p>同步方式:当主机收到写操作之后,以同步的方式把数据同步到从机,性能会降低.</p>
+<h3 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式:"></a>哨兵模式:</h3><p>建立在主从复制基础之上</p>
+<p>当master挂了之后使用选举算法(Raft)选一个slave作为新的master</p>
+<p>sentinel因为也是一个进程有挂掉的可能性,所以哨兵也会启动多个形成一个哨兵集群</p>
+<p>多个哨兵配置的时候,哨兵之间会自动监控</p>
+<p>当主从模式配置密码时,sentinel也会同步将配置信息修改到配置文件中</p>
+<p>一个哨兵或者哨兵集群可以管理多个主从Redis,多个哨兵也可以监控同一个redis</p>
+<p>哨兵最好不要和redis部署到同一台服务器,不然redis挂了,哨兵也挂了</p>
+<p><strong>哨兵的工作机制:</strong></p>
+<pre><code class="hljs">每个哨兵会以每秒一次的频率向他所知的master,salve以及其他的哨兵实例发送一个ping命令
+
+如果一个实例距离最后一次有效回复Ping的命令的时间超过了down-after-millseconds选项所指定的值,则会被标记为主观下线
+
+如果一个master被标记为主观下线,则正在监视这个master的所有哨兵都要以每秒一次的频率确定master的确已经进入主观下线的状态
+
+当有足够数量的哨兵的时候,在指定的时间范围内确认了master的确进入了主观下线状态,则master会被标记为客观下线
+
+在一般情况下,每个哨兵都会以每10秒一次的频率向它已知的所有master,slave发送INFO命令
+
+当master被哨兵标记为客观下线的时候,哨兵会向下线的master的所有的slave发送INFO的命令从10秒1次改成课1秒一次
+</code></pre>
+<p><strong>redis集群Cluster模式</strong></p>
+<p><strong>多台搭载redis的服务器,提供相同的服务,从而让服务器达到一个分布式,高可用的redis服务.</strong></p>
+<pre><code class="hljs">哨兵模式基本可以满足一般的生产需求,具备高可用性,但是当服务器数据量大到一台服务器放不下的情况时,主从和sentinel模式就不能满足需求了,这个时候就需要对存储的数据进行分片,将数据存储到多个Redis实例中,Cluster模式的出现就是为了解决单机Redi容量有限的问题,将Redis的数据根据一定的规则分配到多台机器.
+</code></pre>
+<p>cluster可以说是哨兵和主从模式的结合体,通过cluster就可以实现主从master选举功能,所以如果配置两个副本三个分片的话,就需要六个Redis实例,因为Redis的数据是根据一定的规则分配到cluster的不同机器的,当数据量过大的时候,就可以新增机器进行扩容.</p>
+<p>redis集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现，一个redis集群中会有16384个哈希槽，使用公式计算键应该存放在哪个槽<br>CRC16(key)%16384</p>
+<p><strong>2.Redis分布式锁</strong></p>
+<p>和Memcached的方式类似，利用Redis的<strong>setnx命令</strong>。此命令同样是原子性操作，只有在key不存在的情况下，才能set成功。（setnx命令并不完善，后续会介绍替代方案）</p>
+<p><strong>3.Zookeeper分布式锁</strong></p>
+<p>利用Zookeeper的<strong>顺序临时节点</strong>，来实现分布式锁和等待队列。Zookeeper设计的初衷，就是为了实现分布式锁服务的。</p>
+<p>首先讲一下Redis的分布式锁，这种实现方式比较有代表性。</p>
+<p><strong>如何用Redis实现分布式锁？</strong></p>
+<p>Redis分布式锁的基本流程并不难理解，但要想写得尽善尽美，也并不是那么容易。在这里，我们需要先了解分布式锁实现的三个核心要素：</p>
+<p><strong>1.加锁</strong></p>
+<p>最简单的方法是使用setnx命令。key是锁的唯一标识，按业务来决定命名。比如想要给一种商品的秒杀活动加锁，可以给key命名为<br>“lock_sale_商品ID” 。而value设置成什么呢？锁的value值为一个随机生成的UUID。我们可以姑且设置成1。加锁的伪代码如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">setnx（key，1）<br></code></pre></td></tr></table></figure>
+
+<p>当一个线程执行setnx返回1，说明key原本不存在，该线程成功得到了锁；当一个线程执行setnx返回0，说明key已经存在，该线程抢锁失败。</p>
+<p><strong>2.解锁</strong></p>
+<p>有加锁就得有解锁。当得到锁的线程执行完任务，需要释放锁，以便其他线程可以进入。释放锁的最简单方式是执行del指令，伪代码如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">del（key）<br></code></pre></td></tr></table></figure>
+
+<p>释放锁之后，其他线程就可以继续执行setnx命令来获得锁。</p>
+<p><strong>3.锁超时</strong></p>
+<p>锁超时是什么意思呢？如果一个得到锁的线程在执行任务的过程中挂掉，来不及显式地释放锁，这块资源将会永远被锁住，别的线程再也别想进来。</p>
+<p>所以，setnx的key必须设置一个超时时间，单位为second，以保证即使没有被显式释放，这把锁也要在一定时间后自动释放，避免死锁。setnx不支持超时参数，所以需要额外的指令，伪代码如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Plain">expire（key， 30）<br></code></pre></td></tr></table></figure>
+
+<p>综合起来，我们分布式锁实现的第一版伪代码如下：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Plain"><br>if（setnx（key，1） == 1）&#123;<br>    expire（key，30）<br>    try &#123;<br>        do something ......<br>    &#125; finally &#123;<br>        del（key）<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面的伪代码只是分布式锁的简单实现，结合实际应用场景考虑就会发现上述分布式锁的实现存在着三个致命问题：</p>
+<h2 id="redis缓存穿透、缓存击穿、雪崩"><a href="#redis缓存穿透、缓存击穿、雪崩" class="headerlink" title="redis缓存穿透、缓存击穿、雪崩"></a>redis缓存穿透、缓存击穿、雪崩</h2><h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>是指一个key非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个key在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像在一个屏障上凿开了一个洞。</p>
+<p>缓存击穿的解决方案： 单体应用采用互斥锁，就是当缓存击穿之后，给一个请求上互斥锁，然后请求完之后，把数据放入redis，其他用户请求redis<br>即可。</p>
+<h3 id="缓存穿透-用户想要查询一个数据，发现redis内存数据库没有，也就是缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。当用户很多的时候，缓存都没有命中，于是都去请求了持久层数据库。这会给持久层数据库造成很大的压力，这时候就相当于出现了缓存穿透。"><a href="#缓存穿透-用户想要查询一个数据，发现redis内存数据库没有，也就是缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。当用户很多的时候，缓存都没有命中，于是都去请求了持久层数据库。这会给持久层数据库造成很大的压力，这时候就相当于出现了缓存穿透。" class="headerlink" title="缓存穿透,用户想要查询一个数据，发现redis内存数据库没有，也就是缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。当用户很多的时候，缓存都没有命中，于是都去请求了持久层数据库。这会给持久层数据库造成很大的压力，这时候就相当于出现了缓存穿透。"></a>缓存穿透,用户想要查询一个数据，发现redis内存数据库没有，也就是缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。当用户很多的时候，缓存都没有命中，于是都去请求了持久层数据库。这会给持久层数据库造成很大的压力，这时候就相当于出现了缓存穿透。</h3><p>例子：比如我有一个网站，侵犯了某些人的利益，则他们就利用缓存穿透去攻击我的网站，然后redis缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。然后就通过脚本不断的让我的数据库返回查询失败，把我的机器搞趴下。</p>
+<p>缓存穿透解决方案</p>
+<ol>
+<li>IP过滤；</li>
+<li>缓存空对象，设置过期时间</li>
+<li>参数校验；</li>
+<li>布隆过滤器；</li>
+</ol>
+<p>（1）布隆过滤器</p>
+<p>布隆过滤器是一种数据结构，就是一个二进制数组，判断一个数据存不存在这个数组中，存在就是1，不存在就是0.</p>
+<p>比如你好，经过三个哈希函数，第一个hash把你好算成3 第二个hash把你好算成5，第三个hash把你好算成7，会把下标为3，5，7的数据变为1，这样你好就存到了布隆过滤器中去了。</p>
+<p>二进制数据必须都是1才能证明这个数据存在，比如hello也是在1这个位置，所以不知道这个位置到底是哪个数据，把0变为1是删除了，所以很难删除。</p>
+<p>优点： 二进制组成非常快</p>
+<p>插入和查询非常快，计算数据的hash值，再由hash值映射到数据的下标，基于数组的特性他的插入和查询是非常快的，只需要根据响应的数据就可以了。时间复杂度<br>o(k)，有k个hash函数就是O（k）y因为每个hash都要去数组中做一个操作。</p>
+<p>保密性能非常好</p>
+<p>缺点：很难删除</p>
+<p>误判：不同的数据计算出来的hash值是相同的，所以会存在误判的情况。</p>
+<p>减少误判的概率需要将hash函数变多，这就是减少误判的一个因素。</p>
+<p>先把数据放到布隆过滤器，如果请求布隆过滤器没有，就直接返回，如果有才去请求redis，布隆过滤器的空间占用很小布隆过滤器一般使用redis的bitmap来存储。</p>
+<p>垃圾网站和正常网站加起来全世界据统计也有几十亿个。网警要过滤这些垃圾网站，总不能到数据库里面一个一个去比较吧，这就可以使用布隆过滤器。假设我们存储一亿个垃圾网站地址。</p>
+<p>可以先有一亿个二进制比特，然后网警用八个不同的随机数产生器（F1,F2, …,F8） 产生八个信息指纹（f1, f2, …, f8）。接下来用一个随机数产生器<br>G 把这八个信息指纹映射到 1 到1亿中的八个自然数 g1, g2, …,g8。最后把这八个位置的二进制全部设置为一。过程如下：</p>
+<img src="/2022/12/20/technology/redis/redis_basic/image_3.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+
+<p>有一天网警查到了一个可疑的网站，想判断一下是否是XX网站，首先将可疑网站通过哈希映射到1亿个比特数组上的8个点。如果8个点的其中有一个点不为1，则可以判断该元素一定不存在集合中。</p>
+<p>那这个布隆过滤器是如何解决redis中的缓存穿透呢？很简单首先也是对所有可能查询的参数以hash形式存储，当用户想要查询的时候，使用布隆过滤器发现不在集合中，就直接丢弃，不再对持久层查询。</p>
+<p>这个形式很简单。</p>
+<p>2、缓存空对象</p>
+<p>当存储层不命中后，即使返回的空对象也将其缓存起来，同时会设置一个过期时间，之后再访问这个数据将会从缓存中获取，保护了后端数据源；</p>
+<p>但是这种方法会存在两个问题：</p>
+<p>如果空值能够被缓存起来，这就意味着缓存需要更多的空间存储更多的键，因为这当中可能会有很多的空值的键；即使对空值设置了过期时间，还是会存在缓存层和存储层的数据会有一段时间窗口的不一致，这对于需要保持一致性的业务会有影响。</p>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><ol>
+<li><p>概念</p>
+<p>缓存雪崩是指，缓存层出现了错误，不能正常工作了。于是所有的请求都会达到存储层，存储层的调用量会暴增，造成存储层也会挂掉的情况。</p>
+<img src="/2022/12/20/technology/redis/redis_basic/image_4.png" srcset="/img/loading.gif" lazyload class="" title="image.png">
+</li>
+<li><p>解决方案</p>
+</li>
+</ol>
+<ul>
+<li>生成随机失效的缓存时间数据；</li>
+<li>让缓存节点分布在不同的物理节点上；</li>
+<li>生成不失效的缓存数据；</li>
+<li>定时任务更新缓存数据；</li>
+</ul>
+<p>（1）redis高可用</p>
+<p>这个思想的含义是，既然redis有可能挂掉，那我多增设几台redis，这样一台挂掉之后其他的还可以继续工作，其实就是搭建的集群。</p>
+<p>（2）限流降级</p>
+<p>这个解决方案的思想是，在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个key只允许一个线程查询数据和写缓存，其他线程等待。</p>
+<p>（3）数据预热</p>
+<p>数据加热的含义就是在正式部署之前，我先把可能的数据先预先访问一遍，这样部分可能大量访问的数据就会加载到缓存中。在即将发生大并发访问前手动触发加载缓存不同的key，设置不同的过期时间，让缓存失效的时间点尽量均匀。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Redis/" class="category-chain-item">Redis</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="print-no-link">#面试题</a>
+      
+        <a href="/tags/Redis/" class="print-no-link">#Redis</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Redis基础知识</div>
+      <div>https://zhyyao.me/2022/12/20/technology/redis/redis_basic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/20/network/network_basic/" title="计算机网络基础知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/05/technology/mysql/mysql_optimization/" title="Mysql优化相关">
+                        <span class="hidden-mobile">Mysql优化相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
