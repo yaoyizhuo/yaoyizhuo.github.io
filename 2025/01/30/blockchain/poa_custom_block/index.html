@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
   <link rel="icon" href="/home/icon.png">
   
-    <link rel="canonical" href="https://zhyyao.me/2025/01/13/experience/spring_flyway_helper/"/>
+    <link rel="canonical" href="https://zhyyao.me/2025/01/30/blockchain/poa_custom_block/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,24 +21,24 @@
   <meta name="author" content="zhyyao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="SpringBoot项目通过flyway对sqlite进行版本控制，以及flyway原理">
+    <meta name="description" content="修改POA共识机制的出块策略，以达到节省资源的目的..">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flyway版本控制">
-<meta property="og:url" content="https://zhyyao.me/2025/01/13/experience/spring_flyway_helper/index.html">
+<meta property="og:title" content="POA出块机制调整">
+<meta property="og:url" content="https://zhyyao.me/2025/01/30/blockchain/poa_custom_block/index.html">
 <meta property="og:site_name" content="zhyyao">
-<meta property="og:description" content="SpringBoot项目通过flyway对sqlite进行版本控制，以及flyway原理">
+<meta property="og:description" content="修改POA共识机制的出块策略，以达到节省资源的目的..">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-13T14:47:10.000Z">
-<meta property="article:modified_time" content="2025-03-14T06:35:29.185Z">
+<meta property="article:published_time" content="2025-01-30T02:59:01.000Z">
+<meta property="article:modified_time" content="2025-03-17T01:59:15.940Z">
 <meta property="article:author" content="zhyyao">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Geth">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>flyway版本控制 - zhyyao</title>
+  <title>POA出块机制调整 - zhyyao</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="flyway版本控制"></span>
+            <span id="subtitle" data-typed-text="POA出块机制调整"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-13 22:47" pubdate>
-          2025年1月13日 晚上
+        <time datetime="2025-01-30 10:59" pubdate>
+          2025年1月30日 上午
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          765 字
+          855 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          13 分钟
+          15 分钟
         
       </span>
     
@@ -296,84 +296,58 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">flyway版本控制</h1>
+            <h1 id="seo-header">POA出块机制调整</h1>
             
             
               <div class="markdown-body">
                 
-                <p>SpringBoot项目通过flyway对sqlite进行版本控制，以及flyway原理</p>
+                <p>修改POA共识机制的出块策略，以达到节省资源的目的..</p>
 <span id="more"></span>
 
-<p>Spring Boot 使用 Flyway 管理 SQLite 数据库版本</p>
-<h2 id="为什么要使用-Flyway？"><a href="#为什么要使用-Flyway？" class="headerlink" title="为什么要使用 Flyway？"></a>为什么要使用 Flyway？</h2><p>解决的问题:</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>POA私有链中，没有交易时，经常会有空块（Empty Block）的产生，长时间的累积，对服务器空间的占用越来越来。<br>因此，想通过修改源码来达到，没有交易不会出块，以节省服务器的空间消耗。</p>
+<h2 id="POA共识机制"><a href="#POA共识机制" class="headerlink" title="POA共识机制"></a>POA共识机制</h2><p>以太坊的 POA（Proof of Authority，权威证明） 是一种适用于联盟链或私有链的共识机制，其核心特点是依赖预先授权的可信节点（称为“验证者”）来生成区块。与<br>PoW（工作量证明）和 PoS（权益证明）不同，POA 的验证者身份需要经过严格的身份验证，且出块过程无需复杂的计算竞争，因此具有高吞吐量和低延迟的特性。多用于企业私有链、测试网络等。</p>
+<h2 id="POA-的核心机制"><a href="#POA-的核心机制" class="headerlink" title="POA 的核心机制"></a>POA 的核心机制</h2><ol>
+<li><p>验证者（Signers）的授权</p>
 <ul>
-<li>客户端开发，修改数据库等操作重复执行问题</li>
-<li>数据库版本混乱：团队开发中多人修改数据库结构导致版本不一致</li>
-<li>手动维护困难：人工记录和执行 SQL 脚本易出错</li>
-<li>环境差异：开发、测试、生产环境的数据库结构不同步</li>
-<li>回滚困难：缺乏结构化的版本回退机制</li>
+<li>验证者是网络中预先选定的可信节点（例如由联盟成员或企业指定）。</li>
+<li>验证者的公钥需要被写入区块链的创世块（Genesis Block），或通过投票机制动态加入&#x2F;移除。</li>
+<li>身份绑定：每个验证者的身份通常与现实世界中的实体（如企业、机构）绑定，以提高作恶成本。</li>
 </ul>
-<p>使用 <strong>Flyway</strong> 可以很方便的处理数据库表结果、数据的版本迁移，使用简单、自动化，大大提高生产力，再也不需要手工在控制台进行，那样更容易出错或者遗漏，毕竟人都是会经常犯错的。</p>
-<h2 id="Flyway-工作原理"><a href="#Flyway-工作原理" class="headerlink" title="Flyway 工作原理"></a>Flyway 工作原理</h2><h3 id="核心机制"><a href="#核心机制" class="headerlink" title="核心机制"></a>核心机制</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs text">                       +-------------------+<br>                       |   SQL 迁移脚本     |<br>                       | (V1__Create.sql)  |<br>                       +---------+---------+<br>                                 |<br>                                 v<br>+----------------+        +-----------------+        +-----------------+<br>| 应用启动时       |        | Flyway 核心引擎 |        | 数据库元数据表    |<br>| 检查迁移脚本版本 +-------&gt;| 对比版本差异     +-------&gt;| (flyway_schema_history) |<br>+----------------+        +--------+--------+        +-----------------+<br>                                    |<br>                                    v<br>                            +-----------------+<br>                            | 执行未应用的迁移 |<br>                            +-----------------+<br></code></pre></td></tr></table></figure>
-
-<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>迁移脚本：命名规则 V{版本号}__{描述}.sql（如 V1__Create_user_table.sql）</p>
-<p>元数据表：flyway_schema_history（记录迁移历史、校验和、执行时间）</p>
-<p>校验和：对 SQL 文件内容计算哈希值，防止意外修改</p>
-<p>版本顺序：严格按版本号顺序执行迁移（不支持版本跳跃）</p>
-<h2 id="使用方法（Spring-Boot-SQLite）"><a href="#使用方法（Spring-Boot-SQLite）" class="headerlink" title="使用方法（Spring Boot + SQLite）"></a>使用方法（Spring Boot + SQLite）</h2><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- pom.xml --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- SQLite 驱动 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.xerial<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>sqlite-jdbc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.42.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>    <span class="hljs-comment">&lt;!-- Flyway --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.flywaydb<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flyway-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>9.22.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-Flyway"><a href="#配置-Flyway" class="headerlink" title="配置 Flyway"></a>配置 Flyway</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:sqlite:/path/to/your/database.db</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">org.sqlite.JDBC</span><br><br><span class="hljs-comment"># Flyway 配置</span><br><span class="hljs-attr">flyway:</span><br>  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">locations:</span> <span class="hljs-string">classpath:db/migration</span>  <span class="hljs-comment"># 迁移脚本存放位置</span><br>  <span class="hljs-attr">baseline-on-migrate:</span> <span class="hljs-literal">true</span>          <span class="hljs-comment"># 首次迁移时自动创建元数据表</span><br>  <span class="hljs-attr">sql-migration-suffixes:</span> <span class="hljs-string">.sql</span>       <span class="hljs-comment"># 识别 SQL 文件后缀</span><br><br></code></pre></td></tr></table></figure>
-
-<h3 id="创建迁移脚本"><a href="#创建迁移脚本" class="headerlink" title="创建迁移脚本"></a>创建迁移脚本</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">src/main/resources/<br>└── db/<br>    └── migration/<br>        ├── V1__Create_user_table.sql<br>        └── V2__Add_email_column.sql<br></code></pre></td></tr></table></figure>
-
-<h2 id="操作注意事项"><a href="#操作注意事项" class="headerlink" title="操作注意事项"></a>操作注意事项</h2><h3 id="开发阶段"><a href="#开发阶段" class="headerlink" title="开发阶段"></a>开发阶段</h3><ul>
-<li><p>脚本命名：必须使用双下划线 __（单下划线会导致识别失败）</p>
 </li>
-<li><p>脚本修改：已执行的脚本禁止修改内容（校验和会变化导致失败）</p>
-</li>
-<li><p>测试验证：执行 mvn flyway:info 查看迁移状态</p>
-</li>
+<li><p>轮流出块（Round Robin）</p>
+<ul>
+<li>验证者按照预设顺序轮流生成区块。例如，若有 3 个验证者（A、B、C），出块顺序为 A → B → C → A → B → C…。</li>
+<li>时间间隔：每个区块的出块时间固定（如 5 秒），避免空块或延迟。</li>
 </ul>
-<h3 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h3><ul>
-<li><p>备份先行：执行迁移前必须备份数据库</p>
 </li>
-<li><p>禁用 clean：禁止配置 flyway.clean-on-validation-error&#x3D;true</p>
-</li>
-<li><p>版本顺序：必须按版本号顺序执行（不可跳过中间版本）</p>
-</li>
+<li><p>区块签名</p>
+<ul>
+<li>每个区块必须由当前轮次的验证者签名，其他节点验证签名合法性后接受该区块。</li>
+<li>若验证者未在规定时间内出块，网络会跳过当前验证者，由下一个验证者继续出块。</li>
 </ul>
-<h3 id="SQLite-特殊限制"><a href="#SQLite-特殊限制" class="headerlink" title="SQLite 特殊限制"></a>SQLite 特殊限制</h3><ul>
-<li><p>不支持 DDL 事务：CREATE TABLE &#x2F; ALTER TABLE 无法回滚</p>
 </li>
-<li><p>列修改限制：需通过新建表迁移数据实现 ALTER TABLE</p>
-</li>
-<li><p>并发控制：SQLite 写操作串行化，避免多服务同时迁移</p>
-</li>
+<li><p>动态验证者管理</p>
+<ul>
+<li>现有验证者可以通过投票机制添加或移除其他验证者（例如，超过 50% 的验证者同意即可生效）。</li>
+<li>防止恶意行为：若某个验证者长期不参与出块或生成无效区块，会被投票踢出网络</li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">mvn flyway:migrate</td>
-<td align="left">执行所有未应用的迁移</td>
-</tr>
-<tr>
-<td align="left">mvn flyway:info</td>
-<td align="left">查看当前迁移状态</td>
-</tr>
-<tr>
-<td align="left">mvn flyway:validate</td>
-<td align="left">验证迁移脚本是否可应用</td>
-</tr>
-<tr>
-<td align="left">mvn flyway:repair</td>
-<td align="left">修复元数据表（校验和错误时使用）</td>
-</tr>
-</tbody></table>
+</li>
+</ol>
+<h2 id="出块流程"><a href="#出块流程" class="headerlink" title="出块流程"></a>出块流程</h2><ol>
+<li><p>验证者节点根据轮次顺序等待出块。</p>
+</li>
+<li><p>当轮到某个验证者时，它收集交易并生成新区块。</p>
+</li>
+<li><p>验证者使用私钥对区块签名，广播到网络。</p>
+</li>
+<li><p>其他节点验证签名是否来自合法验证者，并接受有效区块。</p>
+</li>
+</ol>
+<h2 id="修改思路"><a href="#修改思路" class="headerlink" title="修改思路"></a>修改思路</h2><h3 id="修改区块生成逻辑（miner-worker-go）"><a href="#修改区块生成逻辑（miner-worker-go）" class="headerlink" title="修改区块生成逻辑（miner&#x2F;worker.go）"></a>修改区块生成逻辑（miner&#x2F;worker.go）</h3><p>在创建新区块时，检查交易池是否为空。若无交易，则跳过生成区块。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs golang"><span class="hljs-comment">// commit 函数中检查本地客户端的交易池是否有待处理的交易</span><br>pending := w.eth.TxPool().Pending(<span class="hljs-literal">false</span>)<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(pending) == <span class="hljs-number">0</span> &#123;<br>    log.Info(<span class="hljs-string">&quot;No transactions in the pool, not starting miner&quot;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span> <span class="hljs-comment">// 如果没有交易，不启动挖矿</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="动态调整出块间隔（consensus-clique-clique-go）"><a href="#动态调整出块间隔（consensus-clique-clique-go）" class="headerlink" title="动态调整出块间隔（consensus&#x2F;clique&#x2F;clique.go）"></a>动态调整出块间隔（consensus&#x2F;clique&#x2F;clique.go）</h3><p>根据交易池状态动态延长出块时间（例如，空池时等待 2 倍 period）。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs golang"><span class="hljs-comment">// 原有逻辑</span><br>delay := time.Unix(<span class="hljs-type">int64</span>(header.Time), <span class="hljs-number">0</span>).Sub(time.Now())<br><span class="hljs-keyword">if</span> header.Difficulty.Cmp(diffNoTurn) == <span class="hljs-number">0</span> &#123;<br>  <span class="hljs-comment">// It&#x27;s not our turn explicitly to sign, delay it a bit</span><br>  wiggle := time.Duration(<span class="hljs-built_in">len</span>(snap.Signers)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span>) * wiggleTime<br>  delay += time.Duration(rand.Int63n(<span class="hljs-type">int64</span>(wiggle)))<br><br>  log.Trace(<span class="hljs-string">&quot;Out-of-turn signing requested&quot;</span>, <span class="hljs-string">&quot;wiggle&quot;</span>, common.PrettyDuration(wiggle))<br>&#125;<br><br><span class="hljs-comment">// 调整为</span><br>txCount := <span class="hljs-built_in">len</span>(block.Transactions())<br>delay := time.Duration(c.config.Period) * time.Second<br><span class="hljs-keyword">if</span> txCount == <span class="hljs-number">0</span> &#123;<br>  delay *= <span class="hljs-number">2</span> <span class="hljs-comment">// 无交易时等待更久</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -392,7 +366,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  <a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" class="category-chain-item">区块链</a>
   
   
 
@@ -407,7 +381,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Java/" class="print-no-link">#Java</a>
+        <a href="/tags/Geth/" class="print-no-link">#Geth</a>
       
     </div>
   
@@ -419,8 +393,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>flyway版本控制</div>
-      <div>https://zhyyao.me/2025/01/13/experience/spring_flyway_helper/</div>
+      <div>POA出块机制调整</div>
+      <div>https://zhyyao.me/2025/01/30/blockchain/poa_custom_block/</div>
     </div>
     <div class="license-meta">
       
@@ -432,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月13日</div>
+          <div>2025年1月30日</div>
         </div>
       
       
@@ -464,12 +438,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/02/20/experience/jpackage_helper/" title="JPackage打包使用方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JPackage打包使用方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/13/experience/chain_queue/" title="链服务结构优化">
-                        <span class="hidden-mobile">链服务结构优化</span>
+                      <a href="/2025/01/16/experience/spring_flyway_helper/" title="flyway版本控制">
+                        <span class="hidden-mobile">flyway版本控制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
