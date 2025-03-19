@@ -1,0 +1,822 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/03/19/experience/aspose_words/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用aspose-words库对word文档进行转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="word文档转换为pdf">
+<meta property="og:url" content="https://zhyyao.me/2025/03/19/experience/aspose_words/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="使用aspose-words库对word文档进行转换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image.png">
+<meta property="og:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image_1.png">
+<meta property="og:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image_3.png">
+<meta property="og:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image_4.png">
+<meta property="og:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image_5.png">
+<meta property="article:published_time" content="2025-03-19T07:28:24.000Z">
+<meta property="article:modified_time" content="2025-03-19T11:54:45.607Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhyyao.me/2025/03/19/experience/aspose_words/image.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>word文档转换为pdf - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="word文档转换为pdf"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-19 15:28" pubdate>
+          2025年3月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">word文档转换为pdf</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>使用aspose-words库对word文档进行转换</p>
+<span id="more"></span>
+
+<h2 id="aspose-words介绍"><a href="#aspose-words介绍" class="headerlink" title="aspose-words介绍"></a>aspose-words介绍</h2><p><a target="_blank" rel="noopener" href="https://products.aspose.com/words">Aspose.Words</a> 是一种高级Word文档处理API，用于执行各种文档管理和操作任务。<br>API支持生成，修改，转换，呈现和打印文档，而无需在跨平台应用程序中直接使用Microsoft Word。 Aspose<br>API支持流行文件格式处理，并允许将各类文档导出或转换为固定布局文件格式和最常用的图像&#x2F;多媒体格式。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>aspose-words包不太好找，在阿里云镜像库中都没有，需要在网上下载后，上传到本地的私服库，或者用本地引入依赖的方式直接在lib中加载，<a target="_blank" rel="noopener" href="https://releases.aspose.com/words/java/22-12/">下载地址</a>。</p>
+<img src="/2025/03/19/experience/aspose_words/image.png" srcset="/img/loading.gif" lazyload class="" title="web_donwnload">
+
+<p>将下载的jar包放到本地仓库中，路径为<code>src/main/resources/lib/aspose-words-java-22.12-jdk17.jar</code>，在pom.xml中引入依赖，并配置plugin。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--引入依赖--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.aspose<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>aspose-words<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>22.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- system 代表从本地文件系统抓取    --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>system<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--  systemPath 声明本地jar包路径, --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">systemPath</span>&gt;</span>$&#123;pom.basedir&#125;/src/main/resources/lib/aspose-words-java-22.12-jdk17.jar<span class="hljs-tag">&lt;/<span class="hljs-name">systemPath</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-comment">&lt;!--额外需要配置plugin,不然只有本地调试可用--&gt;</span><br>        <span class="hljs-comment">&lt;!--spring-boot-maven-plugin将所有应用启动运行所需要的jar都包含进来--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--  includeSystemScope 值要为true --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">includeSystemScope</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">includeSystemScope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> zhyyao</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> 2025/03/19</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FileTransUtils</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">inPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/Users/zhyyao/Downloads/test2.docx&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">output</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/Users/zhyyao/Downloads/test2/test2.pdf&quot;</span>;<br>        doc2pdf(inPath, output);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * word文档转换为pdf</span><br><span class="hljs-comment">     * @param inPath word文档路径</span><br><span class="hljs-comment">     * @param outPath pdf文档路径</span><br><span class="hljs-comment">     * */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doc2pdf</span><span class="hljs-params">(String inPath, String outPath)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(inPath);<br><br>        <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(file);<br>        <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Document</span>(fis);<br>        <span class="hljs-keyword">if</span> (!checkDirectory(outPath)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">&quot;create dir failed&quot;</span>);<br>        &#125;<br>        document.save(outPath, SaveFormat.PDF);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * 检查文件路径是否存在，不存在则创建</span><br><span class="hljs-comment">     * @param filePath 路径</span><br><span class="hljs-comment">     * */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">checkDirectory</span><span class="hljs-params">(String filePath)</span> &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(filePath);<br>        <span class="hljs-keyword">if</span> (file.isDirectory()) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-type">File</span> <span class="hljs-variable">dir</span> <span class="hljs-operator">=</span> file.getParentFile();<br>            <span class="hljs-keyword">return</span> dir == <span class="hljs-literal">null</span> || dir.isDirectory() || dir.mkdirs();<br>        &#125;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><p>此方法由于没有获取License，所以生成的pdf文件会带有水印。<br>如图所示:</p>
+<img src="/2025/03/19/experience/aspose_words/image_1.png" srcset="/img/loading.gif" lazyload class="" title="watermark">
+
+<h2 id="获取License-去除水印"><a href="#获取License-去除水印" class="headerlink" title="获取License-去除水印"></a>获取License-去除水印</h2><h3 id="获取License"><a href="#获取License" class="headerlink" title="获取License"></a>获取License</h3><ol>
+<li><p>前往 Aspose <a target="_blank" rel="noopener" href="https://metrics.aspose.com/">官网</a>注册账户。</p>
+</li>
+<li><p>登录您的账户，然后在顶部导航栏中选择 “Pricing”（定价）选项。</p>
+</li>
+<li><p>在 “Pricing” 页面中，选择 “Purchase”（购买）选项。</p>
+</li>
+<li><p>您可以根据您的需求，选择适合的许可证类型和许可期限。然后点击 “BUY NOW”（立即购买）按钮。</p>
+</li>
+<li><p>接下来，您需要填写相关的购买信息，包括联系人信息、支付方式等。</p>
+</li>
+<li><p>完成付款后，您将收到购买确认和 <strong>License</strong> 文件。</p>
+</li>
+<li><p>将 License 文件添加到您的项目中。通常情况下，您需要将 License 文件作为资源添加到您的项目中，然后在代码中加载 License 文件。</p>
+</li>
+</ol>
+<h3 id="配置License"><a href="#配置License" class="headerlink" title="配置License"></a>配置License</h3><p>在<strong>resources</strong>目录下创建<strong>license.xml</strong>文件，内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br><span class="hljs-tag">&lt;<span class="hljs-name">License</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Data</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">Products</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Product</span>&gt;</span>Aspose.Total for Java<span class="hljs-tag">&lt;/<span class="hljs-name">Product</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">Product</span>&gt;</span>Aspose.Words for Java<span class="hljs-tag">&lt;/<span class="hljs-name">Product</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">Products</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">EditionType</span>&gt;</span>Enterprise<span class="hljs-tag">&lt;/<span class="hljs-name">EditionType</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">SubscriptionExpiry</span>&gt;</span>20991231<span class="hljs-tag">&lt;/<span class="hljs-name">SubscriptionExpiry</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">LicenseExpiry</span>&gt;</span>20991231<span class="hljs-tag">&lt;/<span class="hljs-name">LicenseExpiry</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">SerialNumber</span>&gt;</span>8bfe198c-7f0c-4ef8-8ff0-acc3237bf0d7<span class="hljs-tag">&lt;/<span class="hljs-name">SerialNumber</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Signature</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--  此处为密钥       --&gt;</span><br>        ******<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Signature</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">License</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="License认证"><a href="#License认证" class="headerlink" title="License认证"></a>License认证</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">getLicense</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 目录为 /src/main/resources/license/license.xml</span><br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> ResourceUtils.getFile(<span class="hljs-string">&quot;classpath:license/license.xml&quot;</span>);<br>        <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">inputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(file);<br>        <span class="hljs-type">License</span> <span class="hljs-variable">aposeLic</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">License</span>();<br>        aposeLic.setLicense(inputStream);<br>        result = <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        e.printStackTrace();<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * word文档转换为pdf</span><br><span class="hljs-comment"> * @param inPath word文档路径</span><br><span class="hljs-comment"> * @param outPath pdf文档路径</span><br><span class="hljs-comment"> * */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doc2pdf</span><span class="hljs-params">(String inPath, String outPath)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>    <span class="hljs-keyword">if</span> (!getLicense()) &#123; <span class="hljs-comment">// 验证License 若不验证则转化出的pdf文档会有水印产生</span><br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(inPath);<br><br>    <span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(file);<br>    <span class="hljs-type">Document</span> <span class="hljs-variable">document</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Document</span>(fis);<br>    <span class="hljs-keyword">if</span> (!checkDirectory(outPath)) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">&quot;create dir failed&quot;</span>);<br>    &#125;<br>    document.save(outPath, SaveFormat.PDF);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="修改源码-去除水印"><a href="#修改源码-去除水印" class="headerlink" title="修改源码-去除水印"></a>修改源码-去除水印</h2><p class="note note-danger">声明，此方法仅供学习研究，请勿用于非法用途，需要商业版的请绕行。请参考上一步《获取License》</p>
+
+<p>注意：本方法因为有部分脚本，需要在<strong>Linux</strong>或<strong>MacOs</strong>系统下运行。</p>
+<h3 id="准备源码jar包"><a href="#准备源码jar包" class="headerlink" title="准备源码jar包"></a>准备源码jar包</h3><ul>
+<li>aspose-words版本最好为<strong>V22.12</strong>，其他版本可能略有不同，一下以V22.12为例。<a target="_blank" rel="noopener" href="https://releases.aspose.com/words/java/22-12/">下载地址</a>。</li>
+<li>javassist源码V3.29.2。Javassist（Java Programming Assistant）是一个用于操作 Java 字节码的库，允许在运行时动态修改类文件。 <a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/org/javassist/javassist/3.29.2-GA/">下载地址</a>。<img src="/2025/03/19/experience/aspose_words/image_3.png" srcset="/img/loading.gif" lazyload class="" title="javassist源码"></li>
+<li>java环境，不做描述。</li>
+</ul>
+<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><ul>
+<li>添加修改脚本(crack.sh)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/sh</span><br> <br>set -e<br>SRC=&#x27;aspose-words-22.12-jdk17.jar&#x27;<br>DST=&#x27;aspose-words-22.12-jdk17-cracked.jar&#x27;<br>echo &#x27;==&gt; 官网下载（新下载的此破解已失效，请直接下载破解版）&#x27;<br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">stat</span> <span class="hljs-variable">$SRC</span> || wget https://releases.aspose.com/java/repo/com/aspose/aspose-words/22.12/aspose-words-22.12-jdk17.jar</span><br>echo &#x27;==&gt; 重命名&#x27;<br>rm -f $DST<br>cp $SRC $DST<br> <br>echo &#x27;==&gt; 执行破解,生成类&#x27;<br>javac -classpath .:javassist-3.29.2-GA.jar AsposeWords_22_12.java<br>java  -classpath .:javassist-3.29.2-GA.jar AsposeWords_22_12<br> <br>echo &#x27;==&gt; 用jar命令更新jar内的类&#x27;<br>echo &#x27;替换前&#x27;<br>jar -uvf0 $DST com/aspose/words/*.class<br> <br>echo &#x27;==&gt; 替换UCCESS。&#x27;<br>echo &#x27;==&gt; 用压缩工具打开，并删除 /MANIFEST.MF 目录下的*.SF,*.RSA文件，以及删除 versions 目录。&#x27;<br>echo &#x27;==&gt; DONE.&#x27;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>添加修改文件(AsposeWords_22_12.java)</li>
+</ul>
+<p>需注意：<code>ClassPool.getDefault().insertClassPath(&quot;注意aspose-words-22.12-jdk17.jar路径&quot;); </code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> javassist.ClassPool;<br><span class="hljs-keyword">import</span> javassist.CtClass;<br><span class="hljs-keyword">import</span> javassist.CtMethod;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AsposeWords_22_12</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        ClassPool.getDefault().insertClassPath(<span class="hljs-string">&quot;/Users/zhyyao/java/crack/aspose-words-22.12-jdk17.jar&quot;</span>); <span class="hljs-comment">//注意路径,最好使用绝对路径</span><br>        <span class="hljs-comment">// 类文件1，从com.aspose.words.License类文件找到。</span><br>        <span class="hljs-type">CtClass</span> <span class="hljs-variable">clazz</span> <span class="hljs-operator">=</span> ClassPool.getDefault().getCtClass(<span class="hljs-string">&quot;com.aspose.words.zzYvW&quot;</span>);<br>        clazz.getDeclaredMethod(<span class="hljs-string">&quot;zzY34&quot;</span>).setBody(<span class="hljs-string">&quot;&#123;return com.aspose.words.zzZ8h.zzW8b;&#125;&quot;</span>);<br>        clazz.getDeclaredMethod(<span class="hljs-string">&quot;zzjS&quot;</span>).setBody(<span class="hljs-string">&quot;&#123;this.zzWbe = com.aspose.words.zzZ8h.zzW8b; zzZAO = this; &#125;&quot;</span>);<br>        CtMethod[] methodA = clazz.getDeclaredMethods();<br>        <span class="hljs-keyword">for</span> (CtMethod ctMethod : methodA) &#123;<br>            CtClass[] ps = ctMethod.getParameterTypes();<br>            <span class="hljs-keyword">if</span> (ps.length == <span class="hljs-number">1</span> &amp;&amp; ctMethod.getName().equals(<span class="hljs-string">&quot;zzjS&quot;</span>) &amp;&amp; ps[<span class="hljs-number">0</span>].getName().equals(<span class="hljs-string">&quot;java.io.InputStream&quot;</span>)) &#123;<br>                ctMethod.setBody(<span class="hljs-string">&quot;&#123;this.zzWbe = com.aspose.words.zzZ8h.zzW8b; zzZAO = this; &#125;&quot;</span>);<br>            &#125;<br>        &#125;<br>        clazz.getDeclaredConstructors()[<span class="hljs-number">0</span>].setBody(<span class="hljs-string">&quot;&#123;System.out.println(\&quot;do nothing at zzYvW.\&quot;);&#125;&quot;</span>);<br>        clazz.writeFile();<br><br>        <span class="hljs-comment">// 类文件2，从类com.aspose.words.zzYvW的方法zzY34()进。大概是第171行。</span><br>        <span class="hljs-type">CtClass</span> <span class="hljs-variable">clazz2</span> <span class="hljs-operator">=</span> ClassPool.getDefault().getCtClass(<span class="hljs-string">&quot;com.aspose.words.zzWS8&quot;</span>);<br>        clazz2.getDeclaredMethod(<span class="hljs-string">&quot;zzQG&quot;</span>).setBody(<span class="hljs-string">&quot;&#123;System.out.println(\&quot;do nothing. this.zzW67(); this.zzW5m();\&quot;);&#125;&quot;</span>);<br>        clazz2.getDeclaredMethod(<span class="hljs-string">&quot;zzH0&quot;</span>).setBody(<span class="hljs-string">&quot;&#123;return com.aspose.words.zzY7H.zzZPG;&#125;&quot;</span>);<br>        <span class="hljs-comment">//clazz2.getDeclaredConstructors()[0].setBody(&quot;&#123;System.out.println(\&quot;do nothing at zzWS8.\&quot;);&#125;&quot;);</span><br>        clazz2.writeFile();<br><br>        <span class="hljs-comment">// 类文件3（关键点：删除水印）从类com.aspose.words.zzWS8W的方法zzW5m()进，大概是665行。</span><br>        <span class="hljs-type">CtClass</span> <span class="hljs-variable">clazz3</span> <span class="hljs-operator">=</span> ClassPool.getDefault().getCtClass(<span class="hljs-string">&quot;com.aspose.words.zzYJa&quot;</span>);<br>        clazz3.getDeclaredMethod(<span class="hljs-string">&quot;zzXuq&quot;</span>).setBody(<span class="hljs-string">&quot;&#123;zzYOl = 29273535023874148L;&#125;&quot;</span>);<br>        clazz3.writeFile();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>将下载的源码放在指定目录，包括aspose-words-22.12-jdk17.jar和javassist-3.29.2-GA.jar。目录结构如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">crack/<br>  ├── aspose-words-22.12-jdk17.jar<br>  ├── javassist-3.29.2-GA.jar<br>  ├── crack.sh<br>  └── AsposeWords_22_12.java<br></code></pre></td></tr></table></figure>
+
+<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><p>执行crick.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd crack<br>sh crack.sh<br></code></pre></td></tr></table></figure>
+
+<p>执行成功后如下图所示，并生成<strong>aspose-words-22.12-jdk17-cracked.jar</strong>文件。</p>
+<img src="/2025/03/19/experience/aspose_words/image_4.png" srcset="/img/loading.gif" lazyload class="" title="crick">
+
+<h3 id="配置破解jar包"><a href="#配置破解jar包" class="headerlink" title="配置破解jar包"></a>配置破解jar包</h3><ul>
+<li>破解后的jar包因为有些验证hash的文件，所以不可以直接使用，需要先删除一些校验文件.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd crack<br>mkdir extracted<br>cp aspose-words-22.12-jdk17-cracked.jar extracted/<br>cd extracted<br>jar xf aspose-words-22.12-jdk17-cracked.jar<br>rm aspose-words-22.12-jdk17-cracked.jar<br>rm -rf META-INF/**<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在META-INF目录下重新添加自定义的<strong>MANIFEST.MF</strong>文件。<br>注意：文末有空行。</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">Manifest-Version: 1.0<br>Application-Name: Aspose.Words for Java<br>Implementation-Title: Aspose.Words for Java<br>Bundle-SymbolicName: com.aspose.words<br>Implementation-Version: 22.12.0<br>Release-Date: 2022.12.01<br>Specification-Vendor: Aspose Pty Ltd<br>Bundle-ManifestVersion: 2<br>Created-By: 17.0.7 (Oracle Corporation)<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>重新打包</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd crack/extracted<br>mkdir test<br>mv com test<br>jar cfm cracked.jar META-INF/MANIFEST.MF -C test/ .<br></code></pre></td></tr></table></figure>
+
+<p>打包之后产生的cracked.jar文件就是破解后的jar包。</p>
+<h3 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h3><ul>
+<li>修改pom文件中的路径</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.aspose<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>aspose-words<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>22.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>system<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">systemPath</span>&gt;</span>$&#123;pom.basedir&#125;/src/main/resources/lib/cracked/cracked.jar<span class="hljs-tag">&lt;/<span class="hljs-name">systemPath</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>执行<code>mvn clean &amp;&amp; mvn install &amp;&amp; mvn compile</code></p>
+</li>
+<li><p>重新执行代码，doc2pdf(..,..) 函数,执行如图所示，水印已成功去除。</p>
+<img src="/2025/03/19/experience/aspose_words/image_5.png" srcset="/img/loading.gif" lazyload class="" title="crick"></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>word文档转换为pdf</div>
+      <div>https://zhyyao.me/2025/03/19/experience/aspose_words/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/20/experience/jpackage_helper/" title="JPackage打包使用方法">
+                        <span class="hidden-mobile">JPackage打包使用方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
