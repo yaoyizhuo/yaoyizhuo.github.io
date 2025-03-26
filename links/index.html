@@ -509,6 +509,42 @@
 </div>
 
 
+  <!-- Custom -->
+  <div class="custom mx-auto">
+    <hr><p>在下方给留言或者发送邮件到 <a href="mailto:yyzclick@126.com" class="label label-info">yyzclick@126.com</a> 申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：zhyyao</li><li>简介：记录和分享学习经验，永远保持一颗学徒之心。</li><li>链接：https://zhyyao.me</li><li>图片：https://zhyyao.me/home/icon.png</li></ul>
+  </div>
+
+
+
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
 
 
 
