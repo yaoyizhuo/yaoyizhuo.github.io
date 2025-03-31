@@ -1,39 +1,25 @@
-// hexo.extend.injector.register('body_end', `
-// <script>
-// (function() {
-//   var times = document.getElementsByTagName('time');
-//   if (times.length === 0) { return; }
-//   var posts = document.getElementsByClassName('post-content');
-//   if (posts.length === 0) { return; }
-//
-//   var pubTime = new Date(times[0].dateTime);  /* 文章发布时间戳 */
-//   var now = Date.now()  /* 当前时间戳 */
-//   var interval = parseInt(now - pubTime)
-//   /* 发布时间超过指定时间（毫秒） */
-//   if (interval > 3600*24*30*1000){
-//     var days = parseInt(interval / 86400000)
-//     posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
-//       '<div class="h6">文章时效性提示</div><p>这是一篇发布于 ' + days + ' 天前的文章，部分信息可能已发生改变，请注意甄别。' +
-//       '</p></p></div>' + posts[0].innerHTML;
-//   }
-// })();
-// </script>
-// `, 'post');
+document.addEventListener('DOMContentLoaded', function() {
+    const isPostPage = document.querySelector('.post-content');
+    if (!isPostPage) return;
 
-(function() {
-    var times = document.getElementsByTagName('time');
-    if (times.length === 0) { return; }
-    var posts = document.getElementsByClassName('post-content');
-    if (posts.length === 0) { return; }
+    const timeElements = document.querySelectorAll('time[datetime]');
+    if (timeElements.length === 0) return;
 
-    var pubTime = new Date(times[0].dateTime);  /* 文章发布时间戳 */
-    var now = Date.now()  /* 当前时间戳 */
-    var interval = parseInt(now - pubTime)
-    /* 发布时间超过指定时间（毫秒） */
-    if (interval > 3600*24*30*1000){
-        var days = parseInt(interval / 86400000)
-        posts[0].innerHTML = '<div class="note note-warning" style="font-size:0.9rem"><p>' +
-            '<div class="h6">文章时效性提示</div><p>这是一篇发布于 ' + days + ' 天前的文章，部分信息可能已发生改变，请注意甄别。' +
-            '</p></p></div>' + posts[0].innerHTML;
+    const pubTime = new Date(timeElements[0].getAttribute('datetime'));
+    const threshold = 30 * 24 * 60 * 60 * 1000; // 30天
+
+    if ((Date.now() - pubTime) > threshold) {
+        const days = Math.floor((Date.now() - pubTime) / (1000 * 60 * 60 * 24));
+        const warningHTML = `
+            <div class="note note-warning" style="font-size:0.9rem">
+                <h6 class="warning-title">文章时效性提示</h6>
+                <p class="warning-content">
+                    这是一篇发布于 ${days} 天前的文章，部分内容可能已过时。
+                </p>
+            </div>
+        `;
+
+        // 使用更安全的插入方式
+        document.querySelector('.post-content').insertAdjacentHTML('afterbegin', warningHTML);
     }
-})();
+});
