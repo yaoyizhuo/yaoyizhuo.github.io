@@ -344,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://zhyyao.me/2022/08/31/algorithm/sort/merge_sort/</loc>
+    <loc>https://zhyyao.me/2022/08/31/algorithm/sort/insertion_sort/</loc>
     
     <lastmod>2025-03-14</lastmod>
     
@@ -353,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://zhyyao.me/2022/08/31/algorithm/sort/insertion_sort/</loc>
+    <loc>https://zhyyao.me/2022/08/31/algorithm/sort/merge_sort/</loc>
     
     <lastmod>2025-03-14</lastmod>
     
@@ -498,14 +498,14 @@
   </url>
   
   <url>
-    <loc>https://zhyyao.me/tags/Java/</loc>
+    <loc>https://zhyyao.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zhyyao.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://zhyyao.me/tags/Java/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -540,6 +540,13 @@
   </url>
   
   <url>
+    <loc>https://zhyyao.me/tags/Mysql/</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zhyyao.me/tags/SpringBoot/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -548,13 +555,6 @@
   
   <url>
     <loc>https://zhyyao.me/tags/Redis/</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhyyao.me/tags/Mysql/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -584,14 +584,14 @@
   </url>
   
   <url>
-    <loc>https://zhyyao.me/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://zhyyao.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zhyyao.me/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://zhyyao.me/categories/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -612,6 +612,13 @@
   </url>
   
   <url>
+    <loc>https://zhyyao.me/categories/Mysql/</loc>
+    <lastmod>2025-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zhyyao.me/categories/Java/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -620,13 +627,6 @@
   
   <url>
     <loc>https://zhyyao.me/categories/Redis/</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhyyao.me/categories/Mysql/</loc>
     <lastmod>2025-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
