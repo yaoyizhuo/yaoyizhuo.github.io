@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/05/26/system/envs/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用goenv、pyenv、jenv 版本管理工具，完成在同一台机器上管理多个版本的运行环境，并实现灵活切换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="版本管理工具">
+<meta property="og:url" content="https://zhyyao.me/2025/05/26/system/envs/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="使用goenv、pyenv、jenv 版本管理工具，完成在同一台机器上管理多个版本的运行环境，并实现灵活切换。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-26T06:11:01.000Z">
+<meta property="article:modified_time" content="2025-05-26T09:38:43.632Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>版本管理工具 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="版本管理工具"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-26 14:11" pubdate>
+          2025年5月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">版本管理工具</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>使用goenv、pyenv、jenv 版本管理工具，完成在同一台机器上管理多个版本的运行环境，并实现灵活切换。</p>
+<span id="more"></span>
+
+
+<h2 id="goenv"><a href="#goenv" class="headerlink" title="goenv"></a>goenv</h2><h3 id="goenv-简介"><a href="#goenv-简介" class="headerlink" title="goenv 简介"></a>goenv 简介</h3><ul>
+<li><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/syndbg/goenv">https://github.com/syndbg/goenv</a></p>
+</li>
+<li><p>功能：</p>
+<ol>
+<li>安装多个 Go 版本；</li>
+<li>切换系统（全局）Go 版本；</li>
+<li>为特定目录（项目）指定特定 Go 版本；</li>
+<li>支持 macOS、Linux（不支持 Windows）。</li>
+</ol>
+</li>
+</ul>
+<h3 id="安装-goenv"><a href="#安装-goenv" class="headerlink" title="安装 goenv"></a>安装 goenv</h3><ol>
+<li>下载goenv   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Macos</span><br>brew install goenv<br><br><span class="hljs-comment"># Linux</span><br>git <span class="hljs-built_in">clone</span> https://github.com/syndbg/goenv.git ~/.goenv<br></code></pre></td></tr></table></figure></li>
+<li>配置环境<blockquote>
+<p>添加以下内容到你的 shell 配置文件（如 .bashrc、.zshrc、.profile 等）：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># goenv</span><br><span class="hljs-built_in">export</span> GOENV_ROOT=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.goenv&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$GOENV_ROOT</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">command</span> -v goenv &gt;/dev/null; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(goenv init -)</span>&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="使用-goenv"><a href="#使用-goenv" class="headerlink" title="使用 goenv"></a>使用 goenv</h3><ol>
+<li><p>安装 Go 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">goenv install -l  <span class="hljs-comment"># 查看可用的版本</span><br>goenv install 1.20.10  <span class="hljs-comment"># 安装指定版本</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>首次使用 goenv 安装版本时，goenv 会下载源码并编译，所以可能较慢。</p>
+</blockquote>
+</li>
+<li><p>国内网络如果下载不下来</p>
+<blockquote>
+<p>可以通过阿里云开源镜像下载安装包 <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/golang">https://mirrors.aliyun.com/golang</a><br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/.goenv/cache/<br><span class="hljs-built_in">cp</span> go1.20.10.src.tar.gz ~/.goenv/cache/ <span class="hljs-comment"># 将安装包放入缓存目录,例如版本为1.20.10</span><br>goenv install 1.20.10<br></code></pre></td></tr></table></figure></p>
+</blockquote>
+</li>
+<li><p>设置默认（全局） Go 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">goenv global 1.20.10<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前使用的 Go 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>goenv version<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有已安装的 Go 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">goenv versions<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>卸载 Go 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">goenv uninstall 1.19.5<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">goenv versions</td>
+<td align="center">查看当前系统所有可用版本（已安装的）</td>
+</tr>
+<tr>
+<td align="center">goenv install –list</td>
+<td align="center">查看所有支持安装的版本</td>
+</tr>
+<tr>
+<td align="center">goenv install <version></td>
+<td align="center">安装某个版本（需要安装 goenv-install 插件）</td>
+</tr>
+<tr>
+<td align="center">goenv uninstall <version></td>
+<td align="center">卸载指定版本</td>
+</tr>
+<tr>
+<td align="center">goenv global <version></td>
+<td align="center">设置全局使用版本</td>
+</tr>
+<tr>
+<td align="center">goenv local <version></td>
+<td align="center">设置当前目录使用版本（写入 .go-version 文件）</td>
+</tr>
+<tr>
+<td align="center">goenv shell <version></td>
+<td align="center">设置当前 shell 会话使用的版本（临时）</td>
+</tr>
+<tr>
+<td align="center">goenv rehash</td>
+<td align="center">重建 shim 目录（很少需要手动用）</td>
+</tr>
+<tr>
+<td align="center">goenv which go</td>
+<td align="center">查看当前版本 go 的真实路径</td>
+</tr>
+<tr>
+<td align="center">goenv whence go</td>
+<td align="center">查看哪个版本中有 go 命令</td>
+</tr>
+</tbody></table>
+<h2 id="jenv"><a href="#jenv" class="headerlink" title="jenv"></a>jenv</h2><h3 id="jenv-简介"><a href="#jenv-简介" class="headerlink" title="jenv 简介"></a>jenv 简介</h3><ul>
+<li>项目地址：<a target="_blank" rel="noopener" href="https://github.com/jenv/jenv">https://github.com/jenv/jenv</a></li>
+<li>功能：<ul>
+<li>安装并管理多个 Java（JDK）版本；</li>
+<li>设置系统（全局）默认 JDK 版本；</li>
+<li>为特定项目（目录）指定特定 JDK 版本；</li>
+<li>支持 macOS 和 Linux（不支持 Windows）；</li>
+<li>支持与 IDE（如 IntelliJ IDEA）集成。</li>
+</ul>
+</li>
+</ul>
+<h3 id="安装-jenv"><a href="#安装-jenv" class="headerlink" title="安装 jenv"></a>安装 jenv</h3><ol>
+<li>下载 jenv</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># macOS (使用 Homebrew)</span><br>brew install jenv<br><br><span class="hljs-comment"># Linux</span><br>git <span class="hljs-built_in">clone</span> https://github.com/jenv/jenv.git ~/.jenv<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置环境变量<br>将以下内容添加到你的 shell 配置文件（如 .bashrc、.zshrc、.profile 等）：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># jenv </span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.jenv/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">command</span> -v jenv &gt;/dev/null; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(jenv init -)</span>&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+<p>然后执行以下命令使配置生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc  <span class="hljs-comment"># 或 source ~/.zshrc</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>可选插件启用</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 建议启用这些插件</span><br>jenv enable-plugin <span class="hljs-built_in">export</span><br>jenv enable-plugin maven<br>jenv enable-plugin gradle<br></code></pre></td></tr></table></figure>
+
+<h3 id="添加-JDK-到-jenv-管理"><a href="#添加-JDK-到-jenv-管理" class="headerlink" title="添加 JDK 到 jenv 管理"></a>添加 JDK 到 jenv 管理</h3><p>jenv 本身不下载 JDK，只管理你本机已有的 JDK。</p>
+<p>你可以使用系统包管理器或官网下载 JDK，然后通过以下方式添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv add /路径/到/jdk<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_341.jdk/Contents/Home<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="使用-jenv"><a href="#使用-jenv" class="headerlink" title="使用 jenv"></a>使用 jenv</h3><ol>
+<li><p>查看所有已添加的 JDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv versions<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置全局（系统默认） JDK 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv global 17<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>为当前 shell 会话设置临时 JDK 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv shell 11<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>为当前目录设置特定 JDK 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv <span class="hljs-built_in">local</span> 21<br><span class="hljs-comment"># 会在当前目录生成一个 .java-version 文件</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前正在使用的 JDK 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv version<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前 java 命令对应的真实路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv <span class="hljs-built_in">which</span> java<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>重建 jenv shim（很少需要）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">jenv <span class="hljs-built_in">rehash</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">jenv versions</td>
+<td align="center">查看当前系统所有可用版本（已添加）</td>
+</tr>
+<tr>
+<td align="center">jenv add &lt;路径&gt;</td>
+<td align="center">将已安装的 JDK 添加到 jenv 中管理</td>
+</tr>
+<tr>
+<td align="center">jenv global &lt;版本号&gt;</td>
+<td align="center">设置全局使用的 JDK 版本</td>
+</tr>
+<tr>
+<td align="center">jenv local &lt;版本号&gt;</td>
+<td align="center">设置当前目录使用的 JDK 版本（项目）</td>
+</tr>
+<tr>
+<td align="center">jenv shell &lt;版本号&gt;</td>
+<td align="center">设置当前 shell 会话使用的 JDK（临时）</td>
+</tr>
+<tr>
+<td align="center">jenv version</td>
+<td align="center">查看当前使用的 JDK 版本</td>
+</tr>
+<tr>
+<td align="center">jenv which java</td>
+<td align="center">查看当前 JDK java 命令的真实路径</td>
+</tr>
+<tr>
+<td align="center">jenv rehash</td>
+<td align="center">重新生成 jenv 的 shim 脚本</td>
+</tr>
+<tr>
+<td align="center">jenv enable-plugin &lt;插件名&gt;</td>
+<td align="center">启用 jenv 插件（如 maven）</td>
+</tr>
+</tbody></table>
+<h2 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a>pyenv</h2><h3 id="pyenv-简介"><a href="#pyenv-简介" class="headerlink" title="pyenv 简介"></a>pyenv 简介</h3><ul>
+<li><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">https://github.com/pyenv/pyenv</a></p>
+</li>
+<li><p>功能：</p>
+<ul>
+<li>安装多个 Python 版本；</li>
+<li>切换系统（全局）Python 版本；</li>
+<li>为特定目录（项目）指定特定 Python 版本；</li>
+<li>支持 macOS、Linux（不支持 Windows，Windows 用户请使用 pyenv-win）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="安装-pyenv"><a href="#安装-pyenv" class="headerlink" title="安装 pyenv"></a>安装 pyenv</h3><ol>
+<li>安装 pyenv</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># macOS（通过 Homebrew）</span><br>brew install pyenv<br><br><span class="hljs-comment"># Linux（通过 git 克隆）</span><br>git <span class="hljs-built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置环境变量<br>添加以下内容到你的 shell 配置文件（如 .bashrc、.zshrc、.profile 等）：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># pyenv</span><br><span class="hljs-built_in">export</span> PYENV_ROOT=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.pyenv&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PYENV_ROOT</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">command</span> -v pyenv 1&gt;/dev/null 2&gt;&amp;1; <span class="hljs-keyword">then</span><br>  <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(pyenv init --path)</span>&quot;</span><br>  <span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(pyenv init -)</span>&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>重启终端或执行 source ~&#x2F;.bashrc 等，使配置生效。</li>
+</ol>
+<h3 id="使用-pyenv"><a href="#使用-pyenv" class="headerlink" title="使用 pyenv"></a>使用 pyenv</h3><ol>
+<li>安装 Python 版本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv install -l        <span class="hljs-comment"># 查看可安装的版本列表</span><br>pyenv install 3.10.13   <span class="hljs-comment"># 安装指定版本</span><br></code></pre></td></tr></table></figure>
+<p>国内网络环境如下载较慢，可考虑使用国内镜像，如清华源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PYTHON_BUILD_MIRROR_URL=<span class="hljs-string">&quot;https://mirrors.tuna.tsinghua.edu.cn/python&quot;</span><br>pyenv install 3.10.13<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><p>设置默认（全局） Python 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv global 3.10.13<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置当前目录（项目）使用特定版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv <span class="hljs-built_in">local</span> 3.10.13  <span class="hljs-comment"># 会在当前目录生成 `.python-version` 文件</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置当前 shell 会话使用的版本（临时生效）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv shell 3.10.13<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前使用的 Python 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv version<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有已安装的 Python 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv versions<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>卸载 Python 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv uninstall 3.9.13<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pyenv versions</td>
+<td align="center">查看已安装的 Python 版本（带 * 表示当前）</td>
+</tr>
+<tr>
+<td align="center">pyenv install -l</td>
+<td align="center">查看所有可安装的版本列表</td>
+</tr>
+<tr>
+<td align="center">pyenv install <version></td>
+<td align="center">安装指定 Python 版本</td>
+</tr>
+<tr>
+<td align="center">pyenv uninstall <version></td>
+<td align="center">卸载指定 Python 版本</td>
+</tr>
+<tr>
+<td align="center">pyenv global <version></td>
+<td align="center">设置系统全局默认 Python 版本</td>
+</tr>
+<tr>
+<td align="center">pyenv local <version></td>
+<td align="center">设置当前目录默认 Python 版本（生成 <code>.python-version</code>）</td>
+</tr>
+<tr>
+<td align="center">pyenv shell <version></td>
+<td align="center">设置当前 shell 会话使用的版本（临时）</td>
+</tr>
+<tr>
+<td align="center">pyenv rehash</td>
+<td align="center">重建 shims 目录（一般安装新版本后自动执行）</td>
+</tr>
+<tr>
+<td align="center">pyenv which python</td>
+<td align="center">显示当前版本 Python 的完整路径</td>
+</tr>
+<tr>
+<td align="center">pyenv whence python</td>
+<td align="center">显示哪些版本包含该命令（如 python, pip 等）</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7/" class="print-no-link">#工具</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>版本管理工具</div>
+      <div>https://zhyyao.me/2025/05/26/system/envs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/24/self/todo_list/" title="🧾代办清单">
+                        <span class="hidden-mobile">🧾代办清单</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
