@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/12/dianshu/原创最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠_酒精_管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在当今医疗健康领域，数据驱动的决策变得越来越重要。药物相关结构化数据集作为连接医药研究与人工智能应用的关键桥梁，为研究人员、数据科学家和医疗从业者提供了宝贵的资源。本数据集从权威医药网站Drugs.com提取并经过严格预处理，包含了丰富的药物信息，能够支持从基础研究到临床应用的多层次需求。对于致力于药物安全性评估、副作用预测模型开发以及医疗保健应用创新的专业人士而言，这一数据集具有不可替代的价值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠&#x2F;酒精&#x2F;管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性">
+<meta property="og:url" content="https://zhyyao.me/2025/12/12/dianshu/%E5%8E%9F%E5%88%9B%E6%9C%80%E6%96%B0%E8%8D%AF%E7%89%A9%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8B%E8%BD%BD%EF%BC%9A%E6%9D%A5%E8%87%AADrugs.com%E7%9A%84%E6%9D%83%E5%A8%81%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%8C%85%E5%90%AB%E8%8D%AF%E7%89%A9%E9%80%9A%E7%94%A8%E5%90%8D%E3%80%81%E5%93%81%E7%89%8C%E5%90%8D%E3%80%81%E9%80%82%E5%BA%94%E7%97%87%E3%80%81%E5%89%AF%E4%BD%9C%E7%94%A8%E6%B8%85%E5%8D%95%E3%80%81%E5%AE%89%E5%85%A8%E5%88%86%E7%B1%BB%EF%BC%88%E5%A6%8A%E5%A8%A0_%E9%85%92%E7%B2%BE_%E7%AE%A1%E5%88%B6%EF%BC%89%E3%80%81%E8%8D%AF%E7%89%A9%E8%AF%84%E7%BA%A7%E4%B8%8E%E5%85%AC%E4%BC%97%E8%AF%84%E4%BB%B7%EF%BC%8C%E5%8C%BB%E7%96%97AI%E7%A0%94%E7%A9%B6%E3%80%81%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E3%80%81%E8%8D%AF%E7%89%A9%E5%AE%89%E5%85%A8%E6%80%A7/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在当今医疗健康领域，数据驱动的决策变得越来越重要。药物相关结构化数据集作为连接医药研究与人工智能应用的关键桥梁，为研究人员、数据科学家和医疗从业者提供了宝贵的资源。本数据集从权威医药网站Drugs.com提取并经过严格预处理，包含了丰富的药物信息，能够支持从基础研究到临床应用的多层次需求。对于致力于药物安全性评估、副作用预测模型开发以及医疗保健应用创新的专业人士而言，这一数据集具有不可替代的价值。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-12T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-12T10:15:27.398Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠/酒精/管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠/酒精/管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-12 15:51" pubdate>
+          2025年12月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠/酒精/管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在当今医疗健康领域，数据驱动的决策变得越来越重要。药物相关结构化数据集作为连接医药研究与人工智能应用的关键桥梁，为研究人员、数据科学家和医疗从业者提供了宝贵的资源。本数据集从权威医药网站Drugs.com提取并经过严格预处理，包含了丰富的药物信息，能够支持从基础研究到临床应用的多层次需求。对于致力于药物安全性评估、副作用预测模型开发以及医疗保健应用创新的专业人士而言，这一数据集具有不可替代的价值。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息与核心内容"><a href="#数据基本信息与核心内容" class="headerlink" title="数据基本信息与核心内容"></a>数据基本信息与核心内容</h3><p>采用CC0公共领域许可，每月定期更新，确保了数据的时效性和可用性。经过专业预处理，数据集删除了数字字段中的非数字或格式错误值，标准化了分类字段，并过滤了关键列缺失或不相关数据的条目，保留了医学和分析相关的所有有效行，数据可用性评分达到满分10.00。</p>
+<p>数据集的核心内容包括：</p>
+<ul>
+<li>∙药物标识信息：通用名和品牌名</li>
+<li>∙临床应用信息：相关适应症和病症</li>
+<li>∙安全性数据：已报告的副作用详细清单</li>
+<li>∙公众评价指标：药物评级信息</li>
+<li>∙特殊人群用药指导：妊娠安全分类、酒精相互作用等级</li>
+<li>∙法规管理信息：管制药物管理(CSA)分类</li>
+</ul>
+<h3 id="数据集的核心优势"><a href="#数据集的核心优势" class="headerlink" title="数据集的核心优势"></a>数据集的核心优势</h3><p>​ <strong>​1. 高质量预处理保证数据可靠性​</strong> ​<br>数据集经过专业清洗流程，消除了原始数据中的噪声和不一致性，标准化了分类字段，确保每个数据点都符合分析要求。这种严格的质量控制大大减少了研究人员数据清洗的工作量，可直接用于分析建模。</p>
+<p>​ <strong>​2. 全面的药物安全信息覆盖​</strong> ​<br>独特地整合了药物多维度安全数据，包括副作用、妊娠分类、酒精相互作用和管制级别，这种综合视角为全面评估药物安全性提供了可能，是同类数据集中罕见的完整安全信息集合。</p>
+<p>​ <strong>​3. 结构化的评级与反馈数据​</strong> ​<br>包含经过标准化的公众评级信息，这些数据反映了真实世界中的药物使用体验，为研究药物接受度和患者满意度提供了量化指标，对医药市场分析和患者用药指导具有重要价值。</p>
+<table>
+<thead>
+<tr>
+<th><strong>优势</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>高质量预处理保证数据可靠性​</strong></td>
+<td>数据集经过专业清洗流程，消除了原始数据中的噪声和不一致性，标准化了分类字段，确保每个数据点都符合分析要求。这种严格的质量控制大大减少了研究人员数据清洗的工作量，可直接用于分析建模。</td>
+</tr>
+<tr>
+<td><strong>全面的药物安全信息覆盖​</strong></td>
+<td>独特地整合了药物多维度安全数据，包括副作用、妊娠分类、酒精相互作用和管制级别，这种综合视角为全面评估药物安全性提供了可能，是同类数据集中罕见的完整安全信息集合。</td>
+</tr>
+<tr>
+<td><strong>结构化的评级与反馈数据​</strong></td>
+<td>包含经过标准化的公众评级信息，这些数据反映了真实世界中的药物使用体验，为研究药物接受度和患者满意度提供了量化指标，对医药市场分析和患者用药指导具有重要价值。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13276" title="医疗研究 药物相关结构化数据集 （含通用名 品牌名  病症   副作用 安全分类）药物副作用和医疗状况 - 典枢">医疗研究 药物相关结构化数据集 （含通用名 品牌名 病症 副作用 安全分类）药物副作用和医疗状况 - 典枢</a></td>
+</tr>
+</tbody></table>
+<h3 id="深度应用场景分析"><a href="#深度应用场景分析" class="headerlink" title="深度应用场景分析"></a>深度应用场景分析</h3><p>​ <strong>​医疗研究与药物开发支持​</strong> ​<br>对于医药研究机构和制药企业，本数据集提供了探索药物使用趋势和分析安全数据的坚实基础。研究人员可以追踪特定药物类别的副作用模式，识别潜在的安全信号。通过分析不同适应症的药物分布，可以发现现有药物的新用途机会。妊娠安全分类数据特别有助于妇产科用药指南的制定，而CSA管制信息则对麻醉和精神类药物管理政策具有参考价值。数据集中的评级信息还可用于评估公众对各类药物的接受度，指导新药研发方向和市场策略。</p>
+<p>​ <strong>​数据科学与可视化分析应用​</strong> ​<br>数据科学家可以利用该数据集进行深入的探索性分析(EDA)，揭示药物属性间的隐藏关系。通过构建交互式可视化仪表板，可以将复杂的药物信息转化为直观的图形界面，帮助医疗从业者快速掌握药物概况。例如，可以开发药物安全雷达图，同时展示某种药物的副作用频率、妊娠分类、酒精相互作用和管制级别，实现多维度比较。自然语言处理技术可应用于副作用文本分析，提取高频术语和严重程度指标，为药物安全画像提供数据支持。</p>
+<p>​ <strong>​机器学习模型开发与预测系统​</strong> ​<br>本数据集为训练药物副作用和功效预测模型提供了优质标注数据。机器学习工程师可以构建分类模型，预测新药可能的副作用谱系，或在已知药物组合中识别潜在的相互作用风险。深度学习技术可应用于分析药物属性与副作用之间的复杂非线性关系，提高预测准确性。这些模型可以集成到临床决策支持系统中，辅助医生选择最佳治疗方案。制药企业也可利用这些预测工具在药物开发早期评估安全特性，优化研发流程。</p>
+<p>​ <strong>​医疗健康应用开发与创新​</strong> ​<br>移动健康应用开发者可以基于该数据集创建面向患者的药物信息查询工具和用药指导应用。通过整合药物安全分类数据，可以开发针对孕妇、饮酒人群等特殊群体的个性化用药建议功能。结合用户健康数据，这类应用可实现药物相互作用实时检查，提升用药安全性。数据集中的评级信息还可用于开发药物评价社区，促进患者经验分享和用药反馈收集，形成良性互动的医药信息生态系统。</p>
+<h3 id="总结与获取建议"><a href="#总结与获取建议" class="headerlink" title="总结与获取建议"></a>总结与获取建议</h3><p>本药物结构化数据集以其全面性、高质量和易用性，为医疗研究、数据分析和人工智能应用提供了独特价值。从基础科研到商业应用，从个体化医疗到公共卫生决策，这一资源都能发挥重要作用。特别值得注意的是，数据集将通常分散的药物信息整合为结构化格式，并经过专业预处理，为用户节省了大量数据准备时间，使其能够专注于核心分析和模型开发工作。</p>
+<p>对于有意深入探索药物数据价值的用户，建议首先进行全面的探索性分析，了解数据分布和特征间关系；然后根据具体应用目标，设计适当的分析流程或模型架构；最后将分析结果与实际医疗场景结合，验证实用价值。数据集开放的许可政策也为创新应用提供了广阔空间，鼓励用户在合规前提下充分发掘数据潜力。</p>
+<p>如需了解更多关于该数据集的技术细节或获取方式，欢迎通过专业渠道咨询相关信息。这一资源有望成为推动医药数据科学发展的重要基石，为改善全球医疗健康服务做出贡献。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="category-chain-item">典枢-数据集</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠/酒精/管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性</div>
+      <div>https://zhyyao.me/2025/12/12/dianshu/原创最新药物数据集下载：来自Drugs.com的权威结构化数据，包含药物通用名、品牌名、适应症、副作用清单、安全分类（妊娠_酒精_管制）、药物评级与公众评价，医疗AI研究、机器学习模型训练、药物安全性/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/12/dianshu/%E5%8E%9F%E5%88%9B%E4%B8%AD%E6%96%87%E7%B2%A4%E8%AF%AD%EF%BC%88%E5%B9%BF%E5%B7%9E%EF%BC%89%E8%AF%AD%E9%9F%B3%E8%AF%AD%E6%96%99%E5%BA%93%EF%BC%9A6219%E6%9D%A1%E9%AB%98%E8%B4%A8%E9%87%8F%E8%AF%AD%E9%9F%B3%E6%95%B0%E6%8D%AE%E5%8A%A9%E5%8A%9B%E7%B2%A4%E8%AF%AD%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E4%B8%8E%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%A0%94%E7%A9%B6/" title="中文粤语（广州）语音语料库：6219条高质量语音数据助力粤语语音识别与自然语言处理研究">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中文粤语（广州）语音语料库：6219条高质量语音数据助力粤语语音识别与自然语言处理研究</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/05/26/self/todo_list/" title="🧾代办清单">
+                        <span class="hidden-mobile">🧾代办清单</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
