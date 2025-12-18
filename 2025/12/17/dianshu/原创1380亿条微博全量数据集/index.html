@@ -1,0 +1,1089 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/17/dianshu/原创1380亿条微博全量数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在数字化时代，社交媒体数据已成为理解人类行为、社会趋势和语言演变的宝贵资源。微博作为中国最大的社交媒体平台之一，汇聚了亿万用户的真实表达，承载着丰富的社会信息和文化内涵。本数据集自2014年开始采集至今，累计收集了约1380亿条微博数据，为人工智能研究、自然语言处理、社会计算、商业智能等领域提供了前所未有的数据支撑。这些数据不仅记录了时代变迁的轨迹，更蕴含着推动科技进步的巨大价值，是构建智能系统、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1380亿条微博全量数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B1380%E4%BA%BF%E6%9D%A1%E5%BE%AE%E5%8D%9A%E5%85%A8%E9%87%8F%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在数字化时代，社交媒体数据已成为理解人类行为、社会趋势和语言演变的宝贵资源。微博作为中国最大的社交媒体平台之一，汇聚了亿万用户的真实表达，承载着丰富的社会信息和文化内涵。本数据集自2014年开始采集至今，累计收集了约1380亿条微博数据，为人工智能研究、自然语言处理、社会计算、商业智能等领域提供了前所未有的数据支撑。这些数据不仅记录了时代变迁的轨迹，更蕴含着推动科技进步的巨大价值，是构建智能系统、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T02:00:16.186Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>1380亿条微博全量数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1380亿条微博全量数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-17 15:51" pubdate>
+          2025年12月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">1380亿条微博全量数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在数字化时代，社交媒体数据已成为理解人类行为、社会趋势和语言演变的宝贵资源。微博作为中国最大的社交媒体平台之一，汇聚了亿万用户的真实表达，承载着丰富的社会信息和文化内涵。本数据集自2014年开始采集至今，累计收集了约1380亿条微博数据，为人工智能研究、自然语言处理、社会计算、商业智能等领域提供了前所未有的数据支撑。这些数据不仅记录了时代变迁的轨迹，更蕴含着推动科技进步的巨大价值，是构建智能系统、训练先进算法、开发创新应用的重要基础。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>本微博数据集规模庞大，涵盖时间跨度从2014年至今的长期采集，数据总量达到约1380亿条。每条数据记录包含完整的结构化信息，涵盖用户基本信息、发布内容、互动数据、地理位置、设备信息等多个维度。数据格式采用标准JSON结构，便于程序化处理和分析。每条记录包含用户ID、昵称、性别、地区、关注数、粉丝数等用户画像信息，以及微博内容、发布时间、转发数、评论数、点赞数等互动指标。此外，数据集还包含情感分析、地址识别、标签提取等智能分析结果，为后续研究提供了丰富的标注信息。数据覆盖领域广泛，涉及娱乐、科技、财经、体育、教育、生活等各个社会领域，真实反映了中国网民的生活状态和关注焦点。</p>
+<h3 id="数据字段结构"><a href="#数据字段结构" class="headerlink" title="数据字段结构"></a>数据字段结构</h3><p>字段类别</p>
+<p>| </p>
+<p>字段名称</p>
+<p>| </p>
+<p>数据类型</p>
+<p>| </p>
+<p>字段说明  </p>
+<p>—|—|—|—  </p>
+<p>​ <strong>​基础信息​</strong> ​</p>
+<p>| </p>
+<p>id</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>数据记录唯一标识符  </p>
+<p>| </p>
+<p>mid</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>微博消息ID  </p>
+<p>| </p>
+<p>uuid</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>数据采集唯一标识  </p>
+<p>| </p>
+<p>url</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>微博原始链接地址  </p>
+<p>​ <strong>​内容信息​</strong> ​</p>
+<p>| </p>
+<p>content</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>微博正文内容  </p>
+<p>| </p>
+<p>ctime</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>微博创建时间戳  </p>
+<p>| </p>
+<p>utime</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>微博更新时间戳  </p>
+<p>| </p>
+<p>wtype</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>微博类型标识  </p>
+<p>​ <strong>​互动数据​</strong> ​</p>
+<p>| </p>
+<p>repost_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>转发数量  </p>
+<p>| </p>
+<p>reply_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>评论数量  </p>
+<p>| </p>
+<p>like_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>点赞数量  </p>
+<p>​ <strong>​用户信息​</strong> ​</p>
+<p>| </p>
+<p>user.uid</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>用户唯一ID  </p>
+<p>| </p>
+<p>user.name</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>用户昵称  </p>
+<p>| </p>
+<p>user.gender</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>用户性别  </p>
+<p>| </p>
+<p>user.province</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>用户省份  </p>
+<p>| </p>
+<p>user.city</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>用户城市  </p>
+<p>| </p>
+<p>user.followers_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>粉丝数量  </p>
+<p>| </p>
+<p>user.friends_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>关注数量  </p>
+<p>| </p>
+<p>user.statuses_count</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>发布微博总数  </p>
+<p>| </p>
+<p>user.level</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>用户等级  </p>
+<p>| </p>
+<p>user.verified</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>认证状态  </p>
+<p>| </p>
+<p>user.created_at</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>用户注册时间  </p>
+<p>​ <strong>​地理位置​</strong> ​</p>
+<p>| </p>
+<p>place</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>发布地点  </p>
+<p>| </p>
+<p>user.ip_region</p>
+<p>| </p>
+<p>Array</p>
+<p>| </p>
+<p>IP归属地区  </p>
+<p>| </p>
+<p>user.location</p>
+<p>| </p>
+<p>Array</p>
+<p>| </p>
+<p>用户位置信息  </p>
+<p>​ <strong>​设备信息​</strong> ​</p>
+<p>| </p>
+<p>device</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>发布设备型号  </p>
+<p>​ <strong>​智能分析​</strong> ​</p>
+<p>| </p>
+<p>analysis.sentiment</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>情感分析结果  </p>
+<p>| </p>
+<p>analysis.find_address</p>
+<p>| </p>
+<p>Object</p>
+<p>| </p>
+<p>地址识别结果  </p>
+<p>| </p>
+<p>analysis.tag</p>
+<p>| </p>
+<p>Array</p>
+<p>| </p>
+<p>内容标签提取  </p>
+<p>| </p>
+<p>analysis.hashtag</p>
+<p>| </p>
+<p>Array</p>
+<p>| </p>
+<p>话题标签  </p>
+<p>​ <strong>​采集信息​</strong> ​</p>
+<p>| </p>
+<p>gather.site_name</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>网站名称  </p>
+<p>| </p>
+<p>gather.site_domain</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>网站域名  </p>
+<p>| </p>
+<p>gather.gtime</p>
+<p>| </p>
+<p>Integer</p>
+<p>| </p>
+<p>采集时间  </p>
+<p>| </p>
+<p>gather.data_type</p>
+<p>| </p>
+<p>String</p>
+<p>| </p>
+<p>数据类型  </p>
+<p>| </p>
+<p>gather.info_flag</p>
+<p>| </p>
+<p>Array</p>
+<p>| </p>
+<p>信息标识  </p>
+<h3 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h3><p>优势类别</p>
+<p>| </p>
+<p>具体优势</p>
+<p>| </p>
+<p>详细说明  </p>
+<p>—|—|—  </p>
+<p>​ <strong>​规模优势​</strong> ​</p>
+<p>| </p>
+<p>数据量庞大</p>
+<p>| </p>
+<p>1380亿条数据，为大规模机器学习提供充足样本  </p>
+<p>| </p>
+<p>时间跨度长</p>
+<p>| </p>
+<p>2014年至今连续采集，支持时间序列分析和趋势研究  </p>
+<p>​ <strong>​质量优势​</strong> ​</p>
+<p>| </p>
+<p>结构化完整</p>
+<p>| </p>
+<p>标准JSON格式，包含用户、内容、互动、地理等多维度信息  </p>
+<p>| </p>
+<p>智能标注</p>
+<p>| </p>
+<p>内置情感分析、地址识别、标签提取等预处理结果  </p>
+<p>| </p>
+<p>真实性强</p>
+<p>| </p>
+<p>来自真实用户行为，反映真实社会现象和语言使用习惯  </p>
+<p>​ <strong>​覆盖优势​</strong> ​</p>
+<p>| </p>
+<p>用户多样化</p>
+<p>| </p>
+<p>涵盖各年龄段、地区、职业背景的多样化用户群体  </p>
+<p>| </p>
+<p>内容全面</p>
+<p>| </p>
+<p>涉及娱乐、科技、财经、体育、教育、生活等各个社会领域  </p>
+<p>​ <strong>​技术优势​</strong> ​</p>
+<p>| </p>
+<p>更新及时</p>
+<p>| </p>
+<p>实时采集机制，保证数据的时效性和新鲜度  </p>
+<p>| </p>
+<p>隐私保护</p>
+<p>| </p>
+<p>经过脱敏处理，符合数据安全和隐私保护要求  </p>
+<p><strong>获取方式</strong>|  典枢平台| <a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/11995">https://dianshudata.com/dataDetail/11995</a>  </p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="自然语言处理与文本挖掘"><a href="#自然语言处理与文本挖掘" class="headerlink" title="自然语言处理与文本挖掘"></a>自然语言处理与文本挖掘</h4><p>微博数据集为自然语言处理研究提供了丰富的语料资源。1380亿条中文文本数据涵盖了各种语言风格、表达方式和语境，是训练中文语言模型的理想选择。研究人员可以利用这些数据开发情感分析模型，准确识别用户情绪倾向；构建文本分类系统，自动识别内容主题和类别；训练机器翻译模型，提升中英文互译质量；开发文本摘要算法，自动提取关键信息。此外，数据集中的用户互动信息（转发、评论、点赞）为文本质量评估和影响力分析提供了重要参考，有助于构建更智能的文本处理系统。这些应用不仅推动了NLP技术的发展，也为搜索引擎、智能客服、内容推荐等实际应用提供了技术支撑。</p>
+<h4 id="社会计算与舆情分析"><a href="#社会计算与舆情分析" class="headerlink" title="社会计算与舆情分析"></a>社会计算与舆情分析</h4><p>微博数据集的独特价值在于其社会属性，为理解社会现象、分析舆情趋势提供了宝贵资源。通过分析用户发布内容的时间分布、地理分布和主题变化，研究人员可以识别社会热点事件、追踪舆论走向、预测社会趋势。数据集中的地理位置信息支持区域化分析，帮助政府和企业了解不同地区的关注焦点和需求差异。情感分析结果可用于监测公众情绪变化，及时发现潜在的社会风险。此外，用户关系网络数据为社交网络分析提供了基础，有助于理解信息传播机制、识别关键意见领袖、分析群体行为模式。这些研究成果在公共政策制定、危机管理、市场调研等领域具有重要应用价值。</p>
+<h4 id="推荐系统与个性化服务"><a href="#推荐系统与个性化服务" class="headerlink" title="推荐系统与个性化服务"></a>推荐系统与个性化服务</h4><p>微博数据集为构建智能推荐系统提供了丰富的用户行为数据。通过分析用户的发布内容、互动行为、关注关系等信息，可以构建精准的用户画像，理解用户的兴趣爱好、行为习惯和需求偏好。这些信息是开发个性化推荐算法的基础，可以用于内容推荐、广告投放、商品推荐等多个场景。数据集中的时间序列信息支持动态推荐，能够根据用户兴趣变化调整推荐策略。地理位置信息支持基于位置的推荐服务，为用户提供本地化的内容和服务。此外，用户互动数据（转发、评论、点赞）为推荐效果评估提供了重要指标，有助于持续优化推荐算法。这些应用在电商、内容平台、社交媒体等领域的商业化运营中发挥着重要作用。</p>
+<h4 id="商业智能与市场研究"><a href="#商业智能与市场研究" class="headerlink" title="商业智能与市场研究"></a>商业智能与市场研究</h4><p>微博数据集为商业智能和市场研究提供了独特的数据视角。通过分析用户对不同品牌、产品、服务的讨论和评价，企业可以了解市场反馈、识别用户需求、评估品牌声誉。数据集中的情感分析结果帮助企业监测品牌形象变化，及时发现负面舆情并采取应对措施。地理位置信息支持区域化市场分析，帮助企业了解不同地区的市场特点和消费偏好。用户画像数据为精准营销提供支持，帮助企业识别目标客户群体并制定个性化营销策略。此外，时间序列分析可以识别市场趋势和季节性变化，为商业决策提供数据支撑。这些应用在品牌管理、产品开发、市场推广、客户关系管理等商业活动中具有重要价值。</p>
+<h4 id="人工智能模型训练"><a href="#人工智能模型训练" class="headerlink" title="人工智能模型训练"></a>人工智能模型训练</h4><p>微博数据集为各种人工智能模型的训练提供了大规模、多样化的数据基础。在深度学习领域，这些数据可以用于训练语言模型、图像识别模型、推荐系统模型等。数据集中的多模态信息（文本、用户行为、地理位置等）支持多模态学习，有助于开发更智能的AI系统。时间序列数据为时序预测模型提供训练样本，可用于预测用户行为、市场趋势等。用户关系网络数据为图神经网络提供基础，支持社交网络分析、社区发现等任务。此外，数据集中的标注信息（情感、标签、地址等）为监督学习提供了丰富的标签数据，有助于提升模型性能。这些训练好的模型可以应用于各种实际场景，推动人工智能技术的产业化应用。</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>微博大数据集以其1380亿条的庞大规模、丰富的信息维度和长期的时间跨度，为人工智能研究、商业应用和社会发展提供了宝贵的数据资源。这个数据集不仅记录了数字时代的社会变迁，更为推动科技进步、促进产业创新、服务社会发展提供了强有力的数据支撑。无论是学术研究还是商业应用，都能从中获得有价值的洞察和解决方案。随着人工智能技术的不断发展，这个数据集的价值将得到进一步释放，为构建更智能、更人性化的数字世界贡献力量。有需要可私信获取更多信息。</p>
+<h3 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h3><p>以下是微博数据集中的一条完整样例数据，展示了数据的具体结构和内容：</p>
+<pre><code class="hljs">&#123;  
+  &quot;code&quot;: 200,  
+  &quot;msg&quot;: &quot;success&quot;,  
+  &quot;data&quot;: &#123;  
+    &quot;took&quot;: 177,  
+    &quot;result&quot;: [  
+      &#123;  
+        &quot;id&quot;: &quot;20240407_1_3af848d75e3388ed0b61eebddd994dde&quot;,  
+        &quot;index&quot;: &quot;djUyYnUxell6czBScGgxY3lGSGNyUVVTeFVWWlM5bU14cDJhSmhYT3FGRWIyVmtlaEZGUm9KbGV3bHpielUyS3pWV2U=&quot;,  
+        &quot;data&quot;: &#123;  
+          &quot;repost_count&quot;: 2,  
+          &quot;mid&quot;: &quot;5020669647783642&quot;,  
+          &quot;uuid&quot;: &quot;11098e72f4f511ee94b10a915e847204&quot;,  
+          &quot;content&quot;: &quot;看来女帝结婚的时候的留影石还在\n十亿年前婚礼放在现在[思考]\n他和她老婆小时候都看过 &quot;,  
+          &quot;ctime&quot;: 1712504386,  
+          &quot;like_count&quot;: 0,  
+          &quot;utime&quot;: 1712504663,  
+          &quot;gather&quot;: &#123;  
+            &quot;site_name&quot;: &quot;新浪微博&quot;,  
+            &quot;site_domain&quot;: &quot;weibo.com&quot;,  
+            &quot;gtime&quot;: 1712504386,  
+            &quot;data_type&quot;: &quot;1&quot;,  
+            &quot;stime&quot;: 1712504404,  
+            &quot;info_flag&quot;: [&quot;04&quot;, &quot;0401&quot;]  
+          &#125;,  
+          &quot;analysis&quot;: &#123;  
+            &quot;sentiment&quot;: 0,  
+            &quot;hashcode&quot;: &#123;  
+              &quot;5&quot;: &quot;6963894105745346393&quot;  
+            &#125;,  
+            &quot;find_address&quot;: &#123;  
+              &quot;district_count&quot;: 0,  
+              &quot;province_count&quot;: 0,  
+              &quot;city_count&quot;: 0  
+            &#125;  
+          &#125;,  
+          &quot;reply_count&quot;: 0,  
+          &quot;url&quot;: &quot;https://weibo.com/5055934912/O8FI8wESC&quot;,  
+          &quot;wtype&quot;: 1,  
+          &quot;publisher&quot;: &#123;  
+            &quot;name&quot;: &quot;wierzbowsk&quot;,  
+            &quot;id&quot;: &quot;weibo.com|5055934912&quot;,  
+            &quot;platform&quot;: &quot;自媒体&quot;,  
+            &quot;entity&quot;: &quot;wierzbowsk&quot;  
+          &#125;,  
+          &quot;user&quot;: &#123;  
+            &quot;friends_count&quot;: 264,  
+            &quot;ip_region&quot;: [&quot;浙江&quot;],  
+            &quot;profile_img_url&quot;: &quot;https://tvax2.sinaimg.cn/crop.0.0.664.664.50/005wabDily8fliumm1l8dj30ig0ig74t.jpg?KID=imgbed,tva&amp;Expires=1712515186&amp;ssig=CFsKt0orD3&quot;,  
+            &quot;gender&quot;: &quot;f&quot;,  
+            &quot;level&quot;: 39,  
+            &quot;verified&quot;: 0,  
+            &quot;created_at&quot;: 1393749283,  
+            &quot;verified_type&quot;: -1,  
+            &quot;uid&quot;: &quot;5055934912&quot;,  
+            &quot;province&quot;: &quot;湖北省&quot;,  
+            &quot;lang_code&quot;: &quot;zh-cn&quot;,  
+            &quot;bi_followers_count&quot;: 1,  
+            &quot;statuses_count&quot;: 29142,  
+            &quot;followers_count&quot;: 667,  
+            &quot;name&quot;: &quot;wierzbowsk&quot;,  
+            &quot;location&quot;: [&quot;湖北省&quot;]  
+          &#125;,  
+          &quot;device&quot;: &quot;OPPO A56 5G&quot;  
+        &#125;,  
+        &quot;sort&quot;: [1712504386000, 1545356],  
+        &quot;highlight&quot;: &#123;  
+          &quot;content&quot;: [&quot;看来女帝结婚的时候的留&lt;em&gt;影&lt;/em&gt;&lt;em&gt;石&lt;/em&gt;还在\n十亿年前婚礼放在现在[思考]\n他和她老婆小时候都看过 &quot;]  
+        &#125;  
+      &#125;  
+    ]  
+  &#125;  
+&#125;
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1380亿条微博全量数据集</div>
+      <div>https://zhyyao.me/2025/12/17/dianshu/原创1380亿条微博全量数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B10%20%E7%B1%BB%E5%A4%9A%E5%B8%83%E5%B1%80%E6%89%AB%E6%8F%8F%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="10类多布局扫描图像数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">10类多布局扫描图像数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B17%20%E4%B8%87%20+%20%E6%9D%A1%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B%E6%96%87%E6%9C%AC%E5%AF%B9%E5%B1%80%E6%95%B0%E6%8D%AE%E9%9B%86/" title="17万条国际象棋文本对局数据集">
+                        <span class="hidden-mobile">17万条国际象棋文本对局数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

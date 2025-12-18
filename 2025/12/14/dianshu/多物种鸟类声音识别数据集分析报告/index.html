@@ -1,0 +1,1133 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/多物种鸟类声音识别数据集分析报告/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着生态保护意识的提高和人工智能技术的发展，鸟类声音识别已成为生物多样性监测和研究的重要手段。本数据集作为一个全面的鸟类声音集合，包含了丰富的物种声音记录，对生态研究、生物多样性保护以及智能声音识别算法开发具有重要价值。数据集中包含完整的元数据信息和部分原始音频文件，为科研人员和工程师提供了宝贵的研究资源。通过对这些数据的分析和应用，可以实现自动鸟类监测、栖息地评估、物种分布研究等多种科学目标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多物种鸟类声音识别数据集分析报告">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E5%A4%9A%E7%89%A9%E7%A7%8D%E9%B8%9F%E7%B1%BB%E5%A3%B0%E9%9F%B3%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着生态保护意识的提高和人工智能技术的发展，鸟类声音识别已成为生物多样性监测和研究的重要手段。本数据集作为一个全面的鸟类声音集合，包含了丰富的物种声音记录，对生态研究、生物多样性保护以及智能声音识别算法开发具有重要价值。数据集中包含完整的元数据信息和部分原始音频文件，为科研人员和工程师提供了宝贵的研究资源。通过对这些数据的分析和应用，可以实现自动鸟类监测、栖息地评估、物种分布研究等多种科学目标。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.814Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>多物种鸟类声音识别数据集分析报告 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="多物种鸟类声音识别数据集分析报告"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">多物种鸟类声音识别数据集分析报告</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着生态保护意识的提高和人工智能技术的发展，鸟类声音识别已成为生物多样性监测和研究的重要手段。本数据集作为一个全面的鸟类声音集合，包含了丰富的物种声音记录，对生态研究、生物多样性保护以及智能声音识别算法开发具有重要价值。数据集中包含完整的元数据信息和部分原始音频文件，为科研人员和工程师提供了宝贵的研究资源。通过对这些数据的分析和应用，可以实现自动鸟类监测、栖息地评估、物种分布研究等多种科学目标。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>primary_label</td>
+<td>字符串</td>
+<td>主要鸟类标签，代表声音中的主要物种</td>
+<td>ywcpar</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>secondary_labels</td>
+<td>字符串数组</td>
+<td>次要鸟类标签，代表声音中同时存在的其他物种</td>
+<td>[‘grekis’, ‘whtdov’]</td>
+<td>100%（99.37%有内容）</td>
+</tr>
+<tr>
+<td>record_name</td>
+<td>字符串</td>
+<td>音频记录的唯一标识符</td>
+<td>XC115515</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>source</td>
+<td>字符串</td>
+<td>数据来源目录</td>
+<td>bc25</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>rank</td>
+<td>浮点数</td>
+<td>记录的排序编号</td>
+<td>1.0</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="主要标签分布（Top-15）"><a href="#主要标签分布（Top-15）" class="headerlink" title="主要标签分布（Top 15）"></a>主要标签分布（Top 15）</h4><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>grekis</td>
+<td>1030</td>
+<td>3.59%</td>
+<td>3.59%</td>
+</tr>
+<tr>
+<td>compau</td>
+<td>808</td>
+<td>2.81%</td>
+<td>6.40%</td>
+</tr>
+<tr>
+<td>trokin</td>
+<td>787</td>
+<td>2.74%</td>
+<td>9.14%</td>
+</tr>
+<tr>
+<td>roahaw</td>
+<td>710</td>
+<td>2.47%</td>
+<td>11.61%</td>
+</tr>
+<tr>
+<td>banana</td>
+<td>610</td>
+<td>2.12%</td>
+<td>13.73%</td>
+</tr>
+<tr>
+<td>whtdov</td>
+<td>572</td>
+<td>1.99%</td>
+<td>15.72%</td>
+</tr>
+<tr>
+<td>socfly1</td>
+<td>544</td>
+<td>1.89%</td>
+<td>17.61%</td>
+</tr>
+<tr>
+<td>yeofly1</td>
+<td>525</td>
+<td>1.83%</td>
+<td>19.44%</td>
+</tr>
+<tr>
+<td>bobfly1</td>
+<td>512</td>
+<td>1.78%</td>
+<td>21.22%</td>
+</tr>
+<tr>
+<td>wbwwre1</td>
+<td>499</td>
+<td>1.74%</td>
+<td>22.96%</td>
+</tr>
+<tr>
+<td>soulap1</td>
+<td>487</td>
+<td>1.70%</td>
+<td>24.66%</td>
+</tr>
+<tr>
+<td>sobtyr1</td>
+<td>478</td>
+<td>1.66%</td>
+<td>26.32%</td>
+</tr>
+<tr>
+<td>laufal1</td>
+<td>470</td>
+<td>1.64%</td>
+<td>27.96%</td>
+</tr>
+<tr>
+<td>trsowl</td>
+<td>470</td>
+<td>1.64%</td>
+<td>29.60%</td>
+</tr>
+<tr>
+<td>greegr</td>
+<td>437</td>
+<td>1.52%</td>
+<td>31.12%</td>
+</tr>
+</tbody></table>
+<h4 id="数据来源分布"><a href="#数据来源分布" class="headerlink" title="数据来源分布"></a>数据来源分布</h4><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bc25</td>
+<td>28552</td>
+<td>99.41%</td>
+</tr>
+<tr>
+<td>bc00</td>
+<td>83</td>
+<td>0.29%</td>
+</tr>
+<tr>
+<td>bc21</td>
+<td>62</td>
+<td>0.22%</td>
+</tr>
+<tr>
+<td>bc24</td>
+<td>13</td>
+<td>0.05%</td>
+</tr>
+<tr>
+<td>bc23</td>
+<td>10</td>
+<td>0.03%</td>
+</tr>
+<tr>
+<td>bc20</td>
+<td>1</td>
+<td>0.00%</td>
+</tr>
+</tbody></table>
+<h4 id="实际音频文件分布"><a href="#实际音频文件分布" class="headerlink" title="实际音频文件分布"></a>实际音频文件分布</h4><table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>文件数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.mp3</td>
+<td>84</td>
+<td>49.70%</td>
+</tr>
+<tr>
+<td>.ogg</td>
+<td>85</td>
+<td>50.30%</td>
+</tr>
+</tbody></table>
+<h4 id="物种目录文件分布（Top-10）"><a href="#物种目录文件分布（Top-10）" class="headerlink" title="物种目录文件分布（Top 10）"></a>物种目录文件分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>物种目录</th>
+<th>文件数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>greegr</td>
+<td>97</td>
+<td>57.40%</td>
+</tr>
+<tr>
+<td>grekis</td>
+<td>43</td>
+<td>25.44%</td>
+</tr>
+<tr>
+<td>strher</td>
+<td>10</td>
+<td>5.92%</td>
+</tr>
+<tr>
+<td>linwoo1</td>
+<td>6</td>
+<td>3.55%</td>
+</tr>
+<tr>
+<td>laufal1</td>
+<td>3</td>
+<td>1.78%</td>
+</tr>
+<tr>
+<td>其他物种（各1个）</td>
+<td>10</td>
+<td>5.92%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与类型"><a href="#数据规模与类型" class="headerlink" title="数据规模与类型"></a>数据规模与类型</h3><p>本数据集包含28721条鸟类声音记录，涵盖206个不同的鸟类物种。数据集中99.37%的记录包含次要标签信息，说明大部分声音记录中同时存在多种鸟类的叫声。虽然元数据记录丰富，但实际在目录中发现的音频文件有169个，其中MP3和OGG格式各占约50%。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物种多样性高</td>
+<td>包含206个不同鸟类物种的声音记录</td>
+<td>支持多物种识别模型训练和生态多样性研究</td>
+</tr>
+<tr>
+<td>标签信息完整</td>
+<td>99.37%的记录包含次要标签，提供丰富的物种共现信息</td>
+<td>有助于研究物种间的相互关系和栖息地特征</td>
+</tr>
+<tr>
+<td>来源可靠</td>
+<td>主要来自bc25等标准化的数据来源目录</td>
+<td>保证数据的科学性和一致性，适合学术研究</td>
+</tr>
+<tr>
+<td>多格式支持</td>
+<td>同时包含MP3和OGG两种常用音频格式</td>
+<td>兼容不同的音频处理系统和模型训练需求</td>
+</tr>
+<tr>
+<td>部分原始文件完整</td>
+<td>保留了169个高质量原始音频文件</td>
+<td>可用于详细的音频特征分析和模型验证</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="元数据样例（随机选取15条）"><a href="#元数据样例（随机选取15条）" class="headerlink" title="元数据样例（随机选取15条）"></a>元数据样例（随机选取15条）</h3><ol>
+<li><p>** ywcpar, [‘’], XC115515, bc25, 1.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>无次要物种</li>
+<li>记录ID：XC115515</li>
+</ul>
+</li>
+<li><p>** ywcpar, [‘chfmac1’], XC141573, bc25, 14.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：chfmac1（黑头美洲鹟）</li>
+<li>记录ID：XC141573</li>
+</ul>
+</li>
+<li><p>** yercac1, [‘’], XC10487, bc25, 1.0 **</p>
+<ul>
+<li>主要物种：yercac1（黄耳美洲鹑）</li>
+<li>无次要物种</li>
+<li>记录ID：XC10487</li>
+</ul>
+</li>
+<li><p>** yercac1, [‘whtdov’], XC169107, bc25, 37.0 **</p>
+<ul>
+<li>主要物种：yercac1（黄耳美洲鹑）</li>
+<li>次要物种：whtdov（白翅哀鸽）</li>
+<li>记录ID：XC169107</li>
+</ul>
+</li>
+<li><p>** laufal1, [‘’], iNat1201932, bc25, 302.0 **</p>
+<ul>
+<li>主要物种：laufal1（美洲隼）</li>
+<li>无次要物种</li>
+<li>记录ID：iNat1201932（来自iNaturalist）</li>
+</ul>
+</li>
+<li><p>** amekes, [‘’], iNat627574, bc25, 346.0 **</p>
+<ul>
+<li>主要物种：amekes（美洲鹡鸰）</li>
+<li>无次要物种</li>
+<li>记录ID：iNat627574（来自iNaturalist）</li>
+</ul>
+</li>
+<li><p>** yelori1, [‘’], XC946124, bc25, 45.0 **</p>
+<ul>
+<li>主要物种：yelori1（黄林莺）</li>
+<li>无次要物种</li>
+<li>记录ID：XC946124</li>
+</ul>
+</li>
+<li><p>** roahaw, [‘’], XC339950, bc25, 190.0 **</p>
+<ul>
+<li>主要物种：roahaw（赤肩鵟）</li>
+<li>无次要物种</li>
+<li>记录ID：XC339950</li>
+</ul>
+</li>
+<li><p>** 65349, [‘65547’], XC941283, bc25, 2.0 **</p>
+<ul>
+<li>主要物种：65349（数字编码的物种）</li>
+<li>次要物种：65547（数字编码的物种）</li>
+<li>记录ID：XC941283</li>
+</ul>
+</li>
+<li><p>** ywcpar, [‘bubwre1’], XC152839, bc25, 18.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：bubwre1（泡状鹪鹩）</li>
+<li>记录ID：XC152839</li>
+</ul>
+</li>
+<li><p>** ywcpar, [‘socfly1’], XC244870, bc25, 31.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：socfly1（社会鹟）</li>
+<li>记录ID：XC244870</li>
+</ul>
+</li>
+<li><p>** ywcpar, [‘pirfly1’], XC245509, bc25, 34.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：pirfly1（美洲鹟）</li>
+<li>记录ID：XC245509</li>
+</ul>
+</li>
+<li><p>** ywcpar, “[‘yebela1’, ‘smbani’]”, XC375635, bc25, 44.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：yebela1（黄腹丽唐纳雀）、smbani（暗色牛鹂）</li>
+<li>记录ID：XC375635</li>
+</ul>
+</li>
+<li><p>** ywcpar, “[‘recwoo1’, ‘soulap1’]”, XC409067, bc25, 51.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：recwoo1（红眼鹟）、soulap1（纯色雨燕）</li>
+<li>记录ID：XC409067</li>
+</ul>
+</li>
+<li><p>** ywcpar, [‘crcwoo1’], XC493187, bc25, 59.0 **</p>
+<ul>
+<li>主要物种：ywcpar（黄腰柳莺）</li>
+<li>次要物种：crcwoo1（绿冠鹟）</li>
+<li>记录ID：XC493187</li>
+</ul>
+</li>
+</ol>
+<h3 id="音频文件样例说明"><a href="#音频文件样例说明" class="headerlink" title="音频文件样例说明"></a>音频文件样例说明</h3><p>由于音频文件无法在文档中直接展示，实际数据集中包含169个高质量的原始音频文件，主要包括：</p>
+<ul>
+<li>MP3格式文件（84个）：位于bc00&#x2F;greegr目录下</li>
+<li>OGG格式文件（85个）：分布在bc21、bc23、bc24等目录下</li>
+</ul>
+<p>这些原始音频文件可以通过文件系统访问和使用，支持详细的音频特征分析和声音识别模型训练。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="鸟类物种自动识别系统开发"><a href="#鸟类物种自动识别系统开发" class="headerlink" title="鸟类物种自动识别系统开发"></a>鸟类物种自动识别系统开发</h3><p>本数据集为开发自动鸟类识别系统提供了丰富的训练数据。研究人员可以利用数据集中的206个鸟类物种记录，结合机器学习和深度学习技术，构建高精度的声音识别模型。系统可以通过分析野外录音中的鸟类叫声，自动识别出现的物种及其数量，极大提高生物多样性调查的效率。这种技术在大规模生态监测项目中尤为重要，可以实时监测森林、湿地等生态系统的健康状况，为保护决策提供数据支持。</p>
+<h3 id="生物多样性监测与研究"><a href="#生物多样性监测与研究" class="headerlink" title="生物多样性监测与研究"></a>生物多样性监测与研究</h3><p>数据集包含的物种共现信息（99.37%的记录有次要标签）为研究物种间的相互关系和栖息地特征提供了宝贵资源。生态学家可以分析不同物种在同一环境中的出现模式，研究物种间的竞争、共生或捕食关系。通过长期监测特定区域的鸟类声音变化，可以评估栖息地质量的变化趋势，为生态系统保护和恢复计划提供科学依据。此外，数据集还可以帮助识别稀有或濒危物种的分布区域，为针对性保护措施提供指导。</p>
+<h3 id="音频特征分析与声学研究"><a href="#音频特征分析与声学研究" class="headerlink" title="音频特征分析与声学研究"></a>音频特征分析与声学研究</h3><p>数据集中包含的原始音频文件（MP3和OGG格式）适合进行深入的声学特征分析。研究人员可以提取音频的频率、时域、频谱等特征，研究不同鸟类叫声的声学特性及其生态意义。例如，通过分析鸟类鸣叫声的复杂度、频率范围等特征，可以研究物种间的通讯行为、求偶策略等。这些研究不仅有助于理解鸟类行为学，还可以为开发更精确的声音识别算法提供理论基础。</p>
+<h3 id="环境噪声监测与评估"><a href="#环境噪声监测与评估" class="headerlink" title="环境噪声监测与评估"></a>环境噪声监测与评估</h3><p>除了鸟类声音识别外，本数据集还可用于环境噪声监测研究。通过分析录音中的背景噪声水平和类型，可以评估人类活动对自然环境的干扰程度。例如，比较城市边缘和远离人类活动区域的录音，可以量化交通、建筑等人类活动产生的噪声对鸟类栖息地的影响。这些研究对于制定合理的环境保护政策和城市规划具有重要参考价值。</p>
+<h3 id="教育与公众科学项目"><a href="#教育与公众科学项目" class="headerlink" title="教育与公众科学项目"></a>教育与公众科学项目</h3><p>数据集可以作为鸟类学教育的重要资源，帮助学生和公众了解不同鸟类的声音特征和识别方法。结合移动应用程序，普通公众可以参与到鸟类声音采集和识别的公众科学项目中，扩大数据收集范围并提高公众的环保意识。此外，数据集还可以用于开发交互式的自然声音识别工具，让更多人能够通过声音识别来体验和了解自然界的生物多样性。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集作为一个全面的鸟类声音集合，具有物种多样性高、标签信息完整、格式多样化等显著优势。虽然元数据记录丰富，但实际音频文件数量相对有限，这既是一个挑战也是未来扩展的方向。数据集的核心价值在于为鸟类声音识别研究、生物多样性监测和生态保护提供了坚实的数据基础。</p>
+<p>通过本数据集，研究人员可以开发先进的声音识别算法，生态学家可以进行物种分布和栖息地质量研究，教育工作者可以开展生动的自然教育活动。随着人工智能技术的不断进步和数据收集范围的扩大，鸟类声音识别技术将在生态保护和生物多样性研究中发挥越来越重要的作用。</p>
+<p>如果您需要更详细的数据信息或有任何问题，欢迎联系数据集管理员获取支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>多物种鸟类声音识别数据集分析报告</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/多物种鸟类声音识别数据集分析报告/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%A4%9A%E6%A8%A1%E6%80%813D%E6%84%9F%E7%9F%A5%E6%95%B0%E6%8D%AE%E9%9B%86/" title="多模态3D感知数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多模态3D感知数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%A4%A7%E5%AD%A6%E6%9C%AC%E7%A7%91%E5%8F%8A%E7%A0%94%E7%A9%B6%E7%94%9F%E8%81%8C%E4%B8%9A%E4%B8%93%E4%B8%9A%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="大学本科及研究生职业专业题库数据集">
+                        <span class="hidden-mobile">大学本科及研究生职业专业题库数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

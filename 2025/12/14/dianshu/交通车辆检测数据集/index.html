@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/交通车辆检测数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="交通车辆检测数据集在智能交通系统、自动驾驶技术和计算机视觉研究中具有不可替代的重要性。本数据集包含1254张高分辨率车辆图像，涵盖救护车、公交车、汽车、摩托车和卡车五种主要车辆类型，共2388个精确标注。这些数据为目标检测算法的训练、验证和测试提供了全面的基础，可直接应用于智能交通监控、车辆识别系统、交通流量分析以及自动驾驶感知模块的研发。数据集采用标准的YOLO标注格式，确保与主流深度学习框架的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交通车辆检测数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E4%BA%A4%E9%80%9A%E8%BD%A6%E8%BE%86%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="交通车辆检测数据集在智能交通系统、自动驾驶技术和计算机视觉研究中具有不可替代的重要性。本数据集包含1254张高分辨率车辆图像，涵盖救护车、公交车、汽车、摩托车和卡车五种主要车辆类型，共2388个精确标注。这些数据为目标检测算法的训练、验证和测试提供了全面的基础，可直接应用于智能交通监控、车辆识别系统、交通流量分析以及自动驾驶感知模块的研发。数据集采用标准的YOLO标注格式，确保与主流深度学习框架的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T10:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.811Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>交通车辆检测数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="交通车辆检测数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 18:51" pubdate>
+          2025年12月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">交通车辆检测数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>交通车辆检测数据集在智能交通系统、自动驾驶技术和计算机视觉研究中具有不可替代的重要性。本数据集包含1254张高分辨率车辆图像，涵盖救护车、公交车、汽车、摩托车和卡车五种主要车辆类型，共2388个精确标注。这些数据为目标检测算法的训练、验证和测试提供了全面的基础，可直接应用于智能交通监控、车辆识别系统、交通流量分析以及自动驾驶感知模块的研发。数据集采用标准的YOLO标注格式，确保与主流深度学习框架的兼容性，为科研人员和工程师提供了高质量的研究资源。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类别ID</td>
+<td>整数</td>
+<td>车辆类型标识</td>
+<td>2</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>中心X坐标</td>
+<td>浮点数</td>
+<td>边界框中心点X坐标（归一化）</td>
+<td>0.5709</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>中心Y坐标</td>
+<td>浮点数</td>
+<td>边界框中心点Y坐标（归一化）</td>
+<td>0.8209</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>宽度</td>
+<td>浮点数</td>
+<td>边界框宽度（归一化）</td>
+<td>0.2776</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>高度</td>
+<td>浮点数</td>
+<td>边界框高度（归一化）</td>
+<td>0.1406</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>图像文件</td>
+<td>JPG格式</td>
+<td>车辆图像数据</td>
+<td>*.jpg</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>标签文件</td>
+<td>TXT格式</td>
+<td>对应的标注信息</td>
+<td>*.txt</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="1-数据集分割分布"><a href="#1-数据集分割分布" class="headerlink" title="1. 数据集分割分布"></a>1. 数据集分割分布</h4><table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>图像数量</th>
+<th>标签数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练集</td>
+<td>878</td>
+<td>878</td>
+<td>70.0%</td>
+</tr>
+<tr>
+<td>验证集</td>
+<td>250</td>
+<td>250</td>
+<td>19.9%</td>
+</tr>
+<tr>
+<td>测试集</td>
+<td>126</td>
+<td>126</td>
+<td>10.1%</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>1254</td>
+<td>1254</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="2-车辆类别分布"><a href="#2-车辆类别分布" class="headerlink" title="2. 车辆类别分布"></a>2. 车辆类别分布</h4><table>
+<thead>
+<tr>
+<th>类别ID</th>
+<th>类别名称</th>
+<th>标注数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>汽车 (Car)</td>
+<td>1302</td>
+<td>54.5%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>公交车 (Bus)</td>
+<td>282</td>
+<td>11.8%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>摩托车 (Motorcycle)</td>
+<td>280</td>
+<td>11.7%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>卡车 (Truck)</td>
+<td>272</td>
+<td>11.4%</td>
+</tr>
+<tr>
+<td>0</td>
+<td>救护车 (Ambulance)</td>
+<td>252</td>
+<td>10.6%</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>-</td>
+<td>2388</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="3-各类别在不同子集中的分布"><a href="#3-各类别在不同子集中的分布" class="headerlink" title="3. 各类别在不同子集中的分布"></a>3. 各类别在不同子集中的分布</h4><table>
+<thead>
+<tr>
+<th>子集</th>
+<th>救护车数量</th>
+<th>公交车数量</th>
+<th>汽车数量</th>
+<th>摩托车数量</th>
+<th>卡车数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练集</td>
+<td>170</td>
+<td>198</td>
+<td>914</td>
+<td>202</td>
+<td>192</td>
+</tr>
+<tr>
+<td>验证集</td>
+<td>64</td>
+<td>46</td>
+<td>238</td>
+<td>46</td>
+<td>60</td>
+</tr>
+<tr>
+<td>测试集</td>
+<td>18</td>
+<td>38</td>
+<td>150</td>
+<td>32</td>
+<td>20</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>252</td>
+<td>282</td>
+<td>1302</td>
+<td>280</td>
+<td>272</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与特征"><a href="#数据规模与特征" class="headerlink" title="数据规模与特征"></a>数据规模与特征</h3><ul>
+<li><strong>数据规模</strong>：1254张高分辨率图像，2388个车辆实例标注</li>
+<li><strong>数据类型</strong>：JPG格式图像文件和YOLO格式文本标签文件</li>
+<li><strong>标注信息</strong>：包含精确的边界框坐标和类别信息</li>
+<li><strong>覆盖领域</strong>：城市道路、公路场景下的多种车辆类型</li>
+<li><strong>数据分割</strong>：标准的训练集、验证集、测试集三部分划分</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整原始图像</td>
+<td>包含1254张高质量JPG格式车辆图像</td>
+<td>可直接用于图像预处理、数据增强和模型训练</td>
+</tr>
+<tr>
+<td>多样化车辆类别</td>
+<td>覆盖救护车、公交车、汽车、摩托车和卡车五种常见车辆类型</td>
+<td>支持多类别车辆检测算法的开发和评估</td>
+</tr>
+<tr>
+<td>精确标注质量</td>
+<td>2388个实例均有归一化的边界框坐标，标注完整无缺失</td>
+<td>确保训练出的模型具有高精度检测能力</td>
+</tr>
+<tr>
+<td>标准YOLO格式</td>
+<td>采用广泛使用的目标检测标注格式</td>
+<td>与主流深度学习框架（如YOLO系列、PyTorch、TensorFlow等）无缝集成</td>
+</tr>
+<tr>
+<td>合理数据分割</td>
+<td>训练集:验证集:测试集比例约为7:2:1</td>
+<td>符合机器学习最佳实践，便于模型训练、超参数调优和性能评估</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="图像文件样例（部分展示）"><a href="#图像文件样例（部分展示）" class="headerlink" title="图像文件样例（部分展示）"></a>图像文件样例（部分展示）</h3><p>由于数据集中包含完整的原始图像文件，以下是部分图像文件名示例：</p>
+<p>训练集图像示例：</p>
+<ul>
+<li>024a282cdc754de8_jpg.rf.44u6VPjwAgn89uVtquBu.jpg</li>
+<li>ebac2405f7f51c19_jpg.rf.acddb452a067be17761f1e988019196d.jpg</li>
+<li>6a04d25b58fe0a27_jpg.rf.xjDsnty2hIUNgKgC3MH6.jpg</li>
+</ul>
+<p>验证集图像示例：</p>
+<ul>
+<li>533ecb00afb6eb50_jpg.rf.81f085ad321cbfd9840ddc419d440290.jpg</li>
+<li>0a836954ceeac15f_jpg.rf.7f4bcc9a1e1d2db7dabcd6676a2ac8af.jpg</li>
+</ul>
+<p>测试集图像示例：</p>
+<ul>
+<li>9fdf0bf1160fca8e_jpg.rf.183a3d9dfcbbd5ad78f2148712430881.jpg</li>
+<li>e36e433eed49a09d_jpg.rf.8826d7fb567c1288c0188105137f280a.jpg</li>
+</ul>
+<h3 id="标签格式样例"><a href="#标签格式样例" class="headerlink" title="标签格式样例"></a>标签格式样例</h3><p>标签采用YOLO格式，每行表示一个车辆实例，格式为：<code>类别ID 中心X坐标 中心Y坐标 宽度 高度</code></p>
+<p>示例：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span><span class="hljs-number">0.5709134615384616</span> <span class="hljs-number">0.8209134615384616</span> <span class="hljs-number">0.2776442307692308</span> <span class="hljs-number">0.140625</span><br></code></pre></td></tr></table></figure>
+
+<p>上述示例表示在图像中存在一辆汽车（类别ID为2），其边界框中心点位于图像的(0.5709, 0.8209)位置，边界框宽度为0.2776，高度为0.1406（所有坐标均已归一化）。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="智能交通监控系统"><a href="#智能交通监控系统" class="headerlink" title="智能交通监控系统"></a>智能交通监控系统</h3><p>本数据集可用于训练高精度的车辆检测模型，部署在智能交通监控系统中。通过实时检测道路上的各类车辆，系统可以实现交通流量统计、拥堵状况分析、违章行为识别等功能。特别是对于救护车等特种车辆的检测，有助于实现智能交通信号优先控制系统，为急救车辆开辟绿色通道，缩短救援时间。该应用场景下，数据集包含的多样化车辆类别和精确标注可以确保系统在复杂交通环境下的鲁棒性和准确性。</p>
+<h3 id="自动驾驶感知模块训练"><a href="#自动驾驶感知模块训练" class="headerlink" title="自动驾驶感知模块训练"></a>自动驾驶感知模块训练</h3><p>自动驾驶技术的核心在于准确感知周围环境。本数据集提供的多类别车辆标注数据，可用于训练自动驾驶汽车的目标检测算法，使其能够在行驶过程中准确识别各类车辆并做出相应决策。数据集中包含的汽车、公交车、摩托车等不同大小、形状的车辆实例，有助于提高模型对不同类型车辆的识别能力。通过使用本数据集训练的模型，可以有效提升自动驾驶系统对车辆的检测精度，减少碰撞风险，提高行车安全性。</p>
+<h3 id="交通流量分析与预测"><a href="#交通流量分析与预测" class="headerlink" title="交通流量分析与预测"></a>交通流量分析与预测</h3><p>基于本数据集训练的车辆检测模型，可以应用于交通流量分析与预测系统。通过在关键路段部署检测设备，系统能够实时统计各类车辆的数量、密度和移动速度，进而分析交通流量变化规律，预测拥堵情况。这种分析对于交通规划、道路设计和交通信号优化具有重要意义。数据集中丰富的车辆样本和准确的标注信息，为交通流量分析提供了可靠的数据基础，有助于开发更精确的流量预测算法。</p>
+<h3 id="智慧城市建设"><a href="#智慧城市建设" class="headerlink" title="智慧城市建设"></a>智慧城市建设</h3><p>在智慧城市建设中，车辆检测技术是智能交通体系的重要组成部分。本数据集支持开发的车辆检测系统，可以与城市监控网络、交通管理系统和公共安全平台集成，实现城市交通的智能化管理。例如，通过识别违规停车、非法占用应急车道等行为，提高城市交通管理效率；通过监测特种车辆（如救护车）的位置和行驶路线，优化城市应急响应机制。数据集的完整性和标注质量，确保了这些应用能够在实际城市环境中稳定运行。</p>
+<h3 id="计算机视觉算法研究与改进"><a href="#计算机视觉算法研究与改进" class="headerlink" title="计算机视觉算法研究与改进"></a>计算机视觉算法研究与改进</h3><p>对于计算机视觉研究人员而言，本数据集是研究和改进目标检测算法的理想资源。数据集包含多种车辆类别，且各类别在数量上有一定的不均衡性，这为研究解决类别不平衡问题、提高小样本类别检测精度等挑战提供了良好的实验基础。研究人员可以基于本数据集测试新的检测算法、评估模型性能、改进损失函数或数据增强策略，推动目标检测技术的发展。同时，数据集的标准YOLO格式便于与现有研究成果进行对比和验证。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本交通车辆检测数据集凭借其丰富的图像数量、多样化的车辆类别、精确的标注质量和标准的格式规范，为智能交通系统、自动驾驶技术和计算机视觉研究提供了宝贵的数据资源。数据集包含完整的原始图像文件和高质量的标注信息，确保了其在实际应用中的实用性和可靠性。无论是用于算法训练、系统开发还是学术研究，本数据集都能够满足各类用户的需求，为推动智能交通领域的技术进步和应用创新提供有力支持。</p>
+<p>如需获取更多信息或有其他数据集需求，可私信联系获取相关支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>交通车辆检测数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/交通车辆检测数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="中国大学题库数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中国大学题库数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8FDICOM%E6%95%B0%E6%8D%AE%E9%9B%86/" title="医学影像DICOM数据集">
+                        <span class="hidden-mobile">医学影像DICOM数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

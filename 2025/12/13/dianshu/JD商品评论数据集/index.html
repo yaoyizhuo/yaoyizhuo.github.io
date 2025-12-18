@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/13/dianshu/JD商品评论数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在当今数字化时代，电商平台的用户评论数据已成为企业决策、产品优化和用户体验改进的重要依据。特别是在笔记本电脑这一高价值消费电子产品领域，用户评论不仅反映了产品的真实使用体验，更蕴含着丰富的情感信息和用户需求洞察。本数据集收集了JD平台上关于笔记本电脑的4000条真实用户评论，为情感分析、文本挖掘、推荐系统等自然语言处理任务提供了宝贵的中文语料资源。 该数据集对于推动中文自然语言处理技术的发展具有重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JD商品评论数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/13/dianshu/JD%E5%95%86%E5%93%81%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在当今数字化时代，电商平台的用户评论数据已成为企业决策、产品优化和用户体验改进的重要依据。特别是在笔记本电脑这一高价值消费电子产品领域，用户评论不仅反映了产品的真实使用体验，更蕴含着丰富的情感信息和用户需求洞察。本数据集收集了JD平台上关于笔记本电脑的4000条真实用户评论，为情感分析、文本挖掘、推荐系统等自然语言处理任务提供了宝贵的中文语料资源。 该数据集对于推动中文自然语言处理技术的发展具有重">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-13T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.807Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>JD商品评论数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JD商品评论数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-13 15:51" pubdate>
+          2025年12月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">JD商品评论数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在当今数字化时代，电商平台的用户评论数据已成为企业决策、产品优化和用户体验改进的重要依据。特别是在笔记本电脑这一高价值消费电子产品领域，用户评论不仅反映了产品的真实使用体验，更蕴含着丰富的情感信息和用户需求洞察。本数据集收集了JD平台上关于笔记本电脑的4000条真实用户评论，为情感分析、文本挖掘、推荐系统等自然语言处理任务提供了宝贵的中文语料资源。</p>
+<p>该数据集对于推动中文自然语言处理技术的发展具有重要意义。随着人工智能技术的快速发展，情感分析已成为自然语言处理领域的重要研究方向，而高质量的中文情感分析数据集相对稀缺。本数据集不仅提供了丰富的文本内容，还包含了准确的情感标注，为研究人员和算法工程师提供了理想的实验平台。无论是学术研究中的算法验证，还是工业应用中的模型训练，该数据集都能发挥重要作用，推动中文情感分析技术的进步和实际应用。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/12295">JD评论数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><p>本数据集包含4000条JD笔记本评论数据，采用二分类标注方式，分为正面评论（pos）和负面评论（neg）两个类别，每个类别各包含2000条评论。数据集采用UTF-8编码格式，每个评论存储为独立的文本文件，便于程序化处理和分析。</p>
+<p><strong>数据规模统计：</strong></p>
+<ul>
+<li>总评论数量：4000条</li>
+<li>正面评论：2000条</li>
+<li>负面评论：2000条</li>
+<li>总字符数：约71.3万字符</li>
+<li>平均每条评论长度：约178字符</li>
+<li>数据格式：纯文本文件（.txt）</li>
+<li>编码格式：UTF-8</li>
+</ul>
+<p><strong>数据覆盖领域：</strong><br>数据集主要聚焦于笔记本电脑产品评论，涵盖了ThinkPad、联想、惠普等主流品牌，评论内容涉及产品性能、外观设计、售后服务、价格性价比、使用体验等多个维度，为情感分析提供了丰富多样的文本样本。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据平衡性</strong></td>
+<td>正面和负面评论各2000条，完全平衡，避免类别不平衡问题</td>
+</tr>
+<tr>
+<td><strong>真实性强</strong></td>
+<td>来源于JD真实用户评论，反映真实用户情感和体验</td>
+</tr>
+<tr>
+<td><strong>内容丰富</strong></td>
+<td>涵盖产品性能、外观、服务、价格等多个评价维度</td>
+</tr>
+<tr>
+<td><strong>标注准确</strong></td>
+<td>基于用户评分和评论内容进行准确的情感标注</td>
+</tr>
+<tr>
+<td><strong>格式规范</strong></td>
+<td>统一的文件命名和存储格式，便于批量处理</td>
+</tr>
+<tr>
+<td><strong>编码标准</strong></td>
+<td>采用UTF-8编码，支持中文处理，兼容性好</td>
+</tr>
+<tr>
+<td><strong>规模适中</strong></td>
+<td>4000条数据量适中，既保证训练效果又便于快速实验</td>
+</tr>
+<tr>
+<td><strong>领域专一</strong></td>
+<td>专注于笔记本产品，领域特征明显，适合垂直应用</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例展示"><a href="#数据样例展示" class="headerlink" title="数据样例展示"></a>数据样例展示</h2><h3 id="正面评论样例"><a href="#正面评论样例" class="headerlink" title="正面评论样例"></a>正面评论样例</h3><ol>
+<li><p><strong>产品性能评价</strong>：*”整体上感觉还行吧，性价比较高，毕竟这个价位买到这样的机器还可以了。刚刚买，正在熟悉中”*</p>
+</li>
+<li><p><strong>外观设计评价</strong>：*”设计漂亮，质量很好，配置很牛，电池显示设计很正点，不像别的厂家到15%就自动关机了。”*</p>
+</li>
+<li><p><strong>使用体验评价</strong>：*”机器声音很小，LED屏幕也很亮，自己加了一条2G DDR667的内存没想到也能组成双通道～散热还不错。”*</p>
+</li>
+<li><p><strong>性价比评价</strong>：*”这个价位，能买到THINK品牌的本本，很不错了，大厂做工，散热好，屏幕效果不错”*</p>
+</li>
+<li><p><strong>服务体验评价</strong>：*”今天凌晨2点下的订单，下午3点就收到了 真是速度啊 本来想先验验货载载刷卡 呵呵 送货员不让 但是可以理解”*</p>
+</li>
+<li><p><strong>品牌认可评价</strong>：*”我相信ibm的产品，性能不错，屏幕不错，比原来公司的Dell D610要轻，所以有人说SL400比较重我就不觉得了，办公与普通娱乐够用了。”*</p>
+</li>
+<li><p><strong>功能特性评价</strong>：*”散热是很不错,键盘也挺舒服,小软件也多,有些还不错用~ 屏幕没问题,其实只是LED背光吧~ 呵呵~”*</p>
+</li>
+<li><p><strong>综合体验评价</strong>：*”THINKPAD的品质还是非常不错的，屏幕是完美屏，自带的VISTA系统感觉还行吧，把送的内存加上以后跑起来也可以。机子散热不错。”*</p>
+</li>
+<li><p><strong>细节评价</strong>：*”做工很好（除了钢琴烤漆不喜欢之外都很喜欢），性价比很高。给老爸上网用的，老人家需要宽屏本，这个配置很适合他用。”*</p>
+</li>
+<li><p><strong>长期使用评价</strong>：*”算起来 在JD买的IBM笔记本也有7八台了 这台配置又有所提升 性能提升的同时保证了 非常高的性价比 散热优良 而且是完美屏”*</p>
+</li>
+</ol>
+<h3 id="负面评论样例"><a href="#负面评论样例" class="headerlink" title="负面评论样例"></a>负面评论样例</h3><ol>
+<li><p><strong>质量问题</strong>：*”刚买的这款电脑，在自提点打开的，就发现键盘已经坏了，有个按键都快掉了，自提点不管，让去联系退换货部门”*</p>
+</li>
+<li><p><strong>服务问题</strong>：*”送货时间太长，从订货到我手里足足用了6天。还有不是说免运费吗？为什么还收了我8块钱。”*</p>
+</li>
+<li><p><strong>系统问题</strong>：*”自带VISTA系统太臭了，开机10分钟，关机20分钟，巨慢，郁闷，我现在已经重新装了XP，刚买不到10天。”*</p>
+</li>
+<li><p><strong>设计缺陷</strong>：*”镜面很差，一不小心有划伤。也不知道联想天天看着，为什么不改。另外，开机光驱响声大，好像这个系列都有类似问题”*</p>
+</li>
+<li><p><strong>性能问题</strong>：*”内存小，只能自己加了。键盘手感也没有传说中IBM那么神，可能是用Dell的习惯了吧，不过我同事用X61的试了试我的键盘，也说不一样了。”*</p>
+</li>
+<li><p><strong>包装问题</strong>：*”箱子外边贴了两个JD的货物编号，貌似发过一次货。包装也比较脏，不像新出厂的。虽然没有证据证明这个本本是旧货，但是总是感觉不爽”*</p>
+</li>
+<li><p><strong>售后问题</strong>：*”等到发现是主板问题换货时间已经过了 强烈建议大家不要在这里买售后要求蛮高的东西 特别是电脑 买回去 系统你要弄半天”*</p>
+</li>
+<li><p><strong>价格问题</strong>：*”前天下的单，今天到货。一看价格跌了200元，只能认运气不好，呵呵。另外，分区确实有点畸形。”*</p>
+</li>
+<li><p><strong>驱动问题</strong>：*”非常奇怪的问题，随机配了一张DVD光碟，上面居然只是说明书的PDF文档！驱动都不要配吗？让客户都自己去网站上下载？”*</p>
+</li>
+<li><p><strong>体验问题</strong>：*”用了6年的THINKPAD,一直认为是笔记本中最好的!现在这台新的让我……哎!!”*</p>
+</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="情感分析算法研究"><a href="#情感分析算法研究" class="headerlink" title="情感分析算法研究"></a>情感分析算法研究</h3><p>该数据集为情感分析算法研究提供了理想的中文语料基础。研究人员可以利用这4000条标注数据训练和验证各种情感分析模型，包括基于规则的方法、机器学习方法以及深度学习方法。数据集中的评论涵盖了丰富的情感表达方式，从直接的情感词汇到隐含的情感暗示，为算法提供了多样化的学习样本。通过在这个数据集上的实验，研究人员可以比较不同算法的性能表现，探索中文情感分析的最佳实践，推动该领域的技术进步。同时，数据集的平衡性设计避免了类别不平衡对算法性能的影响，使得实验结果更加可靠和具有说服力。</p>
+<h3 id="电商推荐系统优化"><a href="#电商推荐系统优化" class="headerlink" title="电商推荐系统优化"></a>电商推荐系统优化</h3><p>在电商平台的实际应用中，该数据集可以用于优化推荐系统的用户体验。通过分析用户评论中的情感倾向，推荐系统可以更好地理解用户对产品的真实感受，从而调整推荐策略。例如，当系统检测到用户对某类产品的情感倾向时，可以相应地调整推荐权重，提高推荐的准确性。此外，情感分析结果还可以用于产品排序、个性化推荐、用户画像构建等多个方面，为电商平台提供更加智能化的服务。这种基于真实用户反馈的推荐优化，能够显著提升用户满意度和平台的整体竞争力。</p>
+<h3 id="产品评价与市场分析"><a href="#产品评价与市场分析" class="headerlink" title="产品评价与市场分析"></a>产品评价与市场分析</h3><p>企业可以利用该数据集进行产品评价分析和市场趋势研究。通过分析用户评论中的情感分布，企业可以了解消费者对产品的整体满意度，识别产品的优势和不足。这种分析不仅有助于产品改进和优化，还能为企业的市场策略制定提供数据支持。例如，通过分析负面评论中的高频词汇，企业可以快速定位产品的主要问题，制定针对性的改进措施。同时，情感分析结果还可以用于竞品分析，了解自身产品在市场上的相对表现，为企业的产品规划和市场定位提供重要参考。</p>
+<h3 id="客户服务质量提升"><a href="#客户服务质量提升" class="headerlink" title="客户服务质量提升"></a>客户服务质量提升</h3><p>该数据集在客户服务领域具有重要的应用价值。通过分析用户评论中的情感倾向，客服系统可以自动识别用户的不满情绪，优先处理负面评论，提高客户服务的针对性和效率。同时，情感分析结果还可以用于客服质量的评估和改进，帮助客服团队了解用户的主要关切点，优化服务流程和话术。此外，基于情感分析的用户反馈分类系统，可以自动将用户反馈按照情感倾向进行分类，为不同的处理流程提供支持，显著提升客户服务的整体水平。</p>
+<h3 id="自然语言处理教学与培训"><a href="#自然语言处理教学与培训" class="headerlink" title="自然语言处理教学与培训"></a>自然语言处理教学与培训</h3><p>该数据集为自然语言处理的教学和培训提供了优质的实践资源。在教学过程中，学生可以利用这个真实的数据集进行情感分析实验，从数据预处理、特征提取到模型训练和评估，完整体验自然语言处理项目的全流程。数据集的标注质量高、内容真实，能够帮助学生更好地理解情感分析的实际应用场景和技术挑战。同时，数据集的中文特性也为中文自然语言处理的教学提供了宝贵的资源，有助于培养学生在中文文本处理方面的专业技能。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本JD笔记本评论情感分析数据集以其高质量的中文语料、准确的标注信息、平衡的数据分布和丰富的应用场景，为自然语言处理研究和实际应用提供了宝贵的资源。无论是学术研究中的算法验证，还是工业应用中的模型训练，该数据集都能发挥重要作用，推动中文情感分析技术的进步和实际应用。随着人工智能技术的不断发展，这样的高质量数据集将成为推动技术进步的重要基础，为构建更加智能化的应用系统提供强有力的支撑。</p>
+<p>有需要可私信获取更多信息，我们将为您提供详细的数据集使用指南和技术支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JD商品评论数据集</div>
+      <div>https://zhyyao.me/2025/12/13/dianshu/JD商品评论数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/13/dianshu/Cyclistic_2019%E5%B9%B4%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%85%B1%E4%BA%AB%E7%B3%BB%E7%BB%9F%E5%85%A8%E5%B9%B4%E9%AA%91%E8%A1%8C%E6%95%B0%E6%8D%AE/" title="自行车共享系统全年骑行数据研究报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">自行车共享系统全年骑行数据研究报告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/12/dianshu/17%E4%B8%87+%E7%9F%A5%E8%AF%86%E7%82%B9%E8%8B%B1%E8%AF%AD%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E6%95%B0%E6%8D%AE%E9%9B%86/" title="17万+知识点英语维基百科数据集">
+                        <span class="hidden-mobile">17万+知识点英语维基百科数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

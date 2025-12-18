@@ -1,0 +1,1184 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/高性能计算集群监控数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在当今数字化时代，高性能计算集群的稳定运行对于科学研究、数据分析和企业应用至关重要。集群资源的有效监控和管理直接影响系统性能、应用响应时间和整体用户体验。本数据集提供了一个高性能计算集群在25天运行周期内的全面监控数据，涵盖计算资源、存储使用、网络性能等多个维度。 本数据集由六个相互关联的CSV文件组成，包含从2024年6月24日至7月19日的连续监控数据。这些数据详细记录了集群中各节点的CPU使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能计算集群监控数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在当今数字化时代，高性能计算集群的稳定运行对于科学研究、数据分析和企业应用至关重要。集群资源的有效监控和管理直接影响系统性能、应用响应时间和整体用户体验。本数据集提供了一个高性能计算集群在25天运行周期内的全面监控数据，涵盖计算资源、存储使用、网络性能等多个维度。 本数据集由六个相互关联的CSV文件组成，包含从2024年6月24日至7月19日的连续监控数据。这些数据详细记录了集群中各节点的CPU使">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.819Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>高性能计算集群监控数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="高性能计算集群监控数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">高性能计算集群监控数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在当今数字化时代，高性能计算集群的稳定运行对于科学研究、数据分析和企业应用至关重要。集群资源的有效监控和管理直接影响系统性能、应用响应时间和整体用户体验。本数据集提供了一个高性能计算集群在25天运行周期内的全面监控数据，涵盖计算资源、存储使用、网络性能等多个维度。</p>
+<p>本数据集由六个相互关联的CSV文件组成，包含从2024年6月24日至7月19日的连续监控数据。这些数据详细记录了集群中各节点的CPU使用率、内存占用、磁盘状态、网络延迟、数据包丢失率和网络吞吐量等关键指标。对于研究集群资源优化、性能瓶颈识别、异常检测算法开发以及预测性维护模型训练具有重要价值。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><h4 id="计算资源数据集-compute-dataset-csv"><a href="#计算资源数据集-compute-dataset-csv" class="headerlink" title="计算资源数据集 (compute_dataset.csv)"></a>计算资源数据集 (compute_dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>totalProvMemory</td>
+<td>整数</td>
+<td>集群总提供内存</td>
+<td>469804298240</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>cluster AM</td>
+<td>整数</td>
+<td>集群可用内存</td>
+<td>347930808320</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>cluster UM</td>
+<td>整数</td>
+<td>集群已用内存</td>
+<td>116252839936</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 AM</td>
+<td>整数</td>
+<td>机器01可用内存</td>
+<td>48569794560</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 CU</td>
+<td>浮点数</td>
+<td>机器01 CPU使用率</td>
+<td>2.383333333526496</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 CF</td>
+<td>浮点数</td>
+<td>机器01 CPU空闲率</td>
+<td>97.61111111164577</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>cluster Available disk space</td>
+<td>整数</td>
+<td>集群可用磁盘空间</td>
+<td>1039176802304</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 DRT</td>
+<td>浮点数</td>
+<td>机器01磁盘读取吞吐量</td>
+<td>281429.3333333333</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 DWT</td>
+<td>浮点数</td>
+<td>机器01磁盘写入吞吐量</td>
+<td>648.5333333333333</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="详细CPU核心数据集-detailed-cpu-cores-dataset-csv"><a href="#详细CPU核心数据集-detailed-cpu-cores-dataset-csv" class="headerlink" title="详细CPU核心数据集 (detailed_cpu_cores_dataset.csv)"></a>详细CPU核心数据集 (detailed_cpu_cores_dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>free_cpu_acamas:cpu-0</td>
+<td>浮点数</td>
+<td>节点acamas的CPU核心0空闲率</td>
+<td>99.9</td>
+<td>99.9%</td>
+</tr>
+<tr>
+<td>used_cpu_bellerophon:cpu-1</td>
+<td>浮点数</td>
+<td>节点bellerophon的CPU核心1使用率</td>
+<td>2.3</td>
+<td>99.9%</td>
+</tr>
+</tbody></table>
+<h4 id="磁盘数据集-disk-dataset-csv"><a href="#磁盘数据集-disk-dataset-csv" class="headerlink" title="磁盘数据集 (disk_dataset.csv)"></a>磁盘数据集 (disk_dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 FD</td>
+<td>整数</td>
+<td>机器01总磁盘空间</td>
+<td>1099511627776</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>machine01 UD</td>
+<td>整数</td>
+<td>机器01已用磁盘空间</td>
+<td>596428826624</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="网络数据集-network-dataset-csv"><a href="#网络数据集-network-dataset-csv" class="headerlink" title="网络数据集 (network_dataset.csv)"></a>网络数据集 (network_dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>maxrttWithGoogleDns</td>
+<td>浮点数</td>
+<td>与Google DNS的最大往返时间</td>
+<td>15.3</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>minRttwithGoogleDns</td>
+<td>浮点数</td>
+<td>与Google DNS的最小往返时间</td>
+<td>12.1</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>averageRttWithGoogleDns</td>
+<td>浮点数</td>
+<td>与Google DNS的平均往返时间</td>
+<td>13.5</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>mdevrttWithGoogleDns</td>
+<td>浮点数</td>
+<td>往返时间的标准差</td>
+<td>0.8</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>jitterWithGoogleDns</td>
+<td>浮点数</td>
+<td>网络抖动值</td>
+<td>0.5</td>
+<td>99.99%</td>
+</tr>
+</tbody></table>
+<h4 id="数据包丢失数据集-packet-loss-dataset-csv"><a href="#数据包丢失数据集-packet-loss-dataset-csv" class="headerlink" title="数据包丢失数据集 (packet-loss-dataset.csv)"></a>数据包丢失数据集 (packet-loss-dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>err_packet_acamas:-network-device-bond0</td>
+<td>浮点数</td>
+<td>节点acamas的bond0接口错误包数</td>
+<td>0.0</td>
+<td>部分缺失</td>
+</tr>
+<tr>
+<td>drop_packet_bellerophon:-network-device-bond0</td>
+<td>浮点数</td>
+<td>节点bellerophon的bond0接口丢包数</td>
+<td>0.0</td>
+<td>部分缺失</td>
+</tr>
+</tbody></table>
+<h4 id="吞吐量数据集-throughputs-dataset-csv"><a href="#吞吐量数据集-throughputs-dataset-csv" class="headerlink" title="吞吐量数据集 (throughputs_dataset.csv)"></a>吞吐量数据集 (throughputs_dataset.csv)</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>timestamp</td>
+<td>时间戳</td>
+<td>数据采集时间</td>
+<td>2024-06-24 13:37:06</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>transmitted_throughput_acamas:-network-device-bond0</td>
+<td>浮点数</td>
+<td>节点acamas的bond0接口发送吞吐量</td>
+<td>1523.6</td>
+<td>99.8%</td>
+</tr>
+<tr>
+<td>received_throughput_bellerophon:-network-device-bond0</td>
+<td>浮点数</td>
+<td>节点bellerophon的bond0接口接收吞吐量</td>
+<td>2345.8</td>
+<td>99.8%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="时间分布"><a href="#时间分布" class="headerlink" title="时间分布"></a>时间分布</h4><table>
+<thead>
+<tr>
+<th>时间段</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2024-06-24 至 2024-06-30</td>
+<td>9828</td>
+<td>23.8%</td>
+<td>23.8%</td>
+</tr>
+<tr>
+<td>2024-07-01 至 2024-07-07</td>
+<td>10080</td>
+<td>24.4%</td>
+<td>48.2%</td>
+</tr>
+<tr>
+<td>2024-07-08 至 2024-07-14</td>
+<td>10080</td>
+<td>24.4%</td>
+<td>72.6%</td>
+</tr>
+<tr>
+<td>2024-07-15 至 2024-07-19</td>
+<td>11374</td>
+<td>27.4%</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="数据采集频率分布"><a href="#数据采集频率分布" class="headerlink" title="数据采集频率分布"></a>数据采集频率分布</h4><table>
+<thead>
+<tr>
+<th>采样间隔(秒)</th>
+<th>出现次数</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50-55</td>
+<td>39,293</td>
+<td>95.0%</td>
+</tr>
+<tr>
+<td>55-60</td>
+<td>1,842</td>
+<td>4.5%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>227</td>
+<td>0.5%</td>
+</tr>
+</tbody></table>
+<h4 id="节点分布"><a href="#节点分布" class="headerlink" title="节点分布"></a>节点分布</h4><table>
+<thead>
+<tr>
+<th>节点名称</th>
+<th>覆盖数据集</th>
+<th>监控指标数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acamas</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>bellerophon</td>
+<td>5个数据集</td>
+<td>约200个指标</td>
+</tr>
+<tr>
+<td>dedale</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>demophon</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>pegase</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>perse</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>phaedra</td>
+<td>5个数据集</td>
+<td>约180个指标</td>
+</tr>
+<tr>
+<td>machine01-machine07</td>
+<td>3个数据集</td>
+<td>约40个指标&#x2F;机器</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与质量"><a href="#数据规模与质量" class="headerlink" title="数据规模与质量"></a>数据规模与质量</h3><ul>
+<li><strong>总数据量</strong>：约248,166行数据记录</li>
+<li><strong>总字段数</strong>：约767个不同的监控指标</li>
+<li><strong>时间跨度</strong>：25天（602.83小时）</li>
+<li><strong>平均采样频率</strong>：52.47秒&#x2F;次</li>
+<li><strong>数据完整性</strong>：<ul>
+<li>磁盘数据集：99.99%完整</li>
+<li>网络数据集：99.99%完整</li>
+<li>计算资源数据集：99.0%完整</li>
+<li>吞吐量数据集：98.0%完整</li>
+<li>详细CPU数据集：99.0%完整</li>
+<li>数据包丢失数据集：51.0%完整（部分接口无数据）</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多维度全面监控</td>
+<td>覆盖计算、存储、网络三大核心资源维度</td>
+<td>提供集群全栈性能视图，支持综合分析</td>
+</tr>
+<tr>
+<td>高精度时间序列</td>
+<td>52秒采样频率，持续25天，数据连贯性强</td>
+<td>适合时序分析、趋势预测和异常检测</td>
+</tr>
+<tr>
+<td>细粒度资源监控</td>
+<td>包含单个CPU核心级别的使用详情</td>
+<td>支持精确的性能瓶颈定位和资源优化</td>
+</tr>
+<tr>
+<td>多节点协同数据</td>
+<td>同时监控7个命名节点和7个编号机器节点</td>
+<td>便于分析节点间协同工作效率和负载均衡</td>
+</tr>
+<tr>
+<td>网络性能全面</td>
+<td>包含延迟、抖动、吞吐量、丢包等多指标</td>
+<td>支持网络性能评估和网络问题诊断</td>
+</tr>
+<tr>
+<td>存储I&#x2F;O监控</td>
+<td>包含磁盘空间、读写吞吐量等指标</td>
+<td>适合分析存储性能瓶颈和I&#x2F;O优化</td>
+</tr>
+<tr>
+<td>数据一致性高</td>
+<td>各数据集时间戳同步，采样频率一致</td>
+<td>便于跨数据集关联分析和综合评估</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="计算资源数据样例"><a href="#计算资源数据样例" class="headerlink" title="计算资源数据样例"></a>计算资源数据样例</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">timestamp</span>,totalProvMemory,cluster AM,cluster UM,machine01 AM,machine01 CU,machine01 CF<br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">05</span>.<span class="hljs-number">305354</span>,<span class="hljs-number">469804298240</span>,<span class="hljs-number">347930808320</span>,<span class="hljs-number">116252839936</span>,<span class="hljs-number">48569794560</span>,<span class="hljs-number">2</span>.<span class="hljs-number">383333333526496</span>,<span class="hljs-number">97</span>.<span class="hljs-number">61111111164577</span><br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">47</span>.<span class="hljs-number">601375</span>,<span class="hljs-number">469804298240</span>,<span class="hljs-number">348031373312</span>,<span class="hljs-number">116152315904</span>,<span class="hljs-number">48546177024</span>,<span class="hljs-number">1</span>.<span class="hljs-number">6833333333919718</span>,<span class="hljs-number">98</span>.<span class="hljs-number">31666666660801</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="网络延迟数据样例"><a href="#网络延迟数据样例" class="headerlink" title="网络延迟数据样例"></a>网络延迟数据样例</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">timestamp</span>,maxrttWithGoogleDns,minRttwithGoogleDns,averageRttWithGoogleDns,mdevrttWithGoogleDns,jitterWithGoogleDns<br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">05</span>.<span class="hljs-number">305354</span>,<span class="hljs-number">18</span>.<span class="hljs-number">3</span>,<span class="hljs-number">12</span>.<span class="hljs-number">1</span>,<span class="hljs-number">15</span>.<span class="hljs-number">2</span>,<span class="hljs-number">1</span>.<span class="hljs-number">2</span>,<span class="hljs-number">0</span>.<span class="hljs-number">8</span><br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">47</span>.<span class="hljs-number">601375</span>,<span class="hljs-number">17</span>.<span class="hljs-number">8</span>,<span class="hljs-number">11</span>.<span class="hljs-number">9</span>,<span class="hljs-number">14</span>.<span class="hljs-number">8</span>,<span class="hljs-number">1</span>.<span class="hljs-number">0</span>,<span class="hljs-number">0</span>.<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="磁盘使用数据样例"><a href="#磁盘使用数据样例" class="headerlink" title="磁盘使用数据样例"></a>磁盘使用数据样例</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">timestamp</span>,machine01 FD,machine01 UD,machine02 FD,machine02 UD<br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">05</span>.<span class="hljs-number">305354</span>,<span class="hljs-number">1099511627776</span>,<span class="hljs-number">596428826624</span>,<span class="hljs-number">1099511627776</span>,<span class="hljs-number">587201595392</span><br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">47</span>.<span class="hljs-number">601375</span>,<span class="hljs-number">1099511627776</span>,<span class="hljs-number">596429826624</span>,<span class="hljs-number">1099511627776</span>,<span class="hljs-number">587202595392</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="网络吞吐量数据样例"><a href="#网络吞吐量数据样例" class="headerlink" title="网络吞吐量数据样例"></a>网络吞吐量数据样例</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">timestamp</span>,transmitted_throughput_acamas:-network-device-bond0,received_throughput_acamas:-network-device-bond0<br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">05</span>.<span class="hljs-number">305354</span>,<span class="hljs-number">1523</span>.<span class="hljs-number">6</span>,<span class="hljs-number">2345</span>.<span class="hljs-number">8</span><br><span class="hljs-attribute">2024</span>-<span class="hljs-number">06</span>-<span class="hljs-number">24</span> <span class="hljs-number">13</span>:<span class="hljs-number">49</span>:<span class="hljs-number">47</span>.<span class="hljs-number">601375</span>,<span class="hljs-number">1498</span>.<span class="hljs-number">2</span>,<span class="hljs-number">2389</span>.<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-集群性能优化与容量规划"><a href="#1-集群性能优化与容量规划" class="headerlink" title="1. 集群性能优化与容量规划"></a>1. 集群性能优化与容量规划</h3><p>基于本数据集提供的计算资源使用情况，可以进行深入的性能优化分析。通过分析CPU使用率、内存占用、磁盘I&#x2F;O等指标的时间分布和峰值情况，识别系统瓶颈所在。例如，可以根据<code>machine01 CU</code>（CPU使用率）和<code>machine01 AM</code>（可用内存）等指标，判断是否存在资源争用或配置不合理的情况。这些分析结果可以指导管理员进行资源分配调整、硬件升级规划或工作负载调度优化，从而提高集群整体性能和资源利用率。</p>
+<p>此外，通过对25天长期运行数据的趋势分析，可以预测未来资源需求增长，为容量规划提供数据支持。例如，观察<code>cluster UM</code>（集群已用内存）的增长趋势，可以合理预估内存扩容的时间点和规模，避免因资源不足导致的服务中断。</p>
+<h3 id="2-异常检测与故障预警"><a href="#2-异常检测与故障预警" class="headerlink" title="2. 异常检测与故障预警"></a>2. 异常检测与故障预警</h3><p>利用本数据集的高精度时间序列特性，可以开发异常检测算法，实现系统故障的早期预警。通过构建正常运行模式的基线（如CPU使用率的正常范围、网络延迟的标准偏差等），当监控指标偏离预期模式时及时发出警报。</p>
+<p>例如，分析<code>jitterWithGoogleDns</code>（网络抖动）和<code>averageRttWithGoogleDns</code>（平均往返时间）的异常波动，可以提前发现网络性能下降的迹象。对于<code>err_packet_acamas:-network-device-bond0</code>（错误包数）的突增，则可能预示着网络设备即将发生故障。通过这种预测性维护方法，可以将被动响应转变为主动预防，显著减少系统停机时间和维护成本。</p>
+<h3 id="3-工作负载特征分析与调度策略优化"><a href="#3-工作负载特征分析与调度策略优化" class="headerlink" title="3. 工作负载特征分析与调度策略优化"></a>3. 工作负载特征分析与调度策略优化</h3><p>通过对集群中不同节点的资源使用模式分析，可以深入了解各类工作负载的特征和资源需求。例如，通过比较<code>bellerophon</code>和<code>acamas</code>等不同节点的CPU使用率曲线，可以识别出计算密集型、内存密集型或I&#x2F;O密集型的工作负载分布。</p>
+<p>这些分析结果可以用于优化作业调度策略，实现更智能的负载均衡。例如，将计算密集型任务调度到CPU性能更强的节点，将I&#x2F;O密集型任务调度到存储性能更优的节点。此外，通过分析历史工作负载的时间分布规律，可以预测未来的负载高峰，提前进行资源预留或弹性扩展，确保关键任务的顺利执行。</p>
+<h3 id="4-能源效率分析与绿色计算"><a href="#4-能源效率分析与绿色计算" class="headerlink" title="4. 能源效率分析与绿色计算"></a>4. 能源效率分析与绿色计算</h3><p>在当今注重可持续发展的环境下，高性能计算集群的能源效率问题日益受到关注。本数据集提供了丰富的资源使用指标，可以结合节点能耗数据进行能源效率分析。</p>
+<p>通过分析CPU使用率、内存占用与能耗之间的关系，可以识别能源使用效率低下的场景和节点。例如，当<code>machine01 CU</code>（CPU使用率）较低但系统仍在运行时，可能存在能源浪费情况。基于这些分析，可以开发动态资源调整策略，在保证服务质量的前提下降低能耗，实现绿色计算目标。</p>
+<h3 id="5-机器学习模型训练与验证"><a href="#5-机器学习模型训练与验证" class="headerlink" title="5. 机器学习模型训练与验证"></a>5. 机器学习模型训练与验证</h3><p>本数据集的大规模、多维度特性使其成为训练和验证机器学习模型的理想选择，特别是在时间序列预测、异常检测和资源优化等领域。</p>
+<p>研究人员可以利用这些数据训练预测模型，如使用LSTM或Transformer等深度学习模型预测未来的CPU使用率、内存需求或网络流量。这些预测模型可以集成到集群管理系统中，实现资源的动态调度和自动扩缩容。此外，无监督学习算法（如自编码器、孤立森林）可以应用于异常检测，识别潜在的系统故障或安全威胁。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本高性能计算集群监控数据集提供了一个全面、详细的系统资源使用情况记录，涵盖了计算、存储、网络等多个关键维度。数据的高精度采样、长时间跨度和多节点覆盖使其具有极高的研究价值和应用潜力。</p>
+<p>通过对这些数据的深入分析，可以实现集群性能的显著提升、故障的早期预警、资源的优化配置以及能源效率的改善。无论是学术研究还是工业应用，本数据集都为高性能计算集群的智能化管理提供了坚实的数据基础。</p>
+<p>数据集包含了完整的原始监控数据，可以直接用于各类分析任务和模型训练。如有特定的分析需求或数据处理问题，欢迎进一步探讨和交流。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>高性能计算集群监控数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/高性能计算集群监控数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E9%A4%90%E9%A5%AE%E8%A1%8C%E4%B8%9A%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/" title="餐饮行业评论数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">餐饮行业评论数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E9%AB%98%E8%B4%A8%E9%87%8FMP4%E8%A7%86%E9%A2%91%E6%95%B0%E6%8D%AE%E9%9B%86/" title="高质量MP4视频数据集">
+                        <span class="hidden-mobile">高质量MP4视频数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

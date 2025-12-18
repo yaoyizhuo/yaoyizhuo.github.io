@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/13/dianshu/410对高质量PNG图像与精确掩码标注数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在计算机视觉领域，高质量的标注数据集对于训练准确可靠的深度学习模型至关重要。本数据集提供了410对精心组织的PNG图像及其对应的掩码文件，为图像分割、目标检测等关键视觉任务提供了理想的训练和评估基础。数据集包含完整的原始图像文件和精确的掩码标注，确保研究人员和开发者能够有效地训练和验证各种计算机视觉算法。这类配对数据集对于提升计算机视觉模型的准确性、鲁棒性和泛化能力具有不可替代的价值，能够支持从学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="410对高质量PNG图像与精确掩码标注数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/13/dianshu/410%E5%AF%B9%E9%AB%98%E8%B4%A8%E9%87%8FPNG%E5%9B%BE%E5%83%8F%E4%B8%8E%E7%B2%BE%E7%A1%AE%E6%8E%A9%E7%A0%81%E6%A0%87%E6%B3%A8%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在计算机视觉领域，高质量的标注数据集对于训练准确可靠的深度学习模型至关重要。本数据集提供了410对精心组织的PNG图像及其对应的掩码文件，为图像分割、目标检测等关键视觉任务提供了理想的训练和评估基础。数据集包含完整的原始图像文件和精确的掩码标注，确保研究人员和开发者能够有效地训练和验证各种计算机视觉算法。这类配对数据集对于提升计算机视觉模型的准确性、鲁棒性和泛化能力具有不可替代的价值，能够支持从学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-13T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.805Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>410对高质量PNG图像与精确掩码标注数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="410对高质量PNG图像与精确掩码标注数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-13 15:51" pubdate>
+          2025年12月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">410对高质量PNG图像与精确掩码标注数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在计算机视觉领域，高质量的标注数据集对于训练准确可靠的深度学习模型至关重要。本数据集提供了410对精心组织的PNG图像及其对应的掩码文件，为图像分割、目标检测等关键视觉任务提供了理想的训练和评估基础。数据集包含完整的原始图像文件和精确的掩码标注，确保研究人员和开发者能够有效地训练和验证各种计算机视觉算法。这类配对数据集对于提升计算机视觉模型的准确性、鲁棒性和泛化能力具有不可替代的价值，能够支持从学术研究到工业应用的广泛需求。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件编号</td>
+<td>数字</td>
+<td>图像和掩码的唯一标识符</td>
+<td>1-410</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>图像文件</td>
+<td>PNG文件</td>
+<td>原始图像数据</td>
+<td>image_1.png</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>掩码文件</td>
+<td>PNG文件</td>
+<td>对应图像的标注信息</td>
+<td>masks&#x2F;image_1.png</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>图像大小</td>
+<td>KB</td>
+<td>图像文件的存储空间</td>
+<td>253.89 KB (平均)</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>掩码大小</td>
+<td>KB</td>
+<td>掩码文件的存储空间</td>
+<td>4.49 KB (平均)</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="图像文件大小分布"><a href="#图像文件大小分布" class="headerlink" title="图像文件大小分布"></a>图像文件大小分布</h4><table>
+<thead>
+<tr>
+<th>大小范围(KB)</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>50-100</td>
+<td>1</td>
+<td>0.2%</td>
+<td>0.2%</td>
+</tr>
+<tr>
+<td>100-200</td>
+<td>66</td>
+<td>16.1%</td>
+<td>16.3%</td>
+</tr>
+<tr>
+<td>200-300</td>
+<td>251</td>
+<td>61.2%</td>
+<td>77.5%</td>
+</tr>
+<tr>
+<td>300-400</td>
+<td>92</td>
+<td>22.4%</td>
+<td>99.9%</td>
+</tr>
+</tbody></table>
+<h4 id="数据格式与规模分布"><a href="#数据格式与规模分布" class="headerlink" title="数据格式与规模分布"></a>数据格式与规模分布</h4><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>文件格式</th>
+<th>文件数量</th>
+<th>总大小(MB)</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原始图像</td>
+<td>PNG</td>
+<td>410</td>
+<td>101.66</td>
+<td>98.3%</td>
+</tr>
+<tr>
+<td>掩码标注</td>
+<td>PNG</td>
+<td>410</td>
+<td>1.80</td>
+<td>1.7%</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>PNG</strong></td>
+<td><strong>820</strong></td>
+<td><strong>103.46</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h3 id="数据集概述"><a href="#数据集概述" class="headerlink" title="数据集概述"></a>数据集概述</h3><p>本数据集由410对完整的图像和掩码文件组成，所有文件均采用PNG格式，确保了图像质量和透明度支持。数据集的总存储空间约为103.46MB，其中原始图像文件占101.66MB，掩码文件占1.80MB。图像文件的大小分布相对集中，约83.6%的图像文件大小在200-400KB之间，平均大小为253.89KB。掩码文件体积较小，平均大小仅为4.49KB。文件编号从1到410连续排列，确保了数据的完整性和可追踪性。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整配对数据</td>
+<td>410对图像和掩码文件完全匹配，编号连续</td>
+<td>确保模型训练时不会出现数据不匹配问题，提高训练效率和结果可靠性</td>
+</tr>
+<tr>
+<td>高质量原始图像</td>
+<td>所有图像均为PNG格式，平均大小254KB，图像质量优良</td>
+<td>提供清晰的视觉信息，有利于模型学习细节特征，提升分割和检测精度</td>
+</tr>
+<tr>
+<td>精确掩码标注</td>
+<td>掩码文件格式统一，标注信息完整</td>
+<td>为模型提供准确的像素级监督信号，是图像分割任务的关键输入</td>
+</tr>
+<tr>
+<td>数据规模适中</td>
+<td>410对样本既不过大导致训练成本过高，也不过小导致过拟合</td>
+<td>适合中小型模型训练和快速原型开发，同时足够支持基础研究需求</td>
+</tr>
+<tr>
+<td>存储结构清晰</td>
+<td>文件组织在images和masks两个目录中，命名规则统一</td>
+<td>便于数据加载、处理和管理，降低开发难度和时间成本</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>数据集包含完整的原始PNG图像文件和对应的掩码文件。以下是数据集中的部分文件列表样例，展示了数据的命名规则和组织结构：</p>
+<h3 id="图像文件样例（前10个）"><a href="#图像文件样例（前10个）" class="headerlink" title="图像文件样例（前10个）"></a>图像文件样例（前10个）</h3><ul>
+<li>image_1.png</li>
+<li>image_10.png</li>
+<li>image_100.png</li>
+<li>image_101.png</li>
+<li>image_102.png</li>
+<li>image_103.png</li>
+<li>image_104.png</li>
+<li>image_105.png</li>
+<li>image_106.png</li>
+<li>image_107.png</li>
+</ul>
+<h3 id="图像文件样例（后10个）"><a href="#图像文件样例（后10个）" class="headerlink" title="图像文件样例（后10个）"></a>图像文件样例（后10个）</h3><ul>
+<li>image_90.png</li>
+<li>image_91.png</li>
+<li>image_92.png</li>
+<li>image_93.png</li>
+<li>image_94.png</li>
+<li>image_95.png</li>
+<li>image_96.png</li>
+<li>image_97.png</li>
+<li>image_98.png</li>
+<li>image_99.png</li>
+</ul>
+<h3 id="掩码文件样例"><a href="#掩码文件样例" class="headerlink" title="掩码文件样例"></a>掩码文件样例</h3><p>所有掩码文件与图像文件一一对应，位于masks目录下，使用相同的命名规则，例如：</p>
+<ul>
+<li>masks&#x2F;image_1.png</li>
+<li>masks&#x2F;image_2.png</li>
+<li>…</li>
+<li>masks&#x2F;image_410.png</li>
+</ul>
+<p>注：由于文件格式限制，无法在本文档中直接展示图像和掩码的视觉内容，但实际数据集中包含完整的PNG文件可供使用。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="图像分割模型训练与评估"><a href="#图像分割模型训练与评估" class="headerlink" title="图像分割模型训练与评估"></a>图像分割模型训练与评估</h3><p>图像分割是计算机视觉的基础任务之一，要求将图像中的不同对象或区域精确分离。本数据集提供的配对图像和掩码文件为语义分割、实例分割等任务提供了理想的训练数据。研究人员可以使用这些数据训练深度学习模型，如U-Net、Mask R-CNN等，用于识别和分割图像中的目标对象。通过410对完整样本的训练，模型能够学习到丰富的特征表示，提高分割精度和鲁棒性。这些模型在医学影像分析、自动驾驶、卫星图像处理等领域具有重要应用价值。</p>
+<h3 id="目标检测算法研发"><a href="#目标检测算法研发" class="headerlink" title="目标检测算法研发"></a>目标检测算法研发</h3><p>虽然本数据集主要为分割任务设计，但掩码信息也可以转换为边界框标注，用于目标检测模型的训练。研究人员可以通过掩码的外接矩形计算目标位置，为Faster R-CNN、YOLO等目标检测算法提供训练数据。这种双重用途使数据集的价值得到进一步扩展，能够支持多种视觉任务的研究和开发。在智能监控、安防系统、工业质检等场景中，基于这些数据训练的检测模型可以实现准确的目标识别和定位。</p>
+<h3 id="数据增强与合成"><a href="#数据增强与合成" class="headerlink" title="数据增强与合成"></a>数据增强与合成</h3><p>本数据集的统一格式和完整配对特性使其特别适合用于数据增强研究。研究人员可以应用各种图像变换技术（如旋转、缩放、翻转、颜色调整等）来扩充训练数据集，同时确保掩码也进行相应的变换，保持数据的一致性。此外，这些高质量的掩码还可以用于生成合成数据，通过将目标对象放置在不同背景上，创建更多样化的训练样本。这种数据增强和合成策略能够显著提高模型的泛化能力，使其在面对真实世界的复杂场景时表现更加稳健。</p>
+<h3 id="计算机视觉教育与实验"><a href="#计算机视觉教育与实验" class="headerlink" title="计算机视觉教育与实验"></a>计算机视觉教育与实验</h3><p>对于计算机视觉教育和初学者实践来说，本数据集提供了一个理想的实验平台。其适中的规模、清晰的组织结构和完整的标注信息使学习者能够专注于算法实现和模型调优，而不必花费大量时间在数据预处理上。教育机构可以将此数据集用于课程作业、实验项目和教学演示，帮助学生理解和掌握图像分割、目标检测等核心计算机视觉任务的原理和实践方法。通过实际操作这些数据，学生能够更直观地理解深度学习在计算机视觉中的应用过程。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集以其完整的配对结构、高质量的图像内容和精确的掩码标注，为计算机视觉领域的研究和应用提供了重要的基础资源。410对精心组织的图像和掩码文件覆盖了合理的数据规模，既适合中小型模型的快速开发和验证，又足够支持基础研究需求。数据集的统一格式和清晰组织极大地降低了使用门槛，使其能够广泛应用于图像分割、目标检测、数据增强等多种场景。</p>
+<p>特别强调的是，数据集包含完整的原始PNG图像文件和对应的掩码标注，这一核心优势确保了数据的可用性和价值。无论是学术研究、算法开发还是教育实验，本数据集都能够提供可靠的支持，助力计算机视觉技术的进步和应用。</p>
+<p>如有需要获取更多信息或使用支持，可以通过适当渠道联系数据提供者。本数据集的使用应遵循相关的学术和商业规范，确保数据的合理和负责任使用。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>410对高质量PNG图像与精确掩码标注数据集</div>
+      <div>https://zhyyao.me/2025/12/13/dianshu/410对高质量PNG图像与精确掩码标注数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/13/dianshu/264%E4%B8%87%E6%9D%A1%E8%8B%B1%E6%96%87%E7%94%B5%E5%AD%90%E5%9B%BE%E4%B9%A6%E6%95%B0%E6%8D%AE%E9%9B%86/" title="264万条英文电子图书数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">264万条英文电子图书数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/13/dianshu/44898%E6%9D%A1%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="新闻文本假新闻检测数据集分析报告">
+                        <span class="hidden-mobile">新闻文本假新闻检测数据集分析报告</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

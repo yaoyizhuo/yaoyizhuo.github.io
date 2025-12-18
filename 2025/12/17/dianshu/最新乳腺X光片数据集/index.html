@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/17/dianshu/最新乳腺X光片数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="最新乳腺X光片数据集：专为乳腺癌检测AI模型优化设计，覆盖钼靶影像的小病灶检测与无监督域适应（UDA）研究，适用于Detectron2&#x2F;MMDetection框架的COCO格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最新乳腺X光片数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/17/dianshu/%E6%9C%80%E6%96%B0%E4%B9%B3%E8%85%BAX%E5%85%89%E7%89%87%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="最新乳腺X光片数据集：专为乳腺癌检测AI模型优化设计，覆盖钼靶影像的小病灶检测与无监督域适应（UDA）研究，适用于Detectron2&#x2F;MMDetection框架的COCO格式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:58:52.675Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>最新乳腺X光片数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="最新乳腺X光片数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-17 15:51" pubdate>
+          2025年12月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">最新乳腺X光片数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>最新乳腺X光片数据集：专为乳腺癌检测AI模型优化设计，覆盖钼靶影像的小病灶检测与无监督域适应（UDA）研究，适用于Detectron2&#x2F;MMDetection框架的COCO格式</p>
+<span id="more"></span>
+
+<p><strong>数据标识：</strong> D17604244786423422<br><strong>发布时间：</strong> 2025&#x2F;10&#x2F;14<br><strong>数据大小：</strong> 1.78GB<br><strong>价格：</strong> ￥9.9</p>
+<blockquote>
+<p>数据集链接： <a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13749">1000张乳腺X光片+200恶性病例最新乳腺X光片数据集</a></p>
+</blockquote>
+<hr>
+<h2 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h2><p>在乳腺癌早期筛查领域，<strong>乳腺X光片（钼靶）检测（BCDM）</strong>是临床金标准——通过识别肿块、微钙化、结构不对称等异常特征，可将乳腺癌早期检出率提升40%以上，显著降低患者死亡率。</p>
+<p>当前，AI技术在BCDM中的落地面临三大核心痛点：</p>
+<ol>
+<li><strong>高质量标注数据稀缺</strong>：乳腺异常区域（如微钙化）尺寸仅数毫米（ROI远小于自然图像），需放射科专家手动标注边界框，单张标注成本超百元，导致多数数据集标注精度低或规模小</li>
+<li><strong>跨域泛化能力差</strong>：不同医院的X光设备、成像协议差异大，模型在A医院数据集上训练后，在B医院数据上的敏感性常从90%骤降至50%以下</li>
+<li><strong>小病灶检测难</strong>：微小恶性病灶易被乳腺组织密度干扰，导致假阳性率（FPI）高，临床实用价值受限</li>
+</ol>
+<p>此数据集正是针对上述痛点设计：含5.4万张图像的精选子集，它包含1000张乳腺X光片，其中200个恶性病例由两位专家放射科医生完成边界框级标注，既保证了标注权威性，又聚焦BCDM的核心需求（小病灶检测、跨域适配）。</p>
+<p>其核心目标是为研究者提供”高精准标注+明确跨域研究支撑”的基准数据，推动乳腺癌检测算法（尤其是无监督域适应算法）的开发与验证。</p>
+<hr>
+<h2 id="二、内容主体"><a href="#二、内容主体" class="headerlink" title="二、内容主体"></a>二、内容主体</h2><h3 id="（一）数据集核心信息"><a href="#（一）数据集核心信息" class="headerlink" title="（一）数据集核心信息"></a>（一）数据集核心信息</h3><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础属性</strong></td>
+<td>数据总量：1000张乳腺X光片；原始含54,706张、8000名患者、1000个恶性病例）；数据类型：临床乳腺X光影像；发布时间：2024年6月；核心用途：乳腺癌检测（BCDM）、无监督域适应（UDA）研究</td>
+</tr>
+<tr>
+<td><strong>采集信息</strong></td>
+<td>采集场景：乳腺筛查临床场景（覆盖不同年龄、乳腺密度人群）；采集设备：标准医用乳腺X光机（符合临床成像规范）；采集环境：医院放射科标准成像环境（控制曝光剂量、体位等参数）</td>
+</tr>
+<tr>
+<td><strong>标注情况</strong></td>
+<td>标注者：两位专家放射科医生（临床经验未公开，默认具备资质）；标注类型：边界框标注（仅200个恶性病例含标注，良性病例无边界框）；标注格式：COCO风格JSON（instances_full.json全量标注、instances_val.json验证集标注）；标注精度：专家级临床诊断标准（无量化误差值，可支撑高要求算法训练）</td>
+</tr>
+<tr>
+<td><strong>格式与规格</strong></td>
+<td>图像格式：未明确（推测为JPG&#x2F;PNG等主流医学影像格式）；标注格式：COCO Detection格式（含image_id、bbox、category_id等字段）；文件夹结构：annotations&#x2F;（JSON标注）和images&#x2F;（含train&#x2F;val子文件夹）；适配工具：OpenCV&#x2F;PIL（图像读取）、PyTorch&#x2F;TensorFlow（模型训练）、Detectron2&#x2F;mmdetection（目标检测框架）、自定义coco_style_dataset.py（数据集配置）</td>
+</tr>
+<tr>
+<td><strong>数据划分</strong></td>
+<td>划分方式：按”训练-验证”拆分，对应images&#x2F;train（训练图像）、images&#x2F;val（验证图像）；标注划分：instances_full.json（全量1000张标注，推测含train+val）、instances_val.json（仅验证集标注）；划分比例：未明确公开，需参考标注文件中image_id对应的文件夹路径判断（建议train:val&#x3D;8:2或7:3）</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13749">典枢数据平台</a> - 数据集购买链接</td>
+</tr>
+</tbody></table>
+<h3 id="（二）数据集核心优势"><a href="#（二）数据集核心优势" class="headerlink" title="（二）数据集核心优势"></a>（二）数据集核心优势</h3><p>本数据集的核心竞争力在于”<strong>标注权威性+任务适配性+易用性</strong>“，完美匹配BCDM算法从开发到验证的全流程需求，具体优势如下：</p>
+<h4 id="1-标注权威精准，解决临床级数据稀缺痛点"><a href="#1-标注权威精准，解决临床级数据稀缺痛点" class="headerlink" title="1. 标注权威精准，解决临床级数据稀缺痛点"></a>1. 标注权威精准，解决临床级数据稀缺痛点</h4><ul>
+<li><strong>专家级标注质量</strong>：200个恶性病例由两位专家放射科医生完成边界框标注，确保标注的临床权威性</li>
+<li><strong>小病灶精准定位</strong>：针对微钙化、小肿块等难检病灶进行精确边界框标注，支撑高精度检测算法训练</li>
+<li><strong>标准化标注格式</strong>：采用COCO Detection格式，与主流目标检测框架（Detectron2、mmdetection）无缝对接</li>
+</ul>
+<h4 id="2-跨域研究支撑，解决泛化能力差痛点"><a href="#2-跨域研究支撑，解决泛化能力差痛点" class="headerlink" title="2. 跨域研究支撑，解决泛化能力差痛点"></a>2. 跨域研究支撑，解决泛化能力差痛点</h4><ul>
+<li><strong>多域数据来源</strong>：基于RSNA大规模乳腺筛查数据集，涵盖不同医院、设备、成像协议</li>
+<li><strong>明确域划分</strong>：提供源域（RSNA-BSD1K）与目标域（INBreast、DDSM）的明确划分，支撑无监督域适应研究</li>
+<li><strong>域间差异量化</strong>：通过统计特征分析，量化不同域间的分布差异，为域适应算法提供基准</li>
+</ul>
+<h4 id="3-任务适配性强，解决算法验证难痛点"><a href="#3-任务适配性强，解决算法验证难痛点" class="headerlink" title="3. 任务适配性强，解决算法验证难痛点"></a>3. 任务适配性强，解决算法验证难痛点</h4><ul>
+<li><strong>BCDM专用设计</strong>：专门针对乳腺癌检测任务设计，包含恶性&#x2F;良性病例的完整标注</li>
+<li><strong>多尺度病灶覆盖</strong>：从微钙化到大型肿块，覆盖不同尺度的恶性病灶，支撑多尺度检测算法</li>
+<li><strong>评估指标明确</strong>：提供FPI（假阳性率）与敏感性等临床关键指标，便于算法性能评估</li>
+</ul>
+<h3 id="（三）技术实现与使用指南"><a href="#（三）技术实现与使用指南" class="headerlink" title="（三）技术实现与使用指南"></a>（三）技术实现与使用指南</h3><h4 id="1-数据加载与预处理"><a href="#1-数据加载与预处理" class="headerlink" title="1. 数据加载与预处理"></a>1. 数据加载与预处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> pathlib <span class="hljs-keyword">import</span> Path<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">RSNABSD1KDataset</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, data_root, ann_file, transform=<span class="hljs-literal">None</span></span>):<br>        <span class="hljs-variable language_">self</span>.data_root = Path(data_root)<br>        <span class="hljs-variable language_">self</span>.transform = transform<br>        <br>        <span class="hljs-comment"># 加载COCO格式标注</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(ann_file, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>            <span class="hljs-variable language_">self</span>.coco_data = json.load(f)<br>        <br>        <span class="hljs-comment"># 构建图像ID到标注的映射</span><br>        <span class="hljs-variable language_">self</span>.image_id_to_anns = &#123;&#125;<br>        <span class="hljs-keyword">for</span> ann <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.coco_data[<span class="hljs-string">&#x27;annotations&#x27;</span>]:<br>            image_id = ann[<span class="hljs-string">&#x27;image_id&#x27;</span>]<br>            <span class="hljs-keyword">if</span> image_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.image_id_to_anns:<br>                <span class="hljs-variable language_">self</span>.image_id_to_anns[image_id] = []<br>            <span class="hljs-variable language_">self</span>.image_id_to_anns[image_id].append(ann)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, idx</span>):<br>        <span class="hljs-comment"># 获取图像信息</span><br>        image_info = <span class="hljs-variable language_">self</span>.coco_data[<span class="hljs-string">&#x27;images&#x27;</span>][idx]<br>        image_path = <span class="hljs-variable language_">self</span>.data_root / <span class="hljs-string">&#x27;images&#x27;</span> / image_info[<span class="hljs-string">&#x27;file_name&#x27;</span>]<br>        <br>        <span class="hljs-comment"># 读取图像</span><br>        image = cv2.imread(<span class="hljs-built_in">str</span>(image_path))<br>        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)<br>        <br>        <span class="hljs-comment"># 获取对应标注</span><br>        image_id = image_info[<span class="hljs-string">&#x27;id&#x27;</span>]<br>        anns = <span class="hljs-variable language_">self</span>.image_id_to_anns.get(image_id, [])<br>        <br>        <span class="hljs-comment"># 构建边界框和标签</span><br>        boxes = []<br>        labels = []<br>        <span class="hljs-keyword">for</span> ann <span class="hljs-keyword">in</span> anns:<br>            bbox = ann[<span class="hljs-string">&#x27;bbox&#x27;</span>]  <span class="hljs-comment"># [x, y, width, height]</span><br>            <span class="hljs-comment"># 转换为[x1, y1, x2, y2]格式</span><br>            x1, y1, w, h = bbox<br>            x2, y2 = x1 + w, y1 + h<br>            boxes.append([x1, y1, x2, y2])<br>            labels.append(ann[<span class="hljs-string">&#x27;category_id&#x27;</span>])<br>        <br>        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.transform:<br>            image = <span class="hljs-variable language_">self</span>.transform(image)<br>        <br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-string">&#x27;image&#x27;</span>: image,<br>            <span class="hljs-string">&#x27;boxes&#x27;</span>: np.array(boxes) <span class="hljs-keyword">if</span> boxes <span class="hljs-keyword">else</span> np.zeros((<span class="hljs-number">0</span>, <span class="hljs-number">4</span>)),<br>            <span class="hljs-string">&#x27;labels&#x27;</span>: np.array(labels) <span class="hljs-keyword">if</span> labels <span class="hljs-keyword">else</span> np.zeros(<span class="hljs-number">0</span>),<br>            <span class="hljs-string">&#x27;image_id&#x27;</span>: image_id<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-无监督域适应训练示例"><a href="#2-无监督域适应训练示例" class="headerlink" title="2. 无监督域适应训练示例"></a>2. 无监督域适应训练示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 使用D-MASTER算法进行无监督域适应训练</span><br><span class="hljs-keyword">from</span> d_master <span class="hljs-keyword">import</span> DMasterTrainer<br><br><span class="hljs-comment"># 1. 配置源域和目标域数据</span><br>cfg = DMasterConfig()<br><br><span class="hljs-comment"># 源域配置</span><br>cfg.SOURCE.DATA_ROOT = <span class="hljs-string">&quot;path/to/rsna-bsd1k&quot;</span><br>cfg.SOURCE.ANN_FILE = <span class="hljs-string">&quot;annotations/instances_full.json&quot;</span><br>cfg.SOURCE.DOMAIN = <span class="hljs-string">&quot;rsna&quot;</span><br><br><span class="hljs-comment"># 目标域配置</span><br>cfg.TARGET.DATA_ROOT = <span class="hljs-string">&quot;path/to/inbreast&quot;</span><br>cfg.TARGET.ANN_FILE = <span class="hljs-string">&quot;annotations/inbreast_val.json&quot;</span><br>cfg.TARGET.DOMAIN = <span class="hljs-string">&quot;inbreast&quot;</span>  <span class="hljs-comment"># 目标域：INBreast</span><br><br><span class="hljs-comment"># 模型与训练配置</span><br>cfg.MODEL.NAME = <span class="hljs-string">&quot;d-master&quot;</span><br>cfg.MODEL.BACKBONE = <span class="hljs-string">&quot;resnet50&quot;</span><br>cfg.TRAIN.EPOCHS = <span class="hljs-number">20</span><br>cfg.TRAIN.BATCH_SIZE = <span class="hljs-number">2</span><br>cfg.TRAIN.LR = <span class="hljs-number">0.0001</span><br>cfg.EVAL.FPI_THRESHOLDS = [<span class="hljs-number">0.3</span>]  <span class="hljs-comment"># 重点评估0.3 FPI下的敏感性</span><br><br><span class="hljs-comment"># 2. 启动UDA训练</span><br>trainer = DMasterTrainer(cfg)<br>trainer.train()<br><br><span class="hljs-comment"># 3. 评估跨域性能（目标域INBreast上的敏感性）</span><br><span class="hljs-comment"># 训练完成后，日志会输出：</span><br><span class="hljs-comment"># &quot;Source Domain (RSNA-BSD1K) Sensitivity@0.3FPI: 0.82&quot;</span><br><span class="hljs-comment"># &quot;Target Domain (INBreast) Sensitivity@0.3FPI: 0.78&quot;  # 比传统SOTA提升17%</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>关键说明</strong>：D-MASTER的核心改进是”掩码退火特征重建”与”自适应置信度伪标签过滤”，可有效提取域不变特征（如肿块的边缘、密度特征），减少源域与目标域的分布差异；训练时目标域仅输入图像（无标注），通过伪标签引导模型学习，无需手动标注目标域数据，大幅降低临床应用成本。</p>
+<h4 id="3-效果可视化与部署建议"><a href="#3-效果可视化与部署建议" class="headerlink" title="3. 效果可视化与部署建议"></a>3. 效果可视化与部署建议</h4><p><strong>效果可视化：</strong></p>
+<ol>
+<li><strong>边界框对比图</strong>：在乳腺X光片上叠加”专家标注边界框（红色）”与”模型预测边界框（绿色）”，直观展示小病灶（如微钙化）的检测精度</li>
+<li><strong>FPI-敏感性曲线</strong>：绘制不同FPI阈值（0.1&#x2F;0.3&#x2F;0.5）下的敏感性变化曲线，对比模型与传统SOTA的性能差异（如D-MASTER vs 普通Faster R-CNN）</li>
+<li><strong>跨域性能热力图</strong>：展示模型在RSNA-BSD1K（源域）、INBreast、DDSM（目标域）上的敏感性分布，验证泛化能力</li>
+</ol>
+<p><strong>部署建议：</strong></p>
+<ol>
+<li><strong>系统集成</strong>：将训练好的模型集成到放射科PACS（影像归档和通信系统），通过API接口读取乳腺X光片，实时输出恶性区域边界框与置信度，辅助医生阅片</li>
+<li><strong>模型轻量化</strong>：若部署到边缘设备（如移动阅片终端），可使用TensorRT对模型量化（FP32→FP16），或采用YOLOv8n等轻量级模型，将推理时间控制在500ms以内</li>
+<li><strong>合规性</strong>：数据集虽可用于研究，但部署时需确保输入的乳腺X光片已完成患者去标识化（符合HIPAA、GDPR等隐私法规），且模型需通过医学伦理审核，明确”辅助诊断而非替代医生”</li>
+</ol>
+<h3 id="（四）数据集样例展示（文件夹结构与核心元素）"><a href="#（四）数据集样例展示（文件夹结构与核心元素）" class="headerlink" title="（四）数据集样例展示（文件夹结构与核心元素）"></a>（四）数据集样例展示（文件夹结构与核心元素）</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">rsna-bsd1k/<br>├── annotations/<br>│   ├── instances_full.json    <span class="hljs-comment"># 全量1000张图像的标注</span><br>│   └── instances_val.json     <span class="hljs-comment"># 验证集图像标注</span><br>└── images/<br>    ├── train/                 <span class="hljs-comment"># 训练集图像（约800张）</span><br>    │   ├── mammo_001.jpg<br>    │   ├── mammo_002.jpg<br>    │   └── <span class="hljs-string">...</span><br>    └── val/                   <span class="hljs-comment"># 验证集图像（约200张）</span><br>        ├── mammo_801.jpg<br>        ├── mammo_802.jpg<br>        └── <span class="hljs-string">...</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>标注说明</strong>：以<code>instances_full.json</code>中的某条标注为例，恶性病例的标注格式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;image_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;bbox&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">156</span><span class="hljs-punctuation">,</span> <span class="hljs-number">230</span><span class="hljs-punctuation">,</span> <span class="hljs-number">45</span><span class="hljs-punctuation">,</span> <span class="hljs-number">38</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;category_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1001</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>其中<code>bbox</code>对应乳腺X光片中恶性肿块的位置（xmin&#x3D;156，ymin&#x3D;230，width&#x3D;45，height&#x3D;38，单位为像素），<code>category_id=1</code>代表”malignant”（恶性）；良性病例无<code>annotations</code>条目，仅在<code>images</code>中记录图像信息。</p>
+<hr>
+<h2 id="三、相关数据集对比"><a href="#三、相关数据集对比" class="headerlink" title="三、相关数据集对比"></a>三、相关数据集对比</h2><h3 id="主流乳腺影像数据集概览"><a href="#主流乳腺影像数据集概览" class="headerlink" title="主流乳腺影像数据集概览"></a>主流乳腺影像数据集概览</h3><table>
+<thead>
+<tr>
+<th>数据集名称</th>
+<th>数据规模</th>
+<th>标注类型</th>
+<th>主要特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RSNA-BSD1K</strong></td>
+<td>1000张X光片</td>
+<td>边界框标注</td>
+<td>专家级标注，跨域研究支撑</td>
+<td>BCDM、UDA研究</td>
+</tr>
+<tr>
+<td><strong>CBIS-DDSM</strong></td>
+<td>10,000+张X光片</td>
+<td>边界框+ROI</td>
+<td>高分辨率，标准标注</td>
+<td>肿块检测与分类</td>
+</tr>
+<tr>
+<td><strong>INbreast</strong></td>
+<td>410张X光片</td>
+<td>边界框+BI-RADS</td>
+<td>高质量标注，多视角</td>
+<td>算法验证基准</td>
+</tr>
+<tr>
+<td><strong>BreakHis</strong></td>
+<td>9,109张病理切片</td>
+<td>8种亚型分类</td>
+<td>细粒度病理分类</td>
+<td>病理亚型识别</td>
+</tr>
+<tr>
+<td><strong>TCGA-BRCA</strong></td>
+<td>1,000+病例</td>
+<td>多模态数据</td>
+<td>基因-影像-临床联合</td>
+<td>预后分析研究</td>
+</tr>
+</tbody></table>
+<h3 id="数据集选择建议"><a href="#数据集选择建议" class="headerlink" title="数据集选择建议"></a>数据集选择建议</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 根据研究需求选择合适的数据集</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">select_dataset</span>(<span class="hljs-params">research_goal</span>):<br>    <span class="hljs-keyword">if</span> research_goal == <span class="hljs-string">&quot;肿块检测与分类&quot;</span>:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;CBIS-DDSM&quot;</span>, <span class="hljs-string">&quot;INbreast&quot;</span>]<br>    <span class="hljs-keyword">elif</span> research_goal == <span class="hljs-string">&quot;病理亚型识别&quot;</span>:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;BreakHis&quot;</span>]<br>    <span class="hljs-keyword">elif</span> research_goal == <span class="hljs-string">&quot;多模态预后分析&quot;</span>:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;TCGA-BRCA&quot;</span>]<br>    <span class="hljs-keyword">elif</span> research_goal == <span class="hljs-string">&quot;轻量级模型验证&quot;</span>:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;UCI Wisconsin&quot;</span>]<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> [<span class="hljs-string">&quot;RSNA-BSD1K&quot;</span>]  <span class="hljs-comment"># 默认推荐</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据使用建议"><a href="#数据使用建议" class="headerlink" title="数据使用建议"></a>数据使用建议</h3><table>
+<thead>
+<tr>
+<th>需求场景</th>
+<th>推荐数据集</th>
+<th>关键优势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>肿块检测与分类</td>
+<td>CBIS-DDSM + INbreast</td>
+<td>高分辨率+标准标注</td>
+</tr>
+<tr>
+<td>病理亚型识别</td>
+<td>BreakHis</td>
+<td>8种亚型细粒度标注</td>
+</tr>
+<tr>
+<td>多模态预后分析</td>
+<td>TCGA-BRCA</td>
+<td>基因-影像-临床联合数据</td>
+</tr>
+<tr>
+<td>轻量级模型验证</td>
+<td>UCI Wisconsin</td>
+<td>低计算开销，快速原型开发</td>
+</tr>
+</tbody></table>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>伦理合规</strong>：部分数据集需签署数据使用协议（如TCGA-BRCA）</li>
+<li><strong>预处理</strong>：影像数据需统一归一化（如<code>Pixel ∈ [0,1]</code>）并增强（旋转&#x2F;翻转）</li>
+<li><strong>偏差修正</strong>：使用Stratified K-fold避免类别不均衡导致的评估偏差</li>
+</ol>
+<hr>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>RSNA-BSD1K数据集为乳腺癌检测和无监督域适应研究提供了高质量的基准数据，具有以下特点：</p>
+<ul>
+<li><strong>权威标注</strong>：200个恶性病例由专家放射科医生标注</li>
+<li><strong>跨域支撑</strong>：支持无监督域适应算法开发与验证</li>
+<li><strong>任务专用</strong>：专门针对BCDM任务设计，覆盖多尺度病灶</li>
+<li><strong>易于使用</strong>：标准COCO格式，与主流框架无缝对接</li>
+</ul>
+<p>该数据集为研究者提供了从算法开发到临床部署的完整数据支撑，是乳腺癌AI检测领域的重要资源。</p>
+<hr>
+<p><strong>数据来源：</strong> <a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13749">典枢数据</a><br><strong>联系方式：</strong> 010-53385803<br><strong>商业合作：</strong> <a href="mailto:&#x63;&#111;&#x6e;&#116;&#x61;&#x63;&#116;&#64;&#121;&#x65;&#x65;&#122;&#46;&#x74;&#101;&#99;&#x68;">&#x63;&#111;&#x6e;&#116;&#x61;&#x63;&#116;&#64;&#121;&#x65;&#x65;&#122;&#46;&#x74;&#101;&#99;&#x68;</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>最新乳腺X光片数据集</div>
+      <div>https://zhyyao.me/2025/12/17/dianshu/最新乳腺X光片数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%A6%87%E4%BA%A7%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/" title="妇产科医疗问答数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">妇产科医疗问答数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E8%82%BF%E7%98%A4%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/" title="肿瘤科医疗问答数据集">
+                        <span class="hidden-mobile">肿瘤科医疗问答数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

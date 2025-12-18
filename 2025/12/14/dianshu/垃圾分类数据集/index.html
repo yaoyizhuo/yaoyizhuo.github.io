@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/垃圾分类数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着全球环保意识的不断提高和垃圾围城问题的日益严峻，垃圾分类识别技术在环境治理、智慧城市建设以及资源回收利用等领域发挥着越来越重要的作用。计算机视觉和深度学习技术的快速发展为自动化垃圾识别与分类提供了强大的技术支持。本数据集作为专为目标检测算法训练设计的垃圾分类图像集合，包含了丰富多样的垃圾图像及其精确标注，为垃圾识别模型的研发提供了重要的数据基础。 该数据集完整包含原始图像文件、YOLO格式的标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垃圾分类数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着全球环保意识的不断提高和垃圾围城问题的日益严峻，垃圾分类识别技术在环境治理、智慧城市建设以及资源回收利用等领域发挥着越来越重要的作用。计算机视觉和深度学习技术的快速发展为自动化垃圾识别与分类提供了强大的技术支持。本数据集作为专为目标检测算法训练设计的垃圾分类图像集合，包含了丰富多样的垃圾图像及其精确标注，为垃圾识别模型的研发提供了重要的数据基础。 该数据集完整包含原始图像文件、YOLO格式的标">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T10:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.813Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>垃圾分类数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="垃圾分类数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 18:51" pubdate>
+          2025年12月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">垃圾分类数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着全球环保意识的不断提高和垃圾围城问题的日益严峻，垃圾分类识别技术在环境治理、智慧城市建设以及资源回收利用等领域发挥着越来越重要的作用。计算机视觉和深度学习技术的快速发展为自动化垃圾识别与分类提供了强大的技术支持。本数据集作为专为目标检测算法训练设计的垃圾分类图像集合，包含了丰富多样的垃圾图像及其精确标注，为垃圾识别模型的研发提供了重要的数据基础。</p>
+<p>该数据集完整包含原始图像文件、YOLO格式的标注信息、类别定义文件以及训练配置文件，为研究人员和开发者提供了一套完整的、可直接用于模型训练的数据集。这些数据对于提升垃圾分类准确率、开发智能垃圾分类系统、优化资源回收流程以及减少环境污染具有重要的研究价值和实际应用意义。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>图像文件</td>
+<td>JPG文件</td>
+<td>垃圾物体的原始图像</td>
+<td>bag1.jpg, Plastic1.jpg, metal1.jpg</td>
+<td>100%（399张完整图像）</td>
+</tr>
+<tr>
+<td>标签文件</td>
+<td>TXT文件</td>
+<td>YOLO格式的物体标注信息</td>
+<td>0 0.296250 0.711033 0.326833 0.452733</td>
+<td>100%（399个对应标签）</td>
+</tr>
+<tr>
+<td>类别定义</td>
+<td>文本</td>
+<td>物体类别名称</td>
+<td>Litter</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>训练列表</td>
+<td>文本</td>
+<td>训练图像文件路径列表</td>
+<td>data&#x2F;obj_train_data&#x2F;Plastic1.jpg</td>
+<td>100%（399条记录）</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="类别分布"><a href="#类别分布" class="headerlink" title="类别分布"></a>类别分布</h4><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>垃圾(Litter)</td>
+<td>399</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="物体类型分布（根据文件名推断）"><a href="#物体类型分布（根据文件名推断）" class="headerlink" title="物体类型分布（根据文件名推断）"></a>物体类型分布（根据文件名推断）</h4><p>通过对图像文件名的分析，数据集中的垃圾主要包含以下几种类型：</p>
+<table>
+<thead>
+<tr>
+<th>物体类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>塑料袋(bag)</td>
+<td>97</td>
+<td>24.3%</td>
+</tr>
+<tr>
+<td>塑料(Plastic)</td>
+<td>约99</td>
+<td>24.8%</td>
+</tr>
+<tr>
+<td>金属(metal)</td>
+<td>约99</td>
+<td>24.8%</td>
+</tr>
+<tr>
+<td>其他类型</td>
+<td>104</td>
+<td>26.1%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与格式"><a href="#数据规模与格式" class="headerlink" title="数据规模与格式"></a>数据规模与格式</h3><ul>
+<li><strong>数据规模</strong>：399张图像，每张图像对应一个标注文件</li>
+<li><strong>图像格式</strong>：JPG格式</li>
+<li><strong>标注格式</strong>：YOLO格式（类别ID, 中心点x, 中心点y, 宽度, 高度，均为归一化坐标）</li>
+<li><strong>标注工具</strong>：适用于YOLO系列目标检测算法</li>
+<li><strong>图像分辨率</strong>：未统一固定，包含不同尺寸的图像</li>
+<li><strong>覆盖领域</strong>：垃圾分类、环境治理、智能回收</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整原始文件</td>
+<td>包含399张高质量垃圾图像，涵盖多种垃圾类型</td>
+<td>为深度学习模型提供丰富的视觉特征学习素材</td>
+</tr>
+<tr>
+<td>精确标注信息</td>
+<td>所有图像均有对应的YOLO格式标注文件，定位准确</td>
+<td>支持直接用于目标检测算法训练，无需额外标注工作</td>
+</tr>
+<tr>
+<td>数据完整性高</td>
+<td>100%的图像拥有对应的标签文件，无缺失数据</td>
+<td>保证模型训练数据的一致性和可靠性</td>
+</tr>
+<tr>
+<td>类别多样性</td>
+<td>包含塑料袋、塑料、金属等多种垃圾类型</td>
+<td>提升模型对不同类型垃圾的识别能力</td>
+</tr>
+<tr>
+<td>格式标准化</td>
+<td>采用YOLO系列算法通用的数据集格式</td>
+<td>便于与主流目标检测框架集成，降低开发门槛</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="标注文件样例（YOLO格式）"><a href="#标注文件样例（YOLO格式）" class="headerlink" title="标注文件样例（YOLO格式）"></a>标注文件样例（YOLO格式）</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0.296250</span> <span class="hljs-number">0.711033</span> <span class="hljs-number">0.326833</span> <span class="hljs-number">0.452733</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="训练列表样例"><a href="#训练列表样例" class="headerlink" title="训练列表样例"></a>训练列表样例</h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic1</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic10</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic100</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic11</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic12</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic13</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic14</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic15</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic16</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic17</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic18</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic19</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic2</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/<span class="hljs-type">Plastic20</span>.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal1.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal10.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal11.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal12.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal13.jpg</span><br><span class="hljs-class"><span class="hljs-keyword">data</span>/obj_train_data/metal14.jpg</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="类别定义样例"><a href="#类别定义样例" class="headerlink" title="类别定义样例"></a>类别定义样例</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Litter</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="智能垃圾分类系统开发"><a href="#智能垃圾分类系统开发" class="headerlink" title="智能垃圾分类系统开发"></a>智能垃圾分类系统开发</h3><p>基于本数据集训练的目标检测模型可以部署在智能垃圾分类系统中，实现对垃圾的自动识别和分类。该系统可应用于公共场所、社区、办公区域等多种场景，通过摄像头实时拍摄垃圾并进行自动分类，大大提高垃圾分类的准确性和效率。模型能够识别塑料袋、塑料瓶、金属罐等常见垃圾类型，为后续的回收处理提供精确指导。此外，该系统还可以统计不同类型垃圾的产生量，为垃圾处理规划提供数据支持。</p>
+<h3 id="计算机视觉算法研究与优化"><a href="#计算机视觉算法研究与优化" class="headerlink" title="计算机视觉算法研究与优化"></a>计算机视觉算法研究与优化</h3><p>本数据集为计算机视觉领域的研究人员提供了一个标准化的测试基准，可以用于评估和优化目标检测算法的性能。研究人员可以基于此数据集比较不同算法（如YOLOv5、YOLOv8、Faster R-CNN等）在垃圾检测任务上的表现，并针对垃圾分类场景的特点进行算法改进。例如，可以研究如何提高小目标垃圾的检测准确率，如何增强模型在不同光照条件下的鲁棒性，以及如何在资源受限的设备上部署高效的推理模型。</p>
+<h3 id="环保教育与公众参与"><a href="#环保教育与公众参与" class="headerlink" title="环保教育与公众参与"></a>环保教育与公众参与</h3><p>基于该数据集开发的交互式应用程序可以用于环保教育，提高公众对垃圾分类重要性的认识。例如，可以开发移动应用，让用户通过拍照识别垃圾类型，获取正确的分类指导。这种寓教于乐的方式不仅能够帮助公众学习垃圾分类知识，还能够收集更多的实际场景数据，进一步丰富和完善数据集。此外，通过可视化展示不同类型垃圾的分布情况，可以增强公众对垃圾污染问题的直观认识，促进环保意识的提升。</p>
+<h3 id="城市环境监测与管理"><a href="#城市环境监测与管理" class="headerlink" title="城市环境监测与管理"></a>城市环境监测与管理</h3><p>将训练好的垃圾检测模型部署在城市监控系统中，可以实现对城市环境的实时监测和管理。系统可以自动识别街道、公园、水域等公共区域的垃圾分布情况，及时发现垃圾堆积问题，并生成警报通知相关部门进行清理。这种自动化的监测方式相比人工巡检更加高效，可以大幅降低城市环境管理的人力成本，提高城市清洁度和居民生活质量。同时，长期积累的数据还可以分析垃圾产生的规律和热点区域，为城市规划和环境治理政策的制定提供科学依据。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本垃圾分类数据集作为一个包含完整原始图像和精确标注信息的高质量数据集，为垃圾分类技术的研究和应用提供了重要的基础支持。数据集的主要价值在于其完整性、准确性和实用性，399张带标注的图像涵盖了多种常见垃圾类型，为目标检测模型的训练提供了丰富的样本。</p>
+<p>通过利用本数据集，可以开发出更精准、更高效的垃圾分类系统，应用于智能回收、环境监测、城市管理等多个领域，为推动循环经济发展和建设美丽宜居城市贡献力量。数据集采用标准化的YOLO格式，便于与主流深度学习框架集成，降低了开发者的使用门槛。</p>
+<p>随着垃圾分类工作的不断推进和技术的持续发展，相信本数据集将在环保领域发挥越来越重要的作用，为实现垃圾减量化、资源化、无害化处理提供强有力的技术支撑。如有需要获取更多信息或数据集的使用支持，可通过相关渠道联系获取帮助。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>垃圾分类数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/垃圾分类数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B%E6%AF%94%E8%B5%9B%E6%95%B0%E6%8D%AE%E9%9B%86/" title="国际象棋比赛数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">国际象棋比赛数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%9E%83%E5%9C%BE%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" title="垃圾目标检测数据集">
+                        <span class="hidden-mobile">垃圾目标检测数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

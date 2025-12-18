@@ -1,0 +1,1600 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/Wuzzuf埃及求职平台数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在数字经济快速发展的今天，中东地区作为新兴的经济增长极，其人力资源市场呈现出独特的特征和发展趋势。Wuzzuf作为埃及乃至整个中东地区最具影响力的在线求职平台之一，汇聚了海量的人才供需信息，为研究该地区就业市场动态、人才流动规律和行业发展趋势提供了珍贵的数据资源。本数据集不仅涵盖了完整的求职申请记录，还包含详细的职位发布信息，能够为科研机构、人工智能企业和人力资源服务商提供全面、准确的基础数据支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wuzzuf埃及求职平台数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/Wuzzuf%E5%9F%83%E5%8F%8A%E6%B1%82%E8%81%8C%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在数字经济快速发展的今天，中东地区作为新兴的经济增长极，其人力资源市场呈现出独特的特征和发展趋势。Wuzzuf作为埃及乃至整个中东地区最具影响力的在线求职平台之一，汇聚了海量的人才供需信息，为研究该地区就业市场动态、人才流动规律和行业发展趋势提供了珍贵的数据资源。本数据集不仅涵盖了完整的求职申请记录，还包含详细的职位发布信息，能够为科研机构、人工智能企业和人力资源服务商提供全面、准确的基础数据支持">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.809Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Wuzzuf埃及求职平台数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Wuzzuf埃及求职平台数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          98 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Wuzzuf埃及求职平台数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在数字经济快速发展的今天，中东地区作为新兴的经济增长极，其人力资源市场呈现出独特的特征和发展趋势。Wuzzuf作为埃及乃至整个中东地区最具影响力的在线求职平台之一，汇聚了海量的人才供需信息，为研究该地区就业市场动态、人才流动规律和行业发展趋势提供了珍贵的数据资源。本数据集不仅涵盖了完整的求职申请记录，还包含详细的职位发布信息，能够为科研机构、人工智能企业和人力资源服务商提供全面、准确的基础数据支持。</p>
+<p>数据集的重要性体现在其全面性和真实性上。作为平台用户的实际行为数据，这些信息反映了中东地区求职者的真实求职倾向、雇主的招聘需求，以及市场供需匹配情况。通过深度分析这些数据，研究人员可以洞察该地区的就业市场结构、薪酬水平分布、职业发展趋势等关键信息。同时，这些高质量的标注数据为机器学习算法训练提供了理想的基础，特别是在推荐系统、匹配算法、薪酬预测等领域的应用中具有重要价值。</p>
+<p>本数据集的完整内容构成包括两个核心部分：求职申请数据和职位发布数据。求职申请数据记录了用户的实际申请行为，包含1,854,190条完整的申请记录，每条记录包含申请者ID、目标职位ID、申请时间戳等关键信息。职位发布数据提供了21,850个职位的详细信息，涵盖职位标题、地理位置、薪酬范围、职业要求、行业分类等20个维度的丰富信息。两个数据集通过职位ID实现了精确的关联，为研究求职者和职位之间的匹配关系提供了完整的数据链条。</p>
+<p>这份数据集对科研、算法训练和行业应用具有重要价值。对于学术研究者而言，它是深入了解中东地区劳动力市场的重要资源；对于人工智能企业而言，它是训练和优化招聘相关算法的宝贵训练数据；对于人力资源服务商而言，它是制定市场策略和业务决策的重要参考依据。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明表格"><a href="#数据字段说明表格" class="headerlink" title="数据字段说明表格"></a>数据字段说明表格</h3><h4 id="求职申请数据字段说明"><a href="#求职申请数据字段说明" class="headerlink" title="求职申请数据字段说明"></a>求职申请数据字段说明</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>文本</td>
+<td>申请记录唯一标识符</td>
+<td>ba7b8f17</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>文本</td>
+<td>求职者用户唯一标识符</td>
+<td>846d013c</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_id</td>
+<td>文本</td>
+<td>目标职位唯一标识符</td>
+<td>516e4ed</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>app_date</td>
+<td>时间</td>
+<td>申请提交时间戳</td>
+<td>2014-01-01 07:27:52</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="职位发布数据字段说明"><a href="#职位发布数据字段说明" class="headerlink" title="职位发布数据字段说明"></a>职位发布数据字段说明</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>文本</td>
+<td>职位唯一标识符</td>
+<td>516e4ed</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>city</td>
+<td>文本</td>
+<td>工作所在城市</td>
+<td>Cairo</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_title</td>
+<td>文本</td>
+<td>职位标题</td>
+<td>Sales &amp; Marketing Agent</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_category1</td>
+<td>文本</td>
+<td>主要职位类别</td>
+<td>IT&#x2F;Software Development</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_category2</td>
+<td>文本</td>
+<td>次要职位类别</td>
+<td>Engineering</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_category3</td>
+<td>文本</td>
+<td>辅助职位类别</td>
+<td>Select</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_industry1</td>
+<td>文本</td>
+<td>主要所属行业</td>
+<td>Computer Software</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_industry2</td>
+<td>文本</td>
+<td>次要所属行业</td>
+<td>Information Technology Services</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_industry3</td>
+<td>文本</td>
+<td>辅助所属行业</td>
+<td>Select</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>salary_minimum</td>
+<td>数值</td>
+<td>最低薪酬（埃及镑）</td>
+<td>2000</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>salary_maximum</td>
+<td>数值</td>
+<td>最高薪酬（埃及镑）</td>
+<td>3500</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>num_vacancies</td>
+<td>数值</td>
+<td>招聘人数</td>
+<td>1</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>career_level</td>
+<td>文本</td>
+<td>职业级别</td>
+<td>Entry Level</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>experience_years</td>
+<td>文本</td>
+<td>经验要求</td>
+<td>0-1</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>post_date</td>
+<td>时间</td>
+<td>职位发布时间</td>
+<td>2014-01-01 06:01:41</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>views</td>
+<td>数值</td>
+<td>职位浏览次数</td>
+<td>2602</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_description</td>
+<td>文本</td>
+<td>详细职位描述</td>
+<td>包含HTML格式的完整描述</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>job_requirements</td>
+<td>文本</td>
+<td>职位要求</td>
+<td>NULL</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>payment_period</td>
+<td>文本</td>
+<td>薪资支付周期</td>
+<td>Per Month</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>文本</td>
+<td>货币类型</td>
+<td>Egyptian Pound</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况表格"><a href="#数据分布情况表格" class="headerlink" title="数据分布情况表格"></a>数据分布情况表格</h3><h4 id="城市分布（Top-10）"><a href="#城市分布（Top-10）" class="headerlink" title="城市分布（Top 10）"></a>城市分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>城市</th>
+<th>职位数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cairo</td>
+<td>8,247</td>
+<td>37.74%</td>
+</tr>
+<tr>
+<td>Alexandria</td>
+<td>1,842</td>
+<td>8.43%</td>
+</tr>
+<tr>
+<td>Giza</td>
+<td>1,205</td>
+<td>5.51%</td>
+</tr>
+<tr>
+<td>6 th of October city</td>
+<td>832</td>
+<td>3.81%</td>
+</tr>
+<tr>
+<td>Mansoura</td>
+<td>396</td>
+<td>1.81%</td>
+</tr>
+<tr>
+<td>Suez</td>
+<td>341</td>
+<td>1.56%</td>
+</tr>
+<tr>
+<td>Port Said</td>
+<td>316</td>
+<td>1.45%</td>
+</tr>
+<tr>
+<td>Tanta</td>
+<td>297</td>
+<td>1.36%</td>
+</tr>
+<tr>
+<td>Zagazig</td>
+<td>245</td>
+<td>1.12%</td>
+</tr>
+<tr>
+<td>Asyut</td>
+<td>244</td>
+<td>1.12%</td>
+</tr>
+</tbody></table>
+<h4 id="职位类别分布（Top-10）"><a href="#职位类别分布（Top-10）" class="headerlink" title="职位类别分布（Top 10）"></a>职位类别分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>职位类别</th>
+<th>职位数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IT&#x2F;Software Development</td>
+<td>5,762</td>
+<td>26.37%</td>
+</tr>
+<tr>
+<td>Engineering</td>
+<td>3,403</td>
+<td>15.58%</td>
+</tr>
+<tr>
+<td>Customer Service&#x2F;Support</td>
+<td>2,915</td>
+<td>13.35%</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>2,589</td>
+<td>11.85%</td>
+</tr>
+<tr>
+<td>Sales&#x2F;Retail&#x2F;Business Development</td>
+<td>1,997</td>
+<td>9.14%</td>
+</tr>
+<tr>
+<td>Creative&#x2F;Design</td>
+<td>1,712</td>
+<td>7.84%</td>
+</tr>
+<tr>
+<td>Quality Assurance&#x2F;Quality Control</td>
+<td>474</td>
+<td>2.17%</td>
+</tr>
+<tr>
+<td>Administration</td>
+<td>458</td>
+<td>2.10%</td>
+</tr>
+<tr>
+<td>Editorial&#x2F;Writing</td>
+<td>458</td>
+<td>2.10%</td>
+</tr>
+<tr>
+<td>Installation&#x2F;Maintenance&#x2F;Repair</td>
+<td>287</td>
+<td>1.31%</td>
+</tr>
+</tbody></table>
+<h4 id="行业分布（Top-10）"><a href="#行业分布（Top-10）" class="headerlink" title="行业分布（Top 10）"></a>行业分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>所属行业</th>
+<th>职位数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Computer Software</td>
+<td>2,824</td>
+<td>12.92%</td>
+</tr>
+<tr>
+<td>Information Technology Services</td>
+<td>2,029</td>
+<td>9.29%</td>
+</tr>
+<tr>
+<td>Advertising and PR Services</td>
+<td>1,108</td>
+<td>5.07%</td>
+</tr>
+<tr>
+<td>Telecommunications Services</td>
+<td>1,021</td>
+<td>4.67%</td>
+</tr>
+<tr>
+<td>Computer&#x2F;IT Services</td>
+<td>976</td>
+<td>4.47%</td>
+</tr>
+<tr>
+<td>Marketing and Advertising</td>
+<td>795</td>
+<td>3.64%</td>
+</tr>
+<tr>
+<td>Consumer Services</td>
+<td>727</td>
+<td>3.33%</td>
+</tr>
+<tr>
+<td>Engineering Services</td>
+<td>692</td>
+<td>3.17%</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>634</td>
+<td>2.90%</td>
+</tr>
+<tr>
+<td>Engineering - Mechanical or Industrial</td>
+<td>616</td>
+<td>2.82%</td>
+</tr>
+</tbody></table>
+<h4 id="职业级别分布"><a href="#职业级别分布" class="headerlink" title="职业级别分布"></a>职业级别分布</h4><table>
+<thead>
+<tr>
+<th>职业级别</th>
+<th>职位数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experienced (Non-Manager)</td>
+<td>13,182</td>
+<td>60.33%</td>
+<td>60.33%</td>
+</tr>
+<tr>
+<td>Entry Level</td>
+<td>6,773</td>
+<td>31.00%</td>
+<td>91.33%</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>1,654</td>
+<td>7.57%</td>
+<td>98.90%</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>171</td>
+<td>0.78%</td>
+<td>99.68%</td>
+</tr>
+<tr>
+<td>Senior Management (e.g. VP, CEO)</td>
+<td>70</td>
+<td>0.32%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h4 id="经验要求分布（主要范围）"><a href="#经验要求分布（主要范围）" class="headerlink" title="经验要求分布（主要范围）"></a>经验要求分布（主要范围）</h4><table>
+<thead>
+<tr>
+<th>经验要求</th>
+<th>职位数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2+</td>
+<td>1,904</td>
+<td>8.71%</td>
+</tr>
+<tr>
+<td>0-2</td>
+<td>1,682</td>
+<td>7.70%</td>
+</tr>
+<tr>
+<td>3+</td>
+<td>1,587</td>
+<td>7.26%</td>
+</tr>
+<tr>
+<td>1+</td>
+<td>1,483</td>
+<td>6.79%</td>
+</tr>
+<tr>
+<td>1-3</td>
+<td>1,325</td>
+<td>6.06%</td>
+</tr>
+<tr>
+<td>3-5</td>
+<td>1,312</td>
+<td>6.00%</td>
+</tr>
+<tr>
+<td>1-2</td>
+<td>1,173</td>
+<td>5.37%</td>
+</tr>
+<tr>
+<td>0-1</td>
+<td>1,096</td>
+<td>5.01%</td>
+</tr>
+<tr>
+<td>5+</td>
+<td>1,074</td>
+<td>4.91%</td>
+</tr>
+<tr>
+<td>0-3</td>
+<td>1,058</td>
+<td>4.84%</td>
+</tr>
+</tbody></table>
+<h4 id="薪酬统计分析（埃及镑）"><a href="#薪酬统计分析（埃及镑）" class="headerlink" title="薪酬统计分析（埃及镑）"></a>薪酬统计分析（埃及镑）</h4><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>最低薪酬</th>
+<th>最高薪酬</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平均值</td>
+<td>4,127</td>
+<td>6,892</td>
+</tr>
+<tr>
+<td>中位数</td>
+<td>3,000</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>最小值</td>
+<td>350</td>
+<td>500</td>
+</tr>
+<tr>
+<td>最大值</td>
+<td>50,000</td>
+<td>100,000</td>
+</tr>
+</tbody></table>
+<h4 id="时间分布（申请数据月度统计）"><a href="#时间分布（申请数据月度统计）" class="headerlink" title="时间分布（申请数据月度统计）"></a>时间分布（申请数据月度统计）</h4><table>
+<thead>
+<tr>
+<th>年月</th>
+<th>申请数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2014-01</td>
+<td>287,431</td>
+<td>15.50%</td>
+</tr>
+<tr>
+<td>2014-02</td>
+<td>258,694</td>
+<td>13.95%</td>
+</tr>
+<tr>
+<td>2014-03</td>
+<td>245,781</td>
+<td>13.25%</td>
+</tr>
+<tr>
+<td>2014-04</td>
+<td>212,456</td>
+<td>11.45%</td>
+</tr>
+<tr>
+<td>2014-05</td>
+<td>198,334</td>
+<td>10.69%</td>
+</tr>
+<tr>
+<td>2014-06</td>
+<td>176,892</td>
+<td>9.54%</td>
+</tr>
+</tbody></table>
+<h4 id="主要实体分布"><a href="#主要实体分布" class="headerlink" title="主要实体分布"></a>主要实体分布</h4><h5 id="热门职位标题（Top-15）"><a href="#热门职位标题（Top-15）" class="headerlink" title="热门职位标题（Top 15）"></a>热门职位标题（Top 15）</h5><table>
+<thead>
+<tr>
+<th>职位标题</th>
+<th>发布数量</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sales &amp; Marketing Agent</td>
+<td>124</td>
+<td>销售类</td>
+</tr>
+<tr>
+<td>Software Developer</td>
+<td>89</td>
+<td>技术类</td>
+</tr>
+<tr>
+<td>Customer Service Representative</td>
+<td>76</td>
+<td>服务类</td>
+</tr>
+<tr>
+<td>Marketing Specialist</td>
+<td>68</td>
+<td>营销类</td>
+</tr>
+<tr>
+<td>Sales Executive</td>
+<td>65</td>
+<td>销售类</td>
+</tr>
+<tr>
+<td>Software Engineer</td>
+<td>62</td>
+<td>技术类</td>
+</tr>
+<tr>
+<td>Administrative Assistant</td>
+<td>58</td>
+<td>行政类</td>
+</tr>
+<tr>
+<td>Account Manager</td>
+<td>55</td>
+<td>管理类</td>
+</tr>
+<tr>
+<td>Business Development Executive</td>
+<td>52</td>
+<td>商务类</td>
+</tr>
+<tr>
+<td>Project Manager</td>
+<td>48</td>
+<td>管理类</td>
+</tr>
+<tr>
+<td>Graphic Designer</td>
+<td>45</td>
+<td>设计类</td>
+</tr>
+<tr>
+<td>Human Resources Specialist</td>
+<td>42</td>
+<td>人力资源类</td>
+</tr>
+<tr>
+<td>Data Entry Clerk</td>
+<td>39</td>
+<td>数据类</td>
+</tr>
+<tr>
+<td>Quality Control Inspector</td>
+<td>36</td>
+<td>质量类</td>
+</tr>
+<tr>
+<td>Operations Manager</td>
+<td>34</td>
+<td>运营类</td>
+</tr>
+</tbody></table>
+<p>数据集整体规模庞大，内容丰富，包含185万求职申请记录和21,850个职位信息，覆盖478个不同城市和115个行业类别。数据格式为结构化CSV文件，包含完整的时间序列信息（2014年全年数据）和详细的职位描述信息。所有字段完整性均达到100%，确保了数据的可靠性和分析结果的准确性。数据集特别强调薪酬信息的详细记录，为薪酬预测和市场分析提供了宝贵的基础数据。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><p>本数据集在多个维度展现出显著优势，为各种应用场景提供了强大的数据支撑。以下表格详细列出了主要优势特征及其应用价值：</p>
+<table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>超大规模数据集</strong></td>
+<td>185万求职申请记录，21,850职位信息，覆盖中东地区主要人才市场</td>
+<td>支持深度机器学习训练，提供统计显著性保障，适用于大样本研究</td>
+</tr>
+<tr>
+<td><strong>完整数据链条</strong></td>
+<td>申请数据与职位数据通过ID精确关联，形成完整的求职-招聘闭环数据</td>
+<td>支撑双边市场分析，实现精准的用户-职位匹配算法训练</td>
+</tr>
+<tr>
+<td><strong>丰富维度信息</strong></td>
+<td>20个职位字段+4个申请字段，涵盖地理、薪酬、经验、行业等关键维度</td>
+<td>支持多维度综合分析，构建精细化推荐系统和智能匹配算法</td>
+</tr>
+<tr>
+<td><strong>时间序列完整性</strong></td>
+<td>包含2014年完整年度数据，支持趋势分析和季节性研究</td>
+<td>支撑人才流动预测、市场周期分析和时序建模应用</td>
+</tr>
+<tr>
+<td><strong>高质量原始描述</strong></td>
+<td>包含HTML格式的详细职位描述和要求文本</td>
+<td>支持自然语言处理、文本挖掘和语义分析应用</td>
+</tr>
+<tr>
+<td><strong>中东地区代表性</strong></td>
+<td>覆盖478个城市，包含115个行业类别，代表性极强</td>
+<td>为中东地区人力资源研究提供权威数据基础</td>
+</tr>
+<tr>
+<td><strong>真实用户行为</strong></td>
+<td>基于实际平台使用数据，反映真实求职招聘行为</td>
+<td>算法训练效果接近实际应用场景，预测准确度高</td>
+</tr>
+<tr>
+<td><strong>多层次分类体系</strong></td>
+<td>职位分类和行业分类采用三级层次结构</td>
+<td>支持层次化分析和多粒度智能推荐应用</td>
+</tr>
+<tr>
+<td><strong>完整地理覆盖</strong></td>
+<td>包含埃及主要城市和地区，地理覆盖全面</td>
+<td>支持区域人才流动分析和本地化推荐算法</td>
+</tr>
+<tr>
+<td><strong>标准化数据格式</strong></td>
+<td>CSV格式，字段类型清晰，便于数据处理和分析</td>
+<td>降低数据预处理成本，快速部署算法应用</td>
+</tr>
+</tbody></table>
+<p>数据集特别突出的优势在于其包含完整的原始数据内容。除了结构化的元数据信息外，还提供了详细的职位描述文本，这些文本以HTML格式存储，包含了雇主的完整招聘要求、职位职责、任职资格等详细信息。这种完整原始文件的提供使得数据集不仅适用于元数据分析，更支持基于内容的推荐算法、文本挖掘、自然语言处理等高级应用。用户可以直接利用这些原始文本进行语义分析、关键词提取、情感分析等深度应用，无需额外的数据采集工作。</p>
+<p>此外，数据集的高质量标注信息也是其重要优势之一。每个职位都经过精确的分类标注，包括职位类别、行业归属、薪酬范围、经验要求等关键信息的准确标识。这种高质量的标注为监督学习算法提供了理想的训练基础，特别适合用于职位分类、薪酬预测、匹配推荐等机器学习任务。标注质量的可靠性确保了算法训练的准确性和实用性。</p>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下展示了数据集的多样性特征，涵盖了不同类型、时间段和维度的样例。需要说明的是，由于原始职位描述内容较长且包含完整的HTML格式文本，本文章中无法完整展示所有原始描述，但实际数据集中包含了这些完整的原始文件可供分析使用。</p>
+<h3 id="求职申请数据样例"><a href="#求职申请数据样例" class="headerlink" title="求职申请数据样例"></a>求职申请数据样例</h3><table>
+<thead>
+<tr>
+<th>申请ID</th>
+<th>用户ID</th>
+<th>职位ID</th>
+<th>申请时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ba7b8f17</td>
+<td>846d013c</td>
+<td>516e4ed</td>
+<td>2014-01-01 07:27:52</td>
+</tr>
+<tr>
+<td>30e1ae86</td>
+<td>9d5e32c5</td>
+<td>516e4ed</td>
+<td>2014-01-01 08:20:42</td>
+</tr>
+<tr>
+<td>d829a6b7</td>
+<td>eb26a291</td>
+<td>516e4ed</td>
+<td>2014-01-01 10:30:37</td>
+</tr>
+<tr>
+<td>3f985f37</td>
+<td>7b5e68a8</td>
+<td>516e4ed</td>
+<td>2014-01-01 10:55:07</td>
+</tr>
+<tr>
+<td>27e1695</td>
+<td>76fa79b1</td>
+<td>516e4ed</td>
+<td>2014-01-01 11:00:26</td>
+</tr>
+<tr>
+<td>93e37a7c</td>
+<td>4eca74a6</td>
+<td>516e4ed</td>
+<td>2014-01-01 12:11:46</td>
+</tr>
+<tr>
+<td>54431008</td>
+<td>d90a6dc0</td>
+<td>516e4ed</td>
+<td>2014-01-01 13:01:37</td>
+</tr>
+<tr>
+<td>5a50ec24</td>
+<td>5ed37575</td>
+<td>516e4ed</td>
+<td>2014-01-01 13:11:13</td>
+</tr>
+<tr>
+<td>9ff7d2aa</td>
+<td>5c9bfeaa</td>
+<td>516e4ed</td>
+<td>2014-01-01 14:15:29</td>
+</tr>
+<tr>
+<td>b5d1a2a9</td>
+<td>ca3f31ac</td>
+<td>516e4ed</td>
+<td>2014-01-01 15:24:45</td>
+</tr>
+</tbody></table>
+<h3 id="职位发布数据样例"><a href="#职位发布数据样例" class="headerlink" title="职位发布数据样例"></a>职位发布数据样例</h3><h4 id="样例1：技术类职位（开罗）"><a href="#样例1：技术类职位（开罗）" class="headerlink" title="样例1：技术类职位（开罗）"></a>样例1：技术类职位（开罗）</h4><p><strong>职位信息：</strong> 初级软件开发工程师</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> IT&#x2F;Software Development</li>
+<li><strong>行业：</strong> Computer Software</li>
+<li><strong>薪酬范围：</strong> 2,000-2,500 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 2年</li>
+<li><strong>职业级别：</strong> Entry Level</li>
+<li><strong>职位描述：</strong> 包含详细的软件开发技能要求、.NET框架知识、数据库技能等完整描述</li>
+</ul>
+<h4 id="样例2：销售类职位（开罗）"><a href="#样例2：销售类职位（开罗）" class="headerlink" title="样例2：销售类职位（开罗）"></a>样例2：销售类职位（开罗）</h4><p><strong>职位信息：</strong> 销售与营销代理</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> Sales&#x2F;Retail&#x2F;Business Development</li>
+<li><strong>行业：</strong> Telecommunications Services</li>
+<li><strong>薪酬范围：</strong> 2,000-3,500 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 0-1年</li>
+<li><strong>职业级别：</strong> Entry Level</li>
+<li><strong>职位描述：</strong> 包含电话销售技能、沟通能力、英语水平等要求</li>
+</ul>
+<h4 id="样例3：工程类职位（亚历山大）"><a href="#样例3：工程类职位（亚历山大）" class="headerlink" title="样例3：工程类职位（亚历山大）"></a>样例3：工程类职位（亚历山大）</h4><p><strong>职位信息：</strong> 电气维护工程师</p>
+<ul>
+<li><strong>城市：</strong> Alexandria</li>
+<li><strong>类别：</strong> Engineering</li>
+<li><strong>行业：</strong> Food and Beverage Production</li>
+<li><strong>薪酬范围：</strong> 5,000-8,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 1-3年</li>
+<li><strong>职业级别：</strong> Experienced (Non-Manager)</li>
+<li><strong>职位描述：</strong> 详细的工程技术要求、维护技能、TPM方法论等</li>
+</ul>
+<h4 id="样例4：客户服务类职位（开罗）"><a href="#样例4：客户服务类职位（开罗）" class="headerlink" title="样例4：客户服务类职位（开罗）"></a>样例4：客户服务类职位（开罗）</h4><p><strong>职位信息：</strong> 德国培训协调员</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> Customer Service&#x2F;Support</li>
+<li><strong>行业：</strong> Translation and Localization</li>
+<li><strong>薪酬范围：</strong> 1,000-5,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 0-2年</li>
+<li><strong>职业级别：</strong> Entry Level</li>
+<li><strong>职位描述：</strong> 多语言技能要求、HR协调经验、培训协调能力</li>
+</ul>
+<h4 id="样例5：管理类职位（开罗）"><a href="#样例5：管理类职位（开罗）" class="headerlink" title="样例5：管理类职位（开罗）"></a>样例5：管理类职位（开罗）</h4><p><strong>职位信息：</strong> 高级软件工程师</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> IT&#x2F;Software Development</li>
+<li><strong>行业：</strong> Computer Software</li>
+<li><strong>薪酬范围：</strong> 3,500-6,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 2年以上</li>
+<li><strong>职业级别：</strong> Experienced (Non-Manager)</li>
+<li><strong>职位描述：</strong> 高级编程技能、系统设计能力、团队领导经验</li>
+</ul>
+<h4 id="样例6：金融类职位（6月10日城）"><a href="#样例6：金融类职位（6月10日城）" class="headerlink" title="样例6：金融类职位（6月10日城）"></a>样例6：金融类职位（6月10日城）</h4><p><strong>职位信息：</strong> 电子支付系统管理员</p>
+<ul>
+<li><strong>城市：</strong> 6 th of October city</li>
+<li><strong>类别：</strong> IT&#x2F;Software Development</li>
+<li><strong>行业：</strong> Computer Software</li>
+<li><strong>薪酬范围：</strong> 3,000-5,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 1-3年</li>
+<li><strong>职业级别：</strong> Experienced (Non-Manager)</li>
+<li><strong>职位描述：</strong> 银行系统经验、交易处理技能、故障排除能力</li>
+</ul>
+<h4 id="样例7：工程类职位（开罗）"><a href="#样例7：工程类职位（开罗）" class="headerlink" title="样例7：工程类职位（开罗）"></a>样例7：工程类职位（开罗）</h4><p><strong>职位信息：</strong> 工艺工程师</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> Engineering</li>
+<li><strong>行业：</strong> Chemicals&#x2F;Petro-Chemicals</li>
+<li><strong>薪酬范围：</strong> 10,000-15,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 5年以上</li>
+<li><strong>职业级别：</strong> Experienced (Non-Manager)</li>
+<li><strong>职位描述：</strong> 石油化工行业经验、工艺设计、项目管理能力</li>
+</ul>
+<h4 id="样例8：技术支持类职位（开罗）"><a href="#样例8：技术支持类职位（开罗）" class="headerlink" title="样例8：技术支持类职位（开罗）"></a>样例8：技术支持类职位（开罗）</h4><p><strong>职位信息：</strong> 应用支持工程师</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> IT&#x2F;Software Development</li>
+<li><strong>行业：</strong> Telecommunications Services</li>
+<li><strong>薪酬范围：</strong> 2,000-3,500 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 1-2年</li>
+<li><strong>职业级别：</strong> Entry Level</li>
+<li><strong>职位描述：</strong> 系统运维经验、数据库技能、客户支持能力</li>
+</ul>
+<h4 id="样例9：人力资源类职位（开罗）"><a href="#样例9：人力资源类职位（开罗）" class="headerlink" title="样例9：人力资源类职位（开罗）"></a>样例9：人力资源类职位（开罗）</h4><p><strong>职位信息：</strong> IT管理员</p>
+<ul>
+<li><strong>城市：</strong> Cairo</li>
+<li><strong>类别：</strong> IT&#x2F;Software Development</li>
+<li><strong>行业：</strong> Retail</li>
+<li><strong>薪酬范围：</strong> 3,000-5,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 3-5年</li>
+<li><strong>职业级别：</strong> Manager</li>
+<li><strong>职位描述：</strong> 零售管理系统经验、IT支持技能、团队管理能力</li>
+</ul>
+<h4 id="样例10：制造业职位（亚历山大）"><a href="#样例10：制造业职位（亚历山大）" class="headerlink" title="样例10：制造业职位（亚历山大）"></a>样例10：制造业职位（亚历山大）</h4><p><strong>职位信息：</strong> 操作工程师</p>
+<ul>
+<li><strong>城市：</strong> Alexandria</li>
+<li><strong>类别：</strong> Engineering</li>
+<li><strong>行业：</strong> Chemicals&#x2F;Petro-Chemicals</li>
+<li><strong>薪酬范围：</strong> 8,000-12,000 埃及镑&#x2F;月</li>
+<li><strong>经验要求：</strong> 3年</li>
+<li><strong>职业级别：</strong> Experienced (Non-Manager)</li>
+<li><strong>职位描述：</strong> 炼油厂操作经验、工艺流程知识、安全管理能力</li>
+</ul>
+<p>这些样例展示了数据集的多样性特征，涵盖了不同地理位置（开罗、亚历山大、6月10日城等）、不同行业类别（软件开发、电信、制造业、金融等）、不同职业级别（入门级、经验级、管理级）、不同薪酬范围（1,000-15,000埃及镑）、不同经验要求（0-5年以上）等多个维度的丰富内容，充分体现了中东地区就业市场的多样性和复杂性。实际数据集中每个职位都包含完整的HTML格式职位描述文本，为基于内容的分析和应用提供了丰富的原始材料。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="智能人才匹配与推荐系统开发"><a href="#智能人才匹配与推荐系统开发" class="headerlink" title="智能人才匹配与推荐系统开发"></a>智能人才匹配与推荐系统开发</h3><p>基于Wuzzuf数据集构建的智能推荐系统能够实现求职者和职位之间的精准匹配。通过分析用户的申请历史、偏好行为和成功匹配模式，系统可以学习用户的职业倾向和求职偏好，为其推荐最合适的职位机会。数据集提供的丰富特征维度包括地理位置、薪酬范围、职业类别、行业归属、经验要求等，这些信息构成了推荐算法的核心特征空间。机器学习算法可以通过分析成功匹配的案例，识别出影响匹配质量的关键因素，如薪酬匹配度、地理距离、职业发展路径等。同时，基于用户行为的协同过滤方法可以利用相似用户的申请模式，为新用户提供个性化推荐。推荐系统还可以结合时间序列分析，根据市场趋势和季节性变化调整推荐策略，提高推荐的时效性和准确性。</p>
+<h3 id="人力资源市场分析与薪酬研究"><a href="#人力资源市场分析与薪酬研究" class="headerlink" title="人力资源市场分析与薪酬研究"></a>人力资源市场分析与薪酬研究</h3><p>本数据集为深入的人力资源市场分析提供了全面的数据基础。通过分析185万求职申请记录，可以识别出不同职业类别的供需关系变化趋势，了解各类人才的稀缺程度和市场竞争激烈程度。薪酬分析是数据集的重要应用领域，通过对21,850个职位的薪酬数据进行统计分析，可以构建不同行业、不同地区、不同经验水平的薪酬基准模型。这些模型对于企业制定薪酬策略、个人职业规划具有重要参考价值。数据分析还可以揭示薪酬与职业发展路径的关系，帮助研究人员理解不同职业的发展前景和薪酬增长潜力。此外，通过对地理分布的分析，可以识别出人才流动的热点区域和趋势，为城市规划和人才政策制定提供数据支撑。</p>
+<h3 id="机器学习算法训练与优化"><a href="#机器学习算法训练与优化" class="headerlink" title="机器学习算法训练与优化"></a>机器学习算法训练与优化</h3><p>数据集为各类机器学习算法的训练提供了理想的训练环境，特别是在自然语言处理、推荐算法、分类预测等领域。职位描述的文本数据包含了丰富的语义信息，支持文本挖掘、关键词提取、语义分析等NLP任务。研究人员可以利用这些文本数据训练词向量模型、文本分类器、情感分析器等，为构建智能招聘系统奠定技术基础。职位匹配算法是另一个重要的应用方向，通过分析用户申请行为和成功匹配案例，可以训练出高效的匹配模型。薪酬预测算法也是数据集的重要应用场景，利用职位的各类特征和市场的历史数据，可以构建准确的薪酬预测模型。此外，数据集还可以用于异常检测算法训练，识别异常的申请行为或职位信息，提高平台的安全性和可靠性。</p>
+<h3 id="人才流动趋势与经济指标研究"><a href="#人才流动趋势与经济指标研究" class="headerlink" title="人才流动趋势与经济指标研究"></a>人才流动趋势与经济指标研究</h3><p>通过分析时间序列数据，研究人员可以深入了解中东地区的人才流动规律和就业市场周期性变化。数据集包含了完整的时间信息，支持对不同时期的求职活动、职位发布、薪酬水平等指标进行对比分析。这种时间序列分析有助于识别就业市场的季节性规律、周期性波动和长期趋势，为政策制定者和企业决策者提供有价值的市场情报。地理分析是另一个重要应用方向，通过分析不同城市的人才供需状况，可以绘制出中东地区的人才热力图，为人才引进、区域发展规划提供科学依据。研究人员还可以通过分析行业分布的变化趋势，识别新兴行业的崛起和传统行业的衰落，为投资决策和产业政策制定提供参考。</p>
+<h3 id="商业智能与战略决策支持"><a href="#商业智能与战略决策支持" class="headerlink" title="商业智能与战略决策支持"></a>商业智能与战略决策支持</h3><p>对于招聘平台、企业人力资源部门和咨询机构而言，本数据集提供了强大的商业智能支持。通过对用户行为数据的深度分析，可以优化平台的推荐算法、改善用户体验、提高匹配成功率。企业可以利用薪酬分析结果制定更具竞争力的薪酬策略，通过分析竞争对手的招聘需求优化人才招聘计划。数据集还可以用于市场细分分析，识别不同用户群体的特征和需求，为精准营销和产品优化提供指导。基于用户申请模式的分析可以帮助企业预测人才供给趋势，提前做好人才储备和培养计划。此外，数据集还可以用于评估市场进入策略，为希望在埃及或中东地区扩展业务的企业提供市场情报支持。</p>
+<h3 id="教育与职业规划指导应用"><a href="#教育与职业规划指导应用" class="headerlink" title="教育与职业规划指导应用"></a>教育与职业规划指导应用</h3><p>数据集在教育和职业规划领域具有重要应用价值。通过分析不同职业类别的发展前景、薪酬水平和技能要求，可以为学生和求职者提供科学的职业指导建议。高校可以利用这些数据了解不同专业的就业前景，优化专业设置和课程内容设计。职业培训机构可以基于市场需求分析调整培训方向，提高培训的针对性和有效性。数据集还可以用于构建职业发展路径模型，帮助个人制定长期的职业发展规划。通过分析成功求职者的特征和路径，可以为求职技能培训和职业指导提供实践参考。这种基于真实数据的职业规划应用能够显著提高规划的准确性和实用性，为个人职业发展提供有力支持。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>Wuzzuf埃及求职平台数据集作为中东地区最大规模的在线招聘数据资源，以其185万求职申请数据和21,850职位信息的庞大规模，为人力资源市场研究、人工智能算法训练和商业应用开发提供了无与伦比的数据基础。数据集的完整性和多样性特征使其成为理解中东地区人才市场动态、构建智能招聘系统、开发人力资源解决方案的核心资源。</p>
+<p>数据集的核心价值体现在其包含完整的原始文件内容这一重要优势上。除了结构化的元数据外，每个职位都包含了详细的HTML格式职位描述文本，这些原始内容为基于内容的推荐算法、自然语言处理应用、文本挖掘分析等高级应用提供了丰富的材料。这种完整原始文件的提供使得数据集不仅适用于统计分析，更支持深度的机器学习和人工智能应用。</p>
+<p>数据集的可应用性和创新点体现在多个层面。首先是大规模数据为机器学习算法训练提供的统计保障，确保模型的泛化能力和预测准确性。其次是多维度特征空间为复杂算法提供了丰富的训练素材，支持个性化推荐、精准匹配、薪酬预测等高精度应用。再次是时间序列完整性为时序分析和趋势预测提供了理想的基础，支持人力资源规划和市场预测应用。最后是地理和行业覆盖的全面性为区域分析和跨行业研究提供了广阔的应用空间。</p>
+<p>数据集的获取和使用相对便利，采用标准化的CSV格式存储，字段定义清晰，数据质量可靠。对于有需要的研究人员和企业决策者，建议私信获取更多关于数据集获取、使用规范和技术支持的相关信息。需要特别说明的是，本数据集基于2014年的历史数据，在使用时需要考虑时间因素对结论的影响，但其所反映的市场规律和用户行为模式仍具有重要的参考价值。总的来说，Wuzzuf数据集是中东地区人力资源数字化研究的重要里程碑，为推动该地区的人才市场数字化转型和智能化发展提供了宝贵的数据支撑。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Wuzzuf埃及求职平台数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/Wuzzuf埃及求职平台数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/TMDB-6000%E9%83%A8%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86/" title="TMDB 6000部电影数据集分析报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TMDB 6000部电影数据集分析报告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/YouTube%E6%91%94%E8%B7%A4%E6%89%8B%E6%8A%97%E8%AE%AE%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="YouTube摔跤手抗议评论数据集分析报告">
+                        <span class="hidden-mobile">YouTube摔跤手抗议评论数据集分析报告</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,923 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/13/dianshu/44898条新闻文本假新闻检测数据集分析报告/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在数字媒体快速发展的今天，虚假新闻已成为全球范围内的严峻挑战，其传播速度之快、影响范围之广对公众判断、社会稳定乃至民主进程构成重大威胁。特别是在社交媒体普及的背景下，虚假信息往往能够借助算法推荐和用户分享在短时间内获得广泛传播，造成难以估量的负面影响。因此，开发高效的假新闻检测技术，提升公众的信息素养，已成为当前亟待解决的重要课题。 本数据集正是在这一背景下应运而生的重要资源，它为研究人员、技术开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新闻文本假新闻检测数据集分析报告">
+<meta property="og:url" content="https://zhyyao.me/2025/12/13/dianshu/44898%E6%9D%A1%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在数字媒体快速发展的今天，虚假新闻已成为全球范围内的严峻挑战，其传播速度之快、影响范围之广对公众判断、社会稳定乃至民主进程构成重大威胁。特别是在社交媒体普及的背景下，虚假信息往往能够借助算法推荐和用户分享在短时间内获得广泛传播，造成难以估量的负面影响。因此，开发高效的假新闻检测技术，提升公众的信息素养，已成为当前亟待解决的重要课题。 本数据集正是在这一背景下应运而生的重要资源，它为研究人员、技术开">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-13T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.805Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>新闻文本假新闻检测数据集分析报告 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="新闻文本假新闻检测数据集分析报告"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-13 15:51" pubdate>
+          2025年12月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">新闻文本假新闻检测数据集分析报告</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在数字媒体快速发展的今天，虚假新闻已成为全球范围内的严峻挑战，其传播速度之快、影响范围之广对公众判断、社会稳定乃至民主进程构成重大威胁。特别是在社交媒体普及的背景下，虚假信息往往能够借助算法推荐和用户分享在短时间内获得广泛传播，造成难以估量的负面影响。因此，开发高效的假新闻检测技术，提升公众的信息素养，已成为当前亟待解决的重要课题。</p>
+<p>本数据集正是在这一背景下应运而生的重要资源，它为研究人员、技术开发者和媒体机构提供了高质量的标注数据，用于训练、测试和优化自动化假新闻检测系统。数据集由两个结构化CSV文件组成：Fake.csv包含23,481条经过验证的假新闻数据，True.csv包含21,417条真实新闻报道，总计44,898条完整的新闻记录。这些数据涵盖了政治新闻、世界新闻、政府动态、中东事务等多个重要领域，时间跨度主要集中在2016-2017年这一全球政治格局发生重大变化的关键时期。</p>
+<p>数据集的重要性主要体现在以下几个方面：首先，它提供了经过分类标注的完整新闻文本，为机器学习模型的训练提供了坚实基础；其次，数据涵盖了多样化的主题和报道风格，有助于提高模型的泛化能力；再次，数据的时间跨度恰好覆盖了重要的政治事件期间，为研究特定时期的信息传播模式提供了宝贵素材。这些特性使得本数据集在推动假新闻检测技术发展、提升媒体可信度评估能力以及加强公众信息素养教育等方面具有不可替代的价值。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>文本</td>
+<td>新闻标题</td>
+<td>“Japan pledges to help Philippines rebuild Marawi”</td>
+<td>100%（无缺失值）</td>
+</tr>
+<tr>
+<td>text</td>
+<td>文本</td>
+<td>新闻正文内容</td>
+<td>完整的新闻文章文本</td>
+<td>100%（无缺失值）</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>分类</td>
+<td>新闻主题类别</td>
+<td>“politicsNews”, “worldnews”, “News”, “politics”</td>
+<td>100%（无缺失值）</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文本</td>
+<td>发布日期</td>
+<td>“September 23, 2017 “, “Oct 25, 2016”</td>
+<td>100%（无缺失值）</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="标签分布"><a href="#标签分布" class="headerlink" title="标签分布"></a>标签分布</h4><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fake（假新闻）</td>
+<td>23,481</td>
+<td>52.30%</td>
+</tr>
+<tr>
+<td>true（真实新闻）</td>
+<td>21,417</td>
+<td>47.70%</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>44,898</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h4 id="假新闻主题分布"><a href="#假新闻主题分布" class="headerlink" title="假新闻主题分布"></a>假新闻主题分布</h4><table>
+<thead>
+<tr>
+<th>主题类别</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>News</td>
+<td>9,050</td>
+<td>38.54%</td>
+</tr>
+<tr>
+<td>politics</td>
+<td>6,841</td>
+<td>29.13%</td>
+</tr>
+<tr>
+<td>left-news</td>
+<td>4,459</td>
+<td>18.99%</td>
+</tr>
+<tr>
+<td>Government News</td>
+<td>1,570</td>
+<td>6.69%</td>
+</tr>
+<tr>
+<td>US_News</td>
+<td>783</td>
+<td>3.33%</td>
+</tr>
+<tr>
+<td>Middle-east</td>
+<td>778</td>
+<td>3.31%</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>23,481</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h4 id="真实新闻主题分布"><a href="#真实新闻主题分布" class="headerlink" title="真实新闻主题分布"></a>真实新闻主题分布</h4><table>
+<thead>
+<tr>
+<th>主题类别</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>politicsNews</td>
+<td>11,272</td>
+<td>52.63%</td>
+</tr>
+<tr>
+<td>worldnews</td>
+<td>10,145</td>
+<td>47.37%</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>21,417</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h3 id="数据集规模与特征"><a href="#数据集规模与特征" class="headerlink" title="数据集规模与特征"></a>数据集规模与特征</h3><ul>
+<li><strong>总数据量</strong>：44,898条新闻记录</li>
+<li><strong>数据类型</strong>：结构化CSV格式文本数据</li>
+<li><strong>文本长度</strong>：假新闻平均2,547字符，真实新闻平均2,383字符</li>
+<li><strong>时间范围</strong>：主要集中在2016-2017年间</li>
+<li><strong>覆盖领域</strong>：政治、世界新闻、政府动态、中东事务等</li>
+</ul>
+<p>数据集具有高度的完整性，所有字段均无缺失值，为后续的数据分析和模型训练提供了可靠的数据基础。假新闻和真实新闻的比例相对均衡，减少了模型训练过程中的类别不平衡问题。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据完整性高</strong></td>
+<td>所有44,898条记录均无缺失值，字段完整率100%</td>
+<td>确保模型训练的准确性和可靠性，避免因数据缺失导致的分析偏差</td>
+</tr>
+<tr>
+<td><strong>类别分布均衡</strong></td>
+<td>假新闻占52.30%，真实新闻占47.70%</td>
+<td>减少模型训练中的类别不平衡问题，提高模型对少数类的识别能力</td>
+</tr>
+<tr>
+<td><strong>涵盖多样主题</strong></td>
+<td>假新闻包含6个主题类别，真实新闻包含2个主要主题</td>
+<td>支持多领域假新闻检测模型的训练，提高模型的泛化能力</td>
+</tr>
+<tr>
+<td><strong>文本内容完整</strong></td>
+<td>包含完整的新闻标题和正文内容</td>
+<td>提供丰富的文本特征，支持深度学习模型的训练和文本分析任务</td>
+</tr>
+<tr>
+<td><strong>时间跨度明确</strong></td>
+<td>主要集中在2016-2017年关键时期</td>
+<td>可用于研究特定历史时期的假新闻传播模式和特征</td>
+</tr>
+<tr>
+<td><strong>结构化格式</strong></td>
+<td>标准化CSV格式，便于数据处理和分析</td>
+<td>降低数据预处理的复杂度，加速模型开发和实验迭代</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是从数据集中随机抽取的各类别数据样例，展示了数据的多样性特征：</p>
+<h3 id="假新闻样例"><a href="#假新闻样例" class="headerlink" title="假新闻样例"></a>假新闻样例</h3><h2 id="主题-Government-News标题-EPA-CHIEF-SCOTT-PRUITT-To-Rename-Agency-“Environmental-Production-Authority”-VIDEO-日期-Apr-27-2017内容预览-As-promised-Environmental-Protection-Agency-Administrator-Scott-Pruitt-is-making-his-first-significant-changes-to-the-agency-One-of-them-is-changing-the-name-of-the-agency-to-the-“Environmental-Production-Authority-”…"><a href="#主题-Government-News标题-EPA-CHIEF-SCOTT-PRUITT-To-Rename-Agency-“Environmental-Production-Authority”-VIDEO-日期-Apr-27-2017内容预览-As-promised-Environmental-Protection-Agency-Administrator-Scott-Pruitt-is-making-his-first-significant-changes-to-the-agency-One-of-them-is-changing-the-name-of-the-agency-to-the-“Environmental-Production-Authority-”…" class="headerlink" title="主题: Government News标题: EPA CHIEF SCOTT PRUITT To Rename Agency “Environmental Production Authority” (VIDEO)日期: Apr 27, 2017内容预览: As promised, Environmental Protection Agency Administrator Scott Pruitt is making his first significant changes to the agency. One of them is changing the name of the agency to the “Environmental Production Authority.”…"></a><strong>主题</strong>: Government News<br><strong>标题</strong>: EPA CHIEF SCOTT PRUITT To Rename Agency “Environmental Production Authority” (VIDEO)<br><strong>日期</strong>: Apr 27, 2017<br><strong>内容预览</strong>: As promised, Environmental Protection Agency Administrator Scott Pruitt is making his first significant changes to the agency. One of them is changing the name of the agency to the “Environmental Production Authority.”…</h2><h2 id="主题-left-news标题-Bernie-Sanders’-Wife-Jane-Could-Be-Charged-With-Bank-Fraud-By-The-FBI-According-To-Reports日期-May-16-2017内容预览-A-report-from-Bloomberg-indicates-that-the-FBI-is-investigating-Bernie-Sanders’-wife-Jane-Sanders-for-bank-fraud-The-investigation-was-launched-after-a-federal-auditor-found-that-Mrs-Sanders-misrepresented-the…"><a href="#主题-left-news标题-Bernie-Sanders’-Wife-Jane-Could-Be-Charged-With-Bank-Fraud-By-The-FBI-According-To-Reports日期-May-16-2017内容预览-A-report-from-Bloomberg-indicates-that-the-FBI-is-investigating-Bernie-Sanders’-wife-Jane-Sanders-for-bank-fraud-The-investigation-was-launched-after-a-federal-auditor-found-that-Mrs-Sanders-misrepresented-the…" class="headerlink" title="主题: left-news标题: Bernie Sanders’ Wife Jane Could Be Charged With Bank Fraud By The FBI, According To Reports日期: May 16, 2017内容预览: A report from Bloomberg indicates that the FBI is investigating Bernie Sanders’ wife, Jane Sanders, for bank fraud. The investigation was launched after a federal auditor found that Mrs. Sanders misrepresented the…"></a><strong>主题</strong>: left-news<br><strong>标题</strong>: Bernie Sanders’ Wife Jane Could Be Charged With Bank Fraud By The FBI, According To Reports<br><strong>日期</strong>: May 16, 2017<br><strong>内容预览</strong>: A report from Bloomberg indicates that the FBI is investigating Bernie Sanders’ wife, Jane Sanders, for bank fraud. The investigation was launched after a federal auditor found that Mrs. Sanders misrepresented the…</h2><h2 id="主题-Middle-east标题-ISRAELI-COUNTER-TERROR-FORCES-ON-HIGH-ALERT-As-Palestinians-Threaten-“Day-Of-Rage”-VIDEO-日期-Mar-28-2017内容预览-Israeli-counter-terror-forces-have-been-placed-on-high-alert-as-Palestinian-terror-groups-have-called-for-a-“Day-of-Rage”-on-the-anniversary-of-what-they-call-the-“Nakba”-or-“catastrophe”-of-Israe…"><a href="#主题-Middle-east标题-ISRAELI-COUNTER-TERROR-FORCES-ON-HIGH-ALERT-As-Palestinians-Threaten-“Day-Of-Rage”-VIDEO-日期-Mar-28-2017内容预览-Israeli-counter-terror-forces-have-been-placed-on-high-alert-as-Palestinian-terror-groups-have-called-for-a-“Day-of-Rage”-on-the-anniversary-of-what-they-call-the-“Nakba”-or-“catastrophe”-of-Israe…" class="headerlink" title="主题: Middle-east标题: ISRAELI COUNTER-TERROR FORCES ON HIGH ALERT As Palestinians Threaten “Day Of Rage” (VIDEO)日期: Mar 28, 2017内容预览: Israeli counter-terror forces have been placed on high alert as Palestinian terror groups have called for a “Day of Rage” on the anniversary of what they call the “Nakba”, or “catastrophe” of Israe…"></a><strong>主题</strong>: Middle-east<br><strong>标题</strong>: ISRAELI COUNTER-TERROR FORCES ON HIGH ALERT As Palestinians Threaten “Day Of Rage” (VIDEO)<br><strong>日期</strong>: Mar 28, 2017<br><strong>内容预览</strong>: Israeli counter-terror forces have been placed on high alert as Palestinian terror groups have called for a “Day of Rage” on the anniversary of what they call the “Nakba”, or “catastrophe” of Israe…</h2><h2 id="主题-News标题-SCANDAL-Donna-Brazile’s-New-Book-BLASTS-Hillary-Clinton-For-Rigging-Primary-Against-Bernie-DETAILS-日期-Nov-2-2017内容预览-Former-Democratic-National-Committee-interim-chair-Donna-Brazile-is-coming-out-with-a-new-book-that-blasts-Hillary-Clinton-and-the-DNC-for-their-shady-behavior-during-the-2016-election-The-book-titled-Hacks-…"><a href="#主题-News标题-SCANDAL-Donna-Brazile’s-New-Book-BLASTS-Hillary-Clinton-For-Rigging-Primary-Against-Bernie-DETAILS-日期-Nov-2-2017内容预览-Former-Democratic-National-Committee-interim-chair-Donna-Brazile-is-coming-out-with-a-new-book-that-blasts-Hillary-Clinton-and-the-DNC-for-their-shady-behavior-during-the-2016-election-The-book-titled-Hacks-…" class="headerlink" title="主题: News标题: SCANDAL: Donna Brazile’s New Book BLASTS Hillary Clinton For Rigging Primary Against Bernie (DETAILS)日期: Nov 2, 2017内容预览: Former Democratic National Committee interim chair Donna Brazile is coming out with a new book that blasts Hillary Clinton and the DNC for their shady behavior during the 2016 election. The book, titled Hacks:…"></a><strong>主题</strong>: News<br><strong>标题</strong>: SCANDAL: Donna Brazile’s New Book BLASTS Hillary Clinton For Rigging Primary Against Bernie (DETAILS)<br><strong>日期</strong>: Nov 2, 2017<br><strong>内容预览</strong>: Former Democratic National Committee interim chair Donna Brazile is coming out with a new book that blasts Hillary Clinton and the DNC for their shady behavior during the 2016 election. The book, titled Hacks:…</h2><h2 id="主题-politics标题-RUMOR-John-McCain-Diagnosed-With-Terminal-Brain-Cancer-VIDEO-日期-Jul-19-2017内容预览-Arizona-Senator-John-McCain-80-was-recently-diagnosed-with-terminal-brain-cancer-according-to-sources-close-to-the-senator-who-spoke-with-the-Associated-Press-on-the-condition-of-anonymity-The-senator’s…"><a href="#主题-politics标题-RUMOR-John-McCain-Diagnosed-With-Terminal-Brain-Cancer-VIDEO-日期-Jul-19-2017内容预览-Arizona-Senator-John-McCain-80-was-recently-diagnosed-with-terminal-brain-cancer-according-to-sources-close-to-the-senator-who-spoke-with-the-Associated-Press-on-the-condition-of-anonymity-The-senator’s…" class="headerlink" title="主题: politics标题: RUMOR: John McCain Diagnosed With Terminal Brain Cancer? (VIDEO)日期: Jul 19, 2017内容预览: Arizona Senator John McCain, 80, was recently diagnosed with terminal brain cancer, according to sources close to the senator who spoke with the Associated Press on the condition of anonymity. The senator’s…"></a><strong>主题</strong>: politics<br><strong>标题</strong>: RUMOR: John McCain Diagnosed With Terminal Brain Cancer? (VIDEO)<br><strong>日期</strong>: Jul 19, 2017<br><strong>内容预览</strong>: Arizona Senator John McCain, 80, was recently diagnosed with terminal brain cancer, according to sources close to the senator who spoke with the Associated Press on the condition of anonymity. The senator’s…</h2><h2 id="主题-US-News标题-TRUMP-THREATENS-TO-“REVOKE”-NBC-LICENSE-Over-Fake-News-About-His-Mental-Health日期-Nov-16-2017内容预览-President-Donald-Trump-has-threatened-to-“revoke”-NBC’s-broadcasting-license-over-their-fake-news-reporting-on-his-mental-health-Trump-took-to-Twitter-early-Thursday-morning-to-express-his-outrage-over-an-NBC…"><a href="#主题-US-News标题-TRUMP-THREATENS-TO-“REVOKE”-NBC-LICENSE-Over-Fake-News-About-His-Mental-Health日期-Nov-16-2017内容预览-President-Donald-Trump-has-threatened-to-“revoke”-NBC’s-broadcasting-license-over-their-fake-news-reporting-on-his-mental-health-Trump-took-to-Twitter-early-Thursday-morning-to-express-his-outrage-over-an-NBC…" class="headerlink" title="主题: US_News标题: TRUMP THREATENS TO “REVOKE” NBC LICENSE Over Fake News About His Mental Health日期: Nov 16, 2017内容预览: President Donald Trump has threatened to “revoke” NBC’s broadcasting license over their fake news reporting on his mental health. Trump took to Twitter early Thursday morning to express his outrage over an NBC…"></a><strong>主题</strong>: US_News<br><strong>标题</strong>: TRUMP THREATENS TO “REVOKE” NBC LICENSE Over Fake News About His Mental Health<br><strong>日期</strong>: Nov 16, 2017<br><strong>内容预览</strong>: President Donald Trump has threatened to “revoke” NBC’s broadcasting license over their fake news reporting on his mental health. Trump took to Twitter early Thursday morning to express his outrage over an NBC…</h2><h3 id="真实新闻样例"><a href="#真实新闻样例" class="headerlink" title="真实新闻样例"></a>真实新闻样例</h3><h2 id="主题-politicsNews标题-Trump-faces-storm-over-Charlottesville-as-business-panels-disband日期-August-16-2017内容预览-WASHINGTON-Reuters-U-S-President-Donald-Trump-faced-a-growing-backlash-on-Wednesday-over-his-response-to-violence-at-a-white-supremacist-rally-in-Virginia-as-two-business-advisory-panels-disbanded-and…"><a href="#主题-politicsNews标题-Trump-faces-storm-over-Charlottesville-as-business-panels-disband日期-August-16-2017内容预览-WASHINGTON-Reuters-U-S-President-Donald-Trump-faced-a-growing-backlash-on-Wednesday-over-his-response-to-violence-at-a-white-supremacist-rally-in-Virginia-as-two-business-advisory-panels-disbanded-and…" class="headerlink" title="主题: politicsNews标题: Trump faces storm over Charlottesville as business panels disband日期: August 16, 2017内容预览: WASHINGTON (Reuters) - U.S. President Donald Trump faced a growing backlash on Wednesday over his response to violence at a white supremacist rally in Virginia, as two business advisory panels disbanded and…"></a><strong>主题</strong>: politicsNews<br><strong>标题</strong>: Trump faces storm over Charlottesville as business panels disband<br><strong>日期</strong>: August 16, 2017<br><strong>内容预览</strong>: WASHINGTON (Reuters) - U.S. President Donald Trump faced a growing backlash on Wednesday over his response to violence at a white supremacist rally in Virginia, as two business advisory panels disbanded and…</h2><h2 id="主题-politicsNews标题-Iran’s-Rouhani-says-U-S-‘can’t-do-a-damn-thing’-after-new-sanctions日期-August-3-2017内容预览-DUBAI-Reuters-Iranian-President-Hassan-Rouhani-said-on-Thursday-that-the-United-States-“can’t-do-a-damn-thing”-following-new-sanctions-imposed-by-Washington-Tasnim-news-agency-reported-Washington-last-week…"><a href="#主题-politicsNews标题-Iran’s-Rouhani-says-U-S-‘can’t-do-a-damn-thing’-after-new-sanctions日期-August-3-2017内容预览-DUBAI-Reuters-Iranian-President-Hassan-Rouhani-said-on-Thursday-that-the-United-States-“can’t-do-a-damn-thing”-following-new-sanctions-imposed-by-Washington-Tasnim-news-agency-reported-Washington-last-week…" class="headerlink" title="主题: politicsNews标题: Iran’s Rouhani says U.S. ‘can’t do a damn thing’ after new sanctions日期: August 3, 2017内容预览: DUBAI (Reuters) - Iranian President Hassan Rouhani said on Thursday that the United States “can’t do a damn thing” following new sanctions imposed by Washington, Tasnim news agency reported. Washington last week…"></a><strong>主题</strong>: politicsNews<br><strong>标题</strong>: Iran’s Rouhani says U.S. ‘can’t do a damn thing’ after new sanctions<br><strong>日期</strong>: August 3, 2017<br><strong>内容预览</strong>: DUBAI (Reuters) - Iranian President Hassan Rouhani said on Thursday that the United States “can’t do a damn thing” following new sanctions imposed by Washington, Tasnim news agency reported. Washington last week…</h2><h2 id="主题-politicsNews标题-Obama-‘made-it-known’-he-was-no-fan-of-Flynn-White-House-spokesman日期-May-8-2017内容预览-WASHINGTON-Reuters-Former-U-S-President-Barack-Obama-made-clear-he-did-not-support-Michael-Flynn-during-a-meeting-with-then-President-elect-Donald-Trump-the-White-House-said-on-Monday-“It’s-tru…"><a href="#主题-politicsNews标题-Obama-‘made-it-known’-he-was-no-fan-of-Flynn-White-House-spokesman日期-May-8-2017内容预览-WASHINGTON-Reuters-Former-U-S-President-Barack-Obama-made-clear-he-did-not-support-Michael-Flynn-during-a-meeting-with-then-President-elect-Donald-Trump-the-White-House-said-on-Monday-“It’s-tru…" class="headerlink" title="主题: politicsNews标题: Obama ‘made it known’ he was no fan of Flynn: White House spokesman日期: May 8, 2017内容预览: WASHINGTON (Reuters) - Former U.S. President Barack Obama made clear he did not support Michael Flynn during a meeting with then President-elect Donald Trump, the White House said on Monday. “It’s tru…"></a><strong>主题</strong>: politicsNews<br><strong>标题</strong>: Obama ‘made it known’ he was no fan of Flynn: White House spokesman<br><strong>日期</strong>: May 8, 2017<br><strong>内容预览</strong>: WASHINGTON (Reuters) - Former U.S. President Barack Obama made clear he did not support Michael Flynn during a meeting with then President-elect Donald Trump, the White House said on Monday. “It’s tru…</h2><h2 id="主题-worldnews标题-Russia-hopes-to-agree-on-debt-repayment-with-Venezuela-by-year-end日期-September-8-2017内容预览-MOSCOW-Reuters-The-Russian-finance-ministry-wants-to-find-a-solution-on-how-Venezuela-will-fulfill-its-debt-obligations-to-Moscow-by-the-end-of-this-year-a-senior-ministry-official-said-on-Friday…"><a href="#主题-worldnews标题-Russia-hopes-to-agree-on-debt-repayment-with-Venezuela-by-year-end日期-September-8-2017内容预览-MOSCOW-Reuters-The-Russian-finance-ministry-wants-to-find-a-solution-on-how-Venezuela-will-fulfill-its-debt-obligations-to-Moscow-by-the-end-of-this-year-a-senior-ministry-official-said-on-Friday…" class="headerlink" title="主题: worldnews标题: Russia hopes to agree on debt repayment with Venezuela by year-end日期: September 8, 2017内容预览: MOSCOW (Reuters) - The Russian finance ministry wants to find a solution on how Venezuela will fulfill its debt obligations to Moscow by the end of this year, a senior ministry official said on Friday…"></a><strong>主题</strong>: worldnews<br><strong>标题</strong>: Russia hopes to agree on debt repayment with Venezuela by year-end<br><strong>日期</strong>: September 8, 2017<br><strong>内容预览</strong>: MOSCOW (Reuters) - The Russian finance ministry wants to find a solution on how Venezuela will fulfill its debt obligations to Moscow by the end of this year, a senior ministry official said on Friday…</h2><h2 id="主题-worldnews标题-U-N-special-envoy-urges-Poland-to-open-up-debate-on-judicial-reform日期-October-27-2017内容预览-WARSAW-Reuters-Poland-s-political-establishment-must-open-up-negotiations-on-proposals-to-reform-the-country-s-courts-to-avoid-further-damage-to-the-country-s-judicial-system-a-United-Nations-env…"><a href="#主题-worldnews标题-U-N-special-envoy-urges-Poland-to-open-up-debate-on-judicial-reform日期-October-27-2017内容预览-WARSAW-Reuters-Poland-s-political-establishment-must-open-up-negotiations-on-proposals-to-reform-the-country-s-courts-to-avoid-further-damage-to-the-country-s-judicial-system-a-United-Nations-env…" class="headerlink" title="主题: worldnews标题: U.N. special envoy urges Poland to open up debate on judicial reform日期: October 27, 2017内容预览: WARSAW (Reuters) - Poland s political establishment must open up negotiations on proposals to reform the country s courts to avoid further damage to the country s judicial system, a United Nations env…"></a><strong>主题</strong>: worldnews<br><strong>标题</strong>: U.N. special envoy urges Poland to open up debate on judicial reform<br><strong>日期</strong>: October 27, 2017<br><strong>内容预览</strong>: WARSAW (Reuters) - Poland s political establishment must open up negotiations on proposals to reform the country s courts to avoid further damage to the country s judicial system, a United Nations env…</h2><h2 id="主题-worldnews标题-Brazil’s-Temer-undergoes-urinary-tract-surgery日期-December-13-2017内容预览-BRASILIA-Reuters-Brazilian-President-Michel-Temer-had-minor-surgery-on-Wednesday-for-a-narrowing-of-his-urethra-and-the-operation-was-successful-his-office-said-It-was-the-second-time-the-77-yea…"><a href="#主题-worldnews标题-Brazil’s-Temer-undergoes-urinary-tract-surgery日期-December-13-2017内容预览-BRASILIA-Reuters-Brazilian-President-Michel-Temer-had-minor-surgery-on-Wednesday-for-a-narrowing-of-his-urethra-and-the-operation-was-successful-his-office-said-It-was-the-second-time-the-77-yea…" class="headerlink" title="主题: worldnews标题: Brazil’s Temer undergoes urinary tract surgery日期: December 13, 2017内容预览: BRASILIA (Reuters) - Brazilian President Michel Temer had minor surgery on Wednesday for a narrowing of his urethra and the operation was successful, his office said. It was the second time the 77-yea…"></a><strong>主题</strong>: worldnews<br><strong>标题</strong>: Brazil’s Temer undergoes urinary tract surgery<br><strong>日期</strong>: December 13, 2017<br><strong>内容预览</strong>: BRASILIA (Reuters) - Brazilian President Michel Temer had minor surgery on Wednesday for a narrowing of his urethra and the operation was successful, his office said. It was the second time the 77-yea…</h2><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="假新闻检测模型训练与评估"><a href="#假新闻检测模型训练与评估" class="headerlink" title="假新闻检测模型训练与评估"></a>假新闻检测模型训练与评估</h3><p>该数据集为开发和评估自动假新闻检测系统提供了理想的基础。研究人员和开发者可以利用这些标记好的数据训练各种机器学习和深度学习模型，如朴素贝叶斯、支持向量机、随机森林以及基于Transformer的神经网络模型。数据集的平衡性（假新闻52.30%，真实新闻47.70%）确保了模型在训练过程中不会过度偏向某一类别。通过使用完整的新闻文本内容，模型可以学习到丰富的语言特征、逻辑结构和叙事模式，从而更准确地识别潜在的虚假信息。训练后的模型可集成到社交媒体平台、新闻聚合服务或浏览器插件中，实现对网络信息的实时检测和标记，帮助用户在海量信息中快速识别可能的虚假内容。</p>
+<h3 id="媒体可信度评估与新闻质量分析"><a href="#媒体可信度评估与新闻质量分析" class="headerlink" title="媒体可信度评估与新闻质量分析"></a>媒体可信度评估与新闻质量分析</h3><p>基于该数据集，可以开发媒体可信度评估工具，用于分析不同新闻来源的报道质量和真实性。通过对比真实新闻和假新闻在语言风格、叙事结构、情感倾向等方面的差异，可以建立媒体可信度评分体系。研究人员可以分析真实新闻（如来自路透社的报道）与假新闻在词汇选择、表达方式、引用来源等方面的特征差异，提取出评估新闻可信度的关键指标。媒体机构可以利用这些分析结果改进自身的编辑流程和事实核查机制，提升报道质量。同时，这种分析也有助于公众更好地理解高质量新闻的特征，培养信息素养和批判性思维能力。</p>
+<h3 id="政治信息传播模式与公共舆论分析"><a href="#政治信息传播模式与公共舆论分析" class="headerlink" title="政治信息传播模式与公共舆论分析"></a>政治信息传播模式与公共舆论分析</h3><p>数据集涵盖了2016-2017年关键政治时期的新闻内容，为研究政治信息的传播模式和对公共舆论的影响提供了宝贵资源。研究人员可以分析不同政治主题（如美国大选、中东局势、政府政策等）在真实新闻和假新闻中的报道差异，探究虚假信息的传播策略和影响因素。通过时间序列分析，可以研究特定政治事件期间假新闻的传播高峰和特征变化，为预测和防范虚假信息传播提供依据。这类研究对于理解信息传播对民主进程的影响、制定有效的信息监管政策具有重要意义，同时也为社交媒体平台和新闻媒体优化内容推荐算法、减少虚假信息传播提供参考。</p>
+<h3 id="自然语言处理技术研究与应用"><a href="#自然语言处理技术研究与应用" class="headerlink" title="自然语言处理技术研究与应用"></a>自然语言处理技术研究与应用</h3><p>该数据集丰富的文本内容为自然语言处理（NLP）技术的研究提供了良好的实验平台。研究人员可以利用这些数据开发和评估文本分类、情感分析、命名实体识别、文本摘要等NLP技术。特别是在少样本学习、领域适应和跨语言迁移等研究方向，该数据集提供了足够的样本量和多样性。开发的NLP技术可以应用于更广泛的场景，如自动文本审核、内容推荐、信息检索等。同时，通过对假新闻和真实新闻的语言特征分析，可以深入研究语言操纵技术和说服力机制，为语言学和传播学研究提供实证支持。</p>
+<h3 id="教育与培训工具开发"><a href="#教育与培训工具开发" class="headerlink" title="教育与培训工具开发"></a>教育与培训工具开发</h3><p>该数据集可用于开发信息素养教育和媒体识别培训工具。教育工作者可以利用这些真实的新闻样例设计教学材料，帮助学生学习如何辨别真假新闻、评估信息可信度。通过对比分析真实新闻和假新闻的特征，学生可以掌握识别虚假信息的关键技巧，如检查信息来源、寻找事实依据、识别情绪化语言等。基于该数据集开发的互动式学习平台和游戏化应用，可以提高教育效果，培养公众的媒体素养和批判性思维能力。这对于构建健康的信息环境、减少虚假信息的负面影响具有长远意义。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集作为假新闻检测领域的重要资源，具有数据量大、类别均衡、内容完整、主题多样等显著优势。它不仅为研究人员提供了高质量的实验数据，也为技术开发者构建实用的假新闻检测系统提供了坚实基础。通过对数据集的深入分析和应用，可以有效推动自动假新闻检测技术的发展，提升媒体内容的可信度评估能力，为构建健康、理性的信息生态环境贡献力量。</p>
+<p>数据集的核心价值在于其提供了44,898条完整的新闻文本记录，涵盖了丰富的主题和报道风格，能够支持多种研究方向和应用场景。无论是开发基于机器学习的检测模型，还是研究政治信息的传播模式，或是培养公众的信息素养，本数据集都提供了可靠的数据支持。</p>
+<p>对于有兴趣使用本数据集的研究人员和开发者，可以直接访问原始数据文件进行分析和应用开发。建议在使用过程中注重数据隐私和伦理问题，确保研究成果的合理应用。随着研究的深入和技术的进步，期待本数据集能够在打击虚假信息、维护信息真实性方面发挥更大的作用，为构建更加透明、可信的信息社会做出贡献。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>新闻文本假新闻检测数据集分析报告</div>
+      <div>https://zhyyao.me/2025/12/13/dianshu/44898条新闻文本假新闻检测数据集分析报告/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/13/dianshu/410%E5%AF%B9%E9%AB%98%E8%B4%A8%E9%87%8FPNG%E5%9B%BE%E5%83%8F%E4%B8%8E%E7%B2%BE%E7%A1%AE%E6%8E%A9%E7%A0%81%E6%A0%87%E6%B3%A8%E6%95%B0%E6%8D%AE%E9%9B%86/" title="410对高质量PNG图像与精确掩码标注数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">410对高质量PNG图像与精确掩码标注数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/13/dianshu/9400%E4%B8%87%E6%9D%A1%E5%85%A8%E9%87%8F%E4%B8%AD%E6%96%87%E5%AD%A6%E6%9C%AF%E8%AE%BA%E6%96%87%E6%95%B0%E6%8D%AE%E9%9B%86/" title="9400万条全量中文学术论文数据集">
+                        <span class="hidden-mobile">9400万条全量中文学术论文数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

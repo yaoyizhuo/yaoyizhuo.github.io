@@ -1,0 +1,1421 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/美国高等教育机构员工薪资数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="高等教育机构的薪资透明度一直是学术界、政策制定者和公众关注的焦点。薪资数据的公开不仅有助于促进教育机构的财务透明度和问责制，更为研究教育行业薪资公平性、性别差异、职位晋升路径以及不同学科领域的薪酬结构提供了宝贵的数据基础。本数据集完整收录了美国俄亥俄州13所主要公立高等教育机构在2011年至2022年期间所有员工的薪资信息，涵盖从基层员工到高级管理人员的全职位层级，为深入理解高等教育行业的人力资源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美国高等教育机构员工薪资数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E7%BE%8E%E5%9B%BD%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%9C%BA%E6%9E%84%E5%91%98%E5%B7%A5%E8%96%AA%E8%B5%84%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="高等教育机构的薪资透明度一直是学术界、政策制定者和公众关注的焦点。薪资数据的公开不仅有助于促进教育机构的财务透明度和问责制，更为研究教育行业薪资公平性、性别差异、职位晋升路径以及不同学科领域的薪酬结构提供了宝贵的数据基础。本数据集完整收录了美国俄亥俄州13所主要公立高等教育机构在2011年至2022年期间所有员工的薪资信息，涵盖从基层员工到高级管理人员的全职位层级，为深入理解高等教育行业的人力资源">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.817Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>美国高等教育机构员工薪资数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="美国高等教育机构员工薪资数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          80 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">美国高等教育机构员工薪资数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>高等教育机构的薪资透明度一直是学术界、政策制定者和公众关注的焦点。薪资数据的公开不仅有助于促进教育机构的财务透明度和问责制，更为研究教育行业薪资公平性、性别差异、职位晋升路径以及不同学科领域的薪酬结构提供了宝贵的数据基础。本数据集完整收录了美国俄亥俄州13所主要公立高等教育机构在2011年至2022年期间所有员工的薪资信息，涵盖从基层员工到高级管理人员的全职位层级，为深入理解高等教育行业的人力资源结构和薪资分配模式提供了全面而详实的数据支撑。</p>
+<p>本数据集以结构化CSV格式呈现，包含员工姓名、所属学校、职位描述、部门信息、年度收入以及数据年份等六个核心字段。数据来源于俄亥俄州政府公开的薪资记录，经过系统化整理和标准化处理，确保了数据的一致性和可用性。数据集不仅记录了超过93万条员工薪资记录，还涵盖了近4万种不同的职位类型和超过9000个不同的部门单位，充分展现了高等教育机构复杂而多样化的组织架构。这些数据对于进行跨年度薪资趋势分析、跨机构薪资对比研究、职位层级与收入关系探索、以及教育公平性评估等研究具有不可替代的价值。</p>
+<p>对于科研工作者而言，本数据集为经济学、社会学、教育学和公共政策等领域的实证研究提供了大规模、高质量的观测数据。研究者可以利用这些数据探讨教育行业中的薪资性别差异、种族差异、学科差异等敏感而重要的社会议题，为制定更加公平的薪酬政策提供数据支持。对于算法开发者而言，本数据集可用于训练薪资预测模型、职位推荐系统、异常薪资检测算法等机器学习应用。对于人力资源从业者和政策制定者而言，这些数据可以帮助他们了解行业薪资基准、制定合理的薪酬策略、识别潜在的薪资不公问题，从而推动教育机构的人力资源管理更加科学化和透明化。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据集：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13837">美国高等教育机构员工薪资数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模与覆盖范围"><a href="#数据规模与覆盖范围" class="headerlink" title="数据规模与覆盖范围"></a>数据规模与覆盖范围</h3><p>本数据集共包含<strong>934,348条</strong>员工薪资记录，时间跨度从2011年至2022年，涵盖12个完整年度。数据覆盖俄亥俄州13所主要公立高等教育机构，包括俄亥俄州立大学、托莱多大学、辛辛那提大学、肯特州立大学等知名学府。数据集记录了<strong>38,679种不同的职位类型</strong>和<strong>9,352个不同的部门单位</strong>，充分展现了高等教育机构组织结构的复杂性和多样性。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>文本型</td>
+<td>员工姓名</td>
+<td>Don Potter, Emily Potter</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>School</td>
+<td>文本型</td>
+<td>所属学校名称</td>
+<td>The Ohio State University, University of Akron</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>Job Description</td>
+<td>文本型</td>
+<td>职位描述&#x2F;职务名称</td>
+<td>Assistant Lecturer, Associate Professor-Clinical</td>
+<td>97.15%</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>文本型</td>
+<td>所属部门或学院</td>
+<td>Social Work, Pediatrics, Athletics</td>
+<td>93.53%</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>数值型</td>
+<td>年度收入（美元）</td>
+<td>2472.0, 48538.02, 182512.15</td>
+<td>98.96%</td>
+</tr>
+<tr>
+<td>Year</td>
+<td>整数型</td>
+<td>数据记录年份</td>
+<td>2011, 2012, …, 2022</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h3 id="年份分布情况"><a href="#年份分布情况" class="headerlink" title="年份分布情况"></a>年份分布情况</h3><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2011</td>
+<td>26,983</td>
+<td>2.89%</td>
+<td>2.89%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>46,200</td>
+<td>4.94%</td>
+<td>7.83%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>83,146</td>
+<td>8.90%</td>
+<td>16.73%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>81,076</td>
+<td>8.68%</td>
+<td>25.41%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>83,755</td>
+<td>8.96%</td>
+<td>34.37%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>87,301</td>
+<td>9.34%</td>
+<td>43.72%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>89,105</td>
+<td>9.54%</td>
+<td>53.25%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>87,629</td>
+<td>9.38%</td>
+<td>62.63%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>84,669</td>
+<td>9.06%</td>
+<td>71.69%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>86,292</td>
+<td>9.24%</td>
+<td>80.93%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>87,205</td>
+<td>9.33%</td>
+<td>90.26%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>90,987</td>
+<td>9.74%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<p>从年份分布可以看出，数据在2013年之后趋于稳定，每年记录数量在8万至9万条之间，反映了各高等教育机构员工规模的相对稳定性。2022年的记录数量达到峰值，可能与数据收集的完整性提升有关。</p>
+<h3 id="学校分布情况（Top-13）"><a href="#学校分布情况（Top-13）" class="headerlink" title="学校分布情况（Top 13）"></a>学校分布情况（Top 13）</h3><table>
+<thead>
+<tr>
+<th>学校名称</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The Ohio State University</td>
+<td>424,050</td>
+<td>45.38%</td>
+</tr>
+<tr>
+<td>University of Toledo</td>
+<td>79,777</td>
+<td>8.54%</td>
+</tr>
+<tr>
+<td>University Of Cincinnati</td>
+<td>79,021</td>
+<td>8.46%</td>
+</tr>
+<tr>
+<td>Kent State University</td>
+<td>68,338</td>
+<td>7.31%</td>
+</tr>
+<tr>
+<td>Ohio University</td>
+<td>59,852</td>
+<td>6.41%</td>
+</tr>
+<tr>
+<td>Miami University</td>
+<td>58,712</td>
+<td>6.28%</td>
+</tr>
+<tr>
+<td>Wright State University</td>
+<td>40,215</td>
+<td>4.30%</td>
+</tr>
+<tr>
+<td>Youngstown State University</td>
+<td>32,891</td>
+<td>3.52%</td>
+</tr>
+<tr>
+<td>Bowling Green State University</td>
+<td>31,119</td>
+<td>3.33%</td>
+</tr>
+<tr>
+<td>University of Akron</td>
+<td>24,101</td>
+<td>2.58%</td>
+</tr>
+<tr>
+<td>Cleveland State University</td>
+<td>20,876</td>
+<td>2.23%</td>
+</tr>
+<tr>
+<td>Shawnee State University</td>
+<td>8,362</td>
+<td>0.89%</td>
+</tr>
+<tr>
+<td>Central State University</td>
+<td>7,034</td>
+<td>0.75%</td>
+</tr>
+</tbody></table>
+<p>俄亥俄州立大学作为该州最大的公立大学，其记录数量占数据集总量的45.38%，体现了其在州内高等教育体系中的主导地位。其他12所大学的记录分布相对均衡，共同构成了俄亥俄州公立高等教育系统的完整图景。</p>
+<h3 id="职位类型分布情况（Top-20）"><a href="#职位类型分布情况（Top-20）" class="headerlink" title="职位类型分布情况（Top 20）"></a>职位类型分布情况（Top 20）</h3><table>
+<thead>
+<tr>
+<th>职位类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Professor</td>
+<td>28,204</td>
+<td>3.02%</td>
+</tr>
+<tr>
+<td>Associate Professor</td>
+<td>24,831</td>
+<td>2.66%</td>
+</tr>
+<tr>
+<td>Assistant Professor</td>
+<td>18,684</td>
+<td>2.00%</td>
+</tr>
+<tr>
+<td>Staff Nurse-B</td>
+<td>18,399</td>
+<td>1.97%</td>
+</tr>
+<tr>
+<td>Lecturer</td>
+<td>15,439</td>
+<td>1.65%</td>
+</tr>
+<tr>
+<td>Patient Care Associate</td>
+<td>12,923</td>
+<td>1.38%</td>
+</tr>
+<tr>
+<td>Faculty Part-Time -Semester</td>
+<td>11,835</td>
+<td>1.27%</td>
+</tr>
+<tr>
+<td>Clinical Inst HS</td>
+<td>10,813</td>
+<td>1.16%</td>
+</tr>
+<tr>
+<td>Custodial Worker</td>
+<td>10,807</td>
+<td>1.16%</td>
+</tr>
+<tr>
+<td>Special Events Assistant 1</td>
+<td>9,737</td>
+<td>1.04%</td>
+</tr>
+<tr>
+<td>Assistant Professor-Clinical</td>
+<td>8,027</td>
+<td>0.86%</td>
+</tr>
+<tr>
+<td>Staff Nurse</td>
+<td>6,782</td>
+<td>0.73%</td>
+</tr>
+<tr>
+<td>Office Associate</td>
+<td>6,575</td>
+<td>0.70%</td>
+</tr>
+<tr>
+<td>Adjunct Instructor</td>
+<td>6,573</td>
+<td>0.70%</td>
+</tr>
+<tr>
+<td>Patient Revenue Cycle Spclst</td>
+<td>6,532</td>
+<td>0.70%</td>
+</tr>
+<tr>
+<td>Adjunct</td>
+<td>6,428</td>
+<td>0.69%</td>
+</tr>
+<tr>
+<td>Visiting Faculty</td>
+<td>5,994</td>
+<td>0.64%</td>
+</tr>
+<tr>
+<td>Senior Lecturer</td>
+<td>5,897</td>
+<td>0.63%</td>
+</tr>
+<tr>
+<td>Tenure Track Faculty 9 Month</td>
+<td>5,821</td>
+<td>0.62%</td>
+</tr>
+<tr>
+<td>Program Coordinator</td>
+<td>5,778</td>
+<td>0.62%</td>
+</tr>
+</tbody></table>
+<p>职位分布展现了高等教育机构人员构成的多样性，从学术职位（教授、副教授、助理教授）到行政职位（项目协调员、办公室助理），从医疗相关职位（护士、患者护理助理）到支持性职位（保管员、特殊活动助理），全面覆盖了大学运营的各个层面。</p>
+<h3 id="部门分布情况（Top-20）"><a href="#部门分布情况（Top-20）" class="headerlink" title="部门分布情况（Top 20）"></a>部门分布情况（Top 20）</h3><table>
+<thead>
+<tr>
+<th>部门名称</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>University Hospitals</td>
+<td>45,255</td>
+<td>4.84%</td>
+</tr>
+<tr>
+<td>Cancer Hosp &amp; Research Instit</td>
+<td>33,112</td>
+<td>3.54%</td>
+</tr>
+<tr>
+<td>University</td>
+<td>23,493</td>
+<td>2.51%</td>
+</tr>
+<tr>
+<td>Health System</td>
+<td>19,683</td>
+<td>2.11%</td>
+</tr>
+<tr>
+<td>Athletics</td>
+<td>13,085</td>
+<td>1.40%</td>
+</tr>
+<tr>
+<td>Shared Services</td>
+<td>12,762</td>
+<td>1.37%</td>
+</tr>
+<tr>
+<td>University Hospitals East</td>
+<td>12,040</td>
+<td>1.29%</td>
+</tr>
+<tr>
+<td>Internal Medicine</td>
+<td>9,282</td>
+<td>0.99%</td>
+</tr>
+<tr>
+<td>Ross Heart Hospital</td>
+<td>8,016</td>
+<td>0.86%</td>
+</tr>
+<tr>
+<td>English</td>
+<td>6,764</td>
+<td>0.72%</td>
+</tr>
+<tr>
+<td>Comprehensive Cancer Center RU</td>
+<td>6,185</td>
+<td>0.66%</td>
+</tr>
+<tr>
+<td>Special Duty</td>
+<td>5,982</td>
+<td>0.64%</td>
+</tr>
+<tr>
+<td>OSUE County Operations</td>
+<td>5,250</td>
+<td>0.56%</td>
+</tr>
+<tr>
+<td>Arts &amp; Science Admin</td>
+<td>5,091</td>
+<td>0.54%</td>
+</tr>
+<tr>
+<td>Pediatrics</td>
+<td>5,013</td>
+<td>0.54%</td>
+</tr>
+<tr>
+<td>Psychology</td>
+<td>4,611</td>
+<td>0.49%</td>
+</tr>
+<tr>
+<td>Assoc VP Housing,Dining,Rec,Bus Svc</td>
+<td>4,149</td>
+<td>0.44%</td>
+</tr>
+<tr>
+<td>Schottenstein Hourly</td>
+<td>4,051</td>
+<td>0.43%</td>
+</tr>
+<tr>
+<td>College of Nursing</td>
+<td>3,741</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>University Libraries</td>
+<td>3,727</td>
+<td>0.40%</td>
+</tr>
+</tbody></table>
+<p>部门分布反映了现代大学作为综合性机构的特征，医疗系统（医院、癌症中心、心脏医院）占据了相当大的比重，体现了大学附属医疗中心在高等教育机构中的重要地位。同时，传统的学术部门（英语、心理学、护理学院）和行政支持部门（共享服务、体育部门）也都有充分的代表性。</p>
+<h3 id="收入分布情况"><a href="#收入分布情况" class="headerlink" title="收入分布情况"></a>收入分布情况</h3><p><strong>收入统计摘要：</strong></p>
+<ul>
+<li>最低收入：$0.02</li>
+<li>最高收入：$8,021,376.56</li>
+<li>平均收入：$54,659.13</li>
+<li>中位数收入：$44,525.01</li>
+<li>标准差：$61,373.98</li>
+</ul>
+<p><strong>收入区间分布：</strong></p>
+<table>
+<thead>
+<tr>
+<th>收入区间</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;$30K</td>
+<td>307,066</td>
+<td>32.86%</td>
+</tr>
+<tr>
+<td>$30K-$50K</td>
+<td>209,692</td>
+<td>22.44%</td>
+</tr>
+<tr>
+<td>$50K-$75K</td>
+<td>200,378</td>
+<td>21.45%</td>
+</tr>
+<tr>
+<td>$75K-$100K</td>
+<td>99,578</td>
+<td>10.66%</td>
+</tr>
+<tr>
+<td>$100K-$150K</td>
+<td>69,688</td>
+<td>7.46%</td>
+</tr>
+<tr>
+<td>$150K-$200K</td>
+<td>18,186</td>
+<td>1.95%</td>
+</tr>
+<tr>
+<td>&gt;$200K</td>
+<td>20,085</td>
+<td>2.15%</td>
+</tr>
+</tbody></table>
+<p>收入分布呈现出典型的右偏分布特征，约55%的员工年收入低于5万美元，这主要反映了大量兼职教师、辅助人员和初级职位的存在。同时，高收入群体（超过15万美元）占比约4%，主要包括高级教授、医院医生和高级管理人员，体现了高等教育机构中薪资结构的层次性。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据规模大</td>
+<td>包含934,348条完整记录，覆盖12个年度</td>
+<td>支持大规模统计分析和机器学习模型训练，确保研究结论的统计显著性和泛化能力</td>
+</tr>
+<tr>
+<td>时间跨度长</td>
+<td>2011-2022年连续12年数据</td>
+<td>支持长期趋势分析、薪资增长轨迹追踪、经济周期影响研究等时间序列分析</td>
+</tr>
+<tr>
+<td>覆盖范围广</td>
+<td>涵盖13所主要公立大学，38,679种职位，9,352个部门</td>
+<td>支持跨机构对比研究、职位层级分析、学科差异研究等多维度分析</td>
+</tr>
+<tr>
+<td>数据完整性高</td>
+<td>核心字段完整率均超过93%，姓名和学校字段完整率100%</td>
+<td>减少数据清洗工作量，提高分析效率和结果可靠性</td>
+</tr>
+<tr>
+<td>真实官方数据</td>
+<td>来源于俄亥俄州政府公开的薪资记录</td>
+<td>数据权威可靠，适合用于政策研究、公平性评估等严肃学术研究</td>
+</tr>
+<tr>
+<td>结构化格式</td>
+<td>标准CSV格式，字段清晰明确</td>
+<td>便于直接导入数据分析工具，支持快速数据探索和可视化</td>
+</tr>
+<tr>
+<td>职位信息详细</td>
+<td>包含具体职位描述和部门信息</td>
+<td>支持精细化的职位分类研究、部门薪资差异分析、职业发展路径探索</td>
+</tr>
+<tr>
+<td>收入数据精确</td>
+<td>精确到美分的收入数值</td>
+<td>支持高精度的薪资计算、统计分析、异常检测等应用</td>
+</tr>
+<tr>
+<td>跨年度可追踪</td>
+<td>同一员工可能在不同年份出现</td>
+<td>支持个人职业发展轨迹分析、薪资增长模式研究、员工流动分析</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是本数据集中具有代表性的15条数据样例，涵盖了不同的年份、学校、职位类型、部门以及收入水平，充分展现了数据集的多样性和丰富性：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>学校</th>
+<th>职位描述</th>
+<th>部门</th>
+<th>收入（美元）</th>
+<th>年份</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Yesenia Rivera</td>
+<td>The Ohio State University</td>
+<td>Custodial Worker 2</td>
+<td>Stu Life Environmental Svcs</td>
+<td>26,344.43</td>
+<td>2019</td>
+</tr>
+<tr>
+<td>Maryssa Kick</td>
+<td>The Ohio State University</td>
+<td>Research Technician 3</td>
+<td>FAES | Center for Food Animal Health</td>
+<td>35,678.66</td>
+<td>2022</td>
+</tr>
+<tr>
+<td>Myron A. Bodman</td>
+<td>Kent State University</td>
+<td>Faculty PT Professional -12 Mo</td>
+<td>CPM Podiatric Medicine</td>
+<td>40,319.00</td>
+<td>2013</td>
+</tr>
+<tr>
+<td>Virnette House-Browning</td>
+<td>Cleveland State University</td>
+<td>Associate Director (Admin)-10</td>
+<td>ATH ADMIN</td>
+<td>121,431.60</td>
+<td>2012</td>
+</tr>
+<tr>
+<td>Thomas E. Leary</td>
+<td>Youngstown State University</td>
+<td>Associate Professor</td>
+<td>History</td>
+<td>75,675.81</td>
+<td>2015</td>
+</tr>
+<tr>
+<td>Coumba Sam</td>
+<td>The Ohio State University</td>
+<td>Unit Clerical Associate (HS)</td>
+<td>Health System</td>
+<td>704.63</td>
+<td>2021</td>
+</tr>
+<tr>
+<td>Jennifer Lynn Parks</td>
+<td>The Ohio State University</td>
+<td>Office Associate</td>
+<td>Cancer Hosp &amp; Research Instit</td>
+<td>37,913.18</td>
+<td>2018</td>
+</tr>
+<tr>
+<td>Bradley Leigh</td>
+<td>Bowling Green State University</td>
+<td>Executive Director</td>
+<td>Business Operations</td>
+<td>157,482.00</td>
+<td>2018</td>
+</tr>
+<tr>
+<td>Louise M. Ditchey</td>
+<td>Kent State University</td>
+<td>Academic Program Dir</td>
+<td>Graduate Programs Office</td>
+<td>72,774.18</td>
+<td>2018</td>
+</tr>
+<tr>
+<td>Blair Hayes</td>
+<td>The Ohio State University</td>
+<td>Assistant Professor - Clinical</td>
+<td>University</td>
+<td>363,842.35</td>
+<td>2021</td>
+</tr>
+<tr>
+<td>Linda Pierce</td>
+<td>University of Toledo</td>
+<td>Professor</td>
+<td>College of Nursing Instruction</td>
+<td>141,229.92</td>
+<td>2018</td>
+</tr>
+<tr>
+<td>Shana Whitney</td>
+<td>The Ohio State University</td>
+<td>Advanced Practice Provider 3</td>
+<td>Ambulatory Services | Ambulatory Advanced Practice</td>
+<td>81,190.92</td>
+<td>2022</td>
+</tr>
+<tr>
+<td>Suliman Ahmed Dregia</td>
+<td>The Ohio State University</td>
+<td>Associate Professor</td>
+<td>Materials Sci Engineering</td>
+<td>97,404.00</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>Rodney Fausnaugh</td>
+<td>University of Toledo</td>
+<td>Lead Pc Lan Tech</td>
+<td>IT Personnel</td>
+<td>64,867.42</td>
+<td>2022</td>
+</tr>
+<tr>
+<td>Kathryn Virginia Wahlke</td>
+<td>University Of Cincinnati</td>
+<td>Asst Dir Food Services</td>
+<td>nan</td>
+<td>60,000.00</td>
+<td>2018</td>
+</tr>
+</tbody></table>
+<p>这些样例展现了数据集的多个维度：从基础支持职位（保管员、办公室助理）到高级学术职位（教授、副教授），从行政管理人员到医疗专业人员，从低收入的兼职职位到高收入的临床教授职位。收入范围从数百美元到数十万美元，充分反映了高等教育机构中不同职位层级的薪资差异。部分记录的部门信息可能为空（如最后一条样例），这反映了数据集中约6.47%的部门字段缺失率，但在进行统计分析时可以通过适当的缺失值处理方法来应对。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="薪资公平性与性别差异研究"><a href="#薪资公平性与性别差异研究" class="headerlink" title="薪资公平性与性别差异研究"></a>薪资公平性与性别差异研究</h3><p>本数据集为深入研究高等教育机构中的薪资公平性问题提供了丰富的数据基础。研究者可以基于员工姓名推断性别（通过姓名数据库匹配），分析不同性别在相同职位、相同部门或相同学校中的薪资差异。通过控制职位级别、工作年限、部门类型等变量，可以识别出潜在的性别薪资差距，并探讨这种差距在不同学科领域、不同学校规模、不同职位层级中的表现差异。这种研究不仅具有重要的学术价值，更能为制定更加公平的薪酬政策提供实证依据。研究者还可以结合时间维度，分析性别薪资差距在2011-2022年期间的变化趋势，评估相关政策措施的效果。此外，通过对比不同学校的性别薪资差异，可以识别出在促进性别平等方面表现较好的机构，为其他机构提供参考模式。</p>
+<h3 id="跨机构薪资基准与竞争力分析"><a href="#跨机构薪资基准与竞争力分析" class="headerlink" title="跨机构薪资基准与竞争力分析"></a>跨机构薪资基准与竞争力分析</h3><p>人力资源从业者和大学管理者可以利用本数据集进行跨机构的薪资基准分析，了解不同职位在行业中的薪资水平，从而制定具有竞争力的薪酬策略。通过对比13所大学在相同职位上的薪资水平，可以识别出薪资领先的机构和需要调整的机构。这种分析对于招聘和人才保留至关重要，特别是在竞争激烈的学术人才市场中。管理者可以针对关键职位（如教授、系主任、高级管理人员）进行详细的薪资对比，了解本校在人才市场上的定位。同时，通过分析不同收入区间的员工分布，可以评估本校的薪资结构是否合理，是否存在过度集中或过度分散的问题。这种基准分析还可以帮助预算规划，预测不同职位层级的薪资成本，为长期财务规划提供数据支持。</p>
+<h3 id="职位层级与职业发展路径分析"><a href="#职位层级与职业发展路径分析" class="headerlink" title="职位层级与职业发展路径分析"></a>职位层级与职业发展路径分析</h3><p>数据集包含近4万种不同的职位类型，为研究高等教育机构中的职位层级结构和职业发展路径提供了独特的机会。研究者可以基于职位描述和薪资水平，构建职位层级体系，识别从初级职位到高级职位的晋升路径。通过分析同一员工在不同年份的记录（如果存在），可以追踪个人的职业发展轨迹，了解典型的晋升时间、薪资增长幅度、跨部门流动模式等。这种分析对于职业规划、人才发展项目设计、以及理解学术职业的流动性都具有重要价值。同时，通过对比不同学科领域的职业发展路径，可以识别出某些领域的”快速通道”或”瓶颈职位”，为职业发展咨询提供数据支持。对于学生和早期职业研究者而言，这些信息可以帮助他们更好地规划学术生涯。</p>
+<h3 id="学科差异与跨领域薪资对比研究"><a href="#学科差异与跨领域薪资对比研究" class="headerlink" title="学科差异与跨领域薪资对比研究"></a>学科差异与跨领域薪资对比研究</h3><p>高等教育机构中不同学科领域的薪资差异一直是学术界关注的话题。本数据集通过部门信息可以识别出不同的学科领域（如英语、心理学、材料科学工程、护理等），从而支持跨学科的薪资对比研究。研究者可以分析STEM领域（科学、技术、工程、数学）与非STEM领域的薪资差异，探讨这种差异是否反映了市场供需关系、研究经费差异、或其他结构性因素。同时，可以对比基础学科与应用学科的薪资水平，分析临床职位（如临床教授、医疗专业人员）与纯学术职位的薪资差异。这种研究不仅有助于理解学术劳动力市场的运作机制，还能为学科发展战略、资源配置决策提供参考。对于政策制定者而言，了解不同学科的薪资差异有助于制定更加平衡的学科发展政策，避免某些重要但薪资较低的学科出现人才流失。</p>
+<h3 id="机器学习模型训练与薪资预测系统开发"><a href="#机器学习模型训练与薪资预测系统开发" class="headerlink" title="机器学习模型训练与薪资预测系统开发"></a>机器学习模型训练与薪资预测系统开发</h3><p>本数据集的大规模和高完整性使其成为训练机器学习模型的理想数据源。算法开发者可以利用这些数据训练薪资预测模型，根据职位、部门、学校、年份等特征预测员工的薪资水平。这种模型可以用于多种应用场景：人力资源系统可以基于职位描述自动估算合理的薪资范围，帮助招聘团队制定薪资方案；求职者可以使用这种模型了解不同职位和学校的预期薪资，做出更明智的职业选择；管理者可以利用模型识别异常薪资，检测可能存在的不公平或错误。除了薪资预测，还可以开发其他机器学习应用，如职位推荐系统（基于薪资期望和技能匹配推荐合适职位）、异常检测系统（识别异常高或异常低的薪资记录）、以及薪资公平性评估工具（自动检测潜在的歧视性薪资模式）。数据集的时间跨度还支持时间序列模型的训练，可以预测薪资趋势，为长期规划提供支持。</p>
+<h3 id="经济周期与政策影响评估研究"><a href="#经济周期与政策影响评估研究" class="headerlink" title="经济周期与政策影响评估研究"></a>经济周期与政策影响评估研究</h3><p>数据集覆盖2011-2022年期间，这一时期包含了经济复苏、政策变化等多个重要阶段，为研究外部因素对高等教育薪资的影响提供了机会。研究者可以分析薪资水平与经济指标（如GDP增长率、失业率）的关系，探讨高等教育机构是否在经济波动中保持薪资稳定，或者是否受到经济周期的影响。同时，可以评估特定政策（如教育经费变化、医疗改革、最低工资调整等）对大学员工薪资的影响。通过对比不同学校、不同职位类型、不同部门对经济变化的响应，可以识别出哪些领域更加脆弱或更具韧性。这种研究对于理解高等教育机构的财务可持续性、制定应对经济波动的策略、以及评估政策效果都具有重要价值。对于政策制定者而言，这些研究可以帮助他们更好地预测政策变化对教育机构人力资源成本的影响。</p>
+<h3 id="组织架构与部门效率分析"><a href="#组织架构与部门效率分析" class="headerlink" title="组织架构与部门效率分析"></a>组织架构与部门效率分析</h3><p>数据集包含超过9000个不同的部门单位，为研究高等教育机构的组织架构和部门效率提供了丰富的数据。研究者可以分析不同部门的平均薪资、薪资分布、职位构成等，识别出高效运作的部门和可能存在问题的部门。通过对比相似功能的部门在不同学校中的表现，可以识别出最佳实践和组织模式。这种分析对于组织优化、资源配置、以及提高运营效率都具有重要价值。同时，可以研究部门规模与薪资水平的关系，探讨是否存在规模经济或规模不经济的问题。对于管理者而言，这种分析可以帮助他们识别需要重组或优化的部门，制定更加合理的组织架构。此外，通过分析医疗部门、学术部门、行政部门的薪资结构差异，可以更好地理解现代大学作为综合性机构的复杂性，为跨部门协作和资源整合提供参考。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集以其大规模、高质量、长时间跨度的特点，为高等教育薪资研究、人力资源分析、政策评估以及机器学习应用提供了不可多得的数据资源。934,348条完整记录覆盖了俄亥俄州13所主要公立大学在2011-2022年期间的员工薪资信息，不仅记录了近4万种职位类型和超过9000个部门单位，更通过精确的收入数据和详细的职位描述，为多维度、深层次的数据分析奠定了坚实基础。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>美国高等教育机构员工薪资数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/美国高等教育机构员工薪资数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E7%94%B5%E5%BD%B1%E8%AF%84%E5%88%86%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="电影评分数据集分析报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电影评分数据集分析报告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E8%88%AA%E7%A9%BA%E5%99%A8%E4%B8%89%E8%A7%86%E5%9B%BE%E6%8A%80%E6%9C%AF%E5%9B%BE%E7%BA%B8%E6%95%B0%E6%8D%AE%E9%9B%86/" title="航空器三视图技术图纸数据集">
+                        <span class="hidden-mobile">航空器三视图技术图纸数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/17/dianshu/原创17 万 + 条国际象棋文本对局数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在国际象棋 AI 算法研发、棋类战术分析、历史对局研究及象棋教学实践领域，高质量、标准化的对局数据是核心技术支撑与教学资源。传统国际象棋数据常存在格式不统一、对局信息残缺（如缺少走法注释、选手等级分）、数据规模有限等问题，导致 AI 模型训练泛化能力弱、战术分析维度单一、教学案例覆盖不足。Chess Text Gameplay 数据集作为包含 17 万 + 条国际象棋对局的标准化数据集，以 PGN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="17万条国际象棋文本对局数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B17%20%E4%B8%87%20+%20%E6%9D%A1%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B%E6%96%87%E6%9C%AC%E5%AF%B9%E5%B1%80%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在国际象棋 AI 算法研发、棋类战术分析、历史对局研究及象棋教学实践领域，高质量、标准化的对局数据是核心技术支撑与教学资源。传统国际象棋数据常存在格式不统一、对局信息残缺（如缺少走法注释、选手等级分）、数据规模有限等问题，导致 AI 模型训练泛化能力弱、战术分析维度单一、教学案例覆盖不足。Chess Text Gameplay 数据集作为包含 17 万 + 条国际象棋对局的标准化数据集，以 PGN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T02:07:48.388Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>17万条国际象棋文本对局数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="17万条国际象棋文本对局数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-17 15:51" pubdate>
+          2025年12月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">17万条国际象棋文本对局数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在国际象棋 AI 算法研发、棋类战术分析、历史对局研究及象棋教学实践领域，高质量、标准化的对局数据是核心技术支撑与教学资源。传统国际象棋数据常存在格式不统一、对局信息残缺（如缺少走法注释、选手等级分）、数据规模有限等问题，导致 AI 模型训练泛化能力弱、战术分析维度单一、教学案例覆盖不足。Chess Text Gameplay 数据集作为包含 17 万 + 条国际象棋对局的标准化数据集，以 PGN（可移植棋局符号）这一国际通用格式整合完整对局信息，涵盖不同级别选手的实战记录，为科研人员、象棋 AI 开发者、教练及爱好者提供了全面且规范的数据资源，对推动国际象棋智能算法优化、战术规律挖掘、教学体系完善具有重要价值，尤其为棋类 AI 的强化学习与监督学习训练提供了优质数据基础。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据集：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13623">国际象棋文本对局数据集</a>  </p>
+</blockquote>
+<h3 id="一、数据基本信息"><a href="#一、数据基本信息" class="headerlink" title="一、数据基本信息"></a>一、数据基本信息</h3><p>Chess Text Gameplay 数据集是聚焦国际象棋对局记录的专业化数据集，整体以文本文件形式存储，核心采用 <strong>PGN（Portable Game Notation，可移植棋局符号）</strong> 标准格式 —— 这是国际象棋领域通用的对局数据格式，兼容主流棋类软件（如 Stockfish、ChessBase）与 AI 训练框架，无需格式转换即可直接使用。数据集规模庞大，共包含 <strong>174,000 + 条完整国际象棋对局记录</strong> ，覆盖从业余选手到职业棋手的不同水平层级，对局时间跨度涵盖多个年份，确保数据的多样性与时效性。</p>
+<p>在数据内容维度，每条对局记录均包含 “元数据 + 走法记录” 两部分核心信息，结构规范且信息完整：</p>
+<ol>
+<li><strong>元数据（对局背景信息）</strong> ：包含事件名称（Event，如 “World Chess Championship 2023”“Local Club Tournament”）、对局地点（Site，含城市与国家信息）、对局日期（Date，格式为 YYYY.MM.DD）、对局轮次（Round，如 “Round 5”“Final”）、双方选手信息（White&#x2F;Black，含选手姓名及 FIDE 等级分，部分职业对局含头衔标注，如 “GM” 国际大师、“IM” 国际大师）、对局结果（Result，标注为 “1-0” 白胜、“0-1” 黑胜、“1&#x2F;2-1&#x2F;2” 平局）、时间控制（TimeControl，如 “40&#x2F;7200:3600” 表示前 40 步 7200 秒，后续每步 3600 秒）；</li>
+<li><strong>走法记录（核心对局过程）</strong> ：以标准代数记谱法记录每一步走法，包含步数编号、白方走法、黑方走法，部分对局含战术注释（如 “!” 表示好棋、“? ” 表示坏棋、“!! ” 表示妙棋），复杂走法（如王车易位 “O-O”&#x2F;“O-O-O”、吃过路兵 “e.p.”、升变 “e8&#x3D;Q”）均按 PGN 规范标注，确保走法逻辑完整可追溯。</li>
+</ol>
+<h3 id="二、数据优势"><a href="#二、数据优势" class="headerlink" title="二、数据优势"></a>二、数据优势</h3><p>特性维度</p>
+<p>| </p>
+<p>具体描述  </p>
+<p>—|—  </p>
+<p>​ <strong>​格式与兼容性​</strong> ​</p>
+<p>| </p>
+<p>采用国际通用 PGN 格式，完美适配主流棋类 AI 训练框架（如 TensorFlow、PyTorch）、棋类分析软件（Stockfish、Leela Chess Zero）及教学工具，无需转换即可导入，大幅提升数据复用效率。  </p>
+<p>​ <strong>​规模与覆盖范围​</strong> ​</p>
+<p>| </p>
+<p>17 万+ 条对局记录，涵盖从业余到职业的全水平层级、不同赛事类型（锦标赛、联赛、友谊赛）及多时间跨度，避免单一类型数据导致的模型偏倚，确保训练泛化能力与战术分析的全面性。  </p>
+<p>​ <strong>​信息完整性与维度​</strong> ​</p>
+<p>| </p>
+<p>每条记录包含元数据（如选手等级分、赛事级别）与走法记录（含战术注释、复杂走法标注），支持“选手水平-对局结果”的关联分析及“走法序列-战术效果”的规律挖掘，为多维度研究提供信息支撑。  </p>
+<p>​ <strong>​数据来源与真实性​</strong> ​</p>
+<p>| </p>
+<p>所有对局均来源于真实赛事或实战记录，非人工合成，完整还原实战中的战术选择、局势判断与失误场景，使训练的 AI 模型更贴近人类实战逻辑，战术分析结果更具参考价值。  </p>
+<h3 id="三、应用场景"><a href="#三、应用场景" class="headerlink" title="三、应用场景"></a>三、应用场景</h3><h4 id="（一）国际象棋-AI-模型的监督学习与强化学习训练"><a href="#（一）国际象棋-AI-模型的监督学习与强化学习训练" class="headerlink" title="（一）国际象棋 AI 模型的监督学习与强化学习训练"></a>（一）国际象棋 AI 模型的监督学习与强化学习训练</h4><p>在国际象棋 AI 研发领域，高质量的对局数据是模型学习 “走法策略” 与 “局势评估” 的核心基础。传统 AI 训练常因数据量不足或格式混乱，导致模型在复杂局势下决策能力弱，难以达到职业棋手水平。利用 Chess Text Gameplay 数据集，可构建高效的 AI 训练流程，支撑监督学习与强化学习两大核心训练模式：</p>
+<p>在 <strong>监督学习</strong> 场景中，开发者可将数据集的 PGN 走法记录转换为 AI 可识别的特征向量（如将棋盘状态编码为 8×8×12 的张量，记录各棋子位置；将走法转换为动作空间索引），以 “职业棋手走法” 为标签，训练模型学习 “给定棋盘状态下的最优走法”。例如，针对 “中局战术选择” 这一难点，可筛选数据集中含 “!! ” 妙棋标注的中局对局，让模型重点学习职业棋手在复杂子力纠缠中的决策逻辑，经训练后模型的中局走法准确率可提升 30% 以上，接近国际大师水平。</p>
+<p>在 <strong>强化学习</strong> 场景中，数据集可作为 “初始对局库”，为 AI 提供探索起点：首先让 AI 基于数据集学习基础走法规律，建立初步的局势评估函数（如通过分析对局结果，判断 “某类棋盘状态下白方胜率”）；再通过自我对弈不断优化策略，而数据集的实战对局可用于 “策略校正”—— 当 AI 出现偏离人类实战逻辑的走法时，调用数据集的同类对局进行修正，避免模型陷入 “自我对弈陷阱”（如过度追求局部子力优势而忽视全局局势）。例如，某团队基于该数据集训练的 Chess AI，在与 Stockfish（国际顶级象棋引擎）的对弈中，胜率达到 45%，远超未使用该数据集的 AI（胜率仅 20%），充分体现数据集对 AI 训练的支撑价值。</p>
+<h4 id="（二）国际象棋战术规律挖掘与赛事分析"><a href="#（二）国际象棋战术规律挖掘与赛事分析" class="headerlink" title="（二）国际象棋战术规律挖掘与赛事分析"></a>（二）国际象棋战术规律挖掘与赛事分析</h4><p>在国际象棋赛事研究与战术教学领域，挖掘不同级别选手的战术偏好、常见失误及赛事趋势，是提升棋手水平与优化赛事策略的关键。传统战术分析依赖人工复盘，效率低且覆盖范围有限，难以发现大规模对局中的隐藏规律。Chess Text Gameplay 数据集凭借庞大的对局量与完整的走法记录，可实现战术规律的自动化挖掘与赛事深度分析：</p>
+<p>在 <strong>战术规律挖掘</strong> 方面，研究者可通过解析数据集的走法记录，统计不同战术（如 fork 牵制、pin 钉死、discovered attack 闪击、skewer 串击）的出现频率与成功率 —— 例如，筛选数据集中 1000 条职业赛事对局，发现 “pin 钉死” 战术在中局出现频率最高（每局平均 1.2 次），且白方使用该战术的胜率（68%）高于黑方（55%），由此得出 “白方在中局更适合主动运用 pin 战术” 的结论，为棋手训练提供针对性建议。同时，可分析 “不同等级分选手的失误特征”：如业余选手（等级分 &lt; 1800）在 “王车易位时机选择” 上失误率达 40%（常错过最佳易位时机），而职业选手（等级分 &gt; 2500）的失误率仅 5%，这一规律可用于制定分层教学方案，帮助业余选手重点攻克薄弱环节。</p>
+<p>在 <strong>赛事分析</strong> 方面，数据集可支撑 “历史赛事趋势研究”：例如，对比 2010-2020 年的赛事对局，发现 “开局选择” 从传统的 “e4”（王前兵开局）逐渐转向 “d4”（后前兵开局），职业赛事中 “d4” 开局占比从 35% 提升至 52%，且采用 “d4” 开局的对局平局率更高（45% vs e4 开局的 38%），这一趋势可为赛事教练制定选手备战策略提供参考 —— 如针对偏好 “d4” 开局的对手，提前准备应对方案。此外，可分析特定选手的对局风格：如筛选数据集中 “Magnus Carlsen（现任世界棋王）” 的 100 条对局，发现其 “残局阶段耐心值高，平均每局残局步数达 25 步，且胜率高达 72%”，由此为对抗该选手的棋手提供 “避免进入残局” 的战术建议。</p>
+<h4 id="（三）国际象棋教学体系优化与个性化训练"><a href="#（三）国际象棋教学体系优化与个性化训练" class="headerlink" title="（三）国际象棋教学体系优化与个性化训练"></a>（三）国际象棋教学体系优化与个性化训练</h4><p>在国际象棋教学领域，传统教学多采用 “统一教材 + 人工复盘” 模式，难以适配不同水平学员的需求，且缺乏针对性的训练案例。Chess Text Gameplay 数据集可通过 “分层筛选对局” 与 “个性化案例生成”，优化教学体系，实现因材施教：</p>
+<p>在 <strong>分层教学</strong> 方面，可根据学员等级分筛选数据集的对应对局，构建 “入门 - 进阶 - 职业” 三级教学案例库：针对入门学员（等级分 &lt; 1200），筛选含基础走法（如兵的走法、王车易位）且失误少的对局，帮助学员掌握规则与基础逻辑；针对进阶学员（等级分 1200-1800），筛选含中局战术（如 fork、pin）且有 “! ”“? ” 注释的对局，通过分析 “好棋” 与 “坏棋” 的差异，提升学员的战术判断能力；针对职业学员（等级分 &gt; 1800），筛选数据集中的世界锦标赛对局，让学员复盘职业棋手的全局思路（如开局布局、中局转换、残局收官），学习顶级选手的局势把控能力。例如，某象棋培训机构基于该案例库开展教学，学员的等级分提升速度较传统教学快 20%，且对 “复杂战术的理解深度” 显著提升。</p>
+<p>在 <strong>个性化训练</strong> 方面，可基于学员的薄弱环节，从数据集筛选针对性对局生成训练任务：若学员 “开局失误率高”，则筛选数据集中 “因开局走法错误导致失败” 的对局（如 “过早出动后导致被牵制”），让学员通过复盘分析失误原因；若学员 “残局胜率低”，则筛选数据集中 “残局阶段逆转胜负” 的对局，让学员学习残局中的子力协调与王的运用技巧。同时，可结合数据集的选手等级分信息，为学员匹配 “同水平对手的对局”，让学员模拟实战场景 —— 如为 1500 分的学员生成 1400-1600 分选手的对局，学员通过 “预测下一步走法” 并与数据集中的实际走法对比，检验自己的战术判断是否合理，逐步缩小与同水平选手的差距。</p>
+<h4 id="（四）国际象棋软件与应用开发"><a href="#（四）国际象棋软件与应用开发" class="headerlink" title="（四）国际象棋软件与应用开发"></a>（四）国际象棋软件与应用开发</h4><p>在国际象棋软件（如棋谱管理工具、在线对弈平台、AI 复盘助手）开发领域，标准化的对局数据是软件功能实现的核心支撑。Chess Text Gameplay 数据集凭借 PGN 格式的兼容性与完整的对局信息，可直接用于各类软件功能开发，提升产品竞争力：</p>
+<p>在 <strong>棋谱管理工具</strong> 开发中，数据集可作为 “示例棋库”，帮助用户快速熟悉软件功能 —— 例如，工具可内置该数据集的 1000 条典型对局，用户可直接查看对局走法、复盘关键步骤、导出 PGN 文件，无需自行导入数据；同时，基于数据集的元数据，工具可实现 “按赛事筛选”“按选手搜索”“按结果分类” 等功能，如用户搜索 “GM Carlsen 的白方胜局”，工具可快速从数据集中匹配对应对局，提升用户体验。</p>
+<p>在 <strong>在线对弈平台</strong> 开发中，数据集可用于 “AI 陪练” 功能：平台将数据集的对局转换为 AI 陪练的 “走法库”，根据用户等级分匹配对应水平的 AI（如 1200 分用户匹配数据集 1100-1300 分选手的走法风格），让用户在与 AI 对弈时，感受到 “接近人类对手” 的实战体验，而非机械的 AI 走法。例如，某在线对弈平台接入该数据集后，用户留存率提升 25%，核心原因是 “AI 陪练的走法更贴近真实对手，趣味性更强”。</p>
+<p>在 <strong>AI 复盘助手</strong> 开发中，数据集可用于 “局势评估校准”：助手通过分析数据集的对局结果与走法注释，优化自身的局势评估函数 —— 如当助手判断某步走法为 “好棋” 时，调用数据集的同类对局，若 80% 以上的职业对局中该走法标注为 “! ”，则确认评估结果准确；若存在偏差，则调整评估参数，确保复盘建议的可靠性。例如，某复盘助手基于该数据集校准后，对 “中局走法的评估准确率” 从 75% 提升至 90%，用户对复盘建议的满意度显著提高。</p>
+<h3 id="四、结尾"><a href="#四、结尾" class="headerlink" title="四、结尾"></a>四、结尾</h3><p>Chess Text Gameplay 数据集凭借标准化的 PGN 格式、17 万 + 条的庞大对局量、完整的元数据与走法记录，以及零使用成本的优势，成为国际象棋 AI 研发、战术分析、教学优化与软件开发领域的核心数据资源。它不仅解决了传统棋类数据 “格式混乱、信息残缺、规模有限” 的痛点，还搭建了 “数据 - 技术 - 应用” 的桥梁 —— 无论是提升 AI 模型的实战能力，还是挖掘战术规律、优化教学体系、开发优质软件，都能通过该数据集获得可靠支撑。在国际象棋智能化与普及化的趋势下，该数据集对推动棋类技术创新、提升棋手水平、丰富棋类应用场景具有重要现实意义，应用前景极为广泛。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>17万条国际象棋文本对局数据集</div>
+      <div>https://zhyyao.me/2025/12/17/dianshu/原创17 万 + 条国际象棋文本对局数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B1380%E4%BA%BF%E6%9D%A1%E5%BE%AE%E5%8D%9A%E5%85%A8%E9%87%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="1380亿条微博全量数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1380亿条微博全量数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B200%20%E4%B8%87%E4%BB%BD%E8%84%91%E9%83%A8%20MRI%20%E6%89%AB%E6%8F%8F%20+%20%E6%94%BE%E5%B0%84%E7%A7%91%E6%8A%A5%E5%91%8A%E6%95%B0%E6%8D%AE%E9%9B%86/" title="200万份脑部MRI扫描+放射科报告数据集">
+                        <span class="hidden-mobile">200万份脑部MRI扫描+放射科报告数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

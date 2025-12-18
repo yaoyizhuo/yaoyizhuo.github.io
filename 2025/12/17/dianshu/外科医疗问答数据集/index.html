@@ -1,0 +1,1185 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/17/dianshu/外科医疗问答数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="外科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。 本数据集是一个专门针对外科领域的医疗问答数据集，共包含115,991条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵盖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="外科医疗问答数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/17/dianshu/%E5%A4%96%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="外科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。 本数据集是一个专门针对外科领域的医疗问答数据集，共包含115,991条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵盖">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:58:00.064Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>外科医疗问答数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="外科医疗问答数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-17 15:51" pubdate>
+          2025年12月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          130 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">外科医疗问答数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>外科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。</p>
+<p>本数据集是一个专门针对外科领域的医疗问答数据集，共包含115,991条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵盖了外科领域的各类常见疾病、症状、诊断方法、治疗方案、预防措施等专业知识，为医疗AI模型的训练和优化提供了丰富的语料资源。</p>
+<p>该数据集对于医疗人工智能研究、智能问答系统开发、医疗知识图谱构建、临床辅助决策系统研发等应用具有重要的研究价值和实用价值。通过分析这些真实的医患问答数据，可以深入理解医疗领域的知识结构、问答模式和专业术语使用习惯，为构建更加智能和专业的医疗AI系统奠定数据基础。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据集：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13847">外科医疗问答数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h3><p>本数据集共包含<strong>115,991条</strong>完整的医疗问答记录，每条记录均经过专业医生审核，确保回答内容的专业性和准确性。</p>
+<h3 id="字段说明"><a href="#字段说明" class="headerlink" title="字段说明"></a>字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>department</td>
+<td>object</td>
+<td>科室分类</td>
+<td>肛肠; 肛肠; 肛肠…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>title</td>
+<td>object</td>
+<td>问题标题</td>
+<td>总是拉稀吃油腻会拉肚子怎么回事; 连续四五天拉稀伴随腹痛怎么回事; 吃东西就拉拉稀肚子疼怎么回事…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>object</td>
+<td>患者提问内容</td>
+<td>三四天前就已经开始肚子疼，然后拉稀，啊吃东西就不痛不拉，吃东西就已经开始痛已经开始拉，全是拉稀。请问…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>医生回答内容</td>
+<td>你好通过上述病情叙述考虑由于消化不良引来的胃肠功能紊乱建议你清淡饮食，禁术辛辣油腻生凉刺激性食物，多…</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="科室分布"><a href="#科室分布" class="headerlink" title="科室分布"></a>科室分布</h4><table>
+<thead>
+<tr>
+<th>科室</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>肛肠</td>
+<td>24,017</td>
+<td>20.71%</td>
+<td>20.71%</td>
+</tr>
+<tr>
+<td>神经脑外科</td>
+<td>23,620</td>
+<td>20.36%</td>
+<td>41.07%</td>
+</tr>
+<tr>
+<td>普通外科</td>
+<td>21,179</td>
+<td>18.26%</td>
+<td>59.33%</td>
+</tr>
+<tr>
+<td>泌尿科</td>
+<td>18,422</td>
+<td>15.88%</td>
+<td>75.21%</td>
+</tr>
+<tr>
+<td>肝胆科</td>
+<td>8,831</td>
+<td>7.61%</td>
+<td>82.82%</td>
+</tr>
+<tr>
+<td>乳腺科</td>
+<td>8,823</td>
+<td>7.61%</td>
+<td>90.43%</td>
+</tr>
+<tr>
+<td>血管科</td>
+<td>6,404</td>
+<td>5.52%</td>
+<td>95.95%</td>
+</tr>
+<tr>
+<td>胸外科</td>
+<td>2,913</td>
+<td>2.51%</td>
+<td>98.46%</td>
+</tr>
+<tr>
+<td>心外科</td>
+<td>1,777</td>
+<td>1.53%</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>肿瘤科</td>
+<td>2</td>
+<td>0.00%</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>肝病科</td>
+<td>2</td>
+<td>0.00%</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>呼吸科</td>
+<td>1</td>
+<td>0.00%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h4 id="常见问题类型分布（Top-20）"><a href="#常见问题类型分布（Top-20）" class="headerlink" title="常见问题类型分布（Top 20）"></a>常见问题类型分布（Top 20）</h4><table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类似被蜈蚣咬了，应该注意哪些事项？什么食物不</td>
+<td>6</td>
+<td>0.01%</td>
+</tr>
+<tr>
+<td>九岁女孩右乳房有硬块，怎么办？有药物治疗吗？</td>
+<td>5</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>大便后用纸擦的时候，纸上有血是怎么回事？</td>
+<td>5</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>脚部拉伤了怎么办</td>
+<td>4</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>针灸疗法能治痔疮吗</td>
+<td>4</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>怀孕28周了拉大便里面有血是怎么回事</td>
+<td>4</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>大便干结，怎么办？</td>
+<td>4</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>肛门疼痛是怎么回事?</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>乳腺癌患者能吃燕窝吗?</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>脑出血康复要注意哪些问题?</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>男人包皮过长怎么办</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>肝癌晚期怎样延长生命</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>请问脑梗塞后遗症怎么办</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>乳腺小叶增生吃什么药最好</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>请问这是内痔吗</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>宝宝会是脑损伤吗？</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>男性问题：小便的时候尿道刺痛</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>痔疮手术后液体渗出怎么办？</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>什么是脑卒中?</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>请问一般的外痔手术需要住院多久？</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+</tbody></table>
+<h3 id="文本长度统计"><a href="#文本长度统计" class="headerlink" title="文本长度统计"></a>文本长度统计</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>平均长度</th>
+<th>中位数长度</th>
+<th>最短长度</th>
+<th>最长长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>患者提问</td>
+<td>54.9</td>
+<td>50.0</td>
+<td>1</td>
+<td>2190</td>
+</tr>
+<tr>
+<td>医生回答</td>
+<td>161.0</td>
+<td>142.0</td>
+<td>2</td>
+<td>22724</td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>专业性强</td>
+<td>所有回答均来自专业医生，内容准确可靠</td>
+<td>可直接用于训练医疗AI模型，确保输出专业性</td>
+</tr>
+<tr>
+<td>问答对完整</td>
+<td>每条数据包含完整的问答对，问题与答案一一对应</td>
+<td>适合用于问答系统训练、对话模型优化</td>
+</tr>
+<tr>
+<td>领域覆盖全面</td>
+<td>涵盖该科室的各类常见疾病和问题</td>
+<td>支持构建全面的医疗知识库和问答系统</td>
+</tr>
+<tr>
+<td>真实场景数据</td>
+<td>来自真实医患问答场景，贴近实际应用</td>
+<td>训练出的模型更符合实际使用需求</td>
+</tr>
+<tr>
+<td>结构化数据</td>
+<td>数据格式统一，字段清晰，易于处理</td>
+<td>便于数据清洗、分析和模型训练</td>
+</tr>
+<tr>
+<td>规模适中</td>
+<td>数据量充足，既保证多样性又便于处理</td>
+<td>适合中小型项目快速开发和验证</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是数据集中的部分样例，展示了数据的多样性和完整性：</p>
+<h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 1"></a>样例 1</h3><p><strong>科室：</strong> 肛肠</p>
+<p><strong>问题标题：</strong> 总是拉稀吃油腻会拉肚子怎么回事</p>
+<p><strong>患者提问：</strong></p>
+<p>三四天前就已经开始肚子疼，然后拉稀，啊吃东西就不痛不拉，吃东西就已经开始痛已经开始拉，全是拉稀。请问总是拉稀吃油腻会拉肚子怎么回事</p>
+<p><strong>医生回答：</strong></p>
+<p>你好通过上述病情叙述考虑由于消化不良引来的胃肠功能紊乱建议你清淡饮食，禁术辛辣油腻生凉刺激性食物，多喝热水，防止操劳受寒加班，在治疗期间患者需要做的饮食有节，规律作息积极参加体育锻炼，调节身心健康，保持自身卫生，避免因抵抗力下降而导致细菌入侵。</p>
+<hr>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><p><strong>科室：</strong> 泌尿科</p>
+<p><strong>问题标题：</strong> 肾结石都有哪些症状表现</p>
+<p><strong>患者提问：</strong></p>
+<p>我二十二，男本来身体很好的，腰部突然的疼痛，后来疼痛的我忍不住了，我才去了医院做了下b超和尿常规仔细检查，医生说我这是得了肾结石，请问肾结石有哪些症状</p>
+<p><strong>医生回答：</strong></p>
+<p>小便艰涩，排尿时突然中断，尿道窘迫疼痛，及尿中带血，这都是肾结石的表现出对于结石直径1.0厘米，肾功能好的患者可以考量实施体外碎石救治。在治疗期间患者需要做的饮食有节，规律作息积极参加体育锻炼，调节身心健康，保持自身卫生.避免因抵抗力下降而导致细菌入侵。</p>
+<hr>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><p><strong>科室：</strong> 肛肠</p>
+<p><strong>问题标题：</strong> 治混合痔该如何诊治会有效呢</p>
+<p><strong>患者提问：</strong></p>
+<p>得病后，吃药也没有什么效果，还是不舒服，请问：治混合痔该如何诊治会有效呢</p>
+<p><strong>医生回答：</strong></p>
+<p>您好，痔疮构成的原因许多，现在有肛垫向下移动和肛门部静脉曲张有关系的。内痔的主要表现为出血和脱开，外痔的主要表现为肛门潮湿和瘙痒，一般多以混合痔的情况再次出现的。同时多看重饮食问题，以清淡食物为基础，期望混合痔患者能获得专业治疗，不仅如此，患者要养成规律作息的生活好习惯，坚持治疗，并且要清淡饮食多做有氧运动，这样才能提供自身免疫力降低患病风险。</p>
+<hr>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例 4"></a>样例 4</h3><p><strong>科室：</strong> 神经脑外科</p>
+<p><strong>问题标题：</strong> 哪些方法能治中风</p>
+<p><strong>患者提问：</strong></p>
+<p>45岁，中风，6天，嘴巴微歪，吐唾沫时歪的严重，平时身体健康，无任何疾病，请问哪些方法能治中风</p>
+<p><strong>医生回答：</strong></p>
+<p>查磁共振显像，脑部无堵塞，在本地住院6天。应该是面神经炎引来的面瘫，不是很疑难的病，运用激素，维生素B1，甲钴胺，抗病毒治疗，配置针灸，冷敷，推拿，锻练应当能彻底恢复，恢复期要1个月中风的治疗方法有一些，但是由于患者症状不同所以采用的诊病方法也就不一样，因此建议患者发觉症状后，及早实施诊断治疗。</p>
+<hr>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例 5"></a>样例 5</h3><p><strong>科室：</strong> 神经脑外科</p>
+<p><strong>问题标题：</strong> 帕金森病请问专家会传染吗？</p>
+<p><strong>患者提问：</strong></p>
+<p>医生，我隔壁家的哥哥被仔细检查出有帕金森病，帕金森病会感染吗？</p>
+<p><strong>医生回答：</strong></p>
+<p>帕金森是绝不会感染的。现阶段帕金森的病发原因尚未明确。但是现阶段的医学试验还没发觉帕金森有感染的迹象，主要和药物中毒或者社会因素刺激，患者本身的身体机能退行性炎症关于。帕金森是有前兆症状的，如果再次出现前兆症状，如步态不稳，言语不清，思路长时间处在暂停或者无法连续的状态，建议及时就诊。</p>
+<hr>
+<h3 id="样例-6"><a href="#样例-6" class="headerlink" title="样例 6"></a>样例 6</h3><p><strong>科室：</strong> 泌尿科</p>
+<p><strong>问题标题：</strong> 包皮过长导致女性炎症可能导致性病吗？</p>
+<p><strong>患者提问：</strong></p>
+<p>我是结婚以后才有的性生活，我发觉我老公的包皮过长，他也没去割，我据说包皮过长是有一些细菌的，我们准备要孩子，也没带避孕套，包皮过长导致女性炎症可能会导致性病吗？现在我该怎么办呢？</p>
+<p><strong>医生回答：</strong></p>
+<p>包皮过长，容易藏污纳垢，不仅仅是会得包皮龟头炎，也容易影响到女性的身体健康，必须尽快的让他去医院手术。不然引来女性妇科炎症，对于女性身心健康是不利的，也是会因此影响到夫妻之间的感情。但是绝不会因此引发性病，通过性生活散播的疾病并不一定都是传统意义上的性病。</p>
+<hr>
+<h3 id="样例-7"><a href="#样例-7" class="headerlink" title="样例 7"></a>样例 7</h3><p><strong>科室：</strong> 神经脑外科</p>
+<p><strong>问题标题：</strong> 醋泡黑豆治脑血管病吗？</p>
+<p><strong>患者提问：</strong></p>
+<p>我听别人说醋泡黑豆可以治疗好脑血管疾病，您好醋泡黑豆治脑血管病吗怎样制做？醋泡黑豆治脑血管病的原理基于哪里呢？这个可有科学依据的呢？我不是很想喝药，喝药伤身体。</p>
+<p><strong>医生回答：</strong></p>
+<p>醋，具备软化血管的作用；黑豆是一种豆类食物，所含丰富的膳食纤维，可以逐渐清除肠管内的油脂。醋泡黑豆具备一定的食疗作用。但是，只好做为配合调理的一种方法，并没有确切的治疗脑血管病变的作用。绝对不能够单纯的借助食用醋泡黑豆来达到治疗心脑血管疾病的目的。</p>
+<hr>
+<h3 id="样例-8"><a href="#样例-8" class="headerlink" title="样例 8"></a>样例 8</h3><p><strong>科室：</strong> 泌尿科</p>
+<p><strong>问题标题：</strong> 肾结石消炎药有哪些</p>
+<p><strong>患者提问：</strong></p>
+<p>凌晨突然被酸痛惊醒，腰部又反复出现酸痛和刺痛现象，持续时间2-3分钟，自然缓解，随后反复出现尿频尿急现象。肾结石消炎药有哪些？</p>
+<p><strong>医生回答：</strong></p>
+<p>草本天然的药物肾石通颗粒，它的成分是从植物中抽取的，可以清热利湿、活血活血，化石，排石，具备很好的消炎效用。不过在。对本品过敏者停止使用，过敏体质者慎用。所以在动用前最好先进行咨询医生。在服食消炎药的时候，忌服辛辣刺激性食物。如果肾脏结石没有合并感染，留取尿液做尿常规和尿培养检查均为正常，无需口服消炎的药物治疗。</p>
+<hr>
+<h3 id="样例-9"><a href="#样例-9" class="headerlink" title="样例 9"></a>样例 9</h3><p><strong>科室：</strong> 普通外科</p>
+<p><strong>问题标题：</strong> 关于淋巴结有什么方法治疗？</p>
+<p><strong>患者提问：</strong></p>
+<p>岁<br>详细病情及咨询目的:我儿子颈部两边淋巴间断性疼痛，有几个淋巴结<br>本次发病及持续的时间:一个月<br>目前一般情况:每天疼痛一两次<br>以往的诊断和治疗经过及效果:以往按淋巴结炎，淋巴结核，肺炎衣原体感染，治疗效果都不佳<br>家长现在很着急，望各位好心人给指条明路，应该到什么医院什么科室去治疗，谢谢！</p>
+<p><strong>医生回答：</strong></p>
+<p>正常人在其头颈部、腋窝、腹股沟等处，可扪及淋巴结，尤其在劳累、感染时，更为明显。但在消除这些原因后，会消退或缩小。在检查时，其大小、质地、活动度、光滑度等均正常。以你的情况，不用担心。必要时去医院随访。建议配合医生买一些相关的中药来服用治疗是不错的，坚持服用一段时间病情会得到很好的控制明显的减轻，平时也建议多休息，可以适当的活动病处，但是不要大幅度，多吃清淡健康的食品。</p>
+<hr>
+<h3 id="样例-10"><a href="#样例-10" class="headerlink" title="样例 10"></a>样例 10</h3><p><strong>科室：</strong> 血管科</p>
+<p><strong>问题标题：</strong> 心梗需要注意什么</p>
+<p><strong>患者提问：</strong></p>
+<p>可替代消心痛的注射用药</p>
+<p><strong>医生回答：</strong></p>
+<p>病情分析：心肌梗死后存在坏死的心肌,您说的就是改善心肌供血的药指导意见：单硝酸异山梨酯注射液（一般20毫克一支,静点速度不能过快,尤其是刚开始用药时）,与您说的口服药是同一类的,商品名欣康,应该还有别的商品名,前面写的是通用名还可以考虑用硝酸甘油注射液（5毫克一支）,这个药降血压的效果要明显一些,所以更要注意滴速</p>
+<hr>
+<h3 id="样例-11"><a href="#样例-11" class="headerlink" title="样例 11"></a>样例 11</h3><p><strong>科室：</strong> 肝胆科</p>
+<p><strong>问题标题：</strong> 肝癌晩期肺部转移腹胀怎么处理</p>
+<p><strong>患者提问：</strong></p>
+<p>肝癌晩期，4月份做了第一次介入，现在出现肺部转移，腹胀，接下来不知道有什么比较好的治疗方法？</p>
+<p><strong>医生回答：</strong></p>
+<p>中医药在治疗肺癌上具有其独特的优势，以健脾化痰，益气养阴，化瘀祛毒为主，可以改善患者生活质量，延长寿命，消除放化疗后的后遗症，缩小癌肿大小。有的学者甚至是主张纯中医药治疗。饮食方面应该以清淡新鲜食物为主，戒烟，调整心态战胜病魔。</p>
+<hr>
+<h3 id="样例-12"><a href="#样例-12" class="headerlink" title="样例 12"></a>样例 12</h3><p><strong>科室：</strong> 胸外科</p>
+<p><strong>问题标题：</strong> 男性左胸痛应该如何治疗</p>
+<p><strong>患者提问：</strong></p>
+<p>岁病情描述:男人左侧胸部痛是什么原因曾经治疗情况和效果:是怎么产生的?想得到怎样的帮助:怎么来治疗?</p>
+<p><strong>医生回答：</strong></p>
+<p>病情分析:您好：胸痛的原因较多，常与呼吸系统及心血管系统慢性疾病有关，若是长期存在，也会发展加重，对此得结合检查来明确。意见建议:建议您及时到医院针对性检查，如胸片，心电图等，明确病因后针对性治疗。平时需保持心情舒畅，适当休息，饮食清淡，避免劳累紧张，疼痛发作时需静坐休息，做深呼吸，以利于症状减轻，祝早些康复！</p>
+<hr>
+<h3 id="样例-13"><a href="#样例-13" class="headerlink" title="样例 13"></a>样例 13</h3><p><strong>科室：</strong> 肛肠</p>
+<p><strong>问题标题：</strong> 红斑狼疮会导致什么样的不适</p>
+<p><strong>患者提问：</strong></p>
+<p>这些红斑狼疮上有硬硬得东西，脖子上脸上都有红斑了，有时候看到身上皮肤都发紫了，感觉身上的关节都痛，痛得我是不想吃饭了，身上很多地方的皮肤都是红色的，汗毛看起来特别粗。</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，红斑狼疮早期病人会有其他的症状表现，像是粘膜溃疡和脱发也是常见的症状，粘膜伤害，累及口唇、舌、颊等，发现无痛性粘膜溃疡。病人的头发失去光泽、干燥且稀疏。随着患病情况的发展病人还可能发现发热，呕吐，腹痛等症状。，患者面对肠套叠的困扰时，我们应该积极进行检查以及治疗，不要避讳就医，如果肠套叠久治不愈，那么就要及时调换治疗方案。</p>
+<hr>
+<h3 id="样例-14"><a href="#样例-14" class="headerlink" title="样例 14"></a>样例 14</h3><p><strong>科室：</strong> 血管科</p>
+<p><strong>问题标题：</strong> 血栓性静脉炎是怎么回事？</p>
+<p><strong>患者提问：</strong></p>
+<p>我妈妈以前小腿是动脉曲张，十几年了，现在扩张成了动脉血栓，小腿腿部肿块很严重，先用热毛巾捂，喝药先彻底消除肿块，但效果不是很明显，医生说现在是“下肢静脉曲张拆分血栓性浅静脉炎。在乎怎样的帮助：血栓性静脉炎是怎么回事？</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，根据你描述的情况来看：静脉炎：由于血管内壁的 刺激，引发血管壁发炎。临床表现：病人叙述麻醉部位有烧痛、紧绷发涨，随着麻醉部位的血管会产生索状的红线，触诊有时会有发硬、发烫的感觉。输液流速可能会未变、减缓、或停止下来，其决定着血栓形成于否，与引发堵塞的状况。</p>
+<hr>
+<h3 id="样例-15"><a href="#样例-15" class="headerlink" title="样例 15"></a>样例 15</h3><p><strong>科室：</strong> 神经脑外科</p>
+<p><strong>问题标题：</strong> 婴幼儿脑积水如何治疗？</p>
+<p><strong>患者提问：</strong></p>
+<p>我女1岁4月患有脑积水诊断为幕上脑积水轻重度大夫建议先观察（如有其加重阵状）在手术目，前孩子无任何症状，嘴角偶有一两下抽动，智力发育基本正常，有没有其他更好保守治疗方法．<br>岁4月<br>详细病情及咨询目的:脑积水治疗方案<br>本次发病及持续的时间:4月前嘴角偶有抽动<br>目前一般情况:无任何症状 嘴角偶有抽动<br>病史:无<br>以往的诊断和治疗经</p>
+<p><strong>医生回答：</strong></p>
+<p>您好，脑积水治疗：脑积水分为梗阻性脑积水及交通性脑积水，前者占多数。目前脑积水的传统治疗方法是脑室腹腔分流手术，即用一根硅胶管连接脑室与腹腔，使”积水”流入腹腔吸收，该手术可在一定程度上缓解脑积水，但大量的临床统计表明，脑室腹腔分流手术的并发症较高，发生率近50%，如分流管堵塞、脱落、断裂、颅内感染、腹腔感染、腹部不适等，很多病人常需二次甚至多次手术，且随着患儿的身体增高，需要不断的调整分流管的长度，给病人带来更多痛苦及经济负担。近年来国际上公认梗阻性脑积水的首选治疗方法是经脑内镜行三脑室底造瘘手术，即通过一根直径仅为一支香烟的几分之一的内镜深入脑室内，在电视监视下，在第三脑室的底部打一个直径约0.5cm的孔，”积水”从该孔流出，从而解除脑积水，其优点为创伤小、疗效好、可避免反复手术，更加符合生理学要求。一般而言，手术前需要进行同位素检查，若证实为梗阻性脑积水就可行脑内镜手术。由于设备昂贵、技术要求高，国内仅有少数大医院能开展此类手术。</p>
+<hr>
+<h3 id="样例-16"><a href="#样例-16" class="headerlink" title="样例 16"></a>样例 16</h3><p><strong>科室：</strong> 肛肠</p>
+<p><strong>问题标题：</strong> 引起肝硬化疾病的主要因素或病因是什么</p>
+<p><strong>患者提问：</strong></p>
+<p>我就去肝区很痛，痛了有段时间了，食欲也不好，出现了厌食的现象，人还消瘦了不少，脸色不好，气色不佳，我很担心就去医院做了学常规尿常规以后肝功能等检查，结果查出是有了肝硬化疾病。</p>
+<p><strong>医生回答：</strong></p>
+<p>患者你好，肝硬化是肝病病情恶化造成的，是需要积极的接受检查治疗才行的，同时还应当注意饮食健康才行。造成肝硬化出现的因素或病因有很多，主要有以下几种常见因素或病因：病毒性肝炎：甲型和戊型肝炎一般不会引起肝硬化。慢性乙型与丙型、丁型肝炎易发展成肝硬化。胆汁淤积：长期慢性胆汁淤积，导致肝细胞炎症及胆小管反应，甚至出现坏死，形成胆汁性肝硬化。寄生虫感染：血吸虫感染可导致血吸虫病，治疗不及时可发生肝硬化。慢性酒精中毒：近年来在我国有增加趋势。其发病机制主要是酒精中间代谢产物乙醛对肝脏的直接损害。</p>
+<hr>
+<h3 id="样例-17"><a href="#样例-17" class="headerlink" title="样例 17"></a>样例 17</h3><p><strong>科室：</strong> 血管科</p>
+<p><strong>问题标题：</strong> 紫癫分几种类型</p>
+<p><strong>患者提问：</strong></p>
+<p>小腿部多处片状血点精神食欲都可以睡眠不很好.大便无型去不净油腻感两年.06年乳癌术后.有银屑病史</p>
+<p><strong>医生回答：</strong></p>
+<p>过敏性紫癫也叫过敏性血管炎、出血性毛细血管中毒病、过敏性血管性紫癫。本病多见于儿童。主要是由于各种因素或病因引起的血管炎症反应，致使血管壁通透性增加，血液渗入皮肤或新膜而表现为皮肤青紫（淤点、淤斑）、关节痛、腹痛，甚至累及肾脏。其确切的病因尚不十分明确，已知细菌、病毒、食物、药物以及化学中毒等可能是诱发因素，绝大多数病人发病前先有发热、咽痛等呼吸道感染症状。目前认为溶血性链球菌是重要的过敏原，这些因素不是直接作用于血管，而是通过变态反应引起血管炎症反应。根据临床表现的特点，过敏性紫癫可分为以下几种类型。指导意见：（1）单纯性紫癫：常突然发病，损害局限于皮肤上，表现为针头至黄豆大的淤点、淤斑。主要发生于下肢，尤其是双小腿伸侧。皮疹分批陆续发出，每批约经2～3周消退，由于反复复发，病程可达数月至数年之久。本型一般无全身不适，病情重者有发热、头痛等症状。（2）关节型紫痛：起病时先有发热、咽痛、乏力、恶心呕吐等前驱症状，尔后皮肤出现紫瞟、风团、红斑，甚至有水疮、血疤、坏死或溃疡。皮损可发生于关节附近，伴关节疼痛是本型的主要特点，病程久者，关节可变形而影响关节功能。容易受累的关节有膝关节、肘关节</p>
+<hr>
+<h3 id="样例-18"><a href="#样例-18" class="headerlink" title="样例 18"></a>样例 18</h3><p><strong>科室：</strong> 肝胆科</p>
+<p><strong>问题标题：</strong> 静注人免疫球蛋白的正确使用</p>
+<p><strong>患者提问：</strong></p>
+<p>11年做的胆管癌手术，二年以后就开始经常发烧，后来听人说静注人免疫球蛋白可以控制，一月一次打了二次就有好转。现在的问题是这药应该间隔多少时间再用是最好的？</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，人免疫球蛋白长期使用副作用大，你说的胆管癌术后发烧建议采用有效地传统中药巩固治疗，可以彻底消除发烧病因，能有效地抑制癌细胞复发转移。中医中药长期临床实践积累了许多非常有效的治疗方法，建议你用虫草、猪苓、红豆蔻、桑白皮、杜仲、降香、茯苓、白术、八月札、知母、片姜黄、制南星、山萸肉、独活、石菖蒲、薏苡仁、地榆、白前、丹皮、射干、当归、土鳖虫、青黛、肉桂、苦参、金精粉、葫芦巴、白癣皮、赤芍、山豆根、远志、泽泻、金银花、乌术粉、制鳖甲等配合治疗，见效快，疗效确切，许多患者使用后长期存活。这些传统中药配合使用可以有效控制癌细胞转移扩散，能够增强机体免疫功能以达到抑制癌细胞生长，同时又不产生副作用，均在治癌抗癌的同时，增强机体免疫力，最终达到战胜癌症的目的，并可以防止残存癌细胞卷土重来，杜绝复发转移。</p>
+<hr>
+<h3 id="样例-19"><a href="#样例-19" class="headerlink" title="样例 19"></a>样例 19</h3><p><strong>科室：</strong> 普通外科</p>
+<p><strong>问题标题：</strong> 凸嘴手术 多久</p>
+<p><strong>患者提问：</strong></p>
+<p>无</p>
+<p><strong>医生回答：</strong></p>
+<p>需要到三甲以上医院做整形手术治疗，术后静脉滴注大量抗生素治疗。平时需要加强营养、不能偏食，多喝骨头汤。平时需要加强运动、增强体质。</p>
+<hr>
+<h3 id="样例-20"><a href="#样例-20" class="headerlink" title="样例 20"></a>样例 20</h3><p><strong>科室：</strong> 肛肠</p>
+<p><strong>问题标题：</strong> 痔疮便血怎么办？？</p>
+<p><strong>患者提问：</strong></p>
+<p>无</p>
+<p><strong>医生回答：</strong></p>
+<p>痔疮便血可以服用槐角丸和痔速宁片试试，避免辛辣刺激性饮食，多吃蔬菜水果，避免大便干燥。便血严重可以手术治疗。祝健康。</p>
+<hr>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="医疗智能问答系统开发"><a href="#医疗智能问答系统开发" class="headerlink" title="医疗智能问答系统开发"></a>医疗智能问答系统开发</h3><p>基于本数据集可以训练和开发专业的外科智能问答系统。系统能够理解患者的自然语言提问，并基于数据集中的专业知识提供准确的回答。这种应用可以显著提升医疗服务的可及性，让患者能够随时随地获得专业的医疗咨询建议。通过分析数据集中的问答模式，系统可以学习到如何理解患者的症状描述，如何组织专业回答，以及如何处理不同类型的医疗问题。这对于构建24小时在线医疗咨询服务、辅助基层医疗机构提升服务质量具有重要价值。</p>
+<h3 id="医疗AI模型训练与优化"><a href="#医疗AI模型训练与优化" class="headerlink" title="医疗AI模型训练与优化"></a>医疗AI模型训练与优化</h3><p>本数据集为医疗领域的大语言模型训练提供了高质量的标注数据。研究人员可以使用这些数据对预训练模型进行微调，使其在外科领域具备更强的专业能力。数据集中的问答对可以作为监督学习的训练样本，帮助模型学习医疗领域的知识表达方式和问答逻辑。通过大规模的训练，模型可以掌握疾病的诊断思路、治疗方案的选择原则、预防措施的制定方法等专业知识，从而在医疗辅助诊断、治疗方案推荐等场景中发挥重要作用。</p>
+<h3 id="医疗知识图谱构建"><a href="#医疗知识图谱构建" class="headerlink" title="医疗知识图谱构建"></a>医疗知识图谱构建</h3><p>数据集中的问答对包含了丰富的医疗实体和关系信息，可以用于构建外科领域的知识图谱。通过实体识别和关系抽取技术，可以从问答文本中提取疾病名称、症状、检查方法、药物、治疗方案等实体，以及它们之间的关联关系。构建的知识图谱可以支持更复杂的医疗推理和知识检索，为临床决策支持系统提供知识基础。知识图谱还可以用于医疗信息的可视化展示，帮助医生和患者更好地理解疾病和治疗过程。</p>
+<h3 id="临床辅助决策系统"><a href="#临床辅助决策系统" class="headerlink" title="临床辅助决策系统"></a>临床辅助决策系统</h3><p>基于本数据集训练的模型可以应用于临床辅助决策系统，帮助医生快速获取相关疾病的诊断思路和治疗建议。系统可以根据患者的主诉和症状，从知识库中检索相似案例，为医生提供参考信息。这种应用可以提升医生的诊断效率，减少误诊风险，特别是在处理罕见疾病或复杂病例时，系统可以提供多角度的专业建议。同时，系统还可以帮助年轻医生快速积累临床经验，提升整体医疗服务质量。</p>
+<h3 id="医疗教育平台开发"><a href="#医疗教育平台开发" class="headerlink" title="医疗教育平台开发"></a>医疗教育平台开发</h3><p>数据集可以用于开发医疗教育平台，为医学生和年轻医生提供学习资源。平台可以基于问答数据构建知识库，支持学习者通过提问的方式学习医疗知识。系统可以根据学习者的提问，提供详细的专业解答，帮助学习者理解疾病的发病机制、诊断要点、治疗原则等核心知识。这种互动式的学习方式比传统的教材阅读更加生动有效，可以提升学习者的学习兴趣和效果。</p>
+<h3 id="医疗信息检索系统"><a href="#医疗信息检索系统" class="headerlink" title="医疗信息检索系统"></a>医疗信息检索系统</h3><p>基于本数据集可以构建专业的医疗信息检索系统，支持用户通过自然语言查询获取相关的医疗信息。系统可以对用户的查询进行语义理解，从数据集中检索最相关的问答对，为用户提供准确的信息。这种应用可以满足患者和医疗工作者对医疗信息的快速检索需求，特别是在需要了解特定疾病的症状、诊断、治疗等信息时，系统可以快速提供专业、准确的答案。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本外科医疗问答数据集是一个高质量、专业化的医疗领域数据集，为医疗人工智能研究和应用提供了宝贵的数据资源。数据集中的问答对来自真实的医患交流场景，内容专业准确，格式规范统一，非常适合用于医疗AI模型的训练和优化。</p>
+<p>数据集的核心价值在于其专业性和完整性。每条数据都包含完整的问答对，问题描述清晰，回答内容专业详细，为模型学习医疗领域的知识表达和问答逻辑提供了优质的训练样本。同时，数据集涵盖了外科领域的各类常见问题，具有较好的领域覆盖度，能够支持构建全面的医疗知识系统和问答系统。</p>
+<p>在医疗人工智能快速发展的今天，高质量的数据集是推动技术进步的重要基础。本数据集可以广泛应用于医疗智能问答系统、临床辅助决策系统、医疗知识图谱构建、医疗教育平台等多个场景，为提升医疗服务的智能化水平贡献力量。</p>
+<p>有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>外科医疗问答数据集</div>
+      <div>https://zhyyao.me/2025/12/17/dianshu/外科医疗问答数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B400%E5%B0%8F%E6%97%B6%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%8D%97%E6%98%8C%E6%96%B9%E8%A8%80%E6%95%B0%E6%8D%AE%E9%9B%86/" title="原创400小时大规模南昌方言数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">原创400小时大规模南昌方言数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E5%A6%87%E4%BA%A7%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/" title="妇产科医疗问答数据集">
+                        <span class="hidden-mobile">妇产科医疗问答数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

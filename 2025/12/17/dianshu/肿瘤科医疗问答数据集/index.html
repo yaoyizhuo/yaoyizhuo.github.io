@@ -1,0 +1,1941 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/17/dianshu/肿瘤科医疗问答数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="肿瘤科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。 本数据集是一个专门针对肿瘤科领域的医疗问答数据集，共包含75,553条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="肿瘤科医疗问答数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/17/dianshu/%E8%82%BF%E7%98%A4%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="肿瘤科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。 本数据集是一个专门针对肿瘤科领域的医疗问答数据集，共包含75,553条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:59:36.100Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>肿瘤科医疗问答数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="肿瘤科医疗问答数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-17 15:51" pubdate>
+          2025年12月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          142 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">肿瘤科医疗问答数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>肿瘤科作为医学领域的重要分支，涉及大量专业知识和临床经验。随着人工智能技术在医疗健康领域的快速发展，高质量的医疗问答数据集对于训练医疗AI模型、开发智能问答系统、辅助医生诊断等应用场景具有重要价值。</p>
+<p>本数据集是一个专门针对肿瘤科领域的医疗问答数据集，共包含75,553条完整的问答对数据。每条数据记录均包含科室分类、问题标题、患者提问内容以及专业医生的详细回答，形成了结构化的医疗知识问答对。数据集涵盖了肿瘤科领域的各类常见疾病、症状、诊断方法、治疗方案、预防措施等专业知识，为医疗AI模型的训练和优化提供了丰富的语料资源。</p>
+<p>该数据集对于医疗人工智能研究、智能问答系统开发、医疗知识图谱构建、临床辅助决策系统研发等应用具有重要的研究价值和实用价值。通过分析这些真实的医患问答数据，可以深入理解医疗领域的知识结构、问答模式和专业术语使用习惯，为构建更加智能和专业的医疗AI系统奠定数据基础。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据集：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13851">肿瘤科医疗问答数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模"><a href="#数据规模" class="headerlink" title="数据规模"></a>数据规模</h3><p>本数据集共包含<strong>75,553条</strong>完整的医疗问答记录，每条记录均经过专业医生审核，确保回答内容的专业性和准确性。</p>
+<h3 id="字段说明"><a href="#字段说明" class="headerlink" title="字段说明"></a>字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>department</td>
+<td>object</td>
+<td>科室分类</td>
+<td>甲状腺癌; 结肠癌; 结肠癌…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>title</td>
+<td>object</td>
+<td>问题标题</td>
+<td>甲状腺癌的晚期大概症状是什么; 患有升结肠癌要怎么治疗; 结肠癌到了晚期可以活多久…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>object</td>
+<td>患者提问内容</td>
+<td>患者女今年48岁，家里有亲戚被仔细检查确诊出是甲状腺癌，现在也在积极的治疗中，请问我想知道甲状腺癌的…</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>object</td>
+<td>医生回答内容</td>
+<td>甲状腺癌晚期的症状主要是声音嘶哑、吞咽困难等，喝水容易呛咳，颈部的肿块会急剧减小，建议你使用姑息性的…</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="科室分布"><a href="#科室分布" class="headerlink" title="科室分布"></a>科室分布</h4><table>
+<thead>
+<tr>
+<th>科室</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>肿瘤疾病</td>
+<td>9,346</td>
+<td>12.37%</td>
+<td>12.37%</td>
+</tr>
+<tr>
+<td>肺癌</td>
+<td>5,228</td>
+<td>6.92%</td>
+<td>19.29%</td>
+</tr>
+<tr>
+<td>食管癌</td>
+<td>4,871</td>
+<td>6.45%</td>
+<td>25.74%</td>
+</tr>
+<tr>
+<td>直肠癌</td>
+<td>3,208</td>
+<td>4.25%</td>
+<td>29.98%</td>
+</tr>
+<tr>
+<td>宫颈癌</td>
+<td>3,107</td>
+<td>4.11%</td>
+<td>34.10%</td>
+</tr>
+<tr>
+<td>胃癌</td>
+<td>2,693</td>
+<td>3.56%</td>
+<td>37.66%</td>
+</tr>
+<tr>
+<td>肝癌</td>
+<td>2,546</td>
+<td>3.37%</td>
+<td>41.03%</td>
+</tr>
+<tr>
+<td>肠癌</td>
+<td>2,210</td>
+<td>2.93%</td>
+<td>43.95%</td>
+</tr>
+<tr>
+<td>卵巢癌</td>
+<td>1,916</td>
+<td>2.54%</td>
+<td>46.49%</td>
+</tr>
+<tr>
+<td>乳腺癌</td>
+<td>1,831</td>
+<td>2.42%</td>
+<td>48.91%</td>
+</tr>
+<tr>
+<td>血管瘤</td>
+<td>1,599</td>
+<td>2.12%</td>
+<td>51.03%</td>
+</tr>
+<tr>
+<td>鼻咽癌</td>
+<td>1,413</td>
+<td>1.87%</td>
+<td>52.90%</td>
+</tr>
+<tr>
+<td>甲状腺癌</td>
+<td>1,379</td>
+<td>1.83%</td>
+<td>54.73%</td>
+</tr>
+<tr>
+<td>肿瘤与疼痛</td>
+<td>1,213</td>
+<td>1.61%</td>
+<td>56.33%</td>
+</tr>
+<tr>
+<td>淋巴癌</td>
+<td>1,153</td>
+<td>1.53%</td>
+<td>57.86%</td>
+</tr>
+<tr>
+<td>胰腺癌</td>
+<td>1,064</td>
+<td>1.41%</td>
+<td>59.27%</td>
+</tr>
+<tr>
+<td>前列腺癌</td>
+<td>1,044</td>
+<td>1.38%</td>
+<td>60.65%</td>
+</tr>
+<tr>
+<td>膀胱癌</td>
+<td>1,030</td>
+<td>1.36%</td>
+<td>62.01%</td>
+</tr>
+<tr>
+<td>小儿血管瘤</td>
+<td>969</td>
+<td>1.28%</td>
+<td>63.29%</td>
+</tr>
+<tr>
+<td>脑瘤</td>
+<td>958</td>
+<td>1.27%</td>
+<td>64.56%</td>
+</tr>
+<tr>
+<td>淋巴瘤</td>
+<td>938</td>
+<td>1.24%</td>
+<td>65.80%</td>
+</tr>
+<tr>
+<td>甲状腺腺瘤</td>
+<td>880</td>
+<td>1.16%</td>
+<td>66.97%</td>
+</tr>
+<tr>
+<td>肾癌</td>
+<td>815</td>
+<td>1.08%</td>
+<td>68.05%</td>
+</tr>
+<tr>
+<td>肺腺癌</td>
+<td>809</td>
+<td>1.07%</td>
+<td>69.12%</td>
+</tr>
+<tr>
+<td>胆囊肿瘤</td>
+<td>806</td>
+<td>1.07%</td>
+<td>70.18%</td>
+</tr>
+<tr>
+<td>结肠癌</td>
+<td>801</td>
+<td>1.06%</td>
+<td>71.24%</td>
+</tr>
+<tr>
+<td>乳腺纤维腺瘤</td>
+<td>694</td>
+<td>0.92%</td>
+<td>72.16%</td>
+</tr>
+<tr>
+<td>贲门癌</td>
+<td>666</td>
+<td>0.88%</td>
+<td>73.04%</td>
+</tr>
+<tr>
+<td>小肠肿瘤</td>
+<td>664</td>
+<td>0.88%</td>
+<td>73.92%</td>
+</tr>
+<tr>
+<td>黑色素瘤</td>
+<td>649</td>
+<td>0.86%</td>
+<td>74.78%</td>
+</tr>
+<tr>
+<td>阴茎癌</td>
+<td>600</td>
+<td>0.79%</td>
+<td>75.58%</td>
+</tr>
+<tr>
+<td>脑动脉瘤</td>
+<td>561</td>
+<td>0.74%</td>
+<td>76.32%</td>
+</tr>
+<tr>
+<td>妇科肿瘤</td>
+<td>546</td>
+<td>0.72%</td>
+<td>77.04%</td>
+</tr>
+<tr>
+<td>外阴肿瘤</td>
+<td>530</td>
+<td>0.70%</td>
+<td>77.74%</td>
+</tr>
+<tr>
+<td>脑胶质瘤</td>
+<td>510</td>
+<td>0.68%</td>
+<td>78.42%</td>
+</tr>
+<tr>
+<td>肾盂癌</td>
+<td>491</td>
+<td>0.65%</td>
+<td>79.07%</td>
+</tr>
+<tr>
+<td>脂肪瘤</td>
+<td>481</td>
+<td>0.64%</td>
+<td>79.70%</td>
+</tr>
+<tr>
+<td>神经胶质瘤</td>
+<td>459</td>
+<td>0.61%</td>
+<td>80.31%</td>
+</tr>
+<tr>
+<td>子宫癌</td>
+<td>458</td>
+<td>0.61%</td>
+<td>80.92%</td>
+</tr>
+<tr>
+<td>骨癌</td>
+<td>452</td>
+<td>0.60%</td>
+<td>81.52%</td>
+</tr>
+<tr>
+<td>口腔癌</td>
+<td>422</td>
+<td>0.56%</td>
+<td>82.07%</td>
+</tr>
+<tr>
+<td>垂体瘤</td>
+<td>418</td>
+<td>0.55%</td>
+<td>82.63%</td>
+</tr>
+<tr>
+<td>睾丸肿瘤</td>
+<td>411</td>
+<td>0.54%</td>
+<td>83.17%</td>
+</tr>
+<tr>
+<td>胰腺肿瘤</td>
+<td>410</td>
+<td>0.54%</td>
+<td>83.71%</td>
+</tr>
+<tr>
+<td>舌癌</td>
+<td>404</td>
+<td>0.53%</td>
+<td>84.25%</td>
+</tr>
+<tr>
+<td>软纤维瘤</td>
+<td>396</td>
+<td>0.52%</td>
+<td>84.77%</td>
+</tr>
+<tr>
+<td>脂肪肉瘤</td>
+<td>383</td>
+<td>0.51%</td>
+<td>85.28%</td>
+</tr>
+<tr>
+<td>睾丸癌</td>
+<td>369</td>
+<td>0.49%</td>
+<td>85.77%</td>
+</tr>
+<tr>
+<td>颈部血管瘤</td>
+<td>369</td>
+<td>0.49%</td>
+<td>86.26%</td>
+</tr>
+<tr>
+<td>纵隔肿瘤</td>
+<td>359</td>
+<td>0.48%</td>
+<td>86.73%</td>
+</tr>
+<tr>
+<td>脊髓肿瘤</td>
+<td>354</td>
+<td>0.47%</td>
+<td>87.20%</td>
+</tr>
+<tr>
+<td>软骨瘤</td>
+<td>339</td>
+<td>0.45%</td>
+<td>87.65%</td>
+</tr>
+<tr>
+<td>颅内肿瘤</td>
+<td>333</td>
+<td>0.44%</td>
+<td>88.09%</td>
+</tr>
+<tr>
+<td>听神经瘤</td>
+<td>329</td>
+<td>0.44%</td>
+<td>88.53%</td>
+</tr>
+<tr>
+<td>多发性骨髓瘤</td>
+<td>327</td>
+<td>0.43%</td>
+<td>88.96%</td>
+</tr>
+<tr>
+<td>胸主动脉瘤</td>
+<td>307</td>
+<td>0.41%</td>
+<td>89.37%</td>
+</tr>
+<tr>
+<td>非霍奇金淋巴瘤</td>
+<td>303</td>
+<td>0.40%</td>
+<td>89.77%</td>
+</tr>
+<tr>
+<td>口腔颌面肿瘤</td>
+<td>284</td>
+<td>0.38%</td>
+<td>90.14%</td>
+</tr>
+<tr>
+<td>骨瘤</td>
+<td>271</td>
+<td>0.36%</td>
+<td>90.50%</td>
+</tr>
+<tr>
+<td>肝血管瘤</td>
+<td>266</td>
+<td>0.35%</td>
+<td>90.85%</td>
+</tr>
+<tr>
+<td>软组织肿瘤</td>
+<td>259</td>
+<td>0.34%</td>
+<td>91.20%</td>
+</tr>
+<tr>
+<td>错构瘤</td>
+<td>257</td>
+<td>0.34%</td>
+<td>91.54%</td>
+</tr>
+<tr>
+<td>软组织肉瘤</td>
+<td>241</td>
+<td>0.32%</td>
+<td>91.85%</td>
+</tr>
+<tr>
+<td>胸腺癌</td>
+<td>237</td>
+<td>0.31%</td>
+<td>92.17%</td>
+</tr>
+<tr>
+<td>骨髓瘤</td>
+<td>226</td>
+<td>0.30%</td>
+<td>92.47%</td>
+</tr>
+<tr>
+<td>霍奇金淋巴瘤</td>
+<td>210</td>
+<td>0.28%</td>
+<td>92.75%</td>
+</tr>
+<tr>
+<td>骨巨细胞瘤</td>
+<td>207</td>
+<td>0.27%</td>
+<td>93.02%</td>
+</tr>
+<tr>
+<td>炎性乳腺癌</td>
+<td>206</td>
+<td>0.27%</td>
+<td>93.29%</td>
+</tr>
+<tr>
+<td>胆管癌</td>
+<td>199</td>
+<td>0.26%</td>
+<td>93.56%</td>
+</tr>
+<tr>
+<td>胶质瘤</td>
+<td>199</td>
+<td>0.26%</td>
+<td>93.82%</td>
+</tr>
+<tr>
+<td>皮肤纤维瘤</td>
+<td>183</td>
+<td>0.24%</td>
+<td>94.06%</td>
+</tr>
+<tr>
+<td>胆脂瘤</td>
+<td>171</td>
+<td>0.23%</td>
+<td>94.29%</td>
+</tr>
+<tr>
+<td>蔓状血管瘤</td>
+<td>164</td>
+<td>0.22%</td>
+<td>94.50%</td>
+</tr>
+<tr>
+<td>中耳癌</td>
+<td>161</td>
+<td>0.21%</td>
+<td>94.72%</td>
+</tr>
+<tr>
+<td>蛛网膜囊肿</td>
+<td>153</td>
+<td>0.20%</td>
+<td>94.92%</td>
+</tr>
+<tr>
+<td>食管平滑肌瘤</td>
+<td>145</td>
+<td>0.19%</td>
+<td>95.11%</td>
+</tr>
+<tr>
+<td>肉瘤</td>
+<td>144</td>
+<td>0.19%</td>
+<td>95.30%</td>
+</tr>
+<tr>
+<td>皮肤肿瘤</td>
+<td>139</td>
+<td>0.18%</td>
+<td>95.49%</td>
+</tr>
+<tr>
+<td>非骨化性纤维瘤</td>
+<td>138</td>
+<td>0.18%</td>
+<td>95.67%</td>
+</tr>
+<tr>
+<td>输尿管肿瘤</td>
+<td>136</td>
+<td>0.18%</td>
+<td>95.85%</td>
+</tr>
+<tr>
+<td>浆细胞瘤</td>
+<td>127</td>
+<td>0.17%</td>
+<td>96.02%</td>
+</tr>
+<tr>
+<td>脑垂体腺瘤</td>
+<td>120</td>
+<td>0.16%</td>
+<td>96.18%</td>
+</tr>
+<tr>
+<td>鳞状细胞癌</td>
+<td>120</td>
+<td>0.16%</td>
+<td>96.34%</td>
+</tr>
+<tr>
+<td>垂体腺瘤</td>
+<td>117</td>
+<td>0.15%</td>
+<td>96.49%</td>
+</tr>
+<tr>
+<td>间质瘤</td>
+<td>115</td>
+<td>0.15%</td>
+<td>96.64%</td>
+</tr>
+<tr>
+<td>原位癌</td>
+<td>111</td>
+<td>0.15%</td>
+<td>96.79%</td>
+</tr>
+<tr>
+<td>胸腺瘤</td>
+<td>109</td>
+<td>0.14%</td>
+<td>96.93%</td>
+</tr>
+<tr>
+<td>肠肿瘤</td>
+<td>107</td>
+<td>0.14%</td>
+<td>97.07%</td>
+</tr>
+<tr>
+<td>大肠癌</td>
+<td>103</td>
+<td>0.14%</td>
+<td>97.21%</td>
+</tr>
+<tr>
+<td>颅咽管瘤</td>
+<td>101</td>
+<td>0.13%</td>
+<td>97.34%</td>
+</tr>
+<tr>
+<td>肾肿瘤</td>
+<td>96</td>
+<td>0.13%</td>
+<td>97.47%</td>
+</tr>
+<tr>
+<td>早期乳腺癌</td>
+<td>91</td>
+<td>0.12%</td>
+<td>97.59%</td>
+</tr>
+<tr>
+<td>淋巴管瘤</td>
+<td>90</td>
+<td>0.12%</td>
+<td>97.71%</td>
+</tr>
+<tr>
+<td>骨样骨瘤</td>
+<td>89</td>
+<td>0.12%</td>
+<td>97.83%</td>
+</tr>
+<tr>
+<td>骨肿瘤</td>
+<td>76</td>
+<td>0.10%</td>
+<td>97.93%</td>
+</tr>
+<tr>
+<td>牙龈癌</td>
+<td>73</td>
+<td>0.10%</td>
+<td>98.03%</td>
+</tr>
+<tr>
+<td>牙龈瘤</td>
+<td>70</td>
+<td>0.09%</td>
+<td>98.12%</td>
+</tr>
+<tr>
+<td>外阴癌</td>
+<td>70</td>
+<td>0.09%</td>
+<td>98.21%</td>
+</tr>
+<tr>
+<td>泌尿系肿瘤疾病</td>
+<td>65</td>
+<td>0.09%</td>
+<td>98.30%</td>
+</tr>
+<tr>
+<td>阴道癌</td>
+<td>65</td>
+<td>0.09%</td>
+<td>98.38%</td>
+</tr>
+<tr>
+<td>胰腺囊肿</td>
+<td>64</td>
+<td>0.08%</td>
+<td>98.47%</td>
+</tr>
+<tr>
+<td>肠系膜囊肿</td>
+<td>63</td>
+<td>0.08%</td>
+<td>98.55%</td>
+</tr>
+<tr>
+<td>纤维肉瘤</td>
+<td>63</td>
+<td>0.08%</td>
+<td>98.64%</td>
+</tr>
+<tr>
+<td>脑血管瘤</td>
+<td>61</td>
+<td>0.08%</td>
+<td>98.72%</td>
+</tr>
+<tr>
+<td>肠系膜肿瘤</td>
+<td>55</td>
+<td>0.07%</td>
+<td>98.79%</td>
+</tr>
+<tr>
+<td>肾错构瘤</td>
+<td>53</td>
+<td>0.07%</td>
+<td>98.86%</td>
+</tr>
+<tr>
+<td>星形细胞瘤</td>
+<td>52</td>
+<td>0.07%</td>
+<td>98.93%</td>
+</tr>
+<tr>
+<td>嗜铬细胞瘤</td>
+<td>52</td>
+<td>0.07%</td>
+<td>99.00%</td>
+</tr>
+<tr>
+<td>唇癌</td>
+<td>51</td>
+<td>0.07%</td>
+<td>99.06%</td>
+</tr>
+<tr>
+<td>残胃癌</td>
+<td>49</td>
+<td>0.06%</td>
+<td>99.13%</td>
+</tr>
+<tr>
+<td>食管良性病变</td>
+<td>46</td>
+<td>0.06%</td>
+<td>99.19%</td>
+</tr>
+<tr>
+<td>小儿肿瘤</td>
+<td>40</td>
+<td>0.05%</td>
+<td>99.24%</td>
+</tr>
+<tr>
+<td>气管肿瘤</td>
+<td>38</td>
+<td>0.05%</td>
+<td>99.29%</td>
+</tr>
+<tr>
+<td>脊柱肿瘤</td>
+<td>37</td>
+<td>0.05%</td>
+<td>99.34%</td>
+</tr>
+<tr>
+<td>结直肠癌</td>
+<td>36</td>
+<td>0.05%</td>
+<td>99.39%</td>
+</tr>
+<tr>
+<td>尿道癌</td>
+<td>35</td>
+<td>0.05%</td>
+<td>99.44%</td>
+</tr>
+<tr>
+<td>尤文氏肉瘤</td>
+<td>34</td>
+<td>0.05%</td>
+<td>99.48%</td>
+</tr>
+<tr>
+<td>小儿血液肿瘤</td>
+<td>30</td>
+<td>0.04%</td>
+<td>99.52%</td>
+</tr>
+<tr>
+<td>胸腺囊肿</td>
+<td>28</td>
+<td>0.04%</td>
+<td>99.56%</td>
+</tr>
+<tr>
+<td>眼眶病眼肿瘤</td>
+<td>28</td>
+<td>0.04%</td>
+<td>99.59%</td>
+</tr>
+<tr>
+<td>腹部肿块</td>
+<td>26</td>
+<td>0.03%</td>
+<td>99.63%</td>
+</tr>
+<tr>
+<td>粘液表皮样癌</td>
+<td>26</td>
+<td>0.03%</td>
+<td>99.66%</td>
+</tr>
+<tr>
+<td>外阴脂肪瘤</td>
+<td>25</td>
+<td>0.03%</td>
+<td>99.70%</td>
+</tr>
+<tr>
+<td>小儿骨肿瘤</td>
+<td>25</td>
+<td>0.03%</td>
+<td>99.73%</td>
+</tr>
+<tr>
+<td>上颌窦癌</td>
+<td>23</td>
+<td>0.03%</td>
+<td>99.76%</td>
+</tr>
+<tr>
+<td>鼻血管瘤</td>
+<td>21</td>
+<td>0.03%</td>
+<td>99.79%</td>
+</tr>
+<tr>
+<td>肠血管瘤</td>
+<td>19</td>
+<td>0.03%</td>
+<td>99.81%</td>
+</tr>
+<tr>
+<td>外阴乳头状瘤</td>
+<td>19</td>
+<td>0.03%</td>
+<td>99.84%</td>
+</tr>
+<tr>
+<td>外阴平滑肌肉瘤</td>
+<td>18</td>
+<td>0.02%</td>
+<td>99.86%</td>
+</tr>
+<tr>
+<td>眼部肿瘤</td>
+<td>17</td>
+<td>0.02%</td>
+<td>99.88%</td>
+</tr>
+<tr>
+<td>胃平滑肌瘤</td>
+<td>16</td>
+<td>0.02%</td>
+<td>99.91%</td>
+</tr>
+<tr>
+<td>胃肠道癌</td>
+<td>15</td>
+<td>0.02%</td>
+<td>99.93%</td>
+</tr>
+<tr>
+<td>肠系膜动脉瘤</td>
+<td>14</td>
+<td>0.02%</td>
+<td>99.94%</td>
+</tr>
+<tr>
+<td>心脏内粘液瘤</td>
+<td>12</td>
+<td>0.02%</td>
+<td>99.96%</td>
+</tr>
+<tr>
+<td>毛囊瘤</td>
+<td>10</td>
+<td>0.01%</td>
+<td>99.97%</td>
+</tr>
+<tr>
+<td>胃畸胎瘤</td>
+<td>7</td>
+<td>0.01%</td>
+<td>99.98%</td>
+</tr>
+<tr>
+<td>胃恶性淋巴瘤</td>
+<td>7</td>
+<td>0.01%</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>外阴浸润性鳞癌</td>
+<td>6</td>
+<td>0.01%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h4 id="常见问题类型分布（Top-20）"><a href="#常见问题类型分布（Top-20）" class="headerlink" title="常见问题类型分布（Top 20）"></a>常见问题类型分布（Top 20）</h4><table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>十二指肠肿瘤胆管结石能做手术吗？</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>NSE高会是小细胞肺癌吗</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>脑垂体瘤影响怀孕吗？</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>胰腺癌能治好吗</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>甲状腺癌切除后会不会复发</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>宫颈癌中期能治好吗</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>鼻咽癌怎么治疗</td>
+<td>3</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>鳞状细胞舌癌是否治好</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>非何杰金淋巴瘤可治好吗、早期吗</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>如果用中医来治疗食道癌有用吗？</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>鼻咽癌放疗后效果好的还要复查吗？</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>肝血管瘤怎么办，</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>宫颈癌有什么症状那?</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>纤维肿瘤要怎样冶比较好</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>西安骨髓瘤治疗的好吗</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>怎样延长食道癌患者的生存时间？</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>大腿根部有疙瘩，就一个。长了好几年了，不</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>骨巨细胞瘤应该要怎么治</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>多发性骨髓瘤的治疗方法是什么</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>食道癌脑转移怎么办</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+</tbody></table>
+<h3 id="文本长度统计"><a href="#文本长度统计" class="headerlink" title="文本长度统计"></a>文本长度统计</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>平均长度</th>
+<th>中位数长度</th>
+<th>最短长度</th>
+<th>最长长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>患者提问</td>
+<td>60.5</td>
+<td>55.0</td>
+<td>1</td>
+<td>1063</td>
+</tr>
+<tr>
+<td>医生回答</td>
+<td>179.2</td>
+<td>160.0</td>
+<td>2</td>
+<td>9755</td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>专业性强</td>
+<td>所有回答均来自专业医生，内容准确可靠</td>
+<td>可直接用于训练医疗AI模型，确保输出专业性</td>
+</tr>
+<tr>
+<td>问答对完整</td>
+<td>每条数据包含完整的问答对，问题与答案一一对应</td>
+<td>适合用于问答系统训练、对话模型优化</td>
+</tr>
+<tr>
+<td>领域覆盖全面</td>
+<td>涵盖该科室的各类常见疾病和问题</td>
+<td>支持构建全面的医疗知识库和问答系统</td>
+</tr>
+<tr>
+<td>真实场景数据</td>
+<td>来自真实医患问答场景，贴近实际应用</td>
+<td>训练出的模型更符合实际使用需求</td>
+</tr>
+<tr>
+<td>结构化数据</td>
+<td>数据格式统一，字段清晰，易于处理</td>
+<td>便于数据清洗、分析和模型训练</td>
+</tr>
+<tr>
+<td>规模适中</td>
+<td>数据量充足，既保证多样性又便于处理</td>
+<td>适合中小型项目快速开发和验证</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是数据集中的部分样例，展示了数据的多样性和完整性：</p>
+<h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 1"></a>样例 1</h3><p><strong>科室：</strong> 甲状腺癌</p>
+<p><strong>问题标题：</strong> 甲状腺癌的晚期大概症状是什么</p>
+<p><strong>患者提问：</strong></p>
+<p>患者女今年48岁，家里有亲戚被仔细检查确诊出是甲状腺癌，现在也在积极的治疗中，请问我想知道甲状腺癌的晚期症状是什么</p>
+<p><strong>医生回答：</strong></p>
+<p>甲状腺癌晚期的症状主要是声音嘶哑、吞咽困难等，喝水容易呛咳，颈部的肿块会急剧减小，建议你使用姑息性的治疗，也可以采用姑息性的手术，还可以试试看用中药来调养身体。疾病的治疗方法有很多，但是由于患者病情不同所以采取的医治方法也就不一样，因此需要患者尽快去专业一样进行详细检测，才能对症下药。</p>
+<hr>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><p><strong>科室：</strong> 口腔颌面肿瘤</p>
+<p><strong>问题标题：</strong> 喉癌的手术治疗与保健都是什么</p>
+<p><strong>患者提问：</strong></p>
+<p>男38岁，我一直也在治这个病，也都在吃药，但是一直不见好转，我也很烦，用了很多方法也不行，请问：喉癌的手术治疗与保健都是什么</p>
+<p><strong>医生回答：</strong></p>
+<p>手术治疗：1、喉崩开+CO2激光肿瘤切除术，适用于原位癌、T1炎症单侧喉癌。2、喉横向部分切除术，适用于T1，选择性T2、T3。3、喉水平部分切除术，适用于声门平面以上的肿瘤，T2～T3。4、3&#x2F;4喉或7&#x2F;8喉切除术，选择性T2、T3。5、全喉切除术，适用于T3、T4，在条件具有时，可进行发出声音重建术。6、依病人的情况，进行功能性或缓解术颈廓清术。</p>
+<hr>
+<h3 id="样例-3"><a href="#样例-3" class="headerlink" title="样例 3"></a>样例 3</h3><p><strong>科室：</strong> 直肠癌</p>
+<p><strong>问题标题：</strong> 直肠癌患者禁忌吃什么</p>
+<p><strong>患者提问：</strong></p>
+<p>家中有直肠癌患者，我们心急如焚，到底应该怎么办呢？直肠癌患者禁忌吃什么求医生帮助。</p>
+<p><strong>医生回答：</strong></p>
+<p>竹笋含有蛋白质、胡萝卜素、多种不同维生素及铁、磷、镁等无机盐和有益健康的18种氨基酸；纤维素含量高，其在肠内可以增加人体对脂肪的炼化，增强肠蠕动，增进消化吸收，增加与高血脂关于疾病的发病率；并所含多种不同可以抗衰老的多糖物质，是一种理想的保健美容食品。除此之外，患者在治疗直肠癌期间，除了要马上治疗外，患者的饮食状况和心理状态也是特别重要，患者一定要始终保持心情愉快，恰当饮食，以免对直肠癌的彻底恢复引发了不必要的影响。</p>
+<hr>
+<h3 id="样例-4"><a href="#样例-4" class="headerlink" title="样例 4"></a>样例 4</h3><p><strong>科室：</strong> 食管癌</p>
+<p><strong>问题标题：</strong> 食管癌疾病患者可以手术治疗吗</p>
+<p><strong>患者提问：</strong></p>
+<p>食道癌如果不救治会怎么样53岁的患者想要知晓食道癌如果不救治会怎么样理解食道癌如果不救治会怎么样</p>
+<p><strong>医生回答：</strong></p>
+<p>食道癌手术一定都有风险，这就需要有主治医生权衡考虑，对于不适合食道癌手术救治的患者应谨慎使用手术救治，或已再次发生了多处的脏器扩散，这时手术能不能够达到所该的效果还需细细思忖如有些患者盲目手术，引发手术开雄厚无法实施手术摘除，这样会给患者引发心理和身理上的严重沉重打击。食道癌是严重危害人体健康的恶性肿瘤疾病，是需要有我们多加观注的，若早期救治不及时，或者舍弃了救治，这个时期的病情进步很快，癌细胞能迅速的蔓延和扩散，直接伤及患者的生命。</p>
+<hr>
+<h3 id="样例-5"><a href="#样例-5" class="headerlink" title="样例 5"></a>样例 5</h3><p><strong>科室：</strong> 胰腺癌</p>
+<p><strong>问题标题：</strong> 胰腺癌肝转移了，怎么弄好？</p>
+<p><strong>患者提问：</strong></p>
+<p>医生，我患了胰腺癌，又去医院仔细检查了，医生说我的癌细胞已经扩散到肝了，我一直都有理解治疗，不知为什么还会扩散，医生，除了没有救啊？您好胰腺癌肝转移了，怎么办？</p>
+<p><strong>医生回答：</strong></p>
+<p>老年男性病人原发性的疾病是胰腺癌，目前已经再次出现了肝脏的扩散，那么是拥有远处扩散的一种表现，临床诊断分期治疗是晚期，那么胰腺癌的病理类型最常见的就是导管细胞癌再次发生原因主要是和常年饮酒有关，也有一定的家族隔代遗传逆反心理，或者有反反复复复发的慢性胰腺炎的病史，这种情况下可以决定化疗。</p>
+<hr>
+<h3 id="样例-6"><a href="#样例-6" class="headerlink" title="样例 6"></a>样例 6</h3><p><strong>科室：</strong> 宫颈癌</p>
+<p><strong>问题标题：</strong> 宫颈实性占位是不是宫颈癌</p>
+<p><strong>患者提问：</strong></p>
+<p>近一个月一直流血量少最近偶尔有腹痛在医院做了磁共振仔细检查想您好几下是子宫癌么如果是的话是几期怎么治疗呢</p>
+<p><strong>医生回答：</strong></p>
+<p>根据磁共振的影象叙述，宫颈的占位性炎症，癌肿是不能够剔除的，这只是影像学的仔细检查，也不能够明确区其分期付款，建议阴道镜检查取炎症的联盟病理诊断，同时建议腹盆腔增加CT仔细检查，评价宫颈病变与周围联盟结构的关系，如何有淋巴结异常，以及其他脏器如何有岔开，早期炎症必选的治疗方式是手术摘除。</p>
+<hr>
+<h3 id="样例-7"><a href="#样例-7" class="headerlink" title="样例 7"></a>样例 7</h3><p><strong>科室：</strong> 妇科肿瘤</p>
+<p><strong>问题标题：</strong> 治子宫内膜癌好的方法有哪些</p>
+<p><strong>患者提问：</strong></p>
+<p>子宫内膜癌早期有哪些症状</p>
+<p><strong>医生回答：</strong></p>
+<p>很高兴为您解惑，一般来说子宫内膜癌是再次发生于子宫内膜的一组上皮性恶性肿瘤，好发于围绝经期和绝经后女性。早期患者可无临床诊断症状。但一些患者同时拆分肥胖、高血压和&#x2F;或糖尿病；长期破皮患者可继发贫血；阴道排液，破皮等症状。子宫内膜癌是一种容易病发的妇科疾病，在服药期间，女性需要有看重自身的护理，尤其是护理方面，建议患者多注意注意阴部卫生，饮食清淡为基础，后祝女性患者可以尽快康复。</p>
+<hr>
+<h3 id="样例-8"><a href="#样例-8" class="headerlink" title="样例 8"></a>样例 8</h3><p><strong>科室：</strong> 蛛网膜囊肿</p>
+<p><strong>问题标题：</strong> 枕大池蛛网膜囊肿请问怎么医治？</p>
+<p><strong>患者提问：</strong></p>
+<p>这么十多年以来，我的身体都不是很好的，我今天还要过神经性的问题，后来去医院拿许多药回家不就好了许多，然后晚上睡午觉的时候精神状态很不好的。您好枕大池蛛网膜囊肿怎么治疗？</p>
+<p><strong>医生回答：</strong></p>
+<p>枕大池蛛网膜囊肿是临床诊断神经外科常见的一种疾病，可由多种不同原因致使，能压迫脑组织和神经，从而再次出现一连串的症状，干扰身体健康，干扰正常的培训和生活，应当积极治疗。使用 药物治疗是没什么效果的，应当及时到正规公立医院神经外科复诊，由专科医生根据实际病情采用手术治疗，效果是比较好的。</p>
+<hr>
+<h3 id="样例-9"><a href="#样例-9" class="headerlink" title="样例 9"></a>样例 9</h3><p><strong>科室：</strong> 肝癌</p>
+<p><strong>问题标题：</strong> 肝癌晚期的症状是什么?</p>
+<p><strong>患者提问：</strong></p>
+<p>父亲72岁仔细检查肝癌晚期，胃里，肺里都有，骨头上也有，刚动了手术，现在我听了好些医生的建议，我决定苛刻救治，不在给父亲动手术，您好医生我回来给父亲吃什么药打什么针能纾解父亲的病情，哪怕让父亲高兴的多活一天我都会全力以赴，谢谢。</p>
+<p><strong>医生回答：</strong></p>
+<p>癌症术后会有病发扩散的可能会，需要有及时互相配合有效的中药稳固救治，建议你用能有效抗衰老抗衰老的传统中药互相配合救治，见效快，疗效确切，能快速缓解疼痛，很多患者使用 后长期生活。采取传统中药互相配合使用 可以有效控制癌细胞扩散蔓延，能增加机体免疫功能以达到抑制癌细胞生长，增加机体免疫力，以防残留癌细胞蔓延扩散。除此之外，患者在救治肝癌期间，除了要及时救治外，</p>
+<hr>
+<h3 id="样例-10"><a href="#样例-10" class="headerlink" title="样例 10"></a>样例 10</h3><p><strong>科室：</strong> 肺癌</p>
+<p><strong>问题标题：</strong> 如何治疗肺癌晚期</p>
+<p><strong>患者提问：</strong></p>
+<p>医生我的爷爷一直气喘，睡午觉的时候呼息有点困难，最近突然严重，低烧不退，吃晚饭都觉着吞吃困难，所以去医院仔细检查，小细胞已经岔开到脖子上又一肿块了，医生质疑是肺癌晚期。您好如何治疗肺癌晚期？</p>
+<p><strong>医生回答：</strong></p>
+<p>肿瘤的救治最好是中西医结合救治同时实施效果最好，西医的手术，放化疗都有很大的毒副作用和后遗症，所以最好同时互相配合无毒性抗衰老绿色疗法中医中药，这样既可以减轻西医救治的毒副作用，稳固病情；同时还可以减轻症状，控制病情扩张，降低生活质量，缩短生活期。肺癌的治疗方法有一些，但是由于患者症状不同所以采用的诊病方法也就不一样，因此患者需要有及时仔细检查诊断，方才能对症救治。</p>
+<hr>
+<h3 id="样例-11"><a href="#样例-11" class="headerlink" title="样例 11"></a>样例 11</h3><p><strong>科室：</strong> 膀胱癌</p>
+<p><strong>问题标题：</strong> 膀胱癌上腹痛是怎么回事？</p>
+<p><strong>患者提问：</strong></p>
+<p>前段时间时吃完饭跑几步就会备感腹痛，抗住腹部有时能好多，有时走路会再次出现走一步痛一次的状况。最近老坐在电脑旁培训，左腹侧明显浮肿，呼息有些气不顺，小便时会备感胀的压力变小，去医院也没查出来什么。?膀胱癌上腹痛是怎么回事？</p>
+<p><strong>医生回答：</strong></p>
+<p>根据你叙述的症状推测有可能是患了尿路感染，可以通过仔细检查尿常规诊断。患尿路感染，可以口服氧氟沙星或左氧氟实施治疗。治疗期间一定要多饮水、饮食禁忌：1、尿路感染的饮食忌胀气之物。胀气之物包括牛奶、豆浆、蔗糖等。2、尿路感染的饮食忌发物。发物。3、尿路感染的饮食忌助长湿热之品。包括酒类、甜品和高脂肪食物。</p>
+<hr>
+<h3 id="样例-12"><a href="#样例-12" class="headerlink" title="样例 12"></a>样例 12</h3><p><strong>科室：</strong> 肿瘤疾病</p>
+<p><strong>问题标题：</strong> 淋巴结转移性癌如何治疗</p>
+<p><strong>患者提问：</strong></p>
+<p>今年9月我母亲颈部有包块，用手压会痛，有咳嗽现象。在本县医院检查。未治疗。7年前曾检查有子宫肌瘤，但未确诊。后来没有手术和彻底的治疗，最近3年出现3较重的腹痛现象，头次输液就好了，后来吃了药就好了</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，对于晚期癌症患者可以采用放化疗处理，配合中草药治疗提高生存质量，定期复查，平时注意保暖预防发生感冒的情况，多吃蔬菜、水果。，等到肿瘤疾病病情得到缓解的时候，患者切忌停药或者更换药物治疗，如果选择了手术治疗，术后一定要重视自身的护理工作，并且合理饮食，避免辛辣寒冷食物，希望患者病情可以得到缓解。</p>
+<hr>
+<h3 id="样例-13"><a href="#样例-13" class="headerlink" title="样例 13"></a>样例 13</h3><p><strong>科室：</strong> 黑色素瘤</p>
+<p><strong>问题标题：</strong> 恶性黑色素瘤如何治疗</p>
+<p><strong>患者提问：</strong></p>
+<p>脚底长了一个肿瘤作了手术，然后作病里说是恶性黑色素瘤，我想问一下在咱们医院可以用pd1临床试验吗</p>
+<p><strong>医生回答：</strong></p>
+<p>　恶性黑色素瘤细胞大多数具有特异性抗原，在患者血清中可查出自身肿瘤抗体存在，少部分恶性黑色素瘤有自发消退现象，故临床上倡导应用生物疗法，通过增强机体的免疫反应，期望达到控制肿瘤生长、杀灭体内残存的瘤细胞和防止肿瘤复发的目的。</p>
+<hr>
+<h3 id="样例-14"><a href="#样例-14" class="headerlink" title="样例 14"></a>样例 14</h3><p><strong>科室：</strong> 肿瘤疾病</p>
+<p><strong>问题标题：</strong> 肿瘤标志物的意思是什么</p>
+<p><strong>患者提问：</strong></p>
+<p>最近几周，发现了家人精神状态不是很好，脸色也总是白白的，吃饭感觉没有以前多了，他总是说吃不下去，给人死气沉沉的感觉，让我们很是担心呢，请问肿瘤标志物的意思是什么</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，肿瘤标志物检查常见的有甲胎蛋白和癌胚抗原等等项目，这些物质存在于正常人的血液中，稍有增高并没有意义。但如果某项或者多项明显的增高则代表患有某种癌症的风险明显增高，需要做全身的详细检查，并注意从饮食起居等方面寻找癌症风险增高的原因。</p>
+<hr>
+<h3 id="样例-15"><a href="#样例-15" class="headerlink" title="样例 15"></a>样例 15</h3><p><strong>科室：</strong> 淋巴瘤</p>
+<p><strong>问题标题：</strong> 淋巴瘤化疗一个疗程后能吃灵芝孢子粉吗</p>
+<p><strong>患者提问：</strong></p>
+<p>最近几周，发现了家人精神状态不是很好，脸色也总是白白的，吃饭感觉没有以前多了，他总是说吃不下去，给人死气沉沉的感觉，让我们很是担心呢，请问淋巴瘤化疗一个疗程后能吃灵芝孢子粉吗</p>
+<p><strong>医生回答：</strong></p>
+<p>恶性肿瘤早期最好手术治疗，并做局部淋巴结清扫，术后的五年生存率比较高，所以效果比较确切，术后配合化疗或放疗增强疗效。，你好，检查确诊有淋巴瘤病情的话，可以应用中医辨证方法试试看，必要的话考虑手术治疗。注意做好日常调养护理，防止感染。</p>
+<hr>
+<h3 id="样例-16"><a href="#样例-16" class="headerlink" title="样例 16"></a>样例 16</h3><p><strong>科室：</strong> 胆囊肿瘤</p>
+<p><strong>问题标题：</strong> 请问晚期恶性胆囊肿瘤能治好吗？</p>
+<p><strong>患者提问：</strong></p>
+<p>皮肤发黄，吃不下去饭，胃里不难受</p>
+<p><strong>医生回答：</strong></p>
+<p>你好，你说的情况建议你采用中药保守治疗，有康复的可能。祖国医学用传统中药有非常独到的治疗方法，建议你手术后用传统中药虫草、猪苓、明党参、桑寄生、青阳参、香菇、红豆蔻、桑白皮、杜仲、降香、茯苓、白术、八月札、知母、片姜黄、、制南星、山萸肉、木瓜、仙茅、制半夏、补骨脂、独活、石菖蒲、仙鹤草、大蓟、山奈、枸杞子、薏苡仁、地榆、白前、丹皮、射干、当归、土鳖虫、青黛、肉桂、苦参、金精粉、葫芦巴、白癣皮、赤芍、山豆根、远志、泽泻、金银花、乌术粉、制鳖甲、连翘、紫草、桃仁、三七治疗，见效快，疗效确切，其功效能在短期内缩小肿块，控制转移、减轻痛苦、稳定病情甚至达到临床治好；这些药物能够增强机体免疫功能以达到抑制癌细胞生长，同时又不产生副作用，增强机体免疫力，以达到战胜癌症的目的。希望你正确治疗，早日康复！</p>
+<hr>
+<h3 id="样例-17"><a href="#样例-17" class="headerlink" title="样例 17"></a>样例 17</h3><p><strong>科室：</strong> 颈部血管瘤</p>
+<p><strong>问题标题：</strong> 经常睡歪脖子是什么因素或病因</p>
+<p><strong>患者提问：</strong></p>
+<p>已经睡歪脖子两次，肩膀非常的痛，动也动不了，要吃止痛药后两三天才能好，以前没试过这种情况,睡姿有时平躺有是侧睡</p>
+<p><strong>医生回答：</strong></p>
+<p>你所说的睡歪脖子要是落枕。经常落枕主要有两种因素或病因：一是睡眠姿势不适当。睡眠时枕头过高或过低，使颈部肌肉痉挛疲劳；如果睡得太熟，转身时，身子转动了但颈项并未随之转动，使颈项处于一个不良的位置，造成刺激而引起疼痛。二是睡眠时感受风寒。因在夜间睡眠时门窗打开被风吹袭而受凉，并产生疼痛。造成局部经络不通，气血运行不畅而引起。指导意见：建议：1.热敷疗法。在后枕部使用50℃-6O℃的热水袋热敷，约半小时左右即可奏效。同时局部经常轻度地按摩半小时，可起到活血化瘀、通经活络的预防作用。2.按摩颈部。在发生了落枕后，可在其后枕部作按摩。按摩时，先顺着枕后的肌肉由上到下的按压，往往能找到明显的压痛点。用小鱼际肌(拳底多肉之处)在压痛点的左右按压5-10分钟，然后令伤者的颈部作来回转动，其速度由快到慢，如此4-5分钟即可。3.如果还是没有效果，可以去医院拍一个颈椎X片，看是否有颈椎病变，然后去推拿科就诊。</p>
+<hr>
+<h3 id="样例-18"><a href="#样例-18" class="headerlink" title="样例 18"></a>样例 18</h3><p><strong>科室：</strong> 肝癌</p>
+<p><strong>问题标题：</strong> 酵素对肝癌淋巴癌有效吗?</p>
+<p><strong>患者提问：</strong></p>
+<p>酵素对肝癌淋巴癌有效吗?</p>
+<p><strong>医生回答：</strong></p>
+<p>你好;综合分析患者各种情况能手术最好手术治疗,如果实在不能承受的话只能放化疗了.治疗方法主要有放疗、化疗以及中医药治疗，且以中西医结合为治疗原则。指导意见：抗癌食物；卷心菜、菜花、萝卜、白菜、油菜、荠菜、大头菜、榨菜、芥菜、苹果、大枣、菠萝、猕猴桃、柑橘等对肿瘤有一定的抑制作用。</p>
+<hr>
+<h3 id="样例-19"><a href="#样例-19" class="headerlink" title="样例 19"></a>样例 19</h3><p><strong>科室：</strong> 软纤维瘤</p>
+<p><strong>问题标题：</strong> 这是皮内痣还是软纤维瘤？如何治疗？</p>
+<p><strong>患者提问：</strong></p>
+<p>内手腕长一个小软包，不痛不痒。</p>
+<p><strong>医生回答：</strong></p>
+<p>没什么危害，两个病的治疗都可以用激光的</p>
+<hr>
+<h3 id="样例-20"><a href="#样例-20" class="headerlink" title="样例 20"></a>样例 20</h3><p><strong>科室：</strong> 小儿血管瘤</p>
+<p><strong>问题标题：</strong> 肝上长血管瘤用不用做手术？</p>
+<p><strong>患者提问：</strong></p>
+<p>2010年体检查出</p>
+<p><strong>医生回答：</strong></p>
+<p>你好!肝血管瘤是肝脏的良性肿瘤.小血管瘤多无症状,较大血管瘤可有肝区胀痛.肿瘤直径＜5ｃｍ者,无症状的者,不需治疗.平时注意不要剧烈运动,以免血管瘤破裂,定期复查,随诊即可.如果大于5厘米,建议介入治疗,属于微创手术,恢复快,效果好。</p>
+<hr>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="医疗智能问答系统开发"><a href="#医疗智能问答系统开发" class="headerlink" title="医疗智能问答系统开发"></a>医疗智能问答系统开发</h3><p>基于本数据集可以训练和开发专业的肿瘤科智能问答系统。系统能够理解患者的自然语言提问，并基于数据集中的专业知识提供准确的回答。这种应用可以显著提升医疗服务的可及性，让患者能够随时随地获得专业的医疗咨询建议。通过分析数据集中的问答模式，系统可以学习到如何理解患者的症状描述，如何组织专业回答，以及如何处理不同类型的医疗问题。这对于构建24小时在线医疗咨询服务、辅助基层医疗机构提升服务质量具有重要价值。</p>
+<h3 id="医疗AI模型训练与优化"><a href="#医疗AI模型训练与优化" class="headerlink" title="医疗AI模型训练与优化"></a>医疗AI模型训练与优化</h3><p>本数据集为医疗领域的大语言模型训练提供了高质量的标注数据。研究人员可以使用这些数据对预训练模型进行微调，使其在肿瘤科领域具备更强的专业能力。数据集中的问答对可以作为监督学习的训练样本，帮助模型学习医疗领域的知识表达方式和问答逻辑。通过大规模的训练，模型可以掌握疾病的诊断思路、治疗方案的选择原则、预防措施的制定方法等专业知识，从而在医疗辅助诊断、治疗方案推荐等场景中发挥重要作用。</p>
+<h3 id="医疗知识图谱构建"><a href="#医疗知识图谱构建" class="headerlink" title="医疗知识图谱构建"></a>医疗知识图谱构建</h3><p>数据集中的问答对包含了丰富的医疗实体和关系信息，可以用于构建肿瘤科领域的知识图谱。通过实体识别和关系抽取技术，可以从问答文本中提取疾病名称、症状、检查方法、药物、治疗方案等实体，以及它们之间的关联关系。构建的知识图谱可以支持更复杂的医疗推理和知识检索，为临床决策支持系统提供知识基础。知识图谱还可以用于医疗信息的可视化展示，帮助医生和患者更好地理解疾病和治疗过程。</p>
+<h3 id="临床辅助决策系统"><a href="#临床辅助决策系统" class="headerlink" title="临床辅助决策系统"></a>临床辅助决策系统</h3><p>基于本数据集训练的模型可以应用于临床辅助决策系统，帮助医生快速获取相关疾病的诊断思路和治疗建议。系统可以根据患者的主诉和症状，从知识库中检索相似案例，为医生提供参考信息。这种应用可以提升医生的诊断效率，减少误诊风险，特别是在处理罕见疾病或复杂病例时，系统可以提供多角度的专业建议。同时，系统还可以帮助年轻医生快速积累临床经验，提升整体医疗服务质量。</p>
+<h3 id="医疗教育平台开发"><a href="#医疗教育平台开发" class="headerlink" title="医疗教育平台开发"></a>医疗教育平台开发</h3><p>数据集可以用于开发医疗教育平台，为医学生和年轻医生提供学习资源。平台可以基于问答数据构建知识库，支持学习者通过提问的方式学习医疗知识。系统可以根据学习者的提问，提供详细的专业解答，帮助学习者理解疾病的发病机制、诊断要点、治疗原则等核心知识。这种互动式的学习方式比传统的教材阅读更加生动有效，可以提升学习者的学习兴趣和效果。</p>
+<h3 id="医疗信息检索系统"><a href="#医疗信息检索系统" class="headerlink" title="医疗信息检索系统"></a>医疗信息检索系统</h3><p>基于本数据集可以构建专业的医疗信息检索系统，支持用户通过自然语言查询获取相关的医疗信息。系统可以对用户的查询进行语义理解，从数据集中检索最相关的问答对，为用户提供准确的信息。这种应用可以满足患者和医疗工作者对医疗信息的快速检索需求，特别是在需要了解特定疾病的症状、诊断、治疗等信息时，系统可以快速提供专业、准确的答案。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本肿瘤科医疗问答数据集是一个高质量、专业化的医疗领域数据集，为医疗人工智能研究和应用提供了宝贵的数据资源。数据集中的问答对来自真实的医患交流场景，内容专业准确，格式规范统一，非常适合用于医疗AI模型的训练和优化。</p>
+<p>数据集的核心价值在于其专业性和完整性。每条数据都包含完整的问答对，问题描述清晰，回答内容专业详细，为模型学习医疗领域的知识表达和问答逻辑提供了优质的训练样本。同时，数据集涵盖了肿瘤科领域的各类常见问题，具有较好的领域覆盖度，能够支持构建全面的医疗知识系统和问答系统。</p>
+<p>在医疗人工智能快速发展的今天，高质量的数据集是推动技术进步的重要基础。本数据集可以广泛应用于医疗智能问答系统、临床辅助决策系统、医疗知识图谱构建、医疗教育平台等多个场景，为提升医疗服务的智能化水平贡献力量。</p>
+<p>有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>肿瘤科医疗问答数据集</div>
+      <div>https://zhyyao.me/2025/12/17/dianshu/肿瘤科医疗问答数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/17/dianshu/%E6%9C%80%E6%96%B0%E4%B9%B3%E8%85%BAX%E5%85%89%E7%89%87%E6%95%B0%E6%8D%AE%E9%9B%86/" title="最新乳腺X光片数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">最新乳腺X光片数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="中国大学题库数据集">
+                        <span class="hidden-mobile">中国大学题库数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

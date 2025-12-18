@@ -1,0 +1,1088 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/知乎评论数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在当今大数据和人工智能快速发展的时代，高质量的中文文本数据集对于自然语言处理、情感分析、推荐系统等领域的算法研发和模型训练具有不可替代的重要价值。知乎作为中国领先的知识分享社区平台，汇聚了海量用户的真实评论和互动内容，这些数据天然地承载了丰富的语言特征、情感倾向和用户行为模式，为相关研究提供了宝贵的资源基础。 本数据集完整收录了知乎平台上的用户评论数据，总计超过555万条真实评论记录。数据集不仅包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知乎评论数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E7%9F%A5%E4%B9%8E%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在当今大数据和人工智能快速发展的时代，高质量的中文文本数据集对于自然语言处理、情感分析、推荐系统等领域的算法研发和模型训练具有不可替代的重要价值。知乎作为中国领先的知识分享社区平台，汇聚了海量用户的真实评论和互动内容，这些数据天然地承载了丰富的语言特征、情感倾向和用户行为模式，为相关研究提供了宝贵的资源基础。 本数据集完整收录了知乎平台上的用户评论数据，总计超过555万条真实评论记录。数据集不仅包">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T10:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.817Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>知乎评论数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="知乎评论数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 18:51" pubdate>
+          2025年12月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          93 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">知乎评论数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在当今大数据和人工智能快速发展的时代，高质量的中文文本数据集对于自然语言处理、情感分析、推荐系统等领域的算法研发和模型训练具有不可替代的重要价值。知乎作为中国领先的知识分享社区平台，汇聚了海量用户的真实评论和互动内容，这些数据天然地承载了丰富的语言特征、情感倾向和用户行为模式，为相关研究提供了宝贵的资源基础。</p>
+<p>本数据集完整收录了知乎平台上的用户评论数据，总计超过555万条真实评论记录。数据集不仅包含了每条评论的完整文本内容，还提供了丰富的元数据信息，包括评论标识、文章关联、用户信息、互动数据等关键字段。这些元数据与原始评论内容相结合，构成了一个结构完整、信息丰富的数据集合，能够支持多维度的数据分析和应用场景。</p>
+<p>对于自然语言处理领域的研究者而言，本数据集提供了大规模的中文文本语料，可用于语言模型训练、文本分类、情感分析、文本生成等任务。对于推荐系统和用户行为分析的研究，数据集中的用户标识、文章关联、点赞数等字段为构建用户画像、分析内容偏好、优化推荐算法提供了数据支撑。对于社会计算和网络分析研究，数据集中用户间的互动模式和内容传播特征也为相关研究提供了实证基础。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>参考数据：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13835">知乎评论数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模与类型"><a href="#数据规模与类型" class="headerlink" title="数据规模与类型"></a>数据规模与类型</h3><p>本数据集共包含<strong>5,555,582条</strong>评论记录，每条记录均采用JSON格式存储，包含11个核心字段。数据以TSV（制表符分隔值）格式组织，每行包含一个唯一记录标识符和对应的JSON数据对象。数据集覆盖了知乎平台上多个话题领域的用户评论，内容涵盖社会热点、科技讨论、生活分享、学术交流等各类主题，具有较高的多样性和代表性。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cid</td>
+<td>字符串</td>
+<td>评论唯一标识符</td>
+<td>“10022864653”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>aid</td>
+<td>字符串</td>
+<td>关联文章标识符</td>
+<td>“2277978252”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>ups</td>
+<td>字符串</td>
+<td>评论点赞数</td>
+<td>“3”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>字符串</td>
+<td>用户唯一标识符（原始）</td>
+<td>“jiu-a-jiu-11-69”</td>
+<td>98.74%</td>
+</tr>
+<tr>
+<td>author</td>
+<td>字符串</td>
+<td>评论作者昵称</td>
+<td>“久啊久”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>pub_date</td>
+<td>字符串</td>
+<td>评论发布日期</td>
+<td>“2021-12-25”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>content</td>
+<td>字符串</td>
+<td>评论正文内容</td>
+<td>“其实农村部分剩男如果愿意做上门女婿的话还是能有老婆的…”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>id</td>
+<td>字符串</td>
+<td>记录唯一标识符</td>
+<td>“5134771037”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>spider_time</td>
+<td>字符串</td>
+<td>数据采集时间</td>
+<td>“2022-01-02 00:00:00”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>new_uid</td>
+<td>字符串</td>
+<td>用户唯一标识符（哈希）</td>
+<td>“da5ffaa6826f60762f40e2d1f83998bd”</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td>d</td>
+<td>字符串</td>
+<td>数据日期标识</td>
+<td>“2022-01-02”</td>
+<td>100.0%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="用户分布统计"><a href="#用户分布统计" class="headerlink" title="用户分布统计"></a>用户分布统计</h4><p>数据集共包含<strong>348,720个</strong>不同的用户，这些用户贡献了超过555万条评论。用户活跃度分布呈现典型的幂律分布特征，大部分用户贡献了少量评论，而少数活跃用户贡献了大量评论内容。这种分布模式符合社交网络平台的一般规律，为研究用户行为模式和内容贡献机制提供了数据基础。</p>
+<h4 id="文章分布统计"><a href="#文章分布统计" class="headerlink" title="文章分布统计"></a>文章分布统计</h4><p>数据集关联了<strong>124,460篇</strong>不同的知乎文章，平均每篇文章下约有44.6条评论。文章评论数的分布同样呈现长尾特征，热门文章吸引了大量用户参与讨论，而大部分文章下的评论数量相对较少。这种分布特征为研究内容传播机制和用户参与模式提供了重要信息。</p>
+<h4 id="点赞数分布统计"><a href="#点赞数分布统计" class="headerlink" title="点赞数分布统计"></a>点赞数分布统计</h4><p>评论点赞数（ups字段）的统计结果显示，点赞数的最小值为0，最大值为6,076，平均值为5.07，总点赞数超过2,815万次。点赞数的分布反映了用户对不同评论内容的认可程度，高点赞数的评论通常代表了高质量或引起广泛共鸣的内容，这些数据对于内容质量评估和推荐算法优化具有重要价值。</p>
+<h4 id="评论内容长度分布"><a href="#评论内容长度分布" class="headerlink" title="评论内容长度分布"></a>评论内容长度分布</h4><p>评论正文内容（content字段）的长度统计显示，最短评论仅包含1个字符，最长评论达到7,401个字符，平均长度为42.26个字符。评论长度的分布反映了用户表达习惯的多样性，从简短的赞同或质疑，到详细的分析和讨论，不同长度的评论承载了不同层次的信息和情感。</p>
+<h4 id="主要作者分布"><a href="#主要作者分布" class="headerlink" title="主要作者分布"></a>主要作者分布</h4><table>
+<thead>
+<tr>
+<th>作者昵称</th>
+<th>评论数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>匿名用户</td>
+<td>70,146</td>
+<td>1.26%</td>
+</tr>
+<tr>
+<td>知乎用户</td>
+<td>12,869</td>
+<td>0.23%</td>
+</tr>
+<tr>
+<td>霸王别姬</td>
+<td>3,431</td>
+<td>0.06%</td>
+</tr>
+<tr>
+<td>啦啦啦</td>
+<td>3,092</td>
+<td>0.06%</td>
+</tr>
+<tr>
+<td>微信用户</td>
+<td>3,090</td>
+<td>0.06%</td>
+</tr>
+<tr>
+<td>哈哈哈</td>
+<td>3,020</td>
+<td>0.05%</td>
+</tr>
+<tr>
+<td>123</td>
+<td>2,974</td>
+<td>0.05%</td>
+</tr>
+<tr>
+<td>呵呵</td>
+<td>2,963</td>
+<td>0.05%</td>
+</tr>
+<tr>
+<td>无名</td>
+<td>2,452</td>
+<td>0.04%</td>
+</tr>
+<tr>
+<td>Seven</td>
+<td>2,445</td>
+<td>0.04%</td>
+</tr>
+</tbody></table>
+<p>前20名活跃作者共贡献了约12.5万条评论，占总评论数的2.25%。值得注意的是，大量用户选择匿名发表评论，这反映了知乎平台用户对隐私保护的需求，同时也为研究匿名用户的行为特征提供了数据支持。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>大规模真实数据</td>
+<td>超过555万条真实用户评论，覆盖34.8万用户和12.4万篇文章</td>
+<td>为大规模模型训练和统计分析提供充足的数据基础，确保研究结果的可靠性和泛化能力</td>
+</tr>
+<tr>
+<td>完整元数据标注</td>
+<td>每条评论包含11个核心字段，涵盖评论标识、用户信息、文章关联、互动数据等</td>
+<td>支持多维度的数据分析和交叉验证，便于构建复杂的分析模型和应用系统</td>
+</tr>
+<tr>
+<td>高质量文本内容</td>
+<td>评论内容完整保留，平均长度42字符，最长可达7400字符</td>
+<td>为自然语言处理任务提供丰富的文本特征，支持文本分类、情感分析、文本生成等应用</td>
+</tr>
+<tr>
+<td>用户行为数据</td>
+<td>包含用户标识、点赞数、文章关联等行为数据</td>
+<td>支持用户画像构建、推荐系统训练、行为模式分析等应用场景</td>
+</tr>
+<tr>
+<td>数据完整性高</td>
+<td>核心字段完整率均超过98%，大部分字段完整率达到100%</td>
+<td>减少数据清洗工作量，提高数据可用性和分析效率</td>
+</tr>
+<tr>
+<td>内容多样性</td>
+<td>覆盖多个话题领域，包含不同长度、风格、情感倾向的评论</td>
+<td>提高模型的泛化能力，支持多样化的应用场景和研究需求</td>
+</tr>
+<tr>
+<td>真实用户互动</td>
+<td>包含真实的点赞数据和用户互动模式</td>
+<td>为推荐算法和社交网络分析提供真实的用户行为信号</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是数据集中的部分评论样例，展示了数据的多样性和丰富性。这些样例涵盖了不同长度、不同主题、不同情感倾向的评论内容，反映了数据集的广泛覆盖范围。</p>
+<p><strong>样例1：</strong></p>
+<ul>
+<li>评论ID：10022864653</li>
+<li>作者：久啊久</li>
+<li>内容：其实农村部分剩男如果愿意做上门女婿的话还是能有老婆的。苏南浙北农村家庭也多只有一女，存在工薪家庭也有招女婿的需求。</li>
+<li>点赞数：3</li>
+</ul>
+<p><strong>样例2：</strong></p>
+<ul>
+<li>评论ID：10022224737</li>
+<li>作者：小桃夭</li>
+<li>内容：有就结，没有不强求，不是吗？</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例3：</strong></p>
+<ul>
+<li>评论ID：10023192724</li>
+<li>作者：洛克</li>
+<li>内容：嗯嗯, 是的.</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例4：</strong></p>
+<ul>
+<li>评论ID：10023933601</li>
+<li>作者：偷偷看一下</li>
+<li>内容：这些光棍可以去非洲呀，顺便讨个老婆回来。</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例5：</strong></p>
+<ul>
+<li>评论ID：10023818023</li>
+<li>作者：木子钦</li>
+<li>内容：剩下来的大部分是差的，也有少部分是好的，但往往农村的光棍为什么是光棍在农村生活过的都懂，农村那种光棍没有固定收入没车没房没存款，身上一万块钱都没有又不孝顺父母，人品差的没话说，就是有钱就赌去KTV，这种人谁会把女儿嫁过去？但凡正常点都不至于三十几还找不到女朋友，找不到怪谁还不是怪你自己，自己养活自己都难，不用喷我，我这里的光棍十有九个都是这种人，等着绝种吧！</li>
+<li>点赞数：2</li>
+</ul>
+<p><strong>样例6：</strong></p>
+<ul>
+<li>评论ID：10024494111</li>
+<li>作者：少主</li>
+<li>内容：能怎么解决，难道还一人配一个姑娘给他们，想得美</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例7：</strong></p>
+<ul>
+<li>评论ID：10025044186</li>
+<li>作者：竹志</li>
+<li>内容：物竞天择，适者生存。见过光棍，但是没见到正常的男人打光棍。</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例8：</strong></p>
+<ul>
+<li>评论ID：10023294690</li>
+<li>作者：曾青</li>
+<li>内容：谢谢回复！是一家授权店</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例9：</strong></p>
+<ul>
+<li>评论ID：10023913665</li>
+<li>作者：天依未来</li>
+<li>内容：果然。。。听哥一句劝，别去授权店，这里水很深，你会握不住[滑稽][滑稽]。学生这种不懂手机的最好去旗舰店，那是华为自己的，不敢坑你，真坑你，店长到销售估计都提前回家过年，而且服务态度真的好，我去给平板贴膜，没有，帮我联系其他店，不知道路还让人带我去。授权店就是私人花钱加盟，我楼下那家加盟的，不光华为荣耀，小米ov苹果都在卖。</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例10：</strong></p>
+<ul>
+<li>评论ID：10027034524</li>
+<li>作者：Virtfiend</li>
+<li>内容：嗯嗯。。我不懂你对线的是哪个国服狂铁。反正当年狂铁一技能回血没被砍半的时候，我攻速鞋，3布甲，无尽，影刃，冰心，破军，抵抗鞋这个顺序出装，攻速鞋出来就是狂铁龟缩塔下的日子（铭文57攻击改3狩猎）。吕布二技能让狂铁没法吸血。吕布被动又无视狂铁盾，你狂铁看吕布残血要越塔，你2闪a前瑶很明显啊，我原地开大狂铁直接自闭。你说吕布不能吊打狂铁我真不信。更何况是现版本吕布身为版本之子，苍穹，大招改动全加强吕布。二技能还可以在对面塔里吸英雄不会被塔攻击。相比之下，狂铁后期就跟橘子一样尴尬，根本近不了身。除非省级吕布对线国服这种技术差距太大的。</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例11：</strong></p>
+<ul>
+<li>评论ID：10025602754</li>
+<li>作者：匿名用户</li>
+<li>内容：猪场游戏质量要在以前的确还行，音乐和美工还算不错，但基本上也就是个矮子里拔高个的水平。现在出了个二次元浓度更高且音乐和美术实力更强、游戏内容还碾压猪场的mhy，再加上猪场这几年早把自己口碑玩烂了，阴阳师创造的二次元市场优势早就不剩啥了。现在出了那么多游戏，能算得上火的也就一个阴阳师，在国外还没什么市场，最多也就算是火遍亚洲，而mhy现在一款崩坏3在国内站稳脚步，一款原神全球都站稳脚步了，年底还拿了两个大奖，我看猪场好日子要到头了，再不上进点怕不是以后二次元市场都没他的份了。</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例12：</strong></p>
+<ul>
+<li>评论ID：10022403012</li>
+<li>作者：今犹在</li>
+<li>内容：你也挺奇怪的，一口一个”反智群体”，似乎自己多清明一样。但就那么一个社会事件，在不是当事人，没有更多确凿证据的前提下，不是应该从双方角度观察才能尽量客观？你倒好，完全以”房东””房客”的身份作为判断出发点来直接站立场，以自己情绪作为事件对错的出发点，就这？还敢嘲讽别人”反智”？</li>
+<li>点赞数：25</li>
+</ul>
+<p><strong>样例13：</strong></p>
+<ul>
+<li>评论ID：10024667956</li>
+<li>作者：民国写手张恨水</li>
+<li>内容：我觉得这个虐文好，加油作者，我等着你！</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例14：</strong></p>
+<ul>
+<li>评论ID：10021991095</li>
+<li>作者：Yerkes.W</li>
+<li>内容：哎，我都想把11pm卖了买个se3了</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例15：</strong></p>
+<ul>
+<li>评论ID：10025506241</li>
+<li>作者：易先生</li>
+<li>内容：？？？？？？？？？？？</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例16：</strong></p>
+<ul>
+<li>评论ID：10025625257</li>
+<li>作者：天天向上</li>
+<li>内容：这个游戏不需要竞争性和社交性，自己玩自己的呗</li>
+<li>点赞数：1</li>
+</ul>
+<p><strong>样例17：</strong></p>
+<ul>
+<li>评论ID：10024660514</li>
+<li>作者：aZun呀阿竣</li>
+<li>内容：憋笑才是演技的体现啊，她也是穿越的，知道这一切都是贾玲为了哄她开心，这换你你能不笑吗，而且还有一种乐观主义精神在里面，多难能可贵啊</li>
+<li>点赞数：2</li>
+</ul>
+<p><strong>样例18：</strong></p>
+<ul>
+<li>评论ID：10024598144</li>
+<li>作者：RoskomnadzorTyan</li>
+<li>内容：外语和亚文化梗懂得多，和樱花妹联动日语直播铐打只会汉语的观众，在彩虹社里某种程度上比樱花妹还樱花妹，不是真罕见[捂脸]</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例19：</strong></p>
+<ul>
+<li>评论ID：10025164148</li>
+<li>作者：温暖意犹未尽</li>
+<li>内容：贤妻良母不是骂人嘛？</li>
+<li>点赞数：0</li>
+</ul>
+<p><strong>样例20：</strong></p>
+<ul>
+<li>评论ID：10027188893</li>
+<li>作者：炸至酥脆的彭于晏</li>
+<li>内容：每次出了什么事都要老百姓自己去抵制，不想着像西方明确立法，遇事罚款就完事了，欧洲动不动罚苹果Google几千万上亿而且还是有理有据。反正我是累了，爱咋滴咋滴去吧，今天是耐克明天是山姆的，到头来一看国家队用的正起劲。像不像渣男渣女，是你自己要抵制的，又不是我让你们抵制的，我用什么品牌和你有什么关系</li>
+<li>点赞数：13</li>
+</ul>
+<p>以上样例展示了数据集中评论内容的多样性，包括不同长度、不同主题、不同表达风格的评论。这些真实用户的评论内容为自然语言处理、情感分析、文本分类等任务提供了丰富的训练数据。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="自然语言处理与文本分析"><a href="#自然语言处理与文本分析" class="headerlink" title="自然语言处理与文本分析"></a>自然语言处理与文本分析</h3><p>本数据集为自然语言处理领域的研究和应用提供了大规模的中文文本语料。研究者可以利用这555万条评论数据训练中文语言模型，进行文本分类、情感分析、文本生成、关键词提取、文本摘要等任务。评论内容的多样性确保了模型能够学习到丰富的语言特征和表达模式，提高模型的泛化能力。数据集中的完整评论文本为基于深度学习的自然语言处理模型提供了充足的训练样本，支持BERT、GPT等预训练模型的微调和领域适应。同时，评论长度的多样性（从1字符到7400字符）使得数据集能够支持不同粒度的文本分析任务，从短文本分类到长文本理解。</p>
+<h3 id="情感分析与观点挖掘"><a href="#情感分析与观点挖掘" class="headerlink" title="情感分析与观点挖掘"></a>情感分析与观点挖掘</h3><p>评论数据天然地承载了用户的情感倾向和观点态度，这使得本数据集成为情感分析和观点挖掘研究的理想数据源。研究者可以基于评论内容进行情感分类（正面、负面、中性），分析用户对不同话题的情感态度，挖掘热点话题的情感倾向。数据集中的点赞数（ups字段）可以作为情感强度的辅助标注，高点赞数的评论往往代表了引起广泛共鸣的观点。通过分析评论内容与点赞数的关系，可以构建更准确的情感分析模型。此外，结合用户标识和文章关联信息，可以分析不同用户群体对特定话题的情感倾向差异，为精准营销、舆情监测、品牌管理等领域提供数据支持。</p>
+<h3 id="推荐系统与个性化服务"><a href="#推荐系统与个性化服务" class="headerlink" title="推荐系统与个性化服务"></a>推荐系统与个性化服务</h3><p>数据集中的用户标识（uid、new_uid）、文章关联（aid）、点赞数（ups）等字段为推荐系统的研究和开发提供了丰富的数据基础。研究者可以基于用户的历史评论行为构建用户画像，分析用户的兴趣偏好和内容消费模式，开发个性化的内容推荐算法。通过分析用户对不同文章的评论参与度和点赞行为，可以构建用户-内容交互矩阵，训练协同过滤推荐模型。数据集覆盖了34.8万用户和12.4万篇文章，为推荐系统提供了足够的用户和物品规模，支持大规模推荐算法的训练和评估。同时，评论内容本身也可以作为推荐系统的特征，通过文本分析提取内容特征，实现基于内容的推荐。</p>
+<h3 id="用户行为分析与社交网络研究"><a href="#用户行为分析与社交网络研究" class="headerlink" title="用户行为分析与社交网络研究"></a>用户行为分析与社交网络研究</h3><p>本数据集为研究用户行为模式和社交网络特征提供了数据支撑。通过分析用户的评论频率、评论长度、点赞数分布等指标，可以研究用户的活跃度模式和参与行为特征。数据集中的用户标识使得研究者能够追踪单个用户的行为轨迹，分析用户的行为变化和兴趣演化。通过分析文章下的评论数量和分布，可以研究内容传播机制和用户参与模式，识别热门话题和传播节点。匿名用户和实名用户的行为差异也为研究隐私保护对用户行为的影响提供了数据基础。这些研究对于理解在线社区的用户行为规律、优化平台运营策略、提升用户体验具有重要价值。</p>
+<h3 id="内容质量评估与信息检索"><a href="#内容质量评估与信息检索" class="headerlink" title="内容质量评估与信息检索"></a>内容质量评估与信息检索</h3><p>评论数据中的点赞数反映了用户对评论内容的认可程度，可以作为内容质量评估的指标。研究者可以基于评论内容和点赞数的关系，构建内容质量评估模型，自动识别高质量评论和低质量评论。这种模型可以应用于信息检索系统，优先展示高质量内容，提升用户体验。同时，评论内容的完整保留使得研究者可以进行全文检索和语义检索，开发基于评论内容的信息检索系统。通过分析评论内容与文章主题的关联度，可以构建更精准的内容推荐和信息检索算法。</p>
+<h3 id="社会计算与舆情分析"><a href="#社会计算与舆情分析" class="headerlink" title="社会计算与舆情分析"></a>社会计算与舆情分析</h3><p>作为真实用户的评论数据，本数据集为社会计算和舆情分析研究提供了宝贵的资源。研究者可以分析不同话题下的评论分布和情感倾向，监测社会热点和舆论趋势。通过分析评论内容中的关键词和主题，可以识别热点话题和讨论焦点，为舆情监测和危机预警提供数据支持。数据集中的用户分布和互动模式也为研究信息传播机制、意见领袖识别、社区结构分析等社会计算问题提供了数据基础。这些研究对于理解网络社会的信息传播规律、优化信息治理策略具有重要价值。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本知乎评论数据集以其超过555万条真实评论的庞大规模、完整的元数据标注、高质量的文本内容，为自然语言处理、情感分析、推荐系统、用户行为分析等多个领域的研究和应用提供了宝贵的数据资源。数据集不仅包含了完整的评论文本内容，还提供了丰富的元数据信息，包括用户标识、文章关联、互动数据等关键字段，支持多维度的数据分析和交叉验证。</p>
+<p>数据集的核心优势在于其真实性和完整性。所有评论均来自真实用户的真实互动，反映了用户在知乎平台上的真实表达和行为模式。数据的高完整性（核心字段完整率均超过98%）确保了数据的可用性和分析效率，减少了数据清洗的工作量。评论内容的多样性（覆盖多个话题领域，包含不同长度、风格、情感倾向的评论）提高了模型的泛化能力，支持多样化的应用场景和研究需求。</p>
+<p>对于自然语言处理领域，本数据集提供了大规模的中文文本语料，可用于语言模型训练、文本分类、情感分析等任务。对于推荐系统和用户行为分析，数据集中的用户标识、文章关联、点赞数等字段为构建用户画像、分析内容偏好、优化推荐算法提供了数据支撑。对于社会计算和网络分析研究，数据集中用户间的互动模式和内容传播特征也为相关研究提供了实证基础。</p>
+<p>本数据集适用于学术研究、算法研发、产品开发等多种场景，为相关领域的研究者和开发者提供了高质量的数据资源。有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>知乎评论数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/知乎评论数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E7%8C%AB%E7%8B%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/" title="猫狗图像识别数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">猫狗图像识别数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E8%8A%9D%E5%8A%A0%E5%93%A5Divvy%E5%85%B1%E4%BA%AB%E5%8D%95%E8%BD%A6%E9%AA%91%E8%A1%8C%E6%95%B0%E6%8D%AE/" title="芝加哥Divvy共享单车骑行数据">
+                        <span class="hidden-mobile">芝加哥Divvy共享单车骑行数据</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

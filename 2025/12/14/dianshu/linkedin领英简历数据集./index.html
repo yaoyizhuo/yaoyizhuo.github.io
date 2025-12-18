@@ -1,0 +1,1477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/linkedin领英简历数据集./"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在数字化时代，职业社交网络数据已成为人才分析、市场研究、算法开发等领域的重要资源。领英（LinkedIn）作为全球最大的职业社交平台，汇聚了数亿专业人士的职业信息、教育背景、技能标签和工作经历，这些数据对于理解全球人才市场趋势、开发智能推荐系统、构建人才画像模型具有不可估量的价值。本数据集通过对领英平台数据的系统化采集和结构化整理，为研究者、数据科学家、企业人力资源部门以及算法工程师提供了一个高质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linkedin领英简历数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/linkedin%E9%A2%86%E8%8B%B1%E7%AE%80%E5%8E%86%E6%95%B0%E6%8D%AE%E9%9B%86./index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在数字化时代，职业社交网络数据已成为人才分析、市场研究、算法开发等领域的重要资源。领英（LinkedIn）作为全球最大的职业社交平台，汇聚了数亿专业人士的职业信息、教育背景、技能标签和工作经历，这些数据对于理解全球人才市场趋势、开发智能推荐系统、构建人才画像模型具有不可估量的价值。本数据集通过对领英平台数据的系统化采集和结构化整理，为研究者、数据科学家、企业人力资源部门以及算法工程师提供了一个高质">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.810Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>linkedin领英简历数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="linkedin领英简历数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          113 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">linkedin领英简历数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在数字化时代，职业社交网络数据已成为人才分析、市场研究、算法开发等领域的重要资源。领英（LinkedIn）作为全球最大的职业社交平台，汇聚了数亿专业人士的职业信息、教育背景、技能标签和工作经历，这些数据对于理解全球人才市场趋势、开发智能推荐系统、构建人才画像模型具有不可估量的价值。本数据集通过对领英平台数据的系统化采集和结构化整理，为研究者、数据科学家、企业人力资源部门以及算法工程师提供了一个高质量、大规模、多维度的人才数据资源，可用于训练机器学习模型、进行人才市场分析、开发智能招聘系统、构建职业发展预测模型等多元化应用场景。数据集不仅覆盖了不同行业、不同国家、不同职业层级的专业人士信息，还包含了丰富的关联数据，如工作经历、教育背景、技能标签、地理位置等，为深入的人才分析和算法研发提供了坚实的数据基础。</p>
+<span id="more"></span>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13822">领英数据集</a></p>
+</blockquote>
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><p>本数据集包含<strong>2,277,067条</strong>领英用户记录，数据规模达到<strong>2.8GB</strong>，采用<strong>JSON格式</strong>存储，每条记录都经过结构化处理和标准化清洗。数据集覆盖了<strong>149个不同行业</strong>，涉及<strong>237个国家和地区</strong>，数据的时间跨度从2010年至2020年，涵盖了不同职业发展阶段的人才信息。</p>
+<p>每条数据记录包含以下核心字段：用户基本信息（姓名、性别、LinkedIn ID、个人简介）、职业信息（当前职位、公司名称、行业分类、职位级别、工作起始时间）、教育背景（学校名称、学位类型、专业方向、毕业时间）、技能标签（专业技能列表）、工作经历（历史工作记录、公司信息、职位变更）、联系方式（邮箱地址、电话号码）、地理位置（国家、地区、城市、地理坐标）、社交网络信息（LinkedIn连接数、其他社交平台链接）、推断属性（预估薪资范围、工作年限）。数据采用统一的结构化格式，便于程序化处理和批量分析，同时保留了原始数据的完整性和丰富性。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><p>每条数据记录包含以下字段，字段说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>字段类别</th>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础信息</strong></td>
+<td>id</td>
+<td>String</td>
+<td>记录唯一标识符</td>
+</tr>
+<tr>
+<td></td>
+<td>full_name</td>
+<td>String</td>
+<td>用户全名</td>
+</tr>
+<tr>
+<td></td>
+<td>first_name</td>
+<td>String</td>
+<td>名</td>
+</tr>
+<tr>
+<td></td>
+<td>middle_name</td>
+<td>String</td>
+<td>中间名（可选）</td>
+</tr>
+<tr>
+<td></td>
+<td>last_name</td>
+<td>String</td>
+<td>姓</td>
+</tr>
+<tr>
+<td></td>
+<td>gender</td>
+<td>String</td>
+<td>性别（male&#x2F;female&#x2F;null）</td>
+</tr>
+<tr>
+<td></td>
+<td>birth_year</td>
+<td>Integer</td>
+<td>出生年份</td>
+</tr>
+<tr>
+<td></td>
+<td>birth_date</td>
+<td>String</td>
+<td>出生日期</td>
+</tr>
+<tr>
+<td><strong>LinkedIn信息</strong></td>
+<td>linkedin_url</td>
+<td>String</td>
+<td>LinkedIn个人主页URL</td>
+</tr>
+<tr>
+<td></td>
+<td>linkedin_username</td>
+<td>String</td>
+<td>LinkedIn用户名</td>
+</tr>
+<tr>
+<td></td>
+<td>linkedin_id</td>
+<td>String</td>
+<td>LinkedIn用户ID</td>
+</tr>
+<tr>
+<td></td>
+<td>linkedin_connections</td>
+<td>Integer</td>
+<td>LinkedIn连接数</td>
+</tr>
+<tr>
+<td><strong>职业信息</strong></td>
+<td>industry</td>
+<td>String</td>
+<td>所属行业</td>
+</tr>
+<tr>
+<td></td>
+<td>job_title</td>
+<td>String</td>
+<td>当前职位名称</td>
+</tr>
+<tr>
+<td></td>
+<td>job_title_role</td>
+<td>String</td>
+<td>职位角色</td>
+</tr>
+<tr>
+<td></td>
+<td>job_title_sub_role</td>
+<td>String</td>
+<td>职位子角色</td>
+</tr>
+<tr>
+<td></td>
+<td>job_title_levels</td>
+<td>Array</td>
+<td>职位级别列表</td>
+</tr>
+<tr>
+<td></td>
+<td>job_company_name</td>
+<td>String</td>
+<td>公司名称</td>
+</tr>
+<tr>
+<td></td>
+<td>job_company_id</td>
+<td>String</td>
+<td>公司ID</td>
+</tr>
+<tr>
+<td></td>
+<td>job_company_size</td>
+<td>String</td>
+<td>公司规模</td>
+</tr>
+<tr>
+<td></td>
+<td>job_company_founded</td>
+<td>String</td>
+<td>公司成立年份</td>
+</tr>
+<tr>
+<td></td>
+<td>job_company_industry</td>
+<td>String</td>
+<td>公司所属行业</td>
+</tr>
+<tr>
+<td></td>
+<td>job_start_date</td>
+<td>String</td>
+<td>工作开始日期</td>
+</tr>
+<tr>
+<td></td>
+<td>job_last_updated</td>
+<td>String</td>
+<td>工作信息最后更新时间</td>
+</tr>
+<tr>
+<td><strong>地理位置</strong></td>
+<td>location_name</td>
+<td>String</td>
+<td>位置名称（完整地址）</td>
+</tr>
+<tr>
+<td></td>
+<td>location_locality</td>
+<td>String</td>
+<td>城市</td>
+</tr>
+<tr>
+<td></td>
+<td>location_region</td>
+<td>String</td>
+<td>州&#x2F;省&#x2F;地区</td>
+</tr>
+<tr>
+<td></td>
+<td>location_country</td>
+<td>String</td>
+<td>国家</td>
+</tr>
+<tr>
+<td></td>
+<td>location_continent</td>
+<td>String</td>
+<td>大洲</td>
+</tr>
+<tr>
+<td></td>
+<td>location_geo</td>
+<td>String</td>
+<td>地理坐标（经纬度）</td>
+</tr>
+<tr>
+<td><strong>联系方式</strong></td>
+<td>emails</td>
+<td>Array</td>
+<td>邮箱地址列表（包含address和type字段）</td>
+</tr>
+<tr>
+<td></td>
+<td>phone_numbers</td>
+<td>Array</td>
+<td>电话号码列表</td>
+</tr>
+<tr>
+<td></td>
+<td>work_email</td>
+<td>String</td>
+<td>工作邮箱</td>
+</tr>
+<tr>
+<td></td>
+<td>mobile_phone</td>
+<td>String</td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td><strong>社交网络</strong></td>
+<td>facebook_url</td>
+<td>String</td>
+<td>Facebook个人主页URL</td>
+</tr>
+<tr>
+<td></td>
+<td>facebook_username</td>
+<td>String</td>
+<td>Facebook用户名</td>
+</tr>
+<tr>
+<td></td>
+<td>twitter_url</td>
+<td>String</td>
+<td>Twitter个人主页URL</td>
+</tr>
+<tr>
+<td></td>
+<td>twitter_username</td>
+<td>String</td>
+<td>Twitter用户名</td>
+</tr>
+<tr>
+<td></td>
+<td>github_url</td>
+<td>String</td>
+<td>GitHub个人主页URL</td>
+</tr>
+<tr>
+<td></td>
+<td>github_username</td>
+<td>String</td>
+<td>GitHub用户名</td>
+</tr>
+<tr>
+<td><strong>技能与兴趣</strong></td>
+<td>skills</td>
+<td>Array</td>
+<td>技能标签列表</td>
+</tr>
+<tr>
+<td></td>
+<td>interests</td>
+<td>Array</td>
+<td>兴趣爱好列表</td>
+</tr>
+<tr>
+<td></td>
+<td>languages</td>
+<td>Array</td>
+<td>语言能力列表</td>
+</tr>
+<tr>
+<td><strong>工作经历</strong></td>
+<td>experience</td>
+<td>Array</td>
+<td>工作经历列表，每个经历包含：company（公司信息）、title（职位信息）、start_date（开始日期）、end_date（结束日期）、is_primary（是否当前工作）</td>
+</tr>
+<tr>
+<td><strong>教育背景</strong></td>
+<td>education</td>
+<td>Array</td>
+<td>教育经历列表，每个教育包含：school（学校信息）、degrees（学位列表）、majors（专业列表）、start_date（开始日期）、end_date（结束日期）、gpa（GPA成绩）</td>
+</tr>
+<tr>
+<td><strong>认证</strong></td>
+<td>certifications</td>
+<td>Array</td>
+<td>认证证书列表</td>
+</tr>
+<tr>
+<td><strong>推断属性</strong></td>
+<td>inferred_salary</td>
+<td>String</td>
+<td>推断的薪资范围</td>
+</tr>
+<tr>
+<td></td>
+<td>inferred_years_experience</td>
+<td>Integer</td>
+<td>推断的工作年限</td>
+</tr>
+<tr>
+<td><strong>个人简介</strong></td>
+<td>summary</td>
+<td>String</td>
+<td>LinkedIn个人简介</td>
+</tr>
+<tr>
+<td><strong>其他信息</strong></td>
+<td>profiles</td>
+<td>Array</td>
+<td>社交平台档案列表</td>
+</tr>
+<tr>
+<td></td>
+<td>location_names</td>
+<td>Array</td>
+<td>位置名称列表</td>
+</tr>
+<tr>
+<td></td>
+<td>regions</td>
+<td>Array</td>
+<td>地区列表</td>
+</tr>
+<tr>
+<td></td>
+<td>countries</td>
+<td>Array</td>
+<td>国家列表</td>
+</tr>
+<tr>
+<td></td>
+<td>street_addresses</td>
+<td>Array</td>
+<td>街道地址列表</td>
+</tr>
+<tr>
+<td></td>
+<td>version_status</td>
+<td>Object</td>
+<td>版本状态信息</td>
+</tr>
+</tbody></table>
+<h3 id="数据统计信息"><a href="#数据统计信息" class="headerlink" title="数据统计信息"></a>数据统计信息</h3><p>基于<strong>全量数据（2,277,067条记录）</strong>分析，以下是关键统计数据：</p>
+<h4 id="国家-地区分布（Top-20）"><a href="#国家-地区分布（Top-20）" class="headerlink" title="国家&#x2F;地区分布（Top 20）"></a>国家&#x2F;地区分布（Top 20）</h4><table>
+<thead>
+<tr>
+<th>国家&#x2F;地区</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>美国 (United States)</td>
+<td>154,647</td>
+<td>6.79%</td>
+</tr>
+<tr>
+<td>印度 (India)</td>
+<td>45,590</td>
+<td>2.00%</td>
+</tr>
+<tr>
+<td>巴西 (Brazil)</td>
+<td>36,562</td>
+<td>1.61%</td>
+</tr>
+<tr>
+<td>英国 (United Kingdom)</td>
+<td>26,509</td>
+<td>1.16%</td>
+</tr>
+<tr>
+<td>法国 (France)</td>
+<td>17,984</td>
+<td>0.79%</td>
+</tr>
+<tr>
+<td>加拿大 (Canada)</td>
+<td>16,522</td>
+<td>0.73%</td>
+</tr>
+<tr>
+<td>墨西哥 (Mexico)</td>
+<td>12,191</td>
+<td>0.54%</td>
+</tr>
+<tr>
+<td>意大利 (Italy)</td>
+<td>10,345</td>
+<td>0.45%</td>
+</tr>
+<tr>
+<td>澳大利亚 (Australia)</td>
+<td>10,274</td>
+<td>0.45%</td>
+</tr>
+<tr>
+<td>西班牙 (Spain)</td>
+<td>9,991</td>
+<td>0.44%</td>
+</tr>
+<tr>
+<td>印度尼西亚 (Indonesia)</td>
+<td>9,122</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>德国 (Germany)</td>
+<td>9,031</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>荷兰 (Netherlands)</td>
+<td>7,250</td>
+<td>0.32%</td>
+</tr>
+<tr>
+<td>南非 (South Africa)</td>
+<td>6,581</td>
+<td>0.29%</td>
+</tr>
+<tr>
+<td>哥伦比亚 (Colombia)</td>
+<td>6,547</td>
+<td>0.29%</td>
+</tr>
+<tr>
+<td>土耳其 (Turkey)</td>
+<td>6,395</td>
+<td>0.28%</td>
+</tr>
+<tr>
+<td>阿根廷 (Argentina)</td>
+<td>6,353</td>
+<td>0.28%</td>
+</tr>
+<tr>
+<td>中国 (China)</td>
+<td>6,120</td>
+<td>0.27%</td>
+</tr>
+<tr>
+<td>菲律宾 (Philippines)</td>
+<td>5,411</td>
+<td>0.24%</td>
+</tr>
+<tr>
+<td>智利 (Chile)</td>
+<td>4,923</td>
+<td>0.22%</td>
+</tr>
+</tbody></table>
+<p><strong>数据覆盖范围</strong>：数据集共覆盖<strong>237个不同国家和地区</strong>，具有全球代表性。</p>
+<h4 id="行业分布（Top-20）"><a href="#行业分布（Top-20）" class="headerlink" title="行业分布（Top 20）"></a>行业分布（Top 20）</h4><table>
+<thead>
+<tr>
+<th>行业</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>信息技术与服务 (Information Technology and Services)</td>
+<td>48,525</td>
+<td>2.13%</td>
+</tr>
+<tr>
+<td>医院与医疗保健 (Hospital &amp; Health Care)</td>
+<td>31,516</td>
+<td>1.38%</td>
+</tr>
+<tr>
+<td>高等教育 (Higher Education)</td>
+<td>29,883</td>
+<td>1.31%</td>
+</tr>
+<tr>
+<td>金融服务 (Financial Services)</td>
+<td>27,242</td>
+<td>1.20%</td>
+</tr>
+<tr>
+<td>零售 (Retail)</td>
+<td>26,842</td>
+<td>1.18%</td>
+</tr>
+<tr>
+<td>建筑业 (Construction)</td>
+<td>20,122</td>
+<td>0.88%</td>
+</tr>
+<tr>
+<td>银行业 (Banking)</td>
+<td>19,631</td>
+<td>0.86%</td>
+</tr>
+<tr>
+<td>教育管理 (Education Management)</td>
+<td>19,442</td>
+<td>0.85%</td>
+</tr>
+<tr>
+<td>政府管理 (Government Administration)</td>
+<td>18,722</td>
+<td>0.82%</td>
+</tr>
+<tr>
+<td>电信 (Telecommunications)</td>
+<td>18,311</td>
+<td>0.80%</td>
+</tr>
+<tr>
+<td>计算机软件 (Computer Software)</td>
+<td>17,723</td>
+<td>0.78%</td>
+</tr>
+<tr>
+<td>市场营销与广告 (Marketing and Advertising)</td>
+<td>17,415</td>
+<td>0.76%</td>
+</tr>
+<tr>
+<td>石油与能源 (Oil &amp; Energy)</td>
+<td>16,047</td>
+<td>0.70%</td>
+</tr>
+<tr>
+<td>汽车 (Automotive)</td>
+<td>15,521</td>
+<td>0.68%</td>
+</tr>
+<tr>
+<td>保险 (Insurance)</td>
+<td>13,341</td>
+<td>0.59%</td>
+</tr>
+<tr>
+<td>房地产 (Real Estate)</td>
+<td>13,044</td>
+<td>0.57%</td>
+</tr>
+<tr>
+<td>会计 (Accounting)</td>
+<td>12,023</td>
+<td>0.53%</td>
+</tr>
+<tr>
+<td>酒店业 (Hospitality)</td>
+<td>11,703</td>
+<td>0.51%</td>
+</tr>
+<tr>
+<td>互联网 (Internet)</td>
+<td>11,496</td>
+<td>0.50%</td>
+</tr>
+<tr>
+<td>非营利组织管理 (Non-profit Organization Management)</td>
+<td>10,859</td>
+<td>0.48%</td>
+</tr>
+</tbody></table>
+<p><strong>数据覆盖范围</strong>：数据集共涵盖<strong>149个不同行业</strong>，覆盖科技、金融、医疗、教育、制造业、服务业等各个领域。</p>
+<h4 id="性别分布"><a href="#性别分布" class="headerlink" title="性别分布"></a>性别分布</h4><table>
+<thead>
+<tr>
+<th>性别</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>男性 (Male)</td>
+<td>219,037</td>
+<td>9.62%</td>
+</tr>
+<tr>
+<td>女性 (Female)</td>
+<td>185,136</td>
+<td>8.13%</td>
+</tr>
+<tr>
+<td>未标注 (Not Specified)</td>
+<td>1,872,894</td>
+<td>82.25%</td>
+</tr>
+</tbody></table>
+<p><strong>说明</strong>：大部分记录未明确标注性别信息，已标注的记录中男性占比略高于女性。</p>
+<h4 id="薪资范围分布（Top-10）"><a href="#薪资范围分布（Top-10）" class="headerlink" title="薪资范围分布（Top 10）"></a>薪资范围分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>薪资范围</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;20,000</td>
+<td>52,060</td>
+<td>2.29%</td>
+</tr>
+<tr>
+<td>55,000-70,000</td>
+<td>26,335</td>
+<td>1.16%</td>
+</tr>
+<tr>
+<td>70,000-85,000</td>
+<td>22,866</td>
+<td>1.00%</td>
+</tr>
+<tr>
+<td>100,000-150,000</td>
+<td>22,731</td>
+<td>1.00%</td>
+</tr>
+<tr>
+<td>85,000-100,000</td>
+<td>17,716</td>
+<td>0.78%</td>
+</tr>
+<tr>
+<td>45,000-55,000</td>
+<td>15,461</td>
+<td>0.68%</td>
+</tr>
+<tr>
+<td>35,000-45,000</td>
+<td>12,573</td>
+<td>0.55%</td>
+</tr>
+<tr>
+<td>150,000-250,000</td>
+<td>8,916</td>
+<td>0.39%</td>
+</tr>
+<tr>
+<td>25,000-35,000</td>
+<td>7,873</td>
+<td>0.35%</td>
+</tr>
+<tr>
+<td>20,000-25,000</td>
+<td>2,652</td>
+<td>0.12%</td>
+</tr>
+</tbody></table>
+<p><strong>说明</strong>：薪资信息为推断值，仅部分记录包含此信息。数据显示薪资分布主要集中在中等收入水平（55,000-150,000范围）。</p>
+<h4 id="其他关键统计指标"><a href="#其他关键统计指标" class="headerlink" title="其他关键统计指标"></a>其他关键统计指标</h4><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总记录数</td>
+<td>2,277,067条</td>
+</tr>
+<tr>
+<td>数据规模</td>
+<td>2.8GB</td>
+</tr>
+<tr>
+<td>覆盖国家数</td>
+<td>237个</td>
+</tr>
+<tr>
+<td>覆盖行业数</td>
+<td>149个</td>
+</tr>
+<tr>
+<td>包含地理位置信息的记录数</td>
+<td>较高（大部分记录包含）</td>
+</tr>
+<tr>
+<td>包含教育背景信息的记录数</td>
+<td>较高（大部分记录包含）</td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特性</th>
+<th>具体描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据规模</strong></td>
+<td>包含227万条高质量用户记录，数据量充足，适合大规模模型训练和统计分析</td>
+</tr>
+<tr>
+<td><strong>地理覆盖</strong></td>
+<td>覆盖237个国家和地区，涵盖北美、欧洲、亚洲、南美、非洲等多个大洲，具有全球代表性</td>
+</tr>
+<tr>
+<td><strong>行业多样性</strong></td>
+<td>覆盖149个不同行业，包括科技、金融、医疗、教育、制造业、服务业等各个领域</td>
+</tr>
+<tr>
+<td><strong>字段丰富</strong></td>
+<td>每条记录包含超过50个字段，涵盖个人信息、职业发展、教育背景、技能标签等多个维度</td>
+</tr>
+<tr>
+<td><strong>结构化程度高</strong></td>
+<td>采用标准JSON格式，数据结构清晰，易于解析和处理，支持快速数据抽取和分析</td>
+</tr>
+<tr>
+<td><strong>时间跨度广</strong></td>
+<td>数据时间跨度从2010年至2020年，可支持纵向职业发展轨迹分析和趋势研究</td>
+</tr>
+<tr>
+<td><strong>标注信息完整</strong></td>
+<td>包含行业分类、职位层级、地理位置、技能标签等结构化标注，便于分类和聚类分析</td>
+</tr>
+<tr>
+<td><strong>关联数据丰富</strong></td>
+<td>不仅包含用户基本信息，还包含工作经历、教育背景、公司信息等多层次关联数据</td>
+</tr>
+<tr>
+<td><strong>适用场景广泛</strong></td>
+<td>可用于推荐系统、人才分析、市场研究、算法训练、数据挖掘等多个应用领域</td>
+</tr>
+<tr>
+<td><strong>数据质量高</strong></td>
+<td>经过清洗和标准化处理，数据一致性好，缺失值标注明确，便于后续分析和建模</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下是数据集中的20条代表性原始数据样例（JSON格式），展示了数据在不同行业、不同国家、不同职业层级的多样性。所有数据均为原始格式，未做任何修改：</p>
+<h3 id="样例1-3：完整JSON数据展示"><a href="#样例1-3：完整JSON数据展示" class="headerlink" title="样例1-3：完整JSON数据展示"></a>样例1-3：完整JSON数据展示</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;oUtNZ6WK47citf2SLvtvrg_0000&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;full_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;phary yoeun&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;first_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;phary&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_initial&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;last_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;yoeun&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_year&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/phary-yoeun-6137b646&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;phary-yoeun-6137b646&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;163224303&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;work_email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;mobile_phone&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;media production&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;communication officer&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;plan international cambodia&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2018-12-01&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2010-09&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cambodia&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cambodia&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;asia&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2018-12-01&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_connections&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_salary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_years_experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Student at Department of Media and Communication&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;phone_numbers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;emails&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pharyyoeun@yahoo.com&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;personal&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;interests&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;skills&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;regions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;countries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;cambodia&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;street_addresses&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;company&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;plan international cambodia&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2010-09&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;communication officer&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;is_primary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;education&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;school&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2014&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2010&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;gpa&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;degrees&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>          <span class="hljs-string">&quot;bachelors&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-string">&quot;bachelor of arts&quot;</span><br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;majors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>          <span class="hljs-string">&quot;media management&quot;</span><br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;minors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;profiles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;network&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;163224303&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/phary-yoeun-6137b646&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;phary-yoeun-6137b646&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;certifications&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;languages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;version_status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;updated&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;contains&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;previous_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;12.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;current_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13.0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1ncbYh6rVWjjaVHzTcShlA_0000&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;full_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;syeda zehra&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;first_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;syeda&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_initial&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;last_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zehra&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;female&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_year&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/syeda-zehra-6b60655a&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;syeda-zehra-6b60655a&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;209152938&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;work_email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;mobile_phone&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;toronto, ontario, canada&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;toronto&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ontario&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;canada&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;north america&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;43.66,-79.41&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2018-12-01&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_connections&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_salary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_years_experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">11</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;phone_numbers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;emails&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;syeda.zehra@ttc.ca&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;professional&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;interests&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;skills&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;microsoft office&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;microsoft excel&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;microsoft word&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;customer service&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;english&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;windows&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;outlook&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;photoshop&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;teaching&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;html&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;public speaking&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-string">&quot;editing&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;toronto, ontario, canada&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;regions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;ontario, canada&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;countries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;canada&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;street_addresses&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;company&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ttc&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;10001+&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ttc&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1921&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;transportation/trucking/railroad&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;toronto, canada&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;toronto&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;canada&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;north america&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1900 yonge street&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;43.66,-79.41&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/company/ttc&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;8686&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;facebook.com/ttcnotices&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;twitter.com/ttcnotices&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ttc.ca&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2011-11&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2011-09&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;data entry&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;is_primary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;company&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;the estée lauder companies inc.&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;10001+&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;the-estee-lauder-companies-inc-&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1946&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cosmetics&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new york, new york, united states&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new york&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new york&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new york, new york&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;united states&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;north america&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;767 fifth avenue&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;10153&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;40.71,-74.00&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/company/the-estee-lauder-companies-inc-&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;4059&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;facebook.com/elcompanies&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;twitter.com/aveda&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;elcompanies.jobs&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2010-07&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2009-11&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;production&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;media&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;is_primary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;education&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;school&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;karachi university&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;post-secondary institution&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;I3k1sV9bg-yxEUOCf2dltA_0&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sindh, pakistan&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sindh&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;pakistan&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;asia&quot;</span><br>          <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/school/university-of-karachi&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;facebook.com/karachiuniversityofficial&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;15854&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;uok.edu.pk&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;domain&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;uok.edu.pk&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;degrees&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>          <span class="hljs-string">&quot;bachelors&quot;</span><br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2005&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2006&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;majors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>          <span class="hljs-string">&quot;commerce&quot;</span><br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;minors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;gpa&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;profiles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;network&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;209152938&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/syeda-zehra-6b60655a&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;syeda-zehra-6b60655a&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;certifications&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;languages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;version_status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;updated&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;contains&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;previous_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;12.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;current_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13.0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;AB3uGMwEq137hJe8vDCHVA_0000&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;full_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul bottomley&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;first_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_initial&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;middle_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;last_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bottomley&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;male&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_year&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;birth_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/paul-bottomley-b6a464136&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul-bottomley-b6a464136&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;556521346&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;facebook_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;twitter_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;github_username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;work_email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;mobile_phone&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;construction&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;builder&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_title_levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul bottomley&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_company_location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-09-01&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;job_summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;burnaston, derbyshire, united kingdom&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_locality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;burnaston&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_metro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_region&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;derbyshire&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_country&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;united kingdom&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_continent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;europe&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_street_address&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_address_line_2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_postal_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_geo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;52.88,-1.56&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_last_updated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-09-01&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;linkedin_connections&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">69</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_salary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;inferred_years_experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;phone_numbers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;emails&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;interests&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;skills&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;burnaston, derbyshire, united kingdom&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;regions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;derbyshire, united kingdom&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;countries&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-string">&quot;united kingdom&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;street_addresses&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;experience&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;company&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul bottomley&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;founded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;industry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;linkedin_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;facebook_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;twitter_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;website&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;location_names&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;end_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;start_date&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;builder&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sub_role&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;levels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;is_primary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;education&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;profiles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>      <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;network&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;556521346&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;linkedin.com/in/paul-bottomley-b6a464136&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;paul-bottomley-b6a464136&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;certifications&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;languages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;version_status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;unchanged&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;contains&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;previous_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;12.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;current_version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13.0&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-智能推荐系统开发与优化"><a href="#1-智能推荐系统开发与优化" class="headerlink" title="1. 智能推荐系统开发与优化"></a>1. 智能推荐系统开发与优化</h3><p>本数据集为推荐系统开发提供了丰富的用户行为数据和特征信息，可用于构建职业社交网络推荐算法、职位推荐系统、人才匹配推荐引擎等。数据集中的用户技能标签、工作经历、教育背景、行业分类等信息可以作为推荐算法的特征输入，通过协同过滤、内容推荐、深度学习等算法，实现精准的职位推荐、人才推荐、技能推荐等功能。研究人员可以利用数据集中的用户-公司关系、用户-技能关系、用户-行业关系构建多层次的推荐模型，通过分析用户的历史职业轨迹和技能发展路径，预测用户可能感兴趣的职位或技能方向。此外，数据集中的地理位置信息可以支持基于地理位置的推荐算法，帮助用户发现同城或同地区的职业机会。数据集的规模优势使得模型训练具有足够的样本量，可以提高推荐系统的准确性和泛化能力，同时多样化的行业和职位分布使得推荐系统能够覆盖更广泛的用户群体和应用场景。</p>
+<h3 id="2-人才市场分析与趋势预测"><a href="#2-人才市场分析与趋势预测" class="headerlink" title="2. 人才市场分析与趋势预测"></a>2. 人才市场分析与趋势预测</h3><p>数据集包含227万条用户记录，覆盖35个行业和33个国家，为人才市场研究提供了全面而深入的数据基础。研究人员可以利用数据集分析不同行业的薪资水平分布、人才流动趋势、技能需求变化、地区人才分布差异等关键问题。通过分析不同行业、不同国家、不同职位层级的用户数据，可以识别出人才市场的热点领域、新兴职业、技能发展趋势，为企业的人力资源规划、政府的就业政策制定、教育机构的专业设置提供数据支持。数据集中的时间信息（工作起始时间、教育毕业时间等）支持纵向分析，可以追踪个人职业发展轨迹，研究职业转换模式、薪资增长规律、技能发展路径等。同时，通过分析不同地区、不同行业的用户分布，可以识别出人才集中的地理区域和行业集群，为区域经济发展和产业布局提供参考。数据集的全球覆盖特性使得研究人员可以进行跨国比较研究，分析不同国家人才市场的特点和差异，为全球化人才战略提供洞察。</p>
+<h3 id="3-职业画像构建与人才分类"><a href="#3-职业画像构建与人才分类" class="headerlink" title="3. 职业画像构建与人才分类"></a>3. 职业画像构建与人才分类</h3><p>数据集丰富的字段信息为构建全面的职业画像提供了数据基础，可以利用机器学习算法对用户进行多维度分类和聚类分析。通过分析用户的行业、职位、技能、教育背景、工作经历等特征，可以构建不同职业群体的画像模型，识别出不同职业群体的典型特征、技能组合、发展路径等。这些画像可以用于人才分类、职业匹配、能力评估等应用场景。例如，可以利用数据集训练分类模型，自动识别用户的职业类别、职位层级、技能水平等，为企业的人力资源管理、招聘筛选、人才评估提供自动化工具。同时，通过聚类分析可以发现具有相似职业特征的用户群体，识别出不同职业类型的人才特征模式，为职业规划和职业发展指导提供参考。数据集的多样性确保了模型能够覆盖不同行业、不同国家、不同职业层级的用户，提高了职业画像模型的通用性和准确性。此外，数据集中的关联数据（如公司信息、教育机构信息）可以用于构建更丰富的人才网络图谱，支持基于网络分析的人才发现和推荐。</p>
+<h3 id="4-自然语言处理与文本挖掘研究"><a href="#4-自然语言处理与文本挖掘研究" class="headerlink" title="4. 自然语言处理与文本挖掘研究"></a>4. 自然语言处理与文本挖掘研究</h3><p>数据集中的个人简介、工作摘要、技能描述等文本字段为自然语言处理研究提供了丰富的语料资源。研究人员可以利用这些文本数据训练文本分类模型、命名实体识别模型、情感分析模型等，应用于简历分析、职位描述理解、技能提取等任务。数据集中的结构化信息（如行业分类、职位层级）可以作为文本分类任务的标注数据，训练模型自动识别文本中的职业信息、行业信息、技能信息等。同时，通过分析不同行业、不同职位的文本描述，可以挖掘出行业特定的术语、职位特征描述、技能关键词等，为构建领域知识图谱提供数据支持。数据集的规模优势使得文本挖掘模型具有足够的训练样本，可以提高模型的性能和泛化能力。此外，数据集的多语言特性（包含英语、西班牙语、法语等多种语言）支持跨语言文本处理研究，可以训练多语言模型，应用于全球化的文本分析和理解任务。文本挖掘的结果可以进一步应用于智能搜索、信息抽取、知识图谱构建等应用场景。</p>
+<h3 id="5-社交网络分析与关系挖掘"><a href="#5-社交网络分析与关系挖掘" class="headerlink" title="5. 社交网络分析与关系挖掘"></a>5. 社交网络分析与关系挖掘</h3><p>数据集中的LinkedIn连接数、社交平台链接等信息为社交网络分析提供了数据基础，可以构建职业社交网络图谱，分析用户之间的关系模式、信息传播路径、影响力分布等。通过分析用户的连接数、地理位置、行业分布等信息，可以识别出网络中的关键节点、影响力用户、社区结构等，为社交媒体营销、影响力营销、网络传播研究提供数据支持。数据集中的公司信息、教育机构信息可以用于构建用户-公司网络、用户-教育机构网络等多层次网络结构，分析人才的流动模式、校友网络效应、企业人才来源等。同时，通过分析不同行业、不同地区的网络结构，可以识别出行业内部的人才流动模式、地区间的人才迁移趋势等，为人才政策制定和区域发展规划提供参考。数据集的规模优势使得网络分析具有足够的节点和边，可以构建大规模的网络模型，发现更复杂的网络模式和规律。社交网络分析的结果可以应用于人才推荐、信息传播优化、网络营销策略制定等应用场景。</p>
+<h3 id="6-机器学习与深度学习模型训练"><a href="#6-机器学习与深度学习模型训练" class="headerlink" title="6. 机器学习与深度学习模型训练"></a>6. 机器学习与深度学习模型训练</h3><p>数据集的结构化特征和丰富标注为机器学习模型训练提供了高质量的训练数据，可以用于分类任务、回归任务、聚类任务、推荐任务等多种机器学习应用。研究人员可以利用数据集训练预测模型，预测用户的薪资水平、职位层级、职业发展方向等，应用于薪资评估、职业规划、人才评估等场景。同时，可以利用数据集训练分类模型，自动识别用户的行业、职位类型、技能领域等，应用于自动化简历筛选、人才分类、信息抽取等任务。数据集的规模优势确保了模型训练具有足够的样本量，可以提高模型的准确性和泛化能力，同时多样化的数据分布使得模型能够适应不同的应用场景。深度学习模型可以利用数据集中的多模态特征（文本、数值、类别等），构建端到端的预测模型，实现更复杂的学习任务。此外，数据集中的时间信息支持时间序列分析，可以训练预测模型预测用户的职业发展轨迹、薪资增长趋势等。机器学习模型训练的结果可以应用于自动化系统、智能推荐引擎、预测分析工具等产品开发。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本数据集作为一个包含227万条记录、覆盖35个行业和33个国家的大规模职业人才数据集，为研究者和开发者提供了丰富而全面的数据资源。数据集不仅规模庞大，而且字段丰富、结构清晰、质量高，适用于推荐系统开发、人才市场分析、职业画像构建、文本挖掘研究、社交网络分析、机器学习模型训练等多个应用领域。数据集的全球覆盖特性和行业多样性确保了其广泛的适用性和代表性，为跨行业、跨地区的人才研究和分析提供了数据基础。同时，数据集的结构化程度高，便于程序化处理和分析，支持快速的数据抽取、特征工程和模型训练，为高效的研究和开发工作提供了便利。无论是学术研究、算法开发，还是商业应用，本数据集都能为相关项目提供坚实的数据支撑。有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>linkedin领英简历数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/linkedin领英简历数据集./</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/YouTube%E6%91%94%E8%B7%A4%E6%89%8B%E6%8A%97%E8%AE%AE%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="YouTube摔跤手抗议评论数据集分析报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">YouTube摔跤手抗议评论数据集分析报告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E4%B8%AD%E5%9B%BD%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E8%82%A1%E5%90%A7%E6%95%B0%E6%8D%AE%E9%9B%86/" title="中国上市公司股吧数据集">
+                        <span class="hidden-mobile">中国上市公司股吧数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

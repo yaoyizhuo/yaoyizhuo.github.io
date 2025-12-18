@@ -1,0 +1,1266 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/孟加拉语视频Clickbait检测数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着数字媒体的快速发展，互联网上的内容呈现爆炸式增长，其中不乏大量为吸引注意力而设计的误导性内容，即Clickbait。Clickbait通常通过夸张、误导性或悬念性的标题吸引用户点击，但实际内容往往与标题不符，这种现象在全球范围内普遍存在，对信息质量和用户体验造成负面影响。 本数据集专注于孟加拉语视频内容的Clickbait检测，是目前规模最大、标注最全面的孟加拉语Clickbait数据集之一。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="孟加拉语视频Clickbait检测数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E5%AD%9F%E5%8A%A0%E6%8B%89%E8%AF%AD%E8%A7%86%E9%A2%91Clickbait%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着数字媒体的快速发展，互联网上的内容呈现爆炸式增长，其中不乏大量为吸引注意力而设计的误导性内容，即Clickbait。Clickbait通常通过夸张、误导性或悬念性的标题吸引用户点击，但实际内容往往与标题不符，这种现象在全球范围内普遍存在，对信息质量和用户体验造成负面影响。 本数据集专注于孟加拉语视频内容的Clickbait检测，是目前规模最大、标注最全面的孟加拉语Clickbait数据集之一。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T10:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.815Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>孟加拉语视频Clickbait检测数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="孟加拉语视频Clickbait检测数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 18:51" pubdate>
+          2025年12月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">孟加拉语视频Clickbait检测数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着数字媒体的快速发展，互联网上的内容呈现爆炸式增长，其中不乏大量为吸引注意力而设计的误导性内容，即Clickbait。Clickbait通常通过夸张、误导性或悬念性的标题吸引用户点击，但实际内容往往与标题不符，这种现象在全球范围内普遍存在，对信息质量和用户体验造成负面影响。</p>
+<p>本数据集专注于孟加拉语视频内容的Clickbait检测，是目前规模最大、标注最全面的孟加拉语Clickbait数据集之一。数据集包含253,070条来自54个不同频道的视频记录，涵盖2012年至2023年的时间跨度，为研究孟加拉语环境下的Clickbait现象提供了宝贵资源。</p>
+<p>数据集提供了完整的视频元数据、统计信息和三种不同的标注方式（自动标注、人工标注和AI标注），为科研人员、内容平台和政策制定者提供了多维度的分析基础。这些数据对于开发针对低资源语言的内容审核技术、研究跨文化传播规律以及提升在线信息质量具有重要价值。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="字段说明"><a href="#字段说明" class="headerlink" title="字段说明"></a>字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>channel_id</td>
+<td>object</td>
+<td>频道唯一标识符</td>
+<td>UC…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>channel_name</td>
+<td>object</td>
+<td>频道名称</td>
+<td>Jamuna TV</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>channel_url</td>
+<td>object</td>
+<td>频道URL地址</td>
+<td><a target="_blank" rel="noopener" href="https://www.youtube.com/channel/">https://www.youtube.com/channel/</a>…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>video_id</td>
+<td>object</td>
+<td>视频唯一标识符</td>
+<td>dQw4w9WgXcQ</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>publishedAt</td>
+<td>object</td>
+<td>视频发布时间</td>
+<td>2021-01-15 14:30:00</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>title</td>
+<td>object</td>
+<td>视频原始标题</td>
+<td>惊！这种方法让你的生活彻底改变…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>title_debiased</td>
+<td>object</td>
+<td>去偏见处理后的标题</td>
+<td>生活方法介绍</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>description</td>
+<td>object</td>
+<td>视频原始描述</td>
+<td>在这个视频中，我们将介绍…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>description_debiased</td>
+<td>object</td>
+<td>去偏见处理后的描述</td>
+<td>在这个视频中，我们将介绍…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>url</td>
+<td>object</td>
+<td>视频播放页面URL</td>
+<td><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=">https://www.youtube.com/watch?v=</a>…</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>viewCount</td>
+<td>int64</td>
+<td>视频观看次数</td>
+<td>10000</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>commentCount</td>
+<td>int64</td>
+<td>视频评论数量</td>
+<td>120</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>likeCount</td>
+<td>int64</td>
+<td>视频点赞数量</td>
+<td>500</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>dislikeCount</td>
+<td>int64</td>
+<td>视频点踩数量</td>
+<td>20</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>thumbnail</td>
+<td>object</td>
+<td>视频缩略图URL</td>
+<td><a target="_blank" rel="noopener" href="https://i.ytimg.com/vi/.../hqdefault.jpg">https://i.ytimg.com/vi/.../hqdefault.jpg</a></td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>auto_labeled</td>
+<td>object</td>
+<td>自动标注结果</td>
+<td>Clickbait&#x2F;Not Clickbait</td>
+<td>100.0000%</td>
+</tr>
+<tr>
+<td>human_labeled</td>
+<td>object</td>
+<td>人工标注结果</td>
+<td>Clickbait&#x2F;Not Clickbait</td>
+<td>3.9515%</td>
+</tr>
+<tr>
+<td>ai_labeled</td>
+<td>object</td>
+<td>AI标注结果</td>
+<td>Clickbait&#x2F;Not Clickbait</td>
+<td>100.0000%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="标签分布（自动标注）"><a href="#标签分布（自动标注）" class="headerlink" title="标签分布（自动标注）"></a>标签分布（自动标注）</h4><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Not Clickbait</td>
+<td>223758</td>
+<td>88.42%</td>
+</tr>
+<tr>
+<td>Clickbait</td>
+<td>29312</td>
+<td>11.58%</td>
+</tr>
+</tbody></table>
+<h4 id="标签分布（AI标注）"><a href="#标签分布（AI标注）" class="headerlink" title="标签分布（AI标注）"></a>标签分布（AI标注）</h4><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Not Clickbait</td>
+<td>208015</td>
+<td>82.20%</td>
+</tr>
+<tr>
+<td>Clickbait</td>
+<td>45055</td>
+<td>17.80%</td>
+</tr>
+</tbody></table>
+<h4 id="发布时间分布"><a href="#发布时间分布" class="headerlink" title="发布时间分布"></a>发布时间分布</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2012</td>
+<td>42</td>
+<td>0.02%</td>
+<td>0.02%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>12</td>
+<td>0.00%</td>
+<td>0.02%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>64</td>
+<td>0.03%</td>
+<td>0.05%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>1163</td>
+<td>0.46%</td>
+<td>0.51%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>3543</td>
+<td>1.40%</td>
+<td>1.91%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>7469</td>
+<td>2.95%</td>
+<td>4.86%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>10810</td>
+<td>4.27%</td>
+<td>9.13%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>23046</td>
+<td>9.11%</td>
+<td>18.24%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>81393</td>
+<td>32.16%</td>
+<td>50.40%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>116489</td>
+<td>46.03%</td>
+<td>96.43%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>5630</td>
+<td>2.22%</td>
+<td>98.65%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>3409</td>
+<td>1.35%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h4 id="主要频道分布（Top-10）"><a href="#主要频道分布（Top-10）" class="headerlink" title="主要频道分布（Top 10）"></a>主要频道分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>频道名称</th>
+<th>视频数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jamuna TV</td>
+<td>19990</td>
+<td>7.90%</td>
+</tr>
+<tr>
+<td>Independent Television</td>
+<td>19976</td>
+<td>7.89%</td>
+</tr>
+<tr>
+<td>NEWS24</td>
+<td>19891</td>
+<td>7.86%</td>
+</tr>
+<tr>
+<td>SOMOY TV</td>
+<td>19884</td>
+<td>7.86%</td>
+</tr>
+<tr>
+<td>Ekattor TV</td>
+<td>19617</td>
+<td>7.75%</td>
+</tr>
+<tr>
+<td>Channel 24</td>
+<td>18837</td>
+<td>7.44%</td>
+</tr>
+<tr>
+<td>Channel i News</td>
+<td>17971</td>
+<td>7.10%</td>
+</tr>
+<tr>
+<td>ATN News</td>
+<td>17507</td>
+<td>6.92%</td>
+</tr>
+<tr>
+<td>DBC NEWS</td>
+<td>16111</td>
+<td>6.37%</td>
+</tr>
+<tr>
+<td>NTV News</td>
+<td>15004</td>
+<td>5.93%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与类型"><a href="#数据规模与类型" class="headerlink" title="数据规模与类型"></a>数据规模与类型</h3><ul>
+<li><strong>数据规模</strong>: 253,070条视频记录</li>
+<li><strong>数据类型</strong>: 结构化元数据、多源标注数据</li>
+<li><strong>文件格式</strong>: 提供Parquet和Excel两种格式</li>
+<li><strong>时间跨度</strong>: 2012年至2023年，共12年数据</li>
+<li><strong>覆盖频道</strong>: 54个不同的孟加拉语视频频道</li>
+<li><strong>标注方法</strong>: 自动标注、人工标注、AI标注三种方式</li>
+<li><strong>数据完整性</strong>: 主要字段缺失率低于0.01%，数据质量高</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>大规模数据量</td>
+<td>包含253,070条孟加拉语视频记录，涵盖54个不同频道</td>
+<td>为机器学习模型提供充足的训练数据，提高模型泛化能力和准确性</td>
+</tr>
+<tr>
+<td>多维度标注体系</td>
+<td>提供自动标注、人工标注和AI标注三种标注方式，标注一致性达89.56%</td>
+<td>支持多视角分析和模型对比，提高检测准确性和可靠性</td>
+</tr>
+<tr>
+<td>丰富的元数据信息</td>
+<td>包含完整的视频元数据（频道信息、发布时间、观看数、点赞数等）</td>
+<td>支持多维度分析，可探索Clickbait内容的传播规律和特征</td>
+</tr>
+<tr>
+<td>时间跨度广泛</td>
+<td>涵盖2012-2023年的视频数据，以2020-2021年内容为主</td>
+<td>支持趋势分析，了解Clickbait内容随时间的演变规律</td>
+</tr>
+<tr>
+<td>双格式存储</td>
+<td>同时提供Parquet和Excel两种格式，便于不同场景使用</td>
+<td>满足不同用户的使用需求，提高数据可用性和兼容性</td>
+</tr>
+<tr>
+<td>孟加拉语专属数据集</td>
+<td>专注于孟加拉语视频内容，填补低资源语言Clickbait检测研究空白</td>
+<td>推动孟加拉语内容安全研究，促进多语言信息处理技术发展</td>
+</tr>
+<tr>
+<td>高质量数据完整性</td>
+<td>主要字段缺失率极低（&lt;0.01%），确保数据质量</td>
+<td>减少数据清洗工作，提高研究和应用效率</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="元数据样例"><a href="#元数据样例" class="headerlink" title="元数据样例"></a>元数据样例</h3><table>
+<thead>
+<tr>
+<th>频道名称</th>
+<th>发布时间</th>
+<th>视频标题</th>
+<th>自动标注</th>
+<th>AI标注</th>
+<th>观看量</th>
+<th>点赞数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jiboner Kotha</td>
+<td>2021-05-31 12:19:47</td>
+<td>হিজবুল্লাহ কারা? কতটা ভয়ঙ্কর হিজবুল্লাহ সংগঠন? যাদ…</td>
+<td>Clickbait</td>
+<td>Clickbait</td>
+<td>203905</td>
+<td>7571</td>
+</tr>
+<tr>
+<td>Islamic Media TV</td>
+<td>2018-10-28 17:03:34</td>
+<td>মনোমুগ্ধকর কোরআন তিলাওয়াত (কারী আব্দুল কাইয়ুম মি…</td>
+<td>Clickbait</td>
+<td>Not Clickbait</td>
+<td>8590</td>
+<td>138</td>
+</tr>
+<tr>
+<td>Funny Frog Creatives</td>
+<td>2017-01-04 00:43:52</td>
+<td>বিশ্বের সবচেয়ে দামী ৫টি ফল যা খাওয়ার সৌভাগ্য কম লো…</td>
+<td>Clickbait</td>
+<td>Clickbait</td>
+<td>405803</td>
+<td>4365</td>
+</tr>
+<tr>
+<td>Star Golpo</td>
+<td>2018-12-29 04:31:42</td>
+<td>২০১৯ এ কি চমক নিয়ে আসতে যাচ্ছে সিয়াম? Siam Ahmed</td>
+<td>…</td>
+<td>Clickbait</td>
+<td>Not Clickbait</td>
+<td>2881</td>
+</tr>
+<tr>
+<td>Star Golpo</td>
+<td>2017-04-19 10:56:31</td>
+<td>ক্যামেরা বন্ধ হলেই যা করা শুরু করে দেন এই টিভি তার…</td>
+<td>Clickbait</td>
+<td>Clickbait</td>
+<td>1989</td>
+<td>23</td>
+</tr>
+<tr>
+<td>ATN News</td>
+<td>2021-03-27 06:11:22</td>
+<td>স্বাস্থ্যঝুঁকিহীন জৈব আর ব্যাগিং পদ্ধতিতে চাষ হচ্ছ…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>1081</td>
+<td>33</td>
+</tr>
+<tr>
+<td>mytv Bangladesh</td>
+<td>2019-11-10 12:19:58</td>
+<td>ঘূর্ণিঝড় বুলবুল দুর্বল হয়ে গিয়েছে</td>
+<td>Bulbul Cyclon…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>781</td>
+</tr>
+<tr>
+<td>Independent Television</td>
+<td>2021-02-10 13:01:12</td>
+<td>১৬ বছরের উর্ধ্বে নারী-পুরুষ ম্যারাথনে অংশ নিতে পার…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>1665</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Ekattor TV</td>
+<td>2021-04-22 06:49:31</td>
+<td>ডিএনসিসির হাসপাতালে বাড়ছে করোনা আক্রান্তদের ভিড়</td>
+<td>…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>5148</td>
+</tr>
+<tr>
+<td>DBC NEWS</td>
+<td>2021-05-03 09:06:06</td>
+<td>দেশের বিভিন্ন জায়গায় বৃষ্টি হওয়াতে কমেছে তাপমাত্রা</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>1153</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Jamuna TV</td>
+<td>2021-07-03 05:09:13</td>
+<td>মুশফিককে কী টোটকা দিলেন হেরাথ? সাকিবও পেলেন বিশেষ …</td>
+<td>Not Clickbait</td>
+<td>Clickbait</td>
+<td>326803</td>
+<td>8907</td>
+</tr>
+<tr>
+<td>ATN News</td>
+<td>2021-07-08 11:44:08</td>
+<td>লকডাউন না মেনেই ঢাকা ছাড়ছেন মানুষ</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>69229</td>
+<td>1045</td>
+</tr>
+<tr>
+<td>Jamuna TV</td>
+<td>2020-12-17 11:10:16</td>
+<td>ভুয়া কলসেন্টার খুলে বিদেশিদের কোটি কোটি টাকার প্রত…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>10082</td>
+<td>201</td>
+</tr>
+<tr>
+<td>Channel 24</td>
+<td>2020-01-15 11:06:58</td>
+<td>জনগণ স্বতঃস্ফূর্তভাবে নেমে পড়ায় আচরণবিধি লঙ্ঘন হচ্…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>378</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Dr Jahangir Kabir</td>
+<td>2020-04-04 07:24:24</td>
+<td>বর্তমান পরিস্হিতিতে ঘরে বসে ইয়োগা এবং ফ্রী হ্যান্ড…</td>
+<td>Not Clickbait</td>
+<td>Not Clickbait</td>
+<td>311019</td>
+<td>7184</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：样例涵盖不同标签类型、发布年份和频道来源，展示了数据集的多样性特征。完整数据集中包含所有视频的详细信息。</p>
+</blockquote>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="多语言Clickbait检测模型训练"><a href="#多语言Clickbait检测模型训练" class="headerlink" title="多语言Clickbait检测模型训练"></a>多语言Clickbait检测模型训练</h3><p>该数据集为训练孟加拉语Clickbait检测模型提供了大规模标注数据。通过利用25万多条标注样本，研究人员可以开发专门针对孟加拉语语言特点的检测算法。与英语等资源丰富语言相比，孟加拉语NLP研究相对滞后，此数据集填补了这一空白，使研究人员能够训练出更准确的特定语言模型。这些模型可以识别孟加拉语特有的Clickbait模式、表达方式和文化语境相关的误导性内容，为孟加拉语互联网用户提供更可靠的信息筛选工具。</p>
+<h3 id="跨标注方法模型评估与对比"><a href="#跨标注方法模型评估与对比" class="headerlink" title="跨标注方法模型评估与对比"></a>跨标注方法模型评估与对比</h3><p>数据集包含自动标注、人工标注和AI标注三种不同的标注方式，为模型评估提供了独特视角。研究人员可以比较不同标注方法的一致性（目前自动标注与AI标注一致性达89.56%），分析人工标注与自动标注的差异，从而改进标注算法。此外，这一多标注体系也支持开发更鲁棒的集成模型，结合多种标注结果提高检测准确性。通过这种方式，研究人员可以探索半监督学习和主动学习方法，减少对大量人工标注的依赖，降低模型训练成本。</p>
+<h3 id="社交媒体内容安全监测系统开发"><a href="#社交媒体内容安全监测系统开发" class="headerlink" title="社交媒体内容安全监测系统开发"></a>社交媒体内容安全监测系统开发</h3><p>基于该数据集开发的Clickbait检测系统可以集成到社交媒体平台和新闻聚合服务中，实时监测和筛选误导性内容。孟加拉语作为世界主要语言之一，拥有庞大的在线用户群体，开发专门的内容过滤系统对于维护网络信息环境至关重要。系统可以根据视频标题、描述等元数据快速识别潜在的Clickbait内容，为用户提供预警或降级展示，减少误导性信息的传播。同时，系统还可以分析Clickbait内容的传播模式，为平台制定更有效的内容管理策略提供数据支持。</p>
+<h3 id="跨文化传播与虚假信息研究"><a href="#跨文化传播与虚假信息研究" class="headerlink" title="跨文化传播与虚假信息研究"></a>跨文化传播与虚假信息研究</h3><p>该数据集为研究跨文化背景下Clickbait内容的特点和传播规律提供了宝贵资源。通过分析孟加拉语Clickbait内容与其他语言（如英语、印地语等）的异同，研究人员可以深入了解文化因素如何影响误导性内容的产生和传播。此外，数据集包含2012-2023年的时间跨度，可以用于研究Clickbait内容随时间的演变趋势，特别是在重大社会事件或疫情期间的变化。这些研究对于理解全球信息生态系统、制定跨文化传播策略和应对虚假信息挑战具有重要意义。</p>
+<h3 id="媒体影响力与内容策略分析"><a href="#媒体影响力与内容策略分析" class="headerlink" title="媒体影响力与内容策略分析"></a>媒体影响力与内容策略分析</h3><p>数据集包含54个不同频道的视频信息和详细的统计数据（观看量、点赞数、评论数等），为分析媒体影响力和内容策略提供了丰富素材。研究人员可以比较不同类型频道的Clickbait使用频率，分析Clickbait策略与内容传播效果的关系。例如，可以研究Clickbait标题是否真的能带来更高的观看量和互动率，以及这种影响在不同类型的内容和不同受众群体中的差异。这些分析结果可以帮助媒体机构制定更负责任和有效的内容策略，平衡吸引注意力和提供高质量信息的需求。</p>
+<h3 id="低资源语言NLP技术发展"><a href="#低资源语言NLP技术发展" class="headerlink" title="低资源语言NLP技术发展"></a>低资源语言NLP技术发展</h3><p>作为一个大规模的孟加拉语标注数据集，它可以推动低资源语言NLP技术的整体发展。研究人员可以利用这些数据预训练或微调语言模型，提高模型对孟加拉语的理解能力。这些技术进步不仅限于Clickbait检测，还可以应用于情感分析、主题建模、文本分类等多种NLP任务。通过共享和利用此类数据集，可以加速孟加拉语等低资源语言的AI技术发展，缩小与英语等资源丰富语言的技术差距，促进全球AI技术的包容性发展。</p>
+<h3 id="教育与公众意识提升"><a href="#教育与公众意识提升" class="headerlink" title="教育与公众意识提升"></a>教育与公众意识提升</h3><p>基于数据集的分析结果可以用于开发教育材料，提高公众对Clickbait内容的识别能力。通过展示典型的孟加拉语Clickbait模式和案例，教育工作者可以帮助用户理解如何批判性地评估在线内容。此外，数据集还可以用于开发互动式学习工具，让用户在实践中提高识别能力。这种教育努力对于培养信息素养、减少虚假信息的负面影响具有长期价值，特别是在数字媒体日益普及的孟加拉语社区。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本数据集作为大规模、多维度的孟加拉语Clickbait检测资源，具有重要的研究和应用价值。通过提供253,070条高质量标注记录，涵盖54个不同频道和12年时间跨度，数据集为多语言内容安全研究、低资源语言NLP技术发展和跨文化传播分析提供了坚实基础。</p>
+<p>数据集的核心优势在于其多源标注体系（自动标注、人工标注和AI标注）、丰富的元数据信息以及对孟加拉语这一重要但资源相对匮乏的语言的专注。这些特点使其成为开发Clickbait检测模型、分析媒体影响力和提升在线信息质量的理想选择。</p>
+<p>随着数字内容的持续增长，对高质量内容过滤技术的需求将不断增加。本数据集的开放和共享将有助于推动相关研究和技术的发展，为创建更健康、更可靠的在线信息环境贡献力量。有需要了解更多详情或获取完整数据集的研究人员和机构可通过适当渠道联系获取。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>孟加拉语视频Clickbait检测数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/孟加拉语视频Clickbait检测数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%A8%81%E6%96%AF%E5%BA%B7%E6%98%9F%E5%A4%A7%E5%AD%A6%E9%BA%A6%E8%BF%AA%E9%80%8A%E5%88%86%E6%A0%A1%E8%AF%BE%E7%A8%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E6%95%B0%E6%8D%AE%E9%9B%86/" title="威斯康星大学麦迪逊分校课程数据集成数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">威斯康星大学麦迪逊分校课程数据集成数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%B0%BC%E6%97%A5%E5%88%A9%E4%BA%9A%E8%BD%A6%E7%89%8C%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" title="尼日利亚车牌检测数据集">
+                        <span class="hidden-mobile">尼日利亚车牌检测数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

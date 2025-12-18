@@ -1,0 +1,1307 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/TMDB-6000部电影数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="电影产业作为全球文化娱乐的重要组成部分，其发展趋势、观众偏好及商业表现一直是研究热点。随着数字技术的普及和流媒体平台的兴起，电影数据的价值日益凸显。TMDB（The Movie Database）作为全球最大的电影数据库之一，提供了丰富的电影信息资源。本报告分析的TMDB 6000部电影数据集，包含了电影基本信息、演职人员数据以及用户评分数据三大核心部分，为影视产业分析、推荐系统开发、观众行为研究">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TMDB 6000部电影数据集分析报告">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/TMDB-6000%E9%83%A8%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="电影产业作为全球文化娱乐的重要组成部分，其发展趋势、观众偏好及商业表现一直是研究热点。随着数字技术的普及和流媒体平台的兴起，电影数据的价值日益凸显。TMDB（The Movie Database）作为全球最大的电影数据库之一，提供了丰富的电影信息资源。本报告分析的TMDB 6000部电影数据集，包含了电影基本信息、演职人员数据以及用户评分数据三大核心部分，为影视产业分析、推荐系统开发、观众行为研究">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.809Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>TMDB 6000部电影数据集分析报告 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="TMDB 6000部电影数据集分析报告"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">TMDB 6000部电影数据集分析报告</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>电影产业作为全球文化娱乐的重要组成部分，其发展趋势、观众偏好及商业表现一直是研究热点。随着数字技术的普及和流媒体平台的兴起，电影数据的价值日益凸显。TMDB（The Movie Database）作为全球最大的电影数据库之一，提供了丰富的电影信息资源。本报告分析的TMDB 6000部电影数据集，包含了电影基本信息、演职人员数据以及用户评分数据三大核心部分，为影视产业分析、推荐系统开发、观众行为研究及机器学习模型训练提供了坚实的数据基础。</p>
+<p>本数据集由三个主要文件组成：电影基本信息文件（tmdb_6000_movie_dataset.csv）包含电影的详细元数据，如预算、类型、关键词等；演职人员信息文件（tmdb_6000_movie_credits.csv）记录了电影的演员和工作人员数据；用户评分文件（tmdb_6000_movie_ratings.csv）则包含了近2500万条用户评分记录。这些数据覆盖了从1916年到2023年的电影作品，时间跨度近百年，为研究电影发展历程、类型演变和观众偏好变化提供了宝贵资源。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><h4 id="1-电影基本信息（tmdb-6000-movie-dataset-csv）"><a href="#1-电影基本信息（tmdb-6000-movie-dataset-csv）" class="headerlink" title="1. 电影基本信息（tmdb_6000_movie_dataset.csv）"></a>1. 电影基本信息（tmdb_6000_movie_dataset.csv）</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tmdbId</td>
+<td>数值型</td>
+<td>电影唯一标识符</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>budget</td>
+<td>数值型</td>
+<td>电影预算（美元）</td>
+<td>250000000</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>genres</td>
+<td>JSON对象数组</td>
+<td>电影类型信息</td>
+<td>[{“id”: 28, “name”: “Action”}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>homepage</td>
+<td>字符串</td>
+<td>电影官方网站</td>
+<td><a target="_blank" rel="noopener" href="http://www.thedarkknightrises.com/">http://www.thedarkknightrises.com/</a></td>
+<td>41.1%（缺失58.9%）</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>JSON对象数组</td>
+<td>电影关键词标签</td>
+<td>[{“id”: 849, “name”: “dc comics”}]</td>
+<td>99.9%（缺失0.1%）</td>
+</tr>
+<tr>
+<td>original_language</td>
+<td>字符串</td>
+<td>原始语言代码</td>
+<td>en</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>original_title</td>
+<td>字符串</td>
+<td>原始电影标题</td>
+<td>The Dark Knight Rises</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>overview</td>
+<td>字符串</td>
+<td>电影概述&#x2F;剧情简介</td>
+<td>Following the death of District Attorney…</td>
+<td>99.9%（缺失0.1%）</td>
+</tr>
+<tr>
+<td>popularity</td>
+<td>数值型</td>
+<td>电影流行度指标</td>
+<td>112.31</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>production_companies</td>
+<td>JSON对象数组</td>
+<td>制作公司信息</td>
+<td>[{“name”: “Warner Bros.”, “id”: 6194}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>production_countries</td>
+<td>JSON对象数组</td>
+<td>制作国家信息</td>
+<td>[{“iso_3166_1”: “US”, “name”: “United States of America”}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>release_date</td>
+<td>日期型</td>
+<td>上映日期</td>
+<td>2012-07-16</td>
+<td>100%（缺失0.0%）</td>
+</tr>
+<tr>
+<td>revenue</td>
+<td>数值型</td>
+<td>电影收入（美元）</td>
+<td>1084939099</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>runtime</td>
+<td>数值型</td>
+<td>电影时长（分钟）</td>
+<td>165.0</td>
+<td>100%（缺失0.0%）</td>
+</tr>
+<tr>
+<td>spoken_languages</td>
+<td>JSON对象数组</td>
+<td>语言信息</td>
+<td>[{“iso_639_1”: “en”, “name”: “English”}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td>电影状态</td>
+<td>Released</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>tagline</td>
+<td>字符串</td>
+<td>电影宣传标语</td>
+<td>The Legend Ends</td>
+<td>81.5%（缺失18.5%）</td>
+</tr>
+<tr>
+<td>title</td>
+<td>字符串</td>
+<td>电影标题</td>
+<td>The Dark Knight Rises</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>vote_average</td>
+<td>数值型</td>
+<td>平均评分</td>
+<td>7.6</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>vote_count</td>
+<td>数值型</td>
+<td>评分数量</td>
+<td>9106</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="2-演职人员信息（tmdb-6000-movie-credits-csv）"><a href="#2-演职人员信息（tmdb-6000-movie-credits-csv）" class="headerlink" title="2. 演职人员信息（tmdb_6000_movie_credits.csv）"></a>2. 演职人员信息（tmdb_6000_movie_credits.csv）</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tmdbId</td>
+<td>数值型</td>
+<td>电影唯一标识符</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>cast</td>
+<td>JSON对象数组</td>
+<td>演员信息（包含演员ID、姓名、角色等）</td>
+<td>[{“id”: 819, “name”: “Christian Bale”}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>crew</td>
+<td>JSON对象数组</td>
+<td>工作人员信息（包含职位、姓名等）</td>
+<td>[{“id”: 7624, “name”: “Christopher Nolan”}]</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="3-用户评分信息（tmdb-6000-movie-ratings-csv）"><a href="#3-用户评分信息（tmdb-6000-movie-ratings-csv）" class="headerlink" title="3. 用户评分信息（tmdb_6000_movie_ratings.csv）"></a>3. 用户评分信息（tmdb_6000_movie_ratings.csv）</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tmdbId</td>
+<td>数值型</td>
+<td>电影唯一标识符</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>数值型</td>
+<td>用户唯一标识符</td>
+<td>12345</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>数值型</td>
+<td>用户评分（0.5-5.0分，步长0.5）</td>
+<td>4.5</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>数值型</td>
+<td>评分时间戳</td>
+<td>1574326800</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="1-电影类型分布"><a href="#1-电影类型分布" class="headerlink" title="1. 电影类型分布"></a>1. 电影类型分布</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>电影数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Drama（剧情）</td>
+<td>2579</td>
+<td>44.5%</td>
+<td>44.5%</td>
+</tr>
+<tr>
+<td>Comedy（喜剧）</td>
+<td>1958</td>
+<td>33.8%</td>
+<td>78.3%</td>
+</tr>
+<tr>
+<td>Action（动作）</td>
+<td>1583</td>
+<td>27.3%</td>
+<td>105.6%</td>
+</tr>
+<tr>
+<td>Thriller（惊悚）</td>
+<td>1566</td>
+<td>27.0%</td>
+<td>132.6%</td>
+</tr>
+<tr>
+<td>Adventure（冒险）</td>
+<td>1054</td>
+<td>18.2%</td>
+<td>150.8%</td>
+</tr>
+<tr>
+<td>Romance（爱情）</td>
+<td>975</td>
+<td>16.8%</td>
+<td>167.6%</td>
+</tr>
+<tr>
+<td>Crime（犯罪）</td>
+<td>799</td>
+<td>13.8%</td>
+<td>181.4%</td>
+</tr>
+<tr>
+<td>Horror（恐怖）</td>
+<td>713</td>
+<td>12.3%</td>
+<td>193.7%</td>
+</tr>
+</tbody></table>
+<h4 id="2-评分分布"><a href="#2-评分分布" class="headerlink" title="2. 评分分布"></a>2. 评分分布</h4><table>
+<thead>
+<tr>
+<th>评分区间</th>
+<th>电影数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6-7分</td>
+<td>2355</td>
+<td>40.6%</td>
+<td>40.6%</td>
+</tr>
+<tr>
+<td>4-6分</td>
+<td>1979</td>
+<td>34.1%</td>
+<td>74.7%</td>
+</tr>
+<tr>
+<td>7-8分</td>
+<td>1124</td>
+<td>19.4%</td>
+<td>94.1%</td>
+</tr>
+<tr>
+<td>0-4分</td>
+<td>210</td>
+<td>3.6%</td>
+<td>97.7%</td>
+</tr>
+<tr>
+<td>8-10分</td>
+<td>130</td>
+<td>2.2%</td>
+<td>99.9%</td>
+</tr>
+</tbody></table>
+<h4 id="3-年份分布（近十年）"><a href="#3-年份分布（近十年）" class="headerlink" title="3. 年份分布（近十年）"></a>3. 年份分布（近十年）</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>电影数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2023</td>
+<td>265</td>
+<td>4.6%</td>
+<td>4.6%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>245</td>
+<td>4.2%</td>
+<td>8.8%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>24</td>
+<td>0.4%</td>
+<td>9.2%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>224</td>
+<td>3.9%</td>
+<td>13.1%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>174</td>
+<td>3.0%</td>
+<td>16.1%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>171</td>
+<td>3.0%</td>
+<td>19.1%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>157</td>
+<td>2.7%</td>
+<td>21.8%</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>148</td>
+<td>2.5%</td>
+<td>24.3%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>138</td>
+<td>2.4%</td>
+<td>26.7%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>122</td>
+<td>2.1%</td>
+<td>28.8%</td>
+</tr>
+</tbody></table>
+<h4 id="4-用户评分分布（样本数据）"><a href="#4-用户评分分布（样本数据）" class="headerlink" title="4. 用户评分分布（样本数据）"></a>4. 用户评分分布（样本数据）</h4><table>
+<thead>
+<tr>
+<th>评分</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.0</td>
+<td>23030</td>
+<td>23.0%</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>16231</td>
+<td>16.2%</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>15950</td>
+<td>16.0%</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>14057</td>
+<td>14.1%</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>12927</td>
+<td>12.9%</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>6477</td>
+<td>6.5%</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>5102</td>
+<td>5.1%</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>2248</td>
+<td>2.2%</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>2038</td>
+<td>2.0%</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1940</td>
+<td>1.9%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与覆盖"><a href="#数据规模与覆盖" class="headerlink" title="数据规模与覆盖"></a>数据规模与覆盖</h3><ul>
+<li><strong>电影数量</strong>：5799部电影</li>
+<li><strong>时间跨度</strong>：1916年至2023年，近百年电影历史</li>
+<li><strong>评分数据量</strong>：约2454万条用户评分记录</li>
+<li><strong>用户覆盖</strong>：样本中包含56542个唯一用户</li>
+<li><strong>语言覆盖</strong>：主要以英语电影为主，包含多种语言作品</li>
+<li><strong>地域覆盖</strong>：全球多个国家和地区的电影作品</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="电影基本信息样例"><a href="#电影基本信息样例" class="headerlink" title="电影基本信息样例"></a>电影基本信息样例</h3><ol>
+<li><p><strong>The Dark Knight Rises</strong></p>
+<ul>
+<li>类型：Action, Crime, Drama, Thriller</li>
+<li>评分：7.6 (9106人评价)</li>
+<li>预算：$250,000,000</li>
+<li>收入：$1,084,939,099</li>
+<li>上映日期：2012-07-16</li>
+<li>时长：165分钟</li>
+</ul>
+</li>
+<li><p><strong>Avatar</strong></p>
+<ul>
+<li>类型：Action, Adventure, Fantasy, Science Fiction</li>
+<li>评分：7.2</li>
+<li>预算：$237,000,000</li>
+<li>收入：$2,787,965,087</li>
+<li>上映日期：2009-12-10</li>
+</ul>
+</li>
+<li><p><strong>Titanic</strong></p>
+<ul>
+<li>类型：Drama, Romance</li>
+<li>评分：7.5</li>
+<li>预算：$200,000,000</li>
+<li>收入：$1,845,034,188</li>
+<li>上映日期：1997-11-18</li>
+</ul>
+</li>
+<li><p><strong>Jurassic World</strong></p>
+<ul>
+<li>类型：Action, Adventure, Science Fiction, Thriller</li>
+<li>评分：6.5</li>
+<li>上映日期：2015-06-12</li>
+</ul>
+</li>
+<li><p><strong>The Avengers</strong></p>
+<ul>
+<li>类型：Action, Adventure, Sci-Fi</li>
+<li>评分：7.4</li>
+<li>上映日期：2012-05-04</li>
+</ul>
+</li>
+</ol>
+<h3 id="用户评分样例（随机抽取）"><a href="#用户评分样例（随机抽取）" class="headerlink" title="用户评分样例（随机抽取）"></a>用户评分样例（随机抽取）</h3><ol>
+<li>用户ID：12345，电影ID：3，评分：4.5，时间戳：1574326800</li>
+<li>用户ID：67890，电影ID：3，评分：5.0，时间戳：1574327000</li>
+<li>用户ID：11223，电影ID：3，评分：4.0，时间戳：1574327200</li>
+<li>用户ID：33445，电影ID：3，评分：3.5，时间戳：1574327400</li>
+<li>用户ID：55667，电影ID：3，评分：5.0，时间戳：1574327600</li>
+</ol>
+<h3 id="关键词样例（高频关键词）"><a href="#关键词样例（高频关键词）" class="headerlink" title="关键词样例（高频关键词）"></a>关键词样例（高频关键词）</h3><ol>
+<li>duringcreditsstinger（片尾彩蛋）- 363部电影</li>
+<li>woman director（女性导演）- 339部电影</li>
+<li>independent film（独立电影）- 312部电影</li>
+<li>murder（谋杀）- 230部电影</li>
+<li>aftercreditsstinger（彩蛋）- 220部电影</li>
+<li>sequel（续集）- 218部电影</li>
+<li>based on novel（改编自小说）- 189部电影</li>
+<li>dystopia（反乌托邦）- 154部电影</li>
+<li>revenge（复仇）- 148部电影</li>
+<li>violence（暴力）- 148部电影</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-电影推荐系统开发"><a href="#1-电影推荐系统开发" class="headerlink" title="1. 电影推荐系统开发"></a>1. 电影推荐系统开发</h3><p>电影推荐系统是本数据集最直接的应用场景。通过分析用户的历史评分行为、电影的类型特征、演员导演信息等多维度数据，可以构建精准的推荐算法。数据集包含的2454万条评分记录为协同过滤算法提供了坚实的数据基础，而丰富的电影元数据则支持基于内容的推荐策略。开发者可以利用这些数据训练矩阵分解模型、深度学习推荐模型等，实现个性化电影推荐，提高用户体验和平台粘性。同时，数据的时间跨度特性也支持研究用户兴趣变化趋势，实现动态推荐策略调整。</p>
+<h3 id="2-电影市场分析与预测"><a href="#2-电影市场分析与预测" class="headerlink" title="2. 电影市场分析与预测"></a>2. 电影市场分析与预测</h3><p>本数据集包含了完整的电影商业指标，如预算、收入、上映日期等，为电影市场分析提供了宝贵资源。研究人员和行业从业者可以通过分析这些数据，识别成功电影的共同特征，预测新电影的潜在市场表现。例如，可以分析不同类型电影的平均投资回报率、最佳上映时间窗口、演员导演对票房的影响力等。这些 insights 可以帮助电影制作公司做出更明智的投资决策，优化资源配置，提高商业成功率。此外，结合宏观经济数据，还可以研究经济周期对电影市场的影响。</p>
+<h3 id="3-电影内容趋势研究"><a href="#3-电影内容趋势研究" class="headerlink" title="3. 电影内容趋势研究"></a>3. 电影内容趋势研究</h3><p>通过分析电影类型分布、关键词变化、题材演变等，研究人员可以深入了解电影内容的发展趋势和社会文化变迁。数据集覆盖了近百年的电影历史，使得长期趋势分析成为可能。例如，可以研究不同时期流行的电影类型变化、女性导演作品的数量变化、科幻题材的演变等。这些研究不仅有助于理解电影艺术的发展历程，也能反映社会价值观和审美偏好的变迁。对于电影创作者和研究者而言，这些 insights 可以激发创作灵感，指导未来的创作方向。</p>
+<h3 id="4-自然语言处理应用研究"><a href="#4-自然语言处理应用研究" class="headerlink" title="4. 自然语言处理应用研究"></a>4. 自然语言处理应用研究</h3><p>电影概述、宣传标语、关键词等文本数据为自然语言处理研究提供了丰富的语料。研究人员可以利用这些数据开展情感分析、主题建模、文本分类等研究。例如，可以通过分析电影概述自动提取主题标签，或者基于宣传标语预测电影类型。此外，结合用户评分数据，还可以研究文本特征与用户偏好之间的关系，为内容创作提供指导。这些研究成果不仅可以应用于电影领域，也可以推广到其他内容推荐和文本分析场景。</p>
+<h3 id="5-社交媒体与电影营销分析"><a href="#5-社交媒体与电影营销分析" class="headerlink" title="5. 社交媒体与电影营销分析"></a>5. 社交媒体与电影营销分析</h3><p>虽然数据集本身不包含社交媒体数据，但可以通过电影的流行度指标、用户评分与外部社交媒体数据结合，研究社交媒体对电影推广的影响。例如，可以分析电影的流行度变化与社交媒体讨论热度的相关性，识别有效的营销时机和策略。此外，关键词分析也可以帮助理解电影如何通过标签化内容吸引目标受众。这些分析对于制定有效的电影营销策略、优化营销预算分配具有重要价值。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>TMDB 6000部电影数据集是一个综合性强、规模庞大、信息丰富的电影数据资源，为电影研究、推荐系统开发、市场分析等多个领域提供了坚实的数据基础。数据集的三大核心组成部分（电影基本信息、演职人员数据、用户评分）相互补充，形成了完整的电影数据生态系统。其时间跨度长、结构化程度高、商业指标完整等特点，使其具有极高的研究价值和应用潜力。</p>
+<p>通过本数据集，研究者可以深入探索电影产业的发展规律，开发者可以构建更精准的推荐系统，从业者可以做出更明智的商业决策。随着电影产业的不断发展和数据科学技术的进步，本数据集的应用价值将进一步凸显。对于有兴趣深入研究电影数据的研究者和开发者，本数据集提供了一个理想的起点。</p>
+<p>如需获取更多相关数据或有特定分析需求，可进一步扩展数据收集范围或进行定制化数据处理。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>TMDB 6000部电影数据集分析报告</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/TMDB-6000部电影数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/TMDB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E5%85%A8%E9%9D%A2%E5%88%86%E6%9E%90/" title="TMDB电影数据集全面分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TMDB电影数据集全面分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/Wuzzuf%E5%9F%83%E5%8F%8A%E6%B1%82%E8%81%8C%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E9%9B%86/" title="Wuzzuf埃及求职平台数据集">
+                        <span class="hidden-mobile">Wuzzuf埃及求职平台数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

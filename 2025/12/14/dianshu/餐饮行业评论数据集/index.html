@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/餐饮行业评论数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在人工智能快速发展的今天，情感分析技术已成为自然语言处理领域的重要分支，而高质量的中文情感分析数据集则是推动该技术发展的关键基础。餐饮行业作为与人们日常生活息息相关的服务行业，其用户评价数据蕴含着丰富的情感信息和商业价值。本数据集收集整理了超过10万条真实的中文餐饮评价数据，为情感分析算法研究、机器学习模型训练以及餐饮行业智能分析提供了宝贵的语料资源。 该数据集不仅能够支持传统的情感分类任务，更能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="餐饮行业评论数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E9%A4%90%E9%A5%AE%E8%A1%8C%E4%B8%9A%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在人工智能快速发展的今天，情感分析技术已成为自然语言处理领域的重要分支，而高质量的中文情感分析数据集则是推动该技术发展的关键基础。餐饮行业作为与人们日常生活息息相关的服务行业，其用户评价数据蕴含着丰富的情感信息和商业价值。本数据集收集整理了超过10万条真实的中文餐饮评价数据，为情感分析算法研究、机器学习模型训练以及餐饮行业智能分析提供了宝贵的语料资源。 该数据集不仅能够支持传统的情感分类任务，更能">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.818Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>餐饮行业评论数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="餐饮行业评论数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          145 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">餐饮行业评论数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在人工智能快速发展的今天，情感分析技术已成为自然语言处理领域的重要分支，而高质量的中文情感分析数据集则是推动该技术发展的关键基础。餐饮行业作为与人们日常生活息息相关的服务行业，其用户评价数据蕴含着丰富的情感信息和商业价值。本数据集收集整理了超过10万条真实的中文餐饮评价数据，为情感分析算法研究、机器学习模型训练以及餐饮行业智能分析提供了宝贵的语料资源。</p>
+<p>该数据集不仅能够支持传统的情感分类任务，更能为餐饮企业提供客户满意度分析、服务质量评估、产品改进建议等实际应用价值。通过深度学习技术，研究者可以基于这些真实数据构建高精度的情感分析模型，为餐饮行业的数字化转型和智能化升级提供技术支撑。同时，该数据集也为自然语言处理、文本挖掘、推荐系统等相关领域的研究提供了丰富的中文语料资源。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><p>本数据集包含两个主要文件：正面评价数据集和负面评价数据集，总计101,207条中文餐饮评价数据。数据集规模庞大，覆盖了餐饮行业的各个细分领域，包括中餐、西餐、快餐、火锅、日料、韩料等多种餐饮类型。</p>
+<p><strong>数据规模统计：</strong></p>
+<ul>
+<li>正面评价数据：93,286条</li>
+<li>负面评价数据：7,921条</li>
+<li>数据总量：101,207条</li>
+<li>数据格式：纯文本格式，每行一条评价</li>
+<li>语言类型：简体中文</li>
+<li>数据来源：真实用户评价</li>
+</ul>
+<p><strong>数据特征：</strong></p>
+<ul>
+<li>文本长度：评价内容长度不等，从几十字到数百字不等</li>
+<li>情感标签：已按正面&#x2F;负面进行人工标注</li>
+<li>内容覆盖：涵盖菜品口味、服务质量、环境氛围、价格性价比等多个维度</li>
+<li>地域分布：包含全国多个城市的餐饮评价数据</li>
+<li>时间跨度：涵盖不同时期的用户评价数据</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特点</th>
+<th>详细描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据规模大</strong></td>
+<td>超过10万条真实评价数据，为模型训练提供充足的样本支持</td>
+</tr>
+<tr>
+<td><strong>标注质量高</strong></td>
+<td>经过人工标注的情感标签，确保数据质量和准确性</td>
+</tr>
+<tr>
+<td><strong>内容真实性强</strong></td>
+<td>来源于真实用户的消费体验，反映真实的餐饮行业情况</td>
+</tr>
+<tr>
+<td><strong>语言表达丰富</strong></td>
+<td>包含口语化、正式化等多种语言风格，提升模型泛化能力</td>
+</tr>
+<tr>
+<td><strong>行业针对性强</strong></td>
+<td>专门针对餐饮行业，具有明确的领域特征和应用价值</td>
+</tr>
+<tr>
+<td><strong>数据平衡性好</strong></td>
+<td>正面和负面评价比例合理，有利于模型训练的稳定性</td>
+</tr>
+<tr>
+<td><strong>应用场景广泛</strong></td>
+<td>可用于情感分析、文本分类、推荐系统等多个研究方向</td>
+</tr>
+<tr>
+<td><strong>技术兼容性强</strong></td>
+<td>支持多种机器学习算法和深度学习框架</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13778">餐饮行业评论数据集</a></td>
+</tr>
+</tbody></table>
+<h2 id="数据样例展示"><a href="#数据样例展示" class="headerlink" title="数据样例展示"></a>数据样例展示</h2><h3 id="正面评价样例（10条）"><a href="#正面评价样例（10条）" class="headerlink" title="正面评价样例（10条）"></a>正面评价样例（10条）</h3><ol>
+<li><p><strong>10.1这礼拜回上海玩，来吃两次了（嘉定没啥太多选择）！说实在，海胆虽然没说限量，但是点了几轮后就会被告知已经没了让点其它，铁板明虾好好吃又大，但是焗烤的有点咸，我这次纯粹是吃口味所以没拍食物，螯虾刺身第一次来服务员有帮剥，第二轮除非你叫或他们看你开的辛苦才会上前帮，不过好吃又大支，牡丹虾也是挺大，螯虾有时有带蛋，鲍鱼可以点来吃吃不硬！不过苹果汁和果汁不是现榨，这价格真心不值，说说铁板类食物，挺到位，不错，有些食物满咸</strong></p>
+</li>
+<li><p><strong>10&#x2F;7举家前去为宝贝庆生，提前一天预约了个包房，五点多到的，没人的，但后来陆续来了，六点已客满了！整体环境一般，包房空调不给力，宝宝椅太大，适合大孩子，所以这顿饭吃的好累！再来说说菜品，1）本帮熏鱼–感觉还不够入味，无功无过；2）特色咸草鸡–也没多大特色，就这样吃吃吧；3）豆芽苗拌菜–爽口蛮好吃的；4）椒盐猪手–特色，确实是特色，10元一片，本以为就是个前爪，没想到是整整完完整整的一整只，吓死宝宝了！而且非常入味，炸的又恨脆，吃起来那叫一个满足！我只吃了半个就撑了，老公吃到尽兴太满足了！性价比超高！5）松子鲈鱼–口感也很不错，宝宝吃了很多鱼！6）水晶虾仁–老板你的量还敢再少点么？不推荐！性价比差评！！！还点了其他好多菜，记不起来了！基本都属于中等水平没有特别深刻！下次去应该只会单点椒盐猪手了！</strong></p>
+</li>
+<li><p><strong>10号线伊犁路站出来3号口可以直接进去，很方便的内～好一到高岛屋就感觉日本人的样子要来了。在日本也看到过，但没去吃过。名字太长把菜单拍了，顺便大家看看价格。什么优惠都没有，不能团购，没有优惠券，结账不能用支付宝微信支付什么的。焗饭海鲜料足，有雪蟹肉，蛤蜊肉，鱿鱼什么的，但是这款饭的咖喱比较咸和辣，虽有芝士拉丝但是芝士味道不足。芝士肉的饭不那么辣不那么咸比海鲜饭好吃。上面的大猪肉球蛮好吃的，不想狮子头那么硬，里面的猪肉很鲜美，蛋蛋皮也很嫩，芝士酱配蛋蛋皮很好吃。</strong></p>
+</li>
+<li><p><strong>11月蒙自源过桥米线出新品，提早在微信公众号玩游戏，就可以得到新品菌临天下的一次试吃，趁着18号之后新品上市，就可以品尝了。社区热帖链接：【十一月】菌临天下@蒙自源过桥米线-食在广州【交通】这家蒙自源位于人民中路，妇婴医院的旁边，附近有人民中路公交车站，交通方便。【装修】它的店面招牌不显眼，走上二楼才看到大大的铺面。现在还有外卖优惠。下午茶和晚餐也有超值优惠第一次来光顾，发现点菜台很小，原来这里是服务员点餐和收费的，先付后吃。喜欢这里的装修风格，还很有云南特色，这个云彩之南，还没有机会去过。【菜牌】新品的菜牌介绍很吸引。其他的过桥米线品种也很多，价格也不便宜。如果正价来吃米线，还真贵！【菜式】点了免费品尝的菌临天下2个，但要消费，所以试试小吃。终于上齐菜了，这个米线真的好大，如果一个姑娘肯定吃不完，幸亏我们有三个人，吃两个米线刚刚好。米线的量很多，而且下面还有很多菇菌、猪肉，感觉很健康，汤底也不错，按价格26元来算，也中等水平啦。有机会大家去试试！</strong></p>
+</li>
+<li><p><strong>12点半从自然博物馆出来，站在北京西路上，老公照例抛出一个经典问题，中午吃什么？有点饿，不太想动脑，突然灵光一闪，去德大吧，很久没吃了。老公有点不太情愿，不过没有强烈反对。顺路走到德大，窗口往里张望了一下，人不多，而且大部分是中老年人。一进门，就有一个男服务员对我们喊了两声，西餐西餐。好吧，反正也没有人能从脸上就一眼辨认是不是本地人，提早提醒也是好的。找了一个沙发座坐下，直接看菜单。本着减肥的心，没有点太多，一份罗宋汤，一份奶油蘑菇汤，一份德大色拉，一份150g的五分熟菲力牛排，还有一份烟肉意大利面。#罗宋汤# 有点稀，味道不错，就是汤里真的没东西，除了酥烂的卷心菜和两块土豆。#德大色拉# 还是原来的味道，就是分量直接少了一半不止。硕大的盘子直接一小堆色拉，不比以前满满一盆。一样的清爽味道，但是满足度差很远。#奶油烟肉意面# 细面条，上桌的时候还有些烫手，有点硬的面条，是我喜欢的口感。奶油味很足，又不见很多汤水，几乎每根面条都裹在奶油汁里，吃得好满意，很喜欢。#菲力牛排# 老公的午餐，5分熟，看得出很嫩，听他说还可以的，150g吃很饱。室内装饰很老牌，服务员不算热情，但也能叫得动，比较实惠的老字号西餐社。</strong></p>
+</li>
+<li><p><strong>13年到昆明的时候就在这里吃过，今年又在这里再吃一次，谈不上是因为好吃，主要是旁边就是火车站小件行李寄存处所以方便，这里旁边还有德克士，康师傅牛肉面等任君选择，不过就是觉得来云南的话还是要尝尝过桥米线。这次点了标准型过桥米线套餐加一杯木瓜水，总共33元，木瓜水没有木瓜味，不过里面有凉粉，过桥米线的汤底味道很浓胡椒粉味道很重，一边吃一边冒汗，米线不错的，没有那种增塑剂的嚼劲不过挺爽滑，配菜就超一般，在火车站附近还算是个不错的选择吧。</strong></p>
+</li>
+<li><p><strong>147元团的价值226元的双人餐，和闺蜜去吃的，最大的失误就是要了养生筒骨汤，一是因为这家店的老板是重庆人，这种不辣的锅绝对不是他们家的特色。二是因为36元的底锅，价格不便宜，筒骨没看到，是不是骨汤也不得而知，但是荤油的味道太浓了。既然是美蛙火锅，就来说说【蛙肉】吧，套餐里的是2斤，价值116元，一共上了两盘，一盘有5只，蛙肉是整只的，看上去处理的很干净，下锅后烧煮一会儿就可以吃了，肉质较嫩。要注意煮的时间，时间稍长肉质口感完全不一样。再来说说其他的配菜，【翻滚滑肉片】22元，肉片很大一块，外面裹了芡粉类的东西，致使肉片很滑非常不易夹起。口感方面略显一般，至少不能作为特色菜。【肥牛卷】32元，一份14个卷卷，还挺厚的，下锅后肉嫩，有较浓的牛肉味儿。【蔬菜类】土豆、娃娃菜都是6元一份，娃娃菜很新鲜，土豆片应该是刨子卷出来的吧，很薄，下锅易烂不容易夹起。这家店位于管家桥沈举人巷口的华新二楼，靠里面的通道，门面不大，外面不是太显眼。周末去的，感觉生意挺清淡，也和整个转型的华新商场有关，以前这里是潮流品牌的聚集地。对于新店多说几句说点小建议吧，客人没有骨盘，蛙肉本身骨头多，而店里每人只提供一个小碗。另外是不是应该每桌配上汤勺和漏勺，从大热锅里用筷子夹菜有时候真的不方便。</strong></p>
+</li>
+<li><p><strong>之前看到它家生意很好，超多人排队，一直想去尝尝，它家的环境有老发头的味道，点了个菠菜炒鸭肠味道还算可以，然后还点了个蛋黄焗锅巴酥酥脆脆香香的也不错，还有个糖醋里脊说实话真心一般，个人不怎么喜欢，上了个雪花排条有了盘子里有干冰看上去感觉不错但是吃上去就不怎么样了，酸汤肥牛还行，酸酸的，最后还点了个盆栽酸奶，上面有一层奥利奥，下面是酸奶，味道还是可以的，就是酸奶不够绸，总体来说就是比较便宜，味道很一般，感觉不会再去吃了</strong></p>
+</li>
+<li><p><strong>之前看到微信推广过，心心念念图个新鲜，一直想拔草的，一直忘记，终于成行了。和朋友们约新世界看电影，这家在雅居乐的一楼，，正好过来体验一下。一进门就看到一排机器，没想到现在吃个汉堡都能那么高端。地方其实是有点小的，装修和其他麦当劳还是有点区别的，有一张桌子竟然还是自己可以发亮的，而且手触它会变颜色，正好两个人可以下五子棋。开始自助点餐，面包有三种，有圆的，甜的，直接包生菜吃起来应该不方便，于是选了经典欧式面包，肉饼只有牛肉的，这个不大好，选择太少了，我一开始还不相信只有一种选择，还找了半天看有没有其他选择。蔬菜要了番茄，生菜，芝士选了保守的平时最常见的黄切达，觉得黄色更配牛肉。酱料选了加钱的牛油果酱，很不错，还有免费的蛋黄酱和番茄酱。最后加了个煎鸡蛋，4块钱，就是猪柳蛋堡里那种，完成！总共63块！！贵啊！点完拿着”小飞碟”去坐着了，过了好一会儿店员就拿过来了。。。所以震动盘提示有点鸡肋，店员直接送餐，都无需自取。薯条换了个小钢丝容器凹造型，是细的那种，一套吃完，竟然撑到了，薯条最后都没吃完。自己DIY的感觉还是比量产的套餐要好吃。不过朋友点的其他两个汉堡，一个少放了生番茄，一个少了一个肉饼和培根，交涉了两次终于重新做了一个给我朋友。所以如果点DIY的汉堡，汉堡端上来之后最好自己先看一下，核对一下是否东西齐全</strong></p>
+</li>
+<li><p><strong>之前看到朋友圈一直有这家的宣传，也算慕名而去，和老苏州大课堂差不多。开业第一天是4.9折，不过团购更给力，50的券只要19.9，每桌可以用四张。先说说环境吧，整体感觉是还可以的，有种老苏州的味道。再来就是菜肴，摆盘还是比较精致的，就是点的几个菜都说没有，只能作罢，可能刚开业的缘故，准备的都不是很充分。【醋泡海蜇】口味是还行，就是姜末太多了，拌在海蜇里，让我这个不吃姜的人只好过水吃。【糖粥】还蛮好吃的，粥的粘度也正合适。【鸭舌】还不错，清爽。【干锅手撕包菜】这个一般，有点辣，我比较喜欢薄片的包菜，稍微有点厚了。【臭豆腐】味道还不错，量也还好。【马蹄木耳炒肉片】这个味道很好，肉片很嫩，木耳和马蹄的点缀也好吃。【蒜香烤鲈鱼】口味还行，就是等了很久，将近一个小时才上，都快吃完走人了。【咕老肉】酸盖过甜，且肉不是很嫩，数量还可以，建议可以酸甜均衡点。总结一下，虽然说是主打老苏州牌，但是有些菜肴偏川菜了，更适合喜欢吃辣的人，性价比还行，口味还可以。上菜速度有待提升，希望能提高效率。菜肴准备不够充分，不能等顾客点了才说没有，提前告知我觉得更好，其他新鲜等待大家前往一探究竟。</strong></p>
+</li>
+</ol>
+<h3 id="负面评价样例（10条）"><a href="#负面评价样例（10条）" class="headerlink" title="负面评价样例（10条）"></a>负面评价样例（10条）</h3><ol>
+<li><p><strong>10月28日去文星的移动偶然看到这家店就买了一杯拿铁，当时感觉口味一般也就速溶的水平还卖了26块真的不值。但是服务员很亲切，还送了一张买一赠一券。当时我就质疑券的有效期是10月31日，但是服务员承诺可以延期就很愉快的收下了。今天11月4日，去用的时候服务小妹说过期了，然后来了个貌似店长的人听了我的陈述就开始打电话找那位男生。这个过程相当令人不快，似乎顾客会为了占一杯咖啡的便宜跑来讹诈一样。后来没打通电话，店长就无奈的答应可以使用，但是竟然对我说他们会开除那位服务员，因为他不应该答应延期！之后结账时店长说可以用卡，我顺口问一下那是否可以支付宝，他给出否定的回答后接了一句“现在只能现金了，因为默认现金交易“”当我追问为什么时，他才很不情愿地重新做了设置实现用卡交易。如果说第一次去只是感觉性价比有点低，今天的经历完全差评，服务这么差的店在现今苏州商圈简直是奇迹！店家不要以为开在文星广场顾客都是学生就可以不追求服务品质了，这样的态度完全暴露了你们岗前培训不够，服务理念落后。最后提醒一句，赶紧换个你们的打包杯子吧，Coco卖不到15的咖啡无论是口味还是服务还有包装都比你们好不止一个档次！！！</strong></p>
+</li>
+<li><p><strong>18:20分到。50分进门，19:10上菜。上菜速度慢。鹅头是送的。我们等太久了。口味一般。口水鸡不错就是肉太老了！蜂窝煤没有辣么好吃。烤肉不错可惜没有蘸料。桃胶好吃可是端菜的眼镜小妹把大拇指都扣到碗里了。还涂了绿色指甲油囧的一头汗。那个茄子！！！也太特么太粗糙了吧。一整根切四刀开花一样。不入味。头上的绿叶子还在呢！不会来第二次的餐厅！越是用餐高峰越是能看出一家餐厅的实力。</strong></p>
+</li>
+<li><p><strong>1.地点特别难找，闺蜜去了后找了半天的，然后又出来接的我，百度地图上显示到了就是没有。门脸很小，挂着几个灯笼。室内装修还行，但是二楼总共不到20人竟然如此吵。 \n2.菜品非常差，卖相不好就不说了，关键味道也很糟糕。\n【炸藕盒】做的还不如我妈做的，而且一看色泽就是用的很不好的油，路边摊那种油。\n【咖喱鸡】朋友问要个咖喱鸡还是宫爆鸡，想着平时老吃宫爆鸡丁就要个咖喱的吧，结果咖喱配华夫饼，暴殄天物啊，我最爱吃的华夫饼竟被做的跟超市包装袋里卖的似的。咖喱鸡也是泰式的感觉，怪呼呼的很难吃。\n【牛肉粒】真心怀疑这是肉吗？吃起来不像肉，更别说是牛肉了，且嚼不烂，切难吃。\n【茄子】卖相还能再差点不。。就是干炸茄子。。从没吃过这么做的，倒是不难吃，但是也很不推荐。\n最后，要开发票说发票打印机坏了。。\n总之，差评，列入我近期吃到的最难吃的店，不知道四星半的评分是怎么得来的！</strong></p>
+</li>
+<li><p><strong>1.服务不怎么样，我们15人，给我们带到了2楼，10人位，我们都是大人，怎么坐得下………然后开始让服务员找一个大的雅间，结果酷刑开始了，站着等了10多分钟，不见服务员的人影，然后给我们带到了7楼，结果7楼连人都没有，一进屋子，一股发霉味道，桌上的餐具，也都是没洗干净的，我让服务员帮我们清洗一下，结果很不情愿的说，这个屋子中午就做过人，怎么不干净。我的天啊，我让他闻了闻，结果说，这个不是我负责的屋子，找你这屋的服务员，我们自己把盘子杯洗干净，吗亲啊什么态度，我也不愿意多说些什么………半个小时过去了，没有人给我点菜，终于来了一个服务员，然后让我们再去楼下点菜，折腾人玩呢？………吃了饭，憋一肚子气………\n2.菜品挺好，也挺好吃的，推荐的菜都点了，但是服务确实是问题，我第一次来，也是最后一次，再好吃也不会再来，太差了，\n3.服务员不喜欢让我们喝专供，直接推荐好的啤酒，我就是干这个的，所以我比较懂，喝天涯，把瓶盖给服务员，瓶盖奖励1元或者0.5元，所以…………白酒更不用说了，提的更多！希望店家可以别这样，很不好！！！</strong></p>
+</li>
+<li><p><strong>1.环境翻版“室外桃源”，对临平这个特色餐厅稀缺的地儿，占优势。2.菜品，很一般，杭州随便的特色餐厅秒杀它。6人点了600多，没一个觉得很好吃，只是一般。3.关键问题来了：服务…真心无语了，包厢服务员挺好，其他点菜的，大厅的，简直了…点个菜她觉得慢了，斜眼白眼摆脸，你就是欠她钱了！再后来，走过路过的服务员，抛白眼是绝技。当然看着都是很年轻的小姑娘。过了30多年，没碰到过这样的一群服务生。后来因为琐事，不说把你呛得一愣一愣，这边还没怎样，直接拍桌子朝我们“操你妈…………醉了，估计我们吃得晚了，也才9点多，她们收拾急着下班，但初次来也不知道她们打烊时间，且叫了碗长寿面，等了半小时。你们要走，大可过来好好说一声快打烊了，可能有规定不能催，她们是话语间冷呛热呛逼你上火。凭借环境上位，停车方便，所以生意不差的你们，说服务态度恶劣的口碑，不是我一人吧？真的无语了，第一次碰到这样服务意识差劲的饭店，看来老板真的很忽略服务人员素质的提高”</strong></p>
+</li>
+<li><p><strong>2015.10.24，周六，一来是蟹旺季，二来从未去过莲花岛，三来曾经吃过一家阳澄湖农家菜印象极好，便约了几好友去莲花岛吃蟹。\n这家在点评上人气、评价都是很高的，反复看了评价说好的很多，最后定了这儿，结果毁的不要不要。\n这么高的分，太失望了\n(￣^￣)ゞ\n环境：\n莲花岛名字伪秀气，但完全就是光秃秃、没开发的停车场、简陋水寨。我们开了两个多小时车车赶到这儿，快十二点结果道路完全堵塞，无法停车，最后在路边勉强停下，一路吃灰走了二十来分钟，到了码头等车，几乎是十一点从独墅湖出发，一点半才到码头。停车场早就停满，看到许多南京、上海来的大巴。各路吃货也是拼。\n店家提供的图片貌似装修还不错，但实际上第一眼看到门面是从脏兮兮的水沟、野草边看过去的，当时就无奈了。店内装修尚算干净，我们坐在外边，除了空气稍微好点儿，环境入眼就是灰灰黄黄的。\n（−＿−；）\n服务：\n提前联系询问是否要订座、是否接送，答曰不需订座，有接送。码头等船五到十分钟一趟，还比较快，小哥接送都答应去大湖上兜圈儿，开出了过山车的感觉啊同行妹子都吓到了\n店内人手根本不够，只有一位厨师烧菜，另外一边一个老奶奶用灶台蒸蟹，服务员三个，包了冷菜切配送，收银处一位，完全忙不过来。\n我们一直在催菜，但仍然过了十来分钟才给上了冷菜。大闸蟹过了四十来分钟吧。旁边一桌是几位妈妈带着小宝宝，估计没有催菜什么的，完全被遗忘了，我们到的时候他们早就坐下了，然后我们吃完他们桌还没上蟹。真想说忙不过来别砸招牌啊。\n(♯｀∧´)\n口味：\n我们点了688的团购餐。除了大闸蟹和白鱼鳊鱼，所有菜都负分。店家根本没有用心做菜，只是简单处理了下食材就赶着上桌。南瓜粥难吃。米饭都是陈米，凉菜巨差，想说鱼干是放了多久，笋还不如超市袋装、白切鸡咬不动，草鸡汤硬邦邦，没煮好，拆不动，看到一桌桌都是几乎没动就走了。前面说了厨房只有一个厨师，去看的时候发现草鸡汤就是在冰箱拿一只半熟的已干的鸡再煮一下，除了炒菜其他菜都差不多是这种方式，卫生问题堪忧。\n大闸蟹一般吧，个小，公蟹还没有什么膏。其实蟹都差不多。\n总结就是no zuo no die。</strong></p>
+</li>
+<li><p><strong>20个人点了30多个菜真不知道在吃什么东西，湖锦真是越来越稀烂，菜品少的可怜味道还不如微博推荐的小馆子，分量比小南国这种地方还少，最可怕的是连炸臭干子这种没技术含量的东西是四块钱一块，不是一份，再也不会去吃了，垃圾死点评说好的是自己饭店的员工吧。</strong></p>
+</li>
+<li><p><strong>2人～等了半小时才入座～～2楼烟务彌漫～店家要改善空调系统了～之前点好了3斤3的青江鱼～因之前点过4斤多的烤不熟而要翻煮一次！2次都这样～这次长經验要小点的～还特意嘱咐了要烤熟～烤老点～结果鱼上來～我夾块魚脸脥肉～已是夾不下來兼有血～筷子插进鱼～魚不脫骨～叫來负责人～告诉我魚这样就是熟了的！！说魚不脱骨正常～鱼头魚尾不熟也正常！！我不是第一次吃烤鱼～也不是第一次在这店吃烤～看点评也知道！！负责人这解释让我难以信服！后堅持下负责人说重烤一條～等了半小时～魚上來～鱼肉熟了～但没味道～也不焦香！！只能说水準下降了～～！！烤豆腐实物和图片炎重不符～千万別点～以前一直觉得这店做的烤鱼比魏公村那店好～烤鱼都來这吃～这次的烤太差勁！！！负责人对鱼的品质维持也不不达标～～～2楼空气差～～不会再來！！</strong></p>
+</li>
+<li><p><strong>4点多的时候去的，人就好多了。一直到4:30开始排队叫号。先叫的B，然后A。店铺装修风格还蛮喜欢的。餐具都是彩色的。让我很无语的是。我和老公2个人，然后想坐4个人的位置。服务员居然还不让。态度又差的要死，搞得我欠他们钱一样。因为不止我们还有很多都是2个人坐4个人的位置。为什么偏偏叫我们起来去做角落？？？别人怎么不叫。看我们好欺负？印象顿时差了。好好和我们说我们还能接受。语气又差的要死。真的是醉了。最后想想万一往我们锅里吐个口水，往我身上倒就麻烦了。所以就没计较了。可能服务员看我们也不舒服 叫半天也不来。当做没看见。呵呵哒。想想就觉得生气。还好菜的味道不差。老规矩最爱鸡翅煲，这回加了虾。鸡翅15个，虾20个。比我在别家吃的多一点。但是还是不能让我对这家店产生好感。。。对了吃鸡翅煲吃到冬瓜我也是醉了。希望不是别人吃剩下的就好。至于这家店，我不会再来第二次。</strong></p>
+</li>
+<li><p><strong>5点多去，10.3日，门口有特价菜问了站门口的服务员，她说有我才进去的，但点菜，我们打算点48元的酸菜鱼，那个点菜的人说，这个菜我们做得不好吃的，你不要点啦，然后叫我们点贵的，我们坚持点，然后点特价菜，她说今日没有，我说你们门口那个又说有，3个特价菜可以选两个，到这里我已经不想吃了，基本每个菜的造型又小又贵，跟住我就没脸都做了一次，不吃走人，给了32元茶位钱。喝了一杯茶都没有，可能坐了10分钟，哭</strong></p>
+</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="情感分析模型训练与算法研发"><a href="#情感分析模型训练与算法研发" class="headerlink" title="情感分析模型训练与算法研发"></a>情感分析模型训练与算法研发</h3><p>该数据集为情感分析领域的研究者提供了宝贵的中文语料资源，可用于训练和优化各种情感分析算法。研究者可以基于这些真实数据构建支持向量机、朴素贝叶斯、随机森林等传统机器学习模型，也可以使用深度学习技术如LSTM、BERT、GPT等预训练模型进行情感分类任务。数据集的大规模特性使得模型能够学习到更丰富的中文语言特征和情感表达模式，提升模型在餐饮领域的情感识别准确率。通过对比不同算法的性能表现，研究者可以找到最适合中文餐饮评价情感分析的技术方案，为相关领域的技术进步贡献力量。</p>
+<h3 id="餐饮行业客户满意度分析与服务质量评估"><a href="#餐饮行业客户满意度分析与服务质量评估" class="headerlink" title="餐饮行业客户满意度分析与服务质量评估"></a>餐饮行业客户满意度分析与服务质量评估</h3><p>餐饮企业可以利用该数据集进行深度的客户满意度分析，通过情感分析技术自动识别客户对菜品口味、服务质量、环境氛围等方面的真实感受。企业可以建立智能化的客户反馈分析系统，实时监控客户评价的情感倾向，及时发现服务中的问题和不足。通过分析负面评价中的关键词和情感表达，企业能够精准定位需要改进的服务环节，制定针对性的改进措施。同时，正面评价的分析结果可以帮助企业识别自身的优势特色，在营销推广中突出这些亮点，提升品牌形象和客户忠诚度。</p>
+<h3 id="智能推荐系统与个性化服务优化"><a href="#智能推荐系统与个性化服务优化" class="headerlink" title="智能推荐系统与个性化服务优化"></a>智能推荐系统与个性化服务优化</h3><p>基于该数据集训练的情感分析模型可以集成到餐饮推荐系统中，为用户提供更加个性化和精准的推荐服务。系统可以分析用户的历史评价数据，了解用户的口味偏好、价格敏感度、服务要求等特征，从而推荐符合用户喜好的餐厅和菜品。同时，推荐系统还可以结合情感分析结果，优先推荐用户情感倾向积极的餐厅，避免推荐用户可能不满意的选择。这种智能化的推荐机制不仅能够提升用户体验，还能帮助餐饮企业精准触达目标客户群体，提高营销转化率和客户满意度。</p>
+<h3 id="餐饮行业市场研究与竞争分析"><a href="#餐饮行业市场研究与竞争分析" class="headerlink" title="餐饮行业市场研究与竞争分析"></a>餐饮行业市场研究与竞争分析</h3><p>市场研究机构和企业可以利用该数据集进行深度的行业分析，了解餐饮市场的整体发展趋势和消费者偏好变化。通过情感分析技术，研究者可以量化分析不同餐饮类型、不同价位区间、不同地域的客户满意度水平，识别市场机会和潜在风险。竞争分析方面，企业可以对比分析自身与竞争对手在客户评价中的情感表现，找出自身的竞争优势和劣势，制定差异化的竞争策略。这种基于真实数据的情感分析为餐饮行业的战略决策提供了科学依据，有助于企业在激烈的市场竞争中保持优势地位。</p>
+<h3 id="文本挖掘与知识发现"><a href="#文本挖掘与知识发现" class="headerlink" title="文本挖掘与知识发现"></a>文本挖掘与知识发现</h3><p>该数据集为文本挖掘和知识发现研究提供了丰富的素材，研究者可以从中挖掘出餐饮行业的知识规律和模式。通过情感分析结合文本挖掘技术，可以发现客户评价中的高频词汇、情感表达模式、评价结构特征等有价值的信息。这些发现不仅有助于理解中文情感表达的语言特征，还能为餐饮行业提供改进建议和发展方向。研究者可以构建餐饮评价的知识图谱，建立菜品、服务、环境等要素与客户情感之间的关联关系，为餐饮行业的智能化发展提供理论基础和技术支撑。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本餐饮行业情感分析数据集以其大规模、高质量、真实性的特点，为情感分析技术的发展和餐饮行业的智能化应用提供了宝贵的数据资源。该数据集不仅能够支持学术研究和技术创新，更能为餐饮企业的数字化转型提供实际价值，推动整个行业向更加智能化、个性化的方向发展。随着人工智能技术的不断进步，相信该数据集将在更多领域发挥重要作用，为构建更加智能化的餐饮服务生态贡献力量。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>餐饮行业评论数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/餐饮行业评论数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E9%98%BF%E5%B0%94%E5%8F%8A%E5%88%A9%E4%BA%9A%E5%AE%98%E6%96%B9%E5%85%AC%E6%8A%A5%E6%B3%95%E5%BE%8B%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%95%B0%E6%8D%AE%E9%9B%86/" title="阿尔及利亚官方公报法律知识图谱数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">阿尔及利亚官方公报法律知识图谱数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7%E6%95%B0%E6%8D%AE%E9%9B%86/" title="高性能计算集群监控数据集">
+                        <span class="hidden-mobile">高性能计算集群监控数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

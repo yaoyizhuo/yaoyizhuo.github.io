@@ -1,0 +1,1523 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/RT电影数据集全面解析/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在电影产业蓬勃发展的今天，对电影数据进行系统性整理与分析具有重要的科研价值和产业意义。本数据集整合了Rotten Tomatoes平台四十余年来的电影信息与影评数据，为电影研究、算法训练以及相关产业应用提供了宝贵的数据资源。 该数据集完整收录了1978年至2020年期间13,001部电影的详细信息，以及来自4,781部电影的46万条专业影评评论。数据集不仅包含电影的元数据信息，如片名、导演、演员、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RT电影数据集全面解析">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/RT%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E5%85%A8%E9%9D%A2%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在电影产业蓬勃发展的今天，对电影数据进行系统性整理与分析具有重要的科研价值和产业意义。本数据集整合了Rotten Tomatoes平台四十余年来的电影信息与影评数据，为电影研究、算法训练以及相关产业应用提供了宝贵的数据资源。 该数据集完整收录了1978年至2020年期间13,001部电影的详细信息，以及来自4,781部电影的46万条专业影评评论。数据集不仅包含电影的元数据信息，如片名、导演、演员、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.808Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>RT电影数据集全面解析 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="RT电影数据集全面解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          72 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">RT电影数据集全面解析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在电影产业蓬勃发展的今天，对电影数据进行系统性整理与分析具有重要的科研价值和产业意义。本数据集整合了Rotten Tomatoes平台四十余年来的电影信息与影评数据，为电影研究、算法训练以及相关产业应用提供了宝贵的数据资源。</p>
+<p>该数据集完整收录了1978年至2020年期间13,001部电影的详细信息，以及来自4,781部电影的46万条专业影评评论。数据集不仅包含电影的元数据信息，如片名、导演、演员、类型、上映时间等基础信息，更重要的是提供了专业的影评人评分、观众评分、影评内容等多维度数据，构建了一个完整的电影评价生态系统。</p>
+<p>数据集对于科研、算法训练和行业应用具有不可估量的价值。在学术研究方面，它可以用于电影史研究、类型片分析、观众接受度研究等领域；在算法训练方面，可用于推荐系统、情感分析、评分预测等机器学习模型；在产业应用方面，可为电影制作、发行、营销等环节提供数据支持和决策依据。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>movie_link</td>
+<td>字符串</td>
+<td>电影唯一标识链接</td>
+<td>&#x2F;m&#x2F;312291718</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>movie_name</td>
+<td>字符串</td>
+<td>电影名称</td>
+<td>Tillie’s Punctured Romance</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>字符串</td>
+<td>电影分级信息</td>
+<td>NR, R, PG-13</td>
+<td>99.8%</td>
+</tr>
+<tr>
+<td>genre</td>
+<td>字符串</td>
+<td>电影类型标签</td>
+<td>Classics,Comedy</td>
+<td>99.7%</td>
+</tr>
+<tr>
+<td>directors</td>
+<td>字符串</td>
+<td>导演信息</td>
+<td>Charles Bennett,Mack Sennett</td>
+<td>97.5%</td>
+</tr>
+<tr>
+<td>writers</td>
+<td>字符串</td>
+<td>编剧信息</td>
+<td>Hampton Del Ruth</td>
+<td>95.2%</td>
+</tr>
+<tr>
+<td>movie_info</td>
+<td>字符串</td>
+<td>电影详细描述</td>
+<td>This Keystone comedy…</td>
+<td>98.5%</td>
+</tr>
+<tr>
+<td>poster_image</td>
+<td>字符串</td>
+<td>电影海报图片链接</td>
+<td><a target="_blank" rel="noopener" href="https://resizing.flixster.com/">https://resizing.flixster.com/</a>…</td>
+<td>96.3%</td>
+</tr>
+<tr>
+<td>casts</td>
+<td>字符串</td>
+<td>演员阵容信息</td>
+<td>Charles Chaplin,Marie Dressler…</td>
+<td>94.8%</td>
+</tr>
+<tr>
+<td>in_theaters_date</td>
+<td>字符串</td>
+<td>影院上映日期</td>
+<td>Jan 1, 1914</td>
+<td>89.4%</td>
+</tr>
+<tr>
+<td>on_streaming_date</td>
+<td>字符串</td>
+<td>流媒体上线日期</td>
+<td>Aug 24, 1999</td>
+<td>78.6%</td>
+</tr>
+<tr>
+<td>runtime_in_minutes</td>
+<td>数值</td>
+<td>影片时长(分钟)</td>
+<td>73.0</td>
+<td>98.3%</td>
+</tr>
+<tr>
+<td>studio_name</td>
+<td>字符串</td>
+<td>制作公司名称</td>
+<td>Keystone Film Company</td>
+<td>85.7%</td>
+</tr>
+<tr>
+<td>box_office</td>
+<td>数值</td>
+<td>票房收入</td>
+<td>1000000</td>
+<td>23.4%</td>
+</tr>
+<tr>
+<td>critics_consensus</td>
+<td>字符串</td>
+<td>影评人共识</td>
+<td>Certified Fresh</td>
+<td>67.2%</td>
+</tr>
+<tr>
+<td>tomatometer_status</td>
+<td>字符串</td>
+<td>专业评分状态</td>
+<td>fresh, rotten, certified_fresh</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>tomatometer_rating</td>
+<td>数值</td>
+<td>专业评分百分比</td>
+<td>83.0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>tomatometer_count</td>
+<td>数值</td>
+<td>专业评分人数</td>
+<td>6</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>audience_status</td>
+<td>字符串</td>
+<td>观众评分状态</td>
+<td>upright, spilled</td>
+<td>86.8%</td>
+</tr>
+<tr>
+<td>audience_rating</td>
+<td>数值</td>
+<td>观众评分百分比</td>
+<td>44.0</td>
+<td>86.8%</td>
+</tr>
+<tr>
+<td>audience_count</td>
+<td>数值</td>
+<td>观众评分人数</td>
+<td>972</td>
+<td>86.8%</td>
+</tr>
+<tr>
+<td>tomatometer_avg_rating</td>
+<td>数值</td>
+<td>专业评分平均分</td>
+<td>6.38</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>audience_avg_rating</td>
+<td>数值</td>
+<td>观众评分平均分</td>
+<td>3.21</td>
+<td>86.8%</td>
+</tr>
+<tr>
+<td>score_sentiment</td>
+<td>字符串</td>
+<td>情感倾向</td>
+<td>POSITIVE, NEGATIVE</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="时间-年份分布"><a href="#时间-年份分布" class="headerlink" title="时间&#x2F;年份分布"></a>时间&#x2F;年份分布</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2000年</td>
+<td>666</td>
+<td>5.1%</td>
+<td>5.1%</td>
+</tr>
+<tr>
+<td>2001年</td>
+<td>966</td>
+<td>7.4%</td>
+<td>12.5%</td>
+</tr>
+<tr>
+<td>2002年</td>
+<td>854</td>
+<td>6.6%</td>
+<td>19.1%</td>
+</tr>
+<tr>
+<td>2003年</td>
+<td>1083</td>
+<td>8.3%</td>
+<td>27.4%</td>
+</tr>
+<tr>
+<td>2004年</td>
+<td>1135</td>
+<td>8.7%</td>
+<td>36.1%</td>
+</tr>
+<tr>
+<td>2005年</td>
+<td>1092</td>
+<td>8.4%</td>
+<td>44.5%</td>
+</tr>
+<tr>
+<td>2006年</td>
+<td>1027</td>
+<td>7.9%</td>
+<td>52.4%</td>
+</tr>
+<tr>
+<td>2007年</td>
+<td>961</td>
+<td>7.4%</td>
+<td>59.8%</td>
+</tr>
+<tr>
+<td>2008年</td>
+<td>887</td>
+<td>6.8%</td>
+<td>66.6%</td>
+</tr>
+<tr>
+<td>2009年</td>
+<td>762</td>
+<td>5.9%</td>
+<td>72.5%</td>
+</tr>
+</tbody></table>
+<h4 id="分类-标签分布"><a href="#分类-标签分布" class="headerlink" title="分类&#x2F;标签分布"></a>分类&#x2F;标签分布</h4><table>
+<thead>
+<tr>
+<th>电影类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>剧情片</td>
+<td>7559</td>
+<td>58.1%</td>
+</tr>
+<tr>
+<td>喜剧</td>
+<td>4494</td>
+<td>34.6%</td>
+</tr>
+<tr>
+<td>动作冒险</td>
+<td>3207</td>
+<td>24.7%</td>
+</tr>
+<tr>
+<td>悬疑惊悚</td>
+<td>2451</td>
+<td>18.9%</td>
+</tr>
+<tr>
+<td>艺术电影与国际</td>
+<td>2244</td>
+<td>17.3%</td>
+</tr>
+<tr>
+<td>经典影片</td>
+<td>1877</td>
+<td>14.4%</td>
+</tr>
+<tr>
+<td>爱情</td>
+<td>1564</td>
+<td>12.0%</td>
+</tr>
+<tr>
+<td>科幻奇幻</td>
+<td>1440</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>恐怖</td>
+<td>1195</td>
+<td>9.2%</td>
+</tr>
+<tr>
+<td>家庭儿童</td>
+<td>851</td>
+<td>6.5%</td>
+</tr>
+</tbody></table>
+<h4 id="文件格式分布"><a href="#文件格式分布" class="headerlink" title="文件格式分布"></a>文件格式分布</h4><table>
+<thead>
+<tr>
+<th>文件类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSV格式</td>
+<td>13001</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="时长分布"><a href="#时长分布" class="headerlink" title="时长分布"></a>时长分布</h4><table>
+<thead>
+<tr>
+<th>时长分类</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>短片(≤30分钟)</td>
+<td>100</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>短片(31-60分钟)</td>
+<td>191</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>标准长度(61-120分钟)</td>
+<td>10493</td>
+<td>82.1%</td>
+</tr>
+<tr>
+<td>长片(121-180分钟)</td>
+<td>1854</td>
+<td>14.5%</td>
+</tr>
+<tr>
+<td>超长片(&gt;180分钟)</td>
+<td>143</td>
+<td>1.1%</td>
+</tr>
+</tbody></table>
+<h4 id="专业评分分布"><a href="#专业评分分布" class="headerlink" title="专业评分分布"></a>专业评分分布</h4><table>
+<thead>
+<tr>
+<th>评分区间</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-20分</td>
+<td>2479</td>
+<td>19.1%</td>
+</tr>
+<tr>
+<td>21-40分</td>
+<td>2167</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td>41-60分</td>
+<td>2734</td>
+<td>21.0%</td>
+</tr>
+<tr>
+<td>61-80分</td>
+<td>2894</td>
+<td>22.3%</td>
+</tr>
+<tr>
+<td>81-100分</td>
+<td>2727</td>
+<td>21.0%</td>
+</tr>
+</tbody></table>
+<h4 id="观众评分分布"><a href="#观众评分分布" class="headerlink" title="观众评分分布"></a>观众评分分布</h4><table>
+<thead>
+<tr>
+<th>评分区间</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-1分</td>
+<td>135</td>
+<td>1.2%</td>
+</tr>
+<tr>
+<td>1-2分</td>
+<td>890</td>
+<td>7.9%</td>
+</tr>
+<tr>
+<td>2-3分</td>
+<td>3749</td>
+<td>33.2%</td>
+</tr>
+<tr>
+<td>3-4分</td>
+<td>5079</td>
+<td>45.0%</td>
+</tr>
+<tr>
+<td>4-5分</td>
+<td>1440</td>
+<td>12.8%</td>
+</tr>
+</tbody></table>
+<h4 id="主要制作公司分布"><a href="#主要制作公司分布" class="headerlink" title="主要制作公司分布"></a>主要制作公司分布</h4><table>
+<thead>
+<tr>
+<th>制作公司</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paramount Pictures</td>
+<td>531</td>
+<td>4.1%</td>
+</tr>
+<tr>
+<td>Warner Bros. Pictures</td>
+<td>424</td>
+<td>3.3%</td>
+</tr>
+<tr>
+<td>Universal Pictures</td>
+<td>375</td>
+<td>2.9%</td>
+</tr>
+<tr>
+<td>Warner Home Video</td>
+<td>345</td>
+<td>2.7%</td>
+</tr>
+<tr>
+<td>MGM</td>
+<td>325</td>
+<td>2.5%</td>
+</tr>
+<tr>
+<td>Sony Pictures Home Entertainment</td>
+<td>315</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td>20th Century Fox</td>
+<td>310</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td>Columbia Pictures</td>
+<td>298</td>
+<td>2.3%</td>
+</tr>
+<tr>
+<td>United Artists</td>
+<td>243</td>
+<td>1.9%</td>
+</tr>
+<tr>
+<td>MGM Home Entertainment</td>
+<td>241</td>
+<td>1.9%</td>
+</tr>
+</tbody></table>
+<h4 id="影评数据分布"><a href="#影评数据分布" class="headerlink" title="影评数据分布"></a>影评数据分布</h4><table>
+<thead>
+<tr>
+<th>评价类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>专业影评人评论</td>
+<td>460245</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Top Critic评论</td>
+<td>114643</td>
+<td>24.9%</td>
+</tr>
+<tr>
+<td>涉及电影数</td>
+<td>4781</td>
+<td>-</td>
+</tr>
+<tr>
+<td>平均每部电影评论数</td>
+<td>96.3</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 id="影评来源分布（Top-10）"><a href="#影评来源分布（Top-10）" class="headerlink" title="影评来源分布（Top 10）"></a>影评来源分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>媒体机构</th>
+<th>评论数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eFilmCritic.com</td>
+<td>4564</td>
+<td>1.0%</td>
+</tr>
+<tr>
+<td>New York Times</td>
+<td>4278</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>Time Out</td>
+<td>4253</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>Washington Post</td>
+<td>4043</td>
+<td>0.9%</td>
+</tr>
+<tr>
+<td>Entertainment Weekly</td>
+<td>3775</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>Variety</td>
+<td>3754</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>Austin Chronicle</td>
+<td>3451</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Chicago Sun-Times</td>
+<td>3359</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Los Angeles Times</td>
+<td>3099</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Empire Magazine</td>
+<td>3014</td>
+<td>0.7%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与质量"><a href="#数据规模与质量" class="headerlink" title="数据规模与质量"></a>数据规模与质量</h3><p>数据集包含13,001部电影的完整信息记录，覆盖42年时间跨度，数据字段丰富程度达到31个维度的综合信息。数据完整性整体较高，核心字段如电影名称、类型、评分等信息完整性达到95%以上。46万条专业影评评论为数据分析提供了坚实的文本基础，平均每部电影拥有96.3条专业评论，确保了数据样本的代表性和可靠性。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据规模优势</strong></td>
+<td>涵盖13,001部电影和46万条专业影评</td>
+<td>为大规模机器学习模型提供充足训练样本，支持深度数据挖掘和分析</td>
+</tr>
+<tr>
+<td><strong>时间跨度完整</strong></td>
+<td>覆盖1978-2020年共42年电影发展历程</td>
+<td>支持电影史研究、趋势分析和跨时代比较研究</td>
+</tr>
+<tr>
+<td><strong>评分体系专业</strong></td>
+<td>双重评分机制：专业影评人评分+观众评分</td>
+<td>便于对比分析专业评价与大众喜好，发现评分差异规律</td>
+</tr>
+<tr>
+<td><strong>多维度数据</strong></td>
+<td>31个详细字段包含基本信息、评分、评论、制作信息</td>
+<td>支持多角度数据分析和综合应用场景</td>
+</tr>
+<tr>
+<td><strong>高质量评论内容</strong></td>
+<td>来自权威媒体和专业影评人的详细文字评论</td>
+<td>支持自然语言处理、情感分析和文本挖掘研究</td>
+</tr>
+<tr>
+<td><strong>类型分布均衡</strong></td>
+<td>15种主要电影类型，剧情片占主导地位</td>
+<td>适合训练各种类型电影的分析和推荐模型</td>
+</tr>
+<tr>
+<td><strong>制作公司信息</strong></td>
+<td>包含主要制片厂和独立制片信息</td>
+<td>支持产业分析、品牌研究等商业应用</td>
+</tr>
+<tr>
+<td><strong>完整性验证</strong></td>
+<td>核心字段完整性超过95%</td>
+<td>确保分析结果的可靠性和准确性</td>
+</tr>
+<tr>
+<td><strong>多语言适应性</strong></td>
+<td>英文数据可支持中英双语研究和对比分析</td>
+<td>拓展国际化研究和跨文化分析可能性</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p><strong>注意</strong>：由于数据集中包含完整的原始文件（详细的电影描述文本、海报图片链接等），文件体积较大且格式多样化，因此在文章中无法直接展示全部原始内容。但数据集确实包含完整的电影海报图片链接、详细剧情描述、演员导演信息等原始文件信息，可供实际研究使用。</p>
+<h3 id="电影信息元数据样例（15条）"><a href="#电影信息元数据样例（15条）" class="headerlink" title="电影信息元数据样例（15条）"></a>电影信息元数据样例（15条）</h3><ol>
+<li><p><strong>Tillie’s Punctured Romance (1914)</strong></p>
+<ul>
+<li>类型：经典电影、喜剧</li>
+<li>导演：Charles Bennett, Mack Sennett</li>
+<li>主演：Charles Chaplin, Marie Dressler, Mabel Normand</li>
+<li>专业评分：83分（新鲜度：新鲜）</li>
+<li>观众评分：44分（好感度：一般）</li>
+<li>时长：73分钟</li>
+</ul>
+</li>
+<li><p><strong>Cabiria (1914)</strong></p>
+<ul>
+<li>类型：艺术电影与国际、经典电影、剧情片</li>
+<li>导演：Giovanni Pastrone</li>
+<li>专业评分：89分（新鲜度：新鲜）</li>
+<li>观众评分：69分（好感度：正面）</li>
+<li>时长：181分钟</li>
+</ul>
+</li>
+<li><p><strong>The Phantom Carriage (1920)</strong></p>
+<ul>
+<li>类型：艺术电影与国际、剧情片、恐怖、科幻奇幻</li>
+<li>导演：Victor Sjöström</li>
+<li>专业评分：100分（新鲜度：新鲜）</li>
+<li>观众评分：90分（好感度：正面）</li>
+<li>时长：89分钟</li>
+</ul>
+</li>
+<li><p><strong>Nosferatu, a Symphony of Horror (1922)</strong></p>
+<ul>
+<li>类型：艺术电影与国际、经典电影、恐怖、科幻奇幻</li>
+<li>导演：F.W. Murnau</li>
+<li>专业评分：97分（新鲜度：认证新鲜）</li>
+<li>观众评分：87分（好感度：正面）</li>
+<li>时长：63分钟</li>
+</ul>
+</li>
+<li><p><strong>Blood and Sand (1922)</strong></p>
+<ul>
+<li>类型：经典电影、剧情片、爱情</li>
+<li>导演：Dorothy Arzner, Fred Niblo</li>
+<li>专业评分：100分（新鲜度：新鲜）</li>
+<li>观众评分：61分（好感度：正面）</li>
+</ul>
+</li>
+<li><p><strong>Our Hospitality (1923)</strong></p>
+<ul>
+<li>类型：经典电影、喜剧、家庭儿童</li>
+<li>导演：Buster Keaton, Jack Blystone, John G. Blystone</li>
+<li>专业评分：96分（新鲜度：新鲜）</li>
+<li>观众评分：90分（好感度：正面）</li>
+<li>时长：74分钟</li>
+</ul>
+</li>
+<li><p><strong>The Lost World (1925)</strong></p>
+<ul>
+<li>类型：动作冒险、科幻奇幻</li>
+<li>导演：Harry O. Hoyt</li>
+<li>类型：经典电影、家庭儿童、科幻奇幻</li>
+<li>专业评分：83分（新鲜度：新鲜）</li>
+<li>时长：93分钟</li>
+</ul>
+</li>
+<li><p><strong>The General (1926)</strong></p>
+<ul>
+<li>类型：喜剧、特别兴趣</li>
+<li>导演：Arthur Hotaling</li>
+<li>专业评分：98分（新鲜度：认证新鲜）</li>
+<li>时长：78分钟</li>
+</ul>
+</li>
+<li><p><strong>Metropolis (1927)</strong></p>
+<ul>
+<li>类型：科幻奇幻、经典电影</li>
+<li>导演：Fritz Lang</li>
+<li>专业评分：94分（新鲜度：认证新鲜）</li>
+<li>时长：153分钟</li>
+</ul>
+</li>
+<li><p><strong>The Jazz Singer (1927)</strong></p>
+<ul>
+<li>类型：剧情片、音乐与表演艺术</li>
+<li>导演：Alan Crosland</li>
+<li>专业评分：75分（新鲜度：新鲜）</li>
+<li>时长：88分钟</li>
+</ul>
+</li>
+<li><p><strong>The Passion of Joan of Arc (1928)</strong></p>
+<ul>
+<li>类型：艺术电影与国际、剧情片、经典电影</li>
+<li>导演：Carl Theodor Dreyer</li>
+<li>专业评分：98分（新鲜度：认证新鲜）</li>
+<li>时长：82分钟</li>
+</ul>
+</li>
+<li><p><strong>The Man Who Laughs (1928)</strong></p>
+<ul>
+<li>类型：经典电影、剧情片、恐怖、科幻奇幻</li>
+<li>导演：Paul Leni</li>
+<li>专业评分：79分（新鲜度：新鲜）</li>
+<li>时长：65分钟</li>
+</ul>
+</li>
+<li><p><strong>The Docks of New York (1928)</strong></p>
+<ul>
+<li>类型：剧情片、经典电影、爱情</li>
+<li>导演：Josef von Sternberg</li>
+<li>专业评分：95分（新鲜度：认证新鲜）</li>
+<li>时长：76分钟</li>
+</ul>
+</li>
+<li><p><strong>Un Chien Andalou (1929)</strong></p>
+<ul>
+<li>类型：艺术电影与国际、特别兴趣</li>
+<li>导演：Luis Buñuel</li>
+<li>专业评分：83分（新鲜度：新鲜）</li>
+<li>时长：16分钟</li>
+</ul>
+</li>
+<li><p><strong>The Adventures of Prince Achmed (1926)</strong></p>
+<ul>
+<li>类型：动画、艺术电影与国际、特别兴趣</li>
+<li>导演：Lotte Reiniger</li>
+<li>专业评分：91分（新鲜度：新鲜）</li>
+<li>时长：80分钟</li>
+</ul>
+</li>
+</ol>
+<h3 id="影评内容样例（10条）"><a href="#影评内容样例（10条）" class="headerlink" title="影评内容样例（10条）"></a>影评内容样例（10条）</h3><ol>
+<li><p><strong>来自 eFilmCritic.com</strong>：<br>“Has more belly laughs than 10 studio-produced, star-vehicle comedies.”<br>评分：4&#x2F;5 | 类型：正面评价 | 评价者：专业影评人</p>
+</li>
+<li><p><strong>来自 New York Times</strong>：<br>“Calling this story about a quirky high-school student from a dysfunctional family who lives in a goofy small town a one-joke movie is exaggerating by a factor of 10.”<br>评分：0.5&#x2F;4 | 类型：负面评价 | 评价者：顶级影评人</p>
+</li>
+<li><p><strong>来自 Variety</strong>：<br>“There are lots of laughs for those who enjoy the sight of bottom dwellers doing stupid things that make them look even more idiotic.”<br>评分：无评分 | 类型：负面评价 | 评价者：顶级影评人</p>
+</li>
+<li><p><strong>来自 Time Out</strong>：<br>“For those who think there’e nothing funnier than yokels acting like idiots for 90 minutes straight.”<br>评分：0.5&#x2F;4 | 类型：负面评价 | 评价者：专业影评人</p>
+</li>
+<li><p><strong>来自 St. Paul Pioneer Press</strong>：<br>“We laugh at all the nerdy behavior in the movie, and there’s a reason that’s OK: Because, deep down, we know we are all nerds.”<br>评分：3.5&#x2F;4 | 类型：正面评价 | 评价者：专业影评人</p>
+</li>
+<li><p><strong>来自 Oregonian</strong>：<br>“He makes Geekus Hollywoodium – always played by someone such as Ben Stiller, whom we know to be fundamentally cool beneath his nerdy veneer – look like the fraudulent genus we know it to be.”<br>评分：B | 类型：正面评价 | 评价者：专业影评人</p>
+</li>
+<li><p><strong>来自 Detroit News</strong>：<br>“An independent take on a Hollywood tradition, undermined by its cliches but saved by its performances.”<br>评分：C+ | 类型：正面评价 | 评价者：顶级影评人</p>
+</li>
+<li><p><strong>来自 Detroit Free Press</strong>：<br>“May be the most condescending comedy ever to imagine itself being too cool for the room.”<br>评分：1&#x2F;4 | 类型：负面评价 | 评价者：顶级影评人</p>
+</li>
+<li><p><strong>来自 Deseret News</strong>：<br>“This is basically a collection of hit-and-miss skits that are stumbling around in search of a story line.”<br>评分：2.5&#x2F;4 | 类型：中性评价 | 评价者：专业影评人</p>
+</li>
+<li><p><strong>来自 Salt Lake Tribune</strong>：<br>“Hess and Heder allow Napoleon to remain his geeky self from beginning to end, a guy who – like his movie – dares to be different and succeeds.”<br>评分：3.5&#x2F;4 | 类型：正面评价 | 评价者：专业影评人</p>
+</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="电影推荐系统开发"><a href="#电影推荐系统开发" class="headerlink" title="电影推荐系统开发"></a>电影推荐系统开发</h3><p>基于本数据集的丰富电影信息和多维度评分体系，可以构建高度精准的电影推荐系统。通过分析电影的类型、导演、演员、评分历史等信息，结合用户的历史偏好和评价行为，实现个性化的电影推荐。数据集提供的46万条专业影评和观众评分为推荐算法提供了可靠的训练基础。特别是双重评分机制（专业评分+观众评分）能够帮助推荐系统更好地平衡艺术价值与商业价值，推荐出既符合用户个人喜好又具有较高艺术价值的优质电影。这种推荐系统可以广泛应用于流媒体平台、电影院线、电影社区等场景，为不同类型的用户提供精准的观影建议。</p>
+<h3 id="情感分析与自然语言处理研究"><a href="#情感分析与自然语言处理研究" class="headerlink" title="情感分析与自然语言处理研究"></a>情感分析与自然语言处理研究</h3><p>数据集中包含的大量影评文本为自然语言处理和情感分析研究提供了宝贵的训练数据。研究人员可以利用这些真实的专业影评内容，开发和改进情感分析算法、文本分类模型、观点挖掘技术等。通过对不同媒体机构、不同类型电影的评价文本进行分析，可以探索影评语言的表达规律、情感倾向的分布特征、专业术语的使用模式等。这些技术可以应用于影评网站、社交媒体监控、市场调研分析等领域，帮助企业了解公众对产品或服务的情感态度，支持品牌管理和市场策略制定。同时，基于专业影评人的评价数据训练的模型在处理正式文本和评论类内容方面具有显著优势。</p>
+<h3 id="电影市场趋势分析"><a href="#电影市场趋势分析" class="headerlink" title="电影市场趋势分析"></a>电影市场趋势分析</h3><p>本数据集跨越42年的时间跨度，为电影市场趋势分析提供了完整的历史数据支撑。通过分析不同年代的电影类型分布、评分变化、制作成本趋势、观众喜好演变等，可以识别电影行业的发展规律和周期性变化。研究人员可以利用这些数据进行预测性分析，预测未来电影市场的发展方向、观众偏好变化、新兴类型电影的潜力等。这种分析对于电影制作公司、投资机构、发行商等具有重要价值，可以指导内容创作策略、发行时机选择、营销资源配置等决策。例如，通过分析近年来恐怖片、科幻片等类型的市场表现，可以为新项目的投资决策提供数据支持；通过分析观众评分与票房收入的关联性，可以优化电影的营销推广策略。</p>
+<h3 id="电影史研究"><a href="#电影史研究" class="headerlink" title="电影史研究"></a>电影史研究</h3><p>对于电影史学研究和人文社科研究，本数据集提供了宝贵的电影历史资料。通过分析不同时期的电影类型、制作技术、叙事风格、主题内容等变化，可以深入了解电影艺术的发展轨迹和社会文化背景。研究人员可以利用这些数据进行定量分析，验证或挑战传统的电影史理论，发现被忽视的历史趋势和规律。例如，通过分析女性导演在历史中的分布变化，可以研究电影行业的性别平等进程；通过分析不同国家地区电影在国际市场中的表现，可以探讨全球化对电影产业的影响。这些研究不仅具有学术价值，也为当代电影创作和政策制定提供历史借鉴。</p>
+<h3 id="影视产业竞争分析"><a href="#影视产业竞争分析" class="headerlink" title="影视产业竞争分析"></a>影视产业竞争分析</h3><p>利用数据集包含的制作公司信息、票房数据、评分表现等，可以进行深度的影视产业竞争分析。通过分析不同制片厂的类型偏好、制作规模、市场表现等，可以构建产业生态图谱，识别主要竞争者和市场机会。研究人员可以利用这些数据进行企业战略分析、产品组合优化、市场定位研究等。对于投资机构而言，这些分析数据可以帮助识别有潜力的影视公司、评估投资风险、制定投资组合策略。对于政策制定者而言，这些分析结果可以为产业政策制定、文化产业扶持措施等提供数据支持，促进电影产业的健康发展和国际竞争力提升。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>RT电影数据集作为目前最为完整和权威的电影信息资源之一，为电影研究、算法训练和产业应用提供了坚实的基础。数据集涵盖的13,001部电影信息和46万条专业影评不仅在数量上具有显著优势，在质量上也达到了专业标准，特别是双重评分机制和详细的元数据结构为各种研究和应用场景提供了丰富的可能性。</p>
+<p>数据集的核心价值在于其完整性和权威性。46年的电影发展历程记录、来自4,781部电影的46万条专业评论、31个维度的详细信息字段，共同构建了一个全面的电影生态系统。这种数据完整性和历史连续性使得研究人员能够进行深度的时间序列分析、趋势预测研究，以及跨时代的比较分析。同时，专业影评人的评价数据和来自权威媒体的评论内容确保了数据的学术价值和可信赖性。</p>
+<p>在实际应用中，数据集展现出了强大的实用性和创新潜力。从推荐系统开发到情感分析研究，从市场趋势分析到电影史研究，从产业竞争分析到政策制定支持，数据集的应用场景广泛而深入。特别是对于机器学习和人工智能领域而言，这样大规模、高质量的结构化和非结构化数据为算法训练和模型优化提供了宝贵的资源。</p>
+<p>数据集的获取和使用相对便利，为研究人员、开发者和决策者提供了易于访问的数据资源。通过合理利用这一数据集，不仅能够推动电影研究领域的学术进步，也为电影产业的创新发展和数字化转型提供了有力支撑。有需要获取更多相关信息或技术支持的研究机构和个人，可以通过适当渠道进一步咨询和合作。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>RT电影数据集全面解析</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/RT电影数据集全面解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/MP4%E8%A7%86%E9%A2%91%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="MP4视频数据集分析报告">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MP4视频数据集分析报告</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/TMDB%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E9%9B%86%E5%85%A8%E9%9D%A2%E5%88%86%E6%9E%90/" title="TMDB电影数据集全面分析">
+                        <span class="hidden-mobile">TMDB电影数据集全面分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

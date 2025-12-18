@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/多模态3D感知数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在计算机视觉和深度学习快速发展的背景下，高质量的3D感知数据成为推动技术创新和算法突破的关键资源。本数据集作为一个综合性多模态3D感知数据资源，集成了深度学习训练数据和实景采集数据，为研究人员提供了从仿真到现实的全链条数据支持。数据集的重要性在于其独特的数据构成，既包含经过精心准备的训练数据，又保留了原始的实景采集数据，为深度学习模型的训练、验证和应用提供了完整的生态系统。 数据集的完整内容构成包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多模态3D感知数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E5%A4%9A%E6%A8%A1%E6%80%813D%E6%84%9F%E7%9F%A5%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在计算机视觉和深度学习快速发展的背景下，高质量的3D感知数据成为推动技术创新和算法突破的关键资源。本数据集作为一个综合性多模态3D感知数据资源，集成了深度学习训练数据和实景采集数据，为研究人员提供了从仿真到现实的全链条数据支持。数据集的重要性在于其独特的数据构成，既包含经过精心准备的训练数据，又保留了原始的实景采集数据，为深度学习模型的训练、验证和应用提供了完整的生态系统。 数据集的完整内容构成包">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T07:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.814Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>多模态3D感知数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="多模态3D感知数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 15:51" pubdate>
+          2025年12月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">多模态3D感知数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在计算机视觉和深度学习快速发展的背景下，高质量的3D感知数据成为推动技术创新和算法突破的关键资源。本数据集作为一个综合性多模态3D感知数据资源，集成了深度学习训练数据和实景采集数据，为研究人员提供了从仿真到现实的全链条数据支持。数据集的重要性在于其独特的数据构成，既包含经过精心准备的训练数据，又保留了原始的实景采集数据，为深度学习模型的训练、验证和应用提供了完整的生态系统。</p>
+<p>数据集的完整内容构成包括三大核心部分：首先是深度学习训练数据，采用标准化的NumPy数组格式，包含2000组RGB图像和深度图对；其次是实景RGB-D采集数据，提供了长达25.3小时的连续传感器采集数据，包含445帧同步的RGB和深度图像；最后是3D建模与重建数据，涵盖多个经典对象的点云模型和3D场景数据。这些数据不仅为算法训练提供了丰富的样本，更重要的是为从研究到实际应用的全流程开发提供了坚实的基础。</p>
+<p>数据集的研究价值和行业应用价值体现在多个维度。对于深度学习研究人员而言，该数据集提供了标准化的训练基准，可用于深度估计、图像超分辨率、3D重建等算法的研发和评估。对于计算机视觉工程师而言，实景采集数据能够帮助验证算法在实际场景中的性能表现。对于VR&#x2F;AR、自动驾驶、机器人导航等产业应用而言，该数据集的多样性和完整性为算法部署提供了可靠的数据支撑。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rgb_training_images</td>
+<td>uint8数组</td>
+<td>训练用RGB图像数据，形状(2000,3,96,96)</td>
+<td>[[[[135,120,110]…]]]</td>
+<td>100%完整</td>
+</tr>
+<tr>
+<td>depth_training_maps</td>
+<td>float32数组</td>
+<td>训练用深度图数据，形状(2000,1,96,96)</td>
+<td>[[[[0.234,0.156,0.0]…]]]</td>
+<td>100%完整</td>
+</tr>
+<tr>
+<td>color_timestamps</td>
+<td>int64数组</td>
+<td>RGB采集时间戳，精度微秒</td>
+<td>77334262864988</td>
+<td>445条记录</td>
+</tr>
+<tr>
+<td>depth_image_files</td>
+<td>文件路径列表</td>
+<td>深度图像文件名序列</td>
+<td>depthimage_00000077336870200820.pnm</td>
+<td>444条记录</td>
+</tr>
+<tr>
+<td>camera_color_yaml</td>
+<td>结构化数据</td>
+<td>RGB相机内参外参配置</td>
+<td>分辨率960x540，焦距868.8</td>
+<td>100%完整</td>
+</tr>
+<tr>
+<td>camera_depth_yaml</td>
+<td>结构化数据</td>
+<td>深度相机内参外参配置</td>
+<td>分辨率224x172，焦距218.1</td>
+<td>100%完整</td>
+</tr>
+<tr>
+<td>point_cloud_data</td>
+<td>3D点云数组</td>
+<td>对象点云坐标和属性</td>
+<td>PLY格式三维点数据</td>
+<td>3个对象文件</td>
+</tr>
+<tr>
+<td>scene_metadata</td>
+<td>JSON格式</td>
+<td>3D场景参数配置</td>
+<td>LambdaMin: -35, LambdaMax: 8</td>
+<td>100%完整</td>
+</tr>
+</tbody></table>
+<h3 id="时间分布情况"><a href="#时间分布情况" class="headerlink" title="时间分布情况"></a>时间分布情况</h3><table>
+<thead>
+<tr>
+<th>时间区间</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2017-03-24</td>
+<td>2个采集会话</td>
+<td>0.4%</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td>2017-03-27</td>
+<td>1个采集会话</td>
+<td>0.2%</td>
+<td>0.6%</td>
+</tr>
+<tr>
+<td>2018-07-06</td>
+<td>1个采集会话</td>
+<td>0.2%</td>
+<td>0.8%</td>
+</tr>
+<tr>
+<td>2018年全天采集</td>
+<td>445帧数据</td>
+<td>99.2%</td>
+<td>100.0%</td>
+</tr>
+</tbody></table>
+<h3 id="文件格式分布"><a href="#文件格式分布" class="headerlink" title="文件格式分布"></a>文件格式分布</h3><table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PNM</td>
+<td>444</td>
+<td>89.2%</td>
+<td>深度图像数据</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>10</td>
+<td>2.0%</td>
+<td>RGB图像数据</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td>8</td>
+<td>1.6%</td>
+<td>时间戳与参数配置</td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>7</td>
+<td>1.4%</td>
+<td>高精度图像数据</td>
+</tr>
+<tr>
+<td>YAML</td>
+<td>3</td>
+<td>0.6%</td>
+<td>相机标定数据</td>
+</tr>
+<tr>
+<td>PLY</td>
+<td>3</td>
+<td>0.6%</td>
+<td>3D点云数据</td>
+</tr>
+<tr>
+<td>其他格式</td>
+<td>23</td>
+<td>4.6%</td>
+<td>配置与模型文件</td>
+</tr>
+</tbody></table>
+<h3 id="传感器配置分布"><a href="#传感器配置分布" class="headerlink" title="传感器配置分布"></a>传感器配置分布</h3><table>
+<thead>
+<tr>
+<th>传感器类型</th>
+<th>分辨率</th>
+<th>数据特点</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RGB彩色相机</td>
+<td>960×540</td>
+<td>径向畸变校正，3DR标定</td>
+<td>视觉SLAM、目标检测</td>
+</tr>
+<tr>
+<td>深度相机</td>
+<td>224×172</td>
+<td>无畸变，高精度测距</td>
+<td>深度估计、3D重建</td>
+</tr>
+<tr>
+<td>IMU传感器</td>
+<td>6轴数据</td>
+<td>精确时间同步</td>
+<td>姿态估计、运动补偿</td>
+</tr>
+</tbody></table>
+<h3 id="深度数据分布情况"><a href="#深度数据分布情况" class="headerlink" title="深度数据分布情况"></a>深度数据分布情况</h3><table>
+<thead>
+<tr>
+<th>深度范围</th>
+<th>像素数量</th>
+<th>占比</th>
+<th>数据特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无效深度(-1.0)</td>
+<td>7,087,159</td>
+<td>37.9%</td>
+<td>背景或遮挡区域</td>
+</tr>
+<tr>
+<td>近距离(0.0-0.1)</td>
+<td>2,456,823</td>
+<td>13.1%</td>
+<td>前景物体区域</td>
+</tr>
+<tr>
+<td>中距离(0.1-0.25)</td>
+<td>3,781,445</td>
+<td>20.2%</td>
+<td>主要场景内容</td>
+</tr>
+<tr>
+<td>远距离(0.25-0.4)</td>
+<td>4,928,673</td>
+<td>26.3%</td>
+<td>背景环境信息</td>
+</tr>
+<tr>
+<td>最远距离(0.4-0.413)</td>
+<td>578,900</td>
+<td>2.5%</td>
+<td>场景边界区域</td>
+</tr>
+</tbody></table>
+<p>数据集的规模特征表现为多层次、全覆盖的数据结构。整体数据规模包含2445张RGB图像和2444张深度图像，涵盖从标准化的96×96训练样本到高分辨率的实景采集数据。数据类型呈现多样化特征，包括标准的图像文件格式、压缩的视频数据、3D点云模型和结构化的元数据配置。标注信息质量体现了专业级标准，深度训练数据采用float32高精度表示，实景数据配备完整的相机内外参数标定，确保了数据的科研级质量标准。</p>
+<p>数据覆盖领域广泛，包含室内外环境建模、人体动作捕捉、地标建筑重建、机器人感知等多个应用场景。数据集的时间跨度从2017年3月到2018年7月，包含了不同季节、不同光照条件下的采集数据，增强了算法的鲁棒性验证能力。特别值得注意的是，实景采集数据时间跨度长达25.3小时，为长序列算法训练和时序分析提供了珍贵的连续数据资源。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多模态数据融合</td>
+<td>集成RGB图像、深度图、3D点云、时间戳等多源数据</td>
+<td>支撑多传感器融合算法研发，提升算法泛化能力</td>
+</tr>
+<tr>
+<td>完整原始数据保留</td>
+<td>包含原始图像文件、标定参数、配置信息等完整数据</td>
+<td>支持算法验证和性能分析，确保研究可重复性</td>
+</tr>
+<tr>
+<td>高精度标注质量</td>
+<td>深度数据采用float32格式，时间戳精度达微秒级</td>
+<td>保证算法训练精度，支持高精度应用场景</td>
+</tr>
+<tr>
+<td>多场景数据覆盖</td>
+<td>涵盖室内外环境、静态物体、动态场景等多样化数据</td>
+<td>提升算法适应性，支持跨场景应用部署</td>
+</tr>
+<tr>
+<td>标准化训练格式</td>
+<td>采用NumPy标准格式，便于直接用于深度学习框架</td>
+<td>降低算法开发门槛，加速研究到应用的转化</td>
+</tr>
+<tr>
+<td>完整传感器链</td>
+<td>配备RGB相机、深度相机、IMU等完整传感器配置</td>
+<td>支持SLAM、导航、AR&#x2F;VR等完整应用开发</td>
+</tr>
+<tr>
+<td>长期连续采集</td>
+<td>提供25.3小时连续实景数据，支持时序算法训练</td>
+<td>增强时序建模能力，支持长期应用场景</td>
+</tr>
+<tr>
+<td>专业级标定</td>
+<td>完整的相机内外参标定，保证数据质量</td>
+<td>确保算法性能评估准确性，支持工程应用</td>
+</tr>
+</tbody></table>
+<p>数据集最大的核心优势在于其完整保留了原始的完整文件内容。与仅提供元数据或处理后结果的数据集不同，本数据集为研究人员提供了未经压缩或处理的原始图像、深度图和3D点云数据。这种完整性确保了研究人员能够进行端到端的算法开发，从原始数据处理到最终应用部署的完整流程都能得到验证和优化。同时，高质量的标定数据和精确的时间同步信息为多传感器融合算法提供了坚实的基础。</p>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下展示数据集各个组件的代表性样例，涵盖训练数据、实景采集、3D建模等不同类型：</p>
+<p><strong>深度学习训练数据样例：</strong></p>
+<ul>
+<li>样例类型：RGB-D配对训练样本</li>
+<li>样本规模：96×96像素，2000个样本对</li>
+<li>数据特征：RGB值范围0-255，深度值范围0-0.413米</li>
+<li>场景覆盖：室内环境、桌面物体、日常物品等</li>
+</ul>
+<p><strong>实景采集数据样例：</strong></p>
+<ul>
+<li>样例类型：时间同步的RGB-D序列</li>
+<li>采集时长：2018年8月某日25.3小时连续采集</li>
+<li>采样频率：平均每205毫秒一帧</li>
+<li>数据质量：RGB图像960×540分辨率，深度图224×172分辨率</li>
+</ul>
+<p><strong>3D点云对象样例：</strong></p>
+<ul>
+<li>样例1：2017年3月24日采集对象，包含完整MTL材质和OBJ几何信息</li>
+<li>样例2：2017年3月27日采集对象，配套PNG纹理贴图</li>
+<li>样例3：2018年7月6日采集的PLY格式点云数据</li>
+</ul>
+<p><strong>相机标定样例：</strong></p>
+<ul>
+<li>RGB相机内参：焦距868.8像素，主点(476.06, 272.92)</li>
+<li>深度相机内参：焦距218.1像素，主点(110.54, 85.83)</li>
+<li>外参矩阵：完整的旋转矩阵和平移向量</li>
+</ul>
+<p><strong>时间序列样例：</strong></p>
+<ul>
+<li>起始时间：77334262864988微秒</li>
+<li>结束时间：77425505864124微秒</li>
+<li>时间同步精度：微秒级精确同步</li>
+</ul>
+<p><strong>3D场景数据样例：</strong></p>
+<ul>
+<li>场景参数：波长范围LambdaMin&#x3D;-35到LambdaMax&#x3D;8</li>
+<li>数据格式：PNG+TXT配套文件</li>
+<li>包含文件：IMG_0604、img00002、img00003、img00019、img00020、img00032、img00050</li>
+</ul>
+<p><strong>移动端数据样例：</strong></p>
+<ul>
+<li>数据格式：mobile_manifest.mmfst二进制格式</li>
+<li>包含对象：凯旋门纪念碑、手部建模</li>
+<li>配套文件：点云PLY数据和缩略图</li>
+</ul>
+<p>需要特别说明的是，由于原始图像和3D数据文件较大且格式多样，无法在文章中直接展示具体图像内容。但实际数据集中包含了完整的原始文件，如PNG格式的RGB图像、PNM格式的深度图像、PLY格式的3D点云数据等，所有样例都能在对应的数据目录中找到完整的原始文件。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><strong>深度学习算法训练与基准测试</strong>：本数据集为深度学习研究人员提供了理想的算法训练和性能评估平台。基于2000组高质量的RGB-D配对数据，研究人员可以开发端到端的深度估计网络，从单张RGB图像预测对应的深度图。这类应用对于自动驾驶、机器人导航、AR&#x2F;VR等需要实时深度感知的场景具有直接价值。数据集提供的多样化场景覆盖确保了训练出的模型具有良好的泛化能力，能够适应不同光照条件、环境结构和物体分布的实际应用需求。研究人员可以利用标准化的NumPy格式直接加载数据，快速验证新算法并与现有方法进行性能对比，为算法创新提供可靠的基准平台。</p>
+<p><strong>多传感器融合与SLAM系统开发</strong>：完整保留的原始实景RGB-D数据为SLAM（同时定位与地图构建）系统开发提供了宝贵资源。445帧连续采集的数据配合微秒级时间戳同步，使研究人员能够开发和测试多传感器融合算法，有效结合RGB相机的高分辨率视觉信息、深度相机的精确距离测量和IMU的姿态数据。这种融合能力对于移动机器人、自动驾驶车辆的精确定位和环境理解至关重要。研究人员可以利用提供的完整相机标定参数进行传感器融合算法的开发，确保多传感器数据在统一坐标系下的精确对齐，为实际工程应用中的SLAM系统提供技术支撑。</p>
+<p><strong>3D重建与场景理解算法研发</strong>：数据集提供的3D点云模型和多视角RGB-D数据为3D重建算法研发提供了丰富的素材。研究人员可以利用实景采集的深度图像序列重建精确的三维场景模型，用于虚拟现实、数字孪生、文物保护等应用领域。特别是包含室内外环境、静态物体、复杂结构等多种场景的数据，为3D重建算法提供了全面的测试平台。基于PL Y格式的精确点云数据和配套的RGB纹理信息，研究人员可以开发从点云重建到网格生成、从纹理映射到光照估计的完整3D重建流水线，为数字内容创作和空间计算应用提供技术基础。</p>
+<p><strong>计算机视觉算法鲁棒性验证</strong>：长时间序列的实景采集数据为计算机视觉算法的鲁棒性测试提供了理想条件。25.3小时的连续数据包含了从白天到夜晚、不同天气条件、不同光照强度的多种环境变化，能够有效验证算法在真实应用场景中的稳定性。研究人员可以利用这些数据测试目标检测、语义分割、实例分割等计算机视觉算法在长时间运行下的性能表现，评估算法对环境变化的适应能力。这种鲁棒性验证对于需要长期稳定运行的工业级应用具有重要意义，如智能监控、自动驾驶、安全机器人等领域的算法部署。</p>
+<p><strong>AR&#x2F;VR与数字内容创作</strong>：数据集的多模态特性为增强现实和虚拟现实应用开发提供了丰富的素材基础。研究人员可以利用3D点云数据重建真实场景的几何结构，结合高分辨率的RGB纹理信息创建沉浸式的虚拟环境。深度学习训练数据可用于开发基于AI的AR&#x2F;VR内容生成算法，如单张图像的深度估计、场景理解、交互对象识别等。移动端格式的数据文件为AR&#x2F;VR应用的移动端部署提供了直接可用的资源，支持开发轻量级、高性能的移动AR应用，为数字旅游、文化教育、娱乐游戏等应用场景提供技术支撑。</p>
+<p><strong>机器人感知与交互系统</strong>：完整的传感器配置和时间同步数据为机器人感知系统开发提供了完整的解决方案。研究人员可以利用RGB-D数据开发机器人的环境感知能力，实现精确的障碍物检测、路径规划和抓取操作。3D点云数据为机器人的空间理解提供几何基础，支持机器人在复杂环境中的自主导航和人机交互。深度学习训练数据可用于开发基于AI的机器人视觉算法，如目标识别、姿态估计、动作规划等，为服务机器人、工业机器人、特种机器人的智能化升级提供数据支撑和算法验证平台。</p>
+<p><strong>医学影像与生物识别应用</strong>：虽然数据集主要来源于日常场景，但其高质量的多模态数据结构和标准化的数据格式为医学影像分析算法开发提供了参考框架。研究人员可以基于数据集开发多模态医学影像融合算法，结合RGB可见光图像和深度信息进行组织结构的三维重建和分析。数据集提供的标准化处理流程和高质量标注方式也为医学数据的处理提供了最佳实践参考。同时，人体相关的3D建模数据可用于生物识别和身份验证系统的开发，为安全认证、个性化服务等应用场景提供技术基础。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本多模态3D感知数据集作为集成了深度学习训练数据与实景采集数据的综合性资源，为计算机视觉和人工智能领域的研究与应用提供了宝贵的数据基础。数据集的核心价值体现在其数据的完整性、多样性和高质量标准上，特别是完整保留了原始的图像文件、3D模型和标定参数，确保了研究人员能够进行端到端的算法开发和验证工作。2000组标准化的RGB-D训练样本为深度学习算法提供了可靠的训练资源，而25.3小时的连续实景采集数据则为算法在真实环境中的性能验证提供了坚实基础。</p>
+<p>数据集的可应用性和创新点突出体现在多个维度。首先是多模态数据的无缝融合能力，使得RGB视觉信息、深度测量数据和3D几何信息能够在统一的数据框架下协同工作，为多传感器融合算法的研发提供了理想平台。其次是完整保留的原始文件内容，确保了研究人员能够获得未经处理的原始数据，这对于算法验证、性能基准测试和实际应用部署具有不可替代的价值。最后，数据集的标准化处理流程和高质量标定为行业应用提供了可直接采用的技术标准，降低了从研究到生产的技术转化门槛。</p>
+<p>对于需要获取更多信息的研究人员或开发者，建议根据具体的应用需求选择相应的数据子集进行深入分析。深度学习研究者可以重点关注标准化的训练数据部分，而应用开发者则可以充分利用完整保留的原始数据进行算法验证和性能评估。数据集的开放性和完整性为各种层次的计算机视觉研究和工程应用都提供了强有力的支持，是推动3D感知技术发展的重要基础设施。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>多模态3D感知数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/多模态3D感知数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E4%B8%AD%E6%96%87%E6%9C%BA%E5%99%A8%E9%98%85%E8%AF%BB%E7%90%86%E8%A7%A3%E6%95%B0%E6%8D%AE%E9%9B%86/" title="中文机器阅读理解数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">中文机器阅读理解数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E5%A4%9A%E7%89%A9%E7%A7%8D%E9%B8%9F%E7%B1%BB%E5%A3%B0%E9%9F%B3%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="多物种鸟类声音识别数据集分析报告">
+                        <span class="hidden-mobile">多物种鸟类声音识别数据集分析报告</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

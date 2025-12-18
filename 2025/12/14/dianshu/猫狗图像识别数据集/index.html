@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2025/12/14/dianshu/猫狗图像识别数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着计算机视觉技术的快速发展，图像分类任务已成为人工智能领域的基础应用之一。猫狗图像识别作为经典的二分类问题，不仅是入门计算机视觉的重要实践，也是检验深度学习模型性能的标准测试之一。本数据集包含大量经过精心筛选的猫和狗的图像，为研究人员和开发者提供了训练和测试图像分类算法的优质资源。 数据集由两部分组成：训练集和测试集。训练集包含标记好类别的猫和狗图像，测试集则为待分类的图像。这种结构非常适合用于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="猫狗图像识别数据集">
+<meta property="og:url" content="https://zhyyao.me/2025/12/14/dianshu/%E7%8C%AB%E7%8B%97%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着计算机视觉技术的快速发展，图像分类任务已成为人工智能领域的基础应用之一。猫狗图像识别作为经典的二分类问题，不仅是入门计算机视觉的重要实践，也是检验深度学习模型性能的标准测试之一。本数据集包含大量经过精心筛选的猫和狗的图像，为研究人员和开发者提供了训练和测试图像分类算法的优质资源。 数据集由两部分组成：训练集和测试集。训练集包含标记好类别的猫和狗图像，测试集则为待分类的图像。这种结构非常适合用于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-14T10:51:53.000Z">
+<meta property="article:modified_time" content="2025-12-18T01:46:29.816Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>猫狗图像识别数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="猫狗图像识别数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-14 18:51" pubdate>
+          2025年12月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">猫狗图像识别数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着计算机视觉技术的快速发展，图像分类任务已成为人工智能领域的基础应用之一。猫狗图像识别作为经典的二分类问题，不仅是入门计算机视觉的重要实践，也是检验深度学习模型性能的标准测试之一。本数据集包含大量经过精心筛选的猫和狗的图像，为研究人员和开发者提供了训练和测试图像分类算法的优质资源。</p>
+<p>数据集由两部分组成：训练集和测试集。训练集包含标记好类别的猫和狗图像，测试集则为待分类的图像。这种结构非常适合用于开发和评估图像识别模型，特别是卷积神经网络(CNN)等深度学习模型的训练与测试。通过使用本数据集，研究人员可以深入研究图像特征提取、模型优化以及数据增强等关键技术，为更复杂的图像识别任务奠定基础。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件路径</td>
+<td>字符串</td>
+<td>图像文件的存储路径</td>
+<td>train&#x2F;cats&#x2F;cat.0.jpg</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>文件名</td>
+<td>字符串</td>
+<td>图像文件的唯一标识符</td>
+<td>cat.0.jpg</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>图像类别</td>
+<td>字符串</td>
+<td>图像的分类标签</td>
+<td>cat&#x2F;dog</td>
+<td>训练集100%，测试集0%</td>
+</tr>
+<tr>
+<td>图像格式</td>
+<td>字符串</td>
+<td>图像文件的格式</td>
+<td>.jpg</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>数值</td>
+<td>图像文件的大小（字节）</td>
+<td>可变</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="分类-标签分布"><a href="#分类-标签分布" class="headerlink" title="分类&#x2F;标签分布"></a>分类&#x2F;标签分布</h4><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练集-猫</td>
+<td>5,000</td>
+<td>41.67%</td>
+</tr>
+<tr>
+<td>训练集-狗</td>
+<td>5,000</td>
+<td>41.67%</td>
+</tr>
+<tr>
+<td>测试集-未标记</td>
+<td>2,000</td>
+<td>16.67%</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>12,000</strong></td>
+<td><strong>100.00%</strong></td>
+</tr>
+</tbody></table>
+<h4 id="数据集分割分布"><a href="#数据集分割分布" class="headerlink" title="数据集分割分布"></a>数据集分割分布</h4><table>
+<thead>
+<tr>
+<th>数据集类型</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练集</td>
+<td>10,000</td>
+<td>83.33%</td>
+<td>模型训练、参数调优</td>
+</tr>
+<tr>
+<td>测试集</td>
+<td>2,000</td>
+<td>16.67%</td>
+<td>模型评估、性能测试</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>12,000</strong></td>
+<td><strong>100.00%</strong></td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与格式"><a href="#数据规模与格式" class="headerlink" title="数据规模与格式"></a>数据规模与格式</h3><ul>
+<li><strong>总数据量</strong>：12,000张图像</li>
+<li><strong>数据格式</strong>：JPG格式图像文件</li>
+<li><strong>数据结构</strong>：按训练集和测试集分类存储，训练集进一步按类别（猫&#x2F;狗）分组</li>
+<li><strong>文件命名规则</strong>：训练集使用”类别.序号.jpg”格式（如cat.0.jpg, dog.10.jpg），测试集使用纯数字序号命名（如1.jpg, 2.jpg）</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据均衡性好</td>
+<td>猫和狗的训练图像数量完全相等（各5,000张）</td>
+<td>避免模型训练时的类别偏见，提高分类准确性</td>
+</tr>
+<tr>
+<td>数据规模适中</td>
+<td>总计12,000张图像，训练集10,000张，测试集2,000张</td>
+<td>适合各种规模的计算资源，既不过小导致过拟合，也不过大增加训练成本</td>
+</tr>
+<tr>
+<td>包含完整原始图像文件</td>
+<td>所有数据均为高质量JPG格式图像文件</td>
+<td>可直接用于深度学习模型训练，无需额外数据预处理</td>
+</tr>
+<tr>
+<td>结构清晰</td>
+<td>按训练集和测试集、类别清晰组织</td>
+<td>便于数据加载和模型开发，降低使用门槛</td>
+</tr>
+<tr>
+<td>经典二分类问题</td>
+<td>标准的二分类任务设置</td>
+<td>适合算法教学、模型对比和基准测试</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="训练集样例（猫）"><a href="#训练集样例（猫）" class="headerlink" title="训练集样例（猫）"></a>训练集样例（猫）</h3><p>以下是训练集中猫图像的部分样例文件名：</p>
+<ul>
+<li>cat.0.jpg</li>
+<li>cat.1.jpg</li>
+<li>cat.2.jpg</li>
+<li>cat.3.jpg</li>
+<li>cat.4.jpg</li>
+</ul>
+<h3 id="训练集样例（狗）"><a href="#训练集样例（狗）" class="headerlink" title="训练集样例（狗）"></a>训练集样例（狗）</h3><p>以下是训练集中狗图像的部分样例文件名：</p>
+<ul>
+<li>dog.10.jpg</li>
+<li>dog.1001.jpg</li>
+<li>dog.1005.jpg</li>
+<li>dog.1008.jpg</li>
+<li>dog.1009.jpg</li>
+</ul>
+<h3 id="测试集样例"><a href="#测试集样例" class="headerlink" title="测试集样例"></a>测试集样例</h3><p>以下是测试集中图像的部分样例文件名：</p>
+<ul>
+<li>1.jpg</li>
+<li>2.jpg</li>
+<li>3.jpg</li>
+<li>4.jpg</li>
+<li>5.jpg</li>
+</ul>
+<p>注：由于格式限制，无法在本文档中直接展示图像内容。实际数据集中包含完整的高分辨率图像文件，可直接用于模型训练和测试。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="计算机视觉算法研究与开发"><a href="#计算机视觉算法研究与开发" class="headerlink" title="计算机视觉算法研究与开发"></a>计算机视觉算法研究与开发</h3><p>本数据集为计算机视觉领域的研究人员提供了理想的实验平台。研究人员可以利用这些数据开发和改进各种图像分类算法，特别是卷积神经网络(CNN)、ResNet、EfficientNet等深度学习模型。通过在本数据集上进行实验，可以深入研究模型架构设计、激活函数选择、优化器调优等关键技术问题，推动计算机视觉技术的发展。</p>
+<p>数据集的标准二分类设置使得研究人员能够方便地比较不同算法的性能差异，为算法创新提供客观的评价标准。同时，适中的数据规模也使得快速迭代实验成为可能，加速研究进程。</p>
+<h3 id="深度学习模型训练与评估"><a href="#深度学习模型训练与评估" class="headerlink" title="深度学习模型训练与评估"></a>深度学习模型训练与评估</h3><p>对于机器学习工程师和开发者来说，本数据集是训练和评估图像分类模型的优质资源。通过使用训练集中的10,000张标记图像，可以训练出具有良好泛化能力的分类模型。测试集中的2,000张未标记图像则可用于客观评估模型的实际性能。</p>
+<p>开发者可以利用本数据集进行完整的模型开发流程实践，包括数据加载、预处理、模型构建、训练、评估和优化等环节。通过这种实践，可以掌握深度学习项目的全流程开发技能，为更复杂的实际应用奠定基础。</p>
+<h3 id="教育与教学示范"><a href="#教育与教学示范" class="headerlink" title="教育与教学示范"></a>教育与教学示范</h3><p>在计算机科学和人工智能教育领域，本数据集是理想的教学资源。教师可以利用这些数据向学生展示图像分类的基本概念和实践方法，帮助学生理解深度学习的工作原理。通过在课程中使用真实的数据集进行实战演示，可以使抽象的理论知识变得更加具体和直观。</p>
+<p>学生也可以利用本数据集进行课程作业和项目实践，通过亲自动手实现图像分类模型，加深对机器学习和计算机视觉概念的理解。这种实践性的学习方式有助于培养学生的实际动手能力和解决问题的能力。</p>
+<h3 id="数据增强与迁移学习研究"><a href="#数据增强与迁移学习研究" class="headerlink" title="数据增强与迁移学习研究"></a>数据增强与迁移学习研究</h3><p>本数据集还可用于研究数据增强技术和迁移学习方法。通过应用各种数据增强技术（如旋转、缩放、裁剪、翻转、颜色变换等），研究人员可以探索如何从有限的数据中提取更多的训练信息，提高模型的泛化能力。</p>
+<p>同时，研究人员也可以利用预训练模型在本数据集上进行迁移学习实验，研究如何将在大规模数据集上学习到的特征迁移到特定任务中，减少训练时间和计算资源需求，同时提高模型性能。</p>
+<h3 id="边缘设备部署与性能优化"><a href="#边缘设备部署与性能优化" class="headerlink" title="边缘设备部署与性能优化"></a>边缘设备部署与性能优化</h3><p>对于关注模型部署和性能优化的开发者，本数据集提供了一个测试平台，可以研究如何在资源受限的边缘设备（如智能手机、嵌入式设备等）上高效部署图像分类模型。通过模型压缩、量化、剪枝等技术，可以在保证分类精度的同时，减少模型的计算复杂度和内存占用，使其能够在边缘设备上实时运行。</p>
+<p>这种优化对于开发实际应用（如移动应用、智能摄像头等）具有重要意义，可以显著提升用户体验和系统性能。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集作为一个经典的图像分类数据集，具有数据均衡、规模适中、结构清晰等诸多优势，为计算机视觉研究和应用提供了重要的基础资源。通过使用本数据集，研究人员和开发者可以深入探索图像分类的核心技术，开发出更加高效和准确的图像识别系统。</p>
+<p>数据集包含完整的原始图像文件，这是其核心优势之一，使得用户可以直接将数据用于模型训练和测试，无需额外的数据收集和预处理工作。同时，标准的二分类设置也使得本数据集成为评估和比较不同算法性能的理想基准。</p>
+<p>我们相信，通过充分利用本数据集的价值，可以推动计算机视觉技术的发展，为人工智能在图像识别领域的应用做出贡献。如有需要，可以通过适当的渠道获取完整数据集。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>猫狗图像识别数据集</div>
+      <div>https://zhyyao.me/2025/12/14/dianshu/猫狗图像识别数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E6%AC%A7%E6%B4%B2%E5%8C%BB%E8%8D%AF%E5%81%A5%E5%BA%B7%E8%A1%8C%E4%B8%9A%E6%8B%9B%E8%81%98%E6%95%B0%E6%8D%AE%E9%9B%86/" title="欧洲医药健康行业招聘数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">欧洲医药健康行业招聘数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/14/dianshu/%E7%9F%A5%E4%B9%8E%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/" title="知乎评论数据集">
+                        <span class="hidden-mobile">知乎评论数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
