@@ -29,7 +29,7 @@
 <meta property="og:description" content="社交媒体数据在当代体育研究、舆论分析和计算社会科学中具有重要价值，尤其是大型体育赛事期间的实时推文数据，能够为研究者提供丰富的公众情绪、文化传播模式和社交网络动态的一手资料。2018 年欧冠决赛作为全球瞩目的高水平体育赛事，其期间的推特讨论不仅反映了球迷的即时反应，还涉及品牌营销、跨文化传播和多语言交互等多个维度。该数据集通过精准采集和结构化处理，为科研机构、算法开发团队和体育产业提供了高质量的基">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
-<meta property="article:modified_time" content="2025-12-18T02:12:55.142Z">
+<meta property="article:modified_time" content="2026-01-05T10:01:15.180Z">
 <meta property="article:author" content="zhyyao">
 <meta property="article:tag" content="典枢-数据集">
 <meta name="twitter:card" content="summary_large_image">
@@ -305,26 +305,38 @@
 <span id="more"></span>
 
 <h4 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h4><p>该数据集规模为 1.95GB（原始数据），压缩后为 213.99MB，以 JSON 格式存储，包含 2018 年 5 月 27 日欧冠决赛期间（UTC 时间 18:45–20:45）以关键词 <code>#UCLFinal</code>采集的推文数据。每条数据均包含完整的推特元数据，如推文 ID、创建时间、文本内容、用户信息（用户名、粉丝数、个人描述等）、实体对象（主题标签、用户提及）、媒体附件（如图片、视频链接）以及地理标记信息（如适用）。数据覆盖体育、传媒、社交网络等多个领域，标注信息包括时间序列、用户属性、内容特征和互动指标，适用于多模态和跨场景分析。</p>
-<h4 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h4><p>优势特点</p>
-<p>| </p>
-<p>具体说明  </p>
-<p>—|—  </p>
-<p>​ <strong>​高质量与实时性​</strong> ​</p>
-<p>| </p>
-<p>数据采集自比赛关键时段（2018年5月27日18:45-20:45 UTC），确保舆论响应的即时性和真实性，避免噪声干扰，适用于时间敏感型研究。  </p>
-<p>​ <strong>​结构丰富多样​</strong> ​</p>
-<p>| </p>
-<p>采用JSON格式存储，支持多层次解析，涵盖文本内容、用户属性（如粉丝数、描述）、实体对象（主题标签、提及）、媒体附件（图片、视频）及地理标记信息。  </p>
-<p>​ <strong>​标注完整性强​</strong> ​</p>
-<p>| </p>
-<p>每条推文均包含完整元数据，包括情感隐含标签（通过文本和表情符可推导）、用户影响力指标（粉丝数、互动数）和传播路径（提及与转发关系），无需额外预处理。  </p>
-<p>​ <strong>​跨场景适用性​</strong> ​</p>
-<p>| </p>
-<p>数据源自全球性赛事，包含多语言内容（如英语、西班牙语等），支持跨文化比较研究，适用于国际化场景的舆论分析、品牌传播和社交行为研究。  </p>
-<p>​ <strong>​可定制化扩展​</strong> ​</p>
-<p>| </p>
-<p>研究者可根据需求灵活提取子集（如按时间切片、用户群体或地理区域），支持个性化研究设计和算法开发场景。  </p>
-<p><strong>获取方式</strong>| <a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13681">https://dianshudata.com/dataDetail/13681</a>  </p>
+<h4 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h4><table>
+<thead>
+<tr>
+<th>优势特点</th>
+<th>具体说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>​ <strong>​高质量与实时性​</strong> ​</td>
+<td>数据采集自比赛关键时段（2018年5月27日18:45-20:45 UTC），确保舆论响应的即时性和真实性，避免噪声干扰，适用于时间敏感型研究。</td>
+</tr>
+<tr>
+<td><strong>​结构丰富多样​</strong> ​</td>
+<td>采用JSON格式存储，支持多层次解析，涵盖文本内容、用户属性（如粉丝数、描述）、实体对象（主题标签、提及）、媒体附件（图片、视频）及地理标记信息。</td>
+</tr>
+<tr>
+<td><strong>​标注完整性强​</strong> ​</td>
+<td>每条推文均包含完整元数据，包括情感隐含标签（通过文本和表情符可推导）、用户影响力指标（粉丝数、互动数）和传播路径（提及与转发关系），无需额外预处理。</td>
+</tr>
+<tr>
+<td><strong>​跨场景适用性​</strong></td>
+<td>数据源自全球性赛事，包含多语言内容（如英语、西班牙语等），支持跨文化比较研究，适用于国际化场景的舆论分析、品牌传播和社交行为研究。</td>
+</tr>
+<tr>
+<td><strong>​可定制化扩展​</strong> ​</td>
+<td>研究者可根据需求灵活提取子集（如按时间切片、用户群体或地理区域），支持个性化研究设计和算法开发场景。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13681">https://dianshudata.com/dataDetail/13681</a></td>
+</tr>
+</tbody></table>
 <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>​ <strong>​1. 体育舆论与情感分析模型训练​</strong> ​</p>
 <p>该数据集可用于训练和优化情感分析、情绪识别和观点挖掘模型。通过提取推文文本中的关键词、表情符号和语境信息，研究者可以构建分类模型（如正面、负面、中性情感），并分析比赛关键时刻（如进球、红牌）的公众情绪波动。例如，结合时间序列数据，可以研究舆论峰值与赛事进程的相关性，为体育媒体和品牌提供实时舆情监控工具。在实际应用中，此类模型可部署于体育营销平台，帮助团队或赞助商评估广告效果和球迷满意度，从而调整传播策略。</p>
 <p>​ <strong>​2. 社交网络传播与影响力研究​</strong> ​</p>
@@ -432,8 +444,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/17/dianshu/%E5%8E%9F%E5%88%9B10%20%E7%B1%BB%E5%A4%9A%E5%B8%83%E5%B1%80%E6%89%AB%E6%8F%8F%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="10类多布局扫描图像数据集">
-                        <span class="hidden-mobile">10类多布局扫描图像数据集</span>
+                      <a href="/2025/12/17/dianshu/%E5%84%BF%E7%A7%91%E5%8C%BB%E7%96%97%E9%97%AE%E7%AD%94%E6%95%B0%E6%8D%AE%E9%9B%86/" title="儿科医疗问答数据集">
+                        <span class="hidden-mobile">儿科医疗问答数据集</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

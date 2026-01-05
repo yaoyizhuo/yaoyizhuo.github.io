@@ -29,7 +29,7 @@
 <meta property="og:description" content="在数字化时代，社交媒体数据已成为理解人类行为、社会趋势和语言演变的宝贵资源。微博作为中国最大的社交媒体平台之一，汇聚了亿万用户的真实表达，承载着丰富的社会信息和文化内涵。本数据集自2014年开始采集至今，累计收集了约1380亿条微博数据，为人工智能研究、自然语言处理、社会计算、商业智能等领域提供了前所未有的数据支撑。这些数据不仅记录了时代变迁的轨迹，更蕴含着推动科技进步的巨大价值，是构建智能系统、">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-17T07:51:53.000Z">
-<meta property="article:modified_time" content="2025-12-18T02:00:16.186Z">
+<meta property="article:modified_time" content="2026-01-05T10:07:23.437Z">
 <meta property="article:author" content="zhyyao">
 <meta property="article:tag" content="典枢-数据集">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          2.9k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          50 分钟
+          49 分钟
         
       </span>
     
@@ -305,279 +305,285 @@
 <span id="more"></span>
 
 <h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>本微博数据集规模庞大，涵盖时间跨度从2014年至今的长期采集，数据总量达到约1380亿条。每条数据记录包含完整的结构化信息，涵盖用户基本信息、发布内容、互动数据、地理位置、设备信息等多个维度。数据格式采用标准JSON结构，便于程序化处理和分析。每条记录包含用户ID、昵称、性别、地区、关注数、粉丝数等用户画像信息，以及微博内容、发布时间、转发数、评论数、点赞数等互动指标。此外，数据集还包含情感分析、地址识别、标签提取等智能分析结果，为后续研究提供了丰富的标注信息。数据覆盖领域广泛，涉及娱乐、科技、财经、体育、教育、生活等各个社会领域，真实反映了中国网民的生活状态和关注焦点。</p>
-<h3 id="数据字段结构"><a href="#数据字段结构" class="headerlink" title="数据字段结构"></a>数据字段结构</h3><p>字段类别</p>
-<p>| </p>
-<p>字段名称</p>
-<p>| </p>
-<p>数据类型</p>
-<p>| </p>
-<p>字段说明  </p>
-<p>—|—|—|—  </p>
-<p>​ <strong>​基础信息​</strong> ​</p>
-<p>| </p>
-<p>id</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>数据记录唯一标识符  </p>
-<p>| </p>
-<p>mid</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>微博消息ID  </p>
-<p>| </p>
-<p>uuid</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>数据采集唯一标识  </p>
-<p>| </p>
-<p>url</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>微博原始链接地址  </p>
-<p>​ <strong>​内容信息​</strong> ​</p>
-<p>| </p>
-<p>content</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>微博正文内容  </p>
-<p>| </p>
-<p>ctime</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>微博创建时间戳  </p>
-<p>| </p>
-<p>utime</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>微博更新时间戳  </p>
-<p>| </p>
-<p>wtype</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>微博类型标识  </p>
-<p>​ <strong>​互动数据​</strong> ​</p>
-<p>| </p>
-<p>repost_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>转发数量  </p>
-<p>| </p>
-<p>reply_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>评论数量  </p>
-<p>| </p>
-<p>like_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>点赞数量  </p>
-<p>​ <strong>​用户信息​</strong> ​</p>
-<p>| </p>
-<p>user.uid</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>用户唯一ID  </p>
-<p>| </p>
-<p>user.name</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>用户昵称  </p>
-<p>| </p>
-<p>user.gender</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>用户性别  </p>
-<p>| </p>
-<p>user.province</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>用户省份  </p>
-<p>| </p>
-<p>user.city</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>用户城市  </p>
-<p>| </p>
-<p>user.followers_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>粉丝数量  </p>
-<p>| </p>
-<p>user.friends_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>关注数量  </p>
-<p>| </p>
-<p>user.statuses_count</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>发布微博总数  </p>
-<p>| </p>
-<p>user.level</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>用户等级  </p>
-<p>| </p>
-<p>user.verified</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>认证状态  </p>
-<p>| </p>
-<p>user.created_at</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>用户注册时间  </p>
-<p>​ <strong>​地理位置​</strong> ​</p>
-<p>| </p>
-<p>place</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>发布地点  </p>
-<p>| </p>
-<p>user.ip_region</p>
-<p>| </p>
-<p>Array</p>
-<p>| </p>
-<p>IP归属地区  </p>
-<p>| </p>
-<p>user.location</p>
-<p>| </p>
-<p>Array</p>
-<p>| </p>
-<p>用户位置信息  </p>
-<p>​ <strong>​设备信息​</strong> ​</p>
-<p>| </p>
-<p>device</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>发布设备型号  </p>
-<p>​ <strong>​智能分析​</strong> ​</p>
-<p>| </p>
-<p>analysis.sentiment</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>情感分析结果  </p>
-<p>| </p>
-<p>analysis.find_address</p>
-<p>| </p>
-<p>Object</p>
-<p>| </p>
-<p>地址识别结果  </p>
-<p>| </p>
-<p>analysis.tag</p>
-<p>| </p>
-<p>Array</p>
-<p>| </p>
-<p>内容标签提取  </p>
-<p>| </p>
-<p>analysis.hashtag</p>
-<p>| </p>
-<p>Array</p>
-<p>| </p>
-<p>话题标签  </p>
-<p>​ <strong>​采集信息​</strong> ​</p>
-<p>| </p>
-<p>gather.site_name</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>网站名称  </p>
-<p>| </p>
-<p>gather.site_domain</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>网站域名  </p>
-<p>| </p>
-<p>gather.gtime</p>
-<p>| </p>
-<p>Integer</p>
-<p>| </p>
-<p>采集时间  </p>
-<p>| </p>
-<p>gather.data_type</p>
-<p>| </p>
-<p>String</p>
-<p>| </p>
-<p>数据类型  </p>
-<p>| </p>
-<p>gather.info_flag</p>
-<p>| </p>
-<p>Array</p>
-<p>| </p>
-<p>信息标识  </p>
-<h3 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h3><p>优势类别</p>
-<p>| </p>
-<p>具体优势</p>
-<p>| </p>
-<p>详细说明  </p>
-<p>—|—|—  </p>
-<p>​ <strong>​规模优势​</strong> ​</p>
-<p>| </p>
-<p>数据量庞大</p>
-<p>| </p>
-<p>1380亿条数据，为大规模机器学习提供充足样本  </p>
-<p>| </p>
-<p>时间跨度长</p>
-<p>| </p>
-<p>2014年至今连续采集，支持时间序列分析和趋势研究  </p>
-<p>​ <strong>​质量优势​</strong> ​</p>
-<p>| </p>
-<p>结构化完整</p>
-<p>| </p>
-<p>标准JSON格式，包含用户、内容、互动、地理等多维度信息  </p>
-<p>| </p>
-<p>智能标注</p>
-<p>| </p>
-<p>内置情感分析、地址识别、标签提取等预处理结果  </p>
-<p>| </p>
-<p>真实性强</p>
-<p>| </p>
-<p>来自真实用户行为，反映真实社会现象和语言使用习惯  </p>
-<p>​ <strong>​覆盖优势​</strong> ​</p>
-<p>| </p>
-<p>用户多样化</p>
-<p>| </p>
-<p>涵盖各年龄段、地区、职业背景的多样化用户群体  </p>
-<p>| </p>
-<p>内容全面</p>
-<p>| </p>
-<p>涉及娱乐、科技、财经、体育、教育、生活等各个社会领域  </p>
-<p>​ <strong>​技术优势​</strong> ​</p>
-<p>| </p>
-<p>更新及时</p>
-<p>| </p>
-<p>实时采集机制，保证数据的时效性和新鲜度  </p>
-<p>| </p>
-<p>隐私保护</p>
-<p>| </p>
-<p>经过脱敏处理，符合数据安全和隐私保护要求  </p>
-<p><strong>获取方式</strong>|  典枢平台| <a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/11995">https://dianshudata.com/dataDetail/11995</a>  </p>
+<h3 id="数据字段结构"><a href="#数据字段结构" class="headerlink" title="数据字段结构"></a>数据字段结构</h3><table>
+<thead>
+<tr>
+<th>字段类别</th>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础信息</strong></td>
+<td>id</td>
+<td>String</td>
+<td>数据记录唯一标识符</td>
+</tr>
+<tr>
+<td></td>
+<td>mid</td>
+<td>String</td>
+<td>微博消息ID</td>
+</tr>
+<tr>
+<td></td>
+<td>uuid</td>
+<td>String</td>
+<td>数据采集唯一标识</td>
+</tr>
+<tr>
+<td></td>
+<td>url</td>
+<td>String</td>
+<td>微博原始链接地址</td>
+</tr>
+<tr>
+<td><strong>内容信息</strong></td>
+<td>content</td>
+<td>String</td>
+<td>微博正文内容</td>
+</tr>
+<tr>
+<td></td>
+<td>ctime</td>
+<td>Integer</td>
+<td>微博创建时间戳</td>
+</tr>
+<tr>
+<td></td>
+<td>utime</td>
+<td>Integer</td>
+<td>微博更新时间戳</td>
+</tr>
+<tr>
+<td></td>
+<td>wtype</td>
+<td>Integer</td>
+<td>微博类型标识</td>
+</tr>
+<tr>
+<td><strong>互动数据</strong></td>
+<td>repost_count</td>
+<td>Integer</td>
+<td>转发数量</td>
+</tr>
+<tr>
+<td></td>
+<td>reply_count</td>
+<td>Integer</td>
+<td>评论数量</td>
+</tr>
+<tr>
+<td></td>
+<td>like_count</td>
+<td>Integer</td>
+<td>点赞数量</td>
+</tr>
+<tr>
+<td><strong>用户信息</strong></td>
+<td>user.uid</td>
+<td>String</td>
+<td>用户唯一ID</td>
+</tr>
+<tr>
+<td></td>
+<td>user.name</td>
+<td>String</td>
+<td>用户昵称</td>
+</tr>
+<tr>
+<td></td>
+<td>user.gender</td>
+<td>String</td>
+<td>用户性别</td>
+</tr>
+<tr>
+<td></td>
+<td>user.province</td>
+<td>String</td>
+<td>用户省份</td>
+</tr>
+<tr>
+<td></td>
+<td>user.city</td>
+<td>String</td>
+<td>用户城市</td>
+</tr>
+<tr>
+<td></td>
+<td>user.followers_count</td>
+<td>Integer</td>
+<td>粉丝数量</td>
+</tr>
+<tr>
+<td></td>
+<td>user.friends_count</td>
+<td>Integer</td>
+<td>关注数量</td>
+</tr>
+<tr>
+<td></td>
+<td>user.statuses_count</td>
+<td>Integer</td>
+<td>发布微博总数</td>
+</tr>
+<tr>
+<td></td>
+<td>user.level</td>
+<td>Integer</td>
+<td>用户等级</td>
+</tr>
+<tr>
+<td></td>
+<td>user.verified</td>
+<td>Integer</td>
+<td>认证状态</td>
+</tr>
+<tr>
+<td></td>
+<td>user.created_at</td>
+<td>Integer</td>
+<td>用户注册时间</td>
+</tr>
+<tr>
+<td><strong>地理位置</strong></td>
+<td>place</td>
+<td>String</td>
+<td>发布地点</td>
+</tr>
+<tr>
+<td></td>
+<td>user.ip_region</td>
+<td>Array</td>
+<td>IP归属地区</td>
+</tr>
+<tr>
+<td></td>
+<td>user.location</td>
+<td>Array</td>
+<td>用户位置信息</td>
+</tr>
+<tr>
+<td><strong>设备信息</strong></td>
+<td>device</td>
+<td>String</td>
+<td>发布设备型号</td>
+</tr>
+<tr>
+<td><strong>智能分析</strong></td>
+<td>analysis.sentiment</td>
+<td>Integer</td>
+<td>情感分析结果</td>
+</tr>
+<tr>
+<td></td>
+<td>analysis.find_address</td>
+<td>Object</td>
+<td>地址识别结果</td>
+</tr>
+<tr>
+<td></td>
+<td>analysis.tag</td>
+<td>Array</td>
+<td>内容标签提取</td>
+</tr>
+<tr>
+<td></td>
+<td>analysis.hashtag</td>
+<td>Array</td>
+<td>话题标签</td>
+</tr>
+<tr>
+<td><strong>采集信息</strong></td>
+<td>gather.site_name</td>
+<td>String</td>
+<td>网站名称</td>
+</tr>
+<tr>
+<td></td>
+<td>gather.site_domain</td>
+<td>String</td>
+<td>网站域名</td>
+</tr>
+<tr>
+<td></td>
+<td>gather.gtime</td>
+<td>Integer</td>
+<td>采集时间</td>
+</tr>
+<tr>
+<td></td>
+<td>gather.data_type</td>
+<td>String</td>
+<td>数据类型</td>
+</tr>
+<tr>
+<td></td>
+<td>gather.info_flag</td>
+<td>Array</td>
+<td>信息标识</td>
+</tr>
+</tbody></table>
+<h3 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h3><table>
+<thead>
+<tr>
+<th>优势类别</th>
+<th>具体优势</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>规模优势</strong></td>
+<td>数据量庞大</td>
+<td>1380亿条数据，为大规模机器学习提供充足样本</td>
+</tr>
+<tr>
+<td></td>
+<td>时间跨度长</td>
+<td>2014年至今连续采集，支持时间序列分析和趋势研究</td>
+</tr>
+<tr>
+<td><strong>质量优势</strong></td>
+<td>结构化完整</td>
+<td>标准JSON格式，包含用户、内容、互动、地理等多维度信息</td>
+</tr>
+<tr>
+<td></td>
+<td>智能标注</td>
+<td>内置情感分析、地址识别、标签提取等预处理结果</td>
+</tr>
+<tr>
+<td></td>
+<td>真实性强</td>
+<td>来自真实用户行为，反映真实社会现象和语言使用习惯</td>
+</tr>
+<tr>
+<td><strong>覆盖优势</strong></td>
+<td>用户多样化</td>
+<td>涵盖各年龄段、地区、职业背景的多样化用户群体</td>
+</tr>
+<tr>
+<td></td>
+<td>内容全面</td>
+<td>涉及娱乐、科技、财经、体育、教育、生活等各个社会领域</td>
+</tr>
+<tr>
+<td><strong>技术优势</strong></td>
+<td>更新及时</td>
+<td>实时采集机制，保证数据的时效性和新鲜度</td>
+</tr>
+<tr>
+<td></td>
+<td>隐私保护</td>
+<td>经过脱敏处理，符合数据安全和隐私保护要求</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td>典枢平台</td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/11995">https://dianshudata.com/dataDetail/11995</a></td>
+</tr>
+</tbody></table>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="自然语言处理与文本挖掘"><a href="#自然语言处理与文本挖掘" class="headerlink" title="自然语言处理与文本挖掘"></a>自然语言处理与文本挖掘</h4><p>微博数据集为自然语言处理研究提供了丰富的语料资源。1380亿条中文文本数据涵盖了各种语言风格、表达方式和语境，是训练中文语言模型的理想选择。研究人员可以利用这些数据开发情感分析模型，准确识别用户情绪倾向；构建文本分类系统，自动识别内容主题和类别；训练机器翻译模型，提升中英文互译质量；开发文本摘要算法，自动提取关键信息。此外，数据集中的用户互动信息（转发、评论、点赞）为文本质量评估和影响力分析提供了重要参考，有助于构建更智能的文本处理系统。这些应用不仅推动了NLP技术的发展，也为搜索引擎、智能客服、内容推荐等实际应用提供了技术支撑。</p>
 <h4 id="社会计算与舆情分析"><a href="#社会计算与舆情分析" class="headerlink" title="社会计算与舆情分析"></a>社会计算与舆情分析</h4><p>微博数据集的独特价值在于其社会属性，为理解社会现象、分析舆情趋势提供了宝贵资源。通过分析用户发布内容的时间分布、地理分布和主题变化，研究人员可以识别社会热点事件、追踪舆论走向、预测社会趋势。数据集中的地理位置信息支持区域化分析，帮助政府和企业了解不同地区的关注焦点和需求差异。情感分析结果可用于监测公众情绪变化，及时发现潜在的社会风险。此外，用户关系网络数据为社交网络分析提供了基础，有助于理解信息传播机制、识别关键意见领袖、分析群体行为模式。这些研究成果在公共政策制定、危机管理、市场调研等领域具有重要应用价值。</p>
 <h4 id="推荐系统与个性化服务"><a href="#推荐系统与个性化服务" class="headerlink" title="推荐系统与个性化服务"></a>推荐系统与个性化服务</h4><p>微博数据集为构建智能推荐系统提供了丰富的用户行为数据。通过分析用户的发布内容、互动行为、关注关系等信息，可以构建精准的用户画像，理解用户的兴趣爱好、行为习惯和需求偏好。这些信息是开发个性化推荐算法的基础，可以用于内容推荐、广告投放、商品推荐等多个场景。数据集中的时间序列信息支持动态推荐，能够根据用户兴趣变化调整推荐策略。地理位置信息支持基于位置的推荐服务，为用户提供本地化的内容和服务。此外，用户互动数据（转发、评论、点赞）为推荐效果评估提供了重要指标，有助于持续优化推荐算法。这些应用在电商、内容平台、社交媒体等领域的商业化运营中发挥着重要作用。</p>
