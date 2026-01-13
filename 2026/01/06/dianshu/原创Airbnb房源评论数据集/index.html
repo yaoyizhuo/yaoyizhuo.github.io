@@ -1,0 +1,1386 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创Airbnb房源评论数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着共享经济的快速发展，Airbnb作为全球领先的住宿共享平台，其数据蕴含着丰富的市场洞察和研究价值。本数据集包含了自2008年至2021年间全球主要城市的Airbnb房源信息和用户评论数据，为研究共享住宿市场的发展趋势、价格波动、用户偏好以及监管政策影响提供了宝贵的一手资料。数据集由两个核心文件组成：Listings.csv包含了详细的房源信息，涵盖房东资料、房源特征、价格、评分等多维度数据；R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原创Airbnb房源评论数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9BAirbnb%E6%88%BF%E6%BA%90%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着共享经济的快速发展，Airbnb作为全球领先的住宿共享平台，其数据蕴含着丰富的市场洞察和研究价值。本数据集包含了自2008年至2021年间全球主要城市的Airbnb房源信息和用户评论数据，为研究共享住宿市场的发展趋势、价格波动、用户偏好以及监管政策影响提供了宝贵的一手资料。数据集由两个核心文件组成：Listings.csv包含了详细的房源信息，涵盖房东资料、房源特征、价格、评分等多维度数据；R">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:50:29.991Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>原创Airbnb房源评论数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="原创Airbnb房源评论数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">原创Airbnb房源评论数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着共享经济的快速发展，Airbnb作为全球领先的住宿共享平台，其数据蕴含着丰富的市场洞察和研究价值。本数据集包含了自2008年至2021年间全球主要城市的Airbnb房源信息和用户评论数据，为研究共享住宿市场的发展趋势、价格波动、用户偏好以及监管政策影响提供了宝贵的一手资料。数据集由两个核心文件组成：Listings.csv包含了详细的房源信息，涵盖房东资料、房源特征、价格、评分等多维度数据；Reviews.csv则记录了用户对房源的评价信息，包括评论ID、日期和评论者ID。这些数据不仅对学术研究具有重要价值，也为市场分析、投资决策、旅游规划以及政策制定提供了数据支撑。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>listing_id</td>
+<td>int64</td>
+<td>房源唯一标识</td>
+<td>11798</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>name</td>
+<td>object</td>
+<td>房源名称</td>
+<td>“Beautiful 1BR in Le Marais”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>host_id</td>
+<td>int64</td>
+<td>房东唯一标识</td>
+<td>24837558</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>host_since</td>
+<td>object</td>
+<td>房东加入Airbnb的日期</td>
+<td>“2014-12-14”</td>
+<td>99.96%</td>
+</tr>
+<tr>
+<td>host_location</td>
+<td>object</td>
+<td>房东所在地</td>
+<td>“Paris, Ile-de-France, France”</td>
+<td>97.42%</td>
+</tr>
+<tr>
+<td>host_response_time</td>
+<td>object</td>
+<td>房东响应时间</td>
+<td>“within an hour”</td>
+<td>62.20%</td>
+</tr>
+<tr>
+<td>host_response_rate</td>
+<td>object</td>
+<td>房东响应率</td>
+<td>“98%”</td>
+<td>62.20%</td>
+</tr>
+<tr>
+<td>host_acceptance_rate</td>
+<td>object</td>
+<td>房东接受预订率</td>
+<td>“100%”</td>
+<td>57.83%</td>
+</tr>
+<tr>
+<td>host_is_superhost</td>
+<td>object</td>
+<td>是否超级房东</td>
+<td>“f”</td>
+<td>99.96%</td>
+</tr>
+<tr>
+<td>host_total_listings_count</td>
+<td>int64</td>
+<td>房东总房源数</td>
+<td>1</td>
+<td>99.96%</td>
+</tr>
+<tr>
+<td>host_has_profile_pic</td>
+<td>object</td>
+<td>是否有头像</td>
+<td>“t”</td>
+<td>99.97%</td>
+</tr>
+<tr>
+<td>host_identity_verified</td>
+<td>object</td>
+<td>身份是否验证</td>
+<td>“f”</td>
+<td>99.97%</td>
+</tr>
+<tr>
+<td>neighbourhood</td>
+<td>object</td>
+<td>所在社区</td>
+<td>“Passy”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>district</td>
+<td>object</td>
+<td>所在区域</td>
+<td>“”</td>
+<td>30.06%</td>
+</tr>
+<tr>
+<td>city</td>
+<td>object</td>
+<td>所在城市</td>
+<td>“Paris”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>float64</td>
+<td>纬度坐标</td>
+<td>48.855</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>float64</td>
+<td>经度坐标</td>
+<td>2.26979</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>property_type</td>
+<td>object</td>
+<td>房产类型</td>
+<td>“Entire apartment”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>room_type</td>
+<td>object</td>
+<td>房间类型</td>
+<td>“Entire place”</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>accommodates</td>
+<td>int64</td>
+<td>可容纳人数</td>
+<td>2</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>bedrooms</td>
+<td>int64</td>
+<td>卧室数量</td>
+<td>1</td>
+<td>98.81%</td>
+</tr>
+<tr>
+<td>amenities</td>
+<td>object</td>
+<td>配套设施</td>
+<td>“[“Heating”, “TV”, …]”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>price</td>
+<td>object</td>
+<td>价格</td>
+<td>“60”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>minimum_nights</td>
+<td>int64</td>
+<td>最低入住晚数</td>
+<td>2</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>maximum_nights</td>
+<td>int64</td>
+<td>最高入住晚数</td>
+<td>1125</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>review_scores_rating</td>
+<td>float64</td>
+<td>总体评分</td>
+<td>100.0</td>
+<td>61.43%</td>
+</tr>
+<tr>
+<td>review_scores_accuracy</td>
+<td>float64</td>
+<td>准确性评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>review_scores_cleanliness</td>
+<td>float64</td>
+<td>清洁度评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>review_scores_checkin</td>
+<td>float64</td>
+<td>入住体验评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>review_scores_communication</td>
+<td>float64</td>
+<td>沟通评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>review_scores_location</td>
+<td>float64</td>
+<td>位置评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>review_scores_value</td>
+<td>float64</td>
+<td>性价比评分</td>
+<td>10.0</td>
+<td>61.31%</td>
+</tr>
+<tr>
+<td>instant_bookable</td>
+<td>object</td>
+<td>是否可即时预订</td>
+<td>“f”</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>review_id</td>
+<td>int64</td>
+<td>评论ID</td>
+<td>330265172</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>date</td>
+<td>object</td>
+<td>评论日期</td>
+<td>“2018-09-30”</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>reviewer_id</td>
+<td>int64</td>
+<td>评论者ID</td>
+<td>11863072</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="1-房间类型分布"><a href="#1-房间类型分布" class="headerlink" title="1. 房间类型分布"></a>1. 房间类型分布</h4><table>
+<thead>
+<tr>
+<th>房间类型</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Entire place</td>
+<td>182,005</td>
+<td>65.07%</td>
+</tr>
+<tr>
+<td>Private room</td>
+<td>86,988</td>
+<td>31.10%</td>
+</tr>
+<tr>
+<td>Hotel room</td>
+<td>5,857</td>
+<td>2.09%</td>
+</tr>
+<tr>
+<td>Shared room</td>
+<td>4,862</td>
+<td>1.74%</td>
+</tr>
+</tbody></table>
+<h4 id="2-地区分布（Top-10）"><a href="#2-地区分布（Top-10）" class="headerlink" title="2. 地区分布（Top 10）"></a>2. 地区分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>地区</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I Centro Storico</td>
+<td>14,874</td>
+<td>5.32%</td>
+</tr>
+<tr>
+<td>Sydney</td>
+<td>8,074</td>
+<td>2.89%</td>
+</tr>
+<tr>
+<td>Copacabana</td>
+<td>7,712</td>
+<td>2.76%</td>
+</tr>
+<tr>
+<td>Cuauhtemoc</td>
+<td>7,626</td>
+<td>2.73%</td>
+</tr>
+<tr>
+<td>Buttes-Montmartre</td>
+<td>7,237</td>
+<td>2.59%</td>
+</tr>
+<tr>
+<td>Beyoglu</td>
+<td>6,674</td>
+<td>2.39%</td>
+</tr>
+<tr>
+<td>Popincourt</td>
+<td>6,206</td>
+<td>2.22%</td>
+</tr>
+<tr>
+<td>Vaugirard</td>
+<td>4,826</td>
+<td>1.73%</td>
+</tr>
+<tr>
+<td>Waverley</td>
+<td>4,737</td>
+<td>1.69%</td>
+</tr>
+<tr>
+<td>Enclos-St-Laurent</td>
+<td>4,628</td>
+<td>1.65%</td>
+</tr>
+</tbody></table>
+<h4 id="3-可容纳人数分布（Top-10）"><a href="#3-可容纳人数分布（Top-10）" class="headerlink" title="3. 可容纳人数分布（Top 10）"></a>3. 可容纳人数分布（Top 10）</h4><table>
+<thead>
+<tr>
+<th>可容纳人数</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>118,332</td>
+<td>42.30%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>57,260</td>
+<td>20.47%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>27,936</td>
+<td>9.99%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>25,813</td>
+<td>9.23%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>19,455</td>
+<td>6.96%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>13,527</td>
+<td>4.84%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6,514</td>
+<td>2.33%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3,697</td>
+<td>1.32%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2,630</td>
+<td>0.94%</td>
+</tr>
+<tr>
+<td>16</td>
+<td>1,162</td>
+<td>0.42%</td>
+</tr>
+</tbody></table>
+<h4 id="4-房东入驻时间分布"><a href="#4-房东入驻时间分布" class="headerlink" title="4. 房东入驻时间分布"></a>4. 房东入驻时间分布</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>新房东数量</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2008</td>
+<td>65</td>
+<td>0.04%</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>461</td>
+<td>0.30%</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>2,150</td>
+<td>1.55%</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>6,966</td>
+<td>5.21%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>16,066</td>
+<td>13.93%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>25,453</td>
+<td>26.81%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>37,650</td>
+<td>47.17%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>44,886</td>
+<td>70.68%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>42,402</td>
+<td>90.87%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>26,553</td>
+<td>105.46%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>27,020</td>
+<td>120.97%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>31,447</td>
+<td>138.30%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>17,220</td>
+<td>148.05%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>1,208</td>
+<td>148.71%</td>
+</tr>
+</tbody></table>
+<h4 id="5-评论时间分布"><a href="#5-评论时间分布" class="headerlink" title="5. 评论时间分布"></a>5. 评论时间分布</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>评论数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2008</td>
+<td>2</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>115</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>1,236</td>
+<td>0.02%</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>6,253</td>
+<td>0.11%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>19,922</td>
+<td>0.35%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>50,522</td>
+<td>0.89%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>122,132</td>
+<td>2.16%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>280,332</td>
+<td>4.96%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>501,754</td>
+<td>8.88%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>777,200</td>
+<td>13.76%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>1,142,496</td>
+<td>20.22%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>1,633,546</td>
+<td>28.92%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>755,324</td>
+<td>13.37%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>82,309</td>
+<td>1.46%</td>
+</tr>
+</tbody></table>
+<h3 id="数据规模与质量"><a href="#数据规模与质量" class="headerlink" title="数据规模与质量"></a>数据规模与质量</h3><ul>
+<li><p><strong>总数据规模</strong>：</p>
+<ul>
+<li>Listings数据：279,712条房源记录</li>
+<li>Reviews数据：5,649,113条评论记录</li>
+<li>数据时间跨度：2008年至2021年（14年）</li>
+</ul>
+</li>
+<li><p><strong>关键实体数量</strong>：</p>
+<ul>
+<li>唯一房源数：279,712</li>
+<li>唯一房东数：182,024</li>
+<li>唯一评论者数：4,450,005</li>
+</ul>
+</li>
+<li><p><strong>数据质量</strong>：</p>
+<ul>
+<li>21个字段完整性高于95%</li>
+<li>仅1个字段缺失率超过50%</li>
+<li>核心标识符（ID字段）完整性达100%</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>时间跨度长</strong></td>
+<td>涵盖14年（2008-2021）的完整发展历程</td>
+<td>可分析长期市场趋势、季节性波动和重大事件（如疫情）的影响</td>
+</tr>
+<tr>
+<td><strong>地理覆盖广</strong></td>
+<td>包含全球多个主要城市的房源数据</td>
+<td>支持跨城市比较研究、区域市场分析和国际化商业模式探索</td>
+</tr>
+<tr>
+<td><strong>数据维度丰富</strong></td>
+<td>包含35个房源属性字段，涵盖房东、房源、位置、价格、评分等多维度信息</td>
+<td>支持多维度交叉分析，深入挖掘市场规律和用户行为模式</td>
+</tr>
+<tr>
+<td><strong>用户行为数据完整</strong></td>
+<td>超过560万条评论记录，445万独立评论者</td>
+<td>可进行用户行为分析、情感分析和服务质量评估</td>
+</tr>
+<tr>
+<td><strong>数据质量高</strong></td>
+<td>核心字段完整性达100%，大部分字段完整性超过95%</td>
+<td>确保分析结果的可靠性和准确性，适合学术研究和商业决策</td>
+</tr>
+<tr>
+<td><strong>实时性特征</strong></td>
+<td>包含响应时间、接受率等动态指标</td>
+<td>可研究平台运营效率和服务质量的变化趋势</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><h3 id="房源数据样例"><a href="#房源数据样例" class="headerlink" title="房源数据样例"></a>房源数据样例</h3><p>以下是10条房源数据样例，展示了数据集的多样性：</p>
+<ol>
+<li><strong>ID</strong>: 4823489, <strong>名称</strong>: “Close to Eiffel Tower - Beautiful flat : 2 rooms”, <strong>类型</strong>: Entire apartment, <strong>价格</strong>: 60, <strong>位置</strong>: Paris, <strong>容纳人数</strong>: 2, <strong>评分</strong>: 100</li>
+<li><strong>ID</strong>: 4898654, <strong>名称</strong>: “NEW - Charming apartment Le Marais”, <strong>类型</strong>: Entire apartment, <strong>价格</strong>: 95, <strong>位置</strong>: Paris, <strong>容纳人数</strong>: 2, <strong>评分</strong>: 100</li>
+<li><strong>ID</strong>: 6021700, <strong>名称</strong>: “2P - Entre Bastille et Republique”, <strong>类型</strong>: Entire apartment, <strong>价格</strong>: 80, <strong>位置</strong>: Paris, <strong>容纳人数</strong>: 2, <strong>评分</strong>: 100</li>
+<li><strong>ID</strong>: 6945740, <strong>名称</strong>: “57sqm btw. Bastille &amp; Père Lachaise”, <strong>类型</strong>: Entire apartment, <strong>价格</strong>: 59, <strong>位置</strong>: Paris, <strong>容纳人数</strong>: 2, <strong>评分</strong>: 100</li>
+<li><strong>ID</strong>: 7491966, <strong>名称</strong>: “Charming appartment near the Parc Buttes Chaumont”, <strong>类型</strong>: Entire apartment, <strong>价格</strong>: 80, <strong>位置</strong>: Paris, <strong>容纳人数</strong>: 2, <strong>评分</strong>: 100</li>
+</ol>
+<h3 id="评论数据样例"><a href="#评论数据样例" class="headerlink" title="评论数据样例"></a>评论数据样例</h3><p>以下是10条评论数据样例：</p>
+<ol>
+<li><strong>房源ID</strong>: 11798, <strong>评论ID</strong>: 330265172, <strong>日期</strong>: 2018-09-30, <strong>评论者ID</strong>: 11863072</li>
+<li><strong>房源ID</strong>: 15383, <strong>评论ID</strong>: 330103585, <strong>日期</strong>: 2018-09-30, <strong>评论者ID</strong>: 39147453</li>
+<li><strong>房源ID</strong>: 16455, <strong>评论ID</strong>: 329985788, <strong>日期</strong>: 2018-09-30, <strong>评论者ID</strong>: 1125378</li>
+<li><strong>房源ID</strong>: 17919, <strong>评论ID</strong>: 330016899, <strong>日期</strong>: 2018-09-30, <strong>评论者ID</strong>: 172717984</li>
+<li><strong>房源ID</strong>: 26827, <strong>评论ID</strong>: 329995638, <strong>日期</strong>: 2018-09-30, <strong>评论者ID</strong>: 17542859</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="市场趋势分析与预测"><a href="#市场趋势分析与预测" class="headerlink" title="市场趋势分析与预测"></a>市场趋势分析与预测</h3><p>本数据集为研究Airbnb平台的长期发展趋势提供了丰富素材。通过分析2008-2021年的房源数量、价格变化和房东入驻情况，可以清晰把握共享住宿市场的发展脉络。研究人员可以识别市场的成长期、成熟期和波动期，分析不同时期的驱动因素。例如，数据显示2015-2016年是房东入驻的高峰期，而2019年达到评论数量的最高峰。这些趋势分析对于投资者、政策制定者和行业从业者理解市场动态、预测未来发展至关重要。此外，通过比较不同地区的发展模式，可以发现区域性差异和共性规律，为精准市场定位提供依据。</p>
+<h3 id="价格影响因素研究与定价策略优化"><a href="#价格影响因素研究与定价策略优化" class="headerlink" title="价格影响因素研究与定价策略优化"></a>价格影响因素研究与定价策略优化</h3><p>数据集包含了丰富的房源特征信息，如位置、房型、设施、可容纳人数等，结合价格数据，可以深入研究影响房价的关键因素。研究人员可以构建多元回归模型，量化各因素对价格的影响程度，识别溢价因素和价值洼地。例如，分析不同社区的价格差异、整套房源与私人房间的价格溢价、超级房东身份对定价的影响等。对于房东和平台运营者而言，这些 insights可以指导制定科学的定价策略，优化房源配置，提高收益。同时，对于消费者而言，也有助于理解价格形成机制，做出更明智的预订决策。</p>
+<h3 id="用户行为与满意度分析"><a href="#用户行为与满意度分析" class="headerlink" title="用户行为与满意度分析"></a>用户行为与满意度分析</h3><p>超过560万条评论记录和445万独立评论者的数据为研究用户行为和满意度提供了宝贵资源。研究人员可以分析评论的时间分布、频率模式，识别用户评价行为的规律。通过结合评分数据，可以深入研究影响用户满意度的关键因素，如清洁度、位置、沟通等维度的相对重要性。此外，还可以进行情感分析，挖掘用户评论中的隐性需求和痛点。这些分析对于平台改进服务质量、房东提升待客体验、以及旅游服务业理解消费者偏好都具有重要价值。特别是在疫情前后的对比分析中，可以发现用户需求的变化趋势。</p>
+<h3 id="城市旅游影响与可持续发展研究"><a href="#城市旅游影响与可持续发展研究" class="headerlink" title="城市旅游影响与可持续发展研究"></a>城市旅游影响与可持续发展研究</h3><p>Airbnb等共享住宿平台对城市旅游和社区发展的影响是近年来的研究热点。本数据集提供了房源的地理坐标和社区信息，可以分析房源在城市中的空间分布特征，研究其与旅游热点、交通枢纽的关系。研究人员可以评估共享住宿对城市住房市场、社区结构和旅游承载力的影响，为城市规划和旅游政策制定提供数据支持。例如，分析热门旅游区域的房源密度，评估可能的社区影响；研究不同类型社区的Airbnb渗透率，了解平台对城市多样性的影响。这些研究对于促进共享经济与城市可持续发展的协调具有重要意义。</p>
+<h3 id="监管政策效果评估"><a href="#监管政策效果评估" class="headerlink" title="监管政策效果评估"></a>监管政策效果评估</h3><p>近年来，全球多个城市对共享住宿平台实施了不同程度的监管政策。本数据集的时间跨度覆盖了这一政策演变期，可以用于评估各类监管措施的实际效果。研究人员可以通过政策实施前后的对比分析，考察监管对房源数量、价格水平、房东行为和平台活跃度的影响。例如，分析巴黎、纽约等城市实施严格监管后，房源增长率的变化；研究对短期租赁的限制如何影响市场结构和价格分布。这些评估对于政策制定者优化监管策略、平衡平台创新与公共利益具有重要参考价值。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集作为Airbnb平台发展的重要记录，提供了共享住宿经济从萌芽到成熟的完整历史轨迹。其丰富的数据维度、广泛的地理覆盖和长期的时间跨度，使其成为研究共享经济、旅游发展、城市规划和消费者行为的宝贵资源。数据集的高质量和完整性确保了分析结果的可靠性，无论是学术研究还是商业应用都具有极高的价值。通过深入挖掘这些数据，可以揭示市场规律，预测未来趋势，为政策制定和商业决策提供科学依据。随着共享经济的持续发展，此类长期追踪数据集的价值将进一步凸显，为理解新型经济模式的演进提供重要视角。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>原创Airbnb房源评论数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创Airbnb房源评论数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9BAI%E7%94%9F%E6%88%90%E6%96%87%E6%9C%AC%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" title="AI生成文本检测数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI生成文本检测数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9BJD%E5%95%86%E5%93%81%E8%AF%84%E8%AE%BA%E6%95%B0%E6%8D%AE%E9%9B%86/" title="原创JD商品评论数据集">
+                        <span class="hidden-mobile">原创JD商品评论数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创高清短视频大数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="随着人工智能和计算机视觉技术的飞速发展，高质量视频数据已成为训练先进模型、推动多模态学习与内容生成创新的关键资源。本数据集汇集了海量原始视频素材，覆盖广泛主题，不仅为学术研究提供了丰富的实验基础，还在工业应用中发挥着重要作用，例如提升视频内容理解精度、赋能文生视频模型训练，以及优化推荐系统和自动化内容生产。通过利用这些数据，研究者和开发者可以加速算法迭代，降低模型训练成本，并推动AI在娱乐、教育、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超2000万条高清短视频大数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%AB%98%E6%B8%85%E7%9F%AD%E8%A7%86%E9%A2%91%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="随着人工智能和计算机视觉技术的飞速发展，高质量视频数据已成为训练先进模型、推动多模态学习与内容生成创新的关键资源。本数据集汇集了海量原始视频素材，覆盖广泛主题，不仅为学术研究提供了丰富的实验基础，还在工业应用中发挥着重要作用，例如提升视频内容理解精度、赋能文生视频模型训练，以及优化推荐系统和自动化内容生产。通过利用这些数据，研究者和开发者可以加速算法迭代，降低模型训练成本，并推动AI在娱乐、教育、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/920eeb408925457da4eab03e3808301d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/40a561361cda476bad959c007e90a169.jpeg">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/6fba9b4b88444a3082d539e64f23ca89.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/925cef7dd7534d6593c1b8bb88f253b5.png">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:36:12.896Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/920eeb408925457da4eab03e3808301d.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>超2000万条高清短视频大数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="超2000万条高清短视频大数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">超2000万条高清短视频大数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>随着人工智能和计算机视觉技术的飞速发展，高质量视频数据已成为训练先进模型、推动多模态学习与内容生成创新的关键资源。本数据集汇集了海量原始视频素材，覆盖广泛主题，不仅为学术研究提供了丰富的实验基础，还在工业应用中发挥着重要作用，例如提升视频内容理解精度、赋能文生视频模型训练，以及优化推荐系统和自动化内容生产。通过利用这些数据，研究者和开发者可以加速算法迭代，降低模型训练成本，并推动AI在娱乐、教育、营销等领域的实际落地。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>本数据集规模庞大，包含超过2000万条原始视频素材，每条视频时长从10秒到10分钟以上不等，确保了数据的多样性和实用性。视频格式以avi、mp4和wmv为主，分辨率均达到1080p或更高，保证了高清视觉质量，且所有素材均无水印，适合直接用于模型训练和分析。数据覆盖多种主题类型，包括人物、风景、动物、美食和纪录片等，标注信息针对视频主题和描述进行了有效处理，并可提供定制化标签服务，例如添加对象检测、场景分类或情感分析标注，以满足特定项目需求。数据集经过初步整理，确保一致性和可访问性，适用于大规模机器学习任务。</p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>海量与高清</strong></td>
+<td>超过2000万条视频，分辨率1080p及以上，提供丰富且清晰的视觉素材，支持高精度模型训练。</td>
+</tr>
+<tr>
+<td><strong>​主题多样性​</strong> ​</td>
+<td>涵盖人物、风景、动物、美食、纪录片等多个类别，增强数据的泛化能力，适用于跨领域应用。</td>
+</tr>
+<tr>
+<td><strong>无水印</strong></td>
+<td>所有视频均无水印，避免了干扰因素，确保模型训练的纯净输入，提升输出质量。</td>
+</tr>
+<tr>
+<td><strong>可定制化标注</strong></td>
+<td>支持根据用户需求添加个性化标签，如主题细分、对象标注或元数据扩展，提高数据的灵活性和实用性。</td>
+</tr>
+<tr>
+<td><strong>样例获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/12394" title="多类型原始视频素材数据集_视频数据集-典枢">多类型原始视频素材数据集_视频数据集-典枢</a></td>
+</tr>
+</tbody></table>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="​-​大模型视觉识别与视频内容理解​-​"><a href="#​-​大模型视觉识别与视频内容理解​-​" class="headerlink" title="​ ​大模型视觉识别与视频内容理解​ ​"></a>​ <strong>​大模型视觉识别与视频内容理解​</strong> ​</h4><p>该数据集可用于训练大规模视觉识别模型，如卷积神经网络（CNN）或视觉变换器（ViT），以提升视频中的对象检测、场景分类和行为识别精度。通过分析高清视频素材，模型可以学习复杂视觉特征，例如识别风景中的自然元素或人物动作序列，从而应用于安防监控、智能驾驶或内容审核系统。在实际应用中，结合定制化标注，开发者可以构建端到端的视频理解管道，自动化提取关键信息，减少人工干预，提高效率。例如，在电商领域，模型可自动分析产品视频中的特征，增强搜索和推荐功能，为用户提供更精准的体验。</p>
+<h4 id="​-​文生视频模型训练与多模态生成​-​"><a href="#​-​文生视频模型训练与多模态生成​-​" class="headerlink" title="​ ​文生视频模型训练与多模态生成​ ​"></a>​ <strong>​文生视频模型训练与多模态生成​</strong> ​</h4><p>对于文生视频（text-to-video）任务，本数据集提供了丰富的配对数据（视频与描述），可用于训练生成对抗网络（GANs）或扩散模型，实现从文本描述生成高质量视频内容。这类应用在娱乐、广告和教育行业中具有巨大潜力，例如自动创建短视频内容或虚拟场景。通过利用数据中的多主题多样性，模型能更好地理解不同语境下的视觉表达，提升生成内容的真实性和多样性。实际项目中，可结合先进的多模态学习框架，如CLIP或DALL-E的变体，推动创新应用如自动化视频制作工具，帮助内容创作者快速产出个性化作品，降低创作门槛。</p>
+<h4 id="​-​视频推荐系统与个性化内容优化​-​"><a href="#​-​视频推荐系统与个性化内容优化​-​" class="headerlink" title="​ ​视频推荐系统与个性化内容优化​ ​"></a>​ <strong>​视频推荐系统与个性化内容优化​</strong> ​</h4><p>该数据集支持视频推荐算法的开发，通过分析视频主题、时长和用户交互元数据，训练协同过滤或深度学习推荐模型，以提升内容分发的精准度。例如，平台可以利用这些数据识别热门趋势或用户偏好，优化视频流推荐，增强用户参与度和留存率。结合定制化标签，系统可以细分内容类别，实现更细粒度的个性化，如根据用户历史行为推荐特定主题的美食或纪录片视频。这不仅适用于短视频平台，还可扩展至在线教育或企业培训场景，提供自适应学习路径，推动智能内容生态的建设。</p>
+<h4 id="​-​学术研究与跨学科创新​-​"><a href="#​-​学术研究与跨学科创新​-​" class="headerlink" title="​ ​学术研究与跨学科创新​ ​"></a>​ <strong>​学术研究与跨学科创新​</strong> ​</h4><p>在学术领域，本数据集为计算机视觉、人工智能和社会科学的研究提供了宝贵资源，支持探索视频内容的情感分析、文化趋势或人类行为模式。研究人员可利用这些数据开展跨学科项目，如结合心理学分析视频中的情感表达，或使用经济学方法研究内容传播规律。通过开放数据访问，可以促进合作创新，加速新技术如联邦学习或隐私保护计算在视频处理中的应用，最终贡献于更广泛的社会效益，如改善媒体素养或推动数字化转型。</p>
+<h3 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h3><p><img src="https://i-blog.csdnimg.cn/direct/920eeb408925457da4eab03e3808301d.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://i-blog.csdnimg.cn/direct/40a561361cda476bad959c007e90a169.jpeg" srcset="/img/loading.gif" lazyload><img src="https://i-blog.csdnimg.cn/direct/6fba9b4b88444a3082d539e64f23ca89.png" srcset="/img/loading.gif" lazyload><img src="https://i-blog.csdnimg.cn/direct/925cef7dd7534d6593c1b8bb88f253b5.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>超2000万条高清短视频大数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创高清短视频大数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%A4%90%E9%A5%AE%E5%BA%97%E9%93%BA%E5%9B%BE%E7%89%87%E6%95%B0%E6%8D%AE%E9%9B%86/" title="餐饮店铺图片数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">餐饮店铺图片数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%AB%98%E8%B4%A8%E9%87%8F%E5%9D%87%E8%A1%A1%E5%8C%96%E5%9E%83%E5%9C%BE%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="高质量均衡化垃圾图像数据集">
+                        <span class="hidden-mobile">高质量均衡化垃圾图像数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

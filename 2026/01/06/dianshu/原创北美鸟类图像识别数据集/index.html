@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创北美鸟类图像识别数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在人工智能和计算机视觉技术飞速发展的今天，生物多样性保护与生态学研究正迎来前所未有的技术革新机遇。鸟类作为生态系统中的重要指示物种，其准确识别与分类不仅对生态学研究具有重要科学价值，更在环境保护、生物监测、智能观鸟应用等领域展现出巨大的应用潜力。然而，传统的鸟类识别方法往往依赖专业人员的经验判断，效率有限且难以大规模推广。随着深度学习技术的成熟，基于图像识别的自动化鸟类分类系统已成为解决这一挑战的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北美鸟类图像识别数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E5%8C%97%E7%BE%8E%E9%B8%9F%E7%B1%BB%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在人工智能和计算机视觉技术飞速发展的今天，生物多样性保护与生态学研究正迎来前所未有的技术革新机遇。鸟类作为生态系统中的重要指示物种，其准确识别与分类不仅对生态学研究具有重要科学价值，更在环境保护、生物监测、智能观鸟应用等领域展现出巨大的应用潜力。然而，传统的鸟类识别方法往往依赖专业人员的经验判断，效率有限且难以大规模推广。随着深度学习技术的成熟，基于图像识别的自动化鸟类分类系统已成为解决这一挑战的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T10:07:29.576Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>北美鸟类图像识别数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="北美鸟类图像识别数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">北美鸟类图像识别数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在人工智能和计算机视觉技术飞速发展的今天，生物多样性保护与生态学研究正迎来前所未有的技术革新机遇。鸟类作为生态系统中的重要指示物种，其准确识别与分类不仅对生态学研究具有重要科学价值，更在环境保护、生物监测、智能观鸟应用等领域展现出巨大的应用潜力。然而，传统的鸟类识别方法往往依赖专业人员的经验判断，效率有限且难以大规模推广。随着深度学习技术的成熟，基于图像识别的自动化鸟类分类系统已成为解决这一挑战的关键技术路径。</p>
+<p>本数据集正是为满足这一技术需求而精心构建的专业级鸟类图像识别资源。该数据集涵盖了北美地区最具代表性的200种鸟类，总计包含11,788张高质量标注图像，为计算机视觉算法训练、生态学研究、智能观鸟应用开发等提供了坚实的数据基础。数据集不仅具有规模大、种类全的特点，更在图像质量、标注准确性、数据平衡性等方面达到了业界领先标准，为相关领域的研究人员和技术开发者提供了宝贵的训练和测试资源。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>本数据集是一个专业级的鸟类图像分类数据集，具有以下核心特征：数据集规模达到11,788张高质量图像，涵盖200种不同的鸟类物种，平均每个物种包含约59张图像，确保了数据的充分性和代表性。所有图像均采用JPEG格式存储，分辨率从320x223像素到更高分辨率不等，图像质量清晰，细节丰富，为深度学习模型提供了优质的训练素材。</p>
+<p>数据集的标注信息极其详细和准确，每个图像文件都按照”物种名称_序号_唯一标识符.jpg”的格式命名，确保了标注的一致性和可追溯性。数据集覆盖了北美地区最具代表性的鸟类物种，包括信天翁、海雀、黑鸟、红雀、乌鸦、海鸥、蜂鸟、松鸦、翠鸟、麻雀、燕子、莺类、啄木鸟、鹪鹩等各大鸟类科属，从海洋鸟类到森林鸟类，从候鸟到留鸟，形成了完整的生态谱系。</p>
+<p>数据集的构建遵循了严格的科学标准，所有图像均经过专业鸟类学家的验证和标注，确保了物种识别的准确性。图像采集时间跨度较长，涵盖了不同季节、不同光照条件下的鸟类形态，增强了数据集的多样性和实用性。同时，数据集在物种分布上保持了良好的平衡性，避免了某些常见物种过度代表而稀有物种代表性不足的问题。</p>
+<h3 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h3><table>
+<thead>
+<tr>
+<th>特性维度</th>
+<th>详细描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>图像质量</strong></td>
+<td>所有图像均经过专业筛选，确保清晰度、对比度和细节表现达到最佳状态，为深度学习模型提供优质的视觉信息。</td>
+</tr>
+<tr>
+<td><strong>标注体系</strong></td>
+<td>采用标准化的鸟类学分类体系，每个物种的标注都经过专业鸟类学家验证，确保分类的准确性和权威性。</td>
+</tr>
+<tr>
+<td><strong>物种多样性</strong></td>
+<td>涵盖<strong>200种</strong>北美代表性鸟类，从大型海鸟到小型林鸟，从常见物种到珍稀品种，形成完整的生态谱系。</td>
+</tr>
+<tr>
+<td><strong>数据分布</strong></td>
+<td>每个物种平均包含约<strong>59张</strong>图像，避免了数据不平衡问题，确保模型训练的公平性和有效性。</td>
+</tr>
+<tr>
+<td><strong>场景覆盖</strong></td>
+<td>图像采集涵盖不同季节、不同栖息地、不同行为状态（如飞行、站立、觅食），极大地增强了数据集的泛化能力和实用性。</td>
+</tr>
+<tr>
+<td><strong>文件格式</strong></td>
+<td>采用统一的<strong>JPEG</strong>格式和标准的命名规范，便于数据处理和模型训练，有效提高开发效率。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/12369">https://dianshudata.com/dataDetail/12369</a></td>
+</tr>
+</tbody></table>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="计算机视觉算法研发与模型训练"><a href="#计算机视觉算法研发与模型训练" class="headerlink" title="计算机视觉算法研发与模型训练"></a>计算机视觉算法研发与模型训练</h4><p>本数据集为计算机视觉领域的算法研发提供了理想的测试平台。研究人员可以利用这11,788张高质量标注图像训练各种深度学习模型，包括卷积神经网络（CNN）、Vision Transformer（ViT）、EfficientNet等先进架构。数据集的大规模和多类别特性使得模型能够学习到丰富的视觉特征，从羽毛纹理、颜色模式到体型轮廓、行为姿态等各个层面。通过在这个数据集上的训练，模型能够获得强大的鸟类识别能力，为后续的迁移学习和实际应用奠定坚实基础。同时，数据集的平衡性确保了模型不会偏向于某些常见物种，提高了识别的公平性和准确性。</p>
+<h4 id="智能观鸟应用与生态旅游开发"><a href="#智能观鸟应用与生态旅游开发" class="headerlink" title="智能观鸟应用与生态旅游开发"></a>智能观鸟应用与生态旅游开发</h4><p>随着生态旅游和观鸟活动的日益普及，智能观鸟应用的市场需求不断增长。本数据集为开发智能观鸟APP、AR识别系统、自动鸟类监测设备等应用提供了核心数据支撑。用户只需拍摄鸟类照片，系统就能快速准确地识别出物种名称、基本信息、生态习性等详细内容。这种技术不仅能够提升观鸟体验，还能帮助初学者快速学习鸟类知识，促进公众对自然生态的关注和保护意识。对于生态旅游从业者而言，基于此数据集开发的识别系统能够为游客提供专业的导览服务，提升旅游体验的同时传播生态保护理念。</p>
+<h4 id="生物多样性监测与生态保护研究"><a href="#生物多样性监测与生态保护研究" class="headerlink" title="生物多样性监测与生态保护研究"></a>生物多样性监测与生态保护研究</h4><p>在生物多样性保护和生态监测领域，本数据集具有重要的科学价值。研究人员可以利用训练好的模型对野外拍摄的鸟类图像进行自动识别和统计，实现大范围的生物多样性调查。这种自动化监测方法不仅能够大幅提高调查效率，还能减少对野生动物的干扰，实现非侵入式的生态监测。通过长期的数据积累和分析，研究人员能够追踪鸟类种群的变化趋势，评估栖息地质量，制定科学的保护策略。同时，数据集中的图像信息还能为鸟类行为研究、栖息地偏好分析、迁徙模式研究等提供宝贵的视觉资料。</p>
+<h4 id="环境教育与科普推广"><a href="#环境教育与科普推广" class="headerlink" title="环境教育与科普推广"></a>环境教育与科普推广</h4><p>本数据集为环境教育和科普推广提供了丰富的教学资源。教育工作者可以利用这些高质量的鸟类图像制作教学课件、科普视频、互动游戏等教育内容，帮助学生和公众了解鸟类知识，培养生态保护意识。通过结合人工智能技术，可以开发出寓教于乐的学习应用，让用户在游戏化的环境中学习鸟类识别，提高学习的趣味性和效果。这种技术手段特别适合在自然保护区、动物园、博物馆等场所应用，为游客提供互动式的学习体验，促进公众对自然生态的认知和保护参与。</p>
+<h4 id="农业与林业智能监测系统"><a href="#农业与林业智能监测系统" class="headerlink" title="农业与林业智能监测系统"></a>农业与林业智能监测系统</h4><p>在农业和林业领域，鸟类识别技术具有重要的实用价值。某些鸟类是农业害虫的天敌，而另一些可能对农作物造成损害。通过部署基于本数据集训练的识别系统，农民和林业工作者能够实时监测农田和林地中的鸟类活动，了解生态平衡状况，制定相应的管理策略。这种智能监测系统不仅能够提高农业生产的生态友好性，还能为精准农业、有机农业等现代农业生产模式提供技术支撑。同时，系统收集的数据还能为农业生态学研究、病虫害防治策略制定等提供科学依据。</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>本鸟类图像识别数据集代表了当前生物多样性数据资源建设的重要成果，为计算机视觉、生态学、环境科学等多个交叉领域的研究和应用提供了宝贵的数据基础。数据集的11,788张高质量图像和200种鸟类物种的完整覆盖，不仅满足了当前技术发展的需求，更为未来的创新应用奠定了坚实基础。无论是学术研究、产业应用还是科普教育，这个数据集都能发挥重要的支撑作用，推动相关领域的技术进步和社会价值实现。</p>
+<p>随着人工智能技术的不断发展和生态保护意识的日益增强，基于高质量生物多样性数据的智能识别系统将在更多领域展现其价值。本数据集为这一发展趋势提供了重要的技术支撑，有望在推动科技进步的同时，为生物多样性保护和生态文明建设贡献重要力量。有需要获取更多数据集详细信息或技术支持的，欢迎进一步交流探讨。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>北美鸟类图像识别数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创北美鸟类图像识别数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E5%8A%A8%E7%89%A9%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/" title="动物识别数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">动物识别数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E5%8C%BB%E7%96%97%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%9B%86/" title="基于10部权威医疗电子书的医疗知识图谱构建数据集">
+                        <span class="hidden-mobile">基于10部权威医疗电子书的医疗知识图谱构建数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创高质量票据识别数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在数字化转型的浪潮中，票据识别技术已成为金融、零售、餐饮等行业自动化处理的核心技术。传统的票据处理依赖人工录入，效率低下且容易出错，而基于深度学习的票据识别系统能够实现高精度的自动化信息提取。然而，训练高质量的票据识别模型需要大量标注良好的数据集作为支撑。 本数据集专门为票据识别和文档理解研究而设计，包含了丰富的收据图像样本和详细的结构化标注信息。该数据集不仅为研究人员提供了标准化的训练和测试基准">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高质量票据识别数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%AB%98%E8%B4%A8%E9%87%8F%E7%A5%A8%E6%8D%AE%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在数字化转型的浪潮中，票据识别技术已成为金融、零售、餐饮等行业自动化处理的核心技术。传统的票据处理依赖人工录入，效率低下且容易出错，而基于深度学习的票据识别系统能够实现高精度的自动化信息提取。然而，训练高质量的票据识别模型需要大量标注良好的数据集作为支撑。 本数据集专门为票据识别和文档理解研究而设计，包含了丰富的收据图像样本和详细的结构化标注信息。该数据集不仅为研究人员提供了标准化的训练和测试基准">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/663343bf29414bbba1301a5eb451281c.jpeg">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/755f9525f0944e5984c2dc74aa3c1e1b.jpeg">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/direct/06feb8a3ec9e43adaae2e637aef52476.jpeg">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T10:29:37.116Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/direct/663343bf29414bbba1301a5eb451281c.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>高质量票据识别数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="高质量票据识别数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">高质量票据识别数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在数字化转型的浪潮中，票据识别技术已成为金融、零售、餐饮等行业自动化处理的核心技术。传统的票据处理依赖人工录入，效率低下且容易出错，而基于深度学习的票据识别系统能够实现高精度的自动化信息提取。然而，训练高质量的票据识别模型需要大量标注良好的数据集作为支撑。</p>
+<p>本数据集专门为票据识别和文档理解研究而设计，包含了丰富的收据图像样本和详细的结构化标注信息。该数据集不仅为研究人员提供了标准化的训练和测试基准，更为产业界开发实用的票据处理系统奠定了坚实的数据基础。通过使用本数据集，研究人员可以训练端到端的文档理解模型，实现从图像到结构化数据的直接转换，推动票据识别技术向更高精度和更强泛化能力的方向发展。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>本数据集包含总计1000个高质量的收据图像样本，其中训练集800个样本，验证集100个样本，测试集100个样本。每个样本包含一张清晰的收据扫描图像和对应的JSON格式结构化标注信息。</p>
+<p>图像数据采用PNG格式存储，平均分辨率为999×1575像素，图像尺寸范围从204×336到3024×4224，确保了数据的多样性和真实性。标注信息涵盖了收据中的所有关键信息，包括商品名称、数量、价格、小计、税费、总计等结构化数据。</p>
+<p>数据集共包含2141个商品项标注，涵盖1504种不同的商品类型，价格范围从0到18,150,000，平均价格为172,238。这种丰富的价格分布和商品多样性使得数据集能够支持各种复杂场景下的模型训练和评估。</p>
+<h3 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h3><table>
+<thead>
+<tr>
+<th>特征维度</th>
+<th>具体描述</th>
+<th>优势与价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>图像质量</strong></td>
+<td>所有收据图像均为高分辨率扫描图像，图像清晰度高，文字识别难度适中。</td>
+<td>为模型训练提供了优质的视觉输入，减少了因图像模糊、失真导致的识别错误，奠定了高准确率的基石。</td>
+</tr>
+<tr>
+<td><strong>标注完整性</strong></td>
+<td>每个样本都包含详细的JSON格式标注，不仅提供文本内容，还包含精确的边界框坐标（通常为多边形或四边形）。</td>
+<td>支持端到端的OCR模型训练（如DBNet、PaddleOCR），并允许进行细粒度的文本分析和布局理解，远超仅提供文本内容的数据集。</td>
+</tr>
+<tr>
+<td><strong>数据多样性</strong></td>
+<td>涵盖多种收据类型和格式（如零售、餐饮、交通等），包含不同语言、不同排版布局的收据样本。</td>
+<td>极大地提高了训练模型的泛化能力，使其能够更好地适应真实世界中遇到的各种未知收据格式，避免过拟合。</td>
+</tr>
+<tr>
+<td><strong>格式标准化</strong></td>
+<td>采用统一的数据分割（如train&#x2F;val&#x2F;test）和标注格式（如COCO、ICDAR等通用格式）。</td>
+<td>便于研究人员和开发者快速上手使用，无需复杂的格式转换，可直接与主流深度学习框架（PyTorch, TensorFlow, MMOCR）兼容。</td>
+</tr>
+<tr>
+<td><strong>文本定位精度</strong></td>
+<td>提供每个文本元素（单词或文本行）的精确坐标信息，而非整图或整行级别的粗粒度标注。</td>
+<td>完美支持需要基于位置的信息提取（Key-Information Extraction, KIE）和文档布局分析（Document Layout Analysis, DLA）任务。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13672">https://dianshudata.com/dataDetail/13672</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h3><p><img src="https://i-blog.csdnimg.cn/direct/663343bf29414bbba1301a5eb451281c.jpeg" srcset="/img/loading.gif" lazyload><br><img src="https://i-blog.csdnimg.cn/direct/755f9525f0944e5984c2dc74aa3c1e1b.jpeg" srcset="/img/loading.gif" lazyload><br><img src="https://i-blog.csdnimg.cn/direct/06feb8a3ec9e43adaae2e637aef52476.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="端到端票据OCR系统开发"><a href="#端到端票据OCR系统开发" class="headerlink" title="端到端票据OCR系统开发"></a>端到端票据OCR系统开发</h4><p>本数据集为开发端到端的票据OCR系统提供了理想的数据基础。传统的OCR系统通常需要先进行文本检测，再进行文本识别，最后进行信息结构化，这种多步骤的处理方式容易产生误差累积。而基于本数据集训练的端到端模型可以直接从收据图像输出结构化的JSON数据，大大简化了处理流程。</p>
+<p>在实际应用中，这种端到端的票据OCR系统可以广泛应用于餐饮、零售、酒店等行业的收银系统。系统能够自动识别收据中的商品信息、价格、税费等关键数据，实现收据信息的自动录入和核对。这不仅提高了工作效率，还减少了人工错误，为企业节省了大量的人力成本。同时，系统还可以与财务管理系统、库存管理系统等企业应用无缝集成，实现业务流程的全面自动化。</p>
+<h4 id="智能财务管理系统构建"><a href="#智能财务管理系统构建" class="headerlink" title="智能财务管理系统构建"></a>智能财务管理系统构建</h4><p>在财务管理领域，本数据集为构建智能财务管理系统提供了重要的数据支撑。传统的财务数据录入需要人工逐条输入收据信息，工作量大且容易出错。基于本数据集训练的模型可以实现收据信息的自动提取和分类，大大提高财务处理的效率和准确性。</p>
+<p>智能财务管理系统可以自动识别收据中的供应商信息、商品明细、金额数据等关键信息，并按照预设的规则进行分类和归档。系统还能够自动计算税费、生成财务报表，为企业的财务决策提供及时准确的数据支持。此外，系统还具备异常检测功能，能够识别异常的金额、重复的收据等问题，帮助企业及时发现和防范财务风险。这种智能化的财务管理方式不仅提高了工作效率，还增强了财务数据的准确性和可靠性。</p>
+<h4 id="零售数据分析与推荐系统"><a href="#零售数据分析与推荐系统" class="headerlink" title="零售数据分析与推荐系统"></a>零售数据分析与推荐系统</h4><p>本数据集为零售行业的数据分析和推荐系统开发提供了宝贵的数据资源。通过分析收据中的商品购买信息，可以深入了解消费者的购买行为和偏好，为精准营销和个性化推荐提供数据基础。</p>
+<p>基于收据数据的分析可以揭示商品之间的关联关系，发现消费者的购买模式，为商品陈列、促销策略制定提供科学依据。例如，通过分析哪些商品经常一起购买，可以优化商品陈列位置，提高交叉销售的效果。同时，系统还可以根据消费者的历史购买记录，推荐可能感兴趣的商品，提高销售转化率。</p>
+<p>此外，收据数据还可以用于库存管理优化，通过分析商品的销售频率和数量，可以预测未来的需求趋势，优化采购计划和库存配置，减少库存积压和缺货风险。</p>
+<h4 id="文档理解与布局分析研究"><a href="#文档理解与布局分析研究" class="headerlink" title="文档理解与布局分析研究"></a>文档理解与布局分析研究</h4><p>本数据集为文档理解和布局分析研究提供了标准化的测试基准。收据作为一种典型的半结构化文档，具有明确的布局特征和语义结构，是研究文档理解技术的理想对象。</p>
+<p>研究人员可以利用本数据集开发新的文档理解算法，探索如何更好地理解文档的布局结构和语义关系。例如，可以研究如何利用视觉特征和文本特征相结合的方式，提高信息提取的准确性。还可以探索基于注意力机制的模型架构，让模型能够更好地关注文档中的关键信息区域。</p>
+<p>这些研究成果不仅适用于收据识别，还可以推广到发票、合同、报告等其他类型的文档处理任务中。通过在本数据集上的验证和改进，研究人员可以开发出更加通用和强大的文档理解技术，推动整个文档智能处理领域的发展。</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>本票据识别数据集以其高质量的数据内容、完整的标注信息和丰富的应用场景，为票据识别和文档理解研究提供了重要的数据支撑。数据集不仅能够支持传统的OCR技术研究，更能够推动端到端文档理解技术的发展，为产业界的智能化转型提供技术基础。</p>
+<p>通过使用本数据集，研究人员可以开发出更加准确、高效的票据识别系统，为金融、零售、餐饮等行业提供智能化的数据处理解决方案。同时，数据集也为文档理解、布局分析等前沿研究领域提供了标准化的测试基准，推动相关技术的持续创新和发展。</p>
+<p>有需要可私信获取更多信息，我们将为您提供详细的数据集使用指南和技术支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>高质量票据识别数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创高质量票据识别数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%AB%98%E8%B4%A8%E9%87%8F%E7%89%A9%E7%90%86%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E9%9B%86/" title="高质量物理大模型训练数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">高质量物理大模型训练数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E9%AB%98%E8%B4%A8%E9%87%8F%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/" title="高质量车牌识别数据集">
+                        <span class="hidden-mobile">高质量车牌识别数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

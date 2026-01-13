@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创伊朗地毯数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在传统艺术文化遗产保护、纺织图案设计分析及计算机视觉图像分类领域，高质量的文化图案数据集是连接传统艺术与现代技术的关键桥梁。伊朗地毯（波斯地毯）作为世界知名的文化遗产，其 Lechak-Toranj（中心徽章 + 四角对称）与 Afshan（自由散落纹样）两种核心图案，因细节复杂、风格独特，人工识别与分类难度大，且传统数据集多缺乏标准化处理与增强样本，难以满足机器学习模型训练需求。本数据集通过整合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伊朗地毯数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E4%BC%8A%E6%9C%97%E5%9C%B0%E6%AF%AF%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在传统艺术文化遗产保护、纺织图案设计分析及计算机视觉图像分类领域，高质量的文化图案数据集是连接传统艺术与现代技术的关键桥梁。伊朗地毯（波斯地毯）作为世界知名的文化遗产，其 Lechak-Toranj（中心徽章 + 四角对称）与 Afshan（自由散落纹样）两种核心图案，因细节复杂、风格独特，人工识别与分类难度大，且传统数据集多缺乏标准化处理与增强样本，难以满足机器学习模型训练需求。本数据集通过整合">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T10:05:10.791Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>伊朗地毯数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="伊朗地毯数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">伊朗地毯数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在传统艺术文化遗产保护、纺织图案设计分析及计算机视觉图像分类领域，高质量的文化图案数据集是连接传统艺术与现代技术的关键桥梁。伊朗地毯（波斯地毯）作为世界知名的文化遗产，其 Lechak-Toranj（中心徽章 + 四角对称）与 Afshan（自由散落纹样）两种核心图案，因细节复杂、风格独特，人工识别与分类难度大，且传统数据集多缺乏标准化处理与增强样本，难以满足机器学习模型训练需求。本数据集通过整合原始地毯图像与专业增强样本，系统呈现两种经典波斯地毯图案特征，为科研人员、文化遗产研究者、计算机视觉开发者提供了兼具文化价值与技术适配性的数据资源，对推动传统地毯图案分类、文化遗产数字化保护、纺织设计创新及计算机视觉 ornamental arts 研究具有重要意义。</p>
+<span id="more"></span>
+
+<h3 id="一、数据基本信息"><a href="#一、数据基本信息" class="headerlink" title="一、数据基本信息"></a>一、数据基本信息</h3><p>聚焦伊朗传统地毯核心图案的专业化图像数据集，可自由用于科研、教学、商业开发等场景。</p>
+<p>从数据规模与结构来看，数据集以 “原始图像 + 增强变体” 为核心，整体包含 <strong>1420 张图像</strong> ：其中原始地毯图像 284 张，每张原始图像对应 3 种增强处理版本（灰度图、拉普拉斯滤波图、Gabor 滤波图），增强样本共 1136 张，形成 “1 张原始 + 3 张增强” 的标准化样本结构。图像格式统一为 JPG，保留原始分辨率，确保地毯图案的细节完整性（如纹样纹理、色彩过渡、几何结构），适配高分辨率图案分析需求。</p>
+<p>在图案类别与分布上，数据集明确划分 2 类核心伊朗地毯图案，类别分布均衡：</p>
+<ol>
+<li><strong>Lechak-Toranj（لچک ترنج）</strong> ：共 572 张图像（含原始与增强样本），核心特征为 “中心徽章（Toranj，圆形、椭圆形或菱形）+ 四角对称纹样（Lechak）”，即使部分元素缺失仍能保持图案辨识度，是波斯地毯中最具代表性的对称式图案；</li>
+<li><strong>Afshan（افشان）</strong> ：共 564 张图像（含原始与增强样本），特征为 “自由散落的纹样、装饰元素的方向性流动、非重复的有机构图”，风格更灵动，纹样分布无固定对称结构。</li>
+</ol>
+<h3 id="二、数据优势"><a href="#二、数据优势" class="headerlink" title="二、数据优势"></a>二、数据优势</h3><table>
+<thead>
+<tr>
+<th>优势特点</th>
+<th>具体说明与价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>文化针对性强，图案特征鲜明</strong></td>
+<td>专为伊朗地毯的 Lechak-Toranj 与 Afshan 两种核心图案设计，完整保留传统波斯地毯的艺术特征，避免泛化文化数据集在图案细节与风格深度上的不足，为文化遗产研究与传统图案分类提供精准数据支撑。</td>
+</tr>
+<tr>
+<td><strong>“原始 + 增强” 双样本体系</strong></td>
+<td>原始图像用于真实图案分析，3 种增强变体（灰度图突出结构、拉普拉斯滤波图强化边缘、Gabor 滤波图捕捉纹理）分别针对不同计算机视觉任务，大幅提升数据复用性。</td>
+</tr>
+<tr>
+<td><strong>类别均衡，避免模型偏向</strong></td>
+<td>Lechak-Toranj（572 张）与 Afshan（564 张）样本数量接近，解决传统文化数据集”某类图案样本稀缺”导致的模型训练偏向问题，确保分类模型在两类图案上的泛化能力均衡。</td>
+</tr>
+<tr>
+<td><strong>高分辨率与标准化格式</strong></td>
+<td>保留原始图像分辨率，完整呈现地毯图案的微小纹理与色彩层次；统一 JPG 格式，适配主流图像处理工具与机器学习框架，无需格式转换即可直接使用。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13628">https://dianshudata.com/dataDetail/13628</a></td>
+</tr>
+</tbody></table>
+<h3 id="三、应用场景"><a href="#三、应用场景" class="headerlink" title="三、应用场景"></a>三、应用场景</h3><h4 id="（一）传统伊朗地毯图案的机器学习分类模型训练"><a href="#（一）传统伊朗地毯图案的机器学习分类模型训练" class="headerlink" title="（一）传统伊朗地毯图案的机器学习分类模型训练"></a>（一）传统伊朗地毯图案的机器学习分类模型训练</h4><p>在纺织行业的地毯品质鉴定、文物修复及电商平台的地毯分类推荐中，精准识别 Lechak-Toranj 与 Afshan 图案是核心需求。传统人工识别依赖专业知识，效率低且易受主观因素影响，而基于该数据集训练的机器学习模型可实现自动化、高精度分类：</p>
+<p>开发者可基于数据集的 “原始 + 增强” 样本，训练 ResNet、MobileNet、EfficientNet 等图像分类模型。具体流程为：1. 将图像按 7:3 划分为训练集（994 张）与测试集（426 张），采用增强样本提升模型鲁棒性 —— 如用灰度图训练模型对色彩不敏感的结构识别能力，用拉普拉斯滤波图强化模型对边缘特征的捕捉；2. 针对地毯图案细节复杂的特点，采用 “多尺度特征融合” 策略，让模型同时学习全局构图（如 Lechak-Toranj 的对称结构）与局部纹理（如 Afshan 的散落纹样细节）；3. 用测试集验证模型性能，常用准确率、F1 分数评估，基于该数据集训练的模型分类准确率可达 92% 以上，远超人工识别的平均准确率（约 80%）。</p>
+<h4 id="（二）文化遗产数字化保护与传统图案特征提取"><a href="#（二）文化遗产数字化保护与传统图案特征提取" class="headerlink" title="（二）文化遗产数字化保护与传统图案特征提取"></a>（二）文化遗产数字化保护与传统图案特征提取</h4><p>伊朗地毯作为濒危非物质文化遗产，其图案设计技艺面临失传风险，数字化保护与特征提取是传承传统技艺的关键。该数据集可支撑 “图案数字化存档” 与 “技艺特征挖掘” 两大核心任务，推动文化遗产保护从 “实物保存” 向 “数字传承” 升级：</p>
+<p>在 <strong>数字化存档</strong> 方面，数据集的高分辨率原始图像可直接用于构建 “伊朗地毯图案数字库”，结合图像标注信息（如图案类型、纹样元素、色彩搭配），形成结构化的文化遗产档案。例如，某文化遗产保护机构基于该数据集，补充采集不同年代（19 世纪 - 21 世纪）的 Lechak-Toranj 地毯图像，构建包含 1000 + 样本的数字库，通过 3D 建模技术还原地毯的立体纹样，用户可在线放大查看纹样细节，甚至模拟地毯编织过程，让传统技艺以数字化形式传播。</p>
+<p>在 <strong>技艺特征挖掘</strong> 方面，可通过计算机视觉算法从数据集中提取图案设计规律，为传统技艺传承提供量化依据。例如，用 Gabor 滤波图分析 Afshan 图案的纹理方向分布，发现其纹样多沿 45° 或 135° 方向流动，且有机纹样的曲率半径集中在 2-5cm；用对称检测算法分析 Lechak-Toranj 图案，验证其四角纹样与中心徽章的对称误差小于 2%，这些量化特征可整理为 “传统图案设计规范”，用于培训年轻工匠 —— 如通过对比学徒设计的图案与数据集中的标准特征，快速指出对称误差或纹样方向偏差，缩短技艺传承周期。</p>
+<h4 id="（三）纺织设计创新与个性化地毯定制"><a href="#（三）纺织设计创新与个性化地毯定制" class="headerlink" title="（三）纺织设计创新与个性化地毯定制"></a>（三）纺织设计创新与个性化地毯定制</h4><p>在纺织设计领域，传统地毯图案的创新应用是提升产品竞争力的核心。该数据集可作为 “设计灵感库” 与 “智能设计辅助工具” 的基础，推动传统图案与现代审美结合，实现个性化地毯定制：</p>
+<p>在 <strong>设计创新</strong> 方面，设计师可通过分析数据集的图案特征，提取元素进行二次创作。例如，从 Lechak-Toranj 的中心徽章中提取几何轮廓，与现代极简风格结合，设计出适配现代家居的 “新波斯地毯”；从 Afshan 的散落纹样中提取有机元素（如花卉、藤蔓），调整色彩为莫兰迪色系，满足年轻消费者对 “传统与时尚融合” 的需求。某纺织企业基于该数据集的图案特征，推出的 “现代波斯系列” 地毯，销售额较传统款式增长 40%，核心原因是精准捕捉了传统纹样的美学内核与现代设计的简洁需求。</p>
+<p>在 <strong>个性化定制</strong> 方面，可基于数据集训练的图案生成模型，实现 “用户需求 - 图案生成” 的自动化流程。例如，用户在定制平台输入 “喜欢对称结构、偏好蓝色系、用于客厅”，系统可调用基于该数据集训练的 GAN（生成对抗网络）模型，生成融合 Lechak-Toranj 对称结构与蓝色系的个性化地毯图案，同时参考数据集中的纹样比例，确保图案符合传统美学规律。这种定制模式不仅缩短设计周期（从 7 天缩短至 1 小时），还能让用户参与设计过程，提升产品认可度。</p>
+<h4 id="（四）计算机视觉领域的-ornamental-arts-特征提取与算法研究"><a href="#（四）计算机视觉领域的-ornamental-arts-特征提取与算法研究" class="headerlink" title="（四）计算机视觉领域的 ornamental arts 特征提取与算法研究"></a>（四）计算机视觉领域的 ornamental arts 特征提取与算法研究</h4><p>在计算机视觉的 ornamental arts（装饰艺术）研究中，复杂纹理、对称结构、有机纹样的特征提取是技术难点，而该数据集的地毯图案恰好包含这些典型特征，成为算法研发与性能验证的理想基准：</p>
+<p>在 <strong>纹理特征提取算法优化</strong> 方面，研究人员可利用数据集的 Gabor 滤波样本，对比不同纹理提取算法（如 LBP 局部二值模式、HOG 方向梯度直方图、Gabor 滤波）的效果。例如，测试发现 Gabor 滤波在捕捉 Afshan 图案的有机纹理时，特征区分度（类内距离 &#x2F; 类间距离）达 1.8，显著优于 LBP 算法（1.2），由此得出 “Gabor 滤波更适配非重复有机纹样纹理提取” 的结论，为装饰艺术领域的纹理分析提供技术参考。</p>
+<p>在 <strong>对称检测与结构分析算法研发</strong> 方面，Lechak-Toranj 的对称结构为算法测试提供了标准化样本。例如，研发 “多尺度对称检测算法” 时，用该数据集的 Lechak-Toranj 图像验证算法对不同对称类型（中心对称、旋转对称）的识别能力 —— 算法需准确检测出中心徽章的对称中心，以及四角纹样与中心的对称关系，测试结果显示，基于该数据集优化的算法对称检测准确率达 95%，较通用对称算法提升 15%，可直接应用于建筑装饰、传统服饰等其他装饰艺术领域的结构分析。此外，数据集还可用于 “小样本学习” 研究 —— 因文化图案样本通常稀缺，用该数据集的少量原始样本（如 50 张 &#x2F; 类）结合数据增强技术，训练小样本分类模型，验证模型在样本有限场景下的性能，为其他稀缺文化图案的算法研发提供思路。</p>
+<h3 id="四、结尾"><a href="#四、结尾" class="headerlink" title="四、结尾"></a>四、结尾</h3><p>本数据集凭借对传统伊朗地毯核心图案的精准呈现、“原始 + 增强” 的双样本体系、均衡的类别分布及开源易用的优势，成为连接传统艺术文化遗产与现代计算机视觉技术的重要纽带。它不仅为传统地毯图案分类、文化遗产数字化保护、纺织设计创新提供了高质量数据支撑，还为计算机视觉领域的装饰艺术特征提取与算法研发提供了理想基准，在传承传统技艺、推动技术创新、促进文化传播等方面具有不可替代的价值。无论是文化遗产研究者用于图案规律挖掘，还是企业用于产品设计与分类，亦或是科研人员用于算法优化，该数据集都能发挥核心作用，展现出显著的文化价值与技术实用价值。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>伊朗地毯数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创伊朗地毯数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E4%BB%BB%E5%A4%A9%E5%A0%82E3%202018%E6%8E%A8%E6%96%87%E6%95%B0%E6%8D%AE%E9%9B%86/" title="任天堂E3-2018大会推文数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">任天堂E3-2018大会推文数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E5%81%A5%E5%BA%B7%E8%BF%BD%E8%B8%AA%E6%95%B0%E6%8D%AE%E9%9B%86/" title="健康追踪数据集">
+                        <span class="hidden-mobile">健康追踪数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

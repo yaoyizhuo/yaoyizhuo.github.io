@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创购物篮分析数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、引言与背景在零售行业中，”顾客购买 A 商品时是否更可能购买 B 商品” 是贯穿商品管理、营销策划与运营优化的核心问题。这种 “商品共现” 的规律隐藏在海量交易数据中，直接关系到交叉销售效率、商店布局设计与库存周转水平。然而，传统零售分析多依赖经验判断（如 “面包与黄油搭配销售”），缺乏对全量交易数据的系统化挖掘，难以精准捕捉潜在的商品关联模式，导致营销资源浪费或库存配置失衡。 本次介绍的 “">
+<meta property="og:type" content="article">
+<meta property="og:title" content="购物篮分析数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E8%B4%AD%E7%89%A9%E7%AF%AE%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="一、引言与背景在零售行业中，”顾客购买 A 商品时是否更可能购买 B 商品” 是贯穿商品管理、营销策划与运营优化的核心问题。这种 “商品共现” 的规律隐藏在海量交易数据中，直接关系到交叉销售效率、商店布局设计与库存周转水平。然而，传统零售分析多依赖经验判断（如 “面包与黄油搭配销售”），缺乏对全量交易数据的系统化挖掘，难以精准捕捉潜在的商品关联模式，导致营销资源浪费或库存配置失衡。 本次介绍的 “">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T10:22:18.589Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>购物篮分析数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="购物篮分析数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">购物篮分析数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、引言与背景"><a href="#一、引言与背景" class="headerlink" title="一、引言与背景"></a>一、引言与背景</h3><p>在零售行业中，”顾客购买 A 商品时是否更可能购买 B 商品” 是贯穿商品管理、营销策划与运营优化的核心问题。这种 “商品共现” 的规律隐藏在海量交易数据中，直接关系到交叉销售效率、商店布局设计与库存周转水平。然而，传统零售分析多依赖经验判断（如 “面包与黄油搭配销售”），缺乏对全量交易数据的系统化挖掘，难以精准捕捉潜在的商品关联模式，导致营销资源浪费或库存配置失衡。</p>
+<p>本次介绍的 “零售市场篮子交易数据集”作为关联规则挖掘的经典基准数据，以 7501 笔真实购物篮交易为样本，完整记录了顾客单次购物的商品组合，为量化分析商品亲和力、挖掘消费模式提供了标准化工具。它填补了 “经验直觉 - 数据证据 - 商业行动” 之间的缺口，无论是零售从业者优化运营策略，还是数据分析师实践关联挖掘算法，都具有不可替代的价值。</p>
+<h3 id="二、数据基本信息"><a href="#二、数据基本信息" class="headerlink" title="二、数据基本信息"></a>二、数据基本信息</h3><h4 id="1-数据规模与格式"><a href="#1-数据规模与格式" class="headerlink" title="1. 数据规模与格式"></a>1. 数据规模与格式</h4><p>数据集包含 <strong>7501 笔交易记录</strong> （每笔交易对应一个购物篮），涵盖约 120 种不同的零售商品（如面包、矿泉水、巧克力等）。文件采用逗号分隔格式，结构简洁直观，无需复杂预处理即可适配 Python（mlxtend、pandas 库）、R 等主流数据分析工具，尤其适合用于关联规则挖掘的代码笔记本（Notebook）创作与教学演示。</p>
+<h4 id="2-核心结构与数据维度"><a href="#2-核心结构与数据维度" class="headerlink" title="2. 核心结构与数据维度"></a>2. 核心结构与数据维度</h4><p>数据集采用 “交易 - 商品” 的二维事务性结构，与传统的 “样本 - 特征” 结构化数据有显著差异，具体特征如下：</p>
+<ul>
+<li><strong>行维度（交易）</strong> ：每行代表一位顾客的单次购物行为，即一个 “购物篮”，共 7501 个独立交易样本；</li>
+<li><strong>列维度（商品）</strong> ：每列对应购物篮中的一个商品位置，最多包含 20 列（即单个购物篮最多购买 20 件商品），列中值为商品名称，空单元格表示该位置无商品；</li>
+<li><strong>核心属性</strong> ：纯分类数据，无数值或连续型特征，数据本质呈现 “高稀疏性”—— 由于 120 种商品中仅少数出现在单个购物篮中，若进行独热编码转换，矩阵中 90% 以上的元素为 0。</li>
+</ul>
+<h4 id="3-内容特征与分布"><a href="#3-内容特征与分布" class="headerlink" title="3. 内容特征与分布"></a>3. 内容特征与分布</h4><p>数据集的交易特征高度贴合线下零售场景的真实规律：</p>
+<ul>
+<li><strong>购物篮规模</strong> ：商品数量差异显著，篮子大小从 1 件（仅购买单一商品）到 20 件（全套杂货采购）不等，其中中小规模购物篮（2-5 件商品）占比超 60%，符合 “日常零星采购为主、大额囤货为辅” 的消费习惯；</li>
+<li><strong>商品分布</strong> ：部分高频商品（如矿泉水、面包、巧克力）出现在超 10% 的交易中，而多数长尾商品（如特定调味品、小众零食）仅在不足 1% 的交易中出现，呈现典型的 “幂律分布” 特征；</li>
+<li><strong>缺失值与重复项</strong> ：缺失值以空单元格形式存在（因购物篮商品数量不足 20 列），属于 “合理缺失” 而非数据质量问题；部分商品组合存在重复交易（同一组商品被不同顾客购买），符合零售交易的自然属性，无需剔除。</li>
+</ul>
+<h3 id="三、数据优势"><a href="#三、数据优势" class="headerlink" title="三、数据优势"></a>三、数据优势</h3><table>
+<thead>
+<tr>
+<th>优势特性</th>
+<th>具体描述与核心价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>场景真实性强</strong></td>
+<td>数据源自真实零售交易，商品类型与购物篮规模直接对应线下超市、便利店的核心业务场景，避免了合成数据的”脱离业务”缺陷，使分析结论落地性强。</td>
+</tr>
+<tr>
+<td><strong>结构适配性高</strong></td>
+<td>采用”购物篮-商品”的事务性数据结构，无需复杂转换即可直接用于Apriori、FP-Growth等经典关联规则算法，降低了入门门槛。</td>
+</tr>
+<tr>
+<td><strong>稀疏性与变异性均衡</strong></td>
+<td>高稀疏性真实反映”多数商品不共现”的零售现实，购物篮规模变异（1-20件）涵盖全场景消费行为，使挖掘出的规则兼具普遍性与特殊性。</td>
+</tr>
+<tr>
+<td><strong>规模适中</strong></td>
+<td>7501笔交易、120种商品的规模既保证了统计代表性，又不会带来过高计算成本，即使在普通计算机上也能快速运行算法，实现高效分析。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13664">https://dianshudata.com/dataDetail/13664</a></td>
+</tr>
+</tbody></table>
+<h3 id="四、应用场景"><a href="#四、应用场景" class="headerlink" title="四、应用场景"></a>四、应用场景</h3><h4 id="1-关联规则挖掘：解锁商品共现规律"><a href="#1-关联规则挖掘：解锁商品共现规律" class="headerlink" title="1. 关联规则挖掘：解锁商品共现规律"></a>1. 关联规则挖掘：解锁商品共现规律</h4><p>数据集的核心价值在于支撑关联规则挖掘，通过 “支持度、置信度、提升度” 三大指标量化商品关联强度，典型应用包括：</p>
+<ul>
+<li><strong>核心规则发现</strong> ：使用 Apriori 算法挖掘高频关联规则，例如发现 “{矿泉水，巧克力} ⇒ {鸡蛋}” 的支持度为 2.3%、置信度为 45%—— 即该组合在所有交易中占比 2.3%，且购买矿泉水和巧克力的顾客中有 45% 会同时购买鸡蛋；而 “{意大利面，番茄酱} ⇒ {帕玛森干酪}” 的提升度达 3.8，意味着购买前两者的顾客购买干酪的概率是普通顾客的 3.8 倍，属于强关联规则；</li>
+<li><strong>规则分层分析</strong> ：按支持度分为 “大众关联”（如面包 + 黄油，支持度 5.1%）和 “小众关联”（如茶 + 蜂蜜，支持度 0.8%），前者适合全店促销，后者可针对特定客群精准推送；</li>
+<li><strong>无效规则剔除</strong> ：通过提升度筛选 “伪关联”—— 例如 “{牛奶} ⇒ {面包}” 的提升度仅 1.02，虽有置信度，但实际是两者均为高频商品导致的共现，无实际营销价值。</li>
+</ul>
+<h4 id="2-零售运营优化：从数据到决策落地"><a href="#2-零售运营优化：从数据到决策落地" class="headerlink" title="2. 零售运营优化：从数据到决策落地"></a>2. 零售运营优化：从数据到决策落地</h4><p>挖掘出的商品关联规律可直接转化为零售运营策略，覆盖全链路业务场景：</p>
+<ul>
+<li><strong>商品布局优化</strong> ：将强关联商品就近陈列，例如根据 “{意大利面，番茄酱} ⇒ {帕玛森干酪}” 的规则，在 pasta 货架旁增设奶酪专区，可提升关联商品的连带购买率，据零售实践数据，此类调整可使相关商品销售额提升 15%-20%；</li>
+<li><strong>交叉销售与营销</strong> ：设计 “商品捆绑促销”，如针对 “{巧克力，矿泉水}” 的高频组合推出 “买一送一” 优惠，或在顾客购买面包时推送黄油的优惠券；对 “{咖啡，糖}” 的关联规则，可在咖啡促销页面附加糖的 “推荐购买” 模块；</li>
+<li><strong>库存管理与需求预测</strong> ：基于关联规则预判商品组合需求，例如在节假日前期，根据 “{薯片，啤酒} ⇒ {坚果}” 的规则，同步增加三类商品的库存，避免因单一商品缺货影响整体销售；</li>
+<li><strong>推荐系统构建</strong> ：搭建简易的 “购物篮推荐引擎”，当顾客将番茄酱加入购物车时，系统自动推荐意大利面和帕玛森干酪，模拟电商平台 “您可能还喜欢” 的功能逻辑。</li>
+</ul>
+<h4 id="3-算法教学与实践：关联挖掘的入门标杆"><a href="#3-算法教学与实践：关联挖掘的入门标杆" class="headerlink" title="3. 算法教学与实践：关联挖掘的入门标杆"></a>3. 算法教学与实践：关联挖掘的入门标杆</h4><p>该数据集是数据科学教育中 “关联规则挖掘” 的首选案例，其优势在于：</p>
+<ul>
+<li><strong>低门槛上手</strong> ：无需复杂的数据清洗，可快速演示 Apriori 算法的 “最小支持度设定 - 频繁项集生成 - 关联规则筛选” 全流程；</li>
+<li><strong>直观性强</strong> ：挖掘结果（如 “面包→黄油”）与生活经验相符，便于初学者理解 “支持度、置信度” 等抽象指标的实际含义；</li>
+<li><strong>扩展性高</strong> ：可延伸至算法优化实践，例如对比 Apriori 与 FP-Growth 在处理稀疏数据时的效率差异，或调整支持度 &#x2F; 置信度阈值观察规则数量变化，深化对算法参数的理解。</li>
+</ul>
+<h3 id="五、结尾"><a href="#五、结尾" class="headerlink" title="五、结尾"></a>五、结尾</h3><p>零售市场篮子交易数据集以 “真实场景、适配算法、落地性强” 为核心优势，成为连接零售业务需求与数据挖掘技术的经典桥梁。其价值不仅在于提供了关联规则挖掘的 “练手数据”，更在于通过量化商品关联规律，将抽象的交易数据转化为可执行的商业决策 —— 从货架上的商品摆放，到手机端的推荐弹窗，再到仓库里的库存备货，都能通过它找到数据驱动的优化方向。</p>
+<p>无论是零售企业的运营管理者、数据分析师，还是机器学习领域的初学者，都能从该数据集中获得实践价值：管理者看到营销与库存的优化空间，分析师掌握关联挖掘的核心方法，初学者理解算法与业务的结合逻辑。作为零售数据分析的 “入门钥匙” 与 “实践标杆”，它至今仍是关联规则挖掘领域不可替代的经典数据集。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>购物篮分析数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创购物篮分析数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E8%8B%B1%E6%96%87%E7%90%86%E5%B7%A5%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="英文理工题库数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">英文理工题库数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E8%A1%97%E6%99%AF%E9%97%A8%E7%89%8C%E5%8F%B7%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/" title="街景门牌号识别数据集">
+                        <span class="hidden-mobile">街景门牌号识别数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

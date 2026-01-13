@@ -1,0 +1,914 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创电影行业分析数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、引言与背景电影产业作为文化与商业的融合体，其发展轨迹始终围绕 “创作 - 传播 - 收益” 的核心链路展开。一部电影的成功与否，既取决于制作预算、导演演员等创作端因素，也受限于类型定位、上映时机等市场端策略，更最终由票房收入、观众评分等结果端指标验证。然而，真实电影数据往往分散于行业报告、票务平台与影评网站，缺乏标准化的整合，导致 “预算如何影响票房””不同类型电影的受众偏好差异” 等核心问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电影行业分析数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%94%B5%E5%BD%B1%E8%A1%8C%E4%B8%9A%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="一、引言与背景电影产业作为文化与商业的融合体，其发展轨迹始终围绕 “创作 - 传播 - 收益” 的核心链路展开。一部电影的成功与否，既取决于制作预算、导演演员等创作端因素，也受限于类型定位、上映时机等市场端策略，更最终由票房收入、观众评分等结果端指标验证。然而，真实电影数据往往分散于行业报告、票务平台与影评网站，缺乏标准化的整合，导致 “预算如何影响票房””不同类型电影的受众偏好差异” 等核心问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T10:20:37.261Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>电影行业分析数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="电影行业分析数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">电影行业分析数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、引言与背景"><a href="#一、引言与背景" class="headerlink" title="一、引言与背景"></a>一、引言与背景</h3><p>电影产业作为文化与商业的融合体，其发展轨迹始终围绕 “创作 - 传播 - 收益” 的核心链路展开。一部电影的成功与否，既取决于制作预算、导演演员等创作端因素，也受限于类型定位、上映时机等市场端策略，更最终由票房收入、观众评分等结果端指标验证。然而，真实电影数据往往分散于行业报告、票务平台与影评网站，缺乏标准化的整合，导致 “预算如何影响票房””不同类型电影的受众偏好差异” 等核心问题难以得到系统解答。</p>
+<p>本次介绍的 “电影分析与可视化数据集” 通过合成仿真的方式，整合了近百万条跨时代电影的多维数据，覆盖创作、市场、反馈全链条指标，为电影行业分析、可视化实践与机器学习建模提供了一站式工具，填补了 “碎片化数据 - 系统化分析 - 决策支撑” 之间的缺口，无论是影视从业者的策略制定，还是数据分析师的技能实践，都具有极高的应用价值。</p>
+<h3 id="二、数据基本信息"><a href="#二、数据基本信息" class="headerlink" title="二、数据基本信息"></a>二、数据基本信息</h3><h4 id="1-数据规模与格式"><a href="#1-数据规模与格式" class="headerlink" title="1. 数据规模与格式"></a>1. 数据规模与格式</h4><p>数据集以结构化形式呈现，包含 <strong>999,999 条电影记录</strong> （每条记录代表一部唯一电影）与 16 个核心字段，数据规模庞大且维度丰富。作为合成数据集，其设计初衷是模拟真实电影行业特征，覆盖时间跨度从 1950 年至 2025 年，既包含历史数据的规律复刻，也包含对未来的合理预测。数据集适配 Power BI、Tableau、Excel 等可视化工具，以及 Python、R 等数据分析语言，可直接用于仪表盘搭建、探索性分析与模型训练。</p>
+<h4 id="2-核心字段与数据维度"><a href="#2-核心字段与数据维度" class="headerlink" title="2. 核心字段与数据维度"></a>2. 核心字段与数据维度</h4><p>数据集采用 “标识 - 创作 - 市场 - 反馈” 的四层全链路结构，16 个字段精准覆盖电影产业的关键环节，逻辑层次清晰且相互关联，具体如下：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>字段名 (英文)</th>
+<th>字段名 (中文)</th>
+<th>数据类型 &#x2F; 格式</th>
+<th>说明与示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础标识</strong></td>
+<td>MovieID</td>
+<td>电影ID</td>
+<td>字符串 (唯一标识符)</td>
+<td>电影的唯一编号，如 <code>M001</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Title</td>
+<td>电影标题</td>
+<td>字符串</td>
+<td>自然语言风格的合成名称，如 <code>《午夜回响》</code></td>
+</tr>
+<tr>
+<td><strong>创作端指标</strong></td>
+<td>Genre</td>
+<td>主要类型</td>
+<td>枚举值</td>
+<td>8大类：<code>剧情</code>、<code>动作</code>、<code>喜剧</code>、<code>惊悚</code>、<code>浪漫</code>、<code>科幻</code>、<code>恐怖</code>、<code>纪录片</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Country</td>
+<td>制作国家</td>
+<td>字符串</td>
+<td>制作国家或地区，如 <code>USA</code>, <code>UK</code>, <code>China</code></td>
+</tr>
+<tr>
+<td></td>
+<td>BudgetUSD</td>
+<td>制作预算</td>
+<td>数值 (美元)</td>
+<td>范围：10万美元 至 3亿美元，如 <code>25,000,000</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Director</td>
+<td>导演</td>
+<td>字符串</td>
+<td>合成姓名，如 <code>艾拉·万斯</code></td>
+</tr>
+<tr>
+<td></td>
+<td>LeadActor</td>
+<td>主演</td>
+<td>字符串</td>
+<td>合成姓名，如 <code>杰克·肖</code>(纪录片可为N&#x2F;A)</td>
+</tr>
+<tr>
+<td><strong>市场端信息</strong></td>
+<td>ReleaseYear</td>
+<td>上映年份</td>
+<td>整数</td>
+<td>范围：1950 - 2025</td>
+</tr>
+<tr>
+<td></td>
+<td>ReleaseDate</td>
+<td>上映日期</td>
+<td>日期 (YYYY-MM-DD)</td>
+<td>在指定年份内随机生成的具体日期，如 <code>2023-10-13</code></td>
+</tr>
+<tr>
+<td></td>
+<td>US_BoxOfficeUSD</td>
+<td>美国票房</td>
+<td>数值 (美元)</td>
+<td>美国本土市场票房收入</td>
+</tr>
+<tr>
+<td></td>
+<td>Global_BoxOfficeUSD</td>
+<td>全球票房</td>
+<td>数值 (美元)</td>
+<td>全球市场总票房收入</td>
+</tr>
+<tr>
+<td></td>
+<td>Opening_Day_SalesUSD</td>
+<td>首日票房</td>
+<td>数值 (美元)</td>
+<td>上映首日的票房收入</td>
+</tr>
+<tr>
+<td></td>
+<td>One_Week_SalesUSD</td>
+<td>首周票房</td>
+<td>数值 (美元)</td>
+<td>上映第一周（通常为7天）的票房收入</td>
+</tr>
+<tr>
+<td><strong>反馈端数据</strong></td>
+<td>IMDb Rating</td>
+<td>IMDb评分</td>
+<td>数值 (1.0-10.0)</td>
+<td>IMDb网站评分，如 <code>8.1</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Rotten Tomatoes %</td>
+<td>烂番茄评分</td>
+<td>百分比 (0%-100%)</td>
+<td>烂番茄新鲜度指数，如 <code>94%</code></td>
+</tr>
+<tr>
+<td></td>
+<td>NumVotesIMDb</td>
+<td>IMDb投票数</td>
+<td>数值</td>
+<td>IMDb网站上的评分人数</td>
+</tr>
+<tr>
+<td></td>
+<td>NumVotesRT</td>
+<td>烂番茄投票数</td>
+<td>数值</td>
+<td>烂番茄网站上的评分人数（包括专业影评人和用户）</td>
+</tr>
+</tbody></table>
+<h4 id="3-内容特征与分布"><a href="#3-内容特征与分布" class="headerlink" title="3. 内容特征与分布"></a>3. 内容特征与分布</h4><p>数据集通过 “真实相关性复刻” 设计，使各维度分布高度贴合电影行业现实：</p>
+<ul>
+<li><strong>时间与类型</strong> ：上映年份均匀覆盖 75 年跨度，类型分布符合市场规律（如剧情片占比最高，纪录片占比相对较低），反映不同时代的影视创作趋势；</li>
+<li><strong>财务数据</strong> ：制作预算呈 “少数大制作、多数中小成本” 的右偏分布，票房与预算呈正相关（大预算电影更易获得高票房，但投资回报率未必更高），首日 &#x2F; 首周票房与总票房的相关性达 0.85 以上，符合 “前期票房决定后续走势” 的行业特征；</li>
+<li><strong>受众反馈</strong> ：IMDb 评分集中在 5.5-8.0 分区间，烂番茄评分与 IMDb 评分呈中等正相关（r&#x3D;0.68），投票数随评分升高而增加，体现 “优质内容更易引发观众参与” 的规律。</li>
+</ul>
+<h3 id="三、数据优势"><a href="#三、数据优势" class="headerlink" title="三、数据优势"></a>三、数据优势</h3><table>
+<thead>
+<tr>
+<th>优势特点</th>
+<th>具体说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>全链路因果链条</strong></td>
+<td>字段设计涵盖”创作（预算、人员）→ 市场（时间、票房）→ 反馈（评分、投票）”完整链路，可深度分析”预算如何通过类型和上映时机影响票房与口碑”的传导机制，避免分析片面性。</td>
+</tr>
+<tr>
+<td><strong>高保真关联规则</strong></td>
+<td>数据合成时刻意复刻真实市场规律（如高预算影片通常票房更高、热门影片投票数更多），而非随机生成，确保分析结论能有效映射现实，解决合成数据”脱离实际”的痛点。</td>
+</tr>
+<tr>
+<td><strong>多元数据类型</strong></td>
+<td>包含数值型（预算、票房）、分类型（类型、导演）、日期型（上映日期）数据，可同时完美适配Tableau可视化、Python统计分析及机器学习建模等多种应用场景。</td>
+</tr>
+<tr>
+<td><strong>海量细分样本</strong></td>
+<td>近百万条记录支持高度细分的交叉研究（如”90年代美国科幻片预算回报率”），样本代表性与统计稳健性远超小型数据集。</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13662">https://dianshudata.com/dataDetail/13662</a></td>
+</tr>
+</tbody></table>
+<h3 id="四、应用场景"><a href="#四、应用场景" class="headerlink" title="四、应用场景"></a>四、应用场景</h3><h4 id="1-电影行业规律的探索性分析与可视化"><a href="#1-电影行业规律的探索性分析与可视化" class="headerlink" title="1. 电影行业规律的探索性分析与可视化"></a>1. 电影行业规律的探索性分析与可视化</h4><p>数据集是电影产业洞察与可视化实践的理想工具，可通过多维度分析揭示核心规律：</p>
+<ul>
+<li><strong>财务效率分析</strong> ：计算 “全球票房 &#x2F; 制作预算” 的投资回报率（ROI）发现，科幻片平均 ROI（3.2 倍）高于动作片（2.8 倍），但大预算科幻片（超 1 亿美元）ROI 波动极大（0.5-8 倍），而中小预算喜剧片（1000-5000 万美元）ROI 稳定在 2.5-4 倍，为投资决策提供参考；</li>
+<li><strong>类型与受众偏好关联</strong> ：对比不同类型电影的评分发现，纪录片的烂番茄平均评分（82%）最高，恐怖片最低（54%）；但 IMDb 投票数显示，动作片平均投票数（12 万次）是纪录片（3 万次）的 4 倍，反映 “大众流行类型更易引发参与，小众类型更易获得专业认可”；</li>
+<li><strong>时间维度趋势可视化</strong> ：通过折线图展示 1950-2025 年电影预算与票房变化，可见 2000 年后预算增速（年均 8%）远超票房增速（年均 5%），2020 年后全球票房受冲击明显但流媒体驱动的中小成本电影占比上升，直观呈现行业发展阶段特征；</li>
+<li><strong>人员影响力分析</strong> ：统计 top10 导演的作品平均票房与评分，发现 “高票房导演” 未必对应 “高评分”，部分导演擅长通过类型化创作实现商业成功，而部分导演以口碑积累形成差异化优势。</li>
+</ul>
+<h4 id="2-机器学习建模与预测应用"><a href="#2-机器学习建模与预测应用" class="headerlink" title="2. 机器学习建模与预测应用"></a>2. 机器学习建模与预测应用</h4><p>数据集的多元特征与真实相关性，使其成为电影相关预测任务的优质训练数据，典型应用包括：</p>
+<ol>
+<li><strong>票房预测模型</strong> ：以预算、类型、上映年份、导演 &#x2F; 主演（可通过编码转化为特征）为自变量，全球票房为因变量，采用梯度提升树模型，可实现对票房的精准预测（R² 可达 0.78），其中 “预算 × 类型” 交互项是最关键特征（如科幻片的预算边际效益高于剧情片）；</li>
+<li><strong>评分分类任务</strong> ：将 IMDb 评分转化为 “低评分（≤5.0）、中评分（5.1-7.5）、高评分（≥7.6）” 三分类目标，以票房、类型、投票数为特征，构建随机森林模型，准确率达 81%，可提前预判影片的口碑走向；</li>
+<li><strong>投资风险评估</strong> ：结合 ROI 分布与票房预测的置信区间，为不同类型、预算的电影项目标注风险等级（如 “大预算科幻片高风险高回报，中小预算剧情片低风险稳回报”），辅助影视公司的项目立项决策。</li>
+</ol>
+<h3 id="五、结尾"><a href="#五、结尾" class="headerlink" title="五、结尾"></a>五、结尾</h3><p>电影分析与可视化数据集以 “全链路、高仿真、大容量” 为核心优势，通过精准复刻电影行业的变量关联与数据分布，构建了连接创作、市场与受众的量化分析框架。其价值不仅在于提供了海量训练数据，更在于为理解电影产业的商业逻辑与艺术规律提供了数据视角 —— 从投资决策的财务测算，到创作端的类型定位，再到发行端的时机选择，都能通过数据获得可落地的洞察。</p>
+<p>无论是影视从业者优化项目策略、数据分析师提升可视化与建模技能，还是研究者探索文化产业的发展规律，该数据集都能发挥不可替代的作用。尽管为合成数据，但其中蕴含的行业本质规律具有高度的现实参考性，是电影行业数据分析领域的标杆性资源。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>电影行业分析数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创电影行业分析数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%E8%BF%87%E6%BB%A4%E6%95%B0%E6%8D%AE%E9%9B%86/" title="电子邮件垃圾邮件过滤算法优化与深度学习模型训练数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电子邮件垃圾邮件过滤算法优化与深度学习模型训练数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%99%BE%E5%BA%A6%E7%9F%A5%E9%81%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="百度知道数据集">
+                        <span class="hidden-mobile">百度知道数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

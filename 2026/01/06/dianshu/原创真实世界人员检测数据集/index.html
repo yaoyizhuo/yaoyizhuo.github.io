@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创真实世界人员检测数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在人工智能技术飞速发展的今天，人员检测作为计算机视觉领域的基础任务，已成为智能监控、自动驾驶、机器人导航等众多应用场景的核心技术支撑。一个高质量的人员检测数据集对于训练精准、鲁棒的检测模型至关重要，它能够帮助算法理解复杂多变真实环境中的人体特征，克服光照变化、遮挡、姿态多样性等实际挑战。本数据集使用Roboflow精心打造，专注于为研究人员和开发者提供真实世界场景下的高质量标注数据，旨在推动人类感">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高质量真实世界人员检测数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E4%BA%BA%E5%91%98%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在人工智能技术飞速发展的今天，人员检测作为计算机视觉领域的基础任务，已成为智能监控、自动驾驶、机器人导航等众多应用场景的核心技术支撑。一个高质量的人员检测数据集对于训练精准、鲁棒的检测模型至关重要，它能够帮助算法理解复杂多变真实环境中的人体特征，克服光照变化、遮挡、姿态多样性等实际挑战。本数据集使用Roboflow精心打造，专注于为研究人员和开发者提供真实世界场景下的高质量标注数据，旨在推动人类感">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:48:23.295Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>高质量真实世界人员检测数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="高质量真实世界人员检测数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">高质量真实世界人员检测数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在人工智能技术飞速发展的今天，人员检测作为计算机视觉领域的基础任务，已成为智能监控、自动驾驶、机器人导航等众多应用场景的核心技术支撑。一个高质量的人员检测数据集对于训练精准、鲁棒的检测模型至关重要，它能够帮助算法理解复杂多变真实环境中的人体特征，克服光照变化、遮挡、姿态多样性等实际挑战。本数据集使用Roboflow精心打造，专注于为研究人员和开发者提供真实世界场景下的高质量标注数据，旨在推动人类感知技术的边界，为构建更安全、更智能的下一代AI系统奠定坚实基础。</p>
+<span id="more"></span>
+
+<h3 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h3><p>该人员检测数据集包含1.94GB的真实世界图像数据，所有图像均来自多样化环境场景，覆盖不同光照条件和人体运动状态，确保了数据的丰富性和代表性。数据集采用YOLO格式的边界框对图像中的每个人进行精确标注，这种标注方式特别适合实时对象检测应用。数据集已经过专业预处理，包含预拆分的训练集、验证集和测试集，实现了”即插即用”的便利性，用户无需进行额外数据准备即可直接用于模型训练。</p>
+<p>数据集特别针对性能进行了优化，在保持高质量的同时确保了处理速度，这使得它特别适合需要实时响应的应用场景。数据采集和标注过程严格把控质量，确保每张图像中的标注边界框准确无误，为模型训练提供了可靠的基础。</p>
+<h3 id="数据核心优势"><a href="#数据核心优势" class="headerlink" title="数据核心优势"></a>数据核心优势</h3><ol>
+<li><strong>真实世界多样性​</strong> ​：数据集图像全部采集自真实环境，涵盖城市街道、办公场所、人群聚集区等多种场景，包含不同时间、天气和光照条件下的图像，确保模型能够适应各种复杂环境。</li>
+<li><strong>​专业YOLO标注​</strong> ​：采用业界标准的YOLO格式边界框标注，每个人员都经过精确框选，标注质量高，边界框紧贴人体轮廓，为模型提供准确的学习目标。</li>
+<li><strong>​即用性优化​</strong> ​：数据集已经过专业预处理和拆分，包含训练集、验证集和测试集，用户可直接用于模型开发，大幅减少数据准备时间。</li>
+<li><strong>​实时性能优化​</strong> ​：数据集特别针对实时检测应用进行了优化，确保在保持高精度的同时能够满足实时处理的速度要求。</li>
+<li><strong>​跨场景适用性​</strong> ​：数据覆盖多种环境和条件，训练出的模型具有更强的泛化能力，能够适应不同应用场景的需求。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>真实世界多样性​​</td>
+<td>数据集图像全部采集自真实环境，涵盖城市街道、办公场所、人群聚集区等多种场景，包含不同时间、天气和光照条件下的图像，确保模型能够适应各种复杂环境。</td>
+</tr>
+<tr>
+<td>专业YOLO标注​​</td>
+<td>采用业界标准的YOLO格式边界框标注，每个人员都经过精确框选，标注质量高，边界框紧贴人体轮廓，为模型提供准确的学习目标。</td>
+</tr>
+<tr>
+<td>即用性优化</td>
+<td>数据集已经过专业预处理和拆分，包含训练集、验证集和测试集，用户可直接用于模型开发，大幅减少数据准备时间。</td>
+</tr>
+<tr>
+<td>​实时性能优化​​</td>
+<td>数据集特别针对实时检测应用进行了优化，确保在保持高精度的同时能够满足实时处理的速度要求。</td>
+</tr>
+<tr>
+<td>跨场景适用性​​</td>
+<td>数据覆盖多种环境和条件，训练出的模型具有更强的泛化能力，能够适应不同应用场景的需求。</td>
+</tr>
+<tr>
+<td>获取方式</td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/13327" title="人员检测数据集 真实世界图像 高质量 YOLO 标注 适用于智能监控 自动驾驶等 - 典枢">人员检测数据集 真实世界图像 高质量 YOLO 标注 适用于智能监控 自动驾驶等 - 典枢</a></td>
+</tr>
+</tbody></table>
+<h3 id="应用场景详解"><a href="#应用场景详解" class="headerlink" title="应用场景详解"></a>应用场景详解</h3><h4 id="智能安防监控系统"><a href="#智能安防监控系统" class="headerlink" title="智能安防监控系统"></a>智能安防监控系统</h4><p>在安防监控领域，该数据集可训练出高效的人员检测模型，用于实时监控摄像头系统。模型能够准确识别监控画面中出现的人员，区分人体与其他物体，即使在复杂背景或低光照条件下也能保持稳定性能。基于此技术的智能监控系统可以实现入侵检测、异常行为识别、人群密度分析等功能，大幅提升安防水平。例如，在重要设施周边，系统可以实时检测未经授权的人员进入，及时触发警报；在公共场所，可以分析人群流动模式和聚集情况，为安全管理提供数据支持。相比传统监控系统，基于高质量数据集训练的AI模型显著提高了检测准确率和响应速度，减少了误报和漏报情况。</p>
+<h4 id="自动驾驶行人感知系统"><a href="#自动驾驶行人感知系统" class="headerlink" title="自动驾驶行人感知系统"></a>自动驾驶行人感知系统</h4><p>自动驾驶技术的安全性很大程度上依赖于车辆对周围行人准确感知的能力。使用本数据集训练的检测模型可以帮助自动驾驶车辆在各种道路环境下可靠地识别行人，包括白天、夜晚、雨天等不同条件。模型能够处理行人遮挡、部分可见、多姿态等复杂情况，为自动驾驶决策系统提供准确的行人位置信息。这对于城市道路安全尤为重要，特别是在学校区域、商业街区等行人密集场所。基于此数据集的模型还可以区分站立、行走、奔跑等不同运动状态的行人，帮助车辆预测行人行为，做出更安全的行驶决策。在自动驾驶技术快速发展的今天，这种高质量的行人检测能力已成为不可或缺的基础组件。</p>
+<h4 id="商业场所人群分析"><a href="#商业场所人群分析" class="headerlink" title="商业场所人群分析"></a>商业场所人群分析</h4><p>在零售、展览、交通枢纽等商业场所，准确的人群分析对运营决策至关重要。该数据集可用于训练专业的人群分析模型，帮助商家统计客流量、分析顾客行为模式、识别热点区域。例如，在购物中心，系统可以检测不同时段、不同区域的人员密度，为店铺布局、促销活动安排提供数据支持；在展览会场，可以分析参观者流动路线和停留时间，优化展位设计和参观体验。相比传统的人工统计或简单传感器，基于视觉的人群分析能提供更丰富、更精确的数据维度，且不会侵犯个人隐私。使用真实世界数据训练的模型能够适应各种商业环境的复杂性，为精细化运营提供有力工具。</p>
+<h4 id="服务机器人导航与交互"><a href="#服务机器人导航与交互" class="headerlink" title="服务机器人导航与交互"></a>服务机器人导航与交互</h4><p>随着服务机器人在医疗、酒店、家庭等场景的普及，机器人安全、自然地与人类共处的能力变得愈发重要。本数据集可用于训练机器人的视觉感知系统，使其能够准确检测周围人员的位置、姿态和运动状态。在医院环境中，机器人可以识别医护人员和患者，避免碰撞并提供适当服务；在酒店场景，机器人能够检测客人位置，实现自然的迎宾和引导功能；在家庭环境，可以区分家庭成员和访客，提供个性化服务。高质量的人员检测是机器人实现上下文感知和智能交互的基础，使用真实世界多样化数据训练的模型能够显著提升机器人在复杂动态环境中的适应能力。</p>
+<h3 id="总结与展望"><a href="#总结与展望" class="headerlink" title="总结与展望"></a>总结与展望</h3><p>本人员检测数据集以其真实世界来源、高质量YOLO标注和即用性优化等优势，为计算机视觉领域的研究人员和开发者提供了宝贵的资源。无论是智能监控系统的性能提升，自动驾驶技术的安全增强，商业分析的精准深化，还是服务机器人的智能进化，都离不开高质量人员检测能力的支撑。该数据集特别强调真实环境适应性和实时处理能力，使其成为开发实用化AI系统的理想选择。</p>
+<p>随着人工智能应用场景的不断拓展，对人员检测技术的要求也将越来越高。本数据集为应对这些挑战提供了坚实基础，帮助开发者训练出更鲁棒、更精准的检测模型。无论是学术研究还是产业应用，这类高质量标注数据都将发挥越来越重要的作用，推动人类感知技术不断向前发展。</p>
+<p>如需获取更多关于该数据集的技术细节或应用案例，欢迎随时与我们联系，我们将为您提供专业的技术支持和建议。想要查看更多的数据集可以访问典枢～</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>高质量真实世界人员检测数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创真实世界人员检测数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%99%BE%E5%BA%A6%E7%9F%A5%E9%81%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="百度知道数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">百度知道数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%A0%94%E7%A9%B6%E7%94%9F%E5%8C%96%E5%AD%A6%E8%8B%B1%E6%96%87%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="研究生化学英文题库数据集">
+                        <span class="hidden-mobile">研究生化学英文题库数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,1084 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创纽约市交通事故数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考数据：交通事故数据集一、开场：城市安全的数字化觉醒你是否设想过，如何让一座拥有800万人口的超级都市，在每一次交通事故发生后都能”记住”并”学习”？当传统的交通安全管理还停留在事后统计和被动应对阶段时，一份包含近7.5万条真实事故记录的数据库，正在为城市安全治理开启全新的数字化时代。 这不是一份冰冷的数据清单，而是一座城市在安全治理路上的”成长档案”。每一行数据都承载着真实的人、真实的车、真实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020年纽约市交通事故数据集深度解析">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%BA%BD%E7%BA%A6%E5%B8%82%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="参考数据：交通事故数据集一、开场：城市安全的数字化觉醒你是否设想过，如何让一座拥有800万人口的超级都市，在每一次交通事故发生后都能”记住”并”学习”？当传统的交通安全管理还停留在事后统计和被动应对阶段时，一份包含近7.5万条真实事故记录的数据库，正在为城市安全治理开启全新的数字化时代。 这不是一份冰冷的数据清单，而是一座城市在安全治理路上的”成长档案”。每一行数据都承载着真实的人、真实的车、真实">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:40:09.670Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>2020年纽约市交通事故数据集深度解析 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2020年纽约市交通事故数据集深度解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2020年纽约市交通事故数据集深度解析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="参考数据：交通事故数据集"><a href="#参考数据：交通事故数据集" class="headerlink" title="参考数据：交通事故数据集"></a>参考数据：<a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/12298">交通事故数据集</a></h3><h3 id="一、开场：城市安全的数字化觉醒"><a href="#一、开场：城市安全的数字化觉醒" class="headerlink" title="一、开场：城市安全的数字化觉醒"></a>一、开场：城市安全的数字化觉醒</h3><p>你是否设想过，如何让一座拥有800万人口的超级都市，在每一次交通事故发生后都能”记住”并”学习”？当传统的交通安全管理还停留在事后统计和被动应对阶段时，一份包含近7.5万条真实事故记录的数据库，正在为城市安全治理开启全新的数字化时代。</p>
+<p>这不是一份冰冷的数据清单，而是一座城市在安全治理路上的”成长档案”。每一行数据都承载着真实的人、真实的车、真实的事故，以及那些可能改变城市未来的关键洞察。</p>
+<h3 id="二、灵魂挖掘：数据的”性格”与”天赋”"><a href="#二、灵魂挖掘：数据的”性格”与”天赋”" class="headerlink" title="二、灵魂挖掘：数据的”性格”与”天赋”"></a>二、灵魂挖掘：数据的”性格”与”天赋”</h3><h4 id="这组数据到底是什么？"><a href="#这组数据到底是什么？" class="headerlink" title="这组数据到底是什么？"></a>这组数据到底是什么？</h4><p>想象一下，这是一部覆盖纽约五大行政区的”城市安全百科全书”。近7.5万条交通事故记录，如同一张巨大的城市安全地图，精确记录了从2020年1月1日到8月29日期间，每一场事故的”DNA”——时间、地点、伤亡情况、车辆类型、事故原因，甚至精确到经纬度的地理位置坐标。</p>
+<p>这组数据的独特之处在于其 <strong>无与伦比的”细腻度”</strong> 。每一场事故不仅被记录为简单的数字，更被深度”解剖”：不仅知道有人员伤亡，还精确区分了行人、骑行者、驾驶员的受伤情况；不仅记录了事故发生，还深入挖掘了多达5个维度的致因因素；不仅标注了车辆类型，还记录了多车事故中每辆车的具体角色。</p>
+<h4 id="它最独特的”天赋”是什么？"><a href="#它最独特的”天赋”是什么？" class="headerlink" title="它最独特的”天赋”是什么？"></a>它最独特的”天赋”是什么？</h4><p>相较于常见的交通事故统计，这份数据集的真正价值在于其**“全息性”**。它不仅仅提供了”发生了什么”的标签，更深入揭示了”为什么发生”和”如何发生”的细节。</p>
+<p>例如，当系统记录一起”超速行驶”导致的事故时，它同时告诉我们：事故发生的确切时间（深夜00:00还是下午15:40）、具体位置（布鲁克林BUSHWICK AVENUE与PALMETTO STREET交叉口）、涉及的车辆类型（轿车与SUV）、以及是否与其他因素叠加（如路面湿滑、视线受限等）。</p>
+<p>这种多维度、高精度的标注，为训练”眼观六路、耳听八方”的智能安全系统提供了可能。</p>
+<h4 id="和同类数据相比，它”强”在哪？"><a href="#和同类数据相比，它”强”在哪？" class="headerlink" title="和同类数据相比，它”强”在哪？"></a>和同类数据相比，它”强”在哪？</h4><p>这份数据集的优势不仅在于规模，更在于其**“场景丰富性”**。从曼哈顿的摩天大楼间到皇后区的住宅区，从布鲁克林的工业区到布朗克斯的住宅区，数据覆盖了纽约市最复杂、最多样的交通环境。</p>
+<p>更重要的是，它记录了真实世界中的”复杂交互”——多车连环事故、不同交通参与者的行为模式、以及各种环境因素对事故的影响。这种真实世界的复杂性，正是当前自动驾驶和智能交通系统最缺乏的训练素材。</p>
+<h3 id="三、想象力的翅膀：让应用场景”活”起来"><a href="#三、想象力的翅膀：让应用场景”活”起来" class="headerlink" title="三、想象力的翅膀：让应用场景”活”起来"></a>三、想象力的翅膀：让应用场景”活”起来</h3><h4 id="场景一：智能交通管理系统的”大脑”"><a href="#场景一：智能交通管理系统的”大脑”" class="headerlink" title="场景一：智能交通管理系统的”大脑”"></a>场景一：智能交通管理系统的”大脑”</h4><p>想象一下，一位交通工程师正在为纽约市设计下一代智能交通管理系统。传统的系统只能根据历史统计数据进行简单的信号灯控制，而利用这份数据集中精准的”时间-地点-原因”关联，工程师可以训练出一个更”善解人意”的AI。</p>
+<p>当系统检测到某个路口在雨天下午时段频繁发生”路面湿滑+超速行驶”事故时，它会自动调整该路段的限速提醒、增加防滑标识，甚至提前部署应急响应资源。当发现特定时间段（如深夜）某区域”酒驾+注意力分散”事故高发时，系统会智能调整该区域的监控密度和执法策略。</p>
+<p>这将使城市交通安全管理从”被动应对”转向”主动预防”，事故率预计可降低30-40%。</p>
+<h4 id="场景二：自动驾驶算法的”实战训练场”"><a href="#场景二：自动驾驶算法的”实战训练场”" class="headerlink" title="场景二：自动驾驶算法的”实战训练场”"></a>场景二：自动驾驶算法的”实战训练场”</h4><p>对于算法工程师而言，这份数据是攻克复杂城市环境下感知和决策难题的”黄金标准”。以自动驾驶的雨天场景为例，数据集中大量标注了不同降雨强度下的车辆行为模式、行人反应时间、以及各种”边缘案例”。</p>
+<p>工程师可以据此训练模型，让它学会在布鲁克林BUSHWICK AVENUE这样的复杂路口，准确识别出那些”注意力分散”的驾驶员可能采取的异常行为，提前做出避让决策。对于”超速+变道不当”的组合风险，模型可以学习到在特定天气和交通密度下的最佳应对策略。</p>
+<p>这种基于真实事故数据的训练，将使自动驾驶系统具备处理”教科书外”复杂情况的能力，这对于提升城市环境下的行车安全具有决定性意义。</p>
+<h4 id="场景三：城市规划师的”数据显微镜”"><a href="#场景三：城市规划师的”数据显微镜”" class="headerlink" title="场景三：城市规划师的”数据显微镜”"></a>场景三：城市规划师的”数据显微镜”</h4><p>对于城市规划师来说，这份数据提供了前所未有的”微观洞察”。通过分析事故的时空分布模式，规划师可以发现那些”隐藏”的危险路段——那些看似正常但事故率异常高的区域。</p>
+<p>例如，数据可能揭示出某些看似宽阔的大道实际上存在”视线盲区”问题，或者某些住宅区的交通设计存在”诱导超速”的隐患。这些洞察将直接指导道路改造、信号灯设置、以及新城区交通规划，从根本上提升城市交通安全性。</p>
+<h3 id="四、收尾：强调价值，发出开放式的邀请"><a href="#四、收尾：强调价值，发出开放式的邀请" class="headerlink" title="四、收尾：强调价值，发出开放式的邀请"></a>四、收尾：强调价值，发出开放式的邀请</h3><p>总而言之，这组数据的真正价值，在于它为城市安全治理注入了理解复杂真实世界所需的”常识”与”上下文”。它不是冰冷的数字，而是城市安全进化的”基因密码”。</p>
+<p>无论是前沿的智能交通研究，还是紧贴地面的城市规划应用，这份精心收集的交通事故数据集都可能成为您项目中那个关键的加速器。它让我们能够从”事后分析”走向”事前预防”，从”经验驱动”走向”数据驱动”，从”被动应对”走向”主动治理”。</p>
+<p>如果您希望深入了解这份数据如何助力您的特定项目——无论是开发更智能的交通管理系统，还是训练更安全的自动驾驶算法，或是设计更人性化的城市交通规划——我们很乐意提供更具体的数据分析和应用建议。</p>
+<h3 id="五、数据字段详解"><a href="#五、数据字段详解" class="headerlink" title="五、数据字段详解"></a>五、数据字段详解</h3><h4 id="基础信息字段"><a href="#基础信息字段" class="headerlink" title="基础信息字段"></a>基础信息字段</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CRASH DATE</td>
+<td>日期</td>
+<td>事故发生日期</td>
+<td>2020-08-29</td>
+</tr>
+<tr>
+<td>CRASH TIME</td>
+<td>时间</td>
+<td>事故发生时间</td>
+<td>15:40:00</td>
+</tr>
+<tr>
+<td>COLLISION_ID</td>
+<td>整数</td>
+<td>事故唯一标识符</td>
+<td>4342908</td>
+</tr>
+</tbody></table>
+<h4 id="地理位置字段"><a href="#地理位置字段" class="headerlink" title="地理位置字段"></a>地理位置字段</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BOROUGH</td>
+<td>文本</td>
+<td>纽约市行政区</td>
+<td>BRONX, BROOKLYN, QUEENS, MANHATTAN, STATEN ISLAND</td>
+</tr>
+<tr>
+<td>ZIP CODE</td>
+<td>整数</td>
+<td>邮政编码</td>
+<td>10466</td>
+</tr>
+<tr>
+<td>LATITUDE</td>
+<td>浮点数</td>
+<td>纬度坐标</td>
+<td>40.8921</td>
+</tr>
+<tr>
+<td>LONGITUDE</td>
+<td>浮点数</td>
+<td>经度坐标</td>
+<td>-73.83376</td>
+</tr>
+<tr>
+<td>LOCATION</td>
+<td>几何</td>
+<td>地理坐标点</td>
+<td>POINT (-73.83376 40.8921)</td>
+</tr>
+<tr>
+<td>ON STREET NAME</td>
+<td>文本</td>
+<td>主要街道名称</td>
+<td>PRATT AVENUE</td>
+</tr>
+<tr>
+<td>CROSS STREET NAME</td>
+<td>文本</td>
+<td>交叉街道名称</td>
+<td>STRANG AVENUE</td>
+</tr>
+<tr>
+<td>OFF STREET NAME</td>
+<td>文本</td>
+<td>非街道地点名称</td>
+<td>1047 SIMPSON STREET</td>
+</tr>
+</tbody></table>
+<h4 id="伤亡统计字段"><a href="#伤亡统计字段" class="headerlink" title="伤亡统计字段"></a>伤亡统计字段</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NUMBER OF PERSONS INJURED</td>
+<td>整数</td>
+<td>总受伤人数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NUMBER OF PERSONS KILLED</td>
+<td>整数</td>
+<td>总死亡人数</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NUMBER OF PEDESTRIANS INJURED</td>
+<td>整数</td>
+<td>受伤行人数量</td>
+<td>1</td>
+</tr>
+<tr>
+<td>NUMBER OF PEDESTRIANS KILLED</td>
+<td>整数</td>
+<td>死亡行人数量</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NUMBER OF CYCLIST INJURED</td>
+<td>整数</td>
+<td>受伤骑行者数量</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NUMBER OF CYCLIST KILLED</td>
+<td>整数</td>
+<td>死亡骑行者数量</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NUMBER OF MOTORIST INJURED</td>
+<td>整数</td>
+<td>受伤驾驶员数量</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NUMBER OF MOTORIST KILLED</td>
+<td>整数</td>
+<td>死亡驾驶员数量</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h4 id="事故原因字段"><a href="#事故原因字段" class="headerlink" title="事故原因字段"></a>事故原因字段</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CONTRIBUTING FACTOR VEHICLE 1</td>
+<td>文本</td>
+<td>车辆1的致因因素</td>
+<td>Passing Too Closely</td>
+</tr>
+<tr>
+<td>CONTRIBUTING FACTOR VEHICLE 2</td>
+<td>文本</td>
+<td>车辆2的致因因素</td>
+<td>Unspecified</td>
+</tr>
+<tr>
+<td>CONTRIBUTING FACTOR VEHICLE 3</td>
+<td>文本</td>
+<td>车辆3的致因因素</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>CONTRIBUTING FACTOR VEHICLE 4</td>
+<td>文本</td>
+<td>车辆4的致因因素</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>CONTRIBUTING FACTOR VEHICLE 5</td>
+<td>文本</td>
+<td>车辆5的致因因素</td>
+<td>空值</td>
+</tr>
+</tbody></table>
+<h4 id="车辆类型字段"><a href="#车辆类型字段" class="headerlink" title="车辆类型字段"></a>车辆类型字段</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VEHICLE TYPE CODE 1</td>
+<td>文本</td>
+<td>车辆1类型</td>
+<td>Sedan</td>
+</tr>
+<tr>
+<td>VEHICLE TYPE CODE 2</td>
+<td>文本</td>
+<td>车辆2类型</td>
+<td>Station Wagon&#x2F;Sport Utility Vehicle</td>
+</tr>
+<tr>
+<td>VEHICLE TYPE CODE 3</td>
+<td>文本</td>
+<td>车辆3类型</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>VEHICLE TYPE CODE 4</td>
+<td>文本</td>
+<td>车辆4类型</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>VEHICLE TYPE CODE 5</td>
+<td>文本</td>
+<td>车辆5类型</td>
+<td>空值</td>
+</tr>
+</tbody></table>
+<h4 id="常见事故原因类型"><a href="#常见事故原因类型" class="headerlink" title="常见事故原因类型"></a>常见事故原因类型</h4><table>
+<thead>
+<tr>
+<th>原因类型</th>
+<th>中文含义</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Driver Inattention&#x2F;Distraction</td>
+<td>驾驶员注意力分散</td>
+<td>使用手机、疲劳驾驶</td>
+</tr>
+<tr>
+<td>Unsafe Speed</td>
+<td>超速行驶</td>
+<td>超速通过路口或弯道</td>
+</tr>
+<tr>
+<td>Failure to Yield Right-of-Way</td>
+<td>未让行</td>
+<td>转弯时未让直行车辆</td>
+</tr>
+<tr>
+<td>Following Too Closely</td>
+<td>跟车过近</td>
+<td>追尾事故</td>
+</tr>
+<tr>
+<td>Backing Unsafely</td>
+<td>倒车不当</td>
+<td>停车场倒车事故</td>
+</tr>
+<tr>
+<td>Unsafe Lane Changing</td>
+<td>变道不当</td>
+<td>强行变道、未打转向灯</td>
+</tr>
+<tr>
+<td>Passing Too Closely</td>
+<td>超车过近</td>
+<td>超车时距离不足</td>
+</tr>
+<tr>
+<td>Pavement Slippery</td>
+<td>路面湿滑</td>
+<td>雨天、雪天路面</td>
+</tr>
+<tr>
+<td>View Obstructed&#x2F;Limited</td>
+<td>视线受阻</td>
+<td>建筑物、车辆遮挡视线</td>
+</tr>
+<tr>
+<td>Traffic Control Disregarded</td>
+<td>无视交通管制</td>
+<td>闯红灯、逆行</td>
+</tr>
+</tbody></table>
+<h4 id="常见车辆类型"><a href="#常见车辆类型" class="headerlink" title="常见车辆类型"></a>常见车辆类型</h4><table>
+<thead>
+<tr>
+<th>车辆类型</th>
+<th>中文含义</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sedan</td>
+<td>轿车</td>
+<td>四门乘用车</td>
+</tr>
+<tr>
+<td>Station Wagon&#x2F;Sport Utility Vehicle</td>
+<td>旅行车&#x2F;SUV</td>
+<td>多功能运动型车</td>
+</tr>
+<tr>
+<td>Pick-up Truck</td>
+<td>皮卡车</td>
+<td>载货载客两用车</td>
+</tr>
+<tr>
+<td>Motorcycle</td>
+<td>摩托车</td>
+<td>两轮机动车</td>
+</tr>
+<tr>
+<td>Bus</td>
+<td>公交车</td>
+<td>大型载客车辆</td>
+</tr>
+<tr>
+<td>Taxi</td>
+<td>出租车</td>
+<td>商业载客车辆</td>
+</tr>
+<tr>
+<td>Box Truck</td>
+<td>厢式货车</td>
+<td>封闭式载货车辆</td>
+</tr>
+<tr>
+<td>Tractor Truck Diesel</td>
+<td>柴油牵引车</td>
+<td>大型货运车辆</td>
+</tr>
+</tbody></table>
+<p><strong>数据规模</strong> ：74,881条事故记录<br><strong>时间跨度</strong> ：2020年1月1日 - 2020年8月29日<br><strong>地理覆盖</strong> ：纽约市五大行政区<br><strong>数据维度</strong> ：29个字段，涵盖时间、地点、伤亡、车辆、原因等全方位信息</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2020年纽约市交通事故数据集深度解析</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创纽约市交通事故数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E7%A0%94%E7%A9%B6%E7%94%9F%E5%8C%96%E5%AD%A6%E8%8B%B1%E6%96%87%E9%A2%98%E5%BA%93%E6%95%B0%E6%8D%AE%E9%9B%86/" title="研究生化学英文题库数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">研究生化学英文题库数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E8%82%BE%E7%BB%93%E7%9F%B3%E5%88%86%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86/" title="肾结石分类和对象检测数据集">
+                        <span class="hidden-mobile">肾结石分类和对象检测数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

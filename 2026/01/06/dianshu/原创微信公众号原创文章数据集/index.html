@@ -1,0 +1,1063 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.me/2026/01/06/dianshu/原创微信公众号原创文章数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="微信公众号作为国内最大的内容生态之一，已经成为中国互联网内容传播和知识分享的重要渠道。每天都有海量原创文章在各类公众号中发布，涵盖科技、财经、教育、医疗、娱乐、美食、旅游、生活方式等几乎所有领域。这些内容不仅反映了当下社会的热点与趋势，也沉淀了极其丰富的语言素材和知识信息。 在学术研究与产业应用中，公众号文章数据的价值越来越受到重视。对于推荐系统来说，文章标题、正文、互动量等数据可以作为建模用户兴">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信公众号原创文章数据集">
+<meta property="og:url" content="https://zhyyao.me/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="微信公众号作为国内最大的内容生态之一，已经成为中国互联网内容传播和知识分享的重要渠道。每天都有海量原创文章在各类公众号中发布，涵盖科技、财经、教育、医疗、娱乐、美食、旅游、生活方式等几乎所有领域。这些内容不仅反映了当下社会的热点与趋势，也沉淀了极其丰富的语言素材和知识信息。 在学术研究与产业应用中，公众号文章数据的价值越来越受到重视。对于推荐系统来说，文章标题、正文、互动量等数据可以作为建模用户兴">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-06T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-01-13T09:45:16.038Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>微信公众号原创文章数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微信公众号原创文章数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-06 15:51" pubdate>
+          2026年1月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          198 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">微信公众号原创文章数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>微信公众号作为国内最大的内容生态之一，已经成为中国互联网内容传播和知识分享的重要渠道。每天都有海量原创文章在各类公众号中发布，涵盖科技、财经、教育、医疗、娱乐、美食、旅游、生活方式等几乎所有领域。这些内容不仅反映了当下社会的热点与趋势，也沉淀了极其丰富的语言素材和知识信息。</p>
+<p>在学术研究与产业应用中，公众号文章数据的价值越来越受到重视。对于推荐系统来说，文章标题、正文、互动量等数据可以作为建模用户兴趣的核心特征，提升推荐的个性化和准确度；在舆情分析和社会研究中，公众号文章因其传播速度快、覆盖人群广，是洞察公众关注点和社会情绪的重要窗口；对于大语言模型与 AIGC 训练而言，公众号文章的语料风格多样、主题全面，能够帮助模型学习真实世界的写作风格和语义结构，从而在生成内容时更加自然和贴近用户需求。</p>
+<span id="more"></span>
+
+
+<h3 id="核心字段说明"><a href="#核心字段说明" class="headerlink" title="核心字段说明"></a>核心字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title</code></td>
+<td>笔记标题</td>
+<td>“ <strong>发挥集团优势 共创品质教育——青岛二中附属李沧学校到青岛二中附属实验学校交流研讨</strong> ”</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>笔记正文</td>
+<td>“水本无华，相荡乃兴潋滟；石本无火，互击而生灵光…”</td>
+</tr>
+<tr>
+<td><code>content_xml</code></td>
+<td>网页源码内容</td>
+<td><code>&lt;div class=&quot;note-content&quot;&gt;...&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td><code>pic_urls</code></td>
+<td>图片 URL 列表</td>
+<td>[多张高清图链接]</td>
+</tr>
+<tr>
+<td><code>user_name</code></td>
+<td>用户昵称</td>
+<td>“青岛二中附属实验学校”</td>
+</tr>
+<tr>
+<td><code>user_profile_img_url</code></td>
+<td>用户头像链接</td>
+<td>[头像 URL]</td>
+</tr>
+<tr>
+<td><code>ip_region</code></td>
+<td>IP 属地</td>
+<td>“山东”</td>
+</tr>
+<tr>
+<td><code>ctime</code></td>
+<td>笔记发布时间（时间戳）</td>
+<td>1732179480</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>笔记原文链接</td>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/kYw4T4jbozdnGZzwaa3Y_w" title="发挥集团优势  共创品质教育——青岛二中附属李沧学校到青岛二中附属实验学校交流研讨">发挥集团优势 共创品质教育——青岛二中附属李沧学校到青岛二中附属实验学校交流研讨</a></td>
+</tr>
+<tr>
+<td>获取方式</td>
+<td>样例</td>
+<td><a target="_blank" rel="noopener" href="http://dianshudata.com/dataDetail/13739" title="10万条微信公众号数据 - 典枢">10万条微信公众号数据 - 典枢</a></td>
+</tr>
+</tbody></table>
+<h3 id="应用场景详解"><a href="#应用场景详解" class="headerlink" title="应用场景详解"></a>应用场景详解</h3><h3 id="1-NLP-与文本分析（具体应用示例）"><a href="#1-NLP-与文本分析（具体应用示例）" class="headerlink" title="1. NLP 与文本分析（具体应用示例）"></a>1. NLP 与文本分析（具体应用示例）</h3><p><strong>情感分析</strong><br>基于公众号文章正文和标签分类，利用有监督学习或预训练模型（如 BERT、RoBERTa）来识别用户情感倾向。</p>
+<ul>
+<li><p><strong>任务示例</strong> ：构建三分类模型（积极、中性、消极），帮助品牌判断用户对某一新闻、政策或产品的舆论态度。</p>
+</li>
+<li><p><strong>数据应用</strong> ：利用正文中的情感词、语气词以及评论区的互动内容，增强情感特征表达。</p>
+</li>
+</ul>
+<p><strong>话题分类</strong><br>通过对公众号文章的标题、正文和标签进行特征抽取（TF-IDF、词向量、预训练模型编码），训练多类别文本分类模型，实现自动识别文章所属的主题类别（如财经、教育、娱乐、美食、旅游等）。</p>
+<ul>
+<li><p><strong>任务示例</strong> ：为推荐系统提供精准的内容标签，提高用户信息流推荐的相关性。</p>
+</li>
+<li><p><strong>方法建议</strong> ：使用深度学习文本分类模型（如 TextCNN、Transformer），结合公众号标签和文章关键词辅助训练。</p>
+</li>
+</ul>
+<p><strong>关键词提取</strong><br>分析阅读量高、分享量大的文章，挖掘其中频繁出现的关键词、短语及特殊符号（如热点话题、行业术语），提炼出高频热词。</p>
+<ul>
+<li><p><strong>任务示例</strong> ：利用 TF-IDF、TextRank 或注意力机制提取关键关键词，辅助内容运营捕捉热点。</p>
+</li>
+<li><p><strong>特色挖掘</strong> ：结合点赞数、“在看”量等指标，筛选互动高的关键词，精准识别用户关注点。</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-推荐算法与个性化分发（具体应用示例）"><a href="#2-推荐算法与个性化分发（具体应用示例）" class="headerlink" title="2. 推荐算法与个性化分发（具体应用示例）"></a>2. 推荐算法与个性化分发（具体应用示例）</h3><p><strong>用户兴趣画像构建</strong><br>通过整合用户关注的公众号类型、文章阅读行为（点击、点赞、在看、转发）、评论内容以及阅读时长，构建多维度的用户兴趣特征。</p>
+<ul>
+<li><p><strong>数据利用</strong> ：统计用户常读的文章主题，结合互动频率形成兴趣偏好向量。</p>
+</li>
+<li><p><strong>地域分布</strong> ：根据用户画像（如地区特征），分析区域兴趣差异，支持地域化个性推荐。</p>
+</li>
+<li><p><strong>实现方式</strong> ：可采用矩阵分解（MF）、图神经网络（GNN）或基于 Transformer 的用户行为建模方法。</p>
+</li>
+</ul>
+<p><strong>热门内容预测</strong><br>利用文章发布初期的互动数据（如阅读数、点赞数、转发数），结合文章主题和用户画像信息，预测该文章未来是否会成为“爆款”。</p>
+<ul>
+<li><p><strong>模型选择</strong> ：使用分类模型（如 XGBoost、LightGBM、深度神经网络）预测文章爆款潜力。</p>
+</li>
+<li><p><strong>特征设计</strong> ：情感分数、关键词热度、公众号粉丝画像、历史爆款标签等均可作为输入特征。</p>
+</li>
+<li><p><strong>应用价值</strong> ：帮助平台优先推荐高潜力内容，提高整体用户活跃度与停留时间。</p>
+</li>
+</ul>
+<p><strong>多模态推荐系统</strong><br>结合公众号的图文形式，利用多模态学习方法提升推荐效果。</p>
+<ul>
+<li><p><strong>文本特征</strong> ：通过预训练语言模型提取文章语义向量。</p>
+</li>
+<li><p><strong>图像特征</strong> ：对配图使用 CNN 或视觉 Transformer 提取特征。</p>
+</li>
+<li><p><strong>融合策略</strong> ：采用跨模态注意力机制融合图文特征，增强文章理解能力。</p>
+</li>
+<li><p><strong>实际效果</strong> ：有效捕捉“封面图+标题+正文”的综合吸引力，提高推荐点击率。</p>
+</li>
+</ul>
+<hr>
+<h3 id="3-内容创作与爆款文章生成"><a href="#3-内容创作与爆款文章生成" class="headerlink" title="3. 内容创作与爆款文章生成"></a>3. 内容创作与爆款文章生成</h3><p>通过分析高阅读量、高转发率的优质公众号文章，深入挖掘文案语言风格、结构布局和配图模式。</p>
+<ul>
+<li><p><strong>文案风格提炼</strong> ：总结高互动文章的语言特点，如叙事逻辑、标题党写法、段落节奏、情感渲染手法。</p>
+</li>
+<li><p><strong>结构与逻辑分析</strong> ：研究爆款文章的开头引导、信息展开顺序、结尾号召动作，为新文章创作提供参考框架。</p>
+</li>
+<li><p><strong>视觉配图模式</strong> ：总结封面图和插图的风格特征，包括数量、色彩搭配、信息排版，提升整体吸引力。</p>
+</li>
+<li><p><strong>AI 文案生成支持</strong> ：基于爆款文章数据，构建训练集，为生成模型（如 GPT、T5）提供参考，使 AI 生成的文章更贴近真实公众号风格。</p>
+</li>
+<li><p><strong>内容迭代优化</strong> ：结合用户反馈（阅读量、分享数、留言热度），不断优化生成模型，帮助运营团队快速打造高质量爆款。</p>
+</li>
+</ul>
+<hr>
+<h3 id="4-营销与商业分析的强大工具"><a href="#4-营销与商业分析的强大工具" class="headerlink" title="4. 营销与商业分析的强大工具"></a>4. 营销与商业分析的强大工具</h3><p><strong>品牌口碑监测</strong><br>利用公众号文章及评论数据，实时追踪品牌相关的提及量与用户参与度，结合情感分析，洞察舆情走势。帮助品牌及时调整营销策略，防控负面传播。</p>
+<p><strong>爆款内容提炼</strong><br>通过分析阅读量与转发量高的文章，总结热点话题、语言风格和写作技巧。辅助品牌和媒体打造符合受众兴趣的内容。</p>
+<p><strong>竞品与KOL分析</strong><br>通过分析竞争公众号的内容表现和其背后的头部作者（KOL），识别潜在合作机会。帮助品牌制定高效的推广方案，实现精准投放与效果最大化。</p>
+<p><strong>热点追踪</strong><br>基于文章标签和内容趋势的动态监测，快速锁定新兴热点。通过对热点话题深度分析，帮助品牌实现先发优势，抢占流量高地。</p>
+<h3 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h3><pre><code class="hljs"> &#123;
+    &quot;code&quot;: 200,
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;data&quot;: &#123;
+        &quot;key&quot;: &quot;http://mp.weixin.qq.com/s?__biz=Mzg4MDgzMTk1Nw==&amp;mid=2247518275&amp;idx=3&amp;sn=1bc1d1dda0128ecb59db8da546da1598&quot;,
+        &quot;partition&quot;: 3,
+        &quot;offset&quot;: &quot;478424&quot;,
+        &quot;value&quot;: &#123;
+            &quot;index_suffix&quot;: &quot;weixin&quot;,
+            &quot;user_words&quot;: &#123;&#125;,
+            &quot;__router_time&quot;: &quot;1732179890.0793881&quot;,
+            &quot;__router_id&quot;: &quot;cloud-filter-service-ul-group2-748fb449b5-7xvds-37&quot;,
+            &quot;rt_in_time&quot;: &quot;1732179891.181831&quot;,
+            &quot;filter_id&quot;: &quot;cloud-filter-service-ul-group2-748fb449b5-7xvds-37&quot;,
+            &quot;user_logic&quot;: &#123;
+                &quot;result&quot;: [
+                    &#123;
+                        &quot;username&quot;: &quot;&quot;,
+                        &quot;subject_type&quot;: &quot;&quot;,
+                        &quot;user_id&quot;: &quot;900xxxx&quot;,
+                        &quot;parent_subject_id&quot;: &quot;&quot;,
+                        &quot;subject_id&quot;: &quot;dowding_50000000xxxxxxxx&quot;,
+                        &quot;team_id&quot;: &quot;&quot;,
+                        &quot;word_pos&quot;: [
+                            [
+                                &quot;xx&quot;,
+                                xxx,
+                                xxx,
+                                x
+                            ],
+                            [
+                                &quot;xx&quot;,
+                                xxx,
+                                xxx,
+                                xx
+                            ]
+                        ],
+                        &quot;words&quot;: [
+                            &quot;xx&quot;,
+                            &quot;xx&quot;
+                        ],
+                        &quot;logic&quot;: &quot;&quot;,
+                        &quot;parent_user_id&quot;: &quot;&quot;,
+                        &quot;subject_attr&quot;: &quot;0&quot;,
+                        &quot;subject&quot;: &quot;数据样例测试&quot;
+                    &#125;
+                ]
+            &#125;,
+            &quot;data&quot;: &#123;
+                &quot;analysis&quot;: &#123;
+                    &quot;noise&quot;: 0,
+                    &quot;sentiment&quot;: 2,
+                    &quot;summary&quot;: &quot;为加强校际之间的交流合作，发挥青岛二中教育集团化办学的优势，努力探索高质量办学的路径与方法，推动教育事业双赢共提升，2024年11月19日，青岛二中附属李沧学校语文和数学学科骨干教师到青岛二中附属学校（海尔路学校）交流研讨，开展校际交流活动。活动分为交流互鉴、课例展示、共研教学三个部分。\n座谈交流   赋能发展&quot;,
+                    &quot;info_src&quot;: &#123;
+                        &quot;loc&quot;: &#123;
+                            &quot;province&quot;: &quot;广东省&quot;,
+                            &quot;name&quot;: [
+                                &quot;广东省&quot;
+                            ],
+                            &quot;level&quot;: 2
+                        &#125;,
+                        &quot;domain&quot;: &quot;mp.weixin.qq.com&quot;,
+                        &quot;name&quot;: &quot;微信公众号&quot;,
+                        &quot;lv&quot;: &#123;
+                            &quot;name&quot;: &quot;B&quot;,
+                            &quot;level&quot;: &quot;5&quot;
+                        &#125;,
+                        &quot;type&quot;: 1,
+                        &quot;cls&quot;: &#123;
+                            &quot;name&quot;: [
+                                &quot;综合门户&quot;
+                            ],
+                            &quot;level&quot;: 1
+                        &#125;
+                    &#125;,
+                    &quot;find_address&quot;: &#123;
+                        &quot;province&quot;: [
+                            &quot;山东省&quot;
+                        ],
+                        &quot;city&quot;: [
+                            &quot;青岛市&quot;
+                        ],
+                        &quot;district&quot;: [
+                            &quot;崂山区&quot;,
+                            &quot;李沧区&quot;
+                        ],
+                        &quot;province_count&quot;: 1,
+                        &quot;words&quot;: [
+                            &quot;青岛二中&quot;,
+                            &quot;海尔路&quot;,
+                            &quot;李沧&quot;,
+                            &quot;青岛&quot;
+                        ],
+                        &quot;district_count&quot;: 2,
+                        &quot;city_count&quot;: 1
+                    &#125;,
+                    &quot;hashcode&quot;: &#123;
+                        &quot;5&quot;: &quot;5701211886656542000&quot;
+                    &#125;,
+                    &quot;classify&quot;: null
+                &#125;,
+                &quot;is_toutiao&quot;: &quot;0&quot;,
+                &quot;wtype&quot;: 1,
+                &quot;uuid&quot;: &quot;6f7f5726af684ae48b6480c09c3ce0b6&quot;,
+                &quot;title&quot;: &quot;发挥集团优势  共创品质教育——青岛二中附属李沧学校到青岛二中附属实验学校交流研讨&quot;,
+                &quot;content&quot;: &quot;发挥集团优势\n共创品质教育\n水本无华，相荡乃兴潋滟；石本无火，互击而生灵光。为加强校际之间的交流合作，发挥青岛二中教育集团化办学的优势，努力探索高质量办学的路径与方法，推动教育事业双赢共提升，2024年11月19日，青岛二中附属李沧学校语文和数学学科骨干教师到青岛二中附属学校（海尔路学校）交流研讨，开展校际交流活动。活动分为交流互鉴、课例展示、共研教学三个部分。\n座谈交流   赋能发展\n副校长刘杰向青岛二中附属李沧学校全面介绍了学校的办学理念、办学特色和班级文化建设等情况，学校丰厚的文化底蕴和特色鲜明的办学成果获得了李沧分校老师们的一致认可。\n教学观摩  教无止境\n     随后老师们走进小学教室进行随堂观摩。韩格格老师执教部编版语文一年级上册第七单元《影子》，韩格格老师以“文学阅读与创意表达”为主任务群设计和实施单元统整教学，基于语文的学科逻辑和学生的心理逻辑，设计争当“小小朗诵家”的单元主题情景。课堂上，同学们闯关争星，整堂课别开生面，趣味盎然。\n 徐夕娥老师执教青岛版（2024）数学一年级上册第四单元《11~20各数的认识》，徐夕娥老师以“漂亮的粘贴画”这一趣味主题为线索，充分尊重学生已有的10以内数的认识经验，精心设计了一系列丰富的探究活动，引导学生由浅入深、由具体到抽象理解数的概念本质。\n深研细雨   共话成长\n课后，两位授课老师分别对自己的教学设计进行了详尽的讲述与反思。两所学校的教师进行了深入的交流和研讨，大家各抒己见，相互学习。\n评课研讨环节，领导、老师们从不同角度对展示课进行深入细致的点评，或发现亮点，或提出质疑，或比较不同方法，学其所长，研其所得，教研氛围浓厚。\n董梅芳、薛菲两位老师对韩格格老师语文课堂进行了点评，认为她的课堂一是扎实有效，符合新课标对于语文教学的要求；二是课堂有趣味性；三是能联系生活学习。王丽、顾雪玉两位老师对徐夕娥老师数学课堂进行了点评，该课课前准备充分，教学思路清晰，目标明确，突出重点，对课堂把控能力强，对学生评价及时。两节课学生学习氛围良好，兴趣浓厚，能积极主动参与教学活动。\n     此次校际交流，搭建了两校互相学习的平台，促进了双方教育教学管理工作的深化，实现了两校间教育教学交流的常态化，互学互鉴，改革创新，为学校高质量发展蓄势赋能。&quot;,
+                &quot;face_img&quot;: &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpWrjiaGQGqbUqtaWqy2H1cKNhqwb4zhmts4OAEU60JoIGNCnqhRxicb7A/0?wx_fmt=jpeg&quot;,
+                &quot;pic_urls&quot;: [
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpFTvx5lbLKFMXzXIGSaNaTxP0I7zwZiaqmjGKicE5zqcK3Jg796AoMtWg/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpt21rtDrGr69zCibBlUU4LicyVicAa1Q7aiaShrlCjLcX19cdRSQbKriccHA/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpxVh0fJXjyYfJum6u40LmU147fNSsBSqkdTHEv7T5epTOu7DSjEibrrg/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGplqbZ1sbibnNy6XV5OtJJwAAZJic5eRC0r8lsic2U0nicGTh5dKGgicd8cyg/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGprlxQZAOGEfiaY5WvBkCvr2rzRT4aNVkZiaRaG1vAd41BuxeBtwTHjeAw/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp3p0icnBdBx5h0F4LTjwic94bN33F3Gvse2BaHaolwpVBHJGEicwGTZ2Qg/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpVdSqdGb8B0kxicTHndmib4jFIRoWOXn91eicp8Ov6lhDicHFicy1OF83E5g/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp1CtJvxrnmFEsHCicKfwvqUianDz3EOa2eUNmmZ5cVYWlpFeepZQnOXxA/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpgRHMPdcdbolpI1H1PaXzBwiaibIWziaAIQC1wvRcrxLpcEakN1On8a3rg/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpgRHMPdcdbolpI1H1PaXzBwiaibIWziaAIQC1wvRcrxLpcEakN1On8a3rg/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpJUaYiaWIRGhB2OiaNIFujajRT2YEKic5JHZoJiaoB9TMt7EQhd82bjacow/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpvKnicw1M1nic74Piam2Sx5ITVkHEibBWIXk0IhiagTUpSOQdP34LfDthicHQ/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp0eSvqba6t32EH1Nwj9Ox9CCp2yD9CdKv923ESKEyM6kVFyt13bpHIw/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpV4S8mYvIX9n0PRex1pkjflXyfACspmueicW1Jd7W6tPO6L19gyszR1Q/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpkjtCkGVicNfxucfBpkBRv7LlG8gvN61CdC6Q9TFFyQ2TCChLSnydlBQ/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpRnvAmTVoVfQbUkFVEVpaKbUiavpHGsficr1YjxBUwQV0VuWJiaibMFica5Q/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpibZtLiasC2kzQuSicCEyu6Ix1znPDZk7B0icmZRLwmxXPjOP85MvNB8j0A/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpFBSbBvPraciaAiaCOtsra5BTcwphTMibjQialUXCgMDY38jPLE8dbxicWmA/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpQqem50vLmsddvZYAsPcdtfojMQibCiclf5dibEc7PMib5MFHeXElR7HJ9g/640?wx_fmt=jpeg&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp1CtJvxrnmFEsHCicKfwvqUianDz3EOa2eUNmmZ5cVYWlpFeepZQnOXxA/640?wx_fmt=gif&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpibZtLiasC2kzQuSicCEyu6Ix1znPDZk7B0icmZRLwmxXPjOP85MvNB8j0A/640?wx_fmt=png&amp;from=appmsg&quot;,
+                    &quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;from=appmsg&quot;
+                ],
+                &quot;extend&quot;: &#123;
+                    &quot;weixin&quot;: &#123;
+                        &quot;index&quot;: 3
+                    &#125;,
+                    &quot;user&quot;: &#123;
+                        &quot;weixin&quot;: &#123;
+                            &quot;wxh&quot;: &quot;gh_5eda34986f62&quot;,
+                            &quot;biz&quot;: &quot;Mzg4MDgzMTk1Nw==&quot;,
+                            &quot;verify_customer_type&quot;: 11,
+                            &quot;wxh_name&quot;: &quot;青岛二中附属实验学校&quot;
+                        &#125;
+                    &#125;
+                &#125;,
+                &quot;user&quot;: &#123;
+                    &quot;profile_img_url&quot;: &quot;http://wx.qlogo.cn/mmhead/Q3auHgzwzM4sDUaX1hjQfjmplFx7pM9psdibZvbjQJHZb3ksGQ9K2uw/0&quot;,
+                    &quot;verified&quot;: 2,
+                    &quot;description&quot;: &quot;青岛二中附属实验学校理念宣传、活动展示、经验分享和家校互动的平台&quot;,
+                    &quot;ip_region&quot;: [
+                        &quot;中国&quot;,
+                        &quot;山东&quot;
+                    ],
+                    &quot;verified_reason&quot;: &quot;青岛市崂山区海尔路学校&quot;,
+                    &quot;analysis_location&quot;: [
+                        &quot;山东省&quot;,
+                        &quot;青岛市&quot;
+                    ],
+                    &quot;uid&quot;: &quot;gh_5eda34986f62&quot;,
+                    &quot;nickname&quot;: &quot;&quot;,
+                    &quot;verified_type&quot;: 2,
+                    &quot;name&quot;: &quot;青岛二中附属实验学校&quot;
+                &#125;,
+                &quot;publisher&quot;: &#123;
+                    &quot;platform&quot;: &quot;自媒体&quot;,
+                    &quot;site_name&quot;: &quot;微信&quot;,
+                    &quot;id&quot;: &quot;mp.weixin.qq.com|gh_5eda34986f62&quot;,
+                    &quot;name&quot;: &quot;青岛二中附属实验学校&quot;,
+                    &quot;entity&quot;: &quot;青岛二中附属实验学校&quot;
+                &#125;,
+                &quot;ctime&quot;: 1732179506,
+                &quot;url&quot;: &quot;http://mp.weixin.qq.com/s?__biz=Mzg4MDgzMTk1Nw==&amp;mid=2247518275&amp;idx=3&amp;sn=1bc1d1dda0128ecb59db8da546da1598#ocr&quot;,
+                &quot;surface_img&quot;: &quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpWrjiaGQGqbUqtaWqy2H1cKNhqwb4zhmts4OAEU60JoIGNCnqhRxicb7A/0?wx_fmt=jpeg&quot;,
+                &quot;gather&quot;: &#123;
+                    &quot;site_name&quot;: &quot;微信&quot;,
+                    &quot;data_type&quot;: &quot;20&quot;,
+                    &quot;sub_domain&quot;: [
+                        &quot;weixin.qq.com&quot;,
+                        &quot;mp.weixin.qq.com&quot;
+                    ],
+                    &quot;info_flag&quot;: [
+                        &quot;06&quot;
+                    ],
+                    &quot;site_domain&quot;: &quot;mp.weixin.qq.com&quot;,
+                    &quot;gtime&quot;: 1732179672
+                &#125;,
+                &quot;content_xml&quot;: &quot;&lt;div class=\&quot;rich_media_content js_underline_content autoTypeSetting24psection \&quot; id=\&quot;js_content\&quot; &gt;&lt;section data-role=\&quot;outer\&quot; data-tplid=\&quot;149932\&quot; style=\&quot;background-repeat: repeat;background-position: center center;background-color: rgb(255, 238, 209);background-size: auto;background-image: none;\&quot;&gt;&lt;section data-id=\&quot;105041\&quot; data-tools=\&quot;135编辑器\&quot;&gt;&lt;section data-height=\&quot;405\&quot; data-mode=\&quot;svg\&quot; data-ratio=\&quot;1.08\&quot; data-role=\&quot;absolute-layout\&quot; data-width=\&quot;375\&quot; style=\&quot;font-size: 16px;overflow: hidden;grid-template-rows: 100%;grid-template-columns: 100%;display: grid;width: 100%;\&quot;&gt;&lt;section data-role=\&quot;ratio\&quot; style=\&quot;grid-row-start: 1;grid-column-start: 1;height: 100%;\&quot;&gt;&lt;svg style=\&quot;pointer-events: none;display: inline-block;width: 100%;vertical-align: top;-webkit-tap-highlight-color: transparent;user-select: none;\&quot; viewbox=\&quot;0 0 375 405\&quot;&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 100%;margin-top: 0%;margin-left: 0%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;transform: scale(1);\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 375 405\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034464\&quot; data-ratio=\&quot;1.0812182741116751\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpFTvx5lbLKFMXzXIGSaNaTxP0I7zwZiaqmjGKicE5zqcK3Jg796AoMtWg/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;591\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 41%;margin-top: 0%;margin-left: 58.9333%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 10.9333px;transform: scale(1);max-width: 41% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 154 153\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034468\&quot; data-ratio=\&quot;0.9615384615384616\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpt21rtDrGr69zCibBlUU4LicyVicAa1Q7aiaShrlCjLcX19cdRSQbKriccHA/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;234\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 36%;margin-top: 0%;margin-left: 0%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 9.6px;transform: scale(1);max-width: 36% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 135 140\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img data-imgfileid=\&quot;100034467\&quot; data-ratio=\&quot;1\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpxVh0fJXjyYfJum6u40LmU147fNSsBSqkdTHEv7T5epTOu7DSjEibrrg/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;219\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 100%;margin-top: 0%;margin-left: 0%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 26.6667px;transform: scale(1);\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 375 141\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034466\&quot; data-ratio=\&quot;0.34686971235194586\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGplqbZ1sbibnNy6XV5OtJJwAAZJic5eRC0r8lsic2U0nicGTh5dKGgicd8cyg/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;591\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 26%;margin-top: 15.4667%;margin-left: 73.8667%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 6.93333px;transform: scale(1);max-width: 26% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 98 112\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034465\&quot; data-ratio=\&quot;1.094890510948905\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGprlxQZAOGEfiaY5WvBkCvr2rzRT4aNVkZiaRaG1vAd41BuxeBtwTHjeAw/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;137\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 29%;margin-top: 79.7333%;margin-left: 1.86667%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 7.73333px;transform: scale(1);max-width: 29% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 109 75\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034471\&quot; data-ratio=\&quot;0.6442307692307693\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp3p0icnBdBx5h0F4LTjwic94bN33F3Gvse2BaHaolwpVBHJGEicwGTZ2Qg/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;624\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 26%;margin-top: 85.0667%;margin-left: 36.5333%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 6.93333px;transform: scale(1);max-width: 26% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 98 84\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034472\&quot; data-ratio=\&quot;0.8072289156626506\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpVdSqdGb8B0kxicTHndmib4jFIRoWOXn91eicp8Ov6lhDicHFicy1OF83E5g/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;581\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 32%;margin-top: 73.3333%;margin-left: 68%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 8.53333px;transform: scale(1);max-width: 32% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 120 130\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034473\&quot; data-ratio=\&quot;1.0806451612903225\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp1CtJvxrnmFEsHCicKfwvqUianDz3EOa2eUNmmZ5cVYWlpFeepZQnOXxA/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;186\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 16%;margin-top: 12.8%;margin-left: 25.8667%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 4.26667px;transform: scale(1);max-width: 16% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 60 64\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034469\&quot; data-ratio=\&quot;0.9797979797979798\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;99\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 16%;margin-top: 88.8%;margin-left: 6.66667%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 4.26667px;transform: scale(1);max-width: 16% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 60 64\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034470\&quot; data-ratio=\&quot;0.9797979797979798\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;99\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 14%;margin-top: 89.8667%;margin-left: 63.2%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 14px;transform: scale(1);max-width: 14% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 53 57\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034475\&quot; data-ratio=\&quot;0.9797979797979798\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;99\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 17%;margin-top: 30.4%;margin-left: -2.93333%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 4.53333px;transform: scale(1);max-width: 17% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 64 81\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034476\&quot; data-ratio=\&quot;1.1927710843373494\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpgRHMPdcdbolpI1H1PaXzBwiaibIWziaAIQC1wvRcrxLpcEakN1On8a3rg/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;83\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 17%;margin-top: 51.7333%;margin-left: 82.9333%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;font-size: 4.53333px;transform: scale(1);max-width: 17% !important;\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 64 81\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;img data-imgfileid=\&quot;100034477\&quot; data-ratio=\&quot;1.1927710843373494\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpgRHMPdcdbolpI1H1PaXzBwiaibIWziaAIQC1wvRcrxLpcEakN1On8a3rg/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;83\&quot; style=\&quot;overflow: hidden;width: 100%;vertical-align: baseline;\&quot;/&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 100%;margin-top: 39.7333%;margin-left: 0%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;transform: scale(1);\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 375 57\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;section style=\&quot;overflow:hidden;\&quot;&gt;&lt;section style=\&quot;text-align: center;color: #ffb700;\&quot;&gt;&lt;span style=\&quot;font-size: 2.25em;\&quot;&gt;&lt;strong data-brushtype=\&quot;text\&quot;&gt;发挥集团优势&lt;/strong&gt;&lt;/span&gt;&lt;/section&gt;&lt;/section&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-role=\&quot;block\&quot; style=\&quot;width: 100%;margin-top: 58.1333%;margin-left: 0%;grid-row-start: 1;grid-column-start: 1;height: max-content;line-height: 0;transform: scale(1);\&quot;&gt;&lt;svg style=\&quot;display: inline-block;width: 100%;vertical-align: top;line-height: 1.6;overflow: visible;\&quot; viewbox=\&quot;0 0 375 57\&quot;&gt;&lt;foreignobject data-role=\&quot;block-content\&quot; height=\&quot;100%\&quot; width=\&quot;100%\&quot;&gt;&lt;section style=\&quot;overflow:hidden;\&quot;&gt;&lt;section style=\&quot;text-align: center;color: #ffb700;\&quot;&gt;&lt;span style=\&quot;font-size: 2.25em;\&quot;&gt;&lt;strong data-brushtype=\&quot;text\&quot;&gt;共创品质教育&lt;/strong&gt;&lt;/span&gt;&lt;/section&gt;&lt;/section&gt;&lt;/foreignobject&gt;&lt;/svg&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-id=\&quot;149786\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;88%\&quot; style=\&quot;width: 88%;flex: 0 0 88%;margin-left: auto;margin-right: auto;max-width: 88% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;display: flex;flex-direction: column;\&quot;&gt;&lt;section style=\&quot;display: flex;justify-content: space-between;padding-right: 20px;padding-left: 15px;align-items: flex-end;z-index: 4;\&quot;&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -7px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 7px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -7px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 7px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: #fce090;margin-left: 5px;\&quot;&gt;&lt;section style=\&quot;border-width: 1px;border-style: solid;border-color: rgb(160, 199, 121);background-color: rgb(255, 255, 255);padding: 25px 15px 15px;transform: translate(-5px, -5px);\&quot;&gt;&lt;section style=\&quot;line-height: 1.75em;letter-spacing: 1.5px;font-size: 14px;color: rgb(78, 66, 58);background-color: transparent;\&quot;&gt;&lt;section&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 2em;letter-spacing: 2px;color: #3f3f3f;\&quot;&gt;&lt;p style=\&quot;text-indent:2.28571em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt;水本无华，相荡乃兴潋滟；石本无火，互击而生灵光。为加强校际之间的交流合作，发挥青岛二中教育集团化办学的优势，努力探索高质量办学的路径与方法，推动教育事业双赢共提升，2024年11月19日，&lt;span style=\&quot;background-color: transparent;caret-color: red;\&quot;&gt;青岛二中附属李沧学校语文和数学学科骨干教师到青岛二中附属学校（海尔路学校）交流研讨，开展校际交流活动。活动分为交流互鉴、课例展示、共研教学三个部分。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section data-id=\&quot;149789\&quot; data-role=\&quot;title\&quot; data-tools=\&quot;135编辑器\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;display: flex;justify-content: center;\&quot;&gt;&lt;section&gt;&lt;section style=\&quot;display: flex;justify-content: space-between;padding-right: 10px;padding-left: 10px;align-items: flex-end;\&quot;&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;100%\&quot; style=&#39;width: 100%;height: 3px;background-image: url(\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpTJicDuu5NOfoRLc5TXt1e8LbHSbk60CibpnAeTqzVG8IogRseHicVvZcQ/640?wx_fmt=png&amp;amp;from=appmsg\&quot;);background-repeat: repeat-x;background-size: 100%;background-position: center center;&#39;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding: 6px 25px;\&quot;&gt;&lt;section style=\&quot;font-size: 18px;color: #a0c779;text-align: center;\&quot;&gt;&lt;span style=\&quot;letter-spacing: 0.5px;\&quot;&gt;&lt;strong data-brushtype=\&quot;text\&quot;&gt;座谈交流   赋能发展&lt;/strong&gt;&lt;/span&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034479\&quot; data-ratio=\&quot;0.0962962962962963\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding-top: 12px;padding-bottom: 15px;\&quot;&gt;&lt;section data-id=\&quot;148428\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section data-width=\&quot;100%\&quot; style=\&quot;width: 100%;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034478\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpJUaYiaWIRGhB2OiaNIFujajRT2YEKic5JHZoJiaoB9TMt7EQhd82bjacow/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; style=\&quot;vertical-align: baseline;width: 100%;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 35px;margin-left: 20px;margin-right: 20px;font-size: 14px;letter-spacing: 2px;color: rgb(63, 63, 63);\&quot;&gt;&lt;p style=\&quot;text-indent:2.26666em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt;副校长刘杰向青岛二中附属李沧学校全面介绍了学校的办学理念、办学特色和班级文化建设等情况，学校丰厚的文化底蕴和特色鲜明的办学成果获得了李沧分校老师们的一致认可。&lt;/span&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section data-id=\&quot;149789\&quot; data-role=\&quot;title\&quot; data-tools=\&quot;135编辑器\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;display: flex;justify-content: center;\&quot;&gt;&lt;section&gt;&lt;section style=\&quot;display: flex;justify-content: space-between;padding-right: 10px;padding-left: 10px;align-items: flex-end;\&quot;&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;100%\&quot; style=&#39;width: 100%;height: 3px;background-image: url(\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpTJicDuu5NOfoRLc5TXt1e8LbHSbk60CibpnAeTqzVG8IogRseHicVvZcQ/640?wx_fmt=png&amp;amp;from=appmsg\&quot;);background-repeat: repeat-x;background-size: 100%;background-position: center center;&#39;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding: 6px 25px;\&quot;&gt;&lt;section style=\&quot;font-size: 18px;color: #a0c779;text-align: center;\&quot;&gt;&lt;span style=\&quot;letter-spacing: 0.5px;\&quot;&gt;&lt;strong data-brushtype=\&quot;text\&quot;&gt;教学观摩  教无止境&lt;/strong&gt;&lt;/span&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034480\&quot; data-ratio=\&quot;0.0962962962962963\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding-top: 12px;padding-bottom: 15px;\&quot;&gt;&lt;section data-id=\&quot;148428\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;p style=\&quot;text-indent:2.28571em;\&quot;&gt;&lt;span style=\&quot;font-size: 14px;letter-spacing: 2px;line-height: 2.5em;\&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=\&quot;width: 100%;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034481\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpvKnicw1M1nic74Piam2Sx5ITVkHEibBWIXk0IhiagTUpSOQdP34LfDthicHQ/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 35px;margin-left: 20px;margin-right: 20px;font-size: 14px;letter-spacing: 2px;color: rgb(63, 63, 63);\&quot;&gt;&lt;p&gt;   &lt;span style=\&quot;font-size: 15px;\&quot;&gt;  &lt;span style=\&quot;letter-spacing: 2px;text-indent: 38.8571px;background-color: rgb(255, 255, 255);\&quot;&gt;随后老师们走进小学教室进行随堂观摩。&lt;/span&gt;&lt;span style=\&quot;line-height: 2.5em;\&quot;&gt;韩格格老师执教部编版语文一年级上册第七单元《影子》，韩格格老师以“文学阅读与创意表达”为主任务群设计和实施单元统整教学，基于语文的学科逻辑和学生的心理逻辑，设计争当“小小朗诵家”的单元主题情景。课堂上，同学们闯关争星，整堂课别开生面，趣味盎然。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-id=\&quot;149652\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section data-op=\&quot;division\&quot; style=\&quot;display: flex;justify-content: center;align-items: center;\&quot;&gt;&lt;section data-width=\&quot;60%\&quot; style=\&quot;width: 60%;max-width: 60% !important;\&quot;&gt;&lt;section data-width=\&quot;100%\&quot; style=\&quot;width: 100%;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034482\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp0eSvqba6t32EH1Nwj9Ox9CCp2yD9CdKv923ESKEyM6kVFyt13bpHIw/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;50%\&quot; style=\&quot;width: 50%;margin-left: -10.1%;z-index: 4;max-width: 50% !important;\&quot;&gt;&lt;section style=\&quot;padding: 10px;\&quot;&gt;&lt;section data-width=\&quot;100%\&quot; style=\&quot;width: 100%;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034483\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpV4S8mYvIX9n0PRex1pkjflXyfACspmueicW1Jd7W6tPO6L19gyszR1Q/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 35px;margin-left: 20px;margin-right: 20px;font-size: 14px;letter-spacing: 2px;color: rgb(63, 63, 63);\&quot;&gt;&lt;p style=\&quot;text-indent:2.28571em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt; 徐夕娥老师执教青岛版（2024）数学一年级上册第四单元《11~20各数的认识》，徐夕娥老师以“漂亮的粘贴画”这一趣味主题为线索，充分尊重学生已有的10以内数的认识经验，精心设计了一系列丰富的探究活动，引导学生由浅入深、由具体到抽象理解数的概念本质。&lt;/span&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-id=\&quot;149646\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section data-op=\&quot;division\&quot; style=\&quot;display: flex;justify-content: space-between;\&quot;&gt;&lt;section data-width=\&quot;48%\&quot; style=\&quot;width: 48%;max-width: 48% !important;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034484\&quot; data-ratio=\&quot;0.7490740740740741\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpkjtCkGVicNfxucfBpkBRv7LlG8gvN61CdC6Q9TFFyQ2TCChLSnydlBQ/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;section data-width=\&quot;48%\&quot; style=\&quot;width: 48%;max-width: 48% !important;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034489\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpRnvAmTVoVfQbUkFVEVpaKbUiavpHGsficr1YjxBUwQV0VuWJiaibMFica5Q/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034486\&quot; data-ratio=\&quot;0.08888888888888889\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpibZtLiasC2kzQuSicCEyu6Ix1znPDZk7B0icmZRLwmxXPjOP85MvNB8j0A/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;margin-top: -15px;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section data-id=\&quot;149789\&quot; data-role=\&quot;title\&quot; data-tools=\&quot;135编辑器\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;display: flex;justify-content: center;\&quot;&gt;&lt;section&gt;&lt;section style=\&quot;display: flex;justify-content: space-between;padding-right: 10px;padding-left: 10px;align-items: flex-end;\&quot;&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;display: flex;flex-direction: column;margin-bottom: -15px;\&quot;&gt;&lt;section style=\&quot;width: 5px;height: 18px;border-radius: 5px;background-color: rgb(255, 183, 0);margin-right: auto;margin-bottom: -6px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;width: 7px;height: 8px;border-radius: 100%;background-color: rgb(160, 199, 121);\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;100%\&quot; style=&#39;width: 100%;height: 3px;background-image: url(\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpTJicDuu5NOfoRLc5TXt1e8LbHSbk60CibpnAeTqzVG8IogRseHicVvZcQ/640?wx_fmt=png&amp;amp;from=appmsg\&quot;);background-repeat: repeat-x;background-size: 100%;background-position: center center;&#39;&gt;&lt;br/&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding: 6px 25px;\&quot;&gt;&lt;section style=\&quot;font-size: 18px;color: #a0c779;text-align: center;\&quot;&gt;&lt;span style=\&quot;letter-spacing: 0.5px;\&quot;&gt;&lt;strong data-brushtype=\&quot;text\&quot;&gt;深研细雨   共话成长&lt;/strong&gt;&lt;/span&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034485\&quot; data-ratio=\&quot;0.0962962962962963\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding-top: 12px;padding-bottom: 15px;\&quot;&gt;&lt;section data-id=\&quot;148428\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section data-width=\&quot;100%\&quot; style=\&quot;width: 100%;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034488\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpFBSbBvPraciaAiaCOtsra5BTcwphTMibjQialUXCgMDY38jPLE8dbxicWmA/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034487\&quot; data-ratio=\&quot;0.75\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_jpg/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpQqem50vLmsddvZYAsPcdtfojMQibCiclf5dibEc7PMib5MFHeXElR7HJ9g/640?wx_fmt=jpeg&amp;amp;from=appmsg\&quot; data-type=\&quot;jpeg\&quot; data-w=\&quot;1080\&quot; style=\&quot;vertical-align: baseline;width: 100%;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-id=\&quot;149784\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section style=\&quot;margin-bottom: 10px;\&quot;&gt;&lt;section style=\&quot;margin: 5px auto;display: flex;flex-direction: column;\&quot;&gt;&lt;section style=\&quot;width: 31px;margin-top: -25px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;svg style=\&quot;display: block;\&quot; viewbox=\&quot;0 0 57 54.99\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;&lt;g data-name=\&quot;图层 2\&quot;&gt;&lt;g data-name=\&quot;图层 1\&quot;&gt;&lt;path d=\&quot;M0,55,57,6V55\&quot; data-name=\&quot;矩形 1\&quot; style=\&quot;fill: #fff;\&quot;&gt;&lt;/path&gt;&lt;path d=\&quot;M.93,55,56.5,7.53S38.34,16,36.24,0Z\&quot; data-name=\&quot;形状 1\&quot; style=\&quot;fill: #f3e1aa;\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;margin-bottom: 10px;\&quot;&gt;&lt;section style=\&quot;margin: 5px auto;display: flex;flex-direction: column;\&quot;&gt;&lt;section style=\&quot;width: 30px;margin-left: auto;margin-bottom: -24px;z-index: 4;margin-right: 20px;\&quot;&gt;&lt;svg style=\&quot;display: block;\&quot; viewbox=\&quot;0 0 56.33 64.39\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;&lt;g data-name=\&quot;图层 2\&quot;&gt;&lt;g data-name=\&quot;图层 1\&quot;&gt;&lt;path d=\&quot;M10.13,43.6,26.36,19.3c4-6,10.86-8.52,15.33-5.66s4.86,10,.87,16L26.33,54c-4,6-12.48,12-20,7.18C-1,56.44,1.45,44.79,4.43,40.33S19.94,17.1,22.77,12.86C27.73,5.44,38.51-2.71,49,4c12.25,7.83,1.43,26.54,1.43,26.54l-14,20.55\&quot; style=\&quot;fill: none;stroke: #ffb700;stroke-width: 3px;\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: #a0c779;margin-right: 5px;\&quot;&gt;&lt;section style=\&quot;background-color: rgb(255, 248, 227);padding: 6px 10px;transform: translate(5px, 5px);\&quot;&gt;&lt;section style=\&quot;display: flex;justify-content: flex-start;align-items: center;\&quot;&gt;&lt;section style=\&quot;flex-shrink: 0;\&quot;&gt;&lt;section style=\&quot;width: 22px;\&quot;&gt;&lt;img data-imgfileid=\&quot;100034494\&quot; data-ratio=\&quot;1.0806451612903225\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGp1CtJvxrnmFEsHCicKfwvqUianDz3EOa2eUNmmZ5cVYWlpFeepZQnOXxA/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;186\&quot; data-width=\&quot;100%\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section style=\&quot;font-size: 16px;color: #a0c779;text-align: center;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;width: 31px;margin-top: -25px;margin-left: auto;z-index: 4;\&quot;&gt;&lt;svg style=\&quot;display: block;\&quot; viewbox=\&quot;0 0 57 54.99\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;&lt;g data-name=\&quot;图层 2\&quot;&gt;&lt;g data-name=\&quot;图层 1\&quot;&gt;&lt;path d=\&quot;M0,55,57,6V55\&quot; data-name=\&quot;矩形 1\&quot; style=\&quot;fill: #fff;\&quot;&gt;&lt;/path&gt;&lt;path d=\&quot;M.93,55,56.5,7.53S38.34,16,36.24,0Z\&quot; data-name=\&quot;形状 1\&quot; style=\&quot;fill: #f3e1aa;\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;background-color: rgb(255, 252, 244);padding: 15px;\&quot;&gt;&lt;section style=\&quot;line-height: 1.75em;letter-spacing: 1.5px;font-size: 15px;color: rgb(78, 66, 58);background-color: transparent;\&quot;&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 2em;letter-spacing: 2px;color: rgb(63, 63, 63);\&quot;&gt;&lt;p style=\&quot;text-indent:2.21428em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt;课后，两位授课老师分别对自己的教学设计进行了详尽的讲述与反思。两所学校的教师进行了深入的交流和研讨，大家各抒己见，相互学习。&lt;/span&gt;&lt;/p&gt;&lt;p style=\&quot;text-indent:2.21428em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt;评课研讨环节，领导、老师们从不同角度对展示课进行深入细致的点评，或发现亮点，或提出质疑，或比较不同方法，学其所长，研其所得，教研氛围浓厚。&lt;/span&gt;&lt;/p&gt;&lt;p style=\&quot;text-indent:2.21428em;\&quot;&gt;&lt;span style=\&quot;font-size: 15px;\&quot;&gt;董梅芳、薛菲两位老师对韩格格老师语文课堂进行了点评，认为她的课堂一是扎实有效，符合新课标对于语文教学的要求；二是课堂有趣味性；三是能联系生活学习。王丽、顾雪玉两位老师对徐夕娥老师数学课堂进行了点评，&lt;span style=\&quot;font-size: 15px;background-color: transparent;caret-color: red;\&quot;&gt;该课课前准备充分，教学思路清晰，目标明确，突出重点，对课堂把控能力强，对学生评价及时。两节课学生学习氛围良好，兴趣浓厚，能积极主动参与教学活动。&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-id=\&quot;149750\&quot; data-tools=\&quot;135编辑器\&quot; data-width=\&quot;90%\&quot; style=\&quot;width: 90%;flex: 0 0 90%;margin-left: auto;margin-right: auto;max-width: 90% !important;\&quot;&gt;&lt;section style=\&quot;margin: 10px auto;\&quot;&gt;&lt;section data-width=\&quot;60%\&quot; style=\&quot;width: 60%;margin-bottom: -30.1%;display: flex;flex-direction: column;max-width: 60% !important;\&quot;&gt;&lt;section style=\&quot;width: 65px;z-index: 5;margin-left: auto;margin-bottom: -25px;margin-right: -20px;\&quot;&gt;&lt;svg style=\&quot;display: block;\&quot; viewbox=\&quot;0 0 111.48 75.01\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;&lt;g data-name=\&quot;图层 2\&quot;&gt;&lt;g data-name=\&quot;图层 1\&quot;&gt;&lt;path d=\&quot;M109.88,46.91l0,0a5.68,5.68,0,0,0-4.62,10.38h0L103.63,61l0,0A5.68,5.68,0,0,0,99,71.32h0L97.38,75,0,31.69,1.63,28A5.68,5.68,0,0,0,6.25,17.65L7.88,14A5.68,5.68,0,0,0,12.5,3.6L14.1,0l97.38,43.31Z\&quot; style=\&quot;fill: #ffc000;fill-rule: evenodd;isolation: isolate;opacity: 0.800000011920929;\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/section&gt;&lt;section data-width=\&quot;100%\&quot; style=\&quot;width: 100%;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section style=\&quot;text-align: center;height: 0px;\&quot;&gt;&lt;br/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034490\&quot; data-ratio=\&quot;0.0962962962962963\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpnY2eEoRRGj5Ib6o2DNelavn9NRicsNP2fiadY5ibCiaBYlYsXCnicbaYtIw/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section data-width=\&quot;92%\&quot; style=\&quot;width: 92%;flex: 0 0 92%;margin-left: auto;margin-right: auto;max-width: 92% !important;\&quot;&gt;&lt;section style=\&quot;background-color: rgb(255, 255, 255);padding-top: 12px;padding-bottom: 15px;\&quot;&gt;&lt;section&gt;&lt;section data-autoskip=\&quot;1\&quot; style=\&quot;line-height: 35px;margin-left: 20px;margin-right: 20px;color: rgb(63, 63, 63);font-size: 15px;letter-spacing: 2px;\&quot;&gt;&lt;p&gt;    &lt;span style=\&quot;font-size: 15px;\&quot;&gt; 此次校际交流，搭建了两校互相学习的平台，促进了双方教育教学管理工作的深化，实现了两校间教育教学交流的常态化，互学互鉴，改革创新，为学校高质量发展蓄势赋能。&lt;/span&gt;&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;section style=\&quot;text-align: center;\&quot;&gt;&lt;img class=\&quot;rich_pages wxw-img\&quot; data-imgfileid=\&quot;100034491\&quot; data-ratio=\&quot;0.08888888888888889\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_png/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpibZtLiasC2kzQuSicCEyu6Ix1znPDZk7B0icmZRLwmxXPjOP85MvNB8j0A/640?wx_fmt=png&amp;amp;from=appmsg\&quot; data-type=\&quot;png\&quot; data-w=\&quot;1080\&quot; style=\&quot;width: 100%;margin-top: -15px;display: block;vertical-align: baseline;\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;section style=\&quot;line-height: 27.2px;\&quot;&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;section style=\&quot;text-align: center;pointer-events:none;\&quot;&gt;&lt;img data-imgfileid=\&quot;100034492\&quot; data-ratio=\&quot;0.9797979797979798\&quot; data-src=\&quot;https://mmbiz.qpic.cn/sz_mmbiz_gif/7dOUFRqDpcjBN1UxQyTNQyfooPWs5CGpGCIU6A1Hoh1rVtYKuzMVyNNCnOug62uYf6icnXibGoewspFOzvxL68IQ/640?wx_fmt=gif&amp;amp;from=appmsg\&quot; data-type=\&quot;gif\&quot; data-w=\&quot;99\&quot; data-width=\&quot;61px\&quot; style=\&quot;width: 61px;vertical-align: baseline;\&quot; width=\&quot;61\&quot;/&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p style=\&quot;display: none;\&quot;&gt;&lt;mp-style-type data-value=\&quot;3\&quot;&gt;&lt;/mp-style-type&gt;&lt;/p&gt;&lt;/div&gt;&quot;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>微信公众号原创文章数据集</div>
+      <div>https://zhyyao.me/2026/01/06/dianshu/原创微信公众号原创文章数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E6%89%8B%E5%86%99%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86/" title="手写中文文本识别数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">手写中文文本识别数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/06/dianshu/%E5%8E%9F%E5%88%9B%E6%89%91%E5%85%8B%E7%89%8C%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="扑克牌图像数据集">
+                        <span class="hidden-mobile">扑克牌图像数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
