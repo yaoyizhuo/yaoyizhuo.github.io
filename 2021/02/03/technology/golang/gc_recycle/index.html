@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
   <link rel="icon" href="/home/icon.png">
   
-    <link rel="canonical" href="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/"/>
+    <link rel="canonical" href="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -24,66 +24,66 @@
     <meta name="description" content="Golang垃圾回收的原理以及优势…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go-GC垃圾回收">
-<meta property="og:url" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/index.html">
+<meta property="og:url" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/index.html">
 <meta property="og:site_name" content="zhyyao">
 <meta property="og:description" content="Golang垃圾回收的原理以及优势…">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_1.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_2.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_3.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_4.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_5.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_6.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_7.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_8.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_9.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_10.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_11.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_12.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_13.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_14.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_15.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_16.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_17.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_18.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_19.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_20.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_21.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_22.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_23.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_24.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_25.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_26.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_27.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_28.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_29.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_30.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_31.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_32.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_33.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_34.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_35.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_36.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_37.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_38.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_39.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_40.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_41.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_42.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_43.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_44.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_45.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_46.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_47.png">
-<meta property="og:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image_48.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_1.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_2.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_3.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_4.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_5.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_6.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_7.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_8.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_9.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_10.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_11.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_12.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_13.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_14.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_15.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_16.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_17.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_18.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_19.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_20.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_21.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_22.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_23.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_24.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_25.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_26.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_27.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_28.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_29.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_30.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_31.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_32.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_33.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_34.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_35.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_36.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_37.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_38.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_39.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_40.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_41.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_42.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_43.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_44.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_45.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_46.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_47.png">
+<meta property="og:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image_48.png">
 <meta property="article:published_time" content="2021-02-03T07:51:53.000Z">
 <meta property="article:modified_time" content="2025-03-17T02:05:30.398Z">
 <meta property="article:author" content="zhyyao">
 <meta property="article:tag" content="知识点">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/image.png">
+<meta name="twitter:image" content="https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/image.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -127,7 +127,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"zhyyao.me","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.me"}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -621,7 +621,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Go-GC垃圾回收</div>
-      <div>https://zhyyao.me/2021/02/03/technology/golang/gc_recycle/</div>
+      <div>https://zhyyao.cn/2021/02/03/technology/golang/gc_recycle/</div>
     </div>
     <div class="license-meta">
       
