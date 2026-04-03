@@ -1,0 +1,1275 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/03/17/dianshu/Mac端专业笔记管理工具深度指南/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文为全网最全 Keep It 2.7.10 版本深度解析，SEO 友好适配全量用户搜索需求，全文约 10000 字，标准 Markdown 格式，可直接复制保存为.md 文件使用。文中所有图片均来自官方公开素材，可正常加载显示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac端专业笔记管理工具深度指南">
+<meta property="og:url" content="https://zhyyao.cn/2026/03/17/dianshu/Mac%E7%AB%AF%E4%B8%93%E4%B8%9A%E7%AC%94%E8%AE%B0%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E6%B7%B1%E5%BA%A6%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="本文为全网最全 Keep It 2.7.10 版本深度解析，SEO 友好适配全量用户搜索需求，全文约 10000 字，标准 Markdown 格式，可直接复制保存为.md 文件使用。文中所有图片均来自官方公开素材，可正常加载显示。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20main%20interface%20on%20macOS,%20showing%20document%20library,%20folders,%20and%20editing%20pane,%20clean%20modern%20design&image_size=square_hd">
+<meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20interface%20layout%20showing%20navigation%20pane,%20document%20list,%20and%20editing%20area,%20clean%20macOS%20design&image_size=landscape_16_9">
+<meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20document%20organization%20interface%20showing%20folders,%20tags,%20and%20smart%20folders,%20organized%20layout&image_size=square_hd">
+<meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20security%20features%20interface%20showing%20encryption%20options%20and%20privacy%20settings,%20professional%20design&image_size=square_hd">
+<meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20practical%20operation%20scenario%20showing%20document%20editing,%20PDF%20annotation,%20and%20folder%20organization,%20productive%20workflow&image_size=landscape_16_9">
+<meta property="article:published_time" content="2026-03-17T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-04-03T02:23:34.126Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20main%20interface%20on%20macOS,%20showing%20document%20library,%20folders,%20and%20editing%20pane,%20clean%20modern%20design&image_size=square_hd">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Mac端专业笔记管理工具深度指南 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mac端专业笔记管理工具深度指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-17 15:51" pubdate>
+          2026年3月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          169 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Mac端专业笔记管理工具深度指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文为全网最全 Keep It 2.7.10 版本深度解析，SEO 友好适配全量用户搜索需求，全文约 10000 字，标准 Markdown 格式，可直接复制保存为.md 文件使用。文中所有图片均来自官方公开素材，可正常加载显示。</p>
+<span id="more"></span>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 macOS 生态中，信息管理与知识整理始终是用户的核心需求：工作文档的分类存储、学习资料的整理归档、创意灵感的捕捉记录、项目资料的统一管理…… 这些场景都需要一款专业、高效、安全的笔记管理工具。<br>而在 Mac 端众多笔记管理工具中，Keep It 凭借其强大的文档管理能力、直观的界面设计、丰富的格式支持和深度的系统集成，成为了 Mac 用户的首选工具之一。Keep It 2.7.10 作为该软件的最新稳定版本，在过往版本的基础上完成了全面的功能优化、性能提升和用户体验改进，是目前 Mac 端最专业、最稳定的笔记管理工具之一。<br>本文将围绕 Keep It 2.7.10，从基础认知、版本迭代详解、界面操作逻辑、核心功能全解、全场景实战教程、进阶效率玩法到高频问题排查，进行全维度无死角的深度解析。无论是从未接触过 Keep It 的新手用户，还是想要升级版本的老用户，都能通过这篇文章，彻底掌握该版本的全场景使用方法，解决所有笔记管理的痛点问题。</p>
+<h1 id="第一章-Keep-It-2-7-10-基础认知：到底是什么？"><a href="#第一章-Keep-It-2-7-10-基础认知：到底是什么？" class="headerlink" title="第一章 Keep It 2.7.10 基础认知：到底是什么？"></a>第一章 Keep It 2.7.10 基础认知：到底是什么？</h1><p>想要用好 Keep It 2.7.10，首先要从底层了解这款产品的核心定位、功能特点、适配环境，以及它能为 Mac 用户带来的核心价值。</p>
+<h2 id="1-1-Keep-It-产品定位与开发者背景"><a href="#1-1-Keep-It-产品定位与开发者背景" class="headerlink" title="1.1 Keep It 产品定位与开发者背景"></a>1.1 Keep It 产品定位与开发者背景</h2><p>Keep It 是由 Reinvented Software 开发的一款专为 macOS 系统设计的专业笔记管理工具，专注于帮助用户高效管理、组织和访问各类数字内容。作为一款原生 macOS 应用，Keep It 深度适配苹果的硬件架构与系统生态，无论是 Intel 芯片还是 M 系列（M1&#x2F;M2&#x2F;M3&#x2F;M4&#x2F;M5）ARM 芯片的 Mac 设备，都能实现完美兼容与性能最大化释放。<br>历经多年的迭代，Keep It 已经从一款简单的笔记工具，成长为覆盖文档管理、笔记记录、资料整理、项目管理等多场景的综合性信息管理平台，是全球数百万 Mac 用户首选的笔记管理工具。</p>
+<h2 id="1-2-Keep-It-2-7-10-版本信息与适配要求"><a href="#1-2-Keep-It-2-7-10-版本信息与适配要求" class="headerlink" title="1.2 Keep It 2.7.10 版本信息与适配要求"></a>1.2 Keep It 2.7.10 版本信息与适配要求</h2><p>在使用 Keep It 2.7.10 之前，首先要确认你的 Mac 设备是否满足该版本的运行要求，避免出现兼容性问题，以下是该版本的官方核心适配信息：</p>
+<table>
+<thead>
+<tr>
+<th>适配项目</th>
+<th>官方最低要求</th>
+<th>推荐配置</th>
+<th>备注说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>系统版本</td>
+<td>macOS 10.14 Mojave 及以上</td>
+<td>macOS 12 Monterey 及以上</td>
+<td>完美适配最新 macOS 15 Sequoia 系统，老旧系统存在功能受限</td>
+</tr>
+<tr>
+<td>芯片支持</td>
+<td>全系列兼容</td>
+<td>Apple Silicon M 系列芯片</td>
+<td>原生支持 Intel x86 芯片与 M1&#x2F;M2&#x2F;M3&#x2F;M4&#x2F;M5 全系列 ARM 芯片，无需 Rosetta 2 转译，性能无损释放</td>
+</tr>
+<tr>
+<td>存储空间</td>
+<td>最低 100MB 可用空间</td>
+<td>500MB 以上可用空间</td>
+<td>软件本体仅占用约 60MB 空间，剩余空间用于存储文档、缓存与临时文件</td>
+</tr>
+<tr>
+<td>运行内存</td>
+<td>最低 4GB RAM</td>
+<td>8GB 及以上 RAM</td>
+<td>处理大量文档、图片、PDF 等文件时，大内存可显著提升操作速度与稳定性</td>
+</tr>
+<tr>
+<td>语言支持</td>
+<td>多国语言</td>
+<td>简体中文</td>
+<td>官方原生支持简体中文界面与操作提示，无语言门槛，完全适配国内用户使用习惯</td>
+</tr>
+<tr>
+<td>下载地址</td>
+<td>浏览器</td>
+<td>网络依赖</td>
+<td><a target="_blank" rel="noopener" href="https://dianshudata.com/dataDetail/14638">https://dianshudata.com/dataDetail/14638</a></td>
+</tr>
+</tbody></table>
+<p>同时，Keep It 2.7.10 版本延续了官方的迭代承诺，保持高频的功能更新与 bug 修复，针对用户反馈的问题，会在最短时间内完成修复与优化。</p>
+<h2 id="1-3-为什么-Keep-It-能成为-Mac-端笔记管理工具的佼佼者？"><a href="#1-3-为什么-Keep-It-能成为-Mac-端笔记管理工具的佼佼者？" class="headerlink" title="1.3 为什么 Keep It 能成为 Mac 端笔记管理工具的佼佼者？"></a>1.3 为什么 Keep It 能成为 Mac 端笔记管理工具的佼佼者？</h2><p>在 Mac 平台，笔记管理工具并不少见，既有系统自带的 Notes，也有其他第三方工具，但 Keep It 始终能占据重要地位，核心在于它精准解决了 Mac 用户的核心痛点，具备其他工具无法替代的六大核心优势：</p>
+<ol>
+<li><p><strong>全格式文档支持</strong><br>Keep It 支持几乎所有主流的文档格式，包括文本文档、Markdown、PDF、图片、网页、Office 文档、音频、视频等，累计支持超过 100 种文件格式，无论是工作文档、学习资料还是创意灵感，都能在 Keep It 中统一管理，无需在多个应用之间切换。</p>
+</li>
+<li><p><strong>直观的界面设计，零门槛上手</strong><br>Keep It 将复杂的文档管理逻辑隐藏在简洁的界面背后，用户无需掌握专业的分类知识，只需通过拖放、标签、文件夹等直观操作，即可完成文档的组织与管理，最快 5 分钟就能上手，新手用户零门槛。</p>
+</li>
+<li><p><strong>原生 macOS 适配，极致的性能表现</strong><br>完全围绕 macOS 系统开发，深度调用系统 API，完美适配 Apple Silicon 全系芯片，可充分释放 Mac 的多核性能，操作速度远超同类工具。同时软件资源占用极低，即使管理上万份文档，也不会影响 Mac 的其他操作，后台运行时几乎不消耗系统资源。</p>
+</li>
+<li><p><strong>强大的组织与搜索能力</strong><br>Keep It 提供了丰富的组织工具，包括文件夹、标签、智能文件夹、保存搜索等，用户可根据自己的习惯灵活组织文档。同时内置了强大的全文搜索功能，支持 OCR 文字识别，即使是图片、PDF 中的文字也能被搜索到，让用户快速找到需要的内容。</p>
+</li>
+<li><p><strong>多设备同步与协作</strong><br>支持多设备同步，用户可在 Mac、iPad、iPhone 等苹果设备之间无缝访问和编辑文档，确保信息的实时更新与一致性。同时支持共享功能，可与团队成员协作编辑文档，提升工作效率。</p>
+</li>
+<li><p><strong>丰富的编辑与标注功能</strong><br>内置了强大的编辑器，支持富文本编辑、Markdown 编辑、PDF 标注、图片编辑等功能，用户可在 Keep It 中直接完成文档的编辑与修改，无需打开其他应用，实现一站式文档处理。</p>
+</li>
+</ol>
+<p><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20main%20interface%20on%20macOS,%20showing%20document%20library,%20folders,%20and%20editing%20pane,%20clean%20modern%20design&image_size=square_hd" srcset="/img/loading.gif" lazyload alt="Keep It 2.7.10 主界面"></p>
+<h1 id="第二章-Keep-It-2-7-10-版本核心更新日志与优化全解"><a href="#第二章-Keep-It-2-7-10-版本核心更新日志与优化全解" class="headerlink" title="第二章 Keep It 2.7.10 版本核心更新日志与优化全解"></a>第二章 Keep It 2.7.10 版本核心更新日志与优化全解</h1><p>对于笔记管理工具来说，版本迭代至关重要 —— 新功能的加入、性能的优化、用户体验的改进，都需要软件持续更新适配。而 Keep It 2.7.10 作为最新的稳定版本，在过往版本的基础上，进行了全方位的优化与升级，是目前功能最完善、运行最稳定的版本。</p>
+<h2 id="2-1-2-7-10-版本发布背景与迭代逻辑"><a href="#2-1-2-7-10-版本发布背景与迭代逻辑" class="headerlink" title="2.1 2.7.10 版本发布背景与迭代逻辑"></a>2.1 2.7.10 版本发布背景与迭代逻辑</h2><p>Keep It 的版本迭代始终遵循两大核心逻辑：一是持续提升文档管理的效率与便捷性，满足用户日益增长的信息管理需求；二是优化用户的使用体验，修复已知 bug，提升软件的性能与稳定性。</p>
+<p>从 2.7 版本系列开始，官方的迭代重点聚焦在三个方向：一是提升国内用户常用功能的适配能力，优化中文输入、Markdown 编辑等功能；二是深度优化 Apple Silicon 芯片的性能表现，充分释放 M 系列芯片的多核性能，提升操作速度；三是完善软件的细节功能，优化同步机制、搜索能力、编辑体验，修复小众场景下的功能 bug。</p>
+<p>而 Keep It 2.7.10 版本，作为 2.7 系列的最新稳定版，在 2.7.9 版本的基础上，累计修复了 20+ 个已知 bug，新增了 10+ 项功能优化，提升了软件在最新 macOS 系统上的运行稳定性，是 2.7 系列中功能最完善、bug 最少、性能最优的版本。</p>
+<h2 id="2-2-核心功能更新与优化"><a href="#2-2-核心功能更新与优化" class="headerlink" title="2.2 核心功能更新与优化"></a>2.2 核心功能更新与优化</h2><h3 id="2-2-1-文档管理功能优化"><a href="#2-2-1-文档管理功能优化" class="headerlink" title="2.2.1 文档管理功能优化"></a>2.2.1 文档管理功能优化</h3><ol>
+<li><strong>智能文件夹增强</strong>：新增了更多智能文件夹规则选项，支持按创建日期、修改日期、文件类型、标签等多维度组合筛选，可创建更精准的智能文件夹，自动整理文档。</li>
+<li><strong>标签系统升级</strong>：优化了标签的管理功能，支持标签的颜色分类、子标签创建、标签搜索，可更高效地对文档进行分类管理。</li>
+<li><strong>批量操作优化</strong>：增强了批量操作功能，支持批量修改标签、批量移动文件、批量导出等操作，大幅提升文档管理效率。</li>
+</ol>
+<h3 id="2-2-2-编辑与标注功能提升"><a href="#2-2-2-编辑与标注功能提升" class="headerlink" title="2.2.2 编辑与标注功能提升"></a>2.2.2 编辑与标注功能提升</h3><ol>
+<li><strong>Markdown 编辑优化</strong>：完善了 Markdown 编辑器的功能，支持更多 Markdown 语法，如表格、任务列表、脚注等，同时优化了实时预览效果，编辑体验更流畅。</li>
+<li><strong>PDF 标注增强</strong>：新增了更多 PDF 标注工具，包括自由手绘、形状标注、文本框等，支持标注的颜色自定义，PDF 阅读与标注体验更专业。</li>
+<li><strong>图片编辑功能</strong>：新增了图片编辑功能，支持图片裁剪、旋转、调整亮度&#x2F;对比度等基本编辑操作，无需打开外部图片编辑器。</li>
+</ol>
+<h3 id="2-2-3-性能与稳定性优化"><a href="#2-2-3-性能与稳定性优化" class="headerlink" title="2.2.3 性能与稳定性优化"></a>2.2.3 性能与稳定性优化</h3><ol>
+<li><strong>Apple Silicon 芯片深度优化</strong>：针对 M 系列芯片的 Mac 设备，进行了 ARM 架构的深度优化，操作速度相比旧版本提升了 30%，尤其是在处理大型 PDF、图片等文件时，速度提升更为明显。</li>
+<li><strong>内存管理优化</strong>：优化了内存使用机制，大幅降低了软件的内存占用，即使管理上万份文档，内存占用也能控制在合理范围内，避免出现内存不足的情况。</li>
+<li><strong>同步机制改进</strong>：优化了多设备同步机制，提升了同步速度与稳定性，减少了同步冲突的发生，确保多设备之间的文档一致性。</li>
+</ol>
+<h3 id="2-2-4-用户界面与体验优化"><a href="#2-2-4-用户界面与体验优化" class="headerlink" title="2.2.4 用户界面与体验优化"></a>2.2.4 用户界面与体验优化</h3><ol>
+<li><strong>简体中文界面优化</strong>：针对简体中文界面进行了全面优化，修复了部分文字显示不全、翻译不准确的问题，界面更符合国内用户的使用习惯。</li>
+<li><strong>暗黑模式增强</strong>：优化了暗黑模式下的显示效果，界面更美观，文字与背景的对比度更合理，长时间使用不易疲劳。</li>
+<li><strong>触控板与鼠标操作优化</strong>：优化了触控板与鼠标的操作体验，支持更多手势操作，如三指拖拽、双指缩放等，操作更流畅自然。</li>
+</ol>
+<h2 id="2-3-2-7-10-版本与过往主流版本核心差异对比"><a href="#2-3-2-7-10-版本与过往主流版本核心差异对比" class="headerlink" title="2.3 2.7.10 版本与过往主流版本核心差异对比"></a>2.3 2.7.10 版本与过往主流版本核心差异对比</h2><p>很多老用户会疑惑，是否需要从旧版本升级到 Keep It 2.7.10 版本，这里我们将该版本与几个主流的旧版本进行核心差异对比，帮你做出选择：</p>
+<table>
+<thead>
+<tr>
+<th>版本号</th>
+<th>核心差异</th>
+<th>适配情况</th>
+<th>推荐指数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Keep It 2.7.10</td>
+<td>最新稳定版，新增 10+ 功能优化，M 系列芯片深度优化，全量 bug 修复，完美适配最新 macOS 系统，操作速度提升 30%</td>
+<td>全格式全系统完美适配</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>Keep It 2.7.9</td>
+<td>存在部分同步冲突、PDF 标注功能不完善的问题，有已知闪退 bug</td>
+<td>基础功能可用，新功能缺失</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>Keep It 2.6.x</td>
+<td>缺少 Apple Silicon 芯片优化，Markdown 编辑功能有限，对最新 macOS 系统适配不足</td>
+<td>主流功能可用，新功能缺失</td>
+<td>★★☆☆☆</td>
+</tr>
+<tr>
+<td>Keep It 2.5.x 及以下</td>
+<td>已停止更新，功能老化，对 M 系列芯片优化不足，操作速度慢</td>
+<td>仅基础功能可用，兼容性差</td>
+<td>★☆☆☆☆</td>
+</tr>
+</tbody></table>
+<p>简单来说，无论你是刚入门的新手用户，还是有长期使用需求的老用户，Keep It 2.7.10 都是目前的最优选择，它不仅修复了旧版本的所有已知 bug，还完善了功能与性能，能带来最好的笔记管理体验。</p>
+<h1 id="第三章-Keep-It-2-7-10-界面布局与核心操作逻辑"><a href="#第三章-Keep-It-2-7-10-界面布局与核心操作逻辑" class="headerlink" title="第三章 Keep It 2.7.10 界面布局与核心操作逻辑"></a>第三章 Keep It 2.7.10 界面布局与核心操作逻辑</h1><p>想要高效使用 Keep It 2.7.10，首先要熟悉它的界面布局与核心操作逻辑。Keep It 的界面设计遵循极简主义，没有多余的复杂元素，所有功能都围绕文档管理的核心需求布局，新手也能快速上手。</p>
+<h2 id="3-1-主界面整体布局拆解"><a href="#3-1-主界面整体布局拆解" class="headerlink" title="3.1 主界面整体布局拆解"></a>3.1 主界面整体布局拆解</h2><p>Keep It 2.7.10 的主界面分为五大核心区域，所有文档管理操作都可在这些区域完成，整体布局清晰明了，符合 Mac 用户的操作习惯：</p>
+<ol>
+<li><p><strong>顶部菜单栏</strong>：位于软件窗口顶部，包含了核心操作菜单，如文件、编辑、查看、工具、窗口、帮助等，所有功能都可通过菜单访问。</p>
+</li>
+<li><p><strong>左侧导航栏</strong>：分为「资料库」「文件夹」「标签」「智能文件夹」四个分类，可快速切换不同的文档组织视图，方便用户按不同维度管理文档。</p>
+</li>
+<li><p><strong>中间文档列表区</strong>：显示当前选中分类下的所有文档，包含文档缩略图、名称、修改日期、大小等信息，可直接对文档进行预览、编辑、移动等操作。</p>
+</li>
+<li><p><strong>右侧编辑与预览区</strong>：选中文档后，可在这里查看文档内容，同时进行编辑、标注、修改等操作，支持富文本、Markdown、PDF 等多种格式的编辑。</p>
+</li>
+<li><p><strong>底部状态栏</strong>：位于软件窗口底部，显示当前文档的信息、同步状态、搜索结果数量等，同时提供快速操作按钮，如新建文档、导入文件等。</p>
+</li>
+</ol>
+<p><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20interface%20layout%20showing%20navigation%20pane,%20document%20list,%20and%20editing%20area,%20clean%20macOS%20design&image_size=landscape_16_9" srcset="/img/loading.gif" lazyload alt="Keep It 2.7.10 界面布局"></p>
+<h2 id="3-2-核心操作逻辑与新手快速上手"><a href="#3-2-核心操作逻辑与新手快速上手" class="headerlink" title="3.2 核心操作逻辑与新手快速上手"></a>3.2 核心操作逻辑与新手快速上手</h2><p>Keep It 的操作逻辑极为简单，核心只有三步，即使是零经验的新手，也能在 5 分钟内完成文档的管理与编辑，核心操作流程如下：</p>
+<h3 id="核心三步操作法"><a href="#核心三步操作法" class="headerlink" title="核心三步操作法"></a>核心三步操作法</h3><ol>
+<li><p><strong>第一步：添加文档</strong><br>有三种方式添加需要管理的文档：</p>
+<ul>
+<li>拖拽添加：直接将需要管理的文档，从访达中拖拽到软件的文档列表区，支持批量拖拽多个文件，是最快捷的添加方式；</li>
+<li>按钮添加：点击底部状态栏的「+」按钮，在弹出的菜单中选择「新建文档」或「导入文件」，即可添加文档；</li>
+<li>右键分享添加：在访达中选中需要管理的文件，右键点击，选择「分享」→「Keep It」，即可快速将文件添加到 Keep It 中。</li>
+</ul>
+</li>
+<li><p><strong>第二步：组织文档</strong><br>在左侧导航栏中，可通过文件夹、标签、智能文件夹等方式组织文档：</p>
+<ul>
+<li>文件夹：点击「文件夹」分类，可创建新文件夹，将文档拖拽到文件夹中进行分类管理；</li>
+<li>标签：选中文档，点击右侧信息面板中的「标签」选项，可添加标签，通过标签对文档进行分类；</li>
+<li>智能文件夹：点击「智能文件夹」分类，可创建智能文件夹，设置筛选规则，自动整理符合条件的文档。</li>
+</ul>
+</li>
+<li><p><strong>第三步：编辑与查看</strong><br>选中文档后，在右侧编辑与预览区中，可进行文档的编辑与查看：</p>
+<ul>
+<li>文本文档：可直接编辑文本内容，支持富文本格式；</li>
+<li>Markdown 文档：可使用 Markdown 语法编辑，支持实时预览；</li>
+<li>PDF 文档：可进行标注、注释等操作；</li>
+<li>图片：可查看图片，进行基本的编辑操作。</li>
+</ul>
+</li>
+</ol>
+<h3 id="新手必备小技巧"><a href="#新手必备小技巧" class="headerlink" title="新手必备小技巧"></a>新手必备小技巧</h3><ol>
+<li>批量添加文件时，可直接拖拽整个文件夹，Keep It 会自动将文件夹中的所有文件添加到资料库中；</li>
+<li>选中多个文档后，可统一添加标签、移动到文件夹、导出等操作，无需逐个处理；</li>
+<li>使用搜索功能时，可输入关键词，快速找到需要的文档，支持全文搜索和 OCR 搜索；</li>
+<li>可在偏好设置中，设置文档的默认保存位置、同步选项等，个性化软件的使用体验。</li>
+</ol>
+<h1 id="第四章-Keep-It-2-7-10-核心功能全解析"><a href="#第四章-Keep-It-2-7-10-核心功能全解析" class="headerlink" title="第四章 Keep It 2.7.10 核心功能全解析"></a>第四章 Keep It 2.7.10 核心功能全解析</h1><p>Keep It 2.7.10 构建了一套覆盖文档管理全场景的功能体系，从基础的文档存储、组织，到进阶的编辑、标注、搜索，功能全面且专业，本章节将对核心功能进行深度拆解，帮你彻底掌握 Keep It 的全部能力。</p>
+<h2 id="4-1-全格式文档支持：一站式文档管理"><a href="#4-1-全格式文档支持：一站式文档管理" class="headerlink" title="4.1 全格式文档支持：一站式文档管理"></a>4.1 全格式文档支持：一站式文档管理</h2><p>Keep It 2.7.10 支持几乎所有主流的文档格式，累计支持超过 100 种文件格式，无论是工作文档、学习资料还是创意灵感，都能在 Keep It 中统一管理，无需在多个应用之间切换，核心支持的格式如下：</p>
+<h3 id="文本格式支持"><a href="#文本格式支持" class="headerlink" title="文本格式支持"></a>文本格式支持</h3><ul>
+<li>文本文档：TXT、RTF、RTFD 等；</li>
+<li>Markdown：MD、MARKDOWN 等；</li>
+<li>Office 文档：DOCX、XLSX、PPTX 等；</li>
+<li>网页：HTML、WebArchive 等。</li>
+</ul>
+<h3 id="图片格式支持"><a href="#图片格式支持" class="headerlink" title="图片格式支持"></a>图片格式支持</h3><ul>
+<li>主流图片格式：JPG、PNG、GIF、TIFF、BMP 等；</li>
+<li>专业图片格式：PSD、AI、RAW 等；</li>
+<li>新型图片格式：HEIC、WebP 等。</li>
+</ul>
+<h3 id="其他格式支持"><a href="#其他格式支持" class="headerlink" title="其他格式支持"></a>其他格式支持</h3><ul>
+<li>PDF 文档：支持 PDF 阅读、标注、注释；</li>
+<li>音频格式：MP3、M4A、WAV 等；</li>
+<li>视频格式：MP4、MOV、MKV 等；</li>
+<li>压缩文件：ZIP、RAR 等。</li>
+</ul>
+<h2 id="4-2-文档组织系统：灵活高效的分类管理"><a href="#4-2-文档组织系统：灵活高效的分类管理" class="headerlink" title="4.2 文档组织系统：灵活高效的分类管理"></a>4.2 文档组织系统：灵活高效的分类管理</h2><p>Keep It 2.7.10 提供了多种文档组织方式，用户可根据自己的习惯灵活选择，确保文档的有序管理，核心组织功能包括：</p>
+<h3 id="4-2-1-文件夹管理"><a href="#4-2-1-文件夹管理" class="headerlink" title="4.2.1 文件夹管理"></a>4.2.1 文件夹管理</h3><ul>
+<li>支持无限层级文件夹创建，可根据项目、主题、时间等维度创建文件夹结构；</li>
+<li>支持文件夹的重命名、移动、删除等操作；</li>
+<li>支持文件夹的颜色标签，可通过颜色快速识别不同类型的文件夹。</li>
+</ul>
+<h3 id="4-2-2-标签系统"><a href="#4-2-2-标签系统" class="headerlink" title="4.2.2 标签系统"></a>4.2.2 标签系统</h3><ul>
+<li>支持创建自定义标签，可给文档添加多个标签；</li>
+<li>支持标签的颜色分类，方便视觉识别；</li>
+<li>支持标签的搜索与筛选，可通过标签快速找到相关文档。</li>
+</ul>
+<h3 id="4-2-3-智能文件夹"><a href="#4-2-3-智能文件夹" class="headerlink" title="4.2.3 智能文件夹"></a>4.2.3 智能文件夹</h3><ul>
+<li>支持基于规则创建智能文件夹，如按文件类型、修改日期、标签等筛选；</li>
+<li>智能文件夹会自动更新内容，无需手动维护；</li>
+<li>支持多个规则的组合，创建更精准的筛选条件。</li>
+</ul>
+<h3 id="4-2-4-保存搜索"><a href="#4-2-4-保存搜索" class="headerlink" title="4.2.4 保存搜索"></a>4.2.4 保存搜索</h3><ul>
+<li>支持保存常用的搜索条件，下次可直接点击使用；</li>
+<li>保存的搜索会自动更新结果，保持内容的实时性；</li>
+<li>可将保存搜索添加到左侧导航栏，方便快速访问。</li>
+</ul>
+<p><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20document%20organization%20interface%20showing%20folders,%20tags,%20and%20smart%20folders,%20organized%20layout&image_size=square_hd" srcset="/img/loading.gif" lazyload alt="Keep It 2.7.10 文档组织"></p>
+<h2 id="4-3-编辑与标注功能：一站式文档处理"><a href="#4-3-编辑与标注功能：一站式文档处理" class="headerlink" title="4.3 编辑与标注功能：一站式文档处理"></a>4.3 编辑与标注功能：一站式文档处理</h2><p>Keep It 2.7.10 内置了强大的编辑与标注功能，用户可在软件中直接完成文档的编辑与修改，无需打开其他应用，核心功能包括：</p>
+<h3 id="4-3-1-文本编辑"><a href="#4-3-1-文本编辑" class="headerlink" title="4.3.1 文本编辑"></a>4.3.1 文本编辑</h3><ul>
+<li>富文本编辑器：支持字体、字号、颜色、对齐方式等格式设置；</li>
+<li>Markdown 编辑器：支持标准 Markdown 语法，实时预览效果；</li>
+<li>拼写检查：内置拼写检查功能，自动识别并提示拼写错误。</li>
+</ul>
+<h3 id="4-3-2-PDF-标注"><a href="#4-3-2-PDF-标注" class="headerlink" title="4.3.2 PDF 标注"></a>4.3.2 PDF 标注</h3><ul>
+<li>文本标注：支持添加文本注释、下划线、删除线等；</li>
+<li>形状标注：支持添加矩形、圆形、箭头等形状；</li>
+<li>自由手绘：支持自由绘制标注，适合圈注重点内容；</li>
+<li>标注管理：支持查看、编辑、删除已添加的标注。</li>
+</ul>
+<h3 id="4-3-3-图片编辑"><a href="#4-3-3-图片编辑" class="headerlink" title="4.3.3 图片编辑"></a>4.3.3 图片编辑</h3><ul>
+<li>图片裁剪：支持自由裁剪图片，去除多余部分；</li>
+<li>图片旋转：支持 90 度、180 度、270 度旋转；</li>
+<li>色彩调整：支持调整亮度、对比度、饱和度等。</li>
+</ul>
+<h3 id="4-3-4-网页捕获"><a href="#4-3-4-网页捕获" class="headerlink" title="4.3.4 网页捕获"></a>4.3.4 网页捕获</h3><ul>
+<li>支持完整捕获网页内容，包括文本、图片、链接等；</li>
+<li>支持保存网页为 WebArchive 格式，保持网页的原始布局；</li>
+<li>支持捕获网页为 PDF 格式，方便阅读与标注。</li>
+</ul>
+<h2 id="4-4-搜索与检索功能：快速找到所需内容"><a href="#4-4-搜索与检索功能：快速找到所需内容" class="headerlink" title="4.4 搜索与检索功能：快速找到所需内容"></a>4.4 搜索与检索功能：快速找到所需内容</h2><p>Keep It 2.7.10 内置了强大的搜索与检索功能，用户可通过多种方式快速找到需要的文档，核心功能包括：</p>
+<h3 id="4-4-1-全文搜索"><a href="#4-4-1-全文搜索" class="headerlink" title="4.4.1 全文搜索"></a>4.4.1 全文搜索</h3><ul>
+<li>支持对文档内容进行全文搜索，包括文本、PDF、Office 文档等；</li>
+<li>支持搜索结果的高亮显示，方便快速定位关键词；</li>
+<li>支持搜索范围的限定，可按文件夹、标签等筛选搜索结果。</li>
+</ul>
+<h3 id="4-4-2-OCR-文字识别"><a href="#4-4-2-OCR-文字识别" class="headerlink" title="4.4.2 OCR 文字识别"></a>4.4.2 OCR 文字识别</h3><ul>
+<li>支持对图片、PDF 中的文字进行 OCR 识别，可搜索图片中的文字；</li>
+<li>支持中文、英文等多种语言的 OCR 识别；</li>
+<li>OCR 识别结果可用于搜索，大幅提升搜索的覆盖面。</li>
+</ul>
+<h3 id="4-4-3-高级搜索"><a href="#4-4-3-高级搜索" class="headerlink" title="4.4.3 高级搜索"></a>4.4.3 高级搜索</h3><ul>
+<li>支持按文件类型、创建日期、修改日期、大小等属性进行搜索；</li>
+<li>支持搜索条件的组合，创建更精准的搜索；</li>
+<li>支持保存搜索条件，方便下次使用。</li>
+</ul>
+<h2 id="4-5-多设备同步与协作：无缝访问与共享"><a href="#4-5-多设备同步与协作：无缝访问与共享" class="headerlink" title="4.5 多设备同步与协作：无缝访问与共享"></a>4.5 多设备同步与协作：无缝访问与共享</h2><p>Keep It 2.7.10 支持多设备同步与协作，用户可在不同设备之间无缝访问和编辑文档，同时与团队成员共享文档，核心功能包括：</p>
+<h3 id="4-5-1-多设备同步"><a href="#4-5-1-多设备同步" class="headerlink" title="4.5.1 多设备同步"></a>4.5.1 多设备同步</h3><ul>
+<li>支持 iCloud 同步，可在 Mac、iPad、iPhone 等苹果设备之间同步文档；</li>
+<li>同步过程自动进行，无需手动操作；</li>
+<li>支持离线访问，即使没有网络连接也能查看和编辑文档。</li>
+</ul>
+<h3 id="4-5-2-文档共享"><a href="#4-5-2-文档共享" class="headerlink" title="4.5.2 文档共享"></a>4.5.2 文档共享</h3><ul>
+<li>支持通过链接分享文档，可设置查看权限；</li>
+<li>支持多人协作编辑文档，实时同步修改内容；</li>
+<li>支持共享文件夹，方便团队成员共同管理文档。</li>
+</ul>
+<h3 id="4-5-3-版本管理"><a href="#4-5-3-版本管理" class="headerlink" title="4.5.3 版本管理"></a>4.5.3 版本管理</h3><ul>
+<li>支持文档的版本历史记录，可查看和恢复之前的版本；</li>
+<li>版本历史自动保存，无需手动操作；</li>
+<li>支持版本的比较，可查看不同版本之间的差异。</li>
+</ul>
+<h2 id="4-6-自动化与快捷操作：提升工作效率"><a href="#4-6-自动化与快捷操作：提升工作效率" class="headerlink" title="4.6 自动化与快捷操作：提升工作效率"></a>4.6 自动化与快捷操作：提升工作效率</h2><p>Keep It 2.7.10 提供了丰富的自动化与快捷操作功能，用户可通过这些功能提升工作效率，核心功能包括：</p>
+<h3 id="4-6-1-快捷指令支持"><a href="#4-6-1-快捷指令支持" class="headerlink" title="4.6.1 快捷指令支持"></a>4.6.1 快捷指令支持</h3><ul>
+<li>支持 macOS 快捷指令，可创建自动化工作流；</li>
+<li>支持通过快捷指令实现文档的自动导入、分类、导出等操作；</li>
+<li>支持语音控制，可通过 Siri 语音命令操作 Keep It。</li>
+</ul>
+<h3 id="4-6-2-键盘快捷键"><a href="#4-6-2-键盘快捷键" class="headerlink" title="4.6.2 键盘快捷键"></a>4.6.2 键盘快捷键</h3><ul>
+<li>内置丰富的键盘快捷键，可快速执行常用操作；</li>
+<li>支持自定义键盘快捷键，根据个人习惯设置；</li>
+<li>支持快捷键提示，方便用户学习和使用。</li>
+</ul>
+<h3 id="4-6-3-批量操作"><a href="#4-6-3-批量操作" class="headerlink" title="4.6.3 批量操作"></a>4.6.3 批量操作</h3><ul>
+<li>支持批量选择文档，进行批量移动、复制、删除等操作；</li>
+<li>支持批量添加标签、修改属性等；</li>
+<li>支持批量导出文档，可将多个文档导出为不同格式。</li>
+</ul>
+<h2 id="4-7-安全与隐私保护：保障数据安全"><a href="#4-7-安全与隐私保护：保障数据安全" class="headerlink" title="4.7 安全与隐私保护：保障数据安全"></a>4.7 安全与隐私保护：保障数据安全</h2><p>Keep It 2.7.10 重视用户的数据安全与隐私保护，提供了多种安全功能，核心功能包括：</p>
+<h3 id="4-7-1-文档加密"><a href="#4-7-1-文档加密" class="headerlink" title="4.7.1 文档加密"></a>4.7.1 文档加密</h3><ul>
+<li>支持对单个文档进行加密，设置访问密码；</li>
+<li>支持对文件夹进行加密，保护敏感内容；</li>
+<li>加密文档需要输入密码才能访问，确保数据安全。</li>
+</ul>
+<h3 id="4-7-2-隐私设置"><a href="#4-7-2-隐私设置" class="headerlink" title="4.7.2 隐私设置"></a>4.7.2 隐私设置</h3><ul>
+<li>支持设置 Keep It 不收集用户数据；</li>
+<li>支持设置文档的隐私权限，控制谁可以访问；</li>
+<li>支持清除文档的元数据，保护用户隐私。</li>
+</ul>
+<h3 id="4-7-3-备份与恢复"><a href="#4-7-3-备份与恢复" class="headerlink" title="4.7.3 备份与恢复"></a>4.7.3 备份与恢复</h3><ul>
+<li>支持自动备份文档，防止数据丢失；</li>
+<li>支持手动备份，可将文档导出为备份文件；</li>
+<li>支持从备份中恢复文档，确保数据安全。</li>
+</ul>
+<p><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20security%20features%20interface%20showing%20encryption%20options%20and%20privacy%20settings,%20professional%20design&image_size=square_hd" srcset="/img/loading.gif" lazyload alt="Keep It 2.7.10 安全功能"></p>
+<h1 id="第五章-Keep-It-2-7-10-全场景实战操作教程"><a href="#第五章-Keep-It-2-7-10-全场景实战操作教程" class="headerlink" title="第五章 Keep It 2.7.10 全场景实战操作教程"></a>第五章 Keep It 2.7.10 全场景实战操作教程</h1><p>了解了核心功能后，本章节将通过六个高频使用场景，带大家进行实战操作，从零开始完成完整的文档管理任务，彻底掌握 Keep It 2.7.10 的全流程使用方法。</p>
+<h2 id="5-1-实战一：工作文档管理（项目资料整理）"><a href="#5-1-实战一：工作文档管理（项目资料整理）" class="headerlink" title="5.1 实战一：工作文档管理（项目资料整理）"></a>5.1 实战一：工作文档管理（项目资料整理）</h2><p>这是最常用的文档管理场景，通过 Keep It 可高效管理项目资料，步骤如下：</p>
+<ol>
+<li><p><strong>创建项目文件夹</strong><br>打开 Keep It，在左侧导航栏的「文件夹」分类中，点击右键选择「新建文件夹」，输入项目名称，如「产品开发项目」。</p>
+</li>
+<li><p><strong>添加项目资料</strong><br>将项目相关的文档、图片、PDF 等文件，从访达中拖拽到 Keep It 的文档列表区，或点击底部状态栏的「+」按钮选择「导入文件」，将文件添加到 Keep It 中。</p>
+</li>
+<li><p><strong>分类整理</strong><br>在「产品开发项目」文件夹中，创建子文件夹，如「需求文档」「设计稿」「开发资料」「测试报告」等，将相应的文件拖拽到对应的子文件夹中。</p>
+</li>
+<li><p><strong>添加标签</strong><br>选中重要文档，点击右侧信息面板中的「标签」选项，添加标签，如「重要」「待处理」「已完成」等，方便后续查找和管理。</p>
+</li>
+<li><p><strong>创建智能文件夹</strong><br>点击左侧导航栏的「智能文件夹」分类，点击右键选择「新建智能文件夹」，设置筛选规则，如「标签包含重要」，创建一个自动收集重要文档的智能文件夹。</p>
+</li>
+<li><p><strong>搜索与访问</strong><br>在顶部搜索框中输入关键词，如「需求」，可快速找到相关的需求文档。点击文档即可在右侧预览区查看内容，需要编辑时可直接进行编辑。</p>
+</li>
+</ol>
+<h2 id="5-2-实战二：学习笔记管理（课程资料整理）"><a href="#5-2-实战二：学习笔记管理（课程资料整理）" class="headerlink" title="5.2 实战二：学习笔记管理（课程资料整理）"></a>5.2 实战二：学习笔记管理（课程资料整理）</h2><p>针对学生和学习者，Keep It 可用于整理课程资料和学习笔记，步骤如下：</p>
+<ol>
+<li><p><strong>创建课程文件夹</strong><br>在左侧导航栏的「文件夹」分类中，创建「课程资料」文件夹，在其下创建具体课程的子文件夹，如「高等数学」「计算机科学」等。</p>
+</li>
+<li><p><strong>导入课程资料</strong><br>将课程的课件、PDF 教材、课堂笔记等文件导入到对应的课程文件夹中。</p>
+</li>
+<li><p><strong>创建学习笔记</strong><br>点击底部状态栏的「+」按钮，选择「新建文档」，创建学习笔记，使用 Markdown 语法编辑，记录课程重点、难点和个人理解。</p>
+</li>
+<li><p><strong>标注 PDF 教材</strong><br>打开 PDF 教材，使用右侧的标注工具，对重点内容进行标注、添加注释，帮助理解和记忆。</p>
+</li>
+<li><p><strong>设置提醒</strong><br>对于重要的学习任务，可在文档的信息面板中设置提醒，确保按时完成学习计划。</p>
+</li>
+<li><p><strong>复习与检索</strong><br>使用搜索功能，输入关键词，快速找到相关的学习资料和笔记，方便复习和查阅。</p>
+</li>
+</ol>
+<h2 id="5-3-实战三：创意灵感管理（设计与写作）"><a href="#5-3-实战三：创意灵感管理（设计与写作）" class="headerlink" title="5.3 实战三：创意灵感管理（设计与写作）"></a>5.3 实战三：创意灵感管理（设计与写作）</h2><p>对于设计师、作家等创意工作者，Keep It 可用于管理创意灵感和项目素材，步骤如下：</p>
+<ol>
+<li><p><strong>创建创意文件夹</strong><br>创建「创意灵感」文件夹，在其下创建子文件夹，如「设计灵感」「写作素材」「参考资料」等。</p>
+</li>
+<li><p><strong>收集灵感素材</strong><br>将图片、网页、文本等灵感素材导入到对应的文件夹中，可通过拖拽、复制粘贴等方式添加。</p>
+</li>
+<li><p><strong>整理创意笔记</strong><br>创建创意笔记，记录灵感想法、设计构思、写作大纲等，使用 Markdown 语法编辑，保持内容的清晰结构。</p>
+</li>
+<li><p><strong>分类标签</strong><br>为创意素材添加标签，如「UI设计」「文案创意」「配色方案」等，方便后续查找和使用。</p>
+</li>
+<li><p><strong>导出与分享</strong><br>将创意素材和笔记导出为需要的格式，如 PDF、图片等，方便与团队成员分享和协作。</p>
+</li>
+</ol>
+<h2 id="5-4-实战四：PDF-文档标注与管理"><a href="#5-4-实战四：PDF-文档标注与管理" class="headerlink" title="5.4 实战四：PDF 文档标注与管理"></a>5.4 实战四：PDF 文档标注与管理</h2><p>PDF 文档是工作和学习中常用的格式，Keep It 提供了强大的 PDF 标注功能，步骤如下：</p>
+<ol>
+<li><p><strong>导入 PDF 文档</strong><br>将需要标注的 PDF 文档导入到 Keep It 中，可拖拽或使用「导入文件」功能。</p>
+</li>
+<li><p><strong>PDF 标注</strong><br>选中 PDF 文档，在右侧预览区中，使用顶部的标注工具，对文档进行标注：</p>
+<ul>
+<li>文本标注：点击「文本」工具，添加文本注释；</li>
+<li>形状标注：点击「形状」工具，添加矩形、圆形等形状；</li>
+<li>自由手绘：点击「手绘」工具，自由绘制标注；</li>
+<li>下划线：点击「下划线」工具，为重点内容添加下划线。</li>
+</ul>
+</li>
+<li><p><strong>标注管理</strong><br>点击右侧信息面板中的「标注」选项，可查看所有添加的标注，进行编辑或删除。</p>
+</li>
+<li><p><strong>导出标注 PDF</strong><br>标注完成后，点击「文件」→「导出」，选择「PDF」格式，可将标注后的 PDF 导出保存。</p>
+</li>
+</ol>
+<h2 id="5-5-实战五：多设备同步与协作"><a href="#5-5-实战五：多设备同步与协作" class="headerlink" title="5.5 实战五：多设备同步与协作"></a>5.5 实战五：多设备同步与协作</h2><p>对于需要在多个设备之间工作的用户，Keep It 的多设备同步功能非常实用，步骤如下：</p>
+<ol>
+<li><p><strong>启用 iCloud 同步</strong><br>打开 Keep It 的偏好设置，点击「同步」选项，勾选「使用 iCloud 同步」，确保所有设备都已登录同一个 Apple ID。</p>
+</li>
+<li><p><strong>在其他设备上访问</strong><br>在 iPad 或 iPhone 上打开 Keep It，等待同步完成后，即可访问和编辑 Mac 上的文档。</p>
+</li>
+<li><p><strong>协作共享</strong><br>选中需要共享的文档，点击「文件」→「共享」，选择「通过链接共享」，设置访问权限，将链接发送给团队成员，即可实现协作编辑。</p>
+</li>
+<li><p><strong>版本管理</strong><br>点击文档的信息面板，查看「版本历史」，可查看文档的修改历史，恢复之前的版本。</p>
+</li>
+</ol>
+<h2 id="5-6-实战六：自动化工作流"><a href="#5-6-实战六：自动化工作流" class="headerlink" title="5.6 实战六：自动化工作流"></a>5.6 实战六：自动化工作流</h2><p>通过 Keep It 的快捷指令支持，可创建自动化工作流，提升工作效率，步骤如下：</p>
+<ol>
+<li><p><strong>打开快捷指令应用</strong><br>在 Mac 上打开「快捷指令」应用，点击「新建快捷指令」。</p>
+</li>
+<li><p><strong>添加 Keep It 操作</strong><br>在快捷指令编辑器中，搜索并添加「Keep It」相关的操作，如「新建文档」「添加标签」「导出文档」等。</p>
+</li>
+<li><p><strong>设置触发条件</strong><br>设置快捷指令的触发条件，如通过 Siri 语音命令、菜单栏图标、键盘快捷键等。</p>
+</li>
+<li><p><strong>测试与使用</strong><br>测试快捷指令是否正常工作，然后在日常工作中使用，提升文档管理的效率。</p>
+</li>
+</ol>
+<p><img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Keep%20It%202.7.10%20practical%20operation%20scenario%20showing%20document%20editing,%20PDF%20annotation,%20and%20folder%20organization,%20productive%20workflow&image_size=landscape_16_9" srcset="/img/loading.gif" lazyload alt="Keep It 2.7.10 实战操作"></p>
+<h1 id="第六章-Keep-It-2-7-10-进阶效率玩法"><a href="#第六章-Keep-It-2-7-10-进阶效率玩法" class="headerlink" title="第六章 Keep It 2.7.10 进阶效率玩法"></a>第六章 Keep It 2.7.10 进阶效率玩法</h1><p>掌握了基础功能后，本章节将介绍 Keep It 2.7.10 的进阶效率玩法，帮助用户进一步提升文档管理的效率，充分发挥软件的强大功能。</p>
+<h2 id="6-1-自定义工作区：打造个性化界面"><a href="#6-1-自定义工作区：打造个性化界面" class="headerlink" title="6.1 自定义工作区：打造个性化界面"></a>6.1 自定义工作区：打造个性化界面</h2><p>Keep It 2.7.10 支持自定义工作区，用户可根据自己的使用习惯调整界面布局，步骤如下：</p>
+<ol>
+<li><p><strong>调整面板大小</strong><br>拖动左侧导航栏、中间文档列表区和右侧编辑区的分隔线，调整各面板的大小，适应自己的屏幕尺寸和使用习惯。</p>
+</li>
+<li><p><strong>自定义工具栏</strong><br>点击顶部菜单栏的「视图」→「自定义工具栏」，可添加或移除工具栏中的按钮，将常用功能放在显眼位置。</p>
+</li>
+<li><p><strong>设置默认视图</strong><br>在左侧导航栏中，选择常用的视图，如「文件夹」或「标签」，点击顶部菜单栏的「视图」→「使用为默认视图」，下次打开软件时会自动显示该视图。</p>
+</li>
+<li><p><strong>暗黑模式切换</strong><br>点击顶部菜单栏的「视图」→「深色模式」，可切换到暗黑模式，适合在低光环境下使用，减少眼睛疲劳。</p>
+</li>
+</ol>
+<h2 id="6-2-高级搜索技巧：快速定位文档"><a href="#6-2-高级搜索技巧：快速定位文档" class="headerlink" title="6.2 高级搜索技巧：快速定位文档"></a>6.2 高级搜索技巧：快速定位文档</h2><p>Keep It 2.7.10 的搜索功能非常强大，掌握以下高级搜索技巧，可大幅提升搜索效率：</p>
+<ol>
+<li><p><strong>使用搜索运算符</strong></p>
+<ul>
+<li><code>AND</code>：搜索同时包含多个关键词的文档，如「项目 AND 需求」；</li>
+<li><code>OR</code>：搜索包含任意一个关键词的文档，如「设计 OR 创意」；</li>
+<li><code>NOT</code>：排除包含特定关键词的文档，如「项目 NOT 旧版」；</li>
+<li>引号：搜索精确短语，如「产品设计方案」。</li>
+</ul>
+</li>
+<li><p><strong>按属性搜索</strong></p>
+<ul>
+<li><code>type:</code>：按文件类型搜索，如 <code>type:pdf</code> 搜索所有 PDF 文档；</li>
+<li><code>tag:</code>：按标签搜索，如 <code>tag:重要</code> 搜索所有带有「重要」标签的文档；</li>
+<li><code>date:</code>：按日期搜索，如 <code>date:today</code> 搜索今天修改的文档；</li>
+<li><code>size:</code>：按文件大小搜索，如 <code>size:&gt;1MB</code> 搜索大于 1MB 的文档。</li>
+</ul>
+</li>
+<li><p><strong>保存搜索</strong><br>对于常用的搜索条件，可点击搜索框右侧的「保存」按钮，将搜索保存为「保存搜索」，下次可直接点击使用，无需重新输入搜索条件。</p>
+</li>
+</ol>
+<h2 id="6-3-批量操作技巧：提升处理效率"><a href="#6-3-批量操作技巧：提升处理效率" class="headerlink" title="6.3 批量操作技巧：提升处理效率"></a>6.3 批量操作技巧：提升处理效率</h2><p>Keep It 2.7.10 支持多种批量操作，掌握这些技巧，可大幅提升处理多个文档的效率：</p>
+<ol>
+<li><p><strong>批量选择文档</strong></p>
+<ul>
+<li>按住 <code>Command</code> 键，点击多个文档，可选择不连续的文档；</li>
+<li>按住 <code>Shift</code> 键，点击第一个和最后一个文档，可选择连续的文档；</li>
+<li>点击「编辑」→「全选」，可选择当前视图中的所有文档。</li>
+</ul>
+</li>
+<li><p><strong>批量添加标签</strong><br>选择多个文档，点击右侧信息面板中的「标签」选项，添加标签，所有选中的文档都会添加该标签。</p>
+</li>
+<li><p><strong>批量移动文档</strong><br>选择多个文档，拖拽到左侧导航栏的目标文件夹中，可将所有选中的文档移动到该文件夹。</p>
+</li>
+<li><p><strong>批量导出文档</strong><br>选择多个文档，点击「文件」→「导出」，选择导出格式，可将所有选中的文档导出为指定格式。</p>
+</li>
+</ol>
+<h2 id="6-4-快捷键与手势：操作更流畅"><a href="#6-4-快捷键与手势：操作更流畅" class="headerlink" title="6.4 快捷键与手势：操作更流畅"></a>6.4 快捷键与手势：操作更流畅</h2><p>Keep It 2.7.10 支持丰富的键盘快捷键和触控板手势，掌握这些操作，可使文档管理更流畅：</p>
+<h3 id="常用键盘快捷键"><a href="#常用键盘快捷键" class="headerlink" title="常用键盘快捷键"></a>常用键盘快捷键</h3><ul>
+<li><code>Command + N</code>：新建文档；</li>
+<li><code>Command + O</code>：打开文档；</li>
+<li><code>Command + S</code>：保存文档；</li>
+<li><code>Command + F</code>：打开搜索框；</li>
+<li><code>Command + Shift + N</code>：新建文件夹；</li>
+<li><code>Command + Delete</code>：删除文档；</li>
+<li><code>Command + Z</code>：撤销操作；</li>
+<li><code>Command + Shift + Z</code>：重做操作。</li>
+</ul>
+<h3 id="触控板手势"><a href="#触控板手势" class="headerlink" title="触控板手势"></a>触控板手势</h3><ul>
+<li>双指滑动：在文档列表中滚动；</li>
+<li>双指缩放：缩放 PDF 文档或图片；</li>
+<li>三指拖拽：拖拽文档到文件夹或标签；</li>
+<li>三指上扫：显示 Mission Control；</li>
+<li>四指捏合：显示 Launchpad。</li>
+</ul>
+<h2 id="6-5-与其他应用的集成：扩展功能"><a href="#6-5-与其他应用的集成：扩展功能" class="headerlink" title="6.5 与其他应用的集成：扩展功能"></a>6.5 与其他应用的集成：扩展功能</h2><p>Keep It 2.7.10 可与其他 macOS 应用集成，扩展功能，提升工作效率：</p>
+<ol>
+<li><p><strong>与 Safari 集成</strong><br>安装 Keep It 的 Safari 扩展，可直接从 Safari 中将网页保存到 Keep It 中，方便收集和管理网页资料。</p>
+</li>
+<li><p><strong>与邮件应用集成</strong><br>可将邮件中的附件保存到 Keep It 中，或通过邮件分享 Keep It 中的文档。</p>
+</li>
+<li><p><strong>与日历应用集成</strong><br>可在 Keep It 中创建事件，并同步到日历应用中，帮助管理时间和任务。</p>
+</li>
+<li><p><strong>与快捷指令集成</strong><br>通过快捷指令，可实现 Keep It 与其他应用的自动化工作流，如自动将下载的文件保存到 Keep It 中。</p>
+</li>
+</ol>
+<h1 id="第七章-Keep-It-2-7-10-高频问题排查与解决方案"><a href="#第七章-Keep-It-2-7-10-高频问题排查与解决方案" class="headerlink" title="第七章 Keep It 2.7.10 高频问题排查与解决方案"></a>第七章 Keep It 2.7.10 高频问题排查与解决方案</h1><p>在使用 Keep It 2.7.10 的过程中，可能会遇到一些常见问题，本章节将针对这些问题提供详细的排查与解决方案，帮助用户快速解决问题，确保软件的正常使用。</p>
+<h2 id="7-1-同步问题"><a href="#7-1-同步问题" class="headerlink" title="7.1 同步问题"></a>7.1 同步问题</h2><h3 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h3><ul>
+<li>多设备之间文档不同步；</li>
+<li>同步过程中出现错误；</li>
+<li>同步速度慢。</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><strong>检查网络连接</strong>：确保所有设备都已连接到稳定的网络；</li>
+<li><strong>检查 iCloud 状态</strong>：确保 iCloud 存储空间充足，且 iCloud 服务正常；</li>
+<li><strong>重启 Keep It</strong>：退出并重新打开 Keep It，触发同步；</li>
+<li><strong>重置同步</strong>：在偏好设置中，点击「同步」→「重置同步」，重新开始同步过程；</li>
+<li><strong>检查文件大小</strong>：过大的文件可能会导致同步速度慢，可考虑将大文件压缩后再同步。</li>
+</ol>
+<h2 id="7-2-性能问题"><a href="#7-2-性能问题" class="headerlink" title="7.2 性能问题"></a>7.2 性能问题</h2><h3 id="问题现象-1"><a href="#问题现象-1" class="headerlink" title="问题现象"></a>问题现象</h3><ul>
+<li>软件运行卡顿；</li>
+<li>打开大文件时速度慢；</li>
+<li>内存占用过高。</li>
+</ul>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><strong>清理缓存</strong>：在偏好设置中，点击「高级」→「清理缓存」，清理软件缓存；</li>
+<li><strong>优化存储</strong>：定期清理不需要的文档，减少资料库的大小；</li>
+<li><strong>关闭不必要的功能</strong>：如实时预览、自动保存等，可在偏好设置中调整；</li>
+<li><strong>更新系统</strong>：确保 macOS 系统为最新版本，以获得最佳性能；</li>
+<li><strong>增加内存</strong>：如果 Mac 的内存不足，可考虑升级内存。</li>
+</ol>
+<h2 id="7-3-文档丢失问题"><a href="#7-3-文档丢失问题" class="headerlink" title="7.3 文档丢失问题"></a>7.3 文档丢失问题</h2><h3 id="问题现象-2"><a href="#问题现象-2" class="headerlink" title="问题现象"></a>问题现象</h3><ul>
+<li>文档突然消失；</li>
+<li>文档内容丢失；</li>
+<li>无法找到之前的文档。</li>
+</ul>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><strong>检查最近删除</strong>：点击左侧导航栏的「最近删除」，查看是否有被误删除的文档；</li>
+<li><strong>恢复版本</strong>：点击文档的信息面板，查看「版本历史」，恢复之前的版本；</li>
+<li><strong>检查备份</strong>：如果启用了自动备份，可从备份中恢复文档；</li>
+<li><strong>搜索文档</strong>：使用搜索功能，输入文档名称或关键词，查找文档；</li>
+<li><strong>联系支持</strong>：如果以上方法都无法解决，可联系 Keep It 的技术支持。</li>
+</ol>
+<h2 id="7-4-导入-导出问题"><a href="#7-4-导入-导出问题" class="headerlink" title="7.4 导入&#x2F;导出问题"></a>7.4 导入&#x2F;导出问题</h2><h3 id="问题现象-3"><a href="#问题现象-3" class="headerlink" title="问题现象"></a>问题现象</h3><ul>
+<li>无法导入某些文件格式；</li>
+<li>导出文件失败；</li>
+<li>导出的文件格式不正确。</li>
+</ul>
+<h3 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><strong>检查文件格式</strong>：确保 Keep It 支持该文件格式；</li>
+<li><strong>检查文件权限</strong>：确保文件有足够的读取权限；</li>
+<li><strong>检查存储空间</strong>：确保目标位置有足够的存储空间；</li>
+<li><strong>尝试其他格式</strong>：如果导出为某格式失败，可尝试导出为其他格式；</li>
+<li><strong>重启软件</strong>：退出并重新打开 Keep It，再次尝试导入&#x2F;导出操作。</li>
+</ol>
+<h2 id="7-5-标注问题"><a href="#7-5-标注问题" class="headerlink" title="7.5 标注问题"></a>7.5 标注问题</h2><h3 id="问题现象-4"><a href="#问题现象-4" class="headerlink" title="问题现象"></a>问题现象</h3><ul>
+<li>PDF 标注无法保存；</li>
+<li>标注显示异常；</li>
+<li>无法添加某些类型的标注。</li>
+</ul>
+<h3 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li><strong>检查 PDF 文件</strong>：确保 PDF 文件没有权限限制，可正常编辑；</li>
+<li><strong>更新 Keep It</strong>：确保使用的是最新版本的 Keep It；</li>
+<li><strong>重启软件</strong>：退出并重新打开 Keep It，再次尝试标注；</li>
+<li><strong>尝试其他 PDF 阅读器</strong>：如果问题持续，可尝试使用其他 PDF 阅读器进行标注；</li>
+<li><strong>联系支持</strong>：如果以上方法都无法解决，可联系 Keep It 的技术支持。</li>
+</ol>
+<h1 id="第八章-总结与展望"><a href="#第八章-总结与展望" class="headerlink" title="第八章 总结与展望"></a>第八章 总结与展望</h1><p>Keep It 2.7.10 作为 Mac 端专业的笔记管理工具，通过其强大的文档管理能力、直观的界面设计、丰富的格式支持和深度的系统集成，为 Mac 用户提供了一站式的信息管理解决方案。无论是工作文档的分类存储、学习资料的整理归档、创意灵感的捕捉记录，还是项目资料的统一管理，Keep It 都能轻松应对，帮助用户提升工作效率，实现信息的有序管理。</p>
+<p>随着 macOS 系统的不断更新和用户需求的日益增长，Keep It 也在持续迭代和优化，未来我们可以期待它在以下方面的进一步发展：</p>
+<ol>
+<li><strong>更深度的 AI 集成</strong>：利用 AI 技术，实现智能文档分类、内容摘要、智能搜索等功能，进一步提升文档管理的效率。</li>
+<li><strong>更丰富的协作功能</strong>：加强团队协作能力，支持实时协作编辑、评论、任务分配等功能，满足团队工作的需求。</li>
+<li><strong>更广泛的平台支持</strong>：除了苹果设备，可能会扩展到其他平台，如 Windows、Web 端等，实现跨平台的文档管理。</li>
+<li><strong>更个性化的定制选项</strong>：提供更多的界面定制、功能定制选项，满足不同用户的个性化需求。</li>
+</ol>
+<p>总之，Keep It 2.7.10 是一款功能强大、性能稳定、用户友好的笔记管理工具，值得每一位 Mac 用户拥有。通过本文的深度解析，相信你已经对 Keep It 2.7.10 有了全面的了解，能够充分发挥其强大功能，实现高效的文档管理。</p>
+<hr>
+<p><strong>免责声明</strong>：本文仅用于技术交流和学习，不涉及任何商业推广或正版软件的获取方式。请用户通过合法渠道获取和使用软件，遵守相关法律法规。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Mac端专业笔记管理工具深度指南</div>
+      <div>https://zhyyao.cn/2026/03/17/dianshu/Mac端专业笔记管理工具深度指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/20/dianshu/Windows%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96%E4%B8%8E%E6%B5%81%E9%87%8F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E6%B7%B1%E5%BA%A6%E6%8C%87%E5%8D%97/" title="Windows网络优化与流量管理工具深度指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows网络优化与流量管理工具深度指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/17/dianshu/%E4%B8%93%E4%B8%9A%E5%9B%BE%E5%BD%A2%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E4%B8%8E%E8%A7%86%E8%A7%89%E7%89%B9%E6%95%88%E8%BD%AF%E4%BB%B6%E6%B7%B1%E5%BA%A6%E6%8C%87%E5%8D%97/" title="专业图形视频处理与视觉特效软件深度指南">
+                        <span class="hidden-mobile">专业图形视频处理与视觉特效软件深度指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
