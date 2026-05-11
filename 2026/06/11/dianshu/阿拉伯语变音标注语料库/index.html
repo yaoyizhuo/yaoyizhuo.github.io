@@ -1,0 +1,1236 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/06/11/dianshu/阿拉伯语变音标注语料库/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="阿拉伯语作为全球使用人数最多的语言之一，其书写系统中的变音符号（Diacritics&#x2F;Tashkeel）是正确理解和朗读文本的关键要素。然而，在日常书写和数字化文本中，阿拉伯语变音符号通常被省略，这给自然语言处理、语音合成、机器翻译等下游任务带来了巨大的歧义挑战。自动变音符号还原（Automatic Diacritization）因此成为阿拉伯语自然语言处理领域中一项极具研究价值的核心任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿拉伯语变音标注语料库">
+<meta property="og:url" content="https://zhyyao.cn/2026/06/11/dianshu/%E9%98%BF%E6%8B%89%E4%BC%AF%E8%AF%AD%E5%8F%98%E9%9F%B3%E6%A0%87%E6%B3%A8%E8%AF%AD%E6%96%99%E5%BA%93/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="阿拉伯语作为全球使用人数最多的语言之一，其书写系统中的变音符号（Diacritics&#x2F;Tashkeel）是正确理解和朗读文本的关键要素。然而，在日常书写和数字化文本中，阿拉伯语变音符号通常被省略，这给自然语言处理、语音合成、机器翻译等下游任务带来了巨大的歧义挑战。自动变音符号还原（Automatic Diacritization）因此成为阿拉伯语自然语言处理领域中一项极具研究价值的核心任">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-11T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-05-11T06:44:22.839Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>阿拉伯语变音标注语料库 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="阿拉伯语变音标注语料库"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-11 15:51" pubdate>
+          2026年6月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">阿拉伯语变音标注语料库</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>阿拉伯语作为全球使用人数最多的语言之一，其书写系统中的变音符号（Diacritics&#x2F;Tashkeel）是正确理解和朗读文本的关键要素。然而，在日常书写和数字化文本中，阿拉伯语变音符号通常被省略，这给自然语言处理、语音合成、机器翻译等下游任务带来了巨大的歧义挑战。自动变音符号还原（Automatic Diacritization）因此成为阿拉伯语自然语言处理领域中一项极具研究价值的核心任务。</p>
+<p>本数据集是一个经过严格预处理与多轮质量清洗的大规模阿拉伯语变音标注语料库，涵盖古典阿拉伯语（Classical Arabic, CA）和现代标准阿拉伯语（Modern Standard Arabic, MSA）两大语体类别，总计包含 <strong>2,587,088</strong> 条句子级标注数据。数据集中每条记录均包含完整的变音标注原文、词数统计、字符数统计以及去变音字符数统计四项结构化字段。整个语料库已按照 90%&#x2F;5%&#x2F;5% 的比例划分为训练集、验证集和测试集，并经历了从原始文本合并、字符清洗、句子切分、无意义句子过滤、部分标注句子移除、变音符号修正到去重等多达五个版本的迭代优化。该数据集为深度学习模型训练提供了高质量的标注素材，能够有效支撑阿拉伯语变音符号预测、文本规范化、语音合成前端处理等多种科研与产业应用。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th align="center">字段名称</th>
+<th align="center">字段类型</th>
+<th align="center">字段含义</th>
+<th align="center">数据示例</th>
+<th align="center">完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">text</td>
+<td align="center">string</td>
+<td align="center">带有完整变音符号标注的阿拉伯语句子原文</td>
+<td align="center">وَفِي بَعْضِ النُّسَخِ بِالْإِضَافَةِ</td>
+<td align="center">100%（无缺失）</td>
+</tr>
+<tr>
+<td align="center">words</td>
+<td align="center">integer</td>
+<td align="center">该句子中的词数</td>
+<td align="center">60</td>
+<td align="center">100%（无缺失）</td>
+</tr>
+<tr>
+<td align="center">chars</td>
+<td align="center">integer</td>
+<td align="center">该句子的总字符数（含变音符号）</td>
+<td align="center">479</td>
+<td align="center">100%（无缺失）</td>
+</tr>
+<tr>
+<td align="center">chars_no_diac</td>
+<td align="center">integer</td>
+<td align="center">该句子去除变音符号后的字符数</td>
+<td align="center">285</td>
+<td align="center">100%（无缺失）</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><p><strong>语体类别分布</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">语体类别</th>
+<th align="center">记录数量</th>
+<th align="center">占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">古典阿拉伯语（CA）</td>
+<td align="center">2,558,736</td>
+<td align="center">98.90%</td>
+</tr>
+<tr>
+<td align="center">现代标准阿拉伯语（MSA）</td>
+<td align="center">28,352</td>
+<td align="center">1.10%</td>
+</tr>
+<tr>
+<td align="center"><strong>合计</strong></td>
+<td align="center"><strong>2,587,088</strong></td>
+<td align="center"><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<p><strong>数据集划分分布</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">数据集划分</th>
+<th align="center">语体</th>
+<th align="center">记录数量</th>
+<th align="center">占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">训练集（train）</td>
+<td align="center">CA</td>
+<td align="center">2,297,366</td>
+<td align="center">88.80%</td>
+</tr>
+<tr>
+<td align="center">验证集（val）</td>
+<td align="center">CA</td>
+<td align="center">130,709</td>
+<td align="center">5.05%</td>
+</tr>
+<tr>
+<td align="center">测试集（test）</td>
+<td align="center">CA</td>
+<td align="center">130,661</td>
+<td align="center">5.05%</td>
+</tr>
+<tr>
+<td align="center">训练集（train）</td>
+<td align="center">MSA</td>
+<td align="center">25,405</td>
+<td align="center">0.98%</td>
+</tr>
+<tr>
+<td align="center">验证集（val）</td>
+<td align="center">MSA</td>
+<td align="center">1,472</td>
+<td align="center">0.06%</td>
+</tr>
+<tr>
+<td align="center">测试集（test）</td>
+<td align="center">MSA</td>
+<td align="center">1,475</td>
+<td align="center">0.06%</td>
+</tr>
+<tr>
+<td align="center"><strong>合计</strong></td>
+<td align="center">—</td>
+<td align="center"><strong>2,587,088</strong></td>
+<td align="center"><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<p><strong>词数分布</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">词数范围</th>
+<th align="center">记录数量</th>
+<th align="center">占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3–5 词</td>
+<td align="center">82,486</td>
+<td align="center">3.19%</td>
+</tr>
+<tr>
+<td align="center">6–10 词</td>
+<td align="center">1,111,675</td>
+<td align="center">42.97%</td>
+</tr>
+<tr>
+<td align="center">11–15 词</td>
+<td align="center">605,588</td>
+<td align="center">23.41%</td>
+</tr>
+<tr>
+<td align="center">16–20 词</td>
+<td align="center">312,792</td>
+<td align="center">12.09%</td>
+</tr>
+<tr>
+<td align="center">21–30 词</td>
+<td align="center">281,870</td>
+<td align="center">10.90%</td>
+</tr>
+<tr>
+<td align="center">31–50 词</td>
+<td align="center">168,851</td>
+<td align="center">6.53%</td>
+</tr>
+<tr>
+<td align="center">51–100 词</td>
+<td align="center">23,826</td>
+<td align="center">0.92%</td>
+</tr>
+</tbody></table>
+<p><strong>字符数分布</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">字符数范围</th>
+<th align="center">记录数量</th>
+<th align="center">占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1–50 字符</td>
+<td align="center">143,172</td>
+<td align="center">5.53%</td>
+</tr>
+<tr>
+<td align="center">51–100 字符</td>
+<td align="center">1,259,544</td>
+<td align="center">48.69%</td>
+</tr>
+<tr>
+<td align="center">101–150 字符</td>
+<td align="center">561,745</td>
+<td align="center">21.71%</td>
+</tr>
+<tr>
+<td align="center">151–200 字符</td>
+<td align="center">267,924</td>
+<td align="center">10.36%</td>
+</tr>
+<tr>
+<td align="center">201–300 字符</td>
+<td align="center">230,485</td>
+<td align="center">8.91%</td>
+</tr>
+<tr>
+<td align="center">301–400 字符</td>
+<td align="center">86,199</td>
+<td align="center">3.33%</td>
+</tr>
+<tr>
+<td align="center">401–500 字符</td>
+<td align="center">38,019</td>
+<td align="center">1.47%</td>
+</tr>
+</tbody></table>
+<p><strong>变音符号密度统计</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">统计指标</th>
+<th align="center">数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">平均变音符号占比</td>
+<td align="center">40.99%</td>
+</tr>
+<tr>
+<td align="center">中位数变音符号占比</td>
+<td align="center">40.94%</td>
+</tr>
+<tr>
+<td align="center">最低变音符号占比</td>
+<td align="center">30.19%</td>
+</tr>
+<tr>
+<td align="center">最高变音符号占比</td>
+<td align="center">52.08%</td>
+</tr>
+</tbody></table>
+<p><strong>核心统计摘要</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">统计维度</th>
+<th align="center">全量数据</th>
+<th align="center">CA 子集</th>
+<th align="center">MSA 子集</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">句子总数</td>
+<td align="center">2,587,088</td>
+<td align="center">2,558,736</td>
+<td align="center">28,352</td>
+</tr>
+<tr>
+<td align="center">词数均值</td>
+<td align="center">14.34</td>
+<td align="center">14.39</td>
+<td align="center">10.07</td>
+</tr>
+<tr>
+<td align="center">词数中位数</td>
+<td align="center">11</td>
+<td align="center">11</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">词数范围</td>
+<td align="center">5–70</td>
+<td align="center">5–70</td>
+<td align="center">5–59</td>
+</tr>
+<tr>
+<td align="center">字符数均值</td>
+<td align="center">121.81</td>
+<td align="center">122.13</td>
+<td align="center">92.27</td>
+</tr>
+<tr>
+<td align="center">字符数中位数</td>
+<td align="center">94</td>
+<td align="center">94</td>
+<td align="center">78</td>
+</tr>
+<tr>
+<td align="center">字符数范围</td>
+<td align="center">47–500</td>
+<td align="center">47–500</td>
+<td align="center">47–498</td>
+</tr>
+<tr>
+<td align="center">去变音字符数均值</td>
+<td align="center">72.01</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th align="center">优势特征</th>
+<th align="center">具体表现</th>
+<th align="center">应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">超大规模标注量</td>
+<td align="center">258万余条经过完整变音标注的句子，是目前公开可用的最大规模阿拉伯语变音语料库之一</td>
+<td align="center">为深度学习模型提供充足的训练样本，有效提升模型的泛化能力与预测精度</td>
+</tr>
+<tr>
+<td align="center">双语体全覆盖</td>
+<td align="center">同时包含古典阿拉伯语（CA）和现代标准阿拉伯语（MSA），涵盖阿拉伯语两大核心语体</td>
+<td align="center">支持跨语体的迁移学习研究，使模型能够同时处理古典文献与现代文本</td>
+</tr>
+<tr>
+<td align="center">五轮迭代清洗</td>
+<td align="center">数据经历V0.0至V4.1共五个版本的系统化清洗，包括字符过滤、句子切分、无意义句子移除、部分标注移除、变音修正和去重</td>
+<td align="center">确保数据质量可靠，降低模型训练中的噪声干扰，提高实验可重复性</td>
+</tr>
+<tr>
+<td align="center">完整结构化标注</td>
+<td align="center">每条数据均包含原文、词数、含变音字符数、去变音字符数四项字段，且所有字段完整率达100%</td>
+<td align="center">支持多维度的统计分析和特征工程，无需额外的数据补全处理</td>
+</tr>
+<tr>
+<td align="center">标准化数据集划分</td>
+<td align="center">按照90%&#x2F;5%&#x2F;5%的比例划分为训练集、验证集和测试集，确保实验对比的公平性</td>
+<td align="center">支持标准化的模型评估流程，便于不同研究团队之间的结果复现与对比</td>
+</tr>
+<tr>
+<td align="center">高密度变音标注</td>
+<td align="center">平均变音符号占比约41%，标注密度稳定（标准差极小），确保每条句子均为完全标注</td>
+<td align="center">消除部分标注带来的歧义，为序列标注模型提供高质量的监督信号</td>
+</tr>
+<tr>
+<td align="center">科学的质量控制</td>
+<td align="center">移除了词数少于3的短句、字符与词数比异常的无意义句子、重复变音和错误变音的句子</td>
+<td align="center">从源头保障训练数据的语言学合理性，避免模型学习到错误的标注模式</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>以下样例为元数据样例，展示数据集中不同语体、不同长度和不同数据集划分的代表性记录。样例涵盖了古典阿拉伯语（CA）和现代标准阿拉伯语（MSA）两大类别，以及训练集、验证集和测试集三种划分，以充分体现数据集的多样性特征。</p>
+<p><strong>古典阿拉伯语（CA）样例</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">来源</th>
+<th align="center">text（变音标注文本）</th>
+<th align="center">words</th>
+<th align="center">chars</th>
+<th align="center">chars_no_diac</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">CA_train</td>
+<td align="center">وَكَانَ ذَلِكَ مُمْتَنِعًا مِنْ جِهَةِ الْخِلْقَةِ وَالصُّورَةِ</td>
+<td align="center">7</td>
+<td align="center">63</td>
+<td align="center">37</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">CA_train</td>
+<td align="center">لِأَنَّ الْآمِرَ صَارَ قَابِضًا بِقَبْضِهِ مَا لَمْ يَظْهَرْ الْمَنْعُ</td>
+<td align="center">9</td>
+<td align="center">70</td>
+<td align="center">42</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">CA_train</td>
+<td align="center">مَا نَرَى النّبِيّ صَلّى اللّهُ عَلَيْهِ وَسَلّمَ إلّا قَدْ أَخَذَهَا فَنَزَلَتْ هَذِهِ الْآيَةُ</td>
+<td align="center">13</td>
+<td align="center">96</td>
+<td align="center">60</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">CA_train</td>
+<td align="center">وَكَذَلِكَ فِطْرَتُهُ وَإِنْ كَانَ زَمِنًا فَلَا يَخْلُو أَنْ تَكُونَ الزَّمَانَةُ طَرَأَتْ عَلَيْهِ…</td>
+<td align="center">17</td>
+<td align="center">141</td>
+<td align="center">84</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">CA_train</td>
+<td align="center">وَيَكُونُ نَقْضًا لِلْبَيْعِ الْفَاسِدِ أَيْ وَهَذَا هُوَ الْمُرَادُ بِالْفَوَاتِ تَسَمُّحًا وَالْحَ…</td>
+<td align="center">25</td>
+<td align="center">224</td>
+<td align="center">133</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">CA_train</td>
+<td align="center">وَلَوْ أَنَّ رَجُلًا مَاتَ وَتَرَكَ مَالًا فَأَقَامَ الْغُلَامُ بَيِّنَةً أَنَّهُ ابْنُ الْمَيِّتِ م…</td>
+<td align="center">49</td>
+<td align="center">430</td>
+<td align="center">247</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">CA_val</td>
+<td align="center">بِيَمِينٍ أَيْ فِي جَمِيعِ مَا ذَكَرْنَا قَالَهُ الشَّارِحُ</td>
+<td align="center">8</td>
+<td align="center">59</td>
+<td align="center">37</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">CA_test</td>
+<td align="center">يَبْدَأُ بِالظُّهْرِ ثُمَّ الْعِشَاءِ ثُمَّ الْعَصْرِ ثُمَّ الصُّبْحِ ثُمَّ الْمَغْرِبِ</td>
+<td align="center">10</td>
+<td align="center">87</td>
+<td align="center">49</td>
+</tr>
+</tbody></table>
+<p><strong>现代标准阿拉伯语（MSA）样例</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">来源</th>
+<th align="center">text（变音标注文本）</th>
+<th align="center">words</th>
+<th align="center">chars</th>
+<th align="center">chars_no_diac</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">9</td>
+<td align="center">MSA_train</td>
+<td align="center">اِذْهَبْ بِعْ كُلَّ مَا لَكَ وَأَعْطِ الْفُقَرَاءَ</td>
+<td align="center">7</td>
+<td align="center">50</td>
+<td align="center">29</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">MSA_train</td>
+<td align="center">كَمَا سَبَقَ أَنْ أَوْضَحْنَا فِي أَكْثَرَ مِنْ مَقَامٍ وَمَقَالٍ</td>
+<td align="center">9</td>
+<td align="center">65</td>
+<td align="center">39</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">MSA_train</td>
+<td align="center">قَاعِدَةٌ فِي الْحُقُوقِ وَالتَّعَامُلِ وَالْعَمَلِ فِي الْمُجْتَمَعِ الْإِسْلَامِيِّ تُوضَعُ أَمَام…</td>
+<td align="center">15</td>
+<td align="center">138</td>
+<td align="center">83</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">MSA_train</td>
+<td align="center">فَإِنَّنَا يُمْكِنُ أَنْ نَسْتَنْبِطَ أَنَّ اللِّبَاسَ لَهُ اسْتِعْمَالٌ مَعْنَوِيٌّ يَتَمَثَّلُ فِي…</td>
+<td align="center">17</td>
+<td align="center">159</td>
+<td align="center">92</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">MSA_train</td>
+<td align="center">عَالَمِيَّةُ قَضِيَّةِ فِلَسْطِينَ وَالنِّزَاعُ السِّيَاسِيِّ الْمُتَطَاوِلُ وَمِلَفَّاتُ الْأُمَمِ…</td>
+<td align="center">22</td>
+<td align="center">230</td>
+<td align="center">133</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">MSA_train</td>
+<td align="center">وَإِنْ لَمْ يُسَلِّمُوا لِذَلِكَ وَلَا حُجَّةَ لَهُمْ لِأَنَّهُمْ مُعَارَضُونَ فِي كَلَامِهِمْ ذَاكَ…</td>
+<td align="center">33</td>
+<td align="center">291</td>
+<td align="center">175</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">MSA_val</td>
+<td align="center">وَمِنَ الْمُصْطَلَحَاتِ الْوَارِدَةِ فِي الْقُرْآنِ الْمُخَاصَمَةُ</td>
+<td align="center">6</td>
+<td align="center">66</td>
+<td align="center">40</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">MSA_test</td>
+<td align="center">وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَ…</td>
+<td align="center">22</td>
+<td align="center">178</td>
+<td align="center">103</td>
+</tr>
+</tbody></table>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><strong>阿拉伯语自动变音符号还原（Automatic Diacritization）</strong></p>
+<p>阿拉伯语自动变音符号还原是本数据集最直接也最核心的应用方向。在现代阿拉伯语数字化文本中，变音符号几乎全部被省略，这意味着同一组辅音字母序列可能对应多个完全不同的词汇和含义。本数据集提供了258万条句子级的完全变音标注数据，每条句子均已通过多轮清洗确保标注质量，包括移除部分标注句子、修正Shadda位置、清除多重变音错误等。研究者可以直接使用 text 字段作为目标标签，将 chars_no_diac 对应的去变音文本作为模型输入，构建端到端的序列标注模型。数据集已按照标准化比例划分为训练集、验证集和测试集，支持基于 Transformer、BiLSTM-CRF、卷积神经网络等多种架构的模型训练与评估。古典阿拉伯语和现代标准阿拉伯语的双语体覆盖特性，还使得研究者能够探索跨语体迁移学习的可行性，从而在数据量相对有限的 MSA 领域实现更好的模型表现。</p>
+<p><strong>阿拉伯语语音合成（Text-to-Speech, TTS）前端处理</strong></p>
+<p>高质量的语音合成系统依赖于精确的文本前端处理，其中变音符号的正确还原是阿拉伯语 TTS 系统的关键瓶颈。本数据集为训练高性能的变音还原前端模块提供了坚实的数据基础。在语音合成流程中，输入的无变音文本首先需要经过变音还原模块处理，生成带有完整变音标注的文本，再由声学模型将其转换为语音波形。数据集中每条句子的平均变音符号密度约为41%，且密度分布极为稳定，这意味着模型可以在一致性高的标注数据上进行训练，从而生成更加准确和自然的变音预测。此外，数据集覆盖了从5词到70词不等的句子长度，有助于模型学习不同上下文长度下的变音模式。古典阿拉伯语语料的大量存在，对于构建宗教朗诵、古典文学有声读物等特殊领域的语音合成系统尤为重要。</p>
+<p><strong>阿拉伯语自然语言理解与文本分析</strong></p>
+<p>变音标注信息对于提升阿拉伯语自然语言理解任务的性能具有显著价值。词义消歧、词性标注、句法分析等任务都能从精确的变音信息中获益，因为变音符号直接编码了词汇的语法功能和语义角色。本数据集中结构化的四字段设计使得研究者能够灵活地进行特征工程，例如利用字符数与去变音字符数的比值作为标注密度特征，或利用词数与字符数的关系分析句子复杂度。数据集涵盖了伊斯兰法学、圣训、语言学、文学等古典阿拉伯语主题，以及新闻、社科、宗教等现代标准阿拉伯语主题，这种丰富的主题多样性使得训练出的模型能够适应不同领域的文本分析需求。研究者还可以基于本数据集构建阿拉伯语文本预处理工具链，为下游的命名实体识别、情感分析、信息检索等任务提供高质量的规范化输入。</p>
+<p><strong>古典阿拉伯语数字人文与文献学研究</strong></p>
+<p>本数据集中包含约255万条古典阿拉伯语标注数据，这一规模为数字人文领域的古典阿拉伯语研究提供了前所未有的资源支持。古典阿拉伯语文献涵盖了大量伊斯兰法学、圣训学、阿拉伯语言学等领域的经典文本，这些文本的数字化和变音还原对于文献保存、学术研究和教育传承具有重大意义。基于本数据集训练的变音还原模型，可以被应用于大规模古典文献的自动标注，显著降低人工标注成本。此外，研究者可以利用数据集中的统计特征（如词频分布、句子长度分布等）进行古典阿拉伯语的计量语言学分析，揭示不同历史时期和不同学科领域的语言特征差异。这对于构建古典阿拉伯语知识图谱、语义搜索引擎和智能辅助阅读工具具有基础性的支撑作用。</p>
+<p><strong>阿拉伯语教育与语言学习辅助系统</strong></p>
+<p>阿拉伯语学习者面临的最大挑战之一是掌握变音符号的正确使用规则。本数据集可用于开发智能化的阿拉伯语学习辅助系统，为学习者提供实时的变音标注反馈和纠错建议。系统可以基于数据集训练的模型，自动为学习者输入的文本添加变音符号，并与标准答案进行对比，从而识别学习者的常见错误模式并提供针对性的教学建议。数据集中同时包含古典阿拉伯语和现代标准阿拉伯语的特点，使得系统能够适应不同层次学习者的需求——初学者通常从现代标准阿拉伯语入门，而高级学习者和宗教研究学者则需要掌握古典阿拉伯语的变音规则。258万条多样化的标注句子为构建覆盖各类语法现象和词汇用法的练习题库提供了丰富的素材。此外，数据集中精确的词数和字符数统计信息可以用于实现分级阅读推荐，根据学习者的水平自动匹配适当难度的阿拉伯语文本。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本阿拉伯语变音标注语料库以其258万条句子级全量标注数据、双语体覆盖特性以及五轮迭代清洗的高质量保障，构成了阿拉伯语自然语言处理领域一项重要的基础数据资源。数据集所有字段均达到100%的完整率，平均约41%的变音符号密度确保了每条数据的标注充分性，标准化的训练&#x2F;验证&#x2F;测试划分则为不同研究团队之间的公平对比提供了基础。无论是用于自动变音还原模型的训练与评估、语音合成前端的优化、古典文献的数字化处理，还是阿拉伯语教育辅助系统的开发，本数据集都展现出广泛的应用潜力和显著的科研价值。有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>阿拉伯语变音标注语料库</div>
+      <div>https://zhyyao.cn/2026/06/11/dianshu/阿拉伯语变音标注语料库/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/06/11/dianshu/Signclusive%E6%89%8B%E8%AF%AD%E5%AD%97%E6%AF%8D%E8%AF%86%E5%88%AB%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/" title="Signclusive手语字母识别图像数据集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Signclusive手语字母识别图像数据集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/09/dianshu/%E7%9A%AE%E8%82%A4%E7%97%85%E5%8F%98%E6%AF%9B%E5%8F%91%E6%8E%A9%E7%A0%81%E6%95%B0%E6%8D%AE%E9%9B%86/" title="皮肤病变毛发掩码数据集">
+                        <span class="hidden-mobile">皮肤病变毛发掩码数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

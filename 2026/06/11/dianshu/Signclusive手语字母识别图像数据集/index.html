@@ -1,0 +1,1265 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/06/11/dianshu/Signclusive手语字母识别图像数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="手语作为听障人士最重要的交流方式之一，其自动识别技术的研究对于消除沟通障碍、促进社会包容具有深远意义。在计算机视觉与深度学习领域，高质量的手语图像数据集是构建准确、鲁棒的手语识别模型的基础。Signclusive Mediapipe 数据集正是面向这一需求而构建的专业手语字母识别图像集合，其核心特色在于采用 Google Mediapipe 框架对手部关键点进行提取与可视化处理，将原始手势图像转化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signclusive手语字母识别图像数据集">
+<meta property="og:url" content="https://zhyyao.cn/2026/06/11/dianshu/Signclusive%E6%89%8B%E8%AF%AD%E5%AD%97%E6%AF%8D%E8%AF%86%E5%88%AB%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="手语作为听障人士最重要的交流方式之一，其自动识别技术的研究对于消除沟通障碍、促进社会包容具有深远意义。在计算机视觉与深度学习领域，高质量的手语图像数据集是构建准确、鲁棒的手语识别模型的基础。Signclusive Mediapipe 数据集正是面向这一需求而构建的专业手语字母识别图像集合，其核心特色在于采用 Google Mediapipe 框架对手部关键点进行提取与可视化处理，将原始手势图像转化">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-11T07:51:53.000Z">
+<meta property="article:modified_time" content="2026-05-11T06:43:49.065Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Signclusive手语字母识别图像数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Signclusive手语字母识别图像数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-11 15:51" pubdate>
+          2026年6月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Signclusive手语字母识别图像数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>手语作为听障人士最重要的交流方式之一，其自动识别技术的研究对于消除沟通障碍、促进社会包容具有深远意义。在计算机视觉与深度学习领域，高质量的手语图像数据集是构建准确、鲁棒的手语识别模型的基础。Signclusive Mediapipe 数据集正是面向这一需求而构建的专业手语字母识别图像集合，其核心特色在于采用 Google Mediapipe 框架对手部关键点进行提取与可视化处理，将原始手势图像转化为标准化的骨骼关键点图像，从而有效消除了背景干扰、肤色差异和光照变化等噪声因素的影响。</p>
+<p>该数据集包含 13,500 张经过 Mediapipe 处理的手部关键点可视化图像，覆盖美国手语（ASL）全部 26 个英文字母（A-Z）以及空格手势（space），共计 27 个类别。每张图像均为 224×224 像素的标准 JPEG 格式三通道彩色图像，每个类别严格包含 500 张样本，实现了完全均衡的类别分布。这种高度标准化的数据结构使其可以直接用于卷积神经网络、迁移学习和注意力机制等主流深度学习架构的训练与评估，无需额外的数据预处理步骤即可投入使用，极大降低了科研人员和开发者的入门门槛。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据集概览"><a href="#数据集概览" class="headerlink" title="数据集概览"></a>数据集概览</h3><p>本数据集总规模为 13,500 张图像文件，整体占用存储空间约 140 MB。所有图像均为 JPEG 格式，统一分辨率为 224×224 像素，采用 RGB 三通道色彩模式。数据集通过文件夹结构进行类别标注，每个文件夹名称即为对应的手语字母标签，文件夹内图像以连续数字编号（0-499）命名。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类别标签</td>
+<td>字符串（文件夹名）</td>
+<td>手语字母类别，对应 ASL 字母表</td>
+<td>A、B、C、…、Z、space</td>
+<td>100%（27 个类别完整覆盖）</td>
+</tr>
+<tr>
+<td>图像文件</td>
+<td>JPEG 图像文件</td>
+<td>Mediapipe 手部关键点可视化图像</td>
+<td>0.jpg、1.jpg、…、499.jpg</td>
+<td>100%（每类 500 张，无缺失）</td>
+</tr>
+<tr>
+<td>图像分辨率</td>
+<td>整数×整数</td>
+<td>图像像素尺寸</td>
+<td>224×224</td>
+<td>100%（所有图像统一尺寸）</td>
+</tr>
+<tr>
+<td>色彩模式</td>
+<td>字符串</td>
+<td>图像色彩通道模式</td>
+<td>RGB（3 通道）</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>整数（字节）</td>
+<td>单张图像文件大小</td>
+<td>5,427 ~ 17,179 字节</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>文件编号</td>
+<td>整数</td>
+<td>同类别内的图像序号</td>
+<td>0、1、2、…、499</td>
+<td>100%（每类均为 0-499 连续编号）</td>
+</tr>
+</tbody></table>
+<h3 id="类别分布情况"><a href="#类别分布情况" class="headerlink" title="类别分布情况"></a>类别分布情况</h3><table>
+<thead>
+<tr>
+<th>类别标签</th>
+<th>图像数量</th>
+<th>占比</th>
+<th>平均文件大小</th>
+<th>类别总大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.2 KB</td>
+<td>5,601.6 KB</td>
+</tr>
+<tr>
+<td>B</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.6 KB</td>
+<td>5,302.2 KB</td>
+</tr>
+<tr>
+<td>C</td>
+<td>500</td>
+<td>3.70%</td>
+<td>9.8 KB</td>
+<td>4,916.7 KB</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.3 KB</td>
+<td>5,149.6 KB</td>
+</tr>
+<tr>
+<td>E</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.0 KB</td>
+<td>5,510.8 KB</td>
+</tr>
+<tr>
+<td>F</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.2 KB</td>
+<td>5,598.4 KB</td>
+</tr>
+<tr>
+<td>G</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.6 KB</td>
+<td>5,816.7 KB</td>
+</tr>
+<tr>
+<td>H</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.3 KB</td>
+<td>5,655.0 KB</td>
+</tr>
+<tr>
+<td>I</td>
+<td>500</td>
+<td>3.70%</td>
+<td>11.6 KB</td>
+<td>5,786.0 KB</td>
+</tr>
+<tr>
+<td>J</td>
+<td>500</td>
+<td>3.70%</td>
+<td>12.4 KB</td>
+<td>6,184.1 KB</td>
+</tr>
+<tr>
+<td>K</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.9 KB</td>
+<td>5,443.0 KB</td>
+</tr>
+<tr>
+<td>L</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.9 KB</td>
+<td>5,427.8 KB</td>
+</tr>
+<tr>
+<td>M</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.5 KB</td>
+<td>5,273.7 KB</td>
+</tr>
+<tr>
+<td>N</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.8 KB</td>
+<td>5,424.8 KB</td>
+</tr>
+<tr>
+<td>O</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.6 KB</td>
+<td>5,312.8 KB</td>
+</tr>
+<tr>
+<td>P</td>
+<td>500</td>
+<td>3.70%</td>
+<td>9.9 KB</td>
+<td>4,938.7 KB</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>500</td>
+<td>3.70%</td>
+<td>9.4 KB</td>
+<td>4,681.2 KB</td>
+</tr>
+<tr>
+<td>R</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.2 KB</td>
+<td>5,104.5 KB</td>
+</tr>
+<tr>
+<td>S</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.8 KB</td>
+<td>5,418.2 KB</td>
+</tr>
+<tr>
+<td>T</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.7 KB</td>
+<td>5,336.9 KB</td>
+</tr>
+<tr>
+<td>U</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.3 KB</td>
+<td>5,162.6 KB</td>
+</tr>
+<tr>
+<td>V</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.2 KB</td>
+<td>5,104.6 KB</td>
+</tr>
+<tr>
+<td>W</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.8 KB</td>
+<td>5,421.2 KB</td>
+</tr>
+<tr>
+<td>X</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.9 KB</td>
+<td>5,436.8 KB</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>500</td>
+<td>3.70%</td>
+<td>10.7 KB</td>
+<td>5,345.3 KB</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>500</td>
+<td>3.70%</td>
+<td>8.6 KB</td>
+<td>4,294.9 KB</td>
+</tr>
+<tr>
+<td>space</td>
+<td>500</td>
+<td>3.70%</td>
+<td>9.6 KB</td>
+<td>4,822.6 KB</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>13,500</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>10.6 KB</strong></td>
+<td><strong>约 140 MB</strong></td>
+</tr>
+</tbody></table>
+<h3 id="文件大小分布"><a href="#文件大小分布" class="headerlink" title="文件大小分布"></a>文件大小分布</h3><table>
+<thead>
+<tr>
+<th>文件大小区间</th>
+<th>图像数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5-8 KB</td>
+<td>283</td>
+<td>2.1%</td>
+</tr>
+<tr>
+<td>8-10 KB</td>
+<td>2,781</td>
+<td>20.6%</td>
+</tr>
+<tr>
+<td>10-12 KB</td>
+<td>7,850</td>
+<td>58.1%</td>
+</tr>
+<tr>
+<td>12-14 KB</td>
+<td>2,388</td>
+<td>17.7%</td>
+</tr>
+<tr>
+<td>14-16 KB</td>
+<td>166</td>
+<td>1.2%</td>
+</tr>
+<tr>
+<td>16 KB 以上</td>
+<td>32</td>
+<td>0.2%</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>13,500</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完整原始图像文件</td>
+<td>包含全部 13,500 张 JPEG 原始图像，可直接加载使用</td>
+<td>支持端到端模型训练，无需额外数据获取或转换</td>
+</tr>
+<tr>
+<td>高度均衡的类别分布</td>
+<td>27 个类别各 500 张，完全均衡无偏差</td>
+<td>消除类别不均衡问题，模型训练无需额外采样策略</td>
+</tr>
+<tr>
+<td>Mediapipe 关键点预处理</td>
+<td>采用 Google Mediapipe 提取手部骨骼关键点并可视化</td>
+<td>消除背景、光照、肤色干扰，聚焦手势结构特征</td>
+</tr>
+<tr>
+<td>标准化图像尺寸</td>
+<td>所有图像统一为 224×224 像素</td>
+<td>可直接输入 ResNet、VGG、MobileNet 等主流模型</td>
+</tr>
+<tr>
+<td>零缺失的数据完整性</td>
+<td>所有字段完整率均为 100%，无缺失文件或损坏图像</td>
+<td>保障训练过程稳定，无需缺失值处理</td>
+</tr>
+<tr>
+<td>直观的目录标注结构</td>
+<td>文件夹名即类别标签，文件编号连续有序</td>
+<td>简化数据加载流程，兼容 PyTorch ImageFolder 等标准接口</td>
+</tr>
+<tr>
+<td>轻量化存储</td>
+<td>整体仅约 140 MB，单张图像平均 10.6 KB</td>
+<td>适合本地开发、快速实验与教学演示</td>
+</tr>
+<tr>
+<td>完整 ASL 字母覆盖</td>
+<td>覆盖 A-Z 全部 26 个字母及空格手势</td>
+<td>支持完整的字母级手语拼写识别系统构建</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>由于本数据集包含的是 Mediapipe 手部关键点可视化图像文件（JPEG 格式），受文档格式限制无法在此直接内嵌展示原始图像。实际数据集中包含全部 13,500 张完整的原始图像文件，可直接用于加载、预览和模型训练。以下提供元数据样例，展示数据集的组织结构和多样性特征。</p>
+<h3 id="元数据样例"><a href="#元数据样例" class="headerlink" title="元数据样例"></a>元数据样例</h3><p>以下样例涵盖不同字母类别、不同文件编号区间，体现数据集的多样性：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>类别标签</th>
+<th>文件路径</th>
+<th>文件编号</th>
+<th>图像分辨率</th>
+<th>文件大小（约）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A</td>
+<td>Signclusive_Mediapipe&#x2F;A&#x2F;0.jpg</td>
+<td>0</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>Signclusive_Mediapipe&#x2F;A&#x2F;250.jpg</td>
+<td>250</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>Signclusive_Mediapipe&#x2F;B&#x2F;15.jpg</td>
+<td>15</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>4</td>
+<td>D</td>
+<td>Signclusive_Mediapipe&#x2F;D&#x2F;499.jpg</td>
+<td>499</td>
+<td>224×224</td>
+<td>10 KB</td>
+</tr>
+<tr>
+<td>5</td>
+<td>F</td>
+<td>Signclusive_Mediapipe&#x2F;F&#x2F;100.jpg</td>
+<td>100</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>6</td>
+<td>H</td>
+<td>Signclusive_Mediapipe&#x2F;H&#x2F;333.jpg</td>
+<td>333</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>7</td>
+<td>J</td>
+<td>Signclusive_Mediapipe&#x2F;J&#x2F;88.jpg</td>
+<td>88</td>
+<td>224×224</td>
+<td>12 KB</td>
+</tr>
+<tr>
+<td>8</td>
+<td>K</td>
+<td>Signclusive_Mediapipe&#x2F;K&#x2F;200.jpg</td>
+<td>200</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>9</td>
+<td>L</td>
+<td>Signclusive_Mediapipe&#x2F;L&#x2F;450.jpg</td>
+<td>450</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>10</td>
+<td>M</td>
+<td>Signclusive_Mediapipe&#x2F;M&#x2F;77.jpg</td>
+<td>77</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>11</td>
+<td>O</td>
+<td>Signclusive_Mediapipe&#x2F;O&#x2F;160.jpg</td>
+<td>160</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Q</td>
+<td>Signclusive_Mediapipe&#x2F;Q&#x2F;300.jpg</td>
+<td>300</td>
+<td>224×224</td>
+<td>9 KB</td>
+</tr>
+<tr>
+<td>13</td>
+<td>R</td>
+<td>Signclusive_Mediapipe&#x2F;R&#x2F;42.jpg</td>
+<td>42</td>
+<td>224×224</td>
+<td>10 KB</td>
+</tr>
+<tr>
+<td>14</td>
+<td>S</td>
+<td>Signclusive_Mediapipe&#x2F;S&#x2F;189.jpg</td>
+<td>189</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>15</td>
+<td>T</td>
+<td>Signclusive_Mediapipe&#x2F;T&#x2F;400.jpg</td>
+<td>400</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>16</td>
+<td>V</td>
+<td>Signclusive_Mediapipe&#x2F;V&#x2F;55.jpg</td>
+<td>55</td>
+<td>224×224</td>
+<td>10 KB</td>
+</tr>
+<tr>
+<td>17</td>
+<td>W</td>
+<td>Signclusive_Mediapipe&#x2F;W&#x2F;275.jpg</td>
+<td>275</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Y</td>
+<td>Signclusive_Mediapipe&#x2F;Y&#x2F;123.jpg</td>
+<td>123</td>
+<td>224×224</td>
+<td>11 KB</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Z</td>
+<td>Signclusive_Mediapipe&#x2F;Z&#x2F;499.jpg</td>
+<td>499</td>
+<td>224×224</td>
+<td>9 KB</td>
+</tr>
+<tr>
+<td>20</td>
+<td>space</td>
+<td>Signclusive_Mediapipe&#x2F;space&#x2F;350.jpg</td>
+<td>350</td>
+<td>224×224</td>
+<td>10 KB</td>
+</tr>
+</tbody></table>
+<h3 id="数据加载示例（PyTorch）"><a href="#数据加载示例（PyTorch）" class="headerlink" title="数据加载示例（PyTorch）"></a>数据加载示例（PyTorch）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> datasets, transforms<br><br>transform = transforms.Compose([<br>    transforms.ToTensor(),<br>    transforms.Normalize(mean=[<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>],<br>                         std=[<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])<br>])<br><br>dataset = datasets.ImageFolder(<br>    root=<span class="hljs-string">&#x27;Signclusive_Mediapipe/Signclusive_Mediapipe&#x27;</span>,<br>    transform=transform<br>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="1-ASL-手语字母识别模型训练与评估"><a href="#1-ASL-手语字母识别模型训练与评估" class="headerlink" title="1. ASL 手语字母识别模型训练与评估"></a>1. ASL 手语字母识别模型训练与评估</h3><p>手语字母识别是手语理解系统的基础环节，本数据集为构建高精度的 ASL 字母分类器提供了理想的训练资源。由于所有图像均已通过 Mediapipe 进行手部关键点提取和可视化预处理，模型可以直接学习手指骨骼的空间结构和关节角度特征，而无需处理复杂的原始图像背景。研究人员可以使用 ResNet、EfficientNet、MobileNet 等经典卷积神经网络架构，或采用 Vision Transformer 等新型注意力机制模型，在该数据集上进行训练与微调。27 个类别完全均衡的分布特性确保了模型不会因类别偏差而产生训练偏向，可以直接使用标准的交叉熵损失函数而无需额外的类别权重调整。此外，224×224 的标准图像尺寸与多数预训练模型的输入要求完全匹配，使得迁移学习的实施更加便捷。研究者可以将数据集按照 8:1:1 的比例划分为训练集、验证集和测试集，系统评估模型在不同字母类别上的分类性能。</p>
+<h3 id="2-手部姿态估计与骨骼关键点分析"><a href="#2-手部姿态估计与骨骼关键点分析" class="headerlink" title="2. 手部姿态估计与骨骼关键点分析"></a>2. 手部姿态估计与骨骼关键点分析</h3><p>本数据集中的图像本质上是 Mediapipe Hand Landmark 模型输出的可视化结果，展现了 21 个手部关键点的连接关系和空间分布。这些图像可作为手部姿态估计研究的重要参考数据，帮助研究人员深入理解不同手语字母对应的手指弯曲角度、指间距离和手掌朝向等几何特征。通过对这些关键点图像进行逆向分析，可以建立从骨骼结构到手语语义的映射关系。研究者还可以在此基础上开发更高级的姿态估计算法，例如结合时序信息实现动态手势的连续识别，或利用关键点间的拓扑关系构建图神经网络（GNN）模型以捕获手指间的协同运动模式。对于机器人控制领域而言，这些骨骼关键点数据同样具有重要价值，可用于训练机械手模仿人类手势的控制策略。</p>
+<h3 id="3-无障碍辅助技术与实时手语翻译系统开发"><a href="#3-无障碍辅助技术与实时手语翻译系统开发" class="headerlink" title="3. 无障碍辅助技术与实时手语翻译系统开发"></a>3. 无障碍辅助技术与实时手语翻译系统开发</h3><p>无障碍通信技术是信息社会的重要组成部分，本数据集可直接服务于实时手语翻译系统的开发。开发者可以基于该数据集训练轻量级的手语字母分类模型，并将其集成到移动端应用或嵌入式设备中，实现实时的手语字母识别与文字转换功能。由于 Mediapipe 框架本身已支持移动端部署，因此从”摄像头输入 → Mediapipe 手部关键点提取 → 分类模型预测 → 文字输出”的完整流水线可以在智能手机上高效运行。该系统可以帮助听障人士通过手语字母拼写与普通人进行文字交流，或用于教育场景中辅助学生学习 ASL 手语字母。轻量化的数据规模（约 140 MB）也使得开发者可以在本地环境中快速完成模型原型验证，缩短从研发到部署的周期。</p>
+<h3 id="4-计算机视觉教学与深度学习实践"><a href="#4-计算机视觉教学与深度学习实践" class="headerlink" title="4. 计算机视觉教学与深度学习实践"></a>4. 计算机视觉教学与深度学习实践</h3><p>本数据集的结构规范性和适中的规模使其成为计算机视觉课程教学和深度学习入门实践的优秀素材。数据集采用标准的 ImageFolder 目录结构，可直接被 PyTorch、TensorFlow、Keras 等主流框架的数据加载接口识别，学生无需花费大量时间在数据预处理上，可以将精力集中在模型设计、超参数调优和性能分析等核心知识点上。27 个类别、13,500 张图像的规模既足以支撑有意义的训练实验，又不会对普通笔记本电脑的计算资源造成过大压力。教师可以围绕该数据集设计包括图像分类基础、数据增强策略、正则化技术、模型比较实验、混淆矩阵分析等在内的系列教学任务。均衡的类别分布也避免了需要额外讲解过采样和欠采样等不平衡处理技术的复杂性，降低了入门难度。</p>
+<h3 id="5-手语识别系统的基准测试与算法对比"><a href="#5-手语识别系统的基准测试与算法对比" class="headerlink" title="5. 手语识别系统的基准测试与算法对比"></a>5. 手语识别系统的基准测试与算法对比</h3><p>构建标准化的基准测试体系对于推动手语识别领域的技术进步至关重要。本数据集凭借其完全均衡的类别分布、标准化的图像规格和完善的标注结构，非常适合作为不同手语识别算法之间的横向对比基准。研究人员可以在相同的数据划分条件下，系统比较传统机器学习方法（如 SVM、随机森林配合 HOG 特征）与深度学习方法（如 CNN、ViT）在手语字母识别任务上的精度差异和推理效率。Mediapipe 预处理后的关键点图像还为探索轻量化模型架构提供了实验平台，研究者可以评估不同模型压缩技术（如知识蒸馏、量化、剪枝）在保持识别精度的同时所能达到的加速效果。这些对比结果将为学术论文提供坚实的实验数据支撑，也为工业界的技术选型提供参考依据。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Signclusive Mediapipe 手语字母识别图像数据集以其严谨的数据组织、完全均衡的类别分布以及 Mediapipe 关键点预处理的独特优势，为手语识别领域的研究与应用提供了高质量的数据基础。该数据集包含全部 13,500 张完整的原始 JPEG 图像文件，覆盖 ASL 全部 27 个手语字母类别，每张图像均可直接加载和使用，无需任何额外的数据申请或格式转换。标准化的 224×224 像素分辨率和 ImageFolder 目录结构确保了与主流深度学习框架的无缝兼容，约 140 MB 的轻量化体积则使其在本地开发环境中即可高效运行。无论是科研人员开展手语识别算法研究、开发者构建无障碍辅助应用，还是教育工作者设计计算机视觉教学实验，该数据集都能提供可靠且便捷的支撑。有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Signclusive手语字母识别图像数据集</div>
+      <div>https://zhyyao.cn/2026/06/11/dianshu/Signclusive手语字母识别图像数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/06/11/dianshu/%E9%98%BF%E6%8B%89%E4%BC%AF%E8%AF%AD%E5%8F%98%E9%9F%B3%E6%A0%87%E6%B3%A8%E8%AF%AD%E6%96%99%E5%BA%93/" title="阿拉伯语变音标注语料库">
+                        <span class="hidden-mobile">阿拉伯语变音标注语料库</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
