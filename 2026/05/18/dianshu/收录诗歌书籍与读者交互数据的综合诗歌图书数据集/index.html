@@ -1,0 +1,1948 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/05/18/dianshu/收录诗歌书籍与读者交互数据的综合诗歌图书数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在自然语言处理、推荐系统、计算文学研究以及数字人文等前沿交叉学科领域，高质量的图书数据集始终是推动算法创新与学术突破的核心基础。然而，现有公开数据集中，专门聚焦于诗歌这一重要文学体裁的大规模、多维度数据资源极为稀缺。诗歌作为一种高度凝练的语言艺术形式，其独特的韵律结构、隐喻体系和情感表达方式，为文本分析、情感计算和风格迁移等任务提供了极具挑战性的研究场景。 本数据集正是为填补这一空白而构建，完整收">
+<meta property="og:type" content="article">
+<meta property="og:title" content="收录诗歌书籍与读者交互数据的综合诗歌图书数据集">
+<meta property="og:url" content="https://zhyyao.cn/2026/05/18/dianshu/%E6%94%B6%E5%BD%95%E8%AF%97%E6%AD%8C%E4%B9%A6%E7%B1%8D%E4%B8%8E%E8%AF%BB%E8%80%85%E4%BA%A4%E4%BA%92%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%BC%E5%90%88%E8%AF%97%E6%AD%8C%E5%9B%BE%E4%B9%A6%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="在自然语言处理、推荐系统、计算文学研究以及数字人文等前沿交叉学科领域，高质量的图书数据集始终是推动算法创新与学术突破的核心基础。然而，现有公开数据集中，专门聚焦于诗歌这一重要文学体裁的大规模、多维度数据资源极为稀缺。诗歌作为一种高度凝练的语言艺术形式，其独特的韵律结构、隐喻体系和情感表达方式，为文本分析、情感计算和风格迁移等任务提供了极具挑战性的研究场景。 本数据集正是为填补这一空白而构建，完整收">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-18T07:00:01.000Z">
+<meta property="article:modified_time" content="2026-05-18T07:00:13.474Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>收录诗歌书籍与读者交互数据的综合诗歌图书数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="收录诗歌书籍与读者交互数据的综合诗歌图书数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-18 15:00" pubdate>
+          2026年5月18日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          86 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">收录诗歌书籍与读者交互数据的综合诗歌图书数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在自然语言处理、推荐系统、计算文学研究以及数字人文等前沿交叉学科领域，高质量的图书数据集始终是推动算法创新与学术突破的核心基础。然而，现有公开数据集中，专门聚焦于诗歌这一重要文学体裁的大规模、多维度数据资源极为稀缺。诗歌作为一种高度凝练的语言艺术形式，其独特的韵律结构、隐喻体系和情感表达方式，为文本分析、情感计算和风格迁移等任务提供了极具挑战性的研究场景。</p>
+<p>本数据集正是为填补这一空白而构建，完整收录了来自 Goodreads 平台的 <strong>36,514 本诗歌类书籍</strong> 的详尽元数据，以及这些书籍对应的 <strong>250,000 条真实读者交互记录</strong>。数据集内容构成丰富而系统，包含两大核心模块：其一是 <strong>诗歌书籍元数据表</strong>（books_poetry.csv），涵盖书名、作者、出版社、出版年份、ISBN、装帧格式、页数、语言代码、国家代码、平均评分、评分总数、文本评论数、内容简介、丛书信息、相似书籍推荐、封面图片链接等近 30 个字段的完整结构化信息；其二是 <strong>读者交互记录表</strong>（interactions.csv），记录每位读者对书籍的评分（1-5 分制）、是否已读标记、评论内容、添加日期、更新日期、开始阅读日期和完成阅读日期等丰富的用户行为数据。</p>
+<p>这一数据组合的价值在于，它不仅提供了诗歌书籍的静态特征描述，更通过大规模的读者行为数据，揭示了作品在真实阅读场景中的接受程度与传播规律。对于从事推荐系统研发的研究者而言，这是一个天然的协同过滤与内容推荐实验场；对于计算语言学和数字人文领域的学者，它提供了分析诗歌作品传播规律、流派演进和跨文化影响力的宝贵素材；而对于希望训练文学领域语言模型或情感分析算法的工程师来说，其中包含的大量书籍描述文本和用户评论内容，则是理想的无监督或弱监督训练语料。无论是基础科研探索，还是产业级算法开发，该数据集都具备不可替代的支撑作用。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模与构成"><a href="#数据规模与构成" class="headerlink" title="数据规模与构成"></a>数据规模与构成</h3><p>本数据集由两个相互关联的 CSV 文件组成，总数据量约 286,514 条记录，原始文件总大小约 146 MB（压缩包约 39 MB），具体规模如下：</p>
+<ul>
+<li><strong>诗歌书籍元数据表</strong>（books_poetry.csv）：36,514 条记录，30 个字段</li>
+<li><strong>读者交互记录表</strong>（interactions.csv）：250,000 条记录，11 个字段</li>
+<li><strong>交互记录覆盖的书籍数量</strong>：22,926 本（占元数据中书籍总数的 62.8%）</li>
+<li><strong>交互记录涉及的独立用户数量</strong>：25,846 位</li>
+<li><strong>时间跨度</strong>：交互记录涵盖 2004 年至 2017 年共 14 年的读者行为数据</li>
+</ul>
+<p>书籍元数据涵盖多种装帧格式，包括平装本（Paperback，55.01%）、精装本（Hardcover，18.44%）、电子书（eBook，2.48%）、Kindle 版（0.90%）、有声书（Audio CD&#x2F;Audiobook，共 0.67%）等。语言覆盖方面，数据集收录了以英语（22.99%）为主体，兼有阿拉伯语（4.40%）、波斯语（2.53%）、西班牙语（2.29%）、葡萄牙语（1.27%）、意大利语（1.25%）、土耳其语（1.01%）等数十种语言的诗歌作品，展现出丰富的多语言文学景观。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><p><strong>诗歌书籍元数据表字段说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>book_id</td>
+<td>整数</td>
+<td>Goodreads 书籍唯一标识</td>
+<td>16037549</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>title</td>
+<td>字符串</td>
+<td>书名</td>
+<td>Vision of Sir Launfal and Other Poems</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>title_without_series</td>
+<td>字符串</td>
+<td>不含丛书信息的书名</td>
+<td>Vision of Sir Launfal and Other Poems</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>authors</td>
+<td>JSON 字符串</td>
+<td>作者信息（含作者 ID、角色）</td>
+<td>[{“author_id”:”15585”,”role”:””}]</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td>字符串</td>
+<td>出版社名称</td>
+<td>Houghton, Mifflin and Company</td>
+<td>83.48%</td>
+</tr>
+<tr>
+<td>isbn</td>
+<td>字符串</td>
+<td>ISBN 编号</td>
+<td>0811223981</td>
+<td>72.67%</td>
+</tr>
+<tr>
+<td>isbn13</td>
+<td>字符串</td>
+<td>ISBN-13 编号</td>
+<td>9780811223980</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>format</td>
+<td>字符串</td>
+<td>装帧&#x2F;格式</td>
+<td>Paperback</td>
+<td>80.76%</td>
+</tr>
+<tr>
+<td>num_pages</td>
+<td>整数</td>
+<td>页数</td>
+<td>80</td>
+<td>79.45%</td>
+</tr>
+<tr>
+<td>publication_year</td>
+<td>整数</td>
+<td>出版年份</td>
+<td>1887</td>
+<td>84.07%</td>
+</tr>
+<tr>
+<td>publication_month</td>
+<td>整数</td>
+<td>出版月份</td>
+<td>11</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>publication_day</td>
+<td>整数</td>
+<td>出版日期</td>
+<td>1</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>language_code</td>
+<td>字符串</td>
+<td>语言代码</td>
+<td>eng</td>
+<td>46.70%</td>
+</tr>
+<tr>
+<td>country_code</td>
+<td>字符串</td>
+<td>国家代码</td>
+<td>US</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>average_rating</td>
+<td>浮点数</td>
+<td>平均评分（1-5 分制）</td>
+<td>3.83</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>ratings_count</td>
+<td>整数</td>
+<td>评分总数</td>
+<td>3</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>text_reviews_count</td>
+<td>整数</td>
+<td>文本评论数</td>
+<td>1</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>description</td>
+<td>字符串</td>
+<td>书籍内容简介</td>
+<td>Number 30 in a series of literary pamphlets…</td>
+<td>79.39%</td>
+</tr>
+<tr>
+<td>series</td>
+<td>字符串</td>
+<td>所属丛书信息</td>
+<td>[]</td>
+<td>100%（含空值）</td>
+</tr>
+<tr>
+<td>is_ebook</td>
+<td>布尔值</td>
+<td>是否为电子书</td>
+<td>false</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>asin</td>
+<td>字符串</td>
+<td>Amazon ASIN 编号</td>
+<td>-</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>kindle_asin</td>
+<td>字符串</td>
+<td>Kindle ASIN 编号</td>
+<td>B00U2WY9U8</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>similar_books</td>
+<td>JSON 字符串</td>
+<td>相似书籍 ID 列表</td>
+<td>[“25869488”,”23630890”]</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>edition_information</td>
+<td>字符串</td>
+<td>版本信息</td>
+<td>First</td>
+<td>9.38%</td>
+</tr>
+<tr>
+<td>image_url</td>
+<td>字符串</td>
+<td>封面图片链接</td>
+<td><a target="_blank" rel="noopener" href="https://images.gr-assets.com/">https://images.gr-assets.com/</a>…</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>url</td>
+<td>字符串</td>
+<td>Goodreads 页面链接</td>
+<td><a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/">https://www.goodreads.com/book/show/</a>…</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>link</td>
+<td>字符串</td>
+<td>书籍链接</td>
+<td>同 url</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>work_id</td>
+<td>整数</td>
+<td>作品 ID</td>
+<td>5212748</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>popular_shelves</td>
+<td>JSON 字符串</td>
+<td>用户书架标签统计</td>
+<td>[{“count”:”8”,”name”:”to-read”}]</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<p><strong>读者交互记录表字段说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user_id</td>
+<td>字符串</td>
+<td>用户唯一标识（哈希值）</td>
+<td>8842281e1d1347389f2ab93d60773d4d</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>book_id</td>
+<td>整数</td>
+<td>书籍 ID</td>
+<td>1384</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>review_id</td>
+<td>字符串</td>
+<td>评论唯一标识</td>
+<td>1bad0122cebb4aa9213f9fe1aa281f66</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>is_read</td>
+<td>布尔值</td>
+<td>是否已读</td>
+<td>True</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>整数</td>
+<td>用户评分（0-5）</td>
+<td>4</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>review_text_incomplete</td>
+<td>文本</td>
+<td>评论内容（不完整版）</td>
+<td>（部分记录有内容）</td>
+<td>5.99%</td>
+</tr>
+<tr>
+<td>date_added</td>
+<td>字符串</td>
+<td>添加日期</td>
+<td>Wed May 09 09:33:44 -0700 2007</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>date_updated</td>
+<td>字符串</td>
+<td>更新日期</td>
+<td>Wed May 09 09:33:44 -0700 2007</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>read_at</td>
+<td>字符串</td>
+<td>阅读完成日期</td>
+<td>Tue Mar 01 00:00:00 -0800 1983</td>
+<td>部分</td>
+</tr>
+<tr>
+<td>started_at</td>
+<td>字符串</td>
+<td>开始阅读日期</td>
+<td>（部分为空）</td>
+<td>部分</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><p><strong>评分分布（交互记录）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>评分</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0（未评分）</td>
+<td>133,583</td>
+<td>53.43%</td>
+<td>53.43%</td>
+</tr>
+<tr>
+<td>1 分</td>
+<td>1,658</td>
+<td>0.66%</td>
+<td>54.10%</td>
+</tr>
+<tr>
+<td>2 分</td>
+<td>5,790</td>
+<td>2.32%</td>
+<td>56.41%</td>
+</tr>
+<tr>
+<td>3 分</td>
+<td>22,467</td>
+<td>8.99%</td>
+<td>65.40%</td>
+</tr>
+<tr>
+<td>4 分</td>
+<td>39,320</td>
+<td>15.73%</td>
+<td>81.13%</td>
+</tr>
+<tr>
+<td>5 分</td>
+<td>47,182</td>
+<td>18.87%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<p>其中包含有效评分（1-5 分）的记录为 116,417 条，占比 46.57%。在有效评分中，正面评分（4-5 分）占比约 74.29%，反映出诗歌类书籍读者的整体满意度较高。</p>
+<p><strong>是否已读分布（交互记录）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已读（True）</td>
+<td>123,283</td>
+<td>49.31%</td>
+</tr>
+<tr>
+<td>未读（False）</td>
+<td>126,717</td>
+<td>50.69%</td>
+</tr>
+</tbody></table>
+<p><strong>年份分布（交互记录，基于添加日期）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2004</td>
+<td>1</td>
+<td>0.00%</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>1</td>
+<td>0.00%</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>27</td>
+<td>0.01%</td>
+<td>0.01%</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>3,365</td>
+<td>1.35%</td>
+<td>1.36%</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>15,716</td>
+<td>6.29%</td>
+<td>7.64%</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>6,601</td>
+<td>2.64%</td>
+<td>10.28%</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>4,623</td>
+<td>1.85%</td>
+<td>12.13%</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>4,494</td>
+<td>1.80%</td>
+<td>13.93%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>58,535</td>
+<td>23.41%</td>
+<td>37.35%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>42,902</td>
+<td>17.16%</td>
+<td>54.51%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>30,559</td>
+<td>12.22%</td>
+<td>66.73%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>29,405</td>
+<td>11.76%</td>
+<td>78.49%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>30,173</td>
+<td>12.07%</td>
+<td>90.56%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>23,598</td>
+<td>9.44%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<p>交互数据在 2012 年至 2017 年间高度活跃，这六年贡献了总量的 86.07%，其中 2012 年以 23.41% 的占比为峰值年份。</p>
+<p><strong>出版年份分布（书籍元数据，按年代）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1880 年代及以前</td>
+<td>63</td>
+<td>0.17%</td>
+</tr>
+<tr>
+<td>1890-1900 年代</td>
+<td>46</td>
+<td>0.13%</td>
+</tr>
+<tr>
+<td>1910-1920 年代</td>
+<td>103</td>
+<td>0.28%</td>
+</tr>
+<tr>
+<td>1930-1940 年代</td>
+<td>201</td>
+<td>0.55%</td>
+</tr>
+<tr>
+<td>1950-1960 年代</td>
+<td>998</td>
+<td>2.73%</td>
+</tr>
+<tr>
+<td>1970-1980 年代</td>
+<td>2,909</td>
+<td>7.97%</td>
+</tr>
+<tr>
+<td>1990 年代</td>
+<td>4,631</td>
+<td>12.68%</td>
+</tr>
+<tr>
+<td>2000 年代</td>
+<td>10,294</td>
+<td>28.19%</td>
+</tr>
+<tr>
+<td>2010 年代</td>
+<td>11,404</td>
+<td>31.23%</td>
+</tr>
+<tr>
+<td>年份缺失</td>
+<td>5,816</td>
+<td>15.93%</td>
+</tr>
+</tbody></table>
+<p>书籍出版年代分布显示，2000 年以后出版的诗歌作品占已知出版年份书籍的 70.58%，其中 2010 年代的作品最多，体现出数据集对当代诗歌的覆盖优势。</p>
+<p><strong>装帧格式分布（书籍元数据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paperback（平装本）</td>
+<td>20,086</td>
+<td>55.01%</td>
+</tr>
+<tr>
+<td>Hardcover（精装本）</td>
+<td>6,735</td>
+<td>18.44%</td>
+</tr>
+<tr>
+<td>格式未知</td>
+<td>7,025</td>
+<td>19.24%</td>
+</tr>
+<tr>
+<td>ebook（电子书）</td>
+<td>904</td>
+<td>2.48%</td>
+</tr>
+<tr>
+<td>Kindle Edition</td>
+<td>329</td>
+<td>0.90%</td>
+</tr>
+<tr>
+<td>Unknown Binding</td>
+<td>224</td>
+<td>0.61%</td>
+</tr>
+<tr>
+<td>Mass Market Paperback</td>
+<td>179</td>
+<td>0.49%</td>
+</tr>
+<tr>
+<td>Audio CD</td>
+<td>163</td>
+<td>0.45%</td>
+</tr>
+<tr>
+<td>Chapbook</td>
+<td>93</td>
+<td>0.25%</td>
+</tr>
+<tr>
+<td>Audiobook</td>
+<td>80</td>
+<td>0.22%</td>
+</tr>
+<tr>
+<td>其他格式</td>
+<td>344</td>
+<td>0.94%</td>
+</tr>
+</tbody></table>
+<p><strong>页数分布（书籍元数据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>页数范围</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>未知</td>
+<td>7,505</td>
+<td>20.55%</td>
+</tr>
+<tr>
+<td>0 页</td>
+<td>40</td>
+<td>0.11%</td>
+</tr>
+<tr>
+<td>1-50 页</td>
+<td>3,058</td>
+<td>8.37%</td>
+</tr>
+<tr>
+<td>51-100 页</td>
+<td>8,925</td>
+<td>24.44%</td>
+</tr>
+<tr>
+<td>101-200 页</td>
+<td>8,679</td>
+<td>23.77%</td>
+</tr>
+<tr>
+<td>201-500 页</td>
+<td>6,519</td>
+<td>17.85%</td>
+</tr>
+<tr>
+<td>501-1000 页</td>
+<td>1,487</td>
+<td>4.07%</td>
+</tr>
+<tr>
+<td>1000 页以上</td>
+<td>301</td>
+<td>0.82%</td>
+</tr>
+</tbody></table>
+<p>诗歌类书籍的页数分布呈现出集中在 200 页以内的特点（累计 56.58%），这与诗歌作品通常篇幅较短的特征相符。值得注意的是，仍有 4.89% 的书籍超过 500 页，可能为诗歌选集或全集类作品。</p>
+<p><strong>语言分布（书籍元数据，Top 15）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>语言代码</th>
+<th>语言</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eng</td>
+<td>英语</td>
+<td>8,393</td>
+<td>22.99%</td>
+</tr>
+<tr>
+<td>ara</td>
+<td>阿拉伯语</td>
+<td>1,608</td>
+<td>4.40%</td>
+</tr>
+<tr>
+<td>per</td>
+<td>波斯语</td>
+<td>924</td>
+<td>2.53%</td>
+</tr>
+<tr>
+<td>en-US</td>
+<td>美式英语</td>
+<td>868</td>
+<td>2.38%</td>
+</tr>
+<tr>
+<td>spa</td>
+<td>西班牙语</td>
+<td>837</td>
+<td>2.29%</td>
+</tr>
+<tr>
+<td>por</td>
+<td>葡萄牙语</td>
+<td>462</td>
+<td>1.27%</td>
+</tr>
+<tr>
+<td>ita</td>
+<td>意大利语</td>
+<td>455</td>
+<td>1.25%</td>
+</tr>
+<tr>
+<td>tur</td>
+<td>土耳其语</td>
+<td>369</td>
+<td>1.01%</td>
+</tr>
+<tr>
+<td>en-GB</td>
+<td>英式英语</td>
+<td>360</td>
+<td>0.99%</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>荷兰语</td>
+<td>228</td>
+<td>0.62%</td>
+</tr>
+<tr>
+<td>ind</td>
+<td>印度尼西亚语</td>
+<td>222</td>
+<td>0.61%</td>
+</tr>
+<tr>
+<td>bul</td>
+<td>保加利亚语</td>
+<td>205</td>
+<td>0.56%</td>
+</tr>
+<tr>
+<td>fre</td>
+<td>法语</td>
+<td>200</td>
+<td>0.55%</td>
+</tr>
+<tr>
+<td>ger</td>
+<td>德语</td>
+<td>193</td>
+<td>0.53%</td>
+</tr>
+<tr>
+<td>gre</td>
+<td>希腊语</td>
+<td>186</td>
+<td>0.51%</td>
+</tr>
+<tr>
+<td>其他语言</td>
+<td>-</td>
+<td>1,942</td>
+<td>5.32%</td>
+</tr>
+<tr>
+<td>语言代码未知</td>
+<td>-</td>
+<td>19,462</td>
+<td>53.30%</td>
+</tr>
+</tbody></table>
+<p><strong>平均评分分布（书籍元数据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>评分区间</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-1.99</td>
+<td>25</td>
+<td>0.07%</td>
+</tr>
+<tr>
+<td>2.00-2.99</td>
+<td>419</td>
+<td>1.15%</td>
+</tr>
+<tr>
+<td>3.00-3.99</td>
+<td>13,127</td>
+<td>35.95%</td>
+</tr>
+<tr>
+<td>4.00-4.50</td>
+<td>19,301</td>
+<td>52.86%</td>
+</tr>
+<tr>
+<td>4.51-5.00</td>
+<td>3,642</td>
+<td>9.97%</td>
+</tr>
+</tbody></table>
+<p>书籍的平均评分集中在 3.00 至 4.50 之间，合计占比 88.81%，其中 4.00-4.50 区间占比超过半数，表明该数据集中的诗歌书籍整体质量评价较高。</p>
+<p><strong>评分数量分布（书籍元数据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>评分数量范围</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>96</td>
+<td>0.26%</td>
+</tr>
+<tr>
+<td>1-10</td>
+<td>10,723</td>
+<td>29.37%</td>
+</tr>
+<tr>
+<td>11-100</td>
+<td>18,815</td>
+<td>51.53%</td>
+</tr>
+<tr>
+<td>101-1K</td>
+<td>5,938</td>
+<td>16.26%</td>
+</tr>
+<tr>
+<td>1K-10K</td>
+<td>856</td>
+<td>2.34%</td>
+</tr>
+<tr>
+<td>10K+</td>
+<td>86</td>
+<td>0.24%</td>
+</tr>
+</tbody></table>
+<p><strong>前 20 位出版社分布（书籍元数据）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>出版社</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W. W. Norton &amp; Company</td>
+<td>320</td>
+<td>0.88%</td>
+</tr>
+<tr>
+<td>Farrar, Straus and Giroux</td>
+<td>305</td>
+<td>0.84%</td>
+</tr>
+<tr>
+<td>Penguin Classics</td>
+<td>302</td>
+<td>0.83%</td>
+</tr>
+<tr>
+<td>Penguin Books</td>
+<td>291</td>
+<td>0.80%</td>
+</tr>
+<tr>
+<td>New Directions</td>
+<td>261</td>
+<td>0.71%</td>
+</tr>
+<tr>
+<td>Copper Canyon Press</td>
+<td>240</td>
+<td>0.66%</td>
+</tr>
+<tr>
+<td>Oxford University Press, USA</td>
+<td>240</td>
+<td>0.66%</td>
+</tr>
+<tr>
+<td>Knopf</td>
+<td>227</td>
+<td>0.62%</td>
+</tr>
+<tr>
+<td>Graywolf Press</td>
+<td>184</td>
+<td>0.50%</td>
+</tr>
+<tr>
+<td>W. W. Norton &amp; Company</td>
+<td>180</td>
+<td>0.49%</td>
+</tr>
+<tr>
+<td>Createspace Independent Publishing Platform</td>
+<td>172</td>
+<td>0.47%</td>
+</tr>
+<tr>
+<td>Dover Publications</td>
+<td>168</td>
+<td>0.46%</td>
+</tr>
+<tr>
+<td>Faber &amp; Faber</td>
+<td>165</td>
+<td>0.45%</td>
+</tr>
+<tr>
+<td>University of Pittsburgh Press</td>
+<td>158</td>
+<td>0.43%</td>
+</tr>
+<tr>
+<td>Mariner Books</td>
+<td>146</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>Faber &amp; Faber</td>
+<td>146</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>Oxford University Press</td>
+<td>146</td>
+<td>0.40%</td>
+</tr>
+<tr>
+<td>Ecco</td>
+<td>143</td>
+<td>0.39%</td>
+</tr>
+<tr>
+<td>University of California Press</td>
+<td>134</td>
+<td>0.37%</td>
+</tr>
+<tr>
+<td>HMH Books for Young Readers</td>
+<td>123</td>
+<td>0.34%</td>
+</tr>
+</tbody></table>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>海量多维度数据</strong></td>
+<td>包含 36,514 本诗歌书籍的元数据和 250,000 条真实读者交互记录，双重维度数据互补</td>
+<td>支持大规模机器学习模型训练，同时覆盖内容特征与用户行为特征</td>
+</tr>
+<tr>
+<td><strong>完整的书籍元数据</strong></td>
+<td>每个书籍记录包含 30 个字段，覆盖书名、作者、出版社、ISBN、描述、评分、标签等全维度信息</td>
+<td>可用于多特征融合的推荐系统、内容分类和知识图谱构建</td>
+</tr>
+<tr>
+<td><strong>真实的用户行为数据</strong></td>
+<td>行为数据包含评分、阅读状态、时间戳等多类型交互信息，时间跨度达 14 年</td>
+<td>支持时序推荐模型、用户画像分析和阅读行为模式挖掘</td>
+</tr>
+<tr>
+<td><strong>丰富的多语言覆盖</strong></td>
+<td>收录数十种语言的诗歌作品，包括英语、阿拉伯语、波斯语、西班牙语等</td>
+<td>适用于跨语言自然语言处理、多语种情感分析和比较文学研究</td>
+</tr>
+<tr>
+<td><strong>详细的文本描述</strong></td>
+<td>79.39% 的书籍包含内容简介&#x2F;描述文本，总计超过 28,988 条</td>
+<td>可用于文本分类、主题建模、文本生成和语义搜索</td>
+</tr>
+<tr>
+<td><strong>多样化的装帧格式</strong></td>
+<td>覆盖平装、精装、电子书、有声书等多种格式</td>
+<td>支持出版业市场分析和数字阅读趋势研究</td>
+</tr>
+<tr>
+<td><strong>读者标签数据</strong></td>
+<td>包含用户定义的”流行书架”标签数据，反映读者对书籍的主题分类</td>
+<td>可用于标签推荐、语义相似度计算和用户兴趣建模</td>
+</tr>
+<tr>
+<td><strong>结构化作者信息</strong></td>
+<td>作者信息以结构化 JSON 格式存储，含作者 ID 和角色信息</td>
+<td>支持作者影响力分析、合作网络构建和文学谱系研究</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>由于完整的书籍元数据 CSV 文件体积较大（约 104 MB），无法在文章中直接展示全部数据内容，但实际数据集中包含 <strong>全部 36,514 条记录的完整字段信息</strong>，包括详细的书籍描述文本、结构化作者信息和读者交互数据。以下展示的是从数据集中随机抽取的 15 条多样化样本，涵盖不同语言、国家、格式和出版时期的诗歌作品，以展示数据集的丰富性和多样性。</p>
+<p><strong>样例类型</strong>：书籍元数据样例</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>书名</th>
+<th>作者 ID</th>
+<th>出版社</th>
+<th>格式</th>
+<th>出版年份</th>
+<th>语言</th>
+<th>平均评分</th>
+<th>评分人数</th>
+<th>页数</th>
+<th>是否为电子书</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Vision of Sir Launfal and Other Poems</td>
+<td>15585</td>
+<td>Houghton, Mifflin and Company</td>
+<td>Paperback</td>
+<td>1887</td>
+<td>eng</td>
+<td>3.83</td>
+<td>3</td>
+<td>80</td>
+<td>否</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fairy Tales: Dramolettes</td>
+<td>16073</td>
+<td>New Directions</td>
+<td>Paperback</td>
+<td>2015</td>
+<td>-</td>
+<td>3.83</td>
+<td>37</td>
+<td>128</td>
+<td>否</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Growltiger’s Last Stand and Other Poems</td>
+<td>18540</td>
+<td>Farrar Straus Giroux</td>
+<td>Paperback</td>
+<td>2008</td>
+<td>-</td>
+<td>4.38</td>
+<td>7</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cardiopatías</td>
+<td>13831363</td>
+<td>Monte Avila Editores Latinoamericana</td>
+<td>Paperback</td>
+<td>2016</td>
+<td>spa</td>
+<td>4.52</td>
+<td>21</td>
+<td>76</td>
+<td>否</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gardening Secrets of the Dead</td>
+<td>664649</td>
+<td>Wordtech Communications</td>
+<td>Paperback</td>
+<td>2012</td>
+<td>-</td>
+<td>4.23</td>
+<td>13</td>
+<td>88</td>
+<td>否</td>
+</tr>
+<tr>
+<td>6</td>
+<td>رباعیات خیام بر اساس نسخه محمدعلی فروغی</td>
+<td>2742325</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>per</td>
+<td>4.18</td>
+<td>7</td>
+<td>103</td>
+<td>否</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Complete Nonsense And Other Verse</td>
+<td>142</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>4.17</td>
+<td>11</td>
+<td>-</td>
+<td>否</td>
+</tr>
+<tr>
+<td>8</td>
+<td>В нощите лунни</td>
+<td>887400</td>
+<td>Damian Iakov</td>
+<td>Hardcover</td>
+<td>2009</td>
+<td>bul</td>
+<td>4.18</td>
+<td>11</td>
+<td>248</td>
+<td>否</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Works of Edward Thomas</td>
+<td>204916</td>
+<td>Wordsworth Editions</td>
+<td>Paperback</td>
+<td>1994</td>
+<td>eng</td>
+<td>4.12</td>
+<td>25</td>
+<td>256</td>
+<td>否</td>
+</tr>
+<tr>
+<td>10</td>
+<td>El Sueño de Visnu</td>
+<td>5620416</td>
+<td>El Gaviero Ediciones</td>
+<td>-</td>
+<td>2012</td>
+<td>-</td>
+<td>4.48</td>
+<td>29</td>
+<td>100</td>
+<td>否</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Iloinen tiede</td>
+<td>1938</td>
+<td>Otava</td>
+<td>Paperback</td>
+<td>1989</td>
+<td>fin</td>
+<td>4.26</td>
+<td>1</td>
+<td>256</td>
+<td>否</td>
+</tr>
+<tr>
+<td>12</td>
+<td>النهر والموت: مقتطفات</td>
+<td>1428938</td>
+<td>-</td>
+<td>Paperback</td>
+<td>1999</td>
+<td>ara</td>
+<td>3.90</td>
+<td>89</td>
+<td>120</td>
+<td>否</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Peaceful Pieces: Poems and Quilts About Peace</td>
+<td>168585</td>
+<td>Henry Holt and Co. (BYR)</td>
+<td>Hardcover</td>
+<td>2011</td>
+<td>eng</td>
+<td>4.03</td>
+<td>249</td>
+<td>32</td>
+<td>否</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Envelope Poems</td>
+<td>7440</td>
+<td>New Directions</td>
+<td>Hardcover</td>
+<td>2016</td>
+<td>-</td>
+<td>4.22</td>
+<td>353</td>
+<td>96</td>
+<td>否</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Ματωμένος Γάμος</td>
+<td>44150</td>
+<td>Ikaros</td>
+<td>Paperback</td>
+<td>1964</td>
+<td>gre</td>
+<td>3.81</td>
+<td>66</td>
+<td>122</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p>以上样例清晰地展示了数据集的核心特征：时间跨度从 1887 年的经典作品到 2016 年的当代创作；语言覆盖英语、西班牙语、波斯语、保加利亚语、芬兰语、阿拉伯语、希腊语等；格式涵盖平装本和精装本；评分从 3.83 到 4.52 不等，反映了读者群体的多样性评价。值得注意的是，每条记录在原始 CSV 文件中均包含完整的描述文本、作者结构信息和优秀的封面图片链接，实际可用信息远较此样例表丰富。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="基于多模态内容的诗歌推荐系统"><a href="#基于多模态内容的诗歌推荐系统" class="headerlink" title="基于多模态内容的诗歌推荐系统"></a>基于多模态内容的诗歌推荐系统</h3><p>该数据集为构建高质量的诗歌推荐系统提供了理想的数据基础。传统推荐系统往往依赖于评分矩阵的协同过滤，但面对诗歌这一特殊文学体裁，内容的语义理解和风格匹配同样关键。利用本数据集中 36,514 条书籍元数据的描述文本、标签信息和封面图片，研究者可以构建多模态融合的推荐模型：一方面通过书籍描述文本的语义嵌入捕捉作品的主题倾向和情感基调，另一方面利用封面图像提取视觉风格特征。同时，250,000 条用户交互记录中包含了用户的评分偏好和阅读时间序列，可用于训练序列感知的深度学习推荐模型。例如，可以采用 Transformer 架构对用户的阅读历史进行建模，结合书籍的描述文本特征，预测用户对新作品的偏好程度。这一系统不仅可以应用在 Goodreads 等图书社交平台，也可扩展至数字图书馆、在线阅读平台和诗歌创作社区的个性化内容推荐场景。</p>
+<h3 id="计算文学研究与诗歌风格分析"><a href="#计算文学研究与诗歌风格分析" class="headerlink" title="计算文学研究与诗歌风格分析"></a>计算文学研究与诗歌风格分析</h3><p>对于数字人文和计算文学领域的研究者而言，本数据集提供了系统性地研究诗歌这一文学体裁的独特机会。传统文学研究依赖学者的人工阅读和主观判断，而本数据集的大规模结构化信息使得量化分析成为可能。研究者可以利用书籍的描述文本、出版年份、语言代码和用户标签等字段，分析不同时期、不同语言诗歌作品的风格演变规律。例如，可以通过主题建模技术提取 19 世纪与 21 世纪诗歌的典型主题差异，或通过情感分析算法比较不同文化背景下诗歌作品的情感表达模式。此外，数据集中包含的评分和评论信息还可以反映读者对不同风格诗歌的接受程度，有助于揭示艺术价值与大众偏好之间的关系。这种数据驱动的文学研究范式，有望为传统的文学批评提供新的视角和实证基础。</p>
+<h3 id="跨语言自然语言处理与机器翻译"><a href="#跨语言自然语言处理与机器翻译" class="headerlink" title="跨语言自然语言处理与机器翻译"></a>跨语言自然语言处理与机器翻译</h3><p>由于数据集收录了涵盖英语、阿拉伯语、波斯语、西班牙语、葡萄牙语、意大利语、土耳其语、保加利亚语、希腊语、芬兰语等数十种语言的诗歌作品，它为跨语言自然语言处理研究提供了宝贵的数据资源。诗歌是一种高度依赖语言韵律和文化隐喻的文本形式，跨语言的诗歌理解与翻译一直是自然语言处理领域的难点。研究者可以利用数据集中同一诗歌作品在不同语言版本中的描述文本，构建平行语料库用于训练诗歌领域的机器翻译模型。同时，书籍的描述文本和用户标签可作为多语言文本分类和跨语言信息检索的训练数据。例如，可以训练一个多语言诗歌主题分类器，实现不同语言诗歌作品的自动主题标注和跨语言检索。这些研究对于促进全球文学资源的互联互通和跨文化理解具有重要的应用价值。</p>
+<h3 id="用户阅读行为模式挖掘与用户画像构建"><a href="#用户阅读行为模式挖掘与用户画像构建" class="headerlink" title="用户阅读行为模式挖掘与用户画像构建"></a>用户阅读行为模式挖掘与用户画像构建</h3><p>250,000 条交互记录的时序信息为研究数字时代读者的阅读行为模式提供了丰富的数据支持。每条交互记录包含书籍添加日期、更新日期、阅读开始时间和完成时间等时序字段，结合用户的评分行为和书籍特征，研究者可以深入分析读者的阅读偏好演化轨迹、阅读节奏和评分习惯。例如，可以构建一个时间感知的潜在因子模型，分析用户评分偏好在时间维度上的漂移现象，或是利用序列模式挖掘算法识别典型读者的阅读路径和兴趣迁移规律。在产业应用层面，基于这些行为模式构建的用户画像可为诗歌出版商的精准营销、图书馆的馆藏建设和在线平台的个性化运营提供数据驱动的决策支持。</p>
+<h3 id="情感分析与诗歌情感计算"><a href="#情感分析与诗歌情感计算" class="headerlink" title="情感分析与诗歌情感计算"></a>情感分析与诗歌情感计算</h3><p>诗歌作为情感表达最为密集的文学形式之一，是情感计算研究的理想试验场。数据集中 28,988 条书籍描述文本包含了丰富的文学评论和内容简介，这些文本在语言风格上兼具文学性和情感浓度，为训练面向文学文本的情感分析模型提供了高质量的语料。研究者可以基于这些描述文本训练细粒度的情感分类器，不仅识别正面和负面情感，还可以捕捉更为微妙的情感维度，如忧郁、宁静、激昂、哀婉等诗歌中常见的情感基调。此外，数据集中每本书的平均评分和评分分布可以作为情感标注的弱监督信号，辅助训练无需人工标注的情感分析模型。这项研究的成果可以应用于文学研究的自动化情感分析、诗歌治疗辅助工具的开发以及创意写作教学中的情感表达评估等多个领域。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集以 36,514 本诗歌书籍的详尽元数据和 250,000 条真实读者交互记录为核心，构建了一个规模宏大、维度丰富、结构清晰的专业诗歌数据资源。无论是从书籍数量、交互记录规模、字段完整性，还是从语言多样性、时间跨度和内容深度来看，该数据集在当前公开的诗歌领域数据资源中都具备显著的竞争优势。</p>
+<p>其核心价值体现在三个层面：第一，<strong>数据规模与完整性的有机结合</strong>，不仅包含丰富的书籍描述文本、结构化作者信息和出版信息等完整的原始元数据文件，还涵盖大规模的读者行为数据，为从内容特征到用户行为的全链路研究提供了可能；第二，<strong>多维度的数据覆盖</strong>，从时间维度横跨 14 年的读者交互到跨越百年的出版历史，从语言维度覆盖数十种语言到格式维度包含平装、精装、电子书、有声书等多种形态，为各类研究任务提供了充足的数据选择空间；第三，<strong>即用型数据质量</strong>，所有数据经过结构化整理，可直接用于机器学习模型的训练和科学实验的开展，大幅降低了数据清洗和准备的工程成本。</p>
+<p>有需要可私信获取更多信息或数据定制服务，我们将持续为科研工作者和产业开发者提供高质量的数据支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>收录诗歌书籍与读者交互数据的综合诗歌图书数据集</div>
+      <div>https://zhyyao.cn/2026/05/18/dianshu/收录诗歌书籍与读者交互数据的综合诗歌图书数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/18/dianshu/5000%E5%BC%A0%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%A4%9A%E6%A8%A1%E6%80%81%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%9B%86%E5%85%A8%E8%A7%A3%E6%9E%90/" title="5000张大规模多模态图像数据集全解析">
+                        <span class="hidden-mobile">5000张大规模多模态图像数据集全解析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
