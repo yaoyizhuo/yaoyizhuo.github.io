@@ -1,0 +1,1858 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/05/19/dianshu/SpeedrunCom速通数据集完整版深度解析/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、引言与背景速通（Speedrun）作为电子游戏领域一项兼具竞技性与观赏性的独特活动，近年来已发展成为全球范围内极具影响力的社区文化现象。Speedrun.com 作为全球最大的速通记录托管平台，汇聚了来自世界各地速通玩家的海量游戏通关数据，涵盖了从经典复古游戏到最新发布的现代作品，其数据规模之庞大、覆盖范围之广泛，在游戏研究领域具有不可替代的价值。 本数据集为 Speedrun.com 平台的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpeedrunCom速通数据集完整版深度解析">
+<meta property="og:url" content="https://zhyyao.cn/2026/05/19/dianshu/SpeedrunCom%E9%80%9F%E9%80%9A%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AE%8C%E6%95%B4%E7%89%88%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="一、引言与背景速通（Speedrun）作为电子游戏领域一项兼具竞技性与观赏性的独特活动，近年来已发展成为全球范围内极具影响力的社区文化现象。Speedrun.com 作为全球最大的速通记录托管平台，汇聚了来自世界各地速通玩家的海量游戏通关数据，涵盖了从经典复古游戏到最新发布的现代作品，其数据规模之庞大、覆盖范围之广泛，在游戏研究领域具有不可替代的价值。 本数据集为 Speedrun.com 平台的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-19T07:01:53.000Z">
+<meta property="article:modified_time" content="2026-05-19T07:08:25.492Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>SpeedrunCom速通数据集完整版深度解析 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SpeedrunCom速通数据集完整版深度解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-19 15:01" pubdate>
+          2026年5月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          86 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SpeedrunCom速通数据集完整版深度解析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、引言与背景"><a href="#一、引言与背景" class="headerlink" title="一、引言与背景"></a>一、引言与背景</h2><p>速通（Speedrun）作为电子游戏领域一项兼具竞技性与观赏性的独特活动，近年来已发展成为全球范围内极具影响力的社区文化现象。Speedrun.com 作为全球最大的速通记录托管平台，汇聚了来自世界各地速通玩家的海量游戏通关数据，涵盖了从经典复古游戏到最新发布的现代作品，其数据规模之庞大、覆盖范围之广泛，在游戏研究领域具有不可替代的价值。</p>
+<p>本数据集为 Speedrun.com 平台的全量数据采集结果，包含两个版本的数据内容。v1 版本由 15 张相互关联的数据表构成，涵盖游戏基本信息、速通记录、用户档案、游戏类别、关卡信息、排行榜数据、平台信息、游戏类型、开发者与发行商信息、游戏引擎、变量与取值等全方位数据维度。v2 版本则提供了游戏的聚合统计信息，包含每款游戏的速通次数和玩家数量。整个数据集以结构化 CSV 格式呈现，便于研究者直接进行数据分析与建模。</p>
+<p>该数据集对于游戏学研究、速通行为分析、游戏难度量化评估、推荐系统开发以及自然语言处理等多个领域均具有重要的研究价值与应用潜力。通过对速通记录的时间分布、平台偏好、类别特征等多维度分析，研究者可以深入洞察游戏社区的行为模式与演变趋势，为游戏设计、用户体验优化和竞技生态研究提供坚实的数据基础。</p>
+<h2 id="二、数据基本信息"><a href="#二、数据基本信息" class="headerlink" title="二、数据基本信息"></a>二、数据基本信息</h2><h3 id="数据规模概览"><a href="#数据规模概览" class="headerlink" title="数据规模概览"></a>数据规模概览</h3><p>本数据集包含两个版本，v1 版本为核心数据集合，由以下 15 张数据表组成：游戏信息表（games-data.csv，43,663 条记录）、速通记录表（runs-data.csv，4,881,038 条记录）、用户表（users-data.csv，459,769 条记录）、类别表（categories-data.csv，170,242 条记录）、排行榜表（leaderboards-data.csv，2,232,884 条记录）、关卡表（levels-data.csv，325,685 条记录）、变量表（variables-data.csv，73,472 条记录）、变量值表（values-data.csv，325,014 条记录）、平台表（platforms-data.csv，213 条记录）、类型表（genres-data.csv，2,380 条记录）、开发者表（developers-data.csv，9,742 条记录）、发行商表（publishers-data.csv，5,529 条记录）、引擎表（engines-data.csv，1,223 条记录）、游戏 ID 表（games-ids.csv，43,663 条记录）和用户 ID 表（users-ids.csv，460,757 条记录）。v2 版本为游戏聚合数据表（games-data.csv，44,122 条记录），累计记录速通次数约 445 万次，涉及玩家约 109 万人次。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><h4 id="游戏信息表字段说明"><a href="#游戏信息表字段说明" class="headerlink" title="游戏信息表字段说明"></a>游戏信息表字段说明</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gameId</td>
+<td>字符串</td>
+<td>游戏唯一标识 ID</td>
+<td>j1n8nj91</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>gameName</td>
+<td>字符串</td>
+<td>游戏名称</td>
+<td>Computer Space</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>url</td>
+<td>字符串</td>
+<td>游戏在 Speedrun.com 的 URL 路径</td>
+<td>computer_space</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>releaseDate</td>
+<td>日期</td>
+<td>游戏发行日期</td>
+<td>1971-11-01</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>createdDate</td>
+<td>日期时间</td>
+<td>游戏条目创建时间</td>
+<td>2022-10-11T15:53:28Z</td>
+<td>98.20%</td>
+</tr>
+<tr>
+<td>gameTypes</td>
+<td>字符串</td>
+<td>游戏类型 ID 列表（逗号分隔）</td>
+<td></td>
+<td>16.77%</td>
+</tr>
+<tr>
+<td>platforms</td>
+<td>字符串</td>
+<td>支持平台 ID 列表（逗号分隔）</td>
+<td>vm9vn63k</td>
+<td>93.53%</td>
+</tr>
+<tr>
+<td>regions</td>
+<td>字符串</td>
+<td>区域 ID 列表（逗号分隔）</td>
+<td></td>
+<td>39.91%</td>
+</tr>
+<tr>
+<td>genres</td>
+<td>字符串</td>
+<td>游戏类型 ID 列表（逗号分隔）</td>
+<td>x5e407n4</td>
+<td>33.37%</td>
+</tr>
+<tr>
+<td>engines</td>
+<td>字符串</td>
+<td>游戏引擎 ID 列表（逗号分隔）</td>
+<td></td>
+<td>13.63%</td>
+</tr>
+<tr>
+<td>developers</td>
+<td>字符串</td>
+<td>开发者 ID 列表（逗号分隔）</td>
+<td></td>
+<td>33.98%</td>
+</tr>
+<tr>
+<td>publishers</td>
+<td>字符串</td>
+<td>发行商 ID 列表（逗号分隔）</td>
+<td></td>
+<td>28.16%</td>
+</tr>
+<tr>
+<td>runsRequireVerification</td>
+<td>布尔值</td>
+<td>是否需审核验证</td>
+<td>true</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>runsRequireVideo</td>
+<td>布尔值</td>
+<td>是否需要视频证据</td>
+<td>true</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>runTimingOptions</td>
+<td>字符串</td>
+<td>计时选项列表（逗号分隔）</td>
+<td>realtime,ingame</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>runDefaultTimingOption</td>
+<td>字符串</td>
+<td>默认计时方式</td>
+<td>realtime</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>runsEmulatorsAllowed</td>
+<td>布尔值</td>
+<td>是否允许模拟器</td>
+<td>true</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>isRomhack</td>
+<td>布尔值</td>
+<td>是否为 Romhack 改造版</td>
+<td>false</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h4 id="速通记录表字段说明"><a href="#速通记录表字段说明" class="headerlink" title="速通记录表字段说明"></a>速通记录表字段说明</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>runId</td>
+<td>字符串</td>
+<td>速通记录唯一标识 ID</td>
+<td>m3l059wm</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>gameId</td>
+<td>字符串</td>
+<td>关联游戏 ID</td>
+<td>o6glq08d</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>categoryId</td>
+<td>字符串</td>
+<td>关联类别 ID</td>
+<td>z27w61ok</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>levelId</td>
+<td>字符串</td>
+<td>关联关卡 ID（仅 per-level 类别）</td>
+<td>5d7k11ew</td>
+<td>部分记录有值</td>
+</tr>
+<tr>
+<td>date</td>
+<td>日期</td>
+<td>速通完成日期</td>
+<td>2023-02-27</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>primaryTime</td>
+<td>浮点数</td>
+<td>主要计时（秒）</td>
+<td>4.708</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>realTime</td>
+<td>浮点数</td>
+<td>真实时间（秒）</td>
+<td>4.708</td>
+<td>87.09%</td>
+</tr>
+<tr>
+<td>realTimeNoLoads</td>
+<td>浮点数</td>
+<td>排除加载时间（秒）</td>
+<td>0</td>
+<td>5.17%</td>
+</tr>
+<tr>
+<td>inGameTime</td>
+<td>浮点数</td>
+<td>游戏内计时（秒）</td>
+<td>0</td>
+<td>21.36%</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>字符串</td>
+<td>使用平台 ID</td>
+<td>8gej2n93</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>isEmulated</td>
+<td>布尔值</td>
+<td>是否使用模拟器</td>
+<td>false</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>players</td>
+<td>字符串</td>
+<td>玩家 ID</td>
+<td>j065v94j</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>examiner</td>
+<td>字符串</td>
+<td>审核员 ID</td>
+<td>j42w9wdx</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>variablesAndValues</td>
+<td>字符串</td>
+<td>变量与取值组合</td>
+<td>yn2j74j8&#x3D;5lmp784l</td>
+<td>部分记录有值</td>
+</tr>
+<tr>
+<td>verifiedDate</td>
+<td>日期时间</td>
+<td>审核通过时间</td>
+<td>2023-04-21T11:21:30Z</td>
+<td>部分记录有值</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td>记录状态（verified&#x2F;rejected&#x2F;new）</td>
+<td>verified</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>statusReason</td>
+<td>字符串</td>
+<td>审核拒绝原因</td>
+<td>intentionally low effort</td>
+<td>仅 rejected 记录有值</td>
+</tr>
+</tbody></table>
+<h4 id="用户表字段说明"><a href="#用户表字段说明" class="headerlink" title="用户表字段说明"></a>用户表字段说明</h4><table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>userId</td>
+<td>字符串</td>
+<td>用户唯一标识 ID</td>
+<td>j065v94j</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>username</td>
+<td>字符串</td>
+<td>用户名</td>
+<td>Hiro15xd</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>signupDate</td>
+<td>日期时间</td>
+<td>注册时间</td>
+<td>2023-02-24T05:37:03Z</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>location</td>
+<td>字符串</td>
+<td>地理位置代码</td>
+<td>us</td>
+<td>84.29%</td>
+</tr>
+</tbody></table>
+<h3 id="数据分布情况"><a href="#数据分布情况" class="headerlink" title="数据分布情况"></a>数据分布情况</h3><h4 id="游戏发行年份分布（Top-15）"><a href="#游戏发行年份分布（Top-15）" class="headerlink" title="游戏发行年份分布（Top 15）"></a>游戏发行年份分布（Top 15）</h4><table>
+<thead>
+<tr>
+<th>发行年份</th>
+<th>游戏数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2020</td>
+<td>2,034</td>
+<td>4.66%</td>
+<td>4.66%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>1,917</td>
+<td>4.39%</td>
+<td>9.05%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>1,893</td>
+<td>4.34%</td>
+<td>13.39%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>1,832</td>
+<td>4.20%</td>
+<td>17.59%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>1,754</td>
+<td>4.02%</td>
+<td>21.61%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>1,751</td>
+<td>4.01%</td>
+<td>25.62%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>1,680</td>
+<td>3.85%</td>
+<td>29.47%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>1,562</td>
+<td>3.58%</td>
+<td>33.05%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>1,434</td>
+<td>3.28%</td>
+<td>36.33%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>1,400</td>
+<td>3.21%</td>
+<td>39.54%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>1,304</td>
+<td>2.99%</td>
+<td>42.53%</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>1,088</td>
+<td>2.49%</td>
+<td>45.02%</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>908</td>
+<td>2.08%</td>
+<td>47.10%</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>896</td>
+<td>2.05%</td>
+<td>49.15%</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>826</td>
+<td>1.89%</td>
+<td>51.04%</td>
+</tr>
+</tbody></table>
+<p>游戏发行年份覆盖从 1971 年至 2025 年的广阔时间跨度，其中 2010 年之后发行的游戏占比超过半数，体现了速通社区对现代游戏的关注度持续上升。</p>
+<h4 id="速通记录年份分布"><a href="#速通记录年份分布" class="headerlink" title="速通记录年份分布"></a>速通记录年份分布</h4><table>
+<thead>
+<tr>
+<th>年份</th>
+<th>记录数量</th>
+<th>占比</th>
+<th>累计占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2020</td>
+<td>613,462</td>
+<td>12.58%</td>
+<td>12.58%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>957,605</td>
+<td>19.63%</td>
+<td>32.21%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>785,024</td>
+<td>16.09%</td>
+<td>48.30%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>730,823</td>
+<td>14.98%</td>
+<td>63.28%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>783,851</td>
+<td>16.07%</td>
+<td>79.35%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>293,547</td>
+<td>6.02%</td>
+<td>85.37%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>265,920</td>
+<td>5.45%</td>
+<td>90.82%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>194,690</td>
+<td>3.99%</td>
+<td>94.81%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>108,283</td>
+<td>2.22%</td>
+<td>97.03%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>67,513</td>
+<td>1.38%</td>
+<td>98.41%</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>18,527</td>
+<td>0.38%</td>
+<td>98.79%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>59,073</td>
+<td>1.21%</td>
+<td>100.00%</td>
+</tr>
+</tbody></table>
+<p>速通记录的年份分布显示，2020 年至 2024 年是速通社区最为活跃的五年，合计占比接近 80%。其中 2021 年以超过 95 万条记录达到峰值，反映出疫情期间游戏社区的显著活跃度提升。2024 年仍保持约 78 万条记录的高位水平，表明速通活动已形成稳定且持续的社区生态。</p>
+<h4 id="速通记录状态分布"><a href="#速通记录状态分布" class="headerlink" title="速通记录状态分布"></a>速通记录状态分布</h4><table>
+<thead>
+<tr>
+<th>记录状态</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>verified（已审核）</td>
+<td>4,471,371</td>
+<td>91.61%</td>
+</tr>
+<tr>
+<td>rejected（已拒绝）</td>
+<td>393,499</td>
+<td>8.06%</td>
+</tr>
+<tr>
+<td>new（待审核）</td>
+<td>16,168</td>
+<td>0.33%</td>
+</tr>
+</tbody></table>
+<p>超过 91% 的速通记录已通过审核验证，表明平台审核机制完善，数据质量可靠，为研究者提供了高置信度的分析基础。</p>
+<h4 id="速通平台分布（Top-15）"><a href="#速通平台分布（Top-15）" class="headerlink" title="速通平台分布（Top 15）"></a>速通平台分布（Top 15）</h4><table>
+<thead>
+<tr>
+<th>平台名称</th>
+<th>记录数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>2,284,046</td>
+<td>48.31%</td>
+</tr>
+<tr>
+<td>Web（网页端）</td>
+<td>347,643</td>
+<td>7.35%</td>
+</tr>
+<tr>
+<td>Android（安卓）</td>
+<td>276,650</td>
+<td>5.85%</td>
+</tr>
+<tr>
+<td>Switch（任天堂 Switch）</td>
+<td>232,534</td>
+<td>4.92%</td>
+</tr>
+<tr>
+<td>Nintendo 64</td>
+<td>152,528</td>
+<td>3.23%</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>147,071</td>
+<td>3.11%</td>
+</tr>
+<tr>
+<td>PlayStation 4</td>
+<td>122,724</td>
+<td>2.60%</td>
+</tr>
+<tr>
+<td>Nintendo Entertainment System</td>
+<td>103,329</td>
+<td>2.19%</td>
+</tr>
+<tr>
+<td>Super Nintendo</td>
+<td>98,786</td>
+<td>2.09%</td>
+</tr>
+<tr>
+<td>PlayStation 2</td>
+<td>94,550</td>
+<td>2.00%</td>
+</tr>
+<tr>
+<td>Wii</td>
+<td>93,685</td>
+<td>1.98%</td>
+</tr>
+<tr>
+<td>GameCube</td>
+<td>71,284</td>
+<td>1.51%</td>
+</tr>
+<tr>
+<td>Xbox One</td>
+<td>61,538</td>
+<td>1.30%</td>
+</tr>
+<tr>
+<td>Wii U</td>
+<td>58,298</td>
+<td>1.23%</td>
+</tr>
+<tr>
+<td>PlayStation 3</td>
+<td>47,858</td>
+<td>1.01%</td>
+</tr>
+</tbody></table>
+<p>PC 平台以绝对优势领先，占据近半数速通记录，这与 PC 平台录制视频便捷、模拟器支持广泛等因素密切相关。任天堂系列平台（Switch、N64、NES、SNES 等）合计占比较高，反映了任天堂游戏在速通社区的独特地位。</p>
+<h4 id="用户注册年份分布"><a href="#用户注册年份分布" class="headerlink" title="用户注册年份分布"></a>用户注册年份分布</h4><table>
+<thead>
+<tr>
+<th>注册年份</th>
+<th>用户数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2020</td>
+<td>76,557</td>
+<td>16.65%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>106,478</td>
+<td>23.16%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>71,882</td>
+<td>15.63%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>60,152</td>
+<td>13.08%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>52,078</td>
+<td>11.33%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>25,132</td>
+<td>5.47%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>24,012</td>
+<td>5.22%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>20,516</td>
+<td>4.46%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>10,557</td>
+<td>2.30%</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>8,903</td>
+<td>1.94%</td>
+</tr>
+</tbody></table>
+<p>用户注册数量从 2019 年起出现爆发式增长，2021 年新增注册用户超过 10.6 万人，为平台历年最高。2020 年至 2024 年的五年间新增用户占平台总用户数的近 80%，说明 Speedrun.com 在该期间实现了快速扩张。</p>
+<h4 id="用户地理位置分布（Top-15）"><a href="#用户地理位置分布（Top-15）" class="headerlink" title="用户地理位置分布（Top 15）"></a>用户地理位置分布（Top 15）</h4><table>
+<thead>
+<tr>
+<th>国家&#x2F;地区代码</th>
+<th>用户数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>us（美国）</td>
+<td>135,460</td>
+<td>34.95%</td>
+</tr>
+<tr>
+<td>ca（加拿大）</td>
+<td>20,201</td>
+<td>5.21%</td>
+</tr>
+<tr>
+<td>fr（法国）</td>
+<td>18,204</td>
+<td>4.70%</td>
+</tr>
+<tr>
+<td>de（德国）</td>
+<td>15,877</td>
+<td>4.10%</td>
+</tr>
+<tr>
+<td>br（巴西）</td>
+<td>14,241</td>
+<td>3.67%</td>
+</tr>
+<tr>
+<td>gb&#x2F;eng（英格兰）</td>
+<td>13,982</td>
+<td>3.61%</td>
+</tr>
+<tr>
+<td>au（澳大利亚）</td>
+<td>13,258</td>
+<td>3.42%</td>
+</tr>
+<tr>
+<td>ru（俄罗斯）</td>
+<td>12,618</td>
+<td>3.26%</td>
+</tr>
+<tr>
+<td>gb（英国）</td>
+<td>8,906</td>
+<td>2.30%</td>
+</tr>
+<tr>
+<td>pl（波兰）</td>
+<td>8,780</td>
+<td>2.27%</td>
+</tr>
+<tr>
+<td>jp（日本）</td>
+<td>8,546</td>
+<td>2.21%</td>
+</tr>
+<tr>
+<td>nl（荷兰）</td>
+<td>6,122</td>
+<td>1.58%</td>
+</tr>
+<tr>
+<td>se（瑞典）</td>
+<td>5,102</td>
+<td>1.32%</td>
+</tr>
+<tr>
+<td>ar（阿根廷）</td>
+<td>4,638</td>
+<td>1.20%</td>
+</tr>
+<tr>
+<td>tr（土耳其）</td>
+<td>4,129</td>
+<td>1.07%</td>
+</tr>
+</tbody></table>
+<p>用户覆盖全球超过 200 个国家和地区，美国用户占比约 35%，具有显著的领先优势。欧洲国家（法国、德国、英国、波兰等）合计占比约 25%，是全球速通社区的重要组成部分。</p>
+<h4 id="游戏类别类型分布"><a href="#游戏类别类型分布" class="headerlink" title="游戏类别类型分布"></a>游戏类别类型分布</h4><table>
+<thead>
+<tr>
+<th>类别类型</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>per-game（全游戏通关）</td>
+<td>137,341</td>
+<td>80.67%</td>
+</tr>
+<tr>
+<td>per-level（按关卡通关）</td>
+<td>32,901</td>
+<td>19.33%</td>
+</tr>
+</tbody></table>
+<h4 id="游戏类型分布（Top-15）"><a href="#游戏类型分布（Top-15）" class="headerlink" title="游戏类型分布（Top 15）"></a>游戏类型分布（Top 15）</h4><table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>关联游戏数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Platformer（平台跳跃）</td>
+<td>2,424</td>
+</tr>
+<tr>
+<td>Action（动作）</td>
+<td>1,776</td>
+</tr>
+<tr>
+<td>Adventure（冒险）</td>
+<td>1,332</td>
+</tr>
+<tr>
+<td>Puzzle（解谜）</td>
+<td>1,276</td>
+</tr>
+<tr>
+<td>Racing（竞速）</td>
+<td>1,010</td>
+</tr>
+<tr>
+<td>Horror（恐怖）</td>
+<td>886</td>
+</tr>
+<tr>
+<td>RPG（角色扮演）</td>
+<td>828</td>
+</tr>
+<tr>
+<td>Indie（独立游戏）</td>
+<td>722</td>
+</tr>
+<tr>
+<td>Fighting（格斗）</td>
+<td>422</td>
+</tr>
+<tr>
+<td>Sports（体育）</td>
+<td>378</td>
+</tr>
+<tr>
+<td>Action-adventure（动作冒险）</td>
+<td>378</td>
+</tr>
+<tr>
+<td>FPS（第一人称射击）</td>
+<td>373</td>
+</tr>
+<tr>
+<td>Strategy（策略）</td>
+<td>340</td>
+</tr>
+<tr>
+<td>Shooter（射击）</td>
+<td>315</td>
+</tr>
+<tr>
+<td>Simulation（模拟）</td>
+<td>314</td>
+</tr>
+</tbody></table>
+<h4 id="速通计时方式分布"><a href="#速通计时方式分布" class="headerlink" title="速通计时方式分布"></a>速通计时方式分布</h4><table>
+<thead>
+<tr>
+<th>计时方式</th>
+<th>游戏数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>realtime（实时计时）</td>
+<td>36,472</td>
+<td>83.53%</td>
+</tr>
+<tr>
+<td>realtime + ingame</td>
+<td>4,995</td>
+<td>11.44%</td>
+</tr>
+<tr>
+<td>realtime + realtime_noloads</td>
+<td>1,922</td>
+<td>4.40%</td>
+</tr>
+<tr>
+<td>realtime + realtime_noloads + ingame</td>
+<td>274</td>
+<td>0.63%</td>
+</tr>
+</tbody></table>
+<h2 id="三、数据优势"><a href="#三、数据优势" class="headerlink" title="三、数据优势"></a>三、数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据规模庞大</td>
+<td>涵盖 43,663 款游戏、488 万条速通记录、46 万用户，15 张关联数据表构成完整数据生态</td>
+<td>支持大规模机器学习模型训练，统计分析结果具有高度统计显著性</td>
+</tr>
+<tr>
+<td>时间跨度广</td>
+<td>游戏发行覆盖 1971 年至 2025 年，速通记录跨越 50 余年</td>
+<td>支持纵向时间序列分析，可研究游戏速通行为的长期演变趋势</td>
+</tr>
+<tr>
+<td>多维结构化信息</td>
+<td>包含游戏元数据、速通记录、用户信息、平台信息、类型、开发商、发行商等多维度关联数据</td>
+<td>支持多维度交叉分析，挖掘不同因素对速通行为的综合影响</td>
+</tr>
+<tr>
+<td>记录审核机制完善</td>
+<td>91.61% 的记录经过平台审核验证为有效记录</td>
+<td>数据质量有保障，可用于高置信度的学术研究和商业分析</td>
+</tr>
+<tr>
+<td>地理分布广泛</td>
+<td>用户覆盖全球 200 多个国家&#x2F;地区</td>
+<td>支持区域对比分析和全球化研究视角</td>
+</tr>
+<tr>
+<td>平台覆盖全面</td>
+<td>涵盖 PC、主机、移动端等 213 个不同平台</td>
+<td>支持跨平台速通行为对比分析</td>
+</tr>
+<tr>
+<td>变量体系丰富</td>
+<td>73,472 个自定义变量及 325,014 个取值，涵盖游戏内多种自定义规则</td>
+<td>支持细粒度的游戏内条件分析与规则挖掘</td>
+</tr>
+<tr>
+<td>双版本设计</td>
+<td>v1 提供原始明细数据，v2 提供聚合统计数据</td>
+<td>满足不同层次的数据分析需求，从微观记录到宏观趋势全覆盖</td>
+</tr>
+</tbody></table>
+<h2 id="四、数据样例"><a href="#四、数据样例" class="headerlink" title="四、数据样例"></a>四、数据样例</h2><p>由于数据集包含的原始 CSV 文件总量较大（速通记录表单表即包含 488 万条记录），无法在此完整展示全部数据。以下提供各主要数据表的代表性样例，涵盖不同游戏类型、时间阶段和平台特征，以帮助研究者快速了解数据结构和内容特点。</p>
+<h3 id="游戏信息样例（games-data-csv）"><a href="#游戏信息样例（games-data-csv）" class="headerlink" title="游戏信息样例（games-data.csv）"></a>游戏信息样例（games-data.csv）</h3><table>
+<thead>
+<tr>
+<th>gameId</th>
+<th>gameName</th>
+<th>releaseDate</th>
+<th>genres</th>
+<th>platforms</th>
+<th>isRomhack</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>j1n8nj91</td>
+<td>Computer Space</td>
+<td>1971-11-01</td>
+<td>x5e407n4</td>
+<td>vm9vn63k</td>
+<td>false</td>
+</tr>
+<tr>
+<td>369wv90d</td>
+<td>Baking</td>
+<td>1975-01-01</td>
+<td></td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>ldejl7j1</td>
+<td>The Dungeon</td>
+<td>1975-12-21</td>
+<td>d1npok27</td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td>3dx22ny1</td>
+<td>Stunt Cycle</td>
+<td>1976-01-01</td>
+<td></td>
+<td>o0644863,o7e2mx6w</td>
+<td>false</td>
+</tr>
+<tr>
+<td>76r2qed8</td>
+<td>Geometry Dash</td>
+<td>2024-12-19</td>
+<td></td>
+<td>lq60nl94</td>
+<td>false</td>
+</tr>
+<tr>
+<td>o6glq08d</td>
+<td>Super Mario Bros.</td>
+<td>1985-09-13</td>
+<td></td>
+<td>8gej2n93,…</td>
+<td>false</td>
+</tr>
+<tr>
+<td>46wxo91r</td>
+<td>&meow; (Meow)</td>
+<td>2016-05-27</td>
+<td></td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>m1zok2d0</td>
+<td>The Legend of Zelda: Breath of the Wild</td>
+<td>2017-03-03</td>
+<td></td>
+<td>7m6ylw9p</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h3 id="速通记录样例（runs-data-csv）"><a href="#速通记录样例（runs-data-csv）" class="headerlink" title="速通记录样例（runs-data.csv）"></a>速通记录样例（runs-data.csv）</h3><table>
+<thead>
+<tr>
+<th>runId</th>
+<th>gameId</th>
+<th>date</th>
+<th>primaryTime</th>
+<th>platform</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>m3l059wm</td>
+<td>o6glq08d</td>
+<td>2023-02-27</td>
+<td>4.708 秒</td>
+<td>PC</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>y6v6d46m</td>
+<td>o6glq08d</td>
+<td>2024-03-21</td>
+<td>36.2 秒</td>
+<td>PC</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>y2k69l5y</td>
+<td>o6gxkxd2</td>
+<td>2024-01-20</td>
+<td>628.391 秒</td>
+<td>PC</td>
+<td>rejected</td>
+</tr>
+<tr>
+<td>y6qwlp6z</td>
+<td>o6gxkxd2</td>
+<td>2024-01-20</td>
+<td>68.791 秒</td>
+<td>PC</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>mko28jxz</td>
+<td>76r2qed8</td>
+<td>2024-12-19</td>
+<td>79.625 秒</td>
+<td>Android</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>y235199m</td>
+<td>v1p9nz68</td>
+<td>2017-06-21</td>
+<td>28 秒</td>
+<td>PC</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>zg26e6jy</td>
+<td>pdvz4v6w</td>
+<td>2023-03-19</td>
+<td>258 秒</td>
+<td>Web</td>
+<td>verified</td>
+</tr>
+<tr>
+<td>z5vwovem</td>
+<td>4pd0n31e</td>
+<td>2022-02-22</td>
+<td>1055.17 秒</td>
+<td>PC</td>
+<td>verified</td>
+</tr>
+</tbody></table>
+<h3 id="用户信息样例（users-data-csv）"><a href="#用户信息样例（users-data-csv）" class="headerlink" title="用户信息样例（users-data.csv）"></a>用户信息样例（users-data.csv）</h3><table>
+<thead>
+<tr>
+<th>userId</th>
+<th>username</th>
+<th>signupDate</th>
+<th>location</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>j065v94j</td>
+<td>Hiro15xd</td>
+<td>2023-02-24T05:37:03Z</td>
+<td></td>
+</tr>
+<tr>
+<td>8169963x</td>
+<td>Twinberry1</td>
+<td>2021-02-09T21:23:56Z</td>
+<td>us</td>
+</tr>
+<tr>
+<td>j5wr1pzj</td>
+<td>yenom_nico</td>
+<td>2020-05-26T13:18:39Z</td>
+<td>cz</td>
+</tr>
+<tr>
+<td>kjpy072j</td>
+<td>T-BoneSSB</td>
+<td>2017-06-04T21:40:10Z</td>
+<td>us</td>
+</tr>
+<tr>
+<td>xkovv668</td>
+<td>McPeeWee</td>
+<td>2020-08-29T10:37:17Z</td>
+<td>gb&#x2F;eng</td>
+</tr>
+<tr>
+<td>8q62k40j</td>
+<td>kokosek2137</td>
+<td>2023-03-19T16:29:11Z</td>
+<td></td>
+</tr>
+<tr>
+<td>8dw02p5j</td>
+<td>Boopis</td>
+<td>2020-04-13T18:29:20Z</td>
+<td>us</td>
+</tr>
+<tr>
+<td>8l62zyv8</td>
+<td>CheifBeef</td>
+<td>2024-10-24T20:11:08Z</td>
+<td>de</td>
+</tr>
+</tbody></table>
+<h2 id="五、应用场景"><a href="#五、应用场景" class="headerlink" title="五、应用场景"></a>五、应用场景</h2><h3 id="场景一：游戏速通行为分析与难度量化研究"><a href="#场景一：游戏速通行为分析与难度量化研究" class="headerlink" title="场景一：游戏速通行为分析与难度量化研究"></a>场景一：游戏速通行为分析与难度量化研究</h3><p>基于本数据集包含的 488 万余条速通记录，研究者可以从多个维度对游戏速通行为进行深入分析。通过对不同游戏的速通完成时间分布进行统计建模，可以构建游戏通关难度的量化评估指标。例如，分析同一款游戏在不同年份的速通记录时间变化趋势，可以揭示玩家对该游戏熟练程度的整体提升过程，进而推断游戏的技巧深度和学习曲线特征。同时，结合游戏的发行年份、所属类型、支持平台等元数据信息，研究者可以建立多因素回归模型，探究哪些游戏特征与速通活跃度高度相关。对于游戏设计者而言，这类分析有助于理解怎样的游戏机制更能激发玩家的重复挑战意愿，从而为游戏关卡设计和难度曲线优化提供数据驱动的参考依据。此外，通过对比不同类别（全游戏通关 vs. 按关卡通关）的记录特征，还可以深入了解玩家在不同挑战模式下的行为差异。</p>
+<h3 id="场景二：游戏推荐系统与玩家社区画像构建"><a href="#场景二：游戏推荐系统与玩家社区画像构建" class="headerlink" title="场景二：游戏推荐系统与玩家社区画像构建"></a>场景二：游戏推荐系统与玩家社区画像构建</h3><p>本数据集包含 46 万名用户的注册信息及地理位置数据，结合速通记录的玩家关联关系，可以构建精细化的玩家社区画像。基于用户参与的速通游戏种类、偏好平台、活跃时间段等多维特征，可以采用协同过滤或图神经网络等方法开发面向速通社区的游戏推荐系统。例如，分析发现某类平台跳跃游戏的速通玩家也倾向于参与动作冒险类游戏的速通活动，系统即可据此向目标用户推荐其可能感兴趣但尚未尝试的速通游戏。结合地理位置信息，还可以构建区域性速通热点图谱，识别不同国家&#x2F;地区的游戏偏好差异。美国用户占比较高但覆盖广泛，日本用户虽然绝对数量不及美国但在特定游戏类型上可能呈现独特偏好，这类区域化分析对于全球化游戏发行策略具有重要参考价值。推荐系统的应用不仅限于游戏推荐，还可以延伸至速通视频推荐、社区活动推荐等场景，全面提升用户体验和社区活跃度。</p>
+<h3 id="场景三：速通记录审核自动化与异常检测"><a href="#场景三：速通记录审核自动化与异常检测" class="headerlink" title="场景三：速通记录审核自动化与异常检测"></a>场景三：速通记录审核自动化与异常检测</h3><p>数据集显示，Speedrun.com 平台目前有 91.61% 的记录已通过审核，8.06% 被拒绝，另有 0.33% 处于待审核状态。随着平台用户量和速通记录数量的持续增长，人工审核的成本和压力将不断增大。利用本数据集中的已审核记录作为训练数据，可以构建基于机器学习的速通记录自动化审核模型。具体而言，可以将速通记录的计时数据（primaryTime、realTime、inGameTime）、平台类型、是否使用模拟器、所属游戏的历史记录分布等特征作为模型输入，通过学习已审核通过和已被拒绝记录的模式差异，实现对新增记录的自动审核评分。对于被判定为高度可疑的记录，系统可以自动标记并优先送交人工审核；对于置信度较高的记录，则可实现自动审核通过。这不仅能够大幅提升审核效率，还可以通过持续学习不断提高审核准确率。同时，基于速通完成时间的异常检测算法，可以有效识别利用游戏漏洞或作弊手段获取的不正常记录，维护速通社区的公平性和竞技环境的健康发展。</p>
+<h3 id="场景四：游戏产业趋势分析与市场研究"><a href="#场景四：游戏产业趋势分析与市场研究" class="headerlink" title="场景四：游戏产业趋势分析与市场研究"></a>场景四：游戏产业趋势分析与市场研究</h3><p>本数据集的游戏信息表覆盖了从 1971 年至 2025 年发行的 43,663 款游戏，结合平台信息（213 个平台）、游戏类型（2,380 种类型标签）、开发商（9,742 家）和发行商（5,529 家）等多维数据，为游戏产业趋势分析提供了丰富的数据支撑。研究者可以分析不同年代游戏类型的流行度变迁，例如平台跳跃类游戏在早期占据主导地位，而随着技术发展，动作、冒险、角色扮演等类型逐渐兴起。通过对各平台速通记录的时间分布分析，可以观察游戏硬件平台的兴衰周期，如 PlayStation 2、Nintendo 64 等经典平台在特定时期的速通活跃度高峰，以及 PC 平台长期保持的领先地位。这些分析对于游戏产业研究者、市场分析师以及游戏投资机构均具有重要的参考价值。此外，通过追踪开发商和发行商的速通热度变化，还可以评估不同游戏公司的产品在速通社区的受欢迎程度，为游戏产品的市场定位和发行策略提供数据支持。</p>
+<h3 id="场景五：自然语言处理与游戏规则理解"><a href="#场景五：自然语言处理与游戏规则理解" class="headerlink" title="场景五：自然语言处理与游戏规则理解"></a>场景五：自然语言处理与游戏规则理解</h3><p>数据集中的类别表和关卡表包含了丰富的文本规则描述，涵盖各种游戏的速通规则、限制条件和特殊要求。这些规则文本内容多样、格式各异、语言风格丰富，是自然语言处理领域难得的垂直领域语料资源。以 Baking（烘焙游戏）的速通规则为例，规则详细说明了配方选择、材料用量、烤箱设置、成品标准等具体要求，文本长度和复杂度远超一般游戏规则。研究团队可以利用这些规则文本训练领域特定的文本理解模型，实现游戏规则的自动解析和结构化提取。更进一步，结合变量表（73,472 条）和取值表（325,014 条）中的结构化规则变量信息，可以构建游戏规则的知识图谱，支撑智能问答系统、规则合规性自动检查等应用。对于速通社区而言，自动化的规则理解和合规性检查将大幅降低新玩家的学习门槛，促进社区的健康持续发展。</p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>本数据集作为 Speedrun.com 平台的全量数据采集成果，以其超大规模的数据体量、广泛的时间覆盖范围和多维度的结构化信息，为游戏研究、行为分析、推荐系统、自动化审核和自然语言处理等多个领域提供了极具价值的数据资源。v1 版本包含 15 张关联数据表，涵盖 43,663 款游戏、4,881,038 条速通记录、459,769 名用户、170,242 个游戏类别、325,685 个关卡及 2,232,884 条排行榜记录，形成了一套完整且高度关联的速通生态数据库。v2 版本则提供了游戏的聚合统计数据，方便快速了解每款游戏的速通活跃度。</p>
+<p>该数据集的核心优势在于其完整性和多样性。超过 91% 的速通记录经过平台审核验证，数据质量有扎实保障；游戏发行时间跨越 50 余年，从 1971 年的经典街机游戏到 2025 年的最新发布作品均有收录；平台覆盖从 PC、主机到移动端的 213 个不同平台，全面反映了全球速通社区的多元化生态。数据集中包含的完整原始记录文件和详细的标注信息（包括审核状态、平台信息、计时方式等），使得研究者可以直接用于算法训练、统计分析及模型评估，无需额外进行数据清洗和标注工作。</p>
+<p>本数据集适合用于学术研究、算法竞赛、产业分析等多种用途。研究者可基于全量数据进行深入挖掘，探索速通行为的内在规律和演变趋势。有需要可私信获取更多信息。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SpeedrunCom速通数据集完整版深度解析</div>
+      <div>https://zhyyao.cn/2026/05/19/dianshu/SpeedrunCom速通数据集完整版深度解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/19/dianshu/Wikidata%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%B5%8C%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86/" title="Wikidata知识图谱嵌入数据集">
+                        <span class="hidden-mobile">Wikidata知识图谱嵌入数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,1352 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/home/icon.png">
+  <link rel="icon" href="/home/icon.png">
+  
+    <link rel="canonical" href="https://zhyyao.cn/2026/05/19/dianshu/Wikidata知识图谱嵌入数据集/"/>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zhyyao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="知识图谱作为人工智能领域重要的知识表示形式，在自然语言理解、智能问答、推荐系统和信息检索等方向发挥着不可替代的作用。然而，现实世界中的知识图谱往往存在严重的不完整性，大量实体之间的潜在关联未被显式记录。知识图谱补全（Knowledge Graph Completion）与链接预测（Link Prediction）任务正是为了解决这一问题而提出的核心研究课题，其目标是通过已知的三元组结构推断出缺失的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wikidata知识图谱嵌入数据集">
+<meta property="og:url" content="https://zhyyao.cn/2026/05/19/dianshu/Wikidata%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%B5%8C%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:site_name" content="zhyyao">
+<meta property="og:description" content="知识图谱作为人工智能领域重要的知识表示形式，在自然语言理解、智能问答、推荐系统和信息检索等方向发挥着不可替代的作用。然而，现实世界中的知识图谱往往存在严重的不完整性，大量实体之间的潜在关联未被显式记录。知识图谱补全（Knowledge Graph Completion）与链接预测（Link Prediction）任务正是为了解决这一问题而提出的核心研究课题，其目标是通过已知的三元组结构推断出缺失的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-19T07:00:53.000Z">
+<meta property="article:modified_time" content="2026-05-19T07:08:02.607Z">
+<meta property="article:author" content="zhyyao">
+<meta property="article:tag" content="典枢-数据集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Wikidata知识图谱嵌入数据集 - zhyyao</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhyyao.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"✄","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":"https://www.zhyyao.cn"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zhyyao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/home/banner/image-4.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Wikidata知识图谱嵌入数据集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-19 15:00" pubdate>
+          2026年5月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Wikidata知识图谱嵌入数据集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>知识图谱作为人工智能领域重要的知识表示形式，在自然语言理解、智能问答、推荐系统和信息检索等方向发挥着不可替代的作用。然而，现实世界中的知识图谱往往存在严重的不完整性，大量实体之间的潜在关联未被显式记录。知识图谱补全（Knowledge Graph Completion）与链接预测（Link Prediction）任务正是为了解决这一问题而提出的核心研究课题，其目标是通过已知的三元组结构推断出缺失的实体关系，从而丰富和完善知识图谱的覆盖范围。</p>
+<p>本数据集是基于Wikidata构建的大规模知识图谱嵌入（Knowledge Graph Embedding）训练数据，完整覆盖了实体映射、关系映射、训练三元组、验证三元组和测试三元组等核心组成部分。数据集包含实体ID到Wikidata QID的完整映射表（entity_ids.del）、关系ID到Wikidata PID的映射表（relation_ids.del）、大规模训练三元组集合（train.del）、验证集（valid.del）以及测试集（test.del），同时还提供了实体和关系的频率统计信息（parameter.frequencies.tsv）。数据集的全部内容来源于Wikidata这一全球最大、覆盖领域最广的开放知识图谱，涵盖了人物、地理、生物、体育、文化、科技、历史等几乎所有知识领域。</p>
+<p>该数据集对于知识图谱嵌入算法的研究与评估具有极高的价值。研究者可以利用其中的训练三元组学习实体和关系的低维向量表示，通过验证集和测试集对模型性能进行标准化评估，从而推动TransE、RotatE、ComplEx、ConvE等经典模型以及各类新型知识图谱嵌入方法的发展。全量数据超过2134万个三元组，规模之大足以支撑深度学习模型的有效训练，而多样化的关系类型（828种）则对模型的泛化能力提出了更高的要求，是检验和对比各类知识图谱嵌入算法性能的理想基准数据集。</p>
+<span id="more"></span>
+
+<h2 id="数据基本信息"><a href="#数据基本信息" class="headerlink" title="数据基本信息"></a>数据基本信息</h2><h3 id="数据规模与构成"><a href="#数据规模与构成" class="headerlink" title="数据规模与构成"></a>数据规模与构成</h3><p>本数据集包含实体总数4818679个，关系类型总数828种，训练集三元组数量为21343681条，验证集三元组数量为5357条，测试集三元组数量为5321条。所有实体均映射为Wikidata的QID编号，所有关系均映射为Wikidata的PID编号，确保数据标准化和可追溯性。数据文件采用.del格式存储，以制表符分隔各字段，便于程序读取和处理。整个数据集压缩包大小约为190MB，解压后数据总量超过600MB，属于中等规模的知识图谱嵌入数据集，兼顾了数据规模和计算资源的可用性。</p>
+<h3 id="数据字段说明"><a href="#数据字段说明" class="headerlink" title="数据字段说明"></a>数据字段说明</h3><p>下表详细列出了各数据文件的字段结构及其含义：</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段类型</th>
+<th>字段含义</th>
+<th>数据示例</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>entity_id</td>
+<td>整数（Integer）</td>
+<td>实体在数据集中的唯一数字编号</td>
+<td>0</td>
+<td>100%（4818679条）</td>
+</tr>
+<tr>
+<td>wikidata_qid</td>
+<td>字符串（String）</td>
+<td>实体对应的Wikidata QID标识符</td>
+<td>Q29387131</td>
+<td>100%（4818679条）</td>
+</tr>
+<tr>
+<td>relation_id</td>
+<td>整数（Integer）</td>
+<td>关系在数据集中的唯一数字编号</td>
+<td>0</td>
+<td>100%（828条）</td>
+</tr>
+<tr>
+<td>wikidata_pid</td>
+<td>字符串（String）</td>
+<td>关系对应的Wikidata PID标识符</td>
+<td>P31</td>
+<td>100%（828条）</td>
+</tr>
+<tr>
+<td>head_id</td>
+<td>整数（Integer）</td>
+<td>三元组中头实体的数字编号</td>
+<td>1508248</td>
+<td>100%（训练集21343681条）</td>
+</tr>
+<tr>
+<td>relation_id_triple</td>
+<td>整数（Integer）</td>
+<td>三元组中关系的数字编号</td>
+<td>0</td>
+<td>100%（训练集21343681条）</td>
+</tr>
+<tr>
+<td>tail_id</td>
+<td>整数（Integer）</td>
+<td>三元组中尾实体的数字编号</td>
+<td>69</td>
+<td>100%（训练集21343681条）</td>
+</tr>
+<tr>
+<td>type</td>
+<td>字符串（String）</td>
+<td>频率统计类型（e&#x3D;实体, r&#x3D;关系）</td>
+<td>e</td>
+<td>100%（4819507条）</td>
+</tr>
+<tr>
+<td>stat_id</td>
+<td>整数（Integer）</td>
+<td>被统计实体或关系的数字编号</td>
+<td>1</td>
+<td>100%（4819507条）</td>
+</tr>
+<tr>
+<td>frequency</td>
+<td>整数（Integer）</td>
+<td>出现频率计数</td>
+<td>1529972</td>
+<td>100%（4819507条）</td>
+</tr>
+</tbody></table>
+<h3 id="关系类型分布"><a href="#关系类型分布" class="headerlink" title="关系类型分布"></a>关系类型分布</h3><p>训练集中共包含828种关系类型，下表列出了出现频率最高的前20种关系，合计占比超过65%，反映了数据集在多个人们关心的核心维度上拥有丰富的知识覆盖：</p>
+<table>
+<thead>
+<tr>
+<th>关系ID</th>
+<th>Wikidata PID</th>
+<th>关系含义</th>
+<th>三元组数量</th>
+<th>占比（%）</th>
+<th>累计占比（%）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>P31</td>
+<td>instance of（实例）</td>
+<td>4179564</td>
+<td>19.58</td>
+<td>19.58</td>
+</tr>
+<tr>
+<td>16</td>
+<td>P17</td>
+<td>country（所属国家）</td>
+<td>1394090</td>
+<td>6.53</td>
+<td>26.11</td>
+</tr>
+<tr>
+<td>11</td>
+<td>P106</td>
+<td>occupation（职业）</td>
+<td>1175253</td>
+<td>5.51</td>
+<td>31.62</td>
+</tr>
+<tr>
+<td>3</td>
+<td>P27</td>
+<td>country of citizenship（国籍）</td>
+<td>1153785</td>
+<td>5.41</td>
+<td>37.03</td>
+</tr>
+<tr>
+<td>5</td>
+<td>P131</td>
+<td>located in administrative entity（位于行政实体）</td>
+<td>925411</td>
+<td>4.34</td>
+<td>41.37</td>
+</tr>
+<tr>
+<td>4</td>
+<td>P54</td>
+<td>member of sports team（体育俱乐部成员）</td>
+<td>922194</td>
+<td>4.32</td>
+<td>45.69</td>
+</tr>
+<tr>
+<td>12</td>
+<td>P735</td>
+<td>given name（名字）</td>
+<td>876264</td>
+<td>4.11</td>
+<td>49.80</td>
+</tr>
+<tr>
+<td>6</td>
+<td>P19</td>
+<td>place of birth（出生地）</td>
+<td>860075</td>
+<td>4.03</td>
+<td>53.83</td>
+</tr>
+<tr>
+<td>8</td>
+<td>P161</td>
+<td>cast member（参演者）</td>
+<td>516978</td>
+<td>2.42</td>
+<td>56.25</td>
+</tr>
+<tr>
+<td>17</td>
+<td>P641</td>
+<td>sport（运动项目）</td>
+<td>489498</td>
+<td>2.29</td>
+<td>58.54</td>
+</tr>
+<tr>
+<td>14</td>
+<td>P69</td>
+<td>educated at（毕业院校）</td>
+<td>440848</td>
+<td>2.07</td>
+<td>60.61</td>
+</tr>
+<tr>
+<td>24</td>
+<td>P47</td>
+<td>shares border with（接壤）</td>
+<td>430089</td>
+<td>2.02</td>
+<td>62.63</td>
+</tr>
+<tr>
+<td>20</td>
+<td>P421</td>
+<td>located in time zone（所处时区）</td>
+<td>405638</td>
+<td>1.90</td>
+<td>64.53</td>
+</tr>
+<tr>
+<td>38</td>
+<td>P136</td>
+<td>genre（类型&#x2F;流派）</td>
+<td>378139</td>
+<td>1.77</td>
+<td>66.30</td>
+</tr>
+<tr>
+<td>15</td>
+<td>P105</td>
+<td>taxon rank（生物分类等级）</td>
+<td>377293</td>
+<td>1.77</td>
+<td>68.07</td>
+</tr>
+</tbody></table>
+<h3 id="实体类型分布"><a href="#实体类型分布" class="headerlink" title="实体类型分布"></a>实体类型分布</h3><p>通过对P31（instance of）关系的尾实体进行分析，可以揭示数据集中实体的主要类型分布。以下是出现频率最高的实体类型：</p>
+<table>
+<thead>
+<tr>
+<th>实体ID</th>
+<th>Wikidata QID</th>
+<th>实体含义</th>
+<th>出现次数</th>
+<th>占比（%）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Q5</td>
+<td>human（人类）</td>
+<td>1518499</td>
+<td>36.33</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Q16521</td>
+<td>taxon（生物分类单元）</td>
+<td>363781</td>
+<td>8.70</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Q4167410</td>
+<td>Wikimedia disambiguation page（消歧义页）</td>
+<td>118963</td>
+<td>2.85</td>
+</tr>
+<tr>
+<td>223</td>
+<td>Q11424</td>
+<td>film（电影作品）</td>
+<td>114615</td>
+<td>2.74</td>
+</tr>
+<tr>
+<td>440</td>
+<td>Q16521</td>
+<td>Wikimedia template（模板页）</td>
+<td>110947</td>
+<td>2.65</td>
+</tr>
+<tr>
+<td>134</td>
+<td>Q173021</td>
+<td>television series（电视剧集）</td>
+<td>108308</td>
+<td>2.59</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Q16521</td>
+<td>Wikimedia category（分类页）</td>
+<td>98707</td>
+<td>2.36</td>
+</tr>
+<tr>
+<td>1172</td>
+<td>Q4830453</td>
+<td>business（企业）</td>
+<td>62819</td>
+<td>1.50</td>
+</tr>
+<tr>
+<td>1160</td>
+<td>Q7725634</td>
+<td>literary work（文学作品）</td>
+<td>55415</td>
+<td>1.33</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Q4167410</td>
+<td>anatomical structure（解剖结构）</td>
+<td>48286</td>
+<td>1.16</td>
+</tr>
+</tbody></table>
+<h3 id="主要实体频率分布"><a href="#主要实体频率分布" class="headerlink" title="主要实体频率分布"></a>主要实体频率分布</h3><p>以下是在整个数据集中出现频率最高的实体（作为头实体或尾实体出现的总次数）：</p>
+<table>
+<thead>
+<tr>
+<th>实体ID</th>
+<th>Wikidata QID</th>
+<th>实体含义</th>
+<th>频率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Q5</td>
+<td>human（人类）</td>
+<td>1529972</td>
+</tr>
+<tr>
+<td>116</td>
+<td>Q30</td>
+<td>United States（美国）</td>
+<td>817667</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Q16521</td>
+<td>taxon（生物分类单元）</td>
+<td>363971</td>
+</tr>
+<tr>
+<td>146</td>
+<td>Q7432</td>
+<td>species（物种）</td>
+<td>286494</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Q145</td>
+<td>United Kingdom（英国）</td>
+<td>265427</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Q1860</td>
+<td>Portuguese language（葡萄牙语）</td>
+<td>230247</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Q2736</td>
+<td>Saint Petersburg（圣彼得堡）</td>
+<td>222630</td>
+</tr>
+<tr>
+<td>118</td>
+<td>Q82955</td>
+<td>German football club（德国足球俱乐部）</td>
+<td>164455</td>
+</tr>
+<tr>
+<td>249</td>
+<td>Q937857</td>
+<td>administrative division of Portugal（葡萄牙行政区划）</td>
+<td>150159</td>
+</tr>
+<tr>
+<td>879</td>
+<td>Q6655</td>
+<td>female（女性）</td>
+<td>144303</td>
+</tr>
+</tbody></table>
+<h3 id="数据集划分分布"><a href="#数据集划分分布" class="headerlink" title="数据集划分分布"></a>数据集划分分布</h3><p>数据集按标准的知识图谱嵌入实验范式划分为训练集、验证集和测试集三部分：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th>三元组数量</th>
+<th>占比（%）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练集（train.del）</td>
+<td>21343681</td>
+<td>99.95</td>
+</tr>
+<tr>
+<td>验证集（valid.del）</td>
+<td>5357</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td>测试集（test.del）</td>
+<td>5321</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>21354359</td>
+<td>100.00</td>
+</tr>
+</tbody></table>
+<p>验证集和测试集数量相当，确保评估结果的可比性和公正性，同时训练集占据了绝对多数，为模型学习提供了充足的数据基础。</p>
+<h2 id="数据优势"><a href="#数据优势" class="headerlink" title="数据优势"></a>数据优势</h2><table>
+<thead>
+<tr>
+<th>优势特征</th>
+<th>具体表现</th>
+<th>应用价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据规模庞大</td>
+<td>481万实体、828种关系、2134万训练三元组</td>
+<td>支撑深度学习模型训练，避免过拟合，提升嵌入表示的泛化能力</td>
+</tr>
+<tr>
+<td>标准化三元组格式</td>
+<td>采用统一的三元组（头实体、关系、尾实体）格式存储</td>
+<td>可直接用于TransE、RotatE、ComplEx、ConvE等主流知识图谱嵌入模型的训练与评估</td>
+</tr>
+<tr>
+<td>完整的训练-验证-测试划分</td>
+<td>严格划分训练集（99.95%）、验证集（0.03%）和测试集（0.02%）</td>
+<td>提供标准化评估基准，便于不同算法之间的公平对比</td>
+</tr>
+<tr>
+<td>实体与关系的完整映射</td>
+<td>提供实体到QID、关系到PID的完整映射文件</td>
+<td>便于与Wikidata原始数据关联，支持结果的可解释性分析</td>
+</tr>
+<tr>
+<td>频率统计信息</td>
+<td>提供parameter.frequencies.tsv文件，包含所有实体和关系的出现频率</td>
+<td>支持负采样策略优化、基于频率的权重设计和模型训练加速</td>
+</tr>
+<tr>
+<td>覆盖领域广泛</td>
+<td>涵盖人物、地理、生物、体育、文化、科技、历史等几乎所有知识领域</td>
+<td>适用于通用知识图谱研究，支持跨领域知识推理与迁移学习</td>
+</tr>
+<tr>
+<td>数据来源权威</td>
+<td>全部数据来源于Wikidata全球开放知识图谱</td>
+<td>数据质量有保障，研究成果可直接应用于实际知识图谱场景</td>
+</tr>
+</tbody></table>
+<h2 id="数据样例"><a href="#数据样例" class="headerlink" title="数据样例"></a>数据样例</h2><p>由于原始训练集文件较大（316MB），包含超过2100万条三元组，无法在本文中完整列出。以下通过均匀采样的方式从训练集中选取15条代表性三元组，展示数据的格式和内容多样性。每条样例均包含实体数字ID、对应Wikidata QID&#x2F;PID以及三元组结构信息，读者可以据此了解数据的组织方式。</p>
+<p><strong>样例类型</strong>：三元组数据样例（展示实体ID、关系ID及其对应的Wikidata标识符）</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>头实体ID</th>
+<th>头实体QID</th>
+<th>关系PID</th>
+<th>尾实体ID</th>
+<th>尾实体QID</th>
+<th>关系含义简述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1508248</td>
+<td>Q13532169</td>
+<td>P31（instance of）</td>
+<td>69</td>
+<td>Q16521</td>
+<td>实体Q13532169是生物分类单元Q16521的一个实例</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1690883</td>
+<td>Q947917</td>
+<td>P155（followed by）</td>
+<td>1602106</td>
+<td>Q5094377</td>
+<td>实体Q947917的后继是Q5094377</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3834098</td>
+<td>Q3275088</td>
+<td>P17（country）</td>
+<td>116</td>
+<td>Q30</td>
+<td>实体Q3275088的所属国家是美国（Q30）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1547276</td>
+<td>Q147338</td>
+<td>P641（sport）</td>
+<td>2165</td>
+<td>Q5849</td>
+<td>实体Q147338参与的运动项目是Q5849</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1267843</td>
+<td>Q24088358</td>
+<td>P161（cast member）</td>
+<td>836261</td>
+<td>Q317740</td>
+<td>演员Q317740参演了作品Q24088358</td>
+</tr>
+<tr>
+<td>6</td>
+<td>3687693</td>
+<td>Q660691</td>
+<td>P734（family name）</td>
+<td>377343</td>
+<td>Q16865715</td>
+<td>实体Q660691的姓氏为Q16865715</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2860616</td>
+<td>Q7172761</td>
+<td>P3373（sibling）</td>
+<td>710088</td>
+<td>Q693204</td>
+<td>实体Q7172761的兄弟姐妹是Q693204</td>
+</tr>
+<tr>
+<td>8</td>
+<td>3468749</td>
+<td>Q6385194</td>
+<td>P735（given name）</td>
+<td>924</td>
+<td>Q1159033</td>
+<td>实体Q6385194的名字为Q1159033</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2418456</td>
+<td>Q5343527</td>
+<td>P735（given name）</td>
+<td>839</td>
+<td>Q278835</td>
+<td>实体Q5343527的名字为Q278835</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1711714</td>
+<td>Q3189176</td>
+<td>P106（occupation）</td>
+<td>54653</td>
+<td>Q805221</td>
+<td>实体Q3189176的职业是Q805221</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1206241</td>
+<td>Q452004</td>
+<td>P735（given name）</td>
+<td>58168</td>
+<td>Q2087646</td>
+<td>实体Q452004的名字为Q2087646</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1672983</td>
+<td>Q18046123</td>
+<td>P31（instance of）</td>
+<td>2255</td>
+<td>Q7187</td>
+<td>实体Q18046123是基因Q7187的一个实例</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1875750</td>
+<td>Q23615101</td>
+<td>P1344（participant in）</td>
+<td>14575</td>
+<td>Q8128</td>
+<td>实体Q23615101参与了Q8128（某事件）</td>
+</tr>
+<tr>
+<td>14</td>
+<td>399974</td>
+<td>Q22003562</td>
+<td>P20（place of death）</td>
+<td>3209</td>
+<td>Q28848</td>
+<td>实体Q22003562的死亡地是Q28848</td>
+</tr>
+<tr>
+<td>15</td>
+<td>91789</td>
+<td>Q1633380</td>
+<td>P106（occupation）</td>
+<td>944</td>
+<td>Q36834</td>
+<td>实体Q1633380的职业是Q36834</td>
+</tr>
+</tbody></table>
+<p>从以上样例可以看出，本数据集涵盖了人物属性（职业、姓名、国籍、出生地等）、地理信息（所属国家）、生物信息（分类单元、物种、基因）、体育运动、文化作品（参演关系）等多个领域的知识，数据多样性突出。实际数据集中包含完整的4818679个实体映射和21343681条训练三元组，远不止样例所能展示的范畴。</p>
+<p>此外，验证集和测试集的样例如下：</p>
+<p><strong>验证集样例</strong>：</p>
+<ul>
+<li>223125（Q3576734） –[P495（country of origin, 原产国）]–&gt; 116（Q30, 美国）</li>
+<li>1874671（Q641724） –[P1412（languages spoken, 使用语言）]–&gt; 98（Q1860, 葡萄牙语）</li>
+<li>3978539（Q4263990） –[P105（taxon rank, 分类等级）]–&gt; 146（Q7432, 物种）</li>
+</ul>
+<p><strong>测试集样例</strong>：</p>
+<ul>
+<li>3142376（Q7965079） –[P27（country of citizenship, 国籍）]–&gt; 246（Q16, 加拿大）</li>
+<li>575167（Q6719921） –[P31（instance of）]–&gt; 4106（Q11446, 体育赛事）</li>
+<li>2849660（Q11010724） –[P734（family name, 姓氏）]–&gt; 550（Q59853, 特定姓氏）</li>
+</ul>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="知识图谱补全与链接预测研究"><a href="#知识图谱补全与链接预测研究" class="headerlink" title="知识图谱补全与链接预测研究"></a>知识图谱补全与链接预测研究</h3><p>本数据集最直接的应用场景在于知识图谱补全和链接预测任务的研究与评估。研究者可以利用训练集中的2134万条三元组训练各类知识图谱嵌入模型，包括基于平移距离的模型（TransE、TransH、TransR）、基于张量分解的模型（ComplEx、TuckER）、基于深度学习的模型（ConvE、ConvKB）以及基于图神经网络的模型（R-GCN、CompGCN）等。模型训练完成后，通过验证集和测试集对预测性能进行标准化评估，计算MRR（平均倒数排名）、Hits@K（前K命中率）等核心指标。该数据集包含828种不同类型的关系，覆盖了从简单的属性关系到复杂的语义关系，对模型的表达能力提出了全面考验。研究者可以通过对比不同模型在该数据集上的表现，深入分析各类模型的优缺点和适用场景，推动知识图谱嵌入理论的发展。</p>
+<h3 id="大规模知识表示学习"><a href="#大规模知识表示学习" class="headerlink" title="大规模知识表示学习"></a>大规模知识表示学习</h3><p>知识表示学习是自然语言处理和人工智能的基础性研究方向，其核心目标是将符号化的知识转化为低维稠密向量，便于计算机进行处理和推理。本数据集包含超过480万个实体和2100万个三元组，规模足以支撑大规模知识表示学习的研究工作。研究者可以在该数据集上训练大规模知识图谱嵌入，获得实体和关系的向量表示，并将这些预训练表示迁移到其他自然语言处理任务中，如关系抽取、实体链接、智能问答等。与传统的仅为特定领域设计的小规模知识图谱不同，本数据集的实体覆盖了Wikidata中的广泛概念，因此学习到的嵌入表示具有更强的通用性和迁移能力。此外，数据集中提供的parameter.frequencies.tsv频率统计信息还可以用于设计基于频率的负采样策略，提升模型训练效率和质量。</p>
+<h3 id="跨领域知识推理"><a href="#跨领域知识推理" class="headerlink" title="跨领域知识推理"></a>跨领域知识推理</h3><p>由于本数据集包含的人物、地理、生物、体育、文化、科技、历史等多领域知识，特别适合用于跨领域知识推理的研究。传统知识图谱推理通常局限于单一领域内的关系预测，而跨领域推理要求模型能够理解不同领域知识之间的隐含联系。例如，模型需要能够推断出一个人的职业（P106）与其出生地（P19）之间的关联模式，或者一个物种的分类等级（P105）与其地理分布（P17）之间的关系。利用本数据集训练的知识图谱嵌入模型，可以在不同领域之间建立语义桥梁，实现跨领域的知识发现和推理，这对于构建通用人工智能系统具有重要的理论和实践意义。</p>
+<h3 id="推荐系统与信息检索增强"><a href="#推荐系统与信息检索增强" class="headerlink" title="推荐系统与信息检索增强"></a>推荐系统与信息检索增强</h3><p>知识图谱嵌入技术在推荐系统和信息检索领域有广泛的应用前景。本数据集提供的实体和关系向量表示可以作为推荐系统中的辅助特征，用于改善用户画像和物品表征的质量。例如，利用数据集中的人物实体（Q5）及其职业关系（P106）、国籍关系（P27）等，可以构建细粒度的用户兴趣模型；利用作品中演员的参演关系（P161）和作品类型（P136）等信息，可以增强电影和音乐推荐系统的准确性和多样性。在信息检索方面，知识图谱嵌入可以用于查询扩展和语义匹配，帮助搜索引擎理解用户查询背后的实体和关系语义，从而返回更加精准的搜索结果。2134万条三元组所提供的丰富语义关联，为构建高质量的推荐和检索增强系统提供了坚实的数据基础。</p>
+<h3 id="可解释人工智能研究"><a href="#可解释人工智能研究" class="headerlink" title="可解释人工智能研究"></a>可解释人工智能研究</h3><p>随着人工智能系统在关键领域（如医疗诊断、金融风控、法律辅助等）的广泛应用，模型的可解释性成为亟待解决的重要问题。知识图谱天然具有可解释性的优势，因为其推理路径以显式的三元组形式呈现，每一步推理都可以追溯到具体的实体和关系。本数据集包含828种定义清晰的语义关系和481万个具有明确Wikidata标识的实体，为构建可解释的知识推理系统提供了理想的数据基础。研究者可以利用本数据集训练具有可解释性的知识图谱推理模型，如基于路径的推理方法和基于规则的知识图谱补全模型，通过对推理路径的可视化分析，揭示模型的决策依据，增强人工智能系统的透明度和可信度。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本数据集是一个基于Wikidata构建的大规模知识图谱嵌入标准化训练数据，涵盖481万个实体、828种关系和超过2134万条训练三元组，并附带了完整的验证集和测试集划分。数据集采用标准的三元组格式存储，提供实体与关系的完整QID&#x2F;PID映射，并包含频率统计信息，可直接用于各类知识图谱嵌入算法的训练与评估。其数据来源权威可靠，覆盖领域广泛多样，关系类型丰富，是进行知识图谱补全、链接预测、知识表示学习以及跨领域知识推理研究的理想数据资源。数据集的规模适中，既能够满足深度学习模型对训练数据量的需求，又不会对计算资源造成过高的负担，非常适合作为知识图谱嵌入研究的基准数据集使用。</p>
+<p>数据集包含完整的三元组原始文件（train.del、valid.del、test.del），以及完整的实体映射文件（entity_ids.del）和关系映射文件（relation_ids.del），用户可以直接获取全量数据进行模型训练和评估，无需额外进行数据预处理或格式转换。这一完整性极大地降低了研究者的数据准备成本，使得研究者可以专注于算法创新和模型优化本身。</p>
+<p>有需要可私信获取更多信息或数据集文件。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%85%B8%E6%9E%A2-https-dianshudata-com/" class="category-chain-item">典枢(https://dianshudata.com)</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B8%E6%9E%A2-%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#典枢-数据集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Wikidata知识图谱嵌入数据集</div>
+      <div>https://zhyyao.cn/2026/05/19/dianshu/Wikidata知识图谱嵌入数据集/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zhyyao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/19/dianshu/SpeedrunCom%E9%80%9F%E9%80%9A%E6%95%B0%E6%8D%AE%E9%9B%86%E5%AE%8C%E6%95%B4%E7%89%88%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90/" title="SpeedrunCom速通数据集完整版深度解析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpeedrunCom速通数据集完整版深度解析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/18/dianshu/%E6%94%B6%E5%BD%95%E8%AF%97%E6%AD%8C%E4%B9%A6%E7%B1%8D%E4%B8%8E%E8%AF%BB%E8%80%85%E4%BA%A4%E4%BA%92%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BB%BC%E5%90%88%E8%AF%97%E6%AD%8C%E5%9B%BE%E4%B9%A6%E6%95%B0%E6%8D%AE%E9%9B%86/" title="收录诗歌书籍与读者交互数据的综合诗歌图书数据集">
+                        <span class="hidden-mobile">收录诗歌书籍与读者交互数据的综合诗歌图书数据集</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"D63j8u4OPrP5GbZMkJ272olo-gzGzoHsz","appKey":"5ba3HOPQlZIlMSOKTLeIYvpz","path":"window.location.pathname","placeholder":"欢迎评论，昵称输入QQ号可自动获取头像。请文明发言～","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       至此，结束 <i class="iconfont icon-love"></i> 感谢阅读 <i class="iconfont icon-love"></i> zhyyao <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script defer src="/js/out_time.js"></script><!-- hexo injector body_end end --></body>
+</html>
